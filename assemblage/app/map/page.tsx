@@ -2,53 +2,424 @@
 
 import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
-import { ArrowLeft, ArrowUpRight, Check, ChevronDown, Crosshair, Info, Layers3, MapPin, PanelRightClose, X } from 'lucide-react'
-import { filters, flowLabel, formatCoord, matchesFilter, project, species, type Species, type SpeciesFilter } from '@/lib/mock-species'
+import { ChevronDown, Info, Layers3, PanelRightClose } from 'lucide-react'
+import { load } from '@loaders.gl/core'
+import { ParquetLoader } from '@loaders.gl/parquet'
+import DeckMap, { type Layers } from './DeckMap'
+import {
+  InstituteDetail,
+  InstituteSearch,
+  RegionOverview,
+  SpeciesDetail,
+  SpeciesSearch,
+  regionTitle,
+} from './SidebarPanels'
+import {
+  EMPTY_GEO_FILTER,
+  computeRegionStats,
+  filterFlows,
+  instituteKey,
+  normalizeFlows,
+  PARQUET_COLUMNS,
+  TAXON_RANKS,
+  type GeoFilter,
+  type RankFilter,
+  type Selection,
+  type SpeciesFlow,
+  type TaxonRank,
+  type WorldGeoJson,
+} from './types'
 
-type Layers = { collection: boolean; submitter: boolean; flow: boolean }
-
-function Marker({ item, kind, active, onClick, onHover }: { item: Species; kind: 'collection' | 'submitter'; active: boolean; onClick: () => void; onHover: (id: string | null) => void }) {
-  const point = project(kind === 'collection' ? item.collection.lat : item.submitter.lat, kind === 'collection' ? item.collection.lng : item.submitter.lng)
-  return <g className={`map-marker ${kind}-marker ${active ? 'is-active' : ''}`} transform={`translate(${point.x} ${point.y})`} onClick={(event) => { event.stopPropagation(); onClick() }} onMouseEnter={() => onHover(item.id)} onMouseLeave={() => onHover(null)} role="button" tabIndex={0} aria-label={`${kind} site for ${item.scientificName}`} onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') onClick() }}>
-    {kind === 'collection' ? <><circle className="marker-halo" r="15" /><circle className="marker-core" r="6" /></> : <><rect className="marker-square" x="-5" y="-5" width="10" height="10" rx="1" /><path d="M-8 0H8M0-8V8" /></>}
-  </g>
+function Toggle({
+  label,
+  color,
+  checked,
+  onChange,
+}: {
+  label: string
+  color: 'amber' | 'blue' | 'flow'
+  checked: boolean
+  onChange: () => void
+}) {
+  return (
+    <button className="layer-toggle" onClick={onChange} aria-pressed={checked}>
+      <span className={`toggle-key ${color}`} />
+      <span>{label}</span>
+      <span className={`switch ${checked ? 'on' : ''}`}>
+        <span />
+      </span>
+    </button>
+  )
 }
 
-function Arc({ item, active, onClick, onHover }: { item: Species; active: boolean; onClick: () => void; onHover: (id: string | null) => void }) {
-  const a = project(item.collection.lat, item.collection.lng); const b = project(item.submitter.lat, item.submitter.lng); const midX = (a.x + b.x) / 2; const distance = Math.abs(a.x - b.x); const midY = Math.min(a.y, b.y) - Math.max(32, Math.min(120, distance * 0.16)); const d = `M ${a.x} ${a.y} Q ${midX} ${midY} ${b.x} ${b.y}`
-  return <path d={d} className={`flow-arc ${active ? 'is-active' : ''}`} onClick={(event) => { event.stopPropagation(); onClick() }} onMouseEnter={() => onHover(item.id)} onMouseLeave={() => onHover(null)} aria-label={`Flow for ${item.scientificName}`} />
+function rankTaxidKey(rank: TaxonRank): keyof SpeciesFlow {
+  return `${rank}_taxid` as keyof SpeciesFlow
 }
 
-function WorldMap({ visible, layers, selectedId, hoveredId, select, hover, clear }: { visible: Species[]; layers: Layers; selectedId: string | null; hoveredId: string | null; select: (id: string) => void; hover: (id: string | null) => void; clear: () => void }) {
-  return <div className="map-canvas atlas-grid" onClick={clear}>
-    <svg viewBox="0 0 1000 480" preserveAspectRatio="xMidYMid meet" className="world-map" aria-label="Interactive world map of species collection and submitter sites">
-      <defs><linearGradient id="flow-gradient" x1="0%" x2="100%"><stop offset="0%" stopColor="var(--amber)" /><stop offset="100%" stopColor="var(--blue)" /></linearGradient><filter id="amber-glow"><feGaussianBlur stdDeviation="5" /></filter></defs>
-      <g className="map-graticule"><path d="M0 120H1000M0 240H1000M0 360H1000M250 0V480M500 0V480M750 0V480" /></g>
-      <path className="world-shape large-world" d="M58 125l100-44 107 16 67 49-18 49-74 19-28 50-56-12-31-61-45-7-39-30zm294 72 45-48 69 12 55 53-14 47-52 4-40 46-28-35-47-9-18-35zm206-75 55-41 100 9 85 47-17 52-62 7-17 51-54-14-26-49-46-20zm171 137 70-20 63 41 21 66-37 67-57-14-27-55z" />
-      {layers.flow && visible.map((item) => <Arc key={`arc-${item.id}`} item={item} active={selectedId === item.id || hoveredId === item.id} onClick={() => select(item.id)} onHover={hover} />)}
-      {layers.collection && visible.map((item) => <Marker key={`collection-${item.id}`} item={item} kind="collection" active={selectedId === item.id || hoveredId === item.id} onClick={() => select(item.id)} onHover={hover} />)}
-      {layers.submitter && visible.map((item) => <Marker key={`submitter-${item.id}`} item={item} kind="submitter" active={selectedId === item.id || hoveredId === item.id} onClick={() => select(item.id)} onHover={hover} />)}
-    </svg>
-    <div className="map-legend"><div><span className="legend-dot amber" /> Collected</div><div><span className="legend-square blue" /> Submitted</div><div><span className="legend-line" /> Flow</div></div><div className="map-note">Mock coordinates · not INSDC</div>
-  </div>
-}
-
-function Toggle({ label, color, checked, onChange }: { label: string; color: 'amber' | 'blue' | 'flow'; checked: boolean; onChange: () => void }) {
-  return <button className="layer-toggle" onClick={onChange} aria-pressed={checked}><span className={`toggle-key ${color}`} /><span>{label}</span><span className={`switch ${checked ? 'on' : ''}`}><span /></span></button>
-}
-
-function SpeciesList({ visible, selectedId, select }: { visible: Species[]; selectedId: string | null; select: (id: string) => void }) {
-  return <div className="species-index"><div className="index-heading"><span>Species index</span><span>{visible.length.toString().padStart(2, '0')} records</span></div>{visible.map((item) => <button key={item.id} className={`species-row ${selectedId === item.id ? 'selected' : ''}`} onClick={() => select(item.id)}><span><i>{item.scientificName}</i><small>{item.commonName}</small></span><span className="species-flow"><b>{item.collection.country}</b><span>→</span><b>{item.submitter.country}</b></span></button>)}</div>
-}
-
-function Detail({ item, clear, focus }: { item: Species; clear: () => void; focus: () => void }) {
-  return <div className="detail-panel"><div className="detail-head"><button className="back-index" onClick={clear}><ArrowLeft size={15} /> All species</button><button className="icon-button" onClick={clear} aria-label="Close species detail"><X size={17} /></button></div><div className="detail-title"><span className="detail-kicker">{item.taxon}</span><h2><i>{item.scientificName}</i></h2><p>{item.commonName}</p><div className="detail-flow"><span>{item.collection.country}</span><span className="spark-arrow">→</span><span>{item.submitter.city}, {item.submitter.country}</span></div></div><div className="status-row"><span className={`status-chip ${item.flow}`}>{flowLabel(item.flow)}</span><span>assembly flow</span></div><div className="location-stack"><section className="location-card"><div className="location-card-head"><span className="card-dot amber" />Collected <span className="location-label">field site</span></div><strong>{item.collection.locality}</strong><p>{item.collection.country}</p><dl><div><dt>Coordinates</dt><dd>{formatCoord(item.collection.lat, 'lat')} / {formatCoord(item.collection.lng, 'lng')}</dd></div><div><dt>Collected</dt><dd>{item.collection.year} · {item.collection.habitat}</dd></div></dl></section><section className="location-card"><div className="location-card-head"><span className="card-dot blue" />Submitted <span className="location-label">assembly site</span></div><strong>{item.submitter.institution}</strong><p>{item.submitter.city}, {item.submitter.country}</p><dl><div><dt>Coordinates</dt><dd>{formatCoord(item.submitter.lat, 'lat')} / {formatCoord(item.submitter.lng, 'lng')}</dd></div><div><dt>Submitter</dt><dd>{item.submitter.name}</dd></div></dl></section></div><section className="assembly-block"><div className="section-label">Assembly</div><div className="assembly-grid"><div><span>Accession</span><b>{item.assembly.accession}</b></div><div><span>Level</span><b>{item.assembly.level}</b></div><div><span>Year</span><b>{item.assembly.year}</b></div><div><span>Size</span><b>{item.assembly.sizeMb.toLocaleString()} Mb</b></div></div></section><section className="taxonomy"><div className="section-label">Taxonomy</div><p>{item.kingdom} <span>/</span> {item.className} <span>/</span> {item.order}</p></section><div className="detail-actions"><button className="button button-primary" onClick={focus}><Crosshair size={15} /> Focus pair on map</button><button className="button button-quiet" onClick={clear}>Clear</button></div></div>
+function rankNameKey(rank: TaxonRank): keyof SpeciesFlow {
+  return `${rank}_name` as keyof SpeciesFlow
 }
 
 export default function MapPage() {
-  const [filter, setFilter] = useState<SpeciesFilter>('All species'); const [layers, setLayers] = useState<Layers>({ collection: true, submitter: true, flow: true }); const [selectedId, setSelectedId] = useState<string | null>(null); const [hoveredId, setHoveredId] = useState<string | null>(null); const [mobileOpen, setMobileOpen] = useState(false)
-  const visible = useMemo(() => species.filter((item) => matchesFilter(item, filter)), [filter]); const selected = species.find((item) => item.id === selectedId) ?? null
-  const select = (id: string) => { setSelectedId(id); setMobileOpen(true) }; const clear = () => { setSelectedId(null); setMobileOpen(false) }; const focus = () => { setMobileOpen(false) }
-  useEffect(() => { const onKey = (event: KeyboardEvent) => { if (event.key === 'Escape') clear() }; window.addEventListener('keydown', onKey); return () => window.removeEventListener('keydown', onKey) }, [])
-  return <main className="atlas-shell"><header className="atlas-topbar"><Link href="/" className="wordmark">Assemblage<span className="wordmark-dot">.</span></Link><div className="atlas-title"><span>Atlas /</span> species flows</div><div className="topbar-info"><Info size={14} /> mock coordinates</div></header><div className="atlas-toolbar"><div className="filter-group">{filters.map((item) => <button key={item} className={`filter-chip ${filter === item ? 'active' : ''}`} onClick={() => setFilter(item)}>{filter === item && <Check size={13} />}{item}</button>)}</div><div className="toolbar-layers"><Toggle label="Collection sites" color="amber" checked={layers.collection} onChange={() => setLayers((old) => ({ ...old, collection: !old.collection }))} /><Toggle label="Submitter sites" color="blue" checked={layers.submitter} onChange={() => setLayers((old) => ({ ...old, submitter: !old.submitter }))} /><Toggle label="Flow arcs" color="flow" checked={layers.flow} onChange={() => setLayers((old) => ({ ...old, flow: !old.flow }))} /></div><div className="metric-pill"><span>South → North</span><b>{visible.filter((item) => item.flow === 'south-north').length} / {visible.length}</b><small>visible</small></div></div><div className="atlas-content"><WorldMap visible={visible} layers={layers} selectedId={selectedId} hoveredId={hoveredId} select={select} hover={setHoveredId} clear={clear} /><aside className={`species-sidebar ${mobileOpen ? 'mobile-open' : ''}`}><div className="sidebar-top"><div><span className="sidebar-kicker"><Layers3 size={13} /> Specimen atlas</span><h1>{selected ? 'Species detail' : 'Select a species'}</h1></div>{selected && <button className="icon-button" onClick={clear} aria-label="Close sidebar"><PanelRightClose size={17} /></button>}</div>{selected ? <Detail item={selected} clear={clear} focus={focus} /> : <><p className="sidebar-copy">Click a collection site, a lab, or an arc. Each record carries the geography of the field and the assembly.</p><SpeciesList visible={visible} selectedId={selectedId} select={select} /></>}</aside></div><div className="mobile-sidebar-handle" onClick={() => setMobileOpen(!mobileOpen)}><ChevronDown size={16} /> {selected ? 'Viewing species detail' : 'Browse species index'}</div></main>
+  const [layers, setLayers] = useState<Layers>({ collection: true, submitter: true, flow: true })
+  const [selection, setSelection] = useState<Selection>(null)
+  const [mobileOpen, setMobileOpen] = useState(false)
+
+  const [flows, setFlows] = useState<SpeciesFlow[] | null>(null)
+  const [world, setWorld] = useState<WorldGeoJson | null>(null)
+  const [loadError, setLoadError] = useState<string | null>(null)
+
+  const [rankLevel, setRankLevel] = useState<TaxonRank | ''>('')
+  const [rankTaxid, setRankTaxid] = useState('')
+  const [geoFilter, setGeoFilter] = useState<GeoFilter>(EMPTY_GEO_FILTER)
+
+  const clearSelection = () => {
+    setSelection(null)
+    setMobileOpen(false)
+  }
+
+  const select = (next: Selection) => {
+    setSelection(next)
+    if (next) setMobileOpen(true)
+  }
+
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') clearSelection()
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [])
+
+  useEffect(() => {
+    let cancelled = false
+
+    async function loadData() {
+      try {
+        const [table, worldJson] = await Promise.all([
+          load('/data/species_flows.parquet', ParquetLoader, {
+            parquet: { columnList: [...PARQUET_COLUMNS] },
+          }),
+          fetch('/data/world-110m.geojson').then((res) => {
+            if (!res.ok) throw new Error(`world geojson ${res.status}`)
+            return res.json() as Promise<WorldGeoJson>
+          }),
+        ])
+        if (cancelled) return
+        setFlows(normalizeFlows(table))
+        setWorld(worldJson)
+      } catch (err) {
+        if (cancelled) return
+        setLoadError(err instanceof Error ? err.message : 'Failed to load map data')
+      }
+    }
+
+    void loadData()
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
+  const rankFilter: RankFilter | null =
+    rankLevel && rankTaxid ? { rank: rankLevel, taxid: rankTaxid } : null
+
+  const filteredFlows = useMemo(() => {
+    if (!flows) return []
+    return filterFlows(flows, rankFilter, geoFilter)
+  }, [flows, rankFilter, geoFilter])
+
+  // Drop selection if it falls outside the current filtered scope.
+  useEffect(() => {
+    if (!selection) return
+    const stillVisible = filteredFlows.some((row) => {
+      if (selection.type === 'species') return row.species_taxid === selection.taxid
+      return instituteKey(row) === selection.key
+    })
+    if (!stillVisible) setSelection(null)
+  }, [filteredFlows, selection])
+
+  const taxonOptions = useMemo(() => {
+    if (!flows || !rankLevel) return []
+    const taxidKey = rankTaxidKey(rankLevel)
+    const nameKey = rankNameKey(rankLevel)
+    const byId = new Map<string, string>()
+    for (const row of flows) {
+      const taxid = row[taxidKey]
+      const name = row[nameKey]
+      if (typeof taxid === 'string' && taxid && typeof name === 'string' && name) {
+        byId.set(taxid, name)
+      }
+    }
+    return [...byId.entries()]
+      .map(([taxid, name]) => ({ taxid, name }))
+      .sort((a, b) => a.name.localeCompare(b.name))
+  }, [flows, rankLevel])
+
+  const continentOptions = useMemo(() => {
+    if (!flows) return []
+    return [...new Set(flows.map((row) => row.collection_continent).filter(Boolean))].sort((a, b) => {
+      if (a === 'Unknown') return 1
+      if (b === 'Unknown') return -1
+      return a.localeCompare(b)
+    })
+  }, [flows])
+
+  const countryOptions = useMemo(() => {
+    if (!flows) return []
+    const byCountry = new Map<string, { continent: string; iso3: string | null }>()
+    for (const row of flows) {
+      const country = row.collection_country
+      if (!country) continue
+      if (geoFilter.continent && row.collection_continent !== geoFilter.continent) continue
+      if (!byCountry.has(country)) {
+        byCountry.set(country, {
+          continent: row.collection_continent,
+          iso3: row.collection_country_iso3,
+        })
+      }
+    }
+    return [...byCountry.entries()]
+      .map(([country, meta]) => ({ country, ...meta }))
+      .sort((a, b) => a.country.localeCompare(b.country))
+  }, [flows, geoFilter.continent])
+
+  const regionStats = useMemo(
+    () => computeRegionStats(filteredFlows, geoFilter),
+    [filteredFlows, geoFilter],
+  )
+
+  const selectedSpeciesRow = useMemo(() => {
+    if (selection?.type !== 'species') return null
+    return filteredFlows.find((row) => row.species_taxid === selection.taxid) ?? null
+  }, [filteredFlows, selection])
+
+  const selectedInstituteRows = useMemo(() => {
+    if (selection?.type !== 'institute') return []
+    return filteredFlows.filter((row) => instituteKey(row) === selection.key)
+  }, [filteredFlows, selection])
+
+  const onRankLevelChange = (value: string) => {
+    setRankLevel((value || '') as TaxonRank | '')
+    setRankTaxid('')
+  }
+
+  const onContinentChange = (value: string) => {
+    const continent = value || null
+    if (!continent) {
+      setGeoFilter(EMPTY_GEO_FILTER)
+      return
+    }
+    setGeoFilter((prev) => {
+      if (!prev.country || !flows) {
+        return { continent, country: null, countryIso3: null }
+      }
+      const match = flows.find(
+        (row) =>
+          row.collection_country === prev.country && row.collection_continent === continent,
+      )
+      if (match) {
+        return {
+          continent,
+          country: prev.country,
+          countryIso3: match.collection_country_iso3,
+        }
+      }
+      return { continent, country: null, countryIso3: null }
+    })
+  }
+
+  const onCountryChange = (value: string) => {
+    if (!value) {
+      setGeoFilter((prev) => ({
+        continent: prev.continent,
+        country: null,
+        countryIso3: null,
+      }))
+      return
+    }
+    const match =
+      flows?.find((row) => {
+        if (row.collection_country !== value) return false
+        if (geoFilter.continent && row.collection_continent !== geoFilter.continent) return false
+        return true
+      }) ?? null
+    if (!match) {
+      setGeoFilter(EMPTY_GEO_FILTER)
+      return
+    }
+    setGeoFilter({
+      continent: match.collection_continent,
+      country: match.collection_country,
+      countryIso3: match.collection_country_iso3,
+    })
+  }
+
+  const title = regionTitle(geoFilter)
+  const sidebarHeading = selectedSpeciesRow
+    ? 'Species detail'
+    : selection?.type === 'institute'
+      ? 'Institute detail'
+      : 'Region overview'
+
+  return (
+    <main className="atlas-shell">
+      <header className="atlas-topbar">
+        <Link href="/" className="wordmark">
+          Assemblage<span className="wordmark-dot">.</span>
+        </Link>
+        <div className="atlas-title">
+          <span>Atlas /</span> species flows
+        </div>
+        <div className="topbar-info">
+          <Info size={14} /> INSDC flows · live atlas
+        </div>
+      </header>
+      <div className="atlas-toolbar">
+        <div className="map-filters">
+          <label className="map-filter">
+            <span>Rank</span>
+            <select value={rankLevel} onChange={(e) => onRankLevelChange(e.target.value)} disabled={!flows}>
+              <option value="">Any rank</option>
+              {TAXON_RANKS.map((rank) => (
+                <option key={rank} value={rank}>
+                  {rank}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="map-filter">
+            <span>Taxon</span>
+            <select
+              value={rankTaxid}
+              onChange={(e) => setRankTaxid(e.target.value)}
+              disabled={!rankLevel || taxonOptions.length === 0}
+            >
+              <option value="">All taxa</option>
+              {taxonOptions.map((opt) => (
+                <option key={opt.taxid} value={opt.taxid}>
+                  {opt.name}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="map-filter">
+            <span>Continent</span>
+            <select
+              value={geoFilter.continent ?? ''}
+              onChange={(e) => onContinentChange(e.target.value)}
+              disabled={!flows}
+            >
+              <option value="">All continents</option>
+              {continentOptions.map((name) => (
+                <option key={name} value={name}>
+                  {name}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="map-filter">
+            <span>Country</span>
+            <select
+              value={geoFilter.country ?? ''}
+              onChange={(e) => onCountryChange(e.target.value)}
+              disabled={!flows}
+            >
+              <option value="">All countries</option>
+              {countryOptions.map((opt) => (
+                <option key={opt.country} value={opt.country}>
+                  {opt.country}
+                </option>
+              ))}
+            </select>
+          </label>
+          <SpeciesSearch flows={filteredFlows} selection={selection} onSelect={select} />
+          <InstituteSearch flows={filteredFlows} selection={selection} onSelect={select} />
+        </div>
+        <div className="toolbar-layers">
+          <Toggle
+            label="Collection sites"
+            color="amber"
+            checked={layers.collection}
+            onChange={() => setLayers((old) => ({ ...old, collection: !old.collection }))}
+          />
+          <Toggle
+            label="Submitter sites"
+            color="blue"
+            checked={layers.submitter}
+            onChange={() => setLayers((old) => ({ ...old, submitter: !old.submitter }))}
+          />
+          <Toggle
+            label="Flow arcs"
+            color="flow"
+            checked={layers.flow}
+            onChange={() => setLayers((old) => ({ ...old, flow: !old.flow }))}
+          />
+        </div>
+        <div className="metric-pill">
+          <span>In view</span>
+          <b>{filteredFlows.length.toLocaleString()}</b>
+          <small>species</small>
+        </div>
+      </div>
+      <div className="atlas-content">
+        <DeckMap
+          filteredFlows={filteredFlows}
+          world={world}
+          error={loadError}
+          layers={layers}
+          geoFilter={geoFilter}
+          selection={selection}
+          totalCount={flows?.length ?? null}
+          onSelect={select}
+          onGeoSelect={(geo) => {
+            setGeoFilter(geo)
+            setSelection(null)
+            setMobileOpen(true)
+          }}
+        />
+        <aside className={`species-sidebar ${mobileOpen ? 'mobile-open' : ''}`}>
+          <div className="sidebar-top">
+            <div>
+              <span className="sidebar-kicker">
+                <Layers3 size={13} /> Specimen atlas
+              </span>
+              <h1>{sidebarHeading}</h1>
+            </div>
+            {selection && (
+              <button className="icon-button" onClick={clearSelection} aria-label="Close selection">
+                <PanelRightClose size={17} />
+              </button>
+            )}
+          </div>
+          {selectedSpeciesRow ? (
+            <SpeciesDetail
+              row={selectedSpeciesRow}
+              regionLabel={title}
+              onBack={clearSelection}
+              onClear={clearSelection}
+              onSelectInstitute={(key) => select({ type: 'institute', key })}
+            />
+          ) : selection?.type === 'institute' && selectedInstituteRows.length > 0 ? (
+            <InstituteDetail
+              keyName={selection.key}
+              rows={selectedInstituteRows}
+              regionLabel={title}
+              onBack={clearSelection}
+              onClear={clearSelection}
+              onSelectSpecies={(taxid) => select({ type: 'species', taxid })}
+            />
+          ) : (
+            <RegionOverview
+              title={title}
+              stats={regionStats}
+              onSelectInstitute={(key) => select({ type: 'institute', key })}
+            />
+          )}
+        </aside>
+      </div>
+      <div className="mobile-sidebar-handle" onClick={() => setMobileOpen(!mobileOpen)}>
+        <ChevronDown size={16} /> {sidebarHeading}
+      </div>
+    </main>
+  )
 }
