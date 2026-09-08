@@ -1,7 +1,7 @@
 graphify.out/
 graphify-out/
 .cursor/
-data/
+/data/
 .env
 assemblage/package-lock.json
 scripts/__pycache__/
