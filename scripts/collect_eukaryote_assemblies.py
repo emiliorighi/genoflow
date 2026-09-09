@@ -3,7 +3,8 @@
 
 Uses the NCBI `datasets` CLI to:
   1. Stream genome summaries for a taxon (default: Eukaryota, GenBank only)
-  2. Extract biosample geo/country (GenBank lat_lon and ENA lat/lon attributes)
+  2. Extract biosample geo/country from GenBank/DDBJ lat_lon, ENA lat/lon
+     attributes, Darwin Core decimal_latitude/longitude, and related aliases
   3. Resolve species-level taxonomy via batched `datasets summary taxonomy`
   4. Write a TSV suitable for later geo / parquet analysis
 """
@@ -101,27 +102,38 @@ def attr_map(biosample: dict[str, Any]) -> dict[str, str]:
 
 
 def parse_lat_lon_combined(raw: str) -> tuple[Optional[float], Optional[float]]:
-    match = LAT_LON_RE.match(raw.strip())
-    if not match:
-        # Fallback: plain "lat lon" decimals without hemisphere letters
-        parts = raw.replace(",", " ").split()
-        if len(parts) == 2:
+    text = raw.strip()
+    match = LAT_LON_RE.match(text)
+    if match:
+        lat = float(match.group("lat_num"))
+        lon = float(match.group("lon_num"))
+        if match.group("lat_hem").upper() == "S":
+            lat = -abs(lat)
+        else:
+            lat = abs(lat)
+        if match.group("lon_hem").upper() == "W":
+            lon = -abs(lon)
+        else:
+            lon = abs(lon)
+        return lat, lon
+
+    # Comma-separated decimals: "52.622282,1.2190789"
+    if "," in text:
+        comma_parts = [p.strip() for p in text.split(",")]
+        if len(comma_parts) == 2:
             try:
-                return float(parts[0]), float(parts[1])
+                return float(comma_parts[0]), float(comma_parts[1])
             except ValueError:
-                return None, None
-        return None, None
-    lat = float(match.group("lat_num"))
-    lon = float(match.group("lon_num"))
-    if match.group("lat_hem").upper() == "S":
-        lat = -abs(lat)
-    else:
-        lat = abs(lat)
-    if match.group("lon_hem").upper() == "W":
-        lon = -abs(lon)
-    else:
-        lon = abs(lon)
-    return lat, lon
+                pass
+
+    # Plain "lat lon" decimals without hemisphere letters
+    parts = text.replace(",", " ").split()
+    if len(parts) == 2:
+        try:
+            return float(parts[0]), float(parts[1])
+        except ValueError:
+            return None, None
+    return None, None
 
 
 def parse_decimal_coord(raw: Optional[str]) -> Optional[float]:
@@ -144,24 +156,81 @@ def parse_decimal_coord(raw: Optional[str]) -> Optional[float]:
     return value
 
 
+def try_lat_lon_pair(
+    attrs: dict[str, str],
+    lat_keys: tuple[str, ...],
+    lon_keys: tuple[str, ...],
+) -> tuple[Optional[float], Optional[float]]:
+    """Return (lat, lon) from the first present key in each list, or (None, None)."""
+    lat_raw = None
+    for key in lat_keys:
+        if key in attrs and not is_missing(attrs[key]):
+            lat_raw = attrs[key]
+            break
+    lon_raw = None
+    for key in lon_keys:
+        if key in attrs and not is_missing(attrs[key]):
+            lon_raw = attrs[key]
+            break
+    if lat_raw is None or lon_raw is None:
+        return None, None
+    lat = parse_decimal_coord(lat_raw)
+    lon = parse_decimal_coord(lon_raw)
+    if lat is None or lon is None:
+        return None, None
+    return lat, lon
+
+
 def extract_coordinates(
     biosample: dict[str, Any], attrs: dict[str, str]
 ) -> tuple[Optional[float], Optional[float]]:
-    # GenBank / DDBJ combined lat_lon (top-level or attribute)
+    # Prefer collection-site fields, then transect start, then material/lab coords.
+    # 1–2. GenBank / DDBJ combined lat_lon (+ aliases)
     for candidate in (
         biosample.get("lat_lon"),
         attrs.get("lat_lon"),
+        attrs.get("lat_long"),
+        attrs.get("latitude and lonitude"),
     ):
         if candidate is not None and not is_missing(str(candidate)):
             lat, lon = parse_lat_lon_combined(str(candidate))
             if lat is not None and lon is not None:
                 return lat, lon
 
-    # ENA-style separate attributes
-    lat = parse_decimal_coord(attrs.get("geographic location (latitude)"))
-    lon = parse_decimal_coord(attrs.get("geographic location (longitude)"))
-    if lat is not None and lon is not None:
-        return lat, lon
+    # 3–8. Separate lat/lon attribute pairs (collection site first)
+    for lat_keys, lon_keys in (
+        (("geographic location (latitude)",), ("geographic location (longitude)",)),
+        (("geographic_location_latitude",), ("geographic_location_longitude",)),
+        (
+            ("decimal_latitude", "decimallatitude"),
+            ("decimal_longitude", "decimallongitude"),
+        ),
+        (("latitude",), ("longitude",)),
+        (("north -lat",), ("east - lon",)),
+        (
+            ("original geographic location (latitude)",),
+            ("original geographic location (longitude)",),
+        ),
+        # 9. Transect start (not end-only)
+        (
+            (
+                "latitude_start",
+                "latitude start",
+                "geographic location start (latitude_start)",
+            ),
+            (
+                "longitude_start",
+                "longitude start",
+                "geographic location start (longitude_start)",
+            ),
+        ),
+        # 10. Herbarium / culture-collection style (last resort)
+        (("biological material latitude",), ("biological material longitude",)),
+        (("material source latitude",), ("material source longitude",)),
+    ):
+        lat, lon = try_lat_lon_pair(attrs, lat_keys, lon_keys)
+        if lat is not None and lon is not None:
+            return lat, lon
 
     return None, None
 
@@ -449,6 +518,46 @@ def assemble_tsv_rows(
     return out
 
 
+def load_species_by_accession(path: Path) -> dict[str, tuple[str, str]]:
+    """Load assembly_accession -> (species_taxid, species_scientific_name) from a TSV."""
+    out: dict[str, tuple[str, str]] = {}
+    with path.open(encoding="utf-8", newline="") as fh:
+        reader = csv.DictReader(fh, delimiter="\t")
+        for row in reader:
+            acc = (row.get("assembly_accession") or "").strip()
+            if not acc:
+                continue
+            tid = (row.get("species_taxid") or "").strip()
+            name = (row.get("species_scientific_name") or "").strip()
+            if tid or name:
+                out[acc] = (tid, name)
+    return out
+
+
+def species_map_from_existing(
+    rows: list[dict[str, Any]],
+    existing_by_acc: dict[str, tuple[str, str]],
+) -> tuple[dict[str, tuple[str, str]], list[str]]:
+    """Build tax_id -> species map from prior TSV; return unresolved tax ids."""
+    species_map: dict[str, tuple[str, str]] = {}
+    need_resolve: list[str] = []
+    seen_need: set[str] = set()
+    for row in rows:
+        raw_tid = row.get("raw_tax_id")
+        if raw_tid is None:
+            continue
+        raw_key = str(raw_tid)
+        if raw_key in species_map:
+            continue
+        acc = row.get("assembly_accession") or ""
+        if acc in existing_by_acc:
+            species_map[raw_key] = existing_by_acc[acc]
+        elif raw_key not in seen_need:
+            seen_need.add(raw_key)
+            need_resolve.append(raw_key)
+    return species_map, need_resolve
+
+
 def write_tsv(path: Path, rows: list[dict[str, str]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8", newline="") as fh:
@@ -575,11 +684,34 @@ def main(argv: Optional[list[str]] = None) -> int:
         )
         species_map: dict[str, tuple[str, str]] = {}
     else:
-        species_map = resolve_species_taxonomy(
-            (r["raw_tax_id"] for r in rows),
-            batch_size=args.taxonomy_batch_size,
-            api_key=args.api_key,
-        )
+        existing_by_acc: dict[str, tuple[str, str]] = {}
+        if args.output.exists():
+            existing_by_acc = load_species_by_accession(args.output)
+            eprint(
+                f"Loaded species columns for {len(existing_by_acc)} accessions "
+                f"from {args.output}"
+            )
+        species_map, need_resolve = species_map_from_existing(rows, existing_by_acc)
+        if existing_by_acc:
+            eprint(
+                f"Reused species taxonomy for {len(species_map)} tax IDs from existing TSV"
+            )
+        if need_resolve:
+            eprint(
+                f"Resolving {len(need_resolve)} tax IDs not found in existing TSV"
+            )
+            fetched = resolve_species_taxonomy(
+                need_resolve,
+                batch_size=args.taxonomy_batch_size,
+                api_key=args.api_key,
+            )
+            species_map.update(fetched)
+        elif not existing_by_acc:
+            species_map = resolve_species_taxonomy(
+                (r["raw_tax_id"] for r in rows),
+                batch_size=args.taxonomy_batch_size,
+                api_key=args.api_key,
+            )
     tsv_rows = assemble_tsv_rows(rows, species_map)
     write_tsv(args.output, tsv_rows)
     print_summary(tsv_rows)

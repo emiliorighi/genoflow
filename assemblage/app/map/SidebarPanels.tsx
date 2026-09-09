@@ -1,125 +1,29 @@
 'use client'
 
-import { useEffect, useMemo, useRef, useState } from 'react'
-import { ArrowLeft, ArrowRight, ExternalLink, X } from 'lucide-react'
+import { useEffect, useMemo, useState } from 'react'
+import { ArrowLeft, ArrowRight, ChevronRight, ExternalLink, Search, X } from 'lucide-react'
+import { Combobox, type ComboboxOption } from './Combobox'
 import {
   formatCoord,
   instituteKey,
   type GeoFilter,
+  type RegionFlow,
   type RegionStats,
   type Selection,
   type SpeciesFlow,
 } from './types'
 
+type FlowRow = RegionFlow | SpeciesFlow
+
 const PAGE_SIZE = 30
-const SEARCH_DEBOUNCE_MS = 120
 
-type SearchOption = { key: string; label: string; sub?: string; searchText: string }
-
-function SearchCombobox({
-  label,
-  placeholder,
-  value,
-  options,
-  onPick,
-  onClear,
-}: {
-  label: string
-  placeholder: string
-  value: string
-  options: SearchOption[]
-  onPick: (key: string) => void
-  onClear: () => void
-}) {
-  const [query, setQuery] = useState('')
-  const [debouncedQuery, setDebouncedQuery] = useState('')
-  const [open, setOpen] = useState(false)
-  const rootRef = useRef<HTMLLabelElement>(null)
-
-  useEffect(() => {
-    if (!open) {
-      setQuery('')
-      setDebouncedQuery('')
-    }
-  }, [open, value])
-
-  useEffect(() => {
-    const handle = window.setTimeout(() => setDebouncedQuery(query), SEARCH_DEBOUNCE_MS)
-    return () => window.clearTimeout(handle)
-  }, [query])
-
-  useEffect(() => {
-    const onDoc = (event: MouseEvent) => {
-      if (!rootRef.current?.contains(event.target as Node)) setOpen(false)
-    }
-    document.addEventListener('mousedown', onDoc)
-    return () => document.removeEventListener('mousedown', onDoc)
-  }, [])
-
-  const filtered = useMemo(() => {
-    const q = debouncedQuery.trim().toLowerCase()
-    if (!q) return options.slice(0, 20)
-    return options.filter((opt) => opt.searchText.includes(q)).slice(0, 20)
-  }, [options, debouncedQuery])
-
+function Breadcrumb({ regionLabel, current }: { regionLabel: string | null; current: string }) {
   return (
-    <label className="map-filter search-filter" ref={rootRef}>
-      <span>{label}</span>
-      <div className="search-box">
-        <input
-          value={open ? query : value}
-          placeholder={placeholder}
-          onFocus={() => setOpen(true)}
-          onChange={(e) => {
-            setQuery(e.target.value)
-            setOpen(true)
-          }}
-          aria-autocomplete="list"
-          aria-expanded={open}
-        />
-        {value && (
-          <button
-            type="button"
-            className="search-clear"
-            aria-label={`Clear ${label}`}
-            onClick={(e) => {
-              e.preventDefault()
-              onClear()
-              setQuery('')
-              setDebouncedQuery('')
-              setOpen(false)
-            }}
-          >
-            <X size={12} />
-          </button>
-        )}
-        {open && (
-          <div className="search-popover" role="listbox">
-            {filtered.length === 0 ? (
-              <div className="search-empty">No matches</div>
-            ) : (
-              filtered.map((opt) => (
-                <button
-                  key={opt.key}
-                  type="button"
-                  role="option"
-                  className="search-option"
-                  onClick={() => {
-                    onPick(opt.key)
-                    setOpen(false)
-                    setQuery('')
-                    setDebouncedQuery('')
-                  }}
-                >
-                  <span>{opt.label}</span>
-                  {opt.sub && <small>{opt.sub}</small>}
-                </button>
-              ))
-            )}
-          </div>
-        )}
-      </div>
-    </label>
+    <div className="detail-breadcrumb" aria-label="Breadcrumb">
+      <span>{regionLabel || 'All regions'}</span>
+      <ChevronRight size={11} aria-hidden="true" />
+      <span className="detail-breadcrumb-current">{current}</span>
+    </div>
   )
 }
 
@@ -128,11 +32,11 @@ export function SpeciesSearch({
   selection,
   onSelect,
 }: {
-  flows: SpeciesFlow[]
+  flows: FlowRow[]
   selection: Selection
   onSelect: (selection: Selection) => void
 }) {
-  const options = useMemo(
+  const options: ComboboxOption[] = useMemo(
     () =>
       flows
         .filter((row) => row.species_taxid && row.species_scientific_name)
@@ -149,16 +53,16 @@ export function SpeciesSearch({
         .sort((a, b) => a.label.localeCompare(b.label)),
     [flows],
   )
-  const selectedLabel =
-    selection?.type === 'species'
-      ? options.find((opt) => opt.key === selection.taxid)?.label ?? ''
-      : ''
+  const selectedKey = selection?.type === 'species' ? selection.taxid : ''
+  const selectedLabel = selectedKey
+    ? options.find((opt) => opt.key === selectedKey)?.label ?? ''
+    : ''
 
   return (
-    <SearchCombobox
-      label="Species"
+    <Combobox
       placeholder="Search species…"
-      value={selectedLabel}
+      value={selectedKey}
+      selectedLabel={selectedLabel}
       options={options}
       onPick={(key) => onSelect({ type: 'species', taxid: key })}
       onClear={() => onSelect(null)}
@@ -171,12 +75,12 @@ export function InstituteSearch({
   selection,
   onSelect,
 }: {
-  flows: SpeciesFlow[]
+  flows: FlowRow[]
   selection: Selection
   onSelect: (selection: Selection) => void
 }) {
-  const options = useMemo(() => {
-    const byKey = new Map<string, SearchOption>()
+  const options: ComboboxOption[] = useMemo(() => {
+    const byKey = new Map<string, ComboboxOption>()
     for (const row of flows) {
       const key = instituteKey(row)
       if (!key || !row.institute_name) continue
@@ -194,16 +98,16 @@ export function InstituteSearch({
     return [...byKey.values()].sort((a, b) => a.label.localeCompare(b.label))
   }, [flows])
 
-  const selectedLabel =
-    selection?.type === 'institute'
-      ? options.find((opt) => opt.key === selection.key)?.label ?? ''
-      : ''
+  const selectedKey = selection?.type === 'institute' ? selection.key : ''
+  const selectedLabel = selectedKey
+    ? options.find((opt) => opt.key === selectedKey)?.label ?? ''
+    : ''
 
   return (
-    <SearchCombobox
-      label="Institute"
+    <Combobox
       placeholder="Search institutes…"
-      value={selectedLabel}
+      value={selectedKey}
+      selectedLabel={selectedLabel}
       options={options}
       onPick={(key) => onSelect({ type: 'institute', key })}
       onClear={() => onSelect(null)}
@@ -294,13 +198,14 @@ export function SpeciesDetail({
   onClear,
   onSelectInstitute,
 }: {
-  row: SpeciesFlow
+  row: FlowRow
   regionLabel: string | null
   onBack: () => void
   onClear: () => void
   onSelectInstitute: (key: string) => void
 }) {
   const key = instituteKey(row)
+  const hasCollectionCoords = row.collection_lat != null && row.collection_lon != null
   return (
     <div className="detail-panel">
       <div className="detail-head">
@@ -312,6 +217,7 @@ export function SpeciesDetail({
         </button>
       </div>
       <div className="detail-title">
+        <Breadcrumb regionLabel={regionLabel} current={row.species_scientific_name} />
         <span className="detail-kicker">Species</span>
         <h2>
           <i>{row.species_scientific_name}</i>
@@ -335,7 +241,9 @@ export function SpeciesDetail({
             <div>
               <dt>Coordinates</dt>
               <dd>
-                {formatCoord(row.collection_lat, 'lat')} / {formatCoord(row.collection_lon, 'lng')}
+                {hasCollectionCoords
+                  ? `${formatCoord(row.collection_lat as number, 'lat')} / ${formatCoord(row.collection_lon as number, 'lng')}`
+                  : 'Country-level record (no coordinates)'}
               </dd>
             </div>
           </dl>
@@ -416,14 +324,18 @@ export function InstituteDetail({
   onSelectSpecies,
 }: {
   keyName: string
-  rows: SpeciesFlow[]
+  rows: FlowRow[]
   regionLabel: string | null
   onBack: () => void
   onClear: () => void
   onSelectSpecies: (taxid: string) => void
 }) {
   const [visible, setVisible] = useState(PAGE_SIZE)
-  useEffect(() => setVisible(PAGE_SIZE), [keyName])
+  const [query, setQuery] = useState('')
+  useEffect(() => {
+    setVisible(PAGE_SIZE)
+    setQuery('')
+  }, [keyName])
 
   const sample = rows[0]
   const name = sample?.institute_name || keyName
@@ -432,7 +344,17 @@ export function InstituteDetail({
   const ror = sample?.institute_ror_id
   const lat = sample?.institute_lat
   const lon = sample?.institute_lon
-  const shown = rows.slice(0, visible)
+
+  const filteredRows = useMemo(() => {
+    const q = query.trim().toLowerCase()
+    if (!q) return rows
+    return rows.filter(
+      (row) =>
+        row.species_scientific_name.toLowerCase().includes(q) ||
+        row.collection_country.toLowerCase().includes(q),
+    )
+  }, [rows, query])
+  const shown = filteredRows.slice(0, visible)
 
   return (
     <div className="detail-panel">
@@ -445,6 +367,7 @@ export function InstituteDetail({
         </button>
       </div>
       <div className="detail-title">
+        <Breadcrumb regionLabel={regionLabel} current={name} />
         <span className="detail-kicker">Institute</span>
         <h2>{name}</h2>
         <p>{[country, continent].filter(Boolean).join(' · ') || 'Geography unresolved'}</p>
@@ -484,28 +407,48 @@ export function InstituteDetail({
         <div className="index-heading">
           <span>Species submitted</span>
           <span>
-            {Math.min(visible, rows.length).toLocaleString()} / {rows.length.toLocaleString()}
+            {Math.min(visible, filteredRows.length).toLocaleString()} / {filteredRows.length.toLocaleString()}
+            {query && ` (of ${rows.length.toLocaleString()})`}
           </span>
         </div>
-        {shown.map((row) => (
-          <button
-            key={row.species_taxid}
-            type="button"
-            className="species-row"
-            onClick={() => onSelectSpecies(row.species_taxid)}
-          >
-            <span>
-              <i>{row.species_scientific_name}</i>
-              <small>{row.collection_country || 'Unknown collection country'}</small>
-            </span>
-            <span className="species-flow">
-              <b>{row.collection_continent}</b>
-            </span>
-          </button>
-        ))}
-        {visible < rows.length && (
+        {rows.length > PAGE_SIZE && (
+          <div className="species-filter-box">
+            <Search size={12} aria-hidden="true" />
+            <input
+              type="search"
+              value={query}
+              onChange={(event) => {
+                setQuery(event.target.value)
+                setVisible(PAGE_SIZE)
+              }}
+              placeholder="Filter species in this list…"
+              aria-label="Filter species submitted by this institute"
+            />
+          </div>
+        )}
+        {shown.length === 0 ? (
+          <p className="rank-empty species-filter-empty">No species match &ldquo;{query}&rdquo;.</p>
+        ) : (
+          shown.map((row) => (
+            <button
+              key={row.species_taxid}
+              type="button"
+              className="species-row"
+              onClick={() => onSelectSpecies(row.species_taxid)}
+            >
+              <span>
+                <i>{row.species_scientific_name}</i>
+                <small>{row.collection_country || 'Unknown collection country'}</small>
+              </span>
+              <span className="species-flow">
+                <b>{row.collection_continent}</b>
+              </span>
+            </button>
+          ))
+        )}
+        {visible < filteredRows.length && (
           <button type="button" className="show-more" onClick={() => setVisible((n) => n + PAGE_SIZE)}>
-            Show more ({(rows.length - visible).toLocaleString()} remaining)
+            Show more ({(filteredRows.length - visible).toLocaleString()} remaining)
           </button>
         )}
       </div>

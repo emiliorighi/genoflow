@@ -1,0 +1,165 @@
+{
+  "generatedAt": "2026-09-09T07:17:28+00:00",
+  "kpis": {
+    "speciesWithAssemblies": 29410,
+    "speciesWithCoordinates": 11095,
+    "speciesWithCoordinatesPct": 37.7,
+    "totalInstitutes": 5697,
+    "institutesWithCoordinates": 3619,
+    "institutesWithCoordinatesPct": 63.5,
+    "speciesInAtlas": 23237,
+    "speciesWithInstituteArc": 17784,
+    "speciesWithInstituteArcPct": 76.5,
+    "topInstituteCount": 5,
+    "topInstituteSharePct": 35.6,
+    "topInstituteName": "Wellcome Sanger Institute",
+    "topInstituteSpeciesCount": 4441,
+    "topInstituteShareSinglePct": 25.0
+  },
+  "pipeline": [
+    {
+      "step": 1,
+      "title": "Fetch assemblies & taxonomy",
+      "description": "Stream NCBI GenBank eukaryote genome summaries via the datasets CLI, extract BioSample coordinates and geo_loc_name, and resolve each assembly to a species-level taxid.",
+      "script": "scripts/collect_eukaryote_assemblies.py"
+    },
+    {
+      "step": 2,
+      "title": "Build the taxonomic tree",
+      "description": "Walk ENA taxonomy lineages up to Eukaryota for every species with assemblies, then roll up counts for kingdom → genus filters on the map.",
+      "script": "scripts/build_taxonomic_tree.py"
+    },
+    {
+      "step": 3,
+      "title": "Resolve institute geography",
+      "description": "Match each unique assembly_submitter string to a Research Organization Registry (ROR) record — affiliation chosen-match first, exact query fallback — and attach country plus coordinates.",
+      "script": "scripts/resolve_submitter_institutes.py"
+    },
+    {
+      "step": 4,
+      "title": "Assemble species flows",
+      "description": "Join assemblies, taxonomy, and institutes into one row per species (prefer latest coordinate-bearing assembly, else country-only; human and lab mouse excluded) and write the map parquet.",
+      "script": "scripts/build_map_dataset.py"
+    }
+  ],
+  "offshore": {
+    "definitionNote": "Offshore = collection country ISO3 differs from submitter institute country ISO3, among species with both endpoints resolved.",
+    "comparableSpecies": 16738,
+    "offshoreSpecies": 6223,
+    "offshoreSpeciesPct": 37.2,
+    "topCollectionCountries": [
+      {
+        "country": "USA",
+        "offshoreCount": 570,
+        "totalWithGeo": 2561,
+        "offshorePct": 22.3
+      },
+      {
+        "country": "Finland",
+        "offshoreCount": 351,
+        "totalWithGeo": 363,
+        "offshorePct": 96.7
+      },
+      {
+        "country": "Brazil",
+        "offshoreCount": 277,
+        "totalWithGeo": 387,
+        "offshorePct": 71.6
+      },
+      {
+        "country": "Spain",
+        "offshoreCount": 258,
+        "totalWithGeo": 330,
+        "offshorePct": 78.2
+      },
+      {
+        "country": "Australia",
+        "offshoreCount": 219,
+        "totalWithGeo": 591,
+        "offshorePct": 37.1
+      },
+      {
+        "country": "Costa Rica",
+        "offshoreCount": 187,
+        "totalWithGeo": 192,
+        "offshorePct": 97.4
+      },
+      {
+        "country": "Japan",
+        "offshoreCount": 185,
+        "totalWithGeo": 474,
+        "offshorePct": 39.0
+      },
+      {
+        "country": "France",
+        "offshoreCount": 184,
+        "totalWithGeo": 285,
+        "offshorePct": 64.6
+      }
+    ],
+    "topInstituteCountries": [
+      {
+        "country": "United States",
+        "offshoreCount": 2251,
+        "totalWithGeo": 4242,
+        "offshorePct": 53.1
+      },
+      {
+        "country": "United Kingdom",
+        "offshoreCount": 1524,
+        "totalWithGeo": 4742,
+        "offshorePct": 32.1
+      },
+      {
+        "country": "Denmark",
+        "offshoreCount": 338,
+        "totalWithGeo": 377,
+        "offshorePct": 89.7
+      },
+      {
+        "country": "Canada",
+        "offshoreCount": 308,
+        "totalWithGeo": 468,
+        "offshorePct": 65.8
+      },
+      {
+        "country": "China",
+        "offshoreCount": 303,
+        "totalWithGeo": 3115,
+        "offshorePct": 9.7
+      },
+      {
+        "country": "Germany",
+        "offshoreCount": 190,
+        "totalWithGeo": 453,
+        "offshorePct": 41.9
+      },
+      {
+        "country": "Spain",
+        "offshoreCount": 154,
+        "totalWithGeo": 226,
+        "offshorePct": 68.1
+      },
+      {
+        "country": "Japan",
+        "offshoreCount": 126,
+        "totalWithGeo": 415,
+        "offshorePct": 30.4
+      }
+    ]
+  },
+  "disclaimers": [
+    {
+      "id": "institute-concentration",
+      "text": "High counts for a few institutes — notably Wellcome Sanger Institute (4,441 species, ~25.0% of resolved arcs) — can reflect stricter control over sample and assembly metadata rather than exclusive sequencing capacity. Incomplete geo metadata elsewhere will under-count other labs."
+    },
+    {
+      "id": "missing-geography",
+      "text": "Only 11,095 of 29,410 species with GenBank assemblies (37.7%) carry usable BioSample coordinates. Many species never enter the atlas, so visible flows are a biased slice of real sequencing geography."
+    },
+    {
+      "id": "geo-is-proxy",
+      "text": "geo_loc_name is sample collection locality, not always wild origin. Submitter country (via ROR) is a proxy for where the assembly was deposited — not necessarily where sequencing was performed. Data sourced from INSDC / NCBI GenBank eukaryote assemblies and ROR."
+    }
+  ]
+}

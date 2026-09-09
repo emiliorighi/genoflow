@@ -8,16 +8,23 @@ import type { PickingInfo } from '@deck.gl/core'
 import { LoaderCircle, RotateCw } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
+  EMPTY_GEO_FILTER,
   instituteKey,
   matchesSelection,
   type GeoFilter,
+  type RegionFlow,
   type Selection,
-  type SpeciesFlow,
   type WorldFeature,
   type WorldGeoJson,
-} from './types'
+} from '../types'
+import type { CountryCentroids } from '../regions/regionData'
+import { resolveCollectionPosition } from './exploreData'
 
-export type Layers = { collection: boolean; submitter: boolean; flow: boolean }
+export type ExploreLayers = {
+  collection: boolean
+  submitter: boolean
+  flow: boolean
+}
 
 const MAP_VIEW = new MapView({ repeat: true })
 
@@ -46,7 +53,7 @@ const INSTITUTE_LINE: [number, number, number, number] = [181, 212, 228, 255]
 
 const NO_DEPTH = { depthTest: false } as const
 const BASEMAP_DEPTH = { depthTest: false, depthMask: false } as const
-const DIM_ALPHA = 28
+const DIM_ALPHA = 10
 
 function withAlpha(
   color: [number, number, number, number],
@@ -55,20 +62,38 @@ function withAlpha(
   return [color[0], color[1], color[2], alpha]
 }
 
-type DeckMapProps = {
-  filteredFlows: SpeciesFlow[]
+type PlottedFlow = RegionFlow & {
+  plot_lon: number
+  plot_lat: number
+  used_centroid: boolean
+}
+
+type ExploreMapProps = {
+  filteredFlows: RegionFlow[]
+  centroids: CountryCentroids | null
   world: WorldGeoJson | null
   error: string | null
-  layers: Layers
+  layers: ExploreLayers
   geoFilter: GeoFilter
+  hoverPreview?: GeoFilter | null
   selection: Selection
   totalCount: number | null
   onSelect: (selection: Selection) => void
-  onGeoSelect: (geo: GeoFilter) => void
   onRetry: () => void
 }
 
-function selectionFromFlow(row: SpeciesFlow, preferInstitute: boolean): Selection {
+function flowMatchesGeo(row: RegionFlow, geo: GeoFilter): boolean {
+  if (geo.country) {
+    if (geo.countryIso3 && row.collection_country_iso3) {
+      return row.collection_country_iso3 === geo.countryIso3
+    }
+    return row.collection_country === geo.country
+  }
+  if (geo.continent) return row.collection_continent === geo.continent
+  return true
+}
+
+function selectionFromFlow(row: RegionFlow, preferInstitute: boolean): Selection {
   if (preferInstitute) {
     const key = instituteKey(row)
     if (key) return { type: 'institute', key }
@@ -77,15 +102,15 @@ function selectionFromFlow(row: SpeciesFlow, preferInstitute: boolean): Selectio
   return null
 }
 
-function isSpeciesFlow(obj: unknown): obj is SpeciesFlow {
-  return Boolean(obj && typeof obj === 'object' && 'species_scientific_name' in obj)
+function isPlottedFlow(obj: unknown): obj is PlottedFlow {
+  return Boolean(obj && typeof obj === 'object' && 'species_scientific_name' in obj && 'plot_lon' in obj)
 }
 
-function flowIdentity(row: SpeciesFlow): string {
+function flowIdentity(row: RegionFlow): string {
   return `${row.species_taxid}::${instituteKey(row) ?? ''}`
 }
 
-function lineageParts(row: SpeciesFlow): string[] {
+function lineageParts(row: RegionFlow): string[] {
   return [
     row.kingdom_name,
     row.phylum_name,
@@ -100,7 +125,7 @@ function FlowTooltip({
   row,
   pointer,
 }: {
-  row: SpeciesFlow
+  row: PlottedFlow
   pointer: { x: number; y: number }
 }) {
   const lineage = lineageParts(row)
@@ -110,7 +135,9 @@ function FlowTooltip({
       style={{ left: pointer.x + 14, top: pointer.y + 14 }}
       role="tooltip"
     >
-      <span className="tooltip-kicker">Species flow</span>
+      <span className="tooltip-kicker">
+        {row.used_centroid ? 'Country-level flow' : 'Species flow'}
+      </span>
       <h4>
         <i>{row.species_scientific_name}</i>
       </h4>
@@ -136,46 +163,65 @@ function FlowTooltip({
           ))}
         </p>
       )}
-      {!row.institute_name && !row.institute_country && (
-        <div className="tooltip-submitter">No submitter geography</div>
-      )}
     </div>
   )
 }
 
-export default function DeckMap({
+export default function ExploreMap({
   filteredFlows,
+  centroids,
   world,
   error,
   layers,
   geoFilter,
+  hoverPreview = null,
   selection,
   totalCount,
   onSelect,
-  onGeoSelect,
   onRetry,
-}: DeckMapProps) {
-  const [hoveredRow, setHoveredRow] = useState<SpeciesFlow | null>(null)
+}: ExploreMapProps) {
+  const [hoveredRow, setHoveredRow] = useState<PlottedFlow | null>(null)
   const [pointer, setPointer] = useState<{ x: number; y: number } | null>(null)
 
+  const plotted = useMemo(() => {
+    const rows: PlottedFlow[] = []
+    for (const row of filteredFlows) {
+      const pos = resolveCollectionPosition(row, centroids)
+      if (!pos) continue
+      rows.push({
+        ...row,
+        plot_lon: pos[0],
+        plot_lat: pos[1],
+        used_centroid:
+          row.collection_lat == null || row.collection_lon == null,
+      })
+    }
+    return rows
+  }, [filteredFlows, centroids])
+
   const withInstitute = useMemo(
-    () => filteredFlows.filter((row) => row.has_institute_coordinates),
-    [filteredFlows],
+    () => plotted.filter((row) => row.has_institute_coordinates),
+    [plotted],
   )
 
   const selectedFlows = useMemo(() => {
-    if (!selection) return [] as SpeciesFlow[]
-    return filteredFlows.filter((row) => matchesSelection(row, selection))
-  }, [filteredFlows, selection])
+    if (!selection) return [] as PlottedFlow[]
+    return plotted.filter((row) => matchesSelection(row, selection))
+  }, [plotted, selection])
 
   const selectedWithInstitute = useMemo(
     () => selectedFlows.filter((row) => row.has_institute_coordinates),
     [selectedFlows],
   )
 
+  const hasCommittedRegion = Boolean(geoFilter.continent || geoFilter.country)
+  const activeGeo = hasCommittedRegion
+    ? geoFilter
+    : (hoverPreview ?? EMPTY_GEO_FILTER)
+
   const highlightFeatures = useMemo(() => {
     if (!world) return null
-    const { continent, country, countryIso3 } = geoFilter
+    const { continent, country, countryIso3 } = activeGeo
     if (country) {
       if (!countryIso3) return null
       const features = world.features.filter((f) => f.properties.ISO_A3 === countryIso3)
@@ -186,17 +232,33 @@ export default function DeckMap({
     const features = world.features.filter((f) => f.properties.CONTINENT === continent)
     if (!features.length) return null
     return { type: 'FeatureCollection' as const, features }
-  }, [world, geoFilter])
+  }, [world, activeGeo])
 
   const hasSelection = Boolean(selection)
+  // Preview dimming only in list mode (no committed region) and when no species/institute selection.
+  const previewActive = Boolean(
+    hoverPreview &&
+      (hoverPreview.continent || hoverPreview.country) &&
+      !hasCommittedRegion &&
+      !hasSelection,
+  )
+
+  const flowIsFocused = (row: RegionFlow): boolean => {
+    if (hasSelection) return matchesSelection(row, selection)
+    if (previewActive && hoverPreview) return flowMatchesGeo(row, hoverPreview)
+    return true
+  }
+
+  const focusActive = hasSelection || previewActive
+
   const hoveredIsSelected = Boolean(
     hasSelection && hoveredRow && matchesSelection(hoveredRow, selection),
   )
-  const showHover = Boolean(hoveredRow && !hoveredIsSelected)
+  const showHover = Boolean(hoveredRow && !hoveredIsSelected && !previewActive)
 
-  const onHover = useCallback((info: PickingInfo<SpeciesFlow | WorldFeature>) => {
+  const onHover = useCallback((info: PickingInfo) => {
     const obj = info.object
-    if (isSpeciesFlow(obj)) {
+    if (isPlottedFlow(obj)) {
       setPointer({ x: info.x, y: info.y })
       setHoveredRow((prev) => {
         if (prev && flowIdentity(prev) === flowIdentity(obj)) return prev
@@ -228,67 +290,47 @@ export default function DeckMap({
     }
 
     if (highlightFeatures) {
-      const highlightKey = geoFilter.countryIso3 ?? geoFilter.continent ?? 'none'
+      const highlightKey = activeGeo.countryIso3 ?? activeGeo.continent ?? 'none'
       built.push(
         new GeoJsonLayer({
           id: `highlight-area-${highlightKey}`,
           data: highlightFeatures,
           stroked: true,
           filled: true,
-          pickable: true,
+          pickable: false,
           getFillColor: HIGHLIGHT_FILL,
           getLineColor: HIGHLIGHT_LINE,
           lineWidthMinPixels: 1.5,
           parameters: BASEMAP_DEPTH,
-          onClick: (info: PickingInfo<WorldFeature>) => {
-            const props = info.object?.properties
-            if (!props) return
-            if (geoFilter.continent && !geoFilter.country && props.ISO_A3 && props.ISO_A3 !== '-99') {
-              const match = filteredFlows.find((row) => row.collection_country_iso3 === props.ISO_A3)
-              if (match) {
-                onGeoSelect({
-                  continent: props.CONTINENT || geoFilter.continent,
-                  country: match.collection_country,
-                  countryIso3: props.ISO_A3,
-                })
-                return
-              }
-            }
-            onGeoSelect({
-              continent: props.CONTINENT || null,
-              country: null,
-              countryIso3: null,
-            })
-          },
         }),
       )
     }
 
-    // Base layers always render the full filtered dataset. When a selection is active,
-    // non-matching rows are dimmed (not removed) so users don't read "focus mode" as data
-    // loss; the "selected-*" layers below draw hot, larger markers on top for emphasis.
     if (layers.flow) {
       built.push(
-        new ArcLayer<SpeciesFlow>({
-          id: 'flow-arcs',
+        new ArcLayer<PlottedFlow>({
+          id: 'explore-flow-arcs',
           data: withInstitute,
           pickable: true,
-          getSourcePosition: (d) => [d.collection_lon, d.collection_lat],
+          getSourcePosition: (d) => [d.plot_lon, d.plot_lat],
           getTargetPosition: (d) => [d.institute_lon as number, d.institute_lat as number],
           getSourceColor: (d) =>
-            hasSelection && !matchesSelection(d, selection)
+            focusActive && !flowIsFocused(d)
               ? withAlpha(ARC_SOURCE_DEFAULT, DIM_ALPHA)
               : ARC_SOURCE_DEFAULT,
           getTargetColor: (d) =>
-            hasSelection && !matchesSelection(d, selection)
+            focusActive && !flowIsFocused(d)
               ? withAlpha(ARC_TARGET_DEFAULT, DIM_ALPHA)
               : ARC_TARGET_DEFAULT,
           getWidth: 1.2,
           widthMinPixels: 1,
           greatCircle: true,
           parameters: NO_DEPTH,
-          updateTriggers: { getSourceColor: [hasSelection, selection], getTargetColor: [hasSelection, selection] },
-          onClick: (info: PickingInfo<SpeciesFlow>) => {
+          updateTriggers: {
+            getSourceColor: [focusActive, selection, hoverPreview, previewActive],
+            getTargetColor: [focusActive, selection, hoverPreview, previewActive],
+          },
+          onClick: (info: PickingInfo<PlottedFlow>) => {
             if (info.object) onSelect(selectionFromFlow(info.object, false))
           },
         }),
@@ -297,26 +339,31 @@ export default function DeckMap({
 
     if (layers.collection) {
       built.push(
-        new ScatterplotLayer<SpeciesFlow>({
-          id: 'collection-points',
-          data: filteredFlows,
+        new ScatterplotLayer<PlottedFlow>({
+          id: 'explore-collection-points',
+          data: plotted,
           pickable: true,
           radiusUnits: 'pixels',
           radiusMinPixels: 2,
           radiusMaxPixels: 6,
-          getPosition: (d) => [d.collection_lon, d.collection_lat],
-          getRadius: 3,
+          getPosition: (d) => [d.plot_lon, d.plot_lat],
+          getRadius: (d) => (d.used_centroid ? 4 : 3),
           getFillColor: (d) =>
-            hasSelection && !matchesSelection(d, selection) ? withAlpha(AMBER, DIM_ALPHA) : AMBER,
+            focusActive && !flowIsFocused(d)
+              ? withAlpha(AMBER, DIM_ALPHA)
+              : AMBER,
           getLineColor: (d) =>
-            hasSelection && !matchesSelection(d, selection)
+            focusActive && !flowIsFocused(d)
               ? withAlpha(COLLECTION_LINE, DIM_ALPHA)
               : COLLECTION_LINE,
           lineWidthMinPixels: 1,
           stroked: true,
           parameters: NO_DEPTH,
-          updateTriggers: { getFillColor: [hasSelection, selection], getLineColor: [hasSelection, selection] },
-          onClick: (info: PickingInfo<SpeciesFlow>) => {
+          updateTriggers: {
+            getFillColor: [focusActive, selection, hoverPreview, previewActive],
+            getLineColor: [focusActive, selection, hoverPreview, previewActive],
+          },
+          onClick: (info: PickingInfo<PlottedFlow>) => {
             if (info.object) onSelect(selectionFromFlow(info.object, false))
           },
         }),
@@ -325,8 +372,8 @@ export default function DeckMap({
 
     if (layers.submitter) {
       built.push(
-        new ScatterplotLayer<SpeciesFlow>({
-          id: 'institute-points',
+        new ScatterplotLayer<PlottedFlow>({
+          id: 'explore-institute-points',
           data: withInstitute,
           pickable: true,
           radiusUnits: 'pixels',
@@ -335,16 +382,21 @@ export default function DeckMap({
           getPosition: (d) => [d.institute_lon as number, d.institute_lat as number],
           getRadius: 3,
           getFillColor: (d) =>
-            hasSelection && !matchesSelection(d, selection) ? withAlpha(BLUE, DIM_ALPHA) : BLUE,
+            focusActive && !flowIsFocused(d)
+              ? withAlpha(BLUE, DIM_ALPHA)
+              : BLUE,
           getLineColor: (d) =>
-            hasSelection && !matchesSelection(d, selection)
+            focusActive && !flowIsFocused(d)
               ? withAlpha(INSTITUTE_LINE, DIM_ALPHA)
               : INSTITUTE_LINE,
           lineWidthMinPixels: 1,
           stroked: true,
           parameters: NO_DEPTH,
-          updateTriggers: { getFillColor: [hasSelection, selection], getLineColor: [hasSelection, selection] },
-          onClick: (info: PickingInfo<SpeciesFlow>) => {
+          updateTriggers: {
+            getFillColor: [focusActive, selection, hoverPreview, previewActive],
+            getLineColor: [focusActive, selection, hoverPreview, previewActive],
+          },
+          onClick: (info: PickingInfo<PlottedFlow>) => {
             if (info.object) onSelect(selectionFromFlow(info.object, true))
           },
         }),
@@ -353,11 +405,11 @@ export default function DeckMap({
 
     if (hasSelection && selectedWithInstitute.length && layers.flow) {
       built.push(
-        new ArcLayer<SpeciesFlow>({
-          id: 'selected-arcs',
+        new ArcLayer<PlottedFlow>({
+          id: 'explore-selected-arcs',
           data: selectedWithInstitute,
           pickable: true,
-          getSourcePosition: (d) => [d.collection_lon, d.collection_lat],
+          getSourcePosition: (d) => [d.plot_lon, d.plot_lat],
           getTargetPosition: (d) => [d.institute_lon as number, d.institute_lat as number],
           getSourceColor: AMBER_HOT,
           getTargetColor: BLUE_HOT,
@@ -365,7 +417,7 @@ export default function DeckMap({
           widthMinPixels: 2,
           greatCircle: true,
           parameters: NO_DEPTH,
-          onClick: (info: PickingInfo<SpeciesFlow>) => {
+          onClick: (info: PickingInfo<PlottedFlow>) => {
             if (info.object) onSelect(selectionFromFlow(info.object, false))
           },
         }),
@@ -374,21 +426,21 @@ export default function DeckMap({
 
     if (hasSelection && selectedFlows.length && layers.collection) {
       built.push(
-        new ScatterplotLayer<SpeciesFlow>({
-          id: 'selected-collection',
+        new ScatterplotLayer<PlottedFlow>({
+          id: 'explore-selected-collection',
           data: selectedFlows,
           pickable: true,
           radiusUnits: 'pixels',
           radiusMinPixels: 4,
           radiusMaxPixels: 10,
-          getPosition: (d) => [d.collection_lon, d.collection_lat],
+          getPosition: (d) => [d.plot_lon, d.plot_lat],
           getRadius: 5,
           getFillColor: AMBER_HOT,
           getLineColor: [255, 230, 200, 255],
           lineWidthMinPixels: 1.5,
           stroked: true,
           parameters: NO_DEPTH,
-          onClick: (info: PickingInfo<SpeciesFlow>) => {
+          onClick: (info: PickingInfo<PlottedFlow>) => {
             if (info.object) onSelect(selectionFromFlow(info.object, false))
           },
         }),
@@ -397,8 +449,8 @@ export default function DeckMap({
 
     if (hasSelection && selectedWithInstitute.length && layers.submitter) {
       built.push(
-        new ScatterplotLayer<SpeciesFlow>({
-          id: 'selected-institutes',
+        new ScatterplotLayer<PlottedFlow>({
+          id: 'explore-selected-institutes',
           data: selectedWithInstitute,
           pickable: true,
           radiusUnits: 'pixels',
@@ -411,7 +463,7 @@ export default function DeckMap({
           lineWidthMinPixels: 1.5,
           stroked: true,
           parameters: NO_DEPTH,
-          onClick: (info: PickingInfo<SpeciesFlow>) => {
+          onClick: (info: PickingInfo<PlottedFlow>) => {
             if (info.object) onSelect(selectionFromFlow(info.object, true))
           },
         }),
@@ -421,11 +473,11 @@ export default function DeckMap({
     if (showHover && hoveredRow) {
       if (hoveredRow.has_institute_coordinates && layers.flow) {
         built.push(
-          new ArcLayer<SpeciesFlow>({
-            id: 'hover-arc',
+          new ArcLayer<PlottedFlow>({
+            id: 'explore-hover-arc',
             data: [hoveredRow],
             pickable: false,
-            getSourcePosition: (d) => [d.collection_lon, d.collection_lat],
+            getSourcePosition: (d) => [d.plot_lon, d.plot_lat],
             getTargetPosition: (d) => [d.institute_lon as number, d.institute_lat as number],
             getSourceColor: AMBER_HOT,
             getTargetColor: BLUE_HOT,
@@ -436,17 +488,16 @@ export default function DeckMap({
           }),
         )
       }
-
       if (layers.collection) {
         built.push(
-          new ScatterplotLayer<SpeciesFlow>({
-            id: 'hover-collection',
+          new ScatterplotLayer<PlottedFlow>({
+            id: 'explore-hover-collection',
             data: [hoveredRow],
             pickable: false,
             radiusUnits: 'pixels',
             radiusMinPixels: 4,
             radiusMaxPixels: 10,
-            getPosition: (d) => [d.collection_lon, d.collection_lat],
+            getPosition: (d) => [d.plot_lon, d.plot_lat],
             getRadius: 5,
             getFillColor: AMBER_HOT,
             getLineColor: [255, 230, 200, 255],
@@ -456,11 +507,10 @@ export default function DeckMap({
           }),
         )
       }
-
       if (hoveredRow.has_institute_coordinates && layers.submitter) {
         built.push(
-          new ScatterplotLayer<SpeciesFlow>({
-            id: 'hover-institute',
+          new ScatterplotLayer<PlottedFlow>({
+            id: 'explore-hover-institute',
             data: [hoveredRow],
             pickable: false,
             radiusUnits: 'pixels',
@@ -482,48 +532,44 @@ export default function DeckMap({
   }, [
     world,
     highlightFeatures,
-    geoFilter,
-    filteredFlows,
+    activeGeo,
+    plotted,
     withInstitute,
     layers,
     hasSelection,
+    focusActive,
+    previewActive,
+    hoverPreview,
     selection,
     selectedFlows,
     selectedWithInstitute,
     showHover,
     hoveredRow,
     onSelect,
-    onGeoSelect,
   ])
 
-  const getTooltip = (info: PickingInfo<SpeciesFlow | WorldFeature>) => {
+  const getTooltip = (info: PickingInfo<WorldFeature>) => {
     const obj = info.object
-    if (!obj) return null
-    // Species flows use the custom FlowTooltip card; keep deck.gl text for polygons only.
-    if ('properties' in obj && obj.properties?.NAME) {
-      return {
-        text: obj.properties.NAME,
-        style: {
-          backgroundColor: '#0b0f12',
-          color: '#d6dad7',
-          fontSize: '11px',
-          fontFamily: 'Arial, sans-serif',
-          padding: '6px 8px',
-          border: '1px solid #222a30',
-        },
-      }
+    if (!obj || !('properties' in obj) || !obj.properties?.NAME) return null
+    return {
+      text: obj.properties.NAME,
+      style: {
+        backgroundColor: '#0b0f12',
+        color: '#d6dad7',
+        fontSize: '11px',
+        fontFamily: 'Arial, sans-serif',
+        padding: '6px 8px',
+        border: '1px solid #222a30',
+      },
     }
-    return null
   }
 
-  // The "in view" count now lives solely in the toolbar metric pill (page.tsx) and the
-  // aria-live region there, so this note is limited to data source / selection context.
   const mapNote = hasSelection
-    ? `Showing ${selectedFlows.length.toLocaleString()} related record${selectedFlows.length === 1 ? '' : 's'} \u00b7 Esc or click empty map to clear`
-    : 'INSDC'
+    ? `Showing ${selectedFlows.length.toLocaleString()} related record${selectedFlows.length === 1 ? '' : 's'} · Esc or click empty map to clear`
+    : `${plotted.length.toLocaleString()} species · precise + country centroids`
 
   const onDeckClick = useCallback(
-    (info: PickingInfo<SpeciesFlow | WorldFeature>) => {
+    (info: PickingInfo) => {
       if (!info.object && hasSelection) onSelect(null)
     },
     [hasSelection, onSelect],
@@ -545,7 +591,7 @@ export default function DeckMap({
       {totalCount == null && !error && (
         <div className="map-loading-overlay" role="status" aria-live="polite">
           <LoaderCircle size={22} className="map-loading-spinner" aria-hidden="true" />
-          <p>Loading species flows…</p>
+          <p>Loading region flows…</p>
         </div>
       )}
       {error && (

@@ -2,8 +2,9 @@
 """Build a species-flow Parquet dataset for the Assemblage map.
 
 Joins eukaryote_assemblies.tsv, taxonomic_tree.tsv, and submitter_institutes.tsv
-into one row per species (latest coordinate-bearing assembly), with collection
-and institute endpoints plus flattened taxonomic ranks for filtering.
+into one row per species: prefer the latest coordinate-bearing assembly, else the
+latest assembly with a BioSample collection country (lat/lon null). Includes
+collection/institute endpoints plus flattened taxonomic ranks for filtering.
 
 Human (9606) and lab mouse (10090) are excluded by default.
 South/North classification is deferred to a later step.
@@ -387,16 +388,17 @@ def select_latest_assemblies(
     path: Path,
     exclude_taxids: set[str],
 ) -> tuple[dict[str, dict[str, str]], dict[str, int], int, int]:
-    """Filter coords + exclude taxa; pick latest accession per species.
+    """Exclude taxa; pick one assembly per species (coords preferred, else country).
 
     Returns:
-      selected: species_taxid -> assembly row (latest with coordinates)
+      selected: species_taxid -> assembly row
       totals: species_taxid -> assemblies_count_total (all assemblies, excl. taxa)
       skipped_excluded: count of rows dropped for excluded taxids
-      skipped_bad_acc: count of coord rows with unparseable accession
+      skipped_bad_acc: count of eligible rows with unparseable accession
     """
     totals: dict[str, int] = Counter()
-    candidates: dict[str, tuple[tuple[int, int], dict[str, str]]] = {}
+    coord_candidates: dict[str, tuple[tuple[int, int], dict[str, str]]] = {}
+    country_candidates: dict[str, tuple[tuple[int, int], dict[str, str]]] = {}
     skipped_excluded = 0
     skipped_bad_acc = 0
     required = {
@@ -427,7 +429,14 @@ def select_latest_assemblies(
                 continue
             totals[taxid] += 1
 
-            if (row.get("has_biosample_coordinates") or "").strip().casefold() != "true":
+            has_coords = (
+                (row.get("has_biosample_coordinates") or "").strip().casefold()
+                == "true"
+            )
+            has_country = bool(
+                (row.get("biosample_collection_country") or "").strip()
+            )
+            if not has_coords and not has_country:
                 continue
 
             key = parse_accession_key(row.get("assembly_accession") or "")
@@ -439,14 +448,21 @@ def select_latest_assemblies(
                 )
                 continue
 
-            prev = candidates.get(taxid)
+            bucket = coord_candidates if has_coords else country_candidates
+            prev = bucket.get(taxid)
             if prev is None or key > prev[0]:
-                candidates[taxid] = (key, row)
+                bucket[taxid] = (key, row)
 
-    selected = {tid: pair[1] for tid, pair in candidates.items()}
+    selected = {tid: pair[1] for tid, pair in coord_candidates.items()}
+    n_with_coords = len(selected)
+    for tid, pair in country_candidates.items():
+        if tid not in selected:
+            selected[tid] = pair[1]
+    n_country_only = len(selected) - n_with_coords
     eprint(
-        f"Selected {len(selected)} species with coordinates "
-        f"(excluded {skipped_excluded} human/mouse rows; "
+        f"Selected {len(selected)} species "
+        f"({n_with_coords} with coordinates, {n_country_only} country-only; "
+        f"excluded {skipped_excluded} human/mouse rows; "
         f"{skipped_bad_acc} bad accessions)"
     )
     return selected, dict(totals), skipped_excluded, skipped_bad_acc
@@ -607,10 +623,16 @@ def print_summary(
     output: Path,
 ) -> None:
     n = len(records)
+    with_coords = sum(
+        1 for r in records if r.get("collection_lat") is not None and r.get("collection_lon") is not None
+    )
+    country_only = n - with_coords
     with_arc = sum(1 for r in records if r["has_institute_coordinates"])
     eprint("")
     eprint("=== Summary ===")
     eprint(f"Species in output:            {n}")
+    eprint(f"With collection coordinates:  {with_coords}")
+    eprint(f"Country-only (null lat/lon):  {country_only}")
     eprint(f"With institute arcs:          {with_arc} ({100 * with_arc / n:.1f}%)" if n else "With institute arcs:          0")
     eprint(f"Collection-only (no arc):     {n - with_arc}")
     eprint(f"Excluded human/mouse rows:    {skipped_excluded}")
@@ -709,7 +731,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         args.assemblies_input, exclude
     )
     if not selected:
-        eprint("No species with coordinates after filtering; writing empty table")
+        eprint("No species with coordinates or country after filtering; writing empty table")
         write_parquet(args.output, [])
         return 0
 
