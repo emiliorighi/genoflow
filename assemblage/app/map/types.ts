@@ -1,3 +1,5 @@
+import { isCustomRegionId, isCustomRegionMember } from './explore/customRegions'
+
 export type TaxonRank = 'kingdom' | 'phylum' | 'class' | 'order' | 'family' | 'genus'
 
 export const TAXON_RANKS: TaxonRank[] = [
@@ -13,6 +15,7 @@ export type SpeciesFlow = {
   species_taxid: string
   species_scientific_name: string
   assembly_accession: string
+  assembly_level: string | null
   collection_lat: number
   collection_lon: number
   institute_lat: number | null
@@ -53,11 +56,14 @@ export type GeoFilter = {
   continent: string | null
   country: string | null
   countryIso3: string | null
+  /** Predefined multi-country region id (e.g. latin-america). Mutually exclusive with continent/country. */
+  customId: string | null
 }
 
 export type Selection =
   | { type: 'species'; taxid: string }
   | { type: 'institute'; key: string }
+  | { type: 'point'; lat: number; lon: number }
   | null
 
 export type WorldFeature = {
@@ -71,21 +77,11 @@ export type WorldGeoJson = {
   features: WorldFeature[]
 }
 
-export type RankedCount = { label: string; key: string; count: number }
-
-export type RegionStats = {
-  total: number
-  domestic: number
-  offshore: number
-  unknown: number
-  topInstitutes: RankedCount[]
-  topSubmitterCountries: RankedCount[]
-}
-
 export const EMPTY_GEO_FILTER: GeoFilter = {
   continent: null,
   country: null,
   countryIso3: null,
+  customId: null,
 }
 
 export function toFiniteNumber(value: unknown): number | null {
@@ -104,21 +100,51 @@ export function instituteKey(row: RegionFlow | SpeciesFlow): string | null {
   return row.institute_ror_id || row.institute_name || null
 }
 
+/** Geo match for continent / country / custom region membership. */
+export function matchesGeoFilter(
+  row: RegionFlow | SpeciesFlow,
+  geoFilter: GeoFilter,
+  customIso3Set: Set<string> | null = null,
+): boolean {
+  if (geoFilter.customId) {
+    if (!isCustomRegionId(geoFilter.customId)) return false
+    // Prefer attribute-based membership so rows without ISO3 and deep links
+    // before world geojson loads still scope correctly. ISO3 set is optional
+    // fast-path when provided and the row has an ISO3.
+    if (row.collection_country_iso3 && customIso3Set && customIso3Set.size > 0) {
+      return customIso3Set.has(row.collection_country_iso3)
+    }
+    return isCustomRegionMember(
+      geoFilter.customId,
+      row.collection_country_iso3,
+      row.collection_continent,
+      row.collection_country,
+    )
+  }
+  if (geoFilter.country) {
+    if (geoFilter.countryIso3 && row.collection_country_iso3) {
+      return row.collection_country_iso3 === geoFilter.countryIso3
+    }
+    return row.collection_country === geoFilter.country
+  }
+  if (geoFilter.continent) {
+    return row.collection_continent === geoFilter.continent
+  }
+  return true
+}
+
 export function filterFlows<T extends RegionFlow | SpeciesFlow>(
   flows: T[],
   rankFilter: RankFilter | null,
   geoFilter: GeoFilter,
+  customIso3Set: Set<string> | null = null,
 ): T[] {
   return flows.filter((row) => {
     if (rankFilter) {
       const taxid = row[`${rankFilter.rank}_taxid` as keyof T]
       if (taxid !== rankFilter.taxid) return false
     }
-    if (geoFilter.continent) {
-      if (row.collection_continent !== geoFilter.continent) return false
-      if (geoFilter.country && row.collection_country !== geoFilter.country) return false
-    }
-    return true
+    return matchesGeoFilter(row, geoFilter, customIso3Set)
   })
 }
 
@@ -128,12 +154,15 @@ export const MAP_QUERY_KEYS = {
   taxon: 'taxon',
   continent: 'continent',
   country: 'country',
+  custom: 'custom',
   select: 'select',
 } as const
 
 export function encodeSelectionParam(selection: Selection): string | null {
   if (!selection) return null
-  return selection.type === 'species' ? `species:${selection.taxid}` : `institute:${selection.key}`
+  if (selection.type === 'species') return `species:${selection.taxid}`
+  if (selection.type === 'institute') return `institute:${selection.key}`
+  return `point:${selection.lat},${selection.lon}`
 }
 
 export function decodeSelectionParam(raw: string | null): Selection {
@@ -145,6 +174,14 @@ export function decodeSelectionParam(raw: string | null): Selection {
   if (!value) return null
   if (type === 'species') return { type: 'species', taxid: value }
   if (type === 'institute') return { type: 'institute', key: value }
+  if (type === 'point') {
+    const comma = value.indexOf(',')
+    if (comma < 0) return null
+    const lat = Number(value.slice(0, comma))
+    const lon = Number(value.slice(comma + 1))
+    if (!Number.isFinite(lat) || !Number.isFinite(lon)) return null
+    return { type: 'point', lat, lon }
+  }
   return null
 }
 
@@ -153,6 +190,7 @@ export type MapDeepLinkState = {
   taxon?: string
   continent?: string
   country?: string
+  customId?: string
 }
 
 /** Build a `/map?...` deep link for quick-start entry points (e.g. from the landing page). */
@@ -162,8 +200,12 @@ export function buildMapHref(state: MapDeepLinkState): string {
     params.set(MAP_QUERY_KEYS.rank, state.rank)
     params.set(MAP_QUERY_KEYS.taxon, state.taxon)
   }
-  if (state.continent) params.set(MAP_QUERY_KEYS.continent, state.continent)
-  if (state.country) params.set(MAP_QUERY_KEYS.country, state.country)
+  if (state.customId) {
+    params.set(MAP_QUERY_KEYS.custom, state.customId)
+  } else {
+    if (state.continent) params.set(MAP_QUERY_KEYS.continent, state.continent)
+    if (state.country) params.set(MAP_QUERY_KEYS.country, state.country)
+  }
   const qs = params.toString()
   return qs ? `/map?${qs}` : '/map'
 }
@@ -171,6 +213,7 @@ export function buildMapHref(state: MapDeepLinkState): string {
 export function matchesSelection(row: RegionFlow | SpeciesFlow, selection: Selection): boolean {
   if (!selection) return false
   if (selection.type === 'species') return row.species_taxid === selection.taxid
+  if (selection.type === 'point') return false
   const key = instituteKey(row)
   return key != null && key === selection.key
 }
@@ -207,6 +250,7 @@ function mapFlowRow(row: Record<string, unknown>): {
       species_taxid,
       species_scientific_name: String(row.species_scientific_name ?? ''),
       assembly_accession: String(row.assembly_accession ?? ''),
+      assembly_level: optionalString(row.assembly_level),
       collection_country: String(row.collection_country ?? '').trim(),
       collection_continent: String(row.collection_continent ?? 'Unknown').trim() || 'Unknown',
       collection_country_iso3: optionalString(row.collection_country_iso3),
@@ -232,103 +276,13 @@ function mapFlowRow(row: Record<string, unknown>): {
   }
 }
 
-function topCounts(
-  rows: Array<RegionFlow | SpeciesFlow>,
-  getLabel: (row: RegionFlow | SpeciesFlow) => string | null,
-  getKey: (row: RegionFlow | SpeciesFlow) => string | null,
-  limit = 5,
-): RankedCount[] {
-  const counts = new Map<string, { label: string; count: number }>()
-  for (const row of rows) {
-    const key = getKey(row)
-    const label = getLabel(row)
-    if (!key || !label) continue
-    const prev = counts.get(key)
-    if (prev) prev.count += 1
-    else counts.set(key, { label, count: 1 })
-  }
-  return [...counts.entries()]
-    .map(([key, { label, count }]) => ({ key, label, count }))
-    .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label))
-    .slice(0, limit)
-}
-
-export function computeRegionStats(
-  flows: Array<RegionFlow | SpeciesFlow>,
-  geoFilter: GeoFilter,
-): RegionStats {
-  let domestic = 0
-  let offshore = 0
-  let unknown = 0
-  const withInstitute: Array<RegionFlow | SpeciesFlow> = []
-
-  for (const row of flows) {
-    if (!row.has_institute_coordinates || !row.institute_country) {
-      unknown += 1
-      continue
-    }
-    withInstitute.push(row)
-    let isDomestic = false
-    if (geoFilter.country) {
-      if (row.collection_country_iso3 && row.institute_country_iso3) {
-        isDomestic = row.collection_country_iso3 === row.institute_country_iso3
-      } else {
-        isDomestic = row.institute_country === row.collection_country
-      }
-    } else {
-      isDomestic = (row.institute_continent ?? 'Unknown') === row.collection_continent
-    }
-    if (isDomestic) domestic += 1
-    else offshore += 1
-  }
-
-  return {
-    total: flows.length,
-    domestic,
-    offshore,
-    unknown,
-    topInstitutes: topCounts(
-      withInstitute,
-      (row) => row.institute_name,
-      (row) => instituteKey(row),
-    ),
-    topSubmitterCountries: topCounts(
-      withInstitute,
-      (row) => row.institute_country,
-      (row) => row.institute_country,
-    ),
-  }
-}
-
 export function formatCoord(value: number, axis: 'lat' | 'lng'): string {
   const abs = Math.abs(value).toFixed(2)
   if (axis === 'lat') return `${abs}°${value >= 0 ? 'N' : 'S'}`
   return `${abs}°${value >= 0 ? 'E' : 'W'}`
 }
 
-export function normalizeFlows(table: unknown): SpeciesFlow[] {
-  if (!table || typeof table !== 'object') return []
-  const maybe = table as { data?: unknown }
-  const raw = Array.isArray(maybe.data) ? maybe.data : Array.isArray(table) ? table : []
-
-  const flows: SpeciesFlow[] = []
-  for (const row of raw as Record<string, unknown>[]) {
-    const mapped = mapFlowRow(row)
-    if (!mapped) continue
-    if (mapped.collection_lat == null || mapped.collection_lon == null) continue
-    flows.push({
-      ...mapped.base,
-      collection_lat: mapped.collection_lat,
-      collection_lon: mapped.collection_lon,
-      institute_lat: mapped.institute_lat,
-      institute_lon: mapped.institute_lon,
-      has_institute_coordinates: mapped.has_institute_coordinates,
-    })
-  }
-  return flows
-}
-
-/** Like normalizeFlows but keeps country-only species (null collection lat/lon). */
+/** Normalize parquet rows, keeping country-only species (null collection lat/lon). */
 export function normalizeRegionFlows(table: unknown): RegionFlow[] {
   if (!table || typeof table !== 'object') return []
   const maybe = table as { data?: unknown }
@@ -338,7 +292,7 @@ export function normalizeRegionFlows(table: unknown): RegionFlow[] {
   for (const row of raw as Record<string, unknown>[]) {
     const mapped = mapFlowRow(row)
     if (!mapped) continue
-    // Regions atlas needs country; skip rows with neither country nor ISO3.
+    // Skip rows with neither country nor ISO3.
     if (!mapped.base.collection_country && !mapped.base.collection_country_iso3) continue
     flows.push({
       ...mapped.base,
@@ -356,6 +310,7 @@ export const PARQUET_COLUMNS = [
   'species_taxid',
   'species_scientific_name',
   'assembly_accession',
+  'assembly_level',
   'collection_lat',
   'collection_lon',
   'institute_lat',

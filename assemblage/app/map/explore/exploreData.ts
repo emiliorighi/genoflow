@@ -1,16 +1,33 @@
-import type { RegionFlow, TaxonRank, WorldGeoJson } from '../types'
-import { TAXON_RANKS, instituteKey } from '../types'
+import type { RegionFlow, Selection, TaxonRank, WorldGeoJson } from '../types'
+import { TAXON_RANKS, instituteKey, matchesSelection } from '../types'
 import type {
   CountryCentroids,
   CountryTotal,
   SpeciesCountRow,
-} from '../regions/regionData'
+} from '../regionData'
+import {
+  CUSTOM_REGIONS,
+  buildCustomRegionIso3Set,
+  type CustomRegionId,
+} from './customRegions'
 
 export type { CountryCentroids, CountryTotal, SpeciesCountRow }
+export type { CustomRegionId }
+export {
+  CUSTOM_REGIONS,
+  CUSTOM_REGION_IDS,
+  SE_ASIA_ISO3,
+  buildAllCustomIso3Sets,
+  buildCustomRegionIso3Set,
+  customIso3SetForFilter,
+  customRegionLabel,
+  isCustomRegionId,
+  isCustomRegionMember,
+} from './customRegions'
 
 export type RegionCard = {
   id: string
-  kind: 'continent' | 'country'
+  kind: 'continent' | 'country' | 'custom'
   name: string
   iso3: string | null
   continent: string
@@ -35,10 +52,7 @@ export type DestinationContinentGroup = {
 
 export type DestinationMode = 'country' | 'institute'
 
-export const DESTINATION_OTHER_KEY = '__other__'
-
-const UNRESOLVED = 'Unresolved'
-const COUNTRIES_PER_CONTINENT = 6
+export const DESTINATION_UNRESOLVED = 'Unresolved'
 
 /** iso3 → CONTINENT from world geojson features. */
 export function buildContinentLookup(world: WorldGeoJson): Map<string, string> {
@@ -66,7 +80,7 @@ export function buildCountryCards(
     const continent =
       sequenced?.continent ||
       continentLookup.get(row.iso3) ||
-      UNRESOLVED
+      DESTINATION_UNRESOLVED
     cards.push({
       id: `country:${row.iso3}`,
       kind: 'country',
@@ -130,7 +144,7 @@ export function buildContinentCards(
   )
 
   for (const total of countryTotals) {
-    const acc = ensure(total.continent || UNRESOLVED)
+    const acc = ensure(total.continent || DESTINATION_UNRESOLVED)
     acc.sequenced += total.total
     const row = countsByIso.get(total.iso3)
     if (row?.gbif_species_count != null) {
@@ -147,7 +161,7 @@ export function buildContinentCards(
   for (const row of speciesCounts) {
     if (!row.iso3) continue
     if (countryTotals.some((t) => t.iso3 === row.iso3)) continue
-    const continent = continentLookup.get(row.iso3) || UNRESOLVED
+    const continent = continentLookup.get(row.iso3) || DESTINATION_UNRESOLVED
     const acc = ensure(continent)
     if (row.gbif_species_count != null) {
       acc.gbif += row.gbif_species_count
@@ -160,7 +174,7 @@ export function buildContinentCards(
   }
 
   return [...byContinent.entries()]
-    .filter(([name]) => name !== UNRESOLVED || byContinent.size === 1)
+    .filter(([name]) => name !== DESTINATION_UNRESOLVED || byContinent.size === 1)
     .map(([name, acc]) => ({
       id: `continent:${name}`,
       kind: 'continent' as const,
@@ -177,6 +191,43 @@ export function buildContinentCards(
       if (b.name === 'Unknown') return -1
       return b.sequenced - a.sequenced || a.name.localeCompare(b.name)
     })
+}
+
+/** Aggregate country-card metrics into the three predefined custom regions. */
+export function buildCustomRegionCards(
+  countryCards: RegionCard[],
+  continentLookup: Map<string, string>,
+): RegionCard[] {
+  return CUSTOM_REGIONS.map((region) => {
+    const members = buildCustomRegionIso3Set(region.id, continentLookup)
+    let gbif = 0
+    let inat = 0
+    let sequenced = 0
+    let hasGbif = false
+    let hasInat = false
+    for (const card of countryCards) {
+      if (!card.iso3 || !members.has(card.iso3)) continue
+      sequenced += card.sequenced
+      if (card.gbif != null) {
+        gbif += card.gbif
+        hasGbif = true
+      }
+      if (card.inat != null) {
+        inat += card.inat
+        hasInat = true
+      }
+    }
+    return {
+      id: `custom:${region.id}`,
+      kind: 'custom' as const,
+      name: region.name,
+      iso3: null,
+      continent: 'Custom region',
+      gbif: hasGbif ? gbif : null,
+      inat: hasInat ? inat : null,
+      sequenced,
+    }
+  }).sort((a, b) => b.sequenced - a.sequenced || a.name.localeCompare(b.name))
 }
 
 /**
@@ -197,16 +248,16 @@ export function buildSequencingBreakdown(
   const byContinent = new Map<string, Map<string, ChildAcc>>()
 
   for (const row of flows) {
-    const continent = row.institute_continent?.trim() || UNRESOLVED
+    const continent = row.institute_continent?.trim() || DESTINATION_UNRESOLVED
     let childKey: string
     let childLabel: string
     let childCountry: string | null = null
     if (mode === 'institute') {
-      childKey = instituteKey(row) || UNRESOLVED
-      childLabel = row.institute_name?.trim() || UNRESOLVED
+      childKey = instituteKey(row) || DESTINATION_UNRESOLVED
+      childLabel = row.institute_name?.trim() || DESTINATION_UNRESOLVED
       childCountry = row.institute_country?.trim() || null
     } else {
-      const country = row.institute_country?.trim() || UNRESOLVED
+      const country = row.institute_country?.trim() || DESTINATION_UNRESOLVED
       childKey = row.institute_country_iso3 || country
       childLabel = country
     }
@@ -235,27 +286,18 @@ export function buildSequencingBreakdown(
       const sorted = [...children.values()].sort(
         (a, b) => b.count - a.count || a.label.localeCompare(b.label),
       )
-      const top = sorted.slice(0, COUNTRIES_PER_CONTINENT)
-      const rest = sorted.slice(COUNTRIES_PER_CONTINENT)
-      const nodes: DestinationChild[] = top.map((c) => ({
+      const nodes: DestinationChild[] = sorted.map((c) => ({
         key: c.key,
         label: c.label,
         count: c.count,
         ...(mode === 'institute' ? { country: c.country } : {}),
       }))
-      if (rest.length) {
-        nodes.push({
-          key: DESTINATION_OTHER_KEY,
-          label: 'Other',
-          count: rest.reduce((sum, c) => sum + c.count, 0),
-        })
-      }
       const total = sorted.reduce((sum, c) => sum + c.count, 0)
       return { continent, total, children: nodes }
     })
     .sort((a, b) => {
-      if (a.continent === UNRESOLVED) return 1
-      if (b.continent === UNRESOLVED) return -1
+      if (a.continent === DESTINATION_UNRESOLVED) return 1
+      if (b.continent === DESTINATION_UNRESOLVED) return -1
       return b.total - a.total || a.continent.localeCompare(b.continent)
     })
 }
@@ -272,6 +314,44 @@ export function resolveCollectionPosition(
     if (c) return [c.lon, c.lat]
   }
   return null
+}
+
+/** Stable key for a plot position (rounded to avoid float noise). */
+export function plotPositionKey(lon: number, lat: number): string {
+  return `${lon.toFixed(5)},${lat.toFixed(5)}`
+}
+
+/** Group flows by resolved collection plot position (precise coords or country centroid). */
+export function groupFlowsByPoint(
+  flows: RegionFlow[],
+  centroids: CountryCentroids | null,
+): Map<string, RegionFlow[]> {
+  const groups = new Map<string, RegionFlow[]>()
+  for (const row of flows) {
+    const pos = resolveCollectionPosition(row, centroids)
+    if (!pos) continue
+    const key = plotPositionKey(pos[0], pos[1])
+    const prev = groups.get(key)
+    if (prev) prev.push(row)
+    else groups.set(key, [row])
+  }
+  return groups
+}
+
+/**
+ * Whether a flow matches the current selection, including point-cluster selections
+ * that highlight every species sharing a plot position.
+ */
+export function flowMatchesSelection(
+  row: RegionFlow,
+  selection: Selection,
+  centroids: CountryCentroids | null,
+): boolean {
+  if (!selection) return false
+  if (selection.type !== 'point') return matchesSelection(row, selection)
+  const pos = resolveCollectionPosition(row, centroids)
+  if (!pos) return false
+  return plotPositionKey(pos[0], pos[1]) === plotPositionKey(selection.lon, selection.lat)
 }
 
 export function filterCards(cards: RegionCard[], query: string): RegionCard[] {

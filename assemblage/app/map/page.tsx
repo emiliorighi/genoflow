@@ -3,38 +3,57 @@
 import Link from 'next/link'
 import { Suspense, useEffect, useMemo, useRef, useState } from 'react'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { ChevronDown, Info, Layers3, PanelRightClose } from 'lucide-react'
+import { Info } from 'lucide-react'
 import { load } from '@loaders.gl/core'
 import { ParquetLoader } from '@loaders.gl/parquet'
-import DeckMap, { type Layers } from './DeckMap'
-import FilterBar from './FilterBar'
-import { InstituteDetail, RegionOverview, SpeciesDetail, regionTitle } from './SidebarPanels'
+import ExploreLeftSidebar from './explore/ExploreLeftSidebar'
+import ExploreMap, { type ExploreLayers } from './explore/ExploreMap'
+import ExploreToolbar, { type SearchMode } from './explore/ExploreToolbar'
+import {
+  buildContinentCards,
+  buildContinentLookup,
+  buildCountryCards,
+  buildCustomRegionCards,
+  buildAllCustomIso3Sets,
+  customIso3SetForFilter,
+  isCustomRegionId,
+  buildTaxonRankSummaries,
+  flowMatchesSelection,
+  groupFlowsByPoint,
+  plotPositionKey,
+  type RegionCard,
+} from './explore/exploreData'
+import {
+  buildCountryTotals,
+  computeCoverageStats,
+  countsByIso3,
+  type CountryCentroids,
+  type SpeciesCountRow,
+} from './regionData'
+import {
+  InstituteDetail,
+  PointSpeciesList,
+  SpeciesDetail,
+  regionTitle,
+} from './SidebarPanels'
+import { publicUrl } from '../../lib/publicUrl'
 import {
   EMPTY_GEO_FILTER,
   MAP_QUERY_KEYS,
-  computeRegionStats,
+  PARQUET_COLUMNS,
+  TAXON_RANKS,
   decodeSelectionParam,
   encodeSelectionParam,
   filterFlows,
   instituteKey,
-  normalizeFlows,
-  PARQUET_COLUMNS,
-  TAXON_RANKS,
+  normalizeRegionFlows,
   type GeoFilter,
   type RankFilter,
+  type RegionFlow,
   type Selection,
-  type SpeciesFlow,
   type TaxonRank,
   type WorldGeoJson,
 } from './types'
-
-function rankTaxidKey(rank: TaxonRank): keyof SpeciesFlow {
-  return `${rank}_taxid` as keyof SpeciesFlow
-}
-
-function rankNameKey(rank: TaxonRank): keyof SpeciesFlow {
-  return `${rank}_name` as keyof SpeciesFlow
-}
 
 function parseRankParam(raw: string | null): TaxonRank | '' {
   return raw && (TAXON_RANKS as string[]).includes(raw) ? (raw as TaxonRank) : ''
@@ -44,7 +63,7 @@ function MapPageFallback() {
   return (
     <main className="atlas-shell">
       <div className="map-loading-overlay map-loading-overlay-standalone" role="status">
-        <p>Loading atlas…</p>
+        <p>Loading explorer…</p>
       </div>
     </main>
   )
@@ -54,51 +73,74 @@ function MapPageInner() {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
-  // Only used to seed initial state from the URL once; subsequent updates flow the other way.
   const initialParams = useRef(searchParams)
 
-  const [layers, setLayers] = useState<Layers>({ collection: true, submitter: true, flow: true })
+  const [layers] = useState<ExploreLayers>({
+    collection: true,
+    submitter: true,
+    flow: true,
+  })
   const [selection, setSelection] = useState<Selection>(() =>
     decodeSelectionParam(initialParams.current.get(MAP_QUERY_KEYS.select)),
   )
-  const [mobileOpen, setMobileOpen] = useState(false)
 
-  const [flows, setFlows] = useState<SpeciesFlow[] | null>(null)
+  const [flows, setFlows] = useState<RegionFlow[] | null>(null)
   const [world, setWorld] = useState<WorldGeoJson | null>(null)
+  const [centroids, setCentroids] = useState<CountryCentroids | null>(null)
+  const [speciesCounts, setSpeciesCounts] = useState<SpeciesCountRow[] | null>(null)
   const [loadError, setLoadError] = useState<string | null>(null)
   const [loadAttempt, setLoadAttempt] = useState(0)
 
+  const [geoFilter, setGeoFilter] = useState<GeoFilter>(() => {
+    const customRaw = initialParams.current.get(MAP_QUERY_KEYS.custom)
+    if (isCustomRegionId(customRaw)) {
+      return {
+        continent: null,
+        country: null,
+        countryIso3: null,
+        customId: customRaw,
+      }
+    }
+    return {
+      continent: initialParams.current.get(MAP_QUERY_KEYS.continent) || null,
+      country: initialParams.current.get(MAP_QUERY_KEYS.country) || null,
+      countryIso3: null,
+      customId: null,
+    }
+  })
+  const [hoverPreview, setHoverPreview] = useState<GeoFilter | null>(null)
   const [rankLevel, setRankLevel] = useState<TaxonRank | ''>(() =>
     parseRankParam(initialParams.current.get(MAP_QUERY_KEYS.rank)),
   )
-  const [rankTaxid, setRankTaxid] = useState(() => initialParams.current.get(MAP_QUERY_KEYS.taxon) || '')
-  const [geoFilter, setGeoFilter] = useState<GeoFilter>(() => ({
-    continent: initialParams.current.get(MAP_QUERY_KEYS.continent) || null,
-    country: initialParams.current.get(MAP_QUERY_KEYS.country) || null,
-    countryIso3: null,
-  }))
+  const [rankTaxid, setRankTaxid] = useState(
+    () => initialParams.current.get(MAP_QUERY_KEYS.taxon) || '',
+  )
+  const [scopeBarsToTaxon, setScopeBarsToTaxon] = useState(false)
+  const [searchMode, setSearchMode] = useState<SearchMode>('species')
   const geoHydrated = useRef(false)
 
   const clearSelection = () => {
     setSelection(null)
-    setMobileOpen(false)
   }
 
   const select = (next: Selection) => {
     setSelection(next)
-    if (next) setMobileOpen(true)
   }
 
   const retryLoad = () => {
     setLoadError(null)
     setFlows(null)
     setWorld(null)
+    setCentroids(null)
+    setSpeciesCounts(null)
     setLoadAttempt((n) => n + 1)
   }
 
+  const clearSelectionRef = useRef(clearSelection)
+  clearSelectionRef.current = clearSelection
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') clearSelection()
+      if (event.key === 'Escape') clearSelectionRef.current()
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
@@ -109,21 +151,31 @@ function MapPageInner() {
 
     async function loadData() {
       try {
-        const [table, worldJson] = await Promise.all([
-          load('/data/species_flows.parquet', ParquetLoader, {
+        const [table, worldJson, centroidsJson, countsJson] = await Promise.all([
+          load(publicUrl('/data/species_flows.parquet'), ParquetLoader, {
             parquet: { columnList: [...PARQUET_COLUMNS] },
           }),
-          fetch('/data/world-110m.geojson').then((res) => {
+          fetch(publicUrl('/data/world-110m.geojson')).then((res) => {
             if (!res.ok) throw new Error(`world geojson ${res.status}`)
             return res.json() as Promise<WorldGeoJson>
           }),
+          fetch(publicUrl('/data/country_centroids.json')).then((res) => {
+            if (!res.ok) throw new Error(`centroids ${res.status}`)
+            return res.json() as Promise<CountryCentroids>
+          }),
+          fetch(publicUrl('/data/species_counts_by_country.json')).then((res) => {
+            if (!res.ok) throw new Error(`species counts ${res.status}`)
+            return res.json() as Promise<SpeciesCountRow[]>
+          }),
         ])
         if (cancelled) return
-        setFlows(normalizeFlows(table))
+        setFlows(normalizeRegionFlows(table))
         setWorld(worldJson)
+        setCentroids(centroidsJson)
+        setSpeciesCounts(countsJson)
       } catch (err) {
         if (cancelled) return
-        setLoadError(err instanceof Error ? err.message : 'Failed to load map data')
+        setLoadError(err instanceof Error ? err.message : 'Failed to load explorer data')
       }
     }
 
@@ -133,315 +185,396 @@ function MapPageInner() {
     }
   }, [loadAttempt])
 
-  // Resolve a deep-linked country's ISO3 (needed for the map highlight) once flows arrive.
-  // Runs a single time; afterwards onContinentChange/onCountryChange keep countryIso3 in sync.
   useEffect(() => {
     if (!flows || geoHydrated.current) return
     geoHydrated.current = true
-    if (!geoFilter.country) return
-    const match = flows.find(
-      (row) =>
-        row.collection_country === geoFilter.country &&
-        (!geoFilter.continent || row.collection_continent === geoFilter.continent),
+    if (geoFilter.customId) {
+      if (!isCustomRegionId(geoFilter.customId)) setGeoFilter(EMPTY_GEO_FILTER)
+      return
+    }
+    if (!geoFilter.country && !geoFilter.continent) return
+    if (geoFilter.country) {
+      const match = flows.find(
+        (row) =>
+          row.collection_country === geoFilter.country &&
+          (!geoFilter.continent || row.collection_continent === geoFilter.continent),
+      )
+      if (match) {
+        setGeoFilter({
+          continent: match.collection_continent,
+          country: match.collection_country,
+          countryIso3: match.collection_country_iso3,
+          customId: null,
+        })
+        return
+      }
+      setGeoFilter(EMPTY_GEO_FILTER)
+      return
+    }
+    const hasContinent = flows.some(
+      (row) => row.collection_continent === geoFilter.continent,
     )
-    setGeoFilter(
-      match
-        ? { continent: match.collection_continent, country: match.collection_country, countryIso3: match.collection_country_iso3 }
-        : EMPTY_GEO_FILTER,
-    )
+    if (!hasContinent) setGeoFilter(EMPTY_GEO_FILTER)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [flows])
 
+  const continentLookup = useMemo(
+    () => (world ? buildContinentLookup(world) : new Map<string, string>()),
+    [world],
+  )
+
+  const allCountryTotals = useMemo(
+    () => (flows ? buildCountryTotals(flows) : []),
+    [flows],
+  )
+
+  /** World continents plus any sequenced countries missing from the basemap. */
+  const membershipLookup = useMemo(() => {
+    const map = new Map(continentLookup)
+    for (const total of allCountryTotals) {
+      if (total.iso3 && !map.has(total.iso3)) {
+        map.set(total.iso3, total.continent)
+      }
+    }
+    return map
+  }, [continentLookup, allCountryTotals])
+
+  const customIso3Sets = useMemo(
+    () => buildAllCustomIso3Sets(membershipLookup),
+    [membershipLookup],
+  )
+
+  const activeCustomIso3Set = useMemo(
+    () => customIso3SetForFilter(geoFilter.customId, customIso3Sets),
+    [geoFilter.customId, customIso3Sets],
+  )
+
+  const hasRegion = Boolean(
+    geoFilter.continent || geoFilter.country || geoFilter.customId,
+  )
   const rankFilter: RankFilter | null =
     rankLevel && rankTaxid ? { rank: rankLevel, taxid: rankTaxid } : null
 
-  const filteredFlows = useMemo(() => {
+  const regionFlows = useMemo(() => {
     if (!flows) return []
-    return filterFlows(flows, rankFilter, geoFilter)
-  }, [flows, rankFilter, geoFilter])
+    if (!hasRegion) return flows
+    return filterFlows(flows, null, geoFilter, activeCustomIso3Set)
+  }, [flows, geoFilter, hasRegion, activeCustomIso3Set])
 
-  // Drop selection if it falls outside the current filtered scope (also validates deep links).
+  const mapFlows = useMemo(() => {
+    if (!flows) return []
+    return filterFlows(
+      flows,
+      rankFilter,
+      hasRegion ? geoFilter : EMPTY_GEO_FILTER,
+      hasRegion ? activeCustomIso3Set : null,
+    )
+  }, [flows, rankFilter, geoFilter, hasRegion, activeCustomIso3Set])
+
+  const barsFlows = useMemo(() => {
+    if (scopeBarsToTaxon && rankFilter) return mapFlows
+    return regionFlows
+  }, [scopeBarsToTaxon, rankFilter, mapFlows, regionFlows])
+
   useEffect(() => {
     if (!selection || !flows) return
-    const stillVisible = filteredFlows.some((row) => {
-      if (selection.type === 'species') return row.species_taxid === selection.taxid
-      return instituteKey(row) === selection.key
-    })
+    const stillVisible = mapFlows.some((row) =>
+      flowMatchesSelection(row, selection, centroids),
+    )
     if (!stillVisible) setSelection(null)
-  }, [filteredFlows, selection, flows])
+  }, [mapFlows, selection, flows, centroids])
 
-  // Keep the map filters/selection reflected in the URL for shareable, bookmarkable views.
   useEffect(() => {
     const params = new URLSearchParams()
     if (rankLevel && rankTaxid) {
       params.set(MAP_QUERY_KEYS.rank, rankLevel)
       params.set(MAP_QUERY_KEYS.taxon, rankTaxid)
     }
-    if (geoFilter.continent) params.set(MAP_QUERY_KEYS.continent, geoFilter.continent)
-    if (geoFilter.country) params.set(MAP_QUERY_KEYS.country, geoFilter.country)
+    if (geoFilter.customId) {
+      params.set(MAP_QUERY_KEYS.custom, geoFilter.customId)
+    } else {
+      if (geoFilter.continent) params.set(MAP_QUERY_KEYS.continent, geoFilter.continent)
+      if (geoFilter.country) params.set(MAP_QUERY_KEYS.country, geoFilter.country)
+    }
     const encodedSelection = encodeSelectionParam(selection)
     if (encodedSelection) params.set(MAP_QUERY_KEYS.select, encodedSelection)
 
     const nextQuery = params.toString()
     if (nextQuery === searchParams.toString()) return
     router.replace(nextQuery ? `${pathname}?${nextQuery}` : pathname, { scroll: false })
-  }, [rankLevel, rankTaxid, geoFilter.continent, geoFilter.country, selection, pathname, router, searchParams])
+  }, [
+    rankLevel,
+    rankTaxid,
+    geoFilter.continent,
+    geoFilter.country,
+    geoFilter.customId,
+    selection,
+    pathname,
+    router,
+    searchParams,
+  ])
 
-  const taxonOptions = useMemo(() => {
-    if (!flows || !rankLevel) return []
-    const taxidKey = rankTaxidKey(rankLevel)
-    const nameKey = rankNameKey(rankLevel)
-    const byId = new Map<string, string>()
-    for (const row of flows) {
-      const taxid = row[taxidKey]
-      const name = row[nameKey]
-      if (typeof taxid === 'string' && taxid && typeof name === 'string' && name) {
-        byId.set(taxid, name)
-      }
-    }
-    return [...byId.entries()]
-      .map(([taxid, name]) => ({ taxid, name }))
-      .sort((a, b) => a.name.localeCompare(b.name))
-  }, [flows, rankLevel])
-
-  const rankTaxidLabel = useMemo(
-    () => taxonOptions.find((opt) => opt.taxid === rankTaxid)?.name ?? '',
-    [taxonOptions, rankTaxid],
+  const countsLookup = useMemo(
+    () => countsByIso3(speciesCounts ?? []),
+    [speciesCounts],
   )
 
-  const continentOptions = useMemo(() => {
-    if (!flows) return []
-    return [...new Set(flows.map((row) => row.collection_continent).filter(Boolean))].sort((a, b) => {
-      if (a === 'Unknown') return 1
-      if (b === 'Unknown') return -1
-      return a.localeCompare(b)
-    })
-  }, [flows])
-
-  const countryOptions = useMemo(() => {
-    if (!flows) return []
-    const byCountry = new Map<string, { continent: string; iso3: string | null }>()
-    for (const row of flows) {
-      const country = row.collection_country
-      if (!country) continue
-      if (geoFilter.continent && row.collection_continent !== geoFilter.continent) continue
-      if (!byCountry.has(country)) {
-        byCountry.set(country, {
-          continent: row.collection_continent,
-          iso3: row.collection_country_iso3,
-        })
-      }
-    }
-    return [...byCountry.entries()]
-      .map(([country, meta]) => ({ country, ...meta }))
-      .sort((a, b) => a.country.localeCompare(b.country))
-  }, [flows, geoFilter.continent])
-
-  const regionStats = useMemo(
-    () => computeRegionStats(filteredFlows, geoFilter),
-    [filteredFlows, geoFilter],
+  const continentCards = useMemo(
+    () =>
+      buildContinentCards(speciesCounts ?? [], allCountryTotals, membershipLookup),
+    [speciesCounts, allCountryTotals, membershipLookup],
   )
+
+  const countryCards = useMemo(
+    () =>
+      buildCountryCards(speciesCounts ?? [], allCountryTotals, membershipLookup),
+    [speciesCounts, allCountryTotals, membershipLookup],
+  )
+
+  const customCards = useMemo(
+    () => buildCustomRegionCards(countryCards, membershipLookup),
+    [countryCards, membershipLookup],
+  )
+
+  const coverage = useMemo(
+    () =>
+      computeCoverageStats(
+        geoFilter,
+        allCountryTotals,
+        countsLookup,
+        activeCustomIso3Set,
+      ),
+    [geoFilter, allCountryTotals, countsLookup, activeCustomIso3Set],
+  )
+
+  const rankSummaries = useMemo(
+    () => buildTaxonRankSummaries(regionFlows),
+    [regionFlows],
+  )
+
+  const rankTaxidLabel = useMemo(() => {
+    if (!rankLevel || !rankTaxid) return ''
+    return (
+      rankSummaries[rankLevel].options.find((opt) => opt.taxid === rankTaxid)?.name ??
+      ''
+    )
+  }, [rankSummaries, rankLevel, rankTaxid])
+
+  // Drop taxon if it disappears from the current region scope (e.g. region change).
+  useEffect(() => {
+    if (!rankLevel || !rankTaxid || !flows) return
+    const stillPresent = rankSummaries[rankLevel].options.some((opt) => opt.taxid === rankTaxid)
+    if (!stillPresent) {
+      setRankLevel('')
+      setRankTaxid('')
+      setScopeBarsToTaxon(false)
+    }
+  }, [rankSummaries, rankLevel, rankTaxid, flows])
 
   const selectedSpeciesRow = useMemo(() => {
     if (selection?.type !== 'species') return null
-    return filteredFlows.find((row) => row.species_taxid === selection.taxid) ?? null
-  }, [filteredFlows, selection])
+    return mapFlows.find((row) => row.species_taxid === selection.taxid) ?? null
+  }, [mapFlows, selection])
 
   const selectedInstituteRows = useMemo(() => {
     if (selection?.type !== 'institute') return []
-    return filteredFlows.filter((row) => instituteKey(row) === selection.key)
-  }, [filteredFlows, selection])
+    return mapFlows.filter((row) => instituteKey(row) === selection.key)
+  }, [mapFlows, selection])
 
-  const onRankLevelChange = (value: string) => {
-    setRankLevel((value || '') as TaxonRank | '')
+  const selectedPointRows = useMemo(() => {
+    if (selection?.type !== 'point') return []
+    const groups = groupFlowsByPoint(mapFlows, centroids)
+    return groups.get(plotPositionKey(selection.lon, selection.lat)) ?? []
+  }, [mapFlows, selection, centroids])
+
+  const onPickTaxon = (rank: TaxonRank, taxid: string) => {
+    setRankLevel(rank)
+    setRankTaxid(taxid)
+  }
+
+  const onClearTaxon = () => {
+    setRankLevel('')
     setRankTaxid('')
+    setScopeBarsToTaxon(false)
   }
 
-  const onContinentChange = (value: string) => {
-    const continent = value || null
-    if (!continent) {
-      setGeoFilter(EMPTY_GEO_FILTER)
-      return
-    }
-    setGeoFilter((prev) => {
-      if (!prev.country || !flows) {
-        return { continent, country: null, countryIso3: null }
-      }
-      const match = flows.find(
-        (row) =>
-          row.collection_country === prev.country && row.collection_continent === continent,
-      )
-      if (match) {
-        return {
-          continent,
-          country: prev.country,
-          countryIso3: match.collection_country_iso3,
-        }
-      }
-      return { continent, country: null, countryIso3: null }
-    })
-  }
-
-  const onCountryChange = (value: string) => {
-    if (!value) {
-      setGeoFilter((prev) => ({
-        continent: prev.continent,
+  const onSelectRegion = (card: RegionCard) => {
+    setHoverPreview(null)
+    clearSelection()
+    setScopeBarsToTaxon(false)
+    if (card.kind === 'custom') {
+      const customId = card.id.startsWith('custom:')
+        ? card.id.slice('custom:'.length)
+        : card.id
+      setGeoFilter({
+        continent: null,
         country: null,
         countryIso3: null,
-      }))
+        customId,
+      })
       return
     }
-    const match =
-      flows?.find((row) => {
-        if (row.collection_country !== value) return false
-        if (geoFilter.continent && row.collection_continent !== geoFilter.continent) return false
-        return true
-      }) ?? null
-    if (!match) {
-      setGeoFilter(EMPTY_GEO_FILTER)
+    if (card.kind === 'continent') {
+      setGeoFilter({
+        continent: card.name,
+        country: null,
+        countryIso3: null,
+        customId: null,
+      })
       return
     }
     setGeoFilter({
-      continent: match.collection_continent,
-      country: match.collection_country,
-      countryIso3: match.collection_country_iso3,
+      continent: card.continent,
+      country: card.name,
+      countryIso3: card.iso3,
+      customId: null,
     })
   }
 
-  const onClearAllFilters = () => {
-    setRankLevel('')
-    setRankTaxid('')
+  const onHoverRegion = (card: RegionCard | null) => {
+    if (!card) {
+      setHoverPreview(null)
+      return
+    }
+    if (card.kind === 'custom') {
+      const customId = card.id.startsWith('custom:')
+        ? card.id.slice('custom:'.length)
+        : card.id
+      setHoverPreview({
+        continent: null,
+        country: null,
+        countryIso3: null,
+        customId,
+      })
+      return
+    }
+    if (card.kind === 'continent') {
+      setHoverPreview({
+        continent: card.name,
+        country: null,
+        countryIso3: null,
+        customId: null,
+      })
+      return
+    }
+    setHoverPreview({
+      continent: card.continent,
+      country: card.name,
+      countryIso3: card.iso3,
+      customId: null,
+    })
+  }
+
+  const onClearRegion = () => {
+    setHoverPreview(null)
     setGeoFilter(EMPTY_GEO_FILTER)
+    clearSelection()
+    setScopeBarsToTaxon(false)
   }
 
   const title = regionTitle(geoFilter)
-  const sidebarHeading = selectedSpeciesRow
-    ? 'Species detail'
-    : selection?.type === 'institute'
-      ? 'Institute detail'
-      : 'Region overview'
-
-  const rankQuery = rankLevel && rankTaxid ? `?rank=${rankLevel}&taxon=${encodeURIComponent(rankTaxid)}` : ''
+  const showRightSidebar = Boolean(
+    selectedSpeciesRow ||
+      (selection?.type === 'institute' && selectedInstituteRows.length > 0) ||
+      (selection?.type === 'point' && selectedPointRows.length > 0),
+  )
 
   return (
     <main className="atlas-shell">
       <header className="atlas-topbar">
         <Link href="/" className="wordmark">
-          Assemblage<span className="wordmark-dot">.</span>
+          GenoFlow<span className="wordmark-dot">.</span>
         </Link>
-        <div className="atlas-title">
-          <span>Atlas /</span> species flows
-        </div>
-        <nav className="atlas-view-toggle" aria-label="Atlas view">
-          <Link href={`/map${rankQuery}`} className="atlas-view-link is-active" aria-current="page">
-            Flows
-          </Link>
-          <Link href={`/map/regions${rankQuery}`} className="atlas-view-link">
-            Regions
-          </Link>
-          <Link href={`/map/explore${rankQuery}`} className="atlas-view-link">
-            Explore
-          </Link>
-        </nav>
+        <div className="atlas-title">Atlas</div>
         <div className="topbar-info">
-          <Info size={14} aria-hidden="true" /> INSDC flows · live atlas
+          <Info size={14} aria-hidden="true" /> Region explorer · live atlas
         </div>
       </header>
-      <div className="atlas-toolbar">
-        <FilterBar
-          flows={flows}
-          filteredFlows={filteredFlows}
-          rankLevel={rankLevel}
-          rankTaxid={rankTaxid}
-          rankTaxidLabel={rankTaxidLabel}
-          onRankLevelChange={onRankLevelChange}
-          onRankTaxidChange={setRankTaxid}
-          taxonOptions={taxonOptions}
-          geoFilter={geoFilter}
-          continentOptions={continentOptions}
-          countryOptions={countryOptions}
-          onContinentChange={onContinentChange}
-          onCountryChange={onCountryChange}
-          onClearAll={onClearAllFilters}
-          selection={selection}
-          onSelect={select}
-          layers={layers}
-          onToggleLayer={(key) => setLayers((old) => ({ ...old, [key]: !old[key] }))}
-        />
-        <div className="metric-pill">
-          <span>In view</span>
-          <b>{filteredFlows.length.toLocaleString()}</b>
-          <small>species</small>
-        </div>
-      </div>
+
       <span className="sr-only" role="status" aria-live="polite">
-        {flows ? `${filteredFlows.length.toLocaleString()} species in view` : ''}
+        {flows
+          ? `${mapFlows.length.toLocaleString()} species in ${hasRegion ? title : 'view'}`
+          : ''}
       </span>
-      <div className="atlas-content">
-        <DeckMap
-          filteredFlows={filteredFlows}
-          world={world}
-          error={loadError}
-          layers={layers}
+
+      <div className="explore-content">
+        <ExploreLeftSidebar
           geoFilter={geoFilter}
-          selection={selection}
-          totalCount={flows?.length ?? null}
-          onSelect={select}
-          onGeoSelect={(geo) => {
-            setGeoFilter(geo)
-            setSelection(null)
-            setMobileOpen(true)
-          }}
-          onRetry={retryLoad}
+          continentCards={continentCards}
+          countryCards={countryCards}
+          customCards={customCards}
+          coverage={coverage}
+          barsFlows={barsFlows}
+          loading={!flows || !speciesCounts}
+          onSelectRegion={onSelectRegion}
+          onHoverRegion={onHoverRegion}
+          onClearRegion={onClearRegion}
+          onSelectInstitute={(key) => select({ type: 'institute', key })}
+          rankTaxidLabel={rankTaxidLabel}
+          hasTaxonFilter={Boolean(rankFilter)}
+          allSpeciesCount={regionFlows.length}
+          taxonSpeciesCount={mapFlows.length}
+          scopeBarsToTaxon={scopeBarsToTaxon}
+          onScopeBarsToTaxonChange={setScopeBarsToTaxon}
         />
-        <aside className={`species-sidebar ${mobileOpen ? 'mobile-open' : ''}`}>
-          <div className="sidebar-top">
-            <div>
-              <span className="sidebar-kicker">
-                <Layers3 size={13} aria-hidden="true" /> Specimen atlas
-              </span>
-              <h1>{sidebarHeading}</h1>
-            </div>
-            {selection && (
-              <button className="icon-button" onClick={clearSelection} aria-label="Close selection">
-                <PanelRightClose size={17} />
-              </button>
+
+        <div className="explore-center">
+          <ExploreToolbar
+            mapFlows={mapFlows}
+            rankSummaries={rankSummaries}
+            rankLevel={rankLevel}
+            rankTaxid={rankTaxid}
+            rankTaxidLabel={rankTaxidLabel}
+            onPickTaxon={onPickTaxon}
+            onClearTaxon={onClearTaxon}
+            searchMode={searchMode}
+            onSearchModeChange={setSearchMode}
+            selection={selection}
+            onSelect={select}
+            disabled={!flows}
+          />
+          <div className="explore-map-stage">
+            <ExploreMap
+              filteredFlows={mapFlows}
+              centroids={centroids}
+              world={world}
+              error={loadError}
+              layers={layers}
+              geoFilter={geoFilter}
+              hoverPreview={hoverPreview}
+              customIso3Sets={customIso3Sets}
+              selection={selection}
+              totalCount={flows?.length ?? null}
+              onSelect={select}
+              onRetry={retryLoad}
+            />
+            {showRightSidebar && (
+              <aside className="species-sidebar explore-right mobile-open">
+                {selectedSpeciesRow ? (
+                  <SpeciesDetail
+                    row={selectedSpeciesRow}
+                    onClear={clearSelection}
+                    onSelectInstitute={(key) => select({ type: 'institute', key })}
+                  />
+                ) : selection?.type === 'institute' && selectedInstituteRows.length > 0 ? (
+                  <InstituteDetail
+                    keyName={selection.key}
+                    rows={selectedInstituteRows}
+                    onClear={clearSelection}
+                    onSelectSpecies={(taxid) => select({ type: 'species', taxid })}
+                  />
+                ) : (
+                  <PointSpeciesList
+                    rows={selectedPointRows}
+                    onClear={clearSelection}
+                    onSelectSpecies={(taxid) => select({ type: 'species', taxid })}
+                  />
+                )}
+              </aside>
             )}
           </div>
-          {selectedSpeciesRow ? (
-            <SpeciesDetail
-              row={selectedSpeciesRow}
-              regionLabel={title}
-              onBack={clearSelection}
-              onClear={clearSelection}
-              onSelectInstitute={(key) => select({ type: 'institute', key })}
-            />
-          ) : selection?.type === 'institute' && selectedInstituteRows.length > 0 ? (
-            <InstituteDetail
-              keyName={selection.key}
-              rows={selectedInstituteRows}
-              regionLabel={title}
-              onBack={clearSelection}
-              onClear={clearSelection}
-              onSelectSpecies={(taxid) => select({ type: 'species', taxid })}
-            />
-          ) : (
-            <RegionOverview
-              title={title}
-              stats={regionStats}
-              onSelectInstitute={(key) => select({ type: 'institute', key })}
-            />
-          )}
-        </aside>
+        </div>
       </div>
-      <button
-        type="button"
-        className="mobile-sidebar-handle"
-        onClick={() => setMobileOpen(!mobileOpen)}
-        aria-expanded={mobileOpen}
-      >
-        <ChevronDown size={16} aria-hidden="true" /> {sidebarHeading}
-      </button>
     </main>
   )
 }

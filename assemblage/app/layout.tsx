@@ -3,8 +3,9 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Assemblage — Where species become genomes',
-  description: 'A biodiversity-genomics atlas tracing where species are collected and where their genomes are assembled.',
+  title: 'GenoFlow',
+  description:
+    'Tracking where species are collected against where their genomes are submitted.',
   generator: 'v0.app',
 }
 

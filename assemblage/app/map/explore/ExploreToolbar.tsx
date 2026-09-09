@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Search, X } from 'lucide-react'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { Combobox, type ComboboxOption } from '../Combobox'
@@ -31,6 +31,8 @@ type ExploreToolbarProps = {
 }
 
 const POPOVER_SEARCH_THRESHOLD = 20
+const PAGE_SIZE = 50
+const SCROLL_LOAD_THRESHOLD_PX = 40
 
 function RankBadge({
   rank,
@@ -53,10 +55,17 @@ function RankBadge({
 }) {
   const [open, setOpen] = useState(false)
   const [query, setQuery] = useState('')
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
+  const listRef = useRef<HTMLUListElement>(null)
 
   useEffect(() => {
     if (!open) setQuery('')
+    setVisibleCount(PAGE_SIZE)
   }, [open])
+
+  useEffect(() => {
+    setVisibleCount(PAGE_SIZE)
+  }, [query])
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase()
@@ -64,7 +73,18 @@ function RankBadge({
     return summary.options.filter((opt) => opt.name.toLowerCase().includes(q))
   }, [summary.options, query])
 
+  const visible = filtered.slice(0, visibleCount)
+  const hasMore = visible.length < filtered.length
   const showSearch = summary.options.length > POPOVER_SEARCH_THRESHOLD
+
+  function onListScroll() {
+    const el = listRef.current
+    if (!el || !hasMore) return
+    const nearBottom =
+      el.scrollTop + el.clientHeight >= el.scrollHeight - SCROLL_LOAD_THRESHOLD_PX
+    if (!nearBottom) return
+    setVisibleCount((n) => Math.min(n + PAGE_SIZE, filtered.length))
+  }
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -127,31 +147,45 @@ function RankBadge({
             />
           </label>
         )}
-        <ul className="explore-taxon-list" role="listbox" aria-label={`${rank} taxa`}>
+        <ul
+          ref={listRef}
+          className="explore-taxon-list"
+          role="listbox"
+          aria-label={`${rank} taxa`}
+          onScroll={onListScroll}
+        >
           {filtered.length === 0 ? (
             <li className="explore-taxon-empty">
               {query ? `No matches for “${query}”.` : 'No taxa in scope.'}
             </li>
           ) : (
-            filtered.map((opt) => (
-              <li key={opt.taxid}>
-                <button
-                  type="button"
-                  className="explore-taxon-row"
-                  role="option"
-                  aria-selected={isActive && opt.taxid === activeTaxid}
-                  onClick={() => {
-                    onPick(opt.taxid)
-                    setOpen(false)
-                  }}
-                >
-                  <span className="explore-taxon-name">{opt.name}</span>
-                  <span className="explore-taxon-count">
-                    {opt.speciesCount.toLocaleString()}
-                  </span>
-                </button>
-              </li>
-            ))
+            <>
+              {visible.map((opt) => (
+                <li key={opt.taxid}>
+                  <button
+                    type="button"
+                    className="explore-taxon-row"
+                    role="option"
+                    aria-selected={isActive && opt.taxid === activeTaxid}
+                    onClick={() => {
+                      onPick(opt.taxid)
+                      setOpen(false)
+                    }}
+                  >
+                    <span className="explore-taxon-name">{opt.name}</span>
+                    <span className="explore-taxon-count">
+                      {opt.speciesCount.toLocaleString()}
+                    </span>
+                  </button>
+                </li>
+              ))}
+              {hasMore && (
+                <li className="explore-taxon-empty" aria-live="polite">
+                  Showing {visible.length.toLocaleString()} of{' '}
+                  {filtered.length.toLocaleString()}
+                </li>
+              )}
+            </>
           )}
         </ul>
       </PopoverContent>

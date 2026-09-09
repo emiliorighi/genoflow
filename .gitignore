@@ -20,5 +20,8 @@ __v0_jsx-dev-runtime.ts
 # Common ignores
 node_modules
 .next/
+out/
 .DS_Store
 *.parquet
+!assemblage/public/data/species_flows.parquet
+*.tsbuildinfo

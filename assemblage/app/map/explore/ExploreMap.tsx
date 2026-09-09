@@ -10,15 +10,23 @@ import { Button } from '@/components/ui/button'
 import {
   EMPTY_GEO_FILTER,
   instituteKey,
-  matchesSelection,
+  matchesGeoFilter,
   type GeoFilter,
   type RegionFlow,
   type Selection,
   type WorldFeature,
   type WorldGeoJson,
 } from '../types'
-import type { CountryCentroids } from '../regions/regionData'
-import { resolveCollectionPosition } from './exploreData'
+import type { CountryCentroids } from '../regionData'
+import {
+  flowMatchesSelection,
+  plotPositionKey,
+  resolveCollectionPosition,
+} from './exploreData'
+import {
+  customIso3SetForFilter,
+  type CustomRegionId,
+} from './customRegions'
 
 export type ExploreLayers = {
   collection: boolean
@@ -53,7 +61,13 @@ const INSTITUTE_LINE: [number, number, number, number] = [181, 212, 228, 255]
 
 const NO_DEPTH = { depthTest: false } as const
 const BASEMAP_DEPTH = { depthTest: false, depthMask: false } as const
-const DIM_ALPHA = 10
+/** Region-card hover preview: keep context faintly visible. */
+const PREVIEW_DIM_ALPHA = 10
+/**
+ * Species/institute selection: hide non-matching marks so stacked centroids
+ * cannot re-opaque through additive blending.
+ */
+const SELECTION_DIM_ALPHA = 0
 
 function withAlpha(
   color: [number, number, number, number],
@@ -76,21 +90,12 @@ type ExploreMapProps = {
   layers: ExploreLayers
   geoFilter: GeoFilter
   hoverPreview?: GeoFilter | null
+  /** iso3 membership for custom regions (latin-america, etc.). */
+  customIso3Sets?: Map<CustomRegionId, Set<string>> | null
   selection: Selection
   totalCount: number | null
   onSelect: (selection: Selection) => void
   onRetry: () => void
-}
-
-function flowMatchesGeo(row: RegionFlow, geo: GeoFilter): boolean {
-  if (geo.country) {
-    if (geo.countryIso3 && row.collection_country_iso3) {
-      return row.collection_country_iso3 === geo.countryIso3
-    }
-    return row.collection_country === geo.country
-  }
-  if (geo.continent) return row.collection_continent === geo.continent
-  return true
 }
 
 function selectionFromFlow(row: RegionFlow, preferInstitute: boolean): Selection {
@@ -175,6 +180,7 @@ export default function ExploreMap({
   layers,
   geoFilter,
   hoverPreview = null,
+  customIso3Sets = null,
   selection,
   totalCount,
   onSelect,
@@ -199,6 +205,17 @@ export default function ExploreMap({
     return rows
   }, [filteredFlows, centroids])
 
+  const pointGroups = useMemo(() => {
+    const groups = new Map<string, PlottedFlow[]>()
+    for (const row of plotted) {
+      const key = plotPositionKey(row.plot_lon, row.plot_lat)
+      const prev = groups.get(key)
+      if (prev) prev.push(row)
+      else groups.set(key, [row])
+    }
+    return groups
+  }, [plotted])
+
   const withInstitute = useMemo(
     () => plotted.filter((row) => row.has_institute_coordinates),
     [plotted],
@@ -206,22 +223,42 @@ export default function ExploreMap({
 
   const selectedFlows = useMemo(() => {
     if (!selection) return [] as PlottedFlow[]
-    return plotted.filter((row) => matchesSelection(row, selection))
-  }, [plotted, selection])
+    return plotted.filter((row) => flowMatchesSelection(row, selection, centroids))
+  }, [plotted, selection, centroids])
 
   const selectedWithInstitute = useMemo(
     () => selectedFlows.filter((row) => row.has_institute_coordinates),
     [selectedFlows],
   )
 
-  const hasCommittedRegion = Boolean(geoFilter.continent || geoFilter.country)
+  const hasCommittedRegion = Boolean(
+    geoFilter.continent || geoFilter.country || geoFilter.customId,
+  )
   const activeGeo = hasCommittedRegion
     ? geoFilter
     : (hoverPreview ?? EMPTY_GEO_FILTER)
 
+  const activeCustomIso3Set = useMemo(
+    () => customIso3SetForFilter(activeGeo.customId, customIso3Sets),
+    [activeGeo.customId, customIso3Sets],
+  )
+
+  const hoverCustomIso3Set = useMemo(
+    () => customIso3SetForFilter(hoverPreview?.customId, customIso3Sets),
+    [hoverPreview?.customId, customIso3Sets],
+  )
+
   const highlightFeatures = useMemo(() => {
     if (!world) return null
-    const { continent, country, countryIso3 } = activeGeo
+    const { continent, country, countryIso3, customId } = activeGeo
+    if (customId) {
+      if (!activeCustomIso3Set || activeCustomIso3Set.size === 0) return null
+      const features = world.features.filter((f) =>
+        activeCustomIso3Set.has(f.properties.ISO_A3),
+      )
+      if (!features.length) return null
+      return { type: 'FeatureCollection' as const, features }
+    }
     if (country) {
       if (!countryIso3) return null
       const features = world.features.filter((f) => f.properties.ISO_A3 === countryIso3)
@@ -232,29 +269,47 @@ export default function ExploreMap({
     const features = world.features.filter((f) => f.properties.CONTINENT === continent)
     if (!features.length) return null
     return { type: 'FeatureCollection' as const, features }
-  }, [world, activeGeo])
+  }, [world, activeGeo, activeCustomIso3Set])
 
   const hasSelection = Boolean(selection)
+  const selectionDimsOthers =
+    selection?.type === 'species' || selection?.type === 'institute'
   // Preview dimming only in list mode (no committed region) and when no species/institute selection.
   const previewActive = Boolean(
     hoverPreview &&
-      (hoverPreview.continent || hoverPreview.country) &&
+      (hoverPreview.continent || hoverPreview.country || hoverPreview.customId) &&
       !hasCommittedRegion &&
       !hasSelection,
   )
 
   const flowIsFocused = (row: RegionFlow): boolean => {
-    if (hasSelection) return matchesSelection(row, selection)
-    if (previewActive && hoverPreview) return flowMatchesGeo(row, hoverPreview)
+    if (hasSelection) return flowMatchesSelection(row, selection, centroids)
+    if (previewActive && hoverPreview) {
+      return matchesGeoFilter(row, hoverPreview, hoverCustomIso3Set)
+    }
     return true
   }
 
   const focusActive = hasSelection || previewActive
+  const focusDimAlpha = selectionDimsOthers ? SELECTION_DIM_ALPHA : PREVIEW_DIM_ALPHA
 
   const hoveredIsSelected = Boolean(
-    hasSelection && hoveredRow && matchesSelection(hoveredRow, selection),
+    hasSelection && hoveredRow && flowMatchesSelection(hoveredRow, selection, centroids),
   )
   const showHover = Boolean(hoveredRow && !hoveredIsSelected && !previewActive)
+
+  const selectCollectionPoint = useCallback(
+    (row: PlottedFlow) => {
+      const key = plotPositionKey(row.plot_lon, row.plot_lat)
+      const group = pointGroups.get(key)
+      if (group && group.length > 1) {
+        onSelect({ type: 'point', lat: row.plot_lat, lon: row.plot_lon })
+        return
+      }
+      onSelect(selectionFromFlow(row, false))
+    },
+    [pointGroups, onSelect],
+  )
 
   const onHover = useCallback((info: PickingInfo) => {
     const obj = info.object
@@ -290,7 +345,11 @@ export default function ExploreMap({
     }
 
     if (highlightFeatures) {
-      const highlightKey = activeGeo.countryIso3 ?? activeGeo.continent ?? 'none'
+      const highlightKey =
+        activeGeo.customId ??
+        activeGeo.countryIso3 ??
+        activeGeo.continent ??
+        'none'
       built.push(
         new GeoJsonLayer({
           id: `highlight-area-${highlightKey}`,
@@ -316,19 +375,19 @@ export default function ExploreMap({
           getTargetPosition: (d) => [d.institute_lon as number, d.institute_lat as number],
           getSourceColor: (d) =>
             focusActive && !flowIsFocused(d)
-              ? withAlpha(ARC_SOURCE_DEFAULT, DIM_ALPHA)
+              ? withAlpha(ARC_SOURCE_DEFAULT, focusDimAlpha)
               : ARC_SOURCE_DEFAULT,
           getTargetColor: (d) =>
             focusActive && !flowIsFocused(d)
-              ? withAlpha(ARC_TARGET_DEFAULT, DIM_ALPHA)
+              ? withAlpha(ARC_TARGET_DEFAULT, focusDimAlpha)
               : ARC_TARGET_DEFAULT,
           getWidth: 1.2,
           widthMinPixels: 1,
           greatCircle: true,
           parameters: NO_DEPTH,
           updateTriggers: {
-            getSourceColor: [focusActive, selection, hoverPreview, previewActive],
-            getTargetColor: [focusActive, selection, hoverPreview, previewActive],
+            getSourceColor: [focusActive, focusDimAlpha, selection, hoverPreview, previewActive],
+            getTargetColor: [focusActive, focusDimAlpha, selection, hoverPreview, previewActive],
           },
           onClick: (info: PickingInfo<PlottedFlow>) => {
             if (info.object) onSelect(selectionFromFlow(info.object, false))
@@ -350,21 +409,21 @@ export default function ExploreMap({
           getRadius: (d) => (d.used_centroid ? 4 : 3),
           getFillColor: (d) =>
             focusActive && !flowIsFocused(d)
-              ? withAlpha(AMBER, DIM_ALPHA)
+              ? withAlpha(AMBER, focusDimAlpha)
               : AMBER,
           getLineColor: (d) =>
             focusActive && !flowIsFocused(d)
-              ? withAlpha(COLLECTION_LINE, DIM_ALPHA)
+              ? withAlpha(COLLECTION_LINE, focusDimAlpha)
               : COLLECTION_LINE,
           lineWidthMinPixels: 1,
           stroked: true,
           parameters: NO_DEPTH,
           updateTriggers: {
-            getFillColor: [focusActive, selection, hoverPreview, previewActive],
-            getLineColor: [focusActive, selection, hoverPreview, previewActive],
+            getFillColor: [focusActive, focusDimAlpha, selection, hoverPreview, previewActive],
+            getLineColor: [focusActive, focusDimAlpha, selection, hoverPreview, previewActive],
           },
           onClick: (info: PickingInfo<PlottedFlow>) => {
-            if (info.object) onSelect(selectionFromFlow(info.object, false))
+            if (info.object) selectCollectionPoint(info.object)
           },
         }),
       )
@@ -383,18 +442,18 @@ export default function ExploreMap({
           getRadius: 3,
           getFillColor: (d) =>
             focusActive && !flowIsFocused(d)
-              ? withAlpha(BLUE, DIM_ALPHA)
+              ? withAlpha(BLUE, focusDimAlpha)
               : BLUE,
           getLineColor: (d) =>
             focusActive && !flowIsFocused(d)
-              ? withAlpha(INSTITUTE_LINE, DIM_ALPHA)
+              ? withAlpha(INSTITUTE_LINE, focusDimAlpha)
               : INSTITUTE_LINE,
           lineWidthMinPixels: 1,
           stroked: true,
           parameters: NO_DEPTH,
           updateTriggers: {
-            getFillColor: [focusActive, selection, hoverPreview, previewActive],
-            getLineColor: [focusActive, selection, hoverPreview, previewActive],
+            getFillColor: [focusActive, focusDimAlpha, selection, hoverPreview, previewActive],
+            getLineColor: [focusActive, focusDimAlpha, selection, hoverPreview, previewActive],
           },
           onClick: (info: PickingInfo<PlottedFlow>) => {
             if (info.object) onSelect(selectionFromFlow(info.object, true))
@@ -441,7 +500,7 @@ export default function ExploreMap({
           stroked: true,
           parameters: NO_DEPTH,
           onClick: (info: PickingInfo<PlottedFlow>) => {
-            if (info.object) onSelect(selectionFromFlow(info.object, false))
+            if (info.object) selectCollectionPoint(info.object)
           },
         }),
       )
@@ -538,6 +597,7 @@ export default function ExploreMap({
     layers,
     hasSelection,
     focusActive,
+    focusDimAlpha,
     previewActive,
     hoverPreview,
     selection,
@@ -546,6 +606,9 @@ export default function ExploreMap({
     showHover,
     hoveredRow,
     onSelect,
+    selectCollectionPoint,
+    hoverCustomIso3Set,
+    centroids,
   ])
 
   const getTooltip = (info: PickingInfo<WorldFeature>) => {

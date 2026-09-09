@@ -3,7 +3,7 @@
 import { useMemo, useState } from 'react'
 import { ArrowLeft, Search } from 'lucide-react'
 import { regionTitle } from '../SidebarPanels'
-import type { CoverageStats } from '../regions/regionData'
+import type { CoverageStats } from '../regionData'
 import type { GeoFilter, RegionFlow } from '../types'
 import {
   buildSequencingBreakdown,
@@ -19,6 +19,7 @@ type ExploreLeftSidebarProps = {
   geoFilter: GeoFilter
   continentCards: RegionCard[]
   countryCards: RegionCard[]
+  customCards: RegionCard[]
   coverage: CoverageStats
   /** Flows for DestinationBars (region totals or taxon-scoped). */
   barsFlows: RegionFlow[]
@@ -66,7 +67,7 @@ function RegionCardButton({
     >
       <div className="region-card-head">
         <strong>{card.name}</strong>
-        {card.kind === 'country' && (
+        {card.kind !== 'continent' && (
           <span className="region-card-sub">{card.continent}</span>
         )}
       </div>
@@ -91,12 +92,14 @@ function RegionCardButton({
 function ListState({
   continentCards,
   countryCards,
+  customCards,
   loading,
   onSelectRegion,
   onHoverRegion,
 }: {
   continentCards: RegionCard[]
   countryCards: RegionCard[]
+  customCards: RegionCard[]
   loading: boolean
   onSelectRegion: (card: RegionCard) => void
   onHoverRegion: (card: RegionCard | null) => void
@@ -105,10 +108,21 @@ function ListState({
   const [query, setQuery] = useState('')
 
   const cards = useMemo(() => {
-    if (tab === 'custom') return []
-    const source = tab === 'continents' ? continentCards : countryCards
+    const source =
+      tab === 'custom'
+        ? customCards
+        : tab === 'continents'
+          ? continentCards
+          : countryCards
     return filterCards(source, query)
-  }, [tab, continentCards, countryCards, query])
+  }, [tab, continentCards, countryCards, customCards, query])
+
+  const searchPlaceholder =
+    tab === 'custom'
+      ? 'Search custom regions…'
+      : tab === 'countries'
+        ? 'Search countries…'
+        : 'Search continents…'
 
   return (
     <div className="explore-list">
@@ -119,11 +133,8 @@ function ListState({
             type="search"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder={
-              tab === 'countries' ? 'Search countries…' : 'Search continents…'
-            }
+            placeholder={searchPlaceholder}
             aria-label="Search regions"
-            disabled={tab === 'custom'}
           />
         </label>
         <div className="explore-tabs" role="tablist" aria-label="Region type">
@@ -132,8 +143,6 @@ function ListState({
             role="tab"
             className={`explore-tab ${tab === 'custom' ? 'is-active' : ''}`}
             aria-selected={tab === 'custom'}
-            aria-disabled="true"
-            title="Custom regions coming soon"
             onClick={() => setTab('custom')}
           >
             Custom
@@ -160,9 +169,7 @@ function ListState({
       </div>
 
       <div className="explore-card-list" role="list">
-        {tab === 'custom' ? (
-          <p className="explore-empty">Custom regions coming soon.</p>
-        ) : loading ? (
+        {loading ? (
           <p className="explore-empty">Loading regions…</p>
         ) : cards.length === 0 ? (
           <p className="explore-empty">
@@ -331,6 +338,7 @@ export default function ExploreLeftSidebar({
   geoFilter,
   continentCards,
   countryCards,
+  customCards,
   coverage,
   barsFlows,
   loading,
@@ -345,7 +353,9 @@ export default function ExploreLeftSidebar({
   scopeBarsToTaxon,
   onScopeBarsToTaxonChange,
 }: ExploreLeftSidebarProps) {
-  const hasRegion = Boolean(geoFilter.continent || geoFilter.country)
+  const hasRegion = Boolean(
+    geoFilter.continent || geoFilter.country || geoFilter.customId,
+  )
 
   return (
     <aside className="explore-left">
@@ -367,6 +377,7 @@ export default function ExploreLeftSidebar({
         <ListState
           continentCards={continentCards}
           countryCards={countryCards}
+          customCards={customCards}
           loading={loading}
           onSelectRegion={onSelectRegion}
           onHoverRegion={onHoverRegion}

@@ -1,234 +1,172 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
-import { ArrowLeft, ArrowRight, ChevronRight, ExternalLink, Search, X } from 'lucide-react'
-import { Combobox, type ComboboxOption } from './Combobox'
+import { useEffect, useMemo, useState, type ReactNode } from 'react'
+import { ArrowRight, ExternalLink, Search, X } from 'lucide-react'
 import {
   formatCoord,
   instituteKey,
   type GeoFilter,
   type RegionFlow,
-  type RegionStats,
-  type Selection,
-  type SpeciesFlow,
 } from './types'
-
-type FlowRow = RegionFlow | SpeciesFlow
+import { customRegionLabel } from './explore/customRegions'
 
 const PAGE_SIZE = 30
 
-function Breadcrumb({ regionLabel, current }: { regionLabel: string | null; current: string }) {
+function ncbiGenomeUrl(accession: string): string {
+  return `https://www.ncbi.nlm.nih.gov/datasets/genome/${accession}/`
+}
+
+function DetailTitle({
+  kicker,
+  title,
+  subtitle,
+  italicTitle,
+  onClear,
+  children,
+}: {
+  kicker: string
+  title: string
+  subtitle?: string
+  italicTitle?: boolean
+  onClear: () => void
+  children?: ReactNode
+}) {
   return (
-    <div className="detail-breadcrumb" aria-label="Breadcrumb">
-      <span>{regionLabel || 'All regions'}</span>
-      <ChevronRight size={11} aria-hidden="true" />
-      <span className="detail-breadcrumb-current">{current}</span>
+    <div className="explore-detail-head detail-panel-head">
+      <div className="detail-title explore-detail-title">
+        <div className="detail-title-top">
+          <span className="detail-kicker">{kicker}</span>
+          <button
+            type="button"
+            className="icon-button"
+            onClick={onClear}
+            aria-label="Close details panel"
+          >
+            <X size={17} />
+          </button>
+        </div>
+        <h2>{italicTitle ? <i>{title}</i> : title}</h2>
+        {subtitle ? <p>{subtitle}</p> : null}
+        {children}
+      </div>
     </div>
   )
 }
 
-export function SpeciesSearch({
-  flows,
-  selection,
+function SpeciesListSection({
+  rows,
+  heading,
+  listKey,
+  renderRight,
   onSelect,
 }: {
-  flows: FlowRow[]
-  selection: Selection
-  onSelect: (selection: Selection) => void
+  rows: RegionFlow[]
+  heading: string
+  listKey: string
+  renderRight: (row: RegionFlow) => ReactNode
+  onSelect: (taxid: string) => void
 }) {
-  const options: ComboboxOption[] = useMemo(
-    () =>
-      flows
-        .filter((row) => row.species_taxid && row.species_scientific_name)
-        .map((row) => {
-          const label = row.species_scientific_name
-          const sub = row.collection_country || undefined
-          return {
-            key: row.species_taxid,
-            label,
-            sub,
-            searchText: `${label} ${sub ?? ''}`.toLowerCase(),
-          }
-        })
-        .sort((a, b) => a.label.localeCompare(b.label)),
-    [flows],
-  )
-  const selectedKey = selection?.type === 'species' ? selection.taxid : ''
-  const selectedLabel = selectedKey
-    ? options.find((opt) => opt.key === selectedKey)?.label ?? ''
-    : ''
+  const [visible, setVisible] = useState(PAGE_SIZE)
+  const [query, setQuery] = useState('')
+
+  useEffect(() => {
+    setVisible(PAGE_SIZE)
+    setQuery('')
+  }, [listKey])
+
+  const filteredRows = useMemo(() => {
+    const q = query.trim().toLowerCase()
+    if (!q) return rows
+    return rows.filter(
+      (row) =>
+        row.species_scientific_name.toLowerCase().includes(q) ||
+        row.collection_country.toLowerCase().includes(q) ||
+        (row.institute_name?.toLowerCase().includes(q) ?? false) ||
+        (row.institute_country?.toLowerCase().includes(q) ?? false),
+    )
+  }, [rows, query])
+  const shown = filteredRows.slice(0, visible)
 
   return (
-    <Combobox
-      placeholder="Search species…"
-      value={selectedKey}
-      selectedLabel={selectedLabel}
-      options={options}
-      onPick={(key) => onSelect({ type: 'species', taxid: key })}
-      onClear={() => onSelect(null)}
-    />
-  )
-}
-
-export function InstituteSearch({
-  flows,
-  selection,
-  onSelect,
-}: {
-  flows: FlowRow[]
-  selection: Selection
-  onSelect: (selection: Selection) => void
-}) {
-  const options: ComboboxOption[] = useMemo(() => {
-    const byKey = new Map<string, ComboboxOption>()
-    for (const row of flows) {
-      const key = instituteKey(row)
-      if (!key || !row.institute_name) continue
-      if (!byKey.has(key)) {
-        const label = row.institute_name
-        const sub = row.institute_country || undefined
-        byKey.set(key, {
-          key,
-          label,
-          sub,
-          searchText: `${label} ${sub ?? ''}`.toLowerCase(),
-        })
-      }
-    }
-    return [...byKey.values()].sort((a, b) => a.label.localeCompare(b.label))
-  }, [flows])
-
-  const selectedKey = selection?.type === 'institute' ? selection.key : ''
-  const selectedLabel = selectedKey
-    ? options.find((opt) => opt.key === selectedKey)?.label ?? ''
-    : ''
-
-  return (
-    <Combobox
-      placeholder="Search institutes…"
-      value={selectedKey}
-      selectedLabel={selectedLabel}
-      options={options}
-      onPick={(key) => onSelect({ type: 'institute', key })}
-      onClear={() => onSelect(null)}
-    />
-  )
-}
-
-function pct(part: number, total: number): string {
-  if (!total) return '0%'
-  return `${Math.round((100 * part) / total)}%`
-}
-
-export function RegionOverview({
-  title,
-  stats,
-  onSelectInstitute,
-}: {
-  title: string
-  stats: RegionStats
-  onSelectInstitute: (key: string) => void
-}) {
-  return (
-    <div className="region-panel">
-      <div className="region-title">
-        <span className="detail-kicker">Region overview</span>
-        <h2>{title}</h2>
-        <p>{stats.total.toLocaleString()} species with assemblies</p>
+    <div className="species-index">
+      <div className="index-heading">
+        <span>{heading}</span>
+        <span>
+          {Math.min(visible, filteredRows.length).toLocaleString()} /{' '}
+          {filteredRows.length.toLocaleString()}
+          {query && ` (of ${rows.length.toLocaleString()})`}
+        </span>
       </div>
-      <div className="kpi-grid">
-        <div className="kpi-card">
-          <span>In-region / domestic</span>
-          <b>{stats.domestic.toLocaleString()}</b>
-          <small>{pct(stats.domestic, stats.total)}</small>
+      {rows.length > PAGE_SIZE && (
+        <div className="species-filter-box">
+          <Search size={12} aria-hidden="true" />
+          <input
+            type="search"
+            value={query}
+            onChange={(event) => {
+              setQuery(event.target.value)
+              setVisible(PAGE_SIZE)
+            }}
+            placeholder="Filter species in this list…"
+            aria-label="Filter species"
+          />
         </div>
-        <div className="kpi-card">
-          <span>Offshore</span>
-          <b>{stats.offshore.toLocaleString()}</b>
-          <small>{pct(stats.offshore, stats.total)}</small>
-        </div>
-        <div className="kpi-card">
-          <span>Submitter unknown</span>
-          <b>{stats.unknown.toLocaleString()}</b>
-          <small>{pct(stats.unknown, stats.total)}</small>
-        </div>
-      </div>
-      <section className="rank-block">
-        <div className="section-label">Top submitter institutes</div>
-        {stats.topInstitutes.length === 0 ? (
-          <p className="rank-empty">No resolved institutes in this scope.</p>
-        ) : (
-          <ol className="rank-list">
-            {stats.topInstitutes.map((item, index) => (
-              <li key={item.key}>
-                <button type="button" className="rank-row" onClick={() => onSelectInstitute(item.key)}>
-                  <span className="rank-index">{index + 1}</span>
-                  <span className="rank-label">{item.label}</span>
-                  <span className="rank-count">{item.count.toLocaleString()}</span>
-                </button>
-              </li>
-            ))}
-          </ol>
-        )}
-      </section>
-      <section className="rank-block">
-        <div className="section-label">Top submitter countries</div>
-        {stats.topSubmitterCountries.length === 0 ? (
-          <p className="rank-empty">No resolved submitter countries in this scope.</p>
-        ) : (
-          <ol className="rank-list">
-            {stats.topSubmitterCountries.map((item, index) => (
-              <li key={item.key} className="rank-row static">
-                <span className="rank-index">{index + 1}</span>
-                <span className="rank-label">{item.label}</span>
-                <span className="rank-count">{item.count.toLocaleString()}</span>
-              </li>
-            ))}
-          </ol>
-        )}
-      </section>
+      )}
+      {shown.length === 0 ? (
+        <p className="rank-empty species-filter-empty">No species match &ldquo;{query}&rdquo;.</p>
+      ) : (
+        shown.map((row) => (
+          <button
+            key={row.species_taxid}
+            type="button"
+            className="species-row"
+            onClick={() => onSelect(row.species_taxid)}
+          >
+            <span>
+              <i>{row.species_scientific_name}</i>
+              <small>{row.collection_country || 'Unknown collection country'}</small>
+            </span>
+            <span className="species-flow">{renderRight(row)}</span>
+          </button>
+        ))
+      )}
+      {visible < filteredRows.length && (
+        <button type="button" className="show-more" onClick={() => setVisible((n) => n + PAGE_SIZE)}>
+          Show more ({(filteredRows.length - visible).toLocaleString()} remaining)
+        </button>
+      )}
     </div>
   )
 }
 
 export function SpeciesDetail({
   row,
-  regionLabel,
-  onBack,
   onClear,
   onSelectInstitute,
 }: {
-  row: FlowRow
-  regionLabel: string | null
-  onBack: () => void
+  row: RegionFlow
   onClear: () => void
   onSelectInstitute: (key: string) => void
 }) {
   const key = instituteKey(row)
   const hasCollectionCoords = row.collection_lat != null && row.collection_lon != null
+  const accession = row.assembly_accession
+
   return (
     <div className="detail-panel">
-      <div className="detail-head">
-        <button className="back-index" onClick={onBack}>
-          <ArrowLeft size={15} /> {regionLabel ? `Back to ${regionLabel}` : 'Back to overview'}
-        </button>
-        <button className="icon-button" onClick={onClear} aria-label="Clear selection">
-          <X size={17} />
-        </button>
-      </div>
-      <div className="detail-title">
-        <Breadcrumb regionLabel={regionLabel} current={row.species_scientific_name} />
-        <span className="detail-kicker">Species</span>
-        <h2>
-          <i>{row.species_scientific_name}</i>
-        </h2>
-        <p>NCBI taxid {row.species_taxid || '—'}</p>
+      <DetailTitle
+        kicker="Species details"
+        title={row.species_scientific_name}
+        subtitle={`NCBI taxid ${row.species_taxid || '—'}`}
+        italicTitle
+        onClear={onClear}
+      >
         <div className="detail-flow">
           <span>{row.collection_country || 'Unknown origin'}</span>
           <span className="spark-arrow">→</span>
           <span>{row.institute_name || 'Submitter unresolved'}</span>
         </div>
-      </div>
+      </DetailTitle>
       <div className="location-stack">
         <section className="location-card">
           <div className="location-card-head">
@@ -290,7 +228,19 @@ export function SpeciesDetail({
         <div className="assembly-grid">
           <div>
             <span>Accession</span>
-            <b>{row.assembly_accession || '—'}</b>
+            <b>
+              {accession ? (
+                <a href={ncbiGenomeUrl(accession)} target="_blank" rel="noreferrer">
+                  {accession} <ExternalLink size={11} />
+                </a>
+              ) : (
+                '—'
+              )}
+            </b>
+          </div>
+          <div>
+            <span>Quality</span>
+            <b>{row.assembly_level || '—'}</b>
           </div>
           <div>
             <span>Submitter</span>
@@ -318,25 +268,14 @@ export function SpeciesDetail({
 export function InstituteDetail({
   keyName,
   rows,
-  regionLabel,
-  onBack,
   onClear,
   onSelectSpecies,
 }: {
   keyName: string
-  rows: FlowRow[]
-  regionLabel: string | null
-  onBack: () => void
+  rows: RegionFlow[]
   onClear: () => void
   onSelectSpecies: (taxid: string) => void
 }) {
-  const [visible, setVisible] = useState(PAGE_SIZE)
-  const [query, setQuery] = useState('')
-  useEffect(() => {
-    setVisible(PAGE_SIZE)
-    setQuery('')
-  }, [keyName])
-
   const sample = rows[0]
   const name = sample?.institute_name || keyName
   const country = sample?.institute_country
@@ -345,36 +284,18 @@ export function InstituteDetail({
   const lat = sample?.institute_lat
   const lon = sample?.institute_lon
 
-  const filteredRows = useMemo(() => {
-    const q = query.trim().toLowerCase()
-    if (!q) return rows
-    return rows.filter(
-      (row) =>
-        row.species_scientific_name.toLowerCase().includes(q) ||
-        row.collection_country.toLowerCase().includes(q),
-    )
-  }, [rows, query])
-  const shown = filteredRows.slice(0, visible)
-
   return (
     <div className="detail-panel">
-      <div className="detail-head">
-        <button className="back-index" onClick={onBack}>
-          <ArrowLeft size={15} /> {regionLabel ? `Back to ${regionLabel}` : 'Back to overview'}
-        </button>
-        <button className="icon-button" onClick={onClear} aria-label="Clear selection">
-          <X size={17} />
-        </button>
-      </div>
-      <div className="detail-title">
-        <Breadcrumb regionLabel={regionLabel} current={name} />
-        <span className="detail-kicker">Institute</span>
-        <h2>{name}</h2>
-        <p>{[country, continent].filter(Boolean).join(' · ') || 'Geography unresolved'}</p>
+      <DetailTitle
+        kicker="Institute details"
+        title={name}
+        subtitle={[country, continent].filter(Boolean).join(' · ') || 'Geography unresolved'}
+        onClear={onClear}
+      >
         <div className="detail-flow">
           <span>{rows.length.toLocaleString()} species in current scope</span>
         </div>
-      </div>
+      </DetailTitle>
       <div className="location-stack">
         <section className="location-card">
           <div className="location-card-head">
@@ -403,60 +324,68 @@ export function InstituteDetail({
           </dl>
         </section>
       </div>
-      <div className="species-index">
-        <div className="index-heading">
-          <span>Species submitted</span>
-          <span>
-            {Math.min(visible, filteredRows.length).toLocaleString()} / {filteredRows.length.toLocaleString()}
-            {query && ` (of ${rows.length.toLocaleString()})`}
-          </span>
+      <SpeciesListSection
+        rows={rows}
+        heading="Species submitted"
+        listKey={keyName}
+        onSelect={onSelectSpecies}
+        renderRight={(row) => <b>{row.collection_continent}</b>}
+      />
+    </div>
+  )
+}
+
+export function PointSpeciesList({
+  rows,
+  onClear,
+  onSelectSpecies,
+}: {
+  rows: RegionFlow[]
+  onClear: () => void
+  onSelectSpecies: (taxid: string) => void
+}) {
+  const sample = rows[0]
+  const country = sample?.collection_country || 'Unknown location'
+  const isCentroid =
+    sample != null && (sample.collection_lat == null || sample.collection_lon == null)
+  const listKey = sample
+    ? `${sample.collection_country_iso3 ?? country}:${rows.length}`
+    : 'empty'
+
+  return (
+    <div className="detail-panel">
+      <DetailTitle
+        kicker="Location details"
+        title={country}
+        subtitle={
+          isCentroid
+            ? 'Country-level centroid · multiple species'
+            : 'Shared collection coordinates'
+        }
+        onClear={onClear}
+      >
+        <div className="detail-flow">
+          <span>{rows.length.toLocaleString()} species at this point</span>
         </div>
-        {rows.length > PAGE_SIZE && (
-          <div className="species-filter-box">
-            <Search size={12} aria-hidden="true" />
-            <input
-              type="search"
-              value={query}
-              onChange={(event) => {
-                setQuery(event.target.value)
-                setVisible(PAGE_SIZE)
-              }}
-              placeholder="Filter species in this list…"
-              aria-label="Filter species submitted by this institute"
-            />
-          </div>
+      </DetailTitle>
+      <SpeciesListSection
+        rows={rows}
+        heading="Species here"
+        listKey={listKey}
+        onSelect={onSelectSpecies}
+        renderRight={(row) => (
+          <span>
+            <b>{row.institute_name || 'Unresolved institute'}</b>
+            <small>{row.institute_country || '—'}</small>
+          </span>
         )}
-        {shown.length === 0 ? (
-          <p className="rank-empty species-filter-empty">No species match &ldquo;{query}&rdquo;.</p>
-        ) : (
-          shown.map((row) => (
-            <button
-              key={row.species_taxid}
-              type="button"
-              className="species-row"
-              onClick={() => onSelectSpecies(row.species_taxid)}
-            >
-              <span>
-                <i>{row.species_scientific_name}</i>
-                <small>{row.collection_country || 'Unknown collection country'}</small>
-              </span>
-              <span className="species-flow">
-                <b>{row.collection_continent}</b>
-              </span>
-            </button>
-          ))
-        )}
-        {visible < filteredRows.length && (
-          <button type="button" className="show-more" onClick={() => setVisible((n) => n + PAGE_SIZE)}>
-            Show more ({(filteredRows.length - visible).toLocaleString()} remaining)
-          </button>
-        )}
-      </div>
+      />
     </div>
   )
 }
 
 export function regionTitle(geoFilter: GeoFilter): string {
+  if (geoFilter.customId) return customRegionLabel(geoFilter.customId) ?? geoFilter.customId
   if (geoFilter.country) return geoFilter.country
   if (geoFilter.continent) return geoFilter.continent
   return 'All regions'

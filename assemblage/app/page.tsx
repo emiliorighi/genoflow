@@ -6,52 +6,29 @@ import {
   ChevronDown,
   Database,
   Dna,
-  GitBranch,
   Globe2,
   MapPinned,
-  Network,
 } from 'lucide-react'
 import { buildMapHref } from './map/types'
-
-type OffshoreCountry = {
-  country: string
-  offshoreCount: number
-  totalWithGeo: number
-  offshorePct: number
-}
 
 type LandingStats = {
   generatedAt: string
   kpis: {
     speciesWithAssemblies: number
-    speciesWithCoordinates: number
-    speciesWithCoordinatesPct: number
+    speciesWithGeography: number
+    speciesWithGeographyPct: number
     totalInstitutes: number
     institutesWithCoordinates: number
     institutesWithCoordinatesPct: number
     speciesInAtlas: number
     speciesWithInstituteArc: number
     speciesWithInstituteArcPct: number
-    topInstituteCount: number
-    topInstituteSharePct: number
-    topInstituteName: string
-    topInstituteSpeciesCount: number
-    topInstituteShareSinglePct: number
   }
   pipeline: {
     step: number
     title: string
     description: string
-    script: string
   }[]
-  offshore: {
-    definitionNote: string
-    comparableSpecies: number
-    offshoreSpecies: number
-    offshoreSpeciesPct: number
-    topCollectionCountries: OffshoreCountry[]
-    topInstituteCountries: OffshoreCountry[]
-  }
   disclaimers: {
     id: string
     text: string
@@ -72,146 +49,45 @@ async function getLandingStats(): Promise<LandingStats | null> {
   }
 }
 
-function formatThousands(value: number): { whole: string; unit: string } {
-  if (value >= 1000) {
-    return { whole: (value / 1000).toFixed(1).replace(/\.0$/, ''), unit: 'k' }
-  }
-  return { whole: String(value), unit: '' }
-}
-
 const QUICK_START_LINKS = [
+  { label: 'Latin America', href: buildMapHref({ customId: 'latin-america' }) },
   { label: 'Africa', href: buildMapHref({ continent: 'Africa' }) },
-  { label: 'South America', href: buildMapHref({ continent: 'South America' }) },
-  { label: 'Asia', href: buildMapHref({ continent: 'Asia' }) },
+  { label: 'Spain', href: buildMapHref({ country: 'Spain' }) },
+  { label: 'UK', href: buildMapHref({ country: 'United Kingdom' }) },
 ]
 
-const PIPELINE_ICONS = [Database, GitBranch, Network, Dna] as const
-
-/** Top-5 submitter institutes by collected-sample count (from species_flows.parquet). */
-const PREVIEW_FLOWS: {
-  id: string
-  collection: [number, number]
-  institute: [number, number]
-}[] = [
-  { id: 'sanger', collection: [-39.99, 178.21], institute: [52.2, 0.12] },
-  { id: 'dalian', collection: [38.91, 121.61], institute: [38.91, 121.6] },
-  { id: 'genoscope', collection: [-42.0, 173.0], institute: [48.63, 2.44] },
-  { id: 'jgi', collection: [-42.0, 174.0], institute: [37.87, -122.27] },
-  { id: 'utah', collection: [-40.81, 173.0], institute: [40.76, -111.89] },
-]
-
-function project(lat: number, lng: number) {
-  return { x: ((lng + 180) / 360) * 1000, y: ((90 - lat) / 180) * 480 }
+/** Short chart captions for pipeline nodes (avoids long prose from landing-stats). */
+const PIPELINE_SHORT_COPY: Record<number, string> = {
+  1: 'NCBI assemblies, BioSample locality, species taxids.',
+  2: 'ENA lineages rolled up for map filters.',
+  3: 'Submitter strings matched to ROR country and coordinates.',
+  4: 'One row per species written to the map parquet.',
 }
 
-function MiniMap() {
-  return (
-    <div className="mini-map atlas-grid" aria-label="Decorative preview of collection and submitter sites">
-      <svg viewBox="0 0 1000 480" role="img" aria-hidden="true">
-        <path className="world-shape" d="M90 132l70-45 106 14 60 52-25 46-76 8-33 38-46-16-19-58-46-9zm290 38 40-29 58 19 14 52-38 32-38-22-42 14-28-37zm180-6 45-34 88 14 52 43-15 45-61-6-24 45-38-17-22-42-42-17zm150 144 35-18 43 26 22 57-33 50-43-15-12-56z" />
-        {PREVIEW_FLOWS.map((item) => {
-          const a = project(item.collection[0], item.collection[1])
-          const b = project(item.institute[0], item.institute[1])
-          const midX = (a.x + b.x) / 2
-          const midY = Math.min(a.y, b.y) - 70
-          return (
-            <path
-              key={item.id}
-              className="preview-arc"
-              d={`M ${a.x} ${a.y} Q ${midX} ${midY} ${b.x} ${b.y}`}
-            />
-          )
-        })}
-        {PREVIEW_FLOWS.map((item) => {
-          const p = project(item.collection[0], item.collection[1])
-          return (
-            <circle
-              key={`c-${item.id}`}
-              className="preview-dot collection-dot"
-              cx={p.x}
-              cy={p.y}
-              r="7"
-            />
-          )
-        })}
-        {PREVIEW_FLOWS.map((item) => {
-          const p = project(item.institute[0], item.institute[1])
-          return (
-            <rect
-              key={`s-${item.id}`}
-              className="preview-dot submitter-dot"
-              x={p.x - 5}
-              y={p.y - 5}
-              width="10"
-              height="10"
-            />
-          )
-        })}
-      </svg>
-      <div className="mini-map-label">
-        <span className="eyebrow">Live specimen atlas</span>
-        <span>Top 5 institutes · sample flows</span>
-      </div>
-    </div>
-  )
-}
-
-function OffshoreRankList({
-  title,
-  subtitle,
-  rows,
-}: {
-  title: string
-  subtitle: string
-  rows: OffshoreCountry[]
-}) {
-  const maxCount = Math.max(...rows.map((r) => r.offshoreCount), 1)
-  return (
-    <div className="offshore-panel">
-      <div className="offshore-panel-head">
-        <h3>{title}</h3>
-        <p>{subtitle}</p>
-      </div>
-      <ol className="offshore-rank">
-        {rows.map((row) => (
-          <li key={row.country}>
-            <div className="offshore-rank-meta">
-              <span className="offshore-country">{row.country}</span>
-              <span className="offshore-count">
-                {row.offshoreCount.toLocaleString()}
-                <small>{Math.round(row.offshorePct)}%</small>
-              </span>
-            </div>
-            <div className="offshore-bar-track" aria-hidden="true">
-              <div
-                className="offshore-bar-fill"
-                style={{ width: `${(100 * row.offshoreCount) / maxCount}%` }}
-              />
-            </div>
-          </li>
-        ))}
-      </ol>
-    </div>
-  )
+function formatPct(value: number): string {
+  return Number.isInteger(value) ? String(value) : value.toFixed(1)
 }
 
 export default async function Page() {
   const stats = await getLandingStats()
-  const kpis = stats?.kpis
-  const coordsSpecies = formatThousands(kpis?.speciesWithCoordinates ?? 10858)
-  const institutesPct = Math.round(kpis?.institutesWithCoordinatesPct ?? 63.5)
-  const arcPct = Math.round(kpis?.speciesWithInstituteArcPct ?? 80.8)
-  const topShare = Math.round(kpis?.topInstituteSharePct ?? 60.3)
-  const topLabCount = kpis?.topInstituteCount ?? 5
   const pipeline = stats?.pipeline ?? []
-  const offshore = stats?.offshore
   const disclaimers = stats?.disclaimers
+  const kpis = stats?.kpis
+  const speciesWithAssemblies = kpis?.speciesWithAssemblies ?? 29410
+  const speciesWithGeography = kpis?.speciesWithGeography ?? 23237
+  const speciesWithGeographyPct = kpis?.speciesWithGeographyPct ?? 79.0
+  const totalInstitutes = kpis?.totalInstitutes ?? 5697
+  const institutesWithCoordinates = kpis?.institutesWithCoordinates ?? 3619
+  const institutesWithCoordinatesPct = kpis?.institutesWithCoordinatesPct ?? 63.5
+  const speciesInAtlas = kpis?.speciesInAtlas ?? 23237
+  const speciesWithInstituteArc = kpis?.speciesWithInstituteArc ?? 17784
+  const speciesWithInstituteArcPct = kpis?.speciesWithInstituteArcPct ?? 76.5
 
   return (
     <main className="landing-shell">
       <nav className="top-nav landing-nav">
         <Link href="/" className="wordmark">
-          Assemblage<span className="wordmark-dot">.</span>
+          GenoFlow<span className="wordmark-dot">.</span>
         </Link>
         {process.env.NODE_ENV !== 'production' && <span className="mock-badge">MVP</span>}
         <div className="nav-links">
@@ -224,13 +100,12 @@ export default async function Page() {
       </nav>
       <section className="landing-hero">
         <div className="hero-copy">
-          <p className="eyebrow">
-            <span className="eyebrow-rule" /> INSDC assemblies · eukaryote flows
-          </p>
-          <h1>Is the South rich in species and poor in genomes?</h1>
+          <p className="eyebrow">Eukaryotes</p>
+          <h1>
+            GenoFlow<span className="wordmark-dot">.</span>
+          </h1>
           <p className="hero-subcopy">
-            Assemblage traces where species are collected and where their genomes are assembled. The
-            gap between those two points reveals who gets to build the reference record.
+            Tracking where species are collected against where their genomes are submitted.
           </p>
           <div className="hero-actions">
             <Link href="/map" className="button button-primary">
@@ -251,57 +126,39 @@ export default async function Page() {
             </div>
           </nav>
         </div>
-        <div className="hero-visual">
-          <MiniMap />
-          <div className="visual-caption">
-            <span>FIELD SITE</span>
-            <span>SUBMITTER</span>
-            <span>FLOW</span>
-          </div>
-        </div>
       </section>
-      <section className="stat-strip" aria-label="Atlas highlights">
-        <div className="stat">
-          <strong>
-            {coordsSpecies.whole}
-            {coordsSpecies.unit && <span className="stat-unit">{coordsSpecies.unit}</span>}
-          </strong>
-          <p>
-            of {(kpis?.speciesWithAssemblies ?? 29412).toLocaleString()} species with assemblies
-            carry collection coordinates
-          </p>
-        </div>
-        <div className="stat">
-          <strong>
-            {institutesPct}
-            <span>%</span>
-          </strong>
-          <p>
-            of {(kpis?.totalInstitutes ?? 5697).toLocaleString()} submitter institutes resolve to
-            ROR coordinates
-          </p>
-        </div>
-        <div className="stat">
-          <strong>
-            {arcPct}
-            <span>%</span>
-          </strong>
-          <p>of atlas species also draw a sample-to-institute flow arc</p>
-        </div>
-        <div className="stat">
-          <strong>
-            {topLabCount} <span className="stat-unit">labs</span>
-          </strong>
-          <p>account for {topShare}% of resolved sample-to-assembly flows</p>
+      <section className="landing-kpis" aria-label="Dataset overview">
+        <div className="landing-kpi-grid">
+          <article className="landing-kpi-card">
+            <span>Species with geography</span>
+            <b>{speciesWithGeography.toLocaleString()}</b>
+            <small>
+              of {speciesWithAssemblies.toLocaleString()} assemblies ·{' '}
+              {formatPct(speciesWithGeographyPct)}%
+            </small>
+          </article>
+          <article className="landing-kpi-card">
+            <span>Institutes geocoded</span>
+            <b>{institutesWithCoordinates.toLocaleString()}</b>
+            <small>
+              of {totalInstitutes.toLocaleString()} institutes ·{' '}
+              {formatPct(institutesWithCoordinatesPct)}%
+            </small>
+          </article>
+          <article className="landing-kpi-card">
+            <span>Species with full flow</span>
+            <b>{speciesWithInstituteArc.toLocaleString()}</b>
+            <small>
+              of {speciesInAtlas.toLocaleString()} atlas species ·{' '}
+              {formatPct(speciesWithInstituteArcPct)}%
+            </small>
+          </article>
         </div>
       </section>
       <section className="about-section" id="about">
         <div className="section-intro">
-          <p className="eyebrow">
-            <span className="eyebrow-rule" /> How to read the atlas
-          </p>
           <h2>Two maps, one species.</h2>
-          <p>Every record carries two geographies. Assemblage puts them back in the same frame.</p>
+          <p>Every record carries two geographies. GenoFlow puts them back in the same frame.</p>
         </div>
         <div className="reading-grid">
           <article className="reading-card">
@@ -310,10 +167,7 @@ export default async function Page() {
             </div>
             <span className="card-kicker">01 / Collected</span>
             <h3>Where the specimen entered the record.</h3>
-            <p>
-              Locality and country from the field sample. A place with biodiversity, context, and
-              often limited sequencing infrastructure.
-            </p>
+            <p>Locality and country recorded at the time of collection.</p>
           </article>
           <article className="reading-card">
             <div className="card-icon blue-icon">
@@ -333,7 +187,7 @@ export default async function Page() {
             <span className="card-kicker">03 / Flow</span>
             <h3>The distance between them.</h3>
             <p>
-              Follow the arc. South → North is not a verdict — it is a pattern worth making visible.
+              The line connecting where a species was collected and where its genome was submitted.
             </p>
             <Link href="/map" className="card-link">
               See the flow <ArrowUpRight size={15} />
@@ -344,67 +198,26 @@ export default async function Page() {
       {pipeline.length > 0 && (
         <section className="about-section pipeline-section" id="pipeline">
           <div className="section-intro">
-            <p className="eyebrow">
-              <span className="eyebrow-rule" /> How the atlas is built
-            </p>
             <h2>From GenBank to the map.</h2>
             <p>
               Assemblies and taxonomy first, then ROR geography, then one flow per species.
             </p>
           </div>
-          <div className="reading-grid pipeline-grid">
-            {pipeline.map((step, index) => {
-              const Icon = PIPELINE_ICONS[index] ?? Database
-              const iconClass =
-                index % 2 === 0 ? 'amber-icon' : index === 2 ? 'blue-icon' : 'flow-icon'
-              return (
-                <article key={step.step} className="reading-card">
-                  <div className={`card-icon ${iconClass}`}>
-                    <Icon size={18} />
-                  </div>
-                  <span className="card-kicker">
-                    {String(step.step).padStart(2, '0')} / Step
-                  </span>
-                  <h3>{step.title}</h3>
-                  <p>{step.description}</p>
-                </article>
-              )
-            })}
-          </div>
-        </section>
-      )}
-      {offshore && offshore.topCollectionCountries.length > 0 && (
-        <section className="about-section offshore-section" id="offshore">
-          <div className="section-intro">
-            <p className="eyebrow">
-              <span className="eyebrow-rule" /> Offshore sequencing
-            </p>
-            <h2>Where geography splits.</h2>
-            <p>
-              {Math.round(offshore.offshoreSpeciesPct)}% of{' '}
-              {offshore.comparableSpecies.toLocaleString()} comparable species were assembled in a
-              different country than where the sample was collected.
-            </p>
-          </div>
-          <div className="offshore-grid">
-            <OffshoreRankList
-              title="Collected offshore"
-              subtitle="Countries whose specimens are most often assembled elsewhere"
-              rows={offshore.topCollectionCountries}
-            />
-            <OffshoreRankList
-              title="Assembling offshore"
-              subtitle="Countries that sequence the most specimens collected abroad"
-              rows={offshore.topInstituteCountries}
-            />
-          </div>
-          <p className="offshore-note">{offshore.definitionNote}</p>
+          <ol className="pipeline-flow">
+            {pipeline.map((step) => (
+              <li key={step.step} className="pipeline-node">
+                <span className="pipeline-step">{String(step.step).padStart(2, '0')}</span>
+                <h3>{step.title}</h3>
+                <p>{PIPELINE_SHORT_COPY[step.step] ?? step.description}</p>
+              </li>
+            ))}
+          </ol>
         </section>
       )}
       <footer className="landing-footer">
         <div>
           <Globe2 size={16} />
-          <span>Assemblage / field notes</span>
+          <span>GenoFlow / field notes</span>
         </div>
         {disclaimers && disclaimers.length > 0 ? (
           <ul className="disclaimer-list">
@@ -424,7 +237,7 @@ export default async function Page() {
         ) : (
           <p>
             <strong>Reading the caveat:</strong> geo_loc_name is sample collection, not always wild
-            origin. Submitter country is a proxy for “where assembled”, not the sequencer. Data
+            origin. Submitter country is a proxy for where assembled, not the sequencer. Data
             sourced from INSDC / ENA eukaryote assemblies.
           </p>
         )}

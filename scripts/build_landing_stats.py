@@ -28,7 +28,7 @@ DEFAULT_OUTPUT = REPO_ROOT / "assemblage" / "public" / "data" / "landing-stats.j
 # Match scripts/build_map_dataset.py defaults (Homo sapiens, Mus musculus)
 DEFAULT_EXCLUDE_TAXIDS = frozenset({"9606", "10090"})
 TOP_INSTITUTE_COUNT = 5
-TOP_COUNTRY_COUNT = 8
+TOP_COUNTRY_COUNT = 5
 
 PIPELINE_STEPS = [
     {
@@ -39,7 +39,6 @@ PIPELINE_STEPS = [
             "extract BioSample coordinates and geo_loc_name, and resolve each "
             "assembly to a species-level taxid."
         ),
-        "script": "scripts/collect_eukaryote_assemblies.py",
     },
     {
         "step": 2,
@@ -48,7 +47,6 @@ PIPELINE_STEPS = [
             "Walk ENA taxonomy lineages up to Eukaryota for every species with "
             "assemblies, then roll up counts for kingdom → genus filters on the map."
         ),
-        "script": "scripts/build_taxonomic_tree.py",
     },
     {
         "step": 3,
@@ -58,7 +56,6 @@ PIPELINE_STEPS = [
             "Registry (ROR) record — affiliation chosen-match first, exact query "
             "fallback — and attach country plus coordinates."
         ),
-        "script": "scripts/resolve_submitter_institutes.py",
     },
     {
         "step": 4,
@@ -68,7 +65,6 @@ PIPELINE_STEPS = [
             "(prefer latest coordinate-bearing assembly, else country-only; "
             "human and lab mouse excluded) and write the map parquet."
         ),
-        "script": "scripts/build_map_dataset.py",
     },
 ]
 
@@ -98,9 +94,14 @@ def load_assembly_kpis(
 ) -> dict[str, int]:
     species_all: set[str] = set()
     species_with_coords: set[str] = set()
+    species_with_geography: set[str] = set()
     with path.open(encoding="utf-8", newline="") as fh:
         reader = csv.DictReader(fh, delimiter="\t")
-        required = {"species_taxid", "has_biosample_coordinates"}
+        required = {
+            "species_taxid",
+            "has_biosample_coordinates",
+            "biosample_collection_country",
+        }
         missing = required - set(reader.fieldnames or [])
         if missing:
             raise SystemExit(
@@ -112,11 +113,16 @@ def load_assembly_kpis(
             if not tid or tid in exclude_taxids:
                 continue
             species_all.add(tid)
-            if (row.get("has_biosample_coordinates") or "").strip().casefold() == "true":
+            has_coords = (row.get("has_biosample_coordinates") or "").strip().casefold() == "true"
+            has_country = bool((row.get("biosample_collection_country") or "").strip())
+            if has_coords:
                 species_with_coords.add(tid)
+            if has_coords or has_country:
+                species_with_geography.add(tid)
     return {
         "speciesWithAssemblies": len(species_all),
         "speciesWithCoordinates": len(species_with_coords),
+        "speciesWithGeography": len(species_with_geography),
     }
 
 
@@ -223,10 +229,13 @@ def build_stats(
             by_collection_offshore[coll_country] += 1
             by_institute_offshore[inst_country] += 1
 
+    # Top collection countries whose species were sequenced/assembled abroad
+    # (collection country ISO3 != submitter institute country ISO3).
     top_collection = [
         country_entry(c, by_collection_offshore[c], by_collection_total[c])
         for c, _ in by_collection_offshore.most_common(TOP_COUNTRY_COUNT)
     ]
+    # Top institute countries that assemble the most specimens collected abroad.
     top_institute_countries = [
         country_entry(c, by_institute_offshore[c], by_institute_total[c])
         for c, _ in by_institute_offshore.most_common(TOP_COUNTRY_COUNT)
@@ -234,6 +243,7 @@ def build_stats(
 
     species_with_assemblies = assembly_kpis["speciesWithAssemblies"]
     species_with_coords = assembly_kpis["speciesWithCoordinates"]
+    species_with_geography = assembly_kpis["speciesWithGeography"]
     total_institutes = institute_kpis["totalInstitutes"]
     institutes_with_coords = institute_kpis["institutesWithCoordinates"]
 
@@ -251,10 +261,12 @@ def build_stats(
         {
             "id": "missing-geography",
             "text": (
-                f"Only {species_with_coords:,} of {species_with_assemblies:,} "
-                f"species with GenBank assemblies ({pct(species_with_coords, species_with_assemblies)}%) "
-                "carry usable BioSample coordinates. Many species never enter the atlas, "
-                "so visible flows are a biased slice of real sequencing geography."
+                f"Only {species_with_geography:,} of {species_with_assemblies:,} "
+                f"species with GenBank assemblies "
+                f"({pct(species_with_geography, species_with_assemblies)}%) "
+                "carry some retrievable geography (country and/or coordinates). "
+                "Many species never enter the atlas, so visible flows are a biased "
+                "slice of real sequencing geography."
             ),
         },
         {
@@ -274,6 +286,8 @@ def build_stats(
             "speciesWithAssemblies": species_with_assemblies,
             "speciesWithCoordinates": species_with_coords,
             "speciesWithCoordinatesPct": pct(species_with_coords, species_with_assemblies),
+            "speciesWithGeography": species_with_geography,
+            "speciesWithGeographyPct": pct(species_with_geography, species_with_assemblies),
             "totalInstitutes": total_institutes,
             "institutesWithCoordinates": institutes_with_coords,
             "institutesWithCoordinatesPct": pct(institutes_with_coords, total_institutes),
@@ -367,10 +381,18 @@ def main(argv: Optional[list[str]] = None) -> int:
     eprint(f"Wrote {args.output} ({args.output.stat().st_size:,} bytes)")
     eprint(
         f"KPIs: {stats['kpis']['speciesWithAssemblies']} species w/ assemblies; "
+        f"{stats['kpis']['speciesWithGeography']} w/ geography; "
         f"{stats['kpis']['speciesWithCoordinates']} w/ coords; "
         f"{stats['kpis']['institutesWithCoordinates']}/{stats['kpis']['totalInstitutes']} "
         f"institutes geocoded; offshore {stats['offshore']['offshoreSpeciesPct']}%"
     )
+    top_offshore = stats["offshore"]["topCollectionCountries"]
+    if top_offshore:
+        ranking = ", ".join(
+            f"{row['country']} ({row['offshoreCount']}, {row['offshorePct']}%)"
+            for row in top_offshore
+        )
+        eprint(f"Top {len(top_offshore)} collection countries sequenced offshore: {ranking}")
     return 0
 
 

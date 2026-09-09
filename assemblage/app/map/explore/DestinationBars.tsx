@@ -1,7 +1,8 @@
 'use client'
 
+import { CircleHelp } from 'lucide-react'
 import {
-  DESTINATION_OTHER_KEY,
+  DESTINATION_UNRESOLVED,
   type DestinationContinentGroup,
   type DestinationMode,
 } from './exploreData'
@@ -14,6 +15,13 @@ type DestinationBarsProps = {
   onSelectInstitute: (key: string) => void
 }
 
+const UNRESOLVED_PARENT_TIP =
+  'Assemblies whose submitting institute has no known continent in the metadata.'
+const UNRESOLVED_COUNTRY_TIP =
+  'Assemblies whose submitting institute country is missing or unknown.'
+const UNRESOLVED_INSTITUTE_TIP =
+  'Assemblies whose submitting institute could not be identified.'
+
 function pctOf(part: number, total: number): number {
   if (total <= 0) return 0
   return Math.round((1000 * part) / total) / 10
@@ -23,18 +31,42 @@ function formatPct(part: number, total: number): string {
   return `${pctOf(part, total)}%`
 }
 
+function DestHelpTip({ text }: { text: string }) {
+  // Span (not button): may sit inside institute row <button> or <summary>.
+  return (
+    <span
+      className="dest-help"
+      title={text}
+      role="img"
+      aria-label={text}
+      onClick={(event) => {
+        event.preventDefault()
+        event.stopPropagation()
+      }}
+      onMouseDown={(event) => {
+        event.preventDefault()
+        event.stopPropagation()
+      }}
+    >
+      <CircleHelp size={12} aria-hidden="true" />
+    </span>
+  )
+}
+
 function ChildRowContent({
   label,
   country,
   count,
   total,
   tipFullName,
+  helpTip,
 }: {
   label: string
   country?: string | null
   count: number
   total: number
   tipFullName?: boolean
+  helpTip?: string
 }) {
   const childPct = pctOf(count, total)
   return (
@@ -48,6 +80,7 @@ function ChildRowContent({
           {country ? (
             <span className="dest-label-sub"> ({country})</span>
           ) : null}
+          {helpTip ? <DestHelpTip text={helpTip} /> : null}
         </span>
         <span className="dest-stats">
           <b>{count.toLocaleString()}</b>
@@ -90,12 +123,18 @@ export default function DestinationBars({
       <ul className="dest-list">
         {groups.map((group) => {
           const continentPct = pctOf(group.total, total)
+          const parentUnresolved = group.continent === DESTINATION_UNRESOLVED
           return (
             <li key={group.continent} className="dest-continent">
               <details open>
                 <summary className="dest-continent-summary">
                   <div className="dest-meta">
-                    <span className="dest-label">{group.continent}</span>
+                    <span className="dest-label">
+                      <span className="dest-label-main">{group.continent}</span>
+                      {parentUnresolved ? (
+                        <DestHelpTip text={UNRESOLVED_PARENT_TIP} />
+                      ) : null}
+                    </span>
                     <span className="dest-stats">
                       <b>{group.total.toLocaleString()}</b>
                       <span>{formatPct(group.total, total)}</span>
@@ -114,10 +153,16 @@ export default function DestinationBars({
                 </summary>
                 <ul className="dest-countries">
                   {group.children.map((child) => {
-                    const clickable =
-                      mode === 'institute' && child.key !== DESTINATION_OTHER_KEY
-                    const tipFullName =
-                      mode === 'institute' && child.key !== DESTINATION_OTHER_KEY
+                    const clickable = mode === 'institute'
+                    const tipFullName = mode === 'institute'
+                    const childUnresolved =
+                      child.label === DESTINATION_UNRESOLVED ||
+                      child.key === DESTINATION_UNRESOLVED
+                    const helpTip = childUnresolved
+                      ? mode === 'institute'
+                        ? UNRESOLVED_INSTITUTE_TIP
+                        : UNRESOLVED_COUNTRY_TIP
+                      : undefined
                     return (
                       <li
                         key={`${group.continent}:${child.key}`}
@@ -135,6 +180,7 @@ export default function DestinationBars({
                               count={child.count}
                               total={total}
                               tipFullName={tipFullName}
+                              helpTip={helpTip}
                             />
                           </button>
                         ) : (
@@ -145,6 +191,7 @@ export default function DestinationBars({
                               count={child.count}
                               total={total}
                               tipFullName={tipFullName}
+                              helpTip={helpTip}
                             />
                           </div>
                         )}

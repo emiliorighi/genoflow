@@ -1,9 +1,11 @@
 {
-  "generatedAt": "2026-09-09T07:17:28+00:00",
+  "generatedAt": "2026-09-09T15:13:44+00:00",
   "kpis": {
     "speciesWithAssemblies": 29410,
     "speciesWithCoordinates": 11095,
     "speciesWithCoordinatesPct": 37.7,
+    "speciesWithGeography": 23237,
+    "speciesWithGeographyPct": 79.0,
     "totalInstitutes": 5697,
     "institutesWithCoordinates": 3619,
     "institutesWithCoordinatesPct": 63.5,
@@ -20,26 +22,22 @@
     {
       "step": 1,
       "title": "Fetch assemblies & taxonomy",
-      "description": "Stream NCBI GenBank eukaryote genome summaries via the datasets CLI, extract BioSample coordinates and geo_loc_name, and resolve each assembly to a species-level taxid.",
-      "script": "scripts/collect_eukaryote_assemblies.py"
+      "description": "Stream NCBI GenBank eukaryote genome summaries via the datasets CLI, extract BioSample coordinates and geo_loc_name, and resolve each assembly to a species-level taxid."
     },
     {
       "step": 2,
       "title": "Build the taxonomic tree",
-      "description": "Walk ENA taxonomy lineages up to Eukaryota for every species with assemblies, then roll up counts for kingdom → genus filters on the map.",
-      "script": "scripts/build_taxonomic_tree.py"
+      "description": "Walk ENA taxonomy lineages up to Eukaryota for every species with assemblies, then roll up counts for kingdom → genus filters on the map."
     },
     {
       "step": 3,
       "title": "Resolve institute geography",
-      "description": "Match each unique assembly_submitter string to a Research Organization Registry (ROR) record — affiliation chosen-match first, exact query fallback — and attach country plus coordinates.",
-      "script": "scripts/resolve_submitter_institutes.py"
+      "description": "Match each unique assembly_submitter string to a Research Organization Registry (ROR) record — affiliation chosen-match first, exact query fallback — and attach country plus coordinates."
     },
     {
       "step": 4,
       "title": "Assemble species flows",
-      "description": "Join assemblies, taxonomy, and institutes into one row per species (prefer latest coordinate-bearing assembly, else country-only; human and lab mouse excluded) and write the map parquet.",
-      "script": "scripts/build_map_dataset.py"
+      "description": "Join assemblies, taxonomy, and institutes into one row per species (prefer latest coordinate-bearing assembly, else country-only; human and lab mouse excluded) and write the map parquet."
     }
   ],
   "offshore": {
@@ -77,24 +75,6 @@
         "offshoreCount": 219,
         "totalWithGeo": 591,
         "offshorePct": 37.1
-      },
-      {
-        "country": "Costa Rica",
-        "offshoreCount": 187,
-        "totalWithGeo": 192,
-        "offshorePct": 97.4
-      },
-      {
-        "country": "Japan",
-        "offshoreCount": 185,
-        "totalWithGeo": 474,
-        "offshorePct": 39.0
-      },
-      {
-        "country": "France",
-        "offshoreCount": 184,
-        "totalWithGeo": 285,
-        "offshorePct": 64.6
       }
     ],
     "topInstituteCountries": [
@@ -127,24 +107,6 @@
         "offshoreCount": 303,
         "totalWithGeo": 3115,
         "offshorePct": 9.7
-      },
-      {
-        "country": "Germany",
-        "offshoreCount": 190,
-        "totalWithGeo": 453,
-        "offshorePct": 41.9
-      },
-      {
-        "country": "Spain",
-        "offshoreCount": 154,
-        "totalWithGeo": 226,
-        "offshorePct": 68.1
-      },
-      {
-        "country": "Japan",
-        "offshoreCount": 126,
-        "totalWithGeo": 415,
-        "offshorePct": 30.4
       }
     ]
   },
@@ -155,7 +117,7 @@
     },
     {
       "id": "missing-geography",
-      "text": "Only 11,095 of 29,410 species with GenBank assemblies (37.7%) carry usable BioSample coordinates. Many species never enter the atlas, so visible flows are a biased slice of real sequencing geography."
+      "text": "Only 23,237 of 29,410 species with GenBank assemblies (79.0%) carry some retrievable geography (country and/or coordinates). Many species never enter the atlas, so visible flows are a biased slice of real sequencing geography."
     },
     {
       "id": "geo-is-proxy",
