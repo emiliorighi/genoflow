@@ -25,11 +25,15 @@ import {
 } from './explore/exploreData'
 import {
   buildCountryTotals,
-  computeCoverageStats,
-  countsByIso3,
   type CountryCentroids,
   type SpeciesCountRow,
 } from './regionData'
+import {
+  filterByRank,
+  flowsForOutreachMode,
+  partitionOutreachFlows,
+  type OutreachMode,
+} from './explore/outreachFilter'
 import {
   InstituteDetail,
   PointSpeciesList,
@@ -43,7 +47,6 @@ import {
   TAXON_RANKS,
   decodeSelectionParam,
   encodeSelectionParam,
-  filterFlows,
   instituteKey,
   normalizeRegionFlows,
   type GeoFilter,
@@ -115,6 +118,7 @@ function MapPageInner() {
     () => initialParams.current.get(MAP_QUERY_KEYS.taxon) || '',
   )
   const [scopeBarsToTaxon, setScopeBarsToTaxon] = useState(false)
+  const [outreachMode, setOutreachMode] = useState<OutreachMode>('inshore')
   const [searchMode, setSearchMode] = useState<SearchMode>('species')
   const geoHydrated = useRef(false)
 
@@ -276,21 +280,28 @@ function MapPageInner() {
   const rankFilter: RankFilter | null =
     rankLevel && rankTaxid ? { rank: rankLevel, taxid: rankTaxid } : null
 
+  const outreachPartition = useMemo(() => {
+    if (!flows || !hasRegion) return null
+    return partitionOutreachFlows(flows, geoFilter, activeCustomIso3Set)
+  }, [flows, geoFilter, hasRegion, activeCustomIso3Set])
+
+  const outreachCounts = outreachPartition?.counts ?? {
+    all: 0,
+    inshore: 0,
+    offshore: 0,
+  }
+
   const regionFlows = useMemo(() => {
     if (!flows) return []
-    if (!hasRegion) return flows
-    return filterFlows(flows, null, geoFilter, activeCustomIso3Set)
-  }, [flows, geoFilter, hasRegion, activeCustomIso3Set])
+    if (!hasRegion || !outreachPartition) return flows
+    return flowsForOutreachMode(outreachPartition, outreachMode)
+  }, [flows, hasRegion, outreachPartition, outreachMode])
 
   const mapFlows = useMemo(() => {
     if (!flows) return []
-    return filterFlows(
-      flows,
-      rankFilter,
-      hasRegion ? geoFilter : EMPTY_GEO_FILTER,
-      hasRegion ? activeCustomIso3Set : null,
-    )
-  }, [flows, rankFilter, geoFilter, hasRegion, activeCustomIso3Set])
+    if (!hasRegion) return filterByRank(flows, rankFilter)
+    return filterByRank(regionFlows, rankFilter)
+  }, [flows, hasRegion, regionFlows, rankFilter])
 
   const barsFlows = useMemo(() => {
     if (scopeBarsToTaxon && rankFilter) return mapFlows
@@ -335,11 +346,6 @@ function MapPageInner() {
     searchParams,
   ])
 
-  const countsLookup = useMemo(
-    () => countsByIso3(speciesCounts ?? []),
-    [speciesCounts],
-  )
-
   const continentCards = useMemo(
     () =>
       buildContinentCards(speciesCounts ?? [], allCountryTotals, membershipLookup),
@@ -360,17 +366,6 @@ function MapPageInner() {
   const customCards = useMemo(
     () => buildRegionsTabCards(allCountryCards, membershipLookup),
     [allCountryCards, membershipLookup],
-  )
-
-  const coverage = useMemo(
-    () =>
-      computeCoverageStats(
-        geoFilter,
-        allCountryTotals,
-        countsLookup,
-        activeCustomIso3Set,
-      ),
-    [geoFilter, allCountryTotals, countsLookup, activeCustomIso3Set],
   )
 
   const rankSummaries = useMemo(
@@ -428,6 +423,7 @@ function MapPageInner() {
     setHoverPreview(null)
     clearSelection()
     setScopeBarsToTaxon(false)
+    setOutreachMode('inshore')
     if (card.kind === 'custom') {
       const customId = card.id.startsWith('custom:')
         ? card.id.slice('custom:'.length)
@@ -496,6 +492,7 @@ function MapPageInner() {
     setGeoFilter(EMPTY_GEO_FILTER)
     clearSelection()
     setScopeBarsToTaxon(false)
+    setOutreachMode('inshore')
   }
 
   const title = regionTitle(geoFilter)
@@ -529,7 +526,9 @@ function MapPageInner() {
           continentCards={continentCards}
           countryCards={countryCards}
           customCards={customCards}
-          coverage={coverage}
+          outreachMode={outreachMode}
+          outreachCounts={outreachCounts}
+          onOutreachModeChange={setOutreachMode}
           barsFlows={barsFlows}
           loading={!flows || !speciesCounts}
           onSelectRegion={onSelectRegion}

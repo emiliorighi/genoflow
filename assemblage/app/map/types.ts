@@ -100,7 +100,7 @@ export function instituteKey(row: RegionFlow | SpeciesFlow): string | null {
   return row.institute_ror_id || row.institute_name || null
 }
 
-/** Geo match for continent / country / custom region membership. */
+/** Collection-site geo match for continent / country / custom region membership. */
 export function matchesGeoFilter(
   row: RegionFlow | SpeciesFlow,
   geoFilter: GeoFilter,

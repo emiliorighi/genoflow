@@ -3,7 +3,6 @@
 import { useMemo, useState } from 'react'
 import { ArrowLeft, Search } from 'lucide-react'
 import { regionTitle } from '../SidebarPanels'
-import type { CoverageStats } from '../regionData'
 import type { GeoFilter, RegionFlow } from '../types'
 import {
   buildSequencingBreakdown,
@@ -12,6 +11,13 @@ import {
   type RegionCard,
 } from './exploreData'
 import DestinationBars from './DestinationBars'
+import {
+  OUTREACH_MODE_LABELS,
+  OUTREACH_MODE_SUBTITLES,
+  OUTREACH_MODES,
+  type OutreachCounts,
+  type OutreachMode,
+} from './outreachFilter'
 
 export type ExploreTab = 'regions' | 'continents' | 'countries'
 
@@ -20,7 +26,9 @@ type ExploreLeftSidebarProps = {
   continentCards: RegionCard[]
   countryCards: RegionCard[]
   customCards: RegionCard[]
-  coverage: CoverageStats
+  outreachMode: OutreachMode
+  outreachCounts: OutreachCounts
+  onOutreachModeChange: (mode: OutreachMode) => void
   /** Flows for DestinationBars (region totals or taxon-scoped). */
   barsFlows: RegionFlow[]
   loading: boolean
@@ -36,11 +44,6 @@ type ExploreLeftSidebarProps = {
   taxonSpeciesCount: number
   scopeBarsToTaxon: boolean
   onScopeBarsToTaxonChange: (scoped: boolean) => void
-}
-
-function formatPct(value: number | null): string {
-  if (value == null) return '—'
-  return `${value}%`
 }
 
 function formatCount(value: number | null): string {
@@ -193,7 +196,9 @@ function ListState({
 
 function DetailState({
   geoFilter,
-  coverage,
+  outreachMode,
+  outreachCounts,
+  onOutreachModeChange,
   barsFlows,
   onClearRegion,
   onSelectInstitute,
@@ -205,7 +210,9 @@ function DetailState({
   onScopeBarsToTaxonChange,
 }: {
   geoFilter: GeoFilter
-  coverage: CoverageStats
+  outreachMode: OutreachMode
+  outreachCounts: OutreachCounts
+  onOutreachModeChange: (mode: OutreachMode) => void
   barsFlows: RegionFlow[]
   onClearRegion: () => void
   onSelectInstitute: (key: string) => void
@@ -217,6 +224,7 @@ function DetailState({
   onScopeBarsToTaxonChange: (scoped: boolean) => void
 }) {
   const title = regionTitle(geoFilter)
+  const modeLabel = OUTREACH_MODE_LABELS[outreachMode]
   const [destMode, setDestMode] = useState<DestinationMode>('country')
   const groups = useMemo(
     () => buildSequencingBreakdown(barsFlows, destMode),
@@ -237,30 +245,28 @@ function DetailState({
       </div>
 
       <section className="explore-section explore-section-flush">
-        <div className="kpi-grid coverage-kpi-grid">
-          <div className="kpi-card">
-            <span>Sequenced</span>
-            <b>{coverage.sequenced.toLocaleString()}</b>
-            <small>INSDC assemblies</small>
-          </div>
-          <div className="kpi-card">
-            <span>vs GBIF</span>
-            <b>{formatCount(coverage.gbif)}</b>
-            <small>
-              {coverage.gbifPct != null
-                ? `${formatPct(coverage.gbifPct)} sequenced`
-                : 'no GBIF count'}
-            </small>
-          </div>
-          <div className="kpi-card">
-            <span>vs iNat</span>
-            <b>{formatCount(coverage.inat)}</b>
-            <small>
-              {coverage.inatPct != null
-                ? `${formatPct(coverage.inatPct)} sequenced`
-                : 'no iNat count'}
-            </small>
-          </div>
+        <div
+          className="kpi-grid coverage-kpi-grid"
+          role="radiogroup"
+          aria-label="Regional outreach mode"
+        >
+          {OUTREACH_MODES.map((mode) => {
+            const active = outreachMode === mode
+            return (
+              <button
+                key={mode}
+                type="button"
+                role="radio"
+                aria-checked={active}
+                className={`kpi-card kpi-card-toggle ${active ? 'is-active' : ''}`}
+                onClick={() => onOutreachModeChange(mode)}
+              >
+                <span>{OUTREACH_MODE_LABELS[mode]}</span>
+                <b>{outreachCounts[mode].toLocaleString()}</b>
+                <small>{OUTREACH_MODE_SUBTITLES[mode]}</small>
+              </button>
+            )
+          })}
         </div>
       </section>
 
@@ -323,7 +329,7 @@ function DetailState({
           </div>
         ) : null}
         <DestinationBars
-          regionLabel={title}
+          regionLabel={`${title} · ${modeLabel}`}
           total={barsTotal}
           mode={destMode}
           groups={groups}
@@ -339,7 +345,9 @@ export default function ExploreLeftSidebar({
   continentCards,
   countryCards,
   customCards,
-  coverage,
+  outreachMode,
+  outreachCounts,
+  onOutreachModeChange,
   barsFlows,
   loading,
   onSelectRegion,
@@ -362,7 +370,9 @@ export default function ExploreLeftSidebar({
       {hasRegion ? (
         <DetailState
           geoFilter={geoFilter}
-          coverage={coverage}
+          outreachMode={outreachMode}
+          outreachCounts={outreachCounts}
+          onOutreachModeChange={onOutreachModeChange}
           barsFlows={barsFlows}
           onClearRegion={onClearRegion}
           onSelectInstitute={onSelectInstitute}
