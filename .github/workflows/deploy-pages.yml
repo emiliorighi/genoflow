@@ -42,6 +42,9 @@ jobs:
       - name: Require map parquet
         run: test -f public/data/species_flows.parquet
 
+      - name: Require parquet wasm decoder
+        run: test -f public/wasm/parquet_wasm_bg.wasm
+
       - name: Build static export
         run: pnpm build
         env:

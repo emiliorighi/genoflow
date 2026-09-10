@@ -5,7 +5,6 @@ import { Suspense, useEffect, useMemo, useRef, useState } from 'react'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { Info } from 'lucide-react'
 import { load } from '@loaders.gl/core'
-import { ParquetLoader } from '@loaders.gl/parquet'
 import ExploreLeftSidebar from './explore/ExploreLeftSidebar'
 import ExploreMap, { type ExploreLayers } from './explore/ExploreMap'
 import ExploreToolbar, { type SearchMode } from './explore/ExploreToolbar'
@@ -40,7 +39,6 @@ import { publicUrl } from '../../lib/publicUrl'
 import {
   EMPTY_GEO_FILTER,
   MAP_QUERY_KEYS,
-  PARQUET_COLUMNS,
   TAXON_RANKS,
   decodeSelectionParam,
   encodeSelectionParam,
@@ -151,9 +149,12 @@ function MapPageInner() {
 
     async function loadData() {
       try {
+        // Dynamic import so parquet-wasm is never evaluated during Next.js
+        // static prerender (SSR would try to open a non-existent /ROOT/... wasm path).
+        const { ParquetArrowLoader } = await import('@loaders.gl/parquet')
         const [table, worldJson, centroidsJson, countsJson] = await Promise.all([
-          load(publicUrl('/data/species_flows.parquet'), ParquetLoader, {
-            parquet: { columnList: [...PARQUET_COLUMNS] },
+          load(publicUrl('/data/species_flows.parquet'), ParquetArrowLoader, {
+            parquet: { wasmUrl: publicUrl('/wasm/parquet_wasm_bg.wasm') },
           }),
           fetch(publicUrl('/data/world-110m.geojson')).then((res) => {
             if (!res.ok) throw new Error(`world geojson ${res.status}`)

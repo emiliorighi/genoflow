@@ -286,7 +286,16 @@ export function formatCoord(value: number, axis: 'lat' | 'lng'): string {
 export function normalizeRegionFlows(table: unknown): RegionFlow[] {
   if (!table || typeof table !== 'object') return []
   const maybe = table as { data?: unknown }
-  const raw = Array.isArray(maybe.data) ? maybe.data : Array.isArray(table) ? table : []
+  const data = maybe.data as unknown
+  // ParquetArrowLoader returns { shape: 'arrow-table', data: Arrow.Table };
+  // ParquetJSONLoader returns { shape: 'object-row-table', data: row[] }.
+  const raw = Array.isArray(data)
+    ? data
+    : data && typeof (data as { toArray?: unknown }).toArray === 'function'
+      ? (data as { toArray(): Record<string, unknown>[] }).toArray()
+      : Array.isArray(table)
+        ? table
+        : []
 
   const flows: RegionFlow[] = []
   for (const row of raw as Record<string, unknown>[]) {

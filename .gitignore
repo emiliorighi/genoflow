@@ -1,6 +1,7 @@
 graphify.out/
 graphify-out/
 .cursor/
+.corepack-home/
 /data/
 .env
 assemblage/package-lock.json
