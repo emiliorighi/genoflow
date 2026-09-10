@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import json
 import re
 import sys
 from collections import Counter
@@ -22,6 +23,8 @@ from typing import Any, Optional
 
 import pyarrow as pa
 import pyarrow.parquet as pq
+from shapely.geometry import Point, shape
+from shapely.prepared import prep
 
 EUKARYOTA_TAXID = "2759"
 MAX_WALK_DEPTH = 200
@@ -66,71 +69,83 @@ PARQUET_COLUMNS = [
 ]
 
 # BioSample collection_country free-text -> (continent, ISO_A3 for basemap highlight).
-# ISO3 is None when there is no matching Natural Earth 110m polygon (oceans, tiny islands).
-# Dependent territories map to the nearest visible sovereign polygon's ISO3.
+# Maps BioSample collection_country strings to (continent, iso3).
+# Synthetic codes (X*) are basin/region centroids from build_country_centroids.py.
+# Aliases cover common BioSample spelling variants and historical names.
 COUNTRY_TO_REGION: dict[str, tuple[str, Optional[str]]] = {
-    "": ("Unknown", None),
+    "": ("Unknown", "XUN"),
+    "Afghanistan": ("Asia", "AFG"),
+    "Africa": ("Africa", "XAF"),
     "Albania": ("Europe", "ALB"),
     "Algeria": ("Africa", "DZA"),
-    "American Samoa": ("Oceania", None),
+    "American Samoa": ("Oceania", "ASM"),
     "Angola": ("Africa", "AGO"),
     "Antarctica": ("Antarctica", "ATA"),
-    "Arctic Ocean": ("Unknown", None),
+    "Arctic Ocean": ("Unknown", "XAR"),
     "Argentina": ("South America", "ARG"),
     "Armenia": ("Asia", "ARM"),
-    "Atlantic Ocean": ("Unknown", None),
+    "Atlantic Ocean": ("Unknown", "XAT"),
     "Australia": ("Oceania", "AUS"),
     "Austria": ("Europe", "AUT"),
     "Azerbaijan": ("Asia", "AZE"),
-    "Baltic Sea": ("Unknown", None),
+    "Bahamas": ("North America", "BHS"),
+    "Bahrain": ("Asia", "BHR"),
+    "Baltic Sea": ("Unknown", "XBA"),
     "Bangladesh": ("Asia", "BGD"),
+    "Barbados": ("North America", "BRB"),
     "Belarus": ("Europe", "BLR"),
     "Belgium": ("Europe", "BEL"),
     "Belize": ("North America", "BLZ"),
     "Benin": ("Africa", "BEN"),
-    "Bermuda": ("North America", None),
+    "Bermuda": ("North America", "BMU"),
     "Bhutan": ("Asia", "BTN"),
     "Bolivia": ("South America", "BOL"),
-    "Borneo": ("Asia", None),
+    "Borneo": ("Asia", "XBN"),
     "Botswana": ("Africa", "BWA"),
     "Brazil": ("South America", "BRA"),
+    "British Virgin Islands": ("North America", "VGB"),
     "Brunei": ("Asia", "BRN"),
     "Bulgaria": ("Europe", "BGR"),
     "Burkina Faso": ("Africa", "BFA"),
     "Burundi": ("Africa", "BDI"),
+    "Cambodia": ("Asia", "KHM"),
     "Cameroon": ("Africa", "CMR"),
     "Canada": ("North America", "CAN"),
-    "Cape Verde": ("Africa", None),
+    "Cape Verde": ("Africa", "CPV"),
     "Central African Republic": ("Africa", "CAF"),
     "Chile": ("South America", "CHL"),
     "China": ("Asia", "CHN"),
-    "Cocos Islands": ("Asia", None),
+    "Cocos Islands": ("Asia", "CCK"),
     "Colombia": ("South America", "COL"),
-    "Comoros": ("Africa", None),
+    "Comoros": ("Africa", "COM"),
     "Costa Rica": ("North America", "CRI"),
     "Cote d'Ivoire": ("Africa", "CIV"),
     "Croatia": ("Europe", "HRV"),
     "Cuba": ("North America", "CUB"),
-    "Curacao": ("North America", None),
+    "Curacao": ("North America", "CUW"),
     "Cyprus": ("Asia", "CYP"),
     "Czech Republic": ("Europe", "CZE"),
+    "Czech republic": ("Europe", "CZE"),
     "Czechia": ("Europe", "CZE"),
     "Democratic Republic of the Congo": ("Africa", "COD"),
     "Denmark": ("Europe", "DNK"),
     "Djibouti": ("Africa", "DJI"),
-    "Dominica": ("North America", None),
+    "Dominica": ("North America", "DMA"),
     "Dominican Republic": ("North America", "DOM"),
     "Ecuador": ("South America", "ECU"),
     "Egypt": ("Africa", "EGY"),
+    "El Salvador": ("North America", "SLV"),
     "Estonia": ("Europe", "EST"),
     "Eswatini": ("Africa", "SWZ"),
     "Ethiopia": ("Africa", "ETH"),
     "Falkland Islands (Islas Malvinas)": ("South America", "FLK"),
-    "Faroe Islands": ("Europe", None),
+    "Faroe Islands": ("Europe", "FRO"),
     "Fiji": ("Oceania", "FJI"),
     "Finland": ("Europe", "FIN"),
     "France": ("Europe", "FRA"),
-    "French Guiana": ("South America", None),
+    "French Guiana": ("South America", "GUF"),
+    "French Polynesia": ("Oceania", "PYF"),
+    "French Southern and Antarctic Lands": ("Antarctica", "ATF"),
     "Gabon": ("Africa", "GAB"),
     "Gambia": ("Africa", "GMB"),
     "Georgia": ("Asia", "GEO"),
@@ -138,29 +153,36 @@ COUNTRY_TO_REGION: dict[str, tuple[str, Optional[str]]] = {
     "Ghana": ("Africa", "GHA"),
     "Greece": ("Europe", "GRC"),
     "Greenland": ("North America", "GRL"),
-    "Guadeloupe": ("North America", None),
-    "Guam": ("Oceania", None),
+    "Grenada": ("North America", "GRD"),
+    "Guadeloupe": ("North America", "GLP"),
+    "Guam": ("Oceania", "GUM"),
     "Guatemala": ("North America", "GTM"),
+    "Guinea": ("Africa", "GIN"),
     "Guyana": ("South America", "GUY"),
+    "Haiti": ("North America", "HTI"),
     "Honduras": ("North America", "HND"),
-    "Hong Kong": ("Asia", None),
+    "Hong Kong": ("Asia", "HKG"),
     "Hungary": ("Europe", "HUN"),
     "Iceland": ("Europe", "ISL"),
     "India": ("Asia", "IND"),
-    "Indian Ocean": ("Unknown", None),
+    "Indian Ocean": ("Unknown", "XIN"),
     "Indonesia": ("Asia", "IDN"),
     "Iran": ("Asia", "IRN"),
     "Iraq": ("Asia", "IRQ"),
     "Ireland": ("Europe", "IRL"),
     "Israel": ("Asia", "ISR"),
     "Italy": ("Europe", "ITA"),
+    "Jamaica": ("North America", "JAM"),
     "Japan": ("Asia", "JPN"),
+    "Jersey": ("Europe", "JEY"),
     "Jordan": ("Asia", "JOR"),
     "Kazakhstan": ("Asia", "KAZ"),
     "Kenya": ("Africa", "KEN"),
     "Korea": ("Asia", "KOR"),
+    "Kosovo": ("Europe", "XKX"),
     "Kuwait": ("Asia", "KWT"),
     "Kyrgyzstan": ("Asia", "KGZ"),
+    "Laos": ("Asia", "LAO"),
     "Latvia": ("Europe", "LVA"),
     "Lebanon": ("Asia", "LBN"),
     "Lesotho": ("Africa", "LSO"),
@@ -168,85 +190,109 @@ COUNTRY_TO_REGION: dict[str, tuple[str, Optional[str]]] = {
     "Libya": ("Africa", "LBY"),
     "Lithuania": ("Europe", "LTU"),
     "Luxembourg": ("Europe", "LUX"),
-    "Macao": ("Asia", None),
+    "Macao": ("Asia", "MAC"),
     "Madagascar": ("Africa", "MDG"),
     "Malawi": ("Africa", "MWI"),
+    "Malaya": ("Asia", "MYS"),
     "Malaysia": ("Asia", "MYS"),
+    "Maldives": ("Asia", "MDV"),
     "Mali": ("Africa", "MLI"),
-    "Malta": ("Europe", None),
-    "Martinique": ("North America", None),
-    "Mauritius": ("Africa", None),
-    "Mayotte": ("Africa", None),
-    "Mediterranean Sea": ("Unknown", None),
+    "Malta": ("Europe", "MLT"),
+    "Marshall Islands": ("Oceania", "MHL"),
+    "Martinique": ("North America", "MTQ"),
+    "Mauritius": ("Africa", "MUS"),
+    "Mayotte": ("Africa", "MYT"),
+    "Mediterranean Sea": ("Unknown", "XME"),
     "Mexico": ("North America", "MEX"),
-    "Monaco": ("Europe", None),
+    "Micronesia": ("Oceania", "FSM"),
+    "Micronesia, Federated States of": ("Oceania", "FSM"),
+    "Moldova": ("Europe", "MDA"),
+    "Monaco": ("Europe", "MCO"),
     "Mongolia": ("Asia", "MNG"),
     "Montenegro": ("Europe", "MNE"),
     "Morocco": ("Africa", "MAR"),
     "Mozambique": ("Africa", "MOZ"),
     "Myanmar": ("Asia", "MMR"),
     "Namibia": ("Africa", "NAM"),
+    "nd": ("Unknown", "XUN"),
     "Nepal": ("Asia", "NPL"),
     "Netherlands": ("Europe", "NLD"),
+    "Netherlands Antilles": ("North America", "CUW"),
     "New Caledonia": ("Oceania", "NCL"),
     "New Zealand": ("Oceania", "NZL"),
     "Nicaragua": ("North America", "NIC"),
+    "Niger": ("Africa", "NER"),
     "Nigeria": ("Africa", "NGA"),
     "North Macedonia": ("Europe", "MKD"),
-    "North Sea": ("Unknown", None),
+    "North Sea": ("Unknown", "XNS"),
+    "Northern Mariana Islands": ("Oceania", "MNP"),
     "Norway": ("Europe", "NOR"),
     "Oman": ("Asia", "OMN"),
-    "Pacific Ocean": ("Unknown", None),
+    "Pacific Ocean": ("Unknown", "XPA"),
     "Pakistan": ("Asia", "PAK"),
-    "Palau": ("Oceania", None),
+    "Palau": ("Oceania", "PLW"),
     "Panama": ("North America", "PAN"),
     "Papua New Guinea": ("Oceania", "PNG"),
     "Paraguay": ("South America", "PRY"),
     "Peru": ("South America", "PER"),
+    "Phillipines": ("Asia", "PHL"),
     "Philippines": ("Asia", "PHL"),
-    "Pitcairn Islands": ("Oceania", None),
+    "Pitcairn Islands": ("Oceania", "PCN"),
     "Poland": ("Europe", "POL"),
     "Portugal": ("Europe", "PRT"),
     "Puerto Rico": ("North America", "PRI"),
     "Qatar": ("Asia", "QAT"),
-    "Reunion": ("Africa", None),
+    "Republic of the Congo": ("Africa", "COG"),
+    "Reunion": ("Africa", "REU"),
     "Romania": ("Europe", "ROU"),
     "Russia": ("Europe", "RUS"),
-    "Réunion": ("Africa", None),
-    "Saint Vincent and the Grenadines": ("North America", None),
+    "Rwanda": ("Africa", "RWA"),
+    "Réunion": ("Africa", "REU"),
+    "Saint Barthelemy": ("North America", "BLM"),
+    "Saint Helena": ("Africa", "SHN"),
+    "Saint Kitts and Nevis": ("North America", "KNA"),
+    "Saint Lucia": ("North America", "LCA"),
+    "Saint Vincent and the Grenadines": ("North America", "VCT"),
+    "Samoa": ("Oceania", "WSM"),
+    "Sao Tome and Principe": ("Africa", "STP"),
     "Saudi Arabia": ("Asia", "SAU"),
     "Senegal": ("Africa", "SEN"),
     "Serbia": ("Europe", "SRB"),
-    "Seychelles": ("Africa", None),
+    "Seychelles": ("Africa", "SYC"),
     "Sierra Leone": ("Africa", "SLE"),
-    "Singapore": ("Asia", None),
+    "Singapore": ("Asia", "SGP"),
     "Slovakia": ("Europe", "SVK"),
     "Slovenia": ("Europe", "SVN"),
     "Solomon Islands": ("Oceania", "SLB"),
     "Somalia": ("Africa", "SOM"),
     "South Africa": ("Africa", "ZAF"),
+    "South Georgia and the South Sandwich Islands": ("Antarctica", "SGS"),
     "South Korea": ("Asia", "KOR"),
-    "Southern Ocean": ("Unknown", None),
+    "Southern Ocean": ("Unknown", "XSO"),
     "Spain": ("Europe", "ESP"),
     "Sri Lanka": ("Asia", "LKA"),
-    "St Kitts and Nevis": ("North America", None),
+    "St Kitts and Nevis": ("North America", "KNA"),
     "Sudan": ("Africa", "SDN"),
     "Suriname": ("South America", "SUR"),
-    "Svalbard": ("Europe", None),
+    "Svalbard": ("Europe", "SJM"),
     "Sweden": ("Europe", "SWE"),
     "Switzerland": ("Europe", "CHE"),
+    "Syria": ("Asia", "SYR"),
     "Taiwan": ("Asia", "TWN"),
     "Tajikistan": ("Asia", "TJK"),
     "Tanzania": ("Africa", "TZA"),
     "Thailand": ("Asia", "THA"),
     "The Netherlands": ("Europe", "NLD"),
     "Togo": ("Africa", "TGO"),
-    "Tonga": ("Oceania", None),
+    "Tonga": ("Oceania", "TON"),
     "Trinidad and Tobago": ("North America", "TTO"),
     "Tunisia": ("Africa", "TUN"),
     "Turkey": ("Asia", "TUR"),
+    "Turkmenistan": ("Asia", "TKM"),
+    "Turks and Caicos Islands": ("North America", "TCA"),
     "Türkiye": ("Asia", "TUR"),
     "USA": ("North America", "USA"),
+    "USSR": ("Europe", "RUS"),
     "Uganda": ("Africa", "UGA"),
     "Ukraine": ("Europe", "UKR"),
     "United Arab Emirates": ("Asia", "ARE"),
@@ -257,7 +303,10 @@ COUNTRY_TO_REGION: dict[str, tuple[str, Optional[str]]] = {
     "Venezuela": ("South America", "VEN"),
     "Viet Nam": ("Asia", "VNM"),
     "Vietnam": ("Asia", "VNM"),
+    "Virgin Islands": ("North America", "VIR"),
+    "W. Africa": ("Africa", "XWA"),
     "Yemen": ("Asia", "YEM"),
+    "Zaire": ("Africa", "COD"),
     "Zambia": ("Africa", "ZMB"),
     "Zimbabwe": ("Africa", "ZWE"),
 }
@@ -266,6 +315,100 @@ COUNTRY_TO_REGION: dict[str, tuple[str, Optional[str]]] = {
 def resolve_collection_region(country: str) -> tuple[str, Optional[str]]:
     """Map a BioSample collection_country string to (continent, iso3)."""
     return COUNTRY_TO_REGION.get(country, ("Unknown", None))
+
+
+def _feature_iso3(props: dict[str, Any]) -> Optional[str]:
+    """Pick a usable ISO3 from Natural Earth properties (handles -99 quirks)."""
+    for key in ("ISO_A3", "ISO_A3_EH", "ADM0_A3"):
+        iso = str(props.get(key) or "").strip().upper()
+        if iso and iso not in ("-99", "NULL", "N/A") and len(iso) == 3 and iso.isalpha():
+            return iso
+    return None
+
+
+def load_country_polygons(
+    geojson_path: Path,
+) -> list[tuple[Any, str, str, str]]:
+    """Load prepared country polygons as (prepared_geom, name, iso3, continent)."""
+    with geojson_path.open(encoding="utf-8") as fh:
+        data = json.load(fh)
+
+    polygons: list[tuple[Any, str, str, str]] = []
+    skipped = 0
+    for feat in data.get("features") or []:
+        props = feat.get("properties") or {}
+        name = str(props.get("NAME") or props.get("ADMIN") or "").strip()
+        iso3 = _feature_iso3(props)
+        continent = str(props.get("CONTINENT") or "").strip() or "Unknown"
+        if not name or not iso3:
+            skipped += 1
+            continue
+        try:
+            geom = shape(feat.get("geometry"))
+        except Exception as exc:  # noqa: BLE001
+            eprint(f"WARNING: bad geometry for {iso3} ({name}): {exc}")
+            skipped += 1
+            continue
+        if geom.is_empty:
+            skipped += 1
+            continue
+        polygons.append((prep(geom), name, iso3, continent))
+
+    eprint(
+        f"Loaded {len(polygons)} country polygons from {geojson_path} "
+        f"({skipped} features skipped)"
+    )
+    return polygons
+
+
+def fill_countries_from_coordinates(
+    records: list[dict[str, Any]],
+    geojson_path: Path,
+) -> list[dict[str, Any]]:
+    """Fill empty collection_country from lat/lon via point-in-polygon (NE 50m)."""
+    if not geojson_path.exists():
+        raise FileNotFoundError(
+            f"Countries GeoJSON required for reverse-geocoding not found: {geojson_path}"
+        )
+
+    # Prefer BioSample-style labels already in COUNTRY_TO_REGION when ISO3 matches.
+    preferred_by_iso3: dict[str, tuple[str, str]] = {}
+    for name, (continent, iso3) in COUNTRY_TO_REGION.items():
+        if not name or not iso3 or iso3.startswith("X"):
+            continue
+        if iso3 not in preferred_by_iso3:
+            preferred_by_iso3[iso3] = (name, continent)
+
+    polygons = load_country_polygons(geojson_path)
+    candidates = 0
+    filled = 0
+
+    for record in records:
+        country = (record.get("collection_country") or "").strip()
+        lat = record.get("collection_lat")
+        lon = record.get("collection_lon")
+        if country or lat is None or lon is None:
+            continue
+        candidates += 1
+        point = Point(float(lon), float(lat))
+        for prepared, name, iso3, continent in polygons:
+            if prepared.contains(point):
+                pref = preferred_by_iso3.get(iso3)
+                if pref is not None:
+                    record["collection_country"] = pref[0]
+                    record["collection_continent"] = pref[1]
+                else:
+                    record["collection_country"] = name
+                    record["collection_continent"] = continent
+                record["collection_country_iso3"] = iso3
+                filled += 1
+                break
+
+    eprint(
+        f"Reverse-geocode empty countries: candidates={candidates}, "
+        f"filled={filled}, still_empty={candidates - filled}"
+    )
+    return records
 
 
 def eprint(*args: Any, **kwargs: Any) -> None:
@@ -708,6 +851,12 @@ def parse_args(argv: Optional[list[str]] = None) -> argparse.Namespace:
         default="9606,10090",
         help="Comma-separated species taxids to exclude (default: human, lab mouse)",
     )
+    p.add_argument(
+        "--countries-geojson",
+        type=Path,
+        default=repo_root / "data" / "ne_50m_admin_0_countries.geojson",
+        help="Natural Earth countries GeoJSON for reverse-geocoding empty countries",
+    )
     return p.parse_args(argv)
 
 
@@ -717,6 +866,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         (args.assemblies_input, "assemblies"),
         (args.tree_input, "tree"),
         (args.institutes_input, "institutes"),
+        (args.countries_geojson, "countries geojson"),
     ):
         if not path.exists():
             eprint(f"{label} input not found: {path}")
@@ -737,6 +887,7 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     eprint(f"Flattening ranks and joining institutes for {len(selected)} species...")
     records = assemble_records(selected, totals, nodes, institutes)
+    records = fill_countries_from_coordinates(records, args.countries_geojson)
     write_parquet(args.output, records)
     print_summary(records, skipped_excluded, args.output)
     return 0

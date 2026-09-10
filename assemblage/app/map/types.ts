@@ -301,8 +301,12 @@ export function normalizeRegionFlows(table: unknown): RegionFlow[] {
   for (const row of raw as Record<string, unknown>[]) {
     const mapped = mapFlowRow(row)
     if (!mapped) continue
-    // Skip rows with neither country nor ISO3.
-    if (!mapped.base.collection_country && !mapped.base.collection_country_iso3) continue
+    // Keep rows that have a country/ISO3, or precise collection coordinates
+    // (BioSample sometimes omits country text while still providing lat/lon).
+    const hasCountry =
+      Boolean(mapped.base.collection_country) || Boolean(mapped.base.collection_country_iso3)
+    const hasCoords = mapped.collection_lat != null && mapped.collection_lon != null
+    if (!hasCountry && !hasCoords) continue
     flows.push({
       ...mapped.base,
       collection_lat: mapped.collection_lat,

@@ -31,6 +31,8 @@ export type RegionCard = {
   name: string
   iso3: string | null
   continent: string
+  /** Optional list subtitle; falls back to continent when omitted. */
+  subtitle?: string
   gbif: number | null
   inat: number | null
   sequenced: number
@@ -53,6 +55,21 @@ export type DestinationContinentGroup = {
 export type DestinationMode = 'country' | 'institute'
 
 export const DESTINATION_UNRESOLVED = 'Unresolved'
+
+/** City-states without Natural Earth 110m polygons — shown under Regions, not Countries. */
+export const CITY_STATE_ISO3 = new Set(['SGP', 'HKG'])
+
+/** Whether a country-like card belongs on the Regions tab as a single entity. */
+export function isSpecialRegionCard(card: RegionCard): boolean {
+  if (!card.iso3) return false
+  if (CITY_STATE_ISO3.has(card.iso3)) return true
+  return card.continent === 'Unknown'
+}
+
+/** Countries tab: real countries only (no Unknown basins / city-states). */
+export function filterCountryCardsForCountriesTab(cards: RegionCard[]): RegionCard[] {
+  return cards.filter((card) => !isSpecialRegionCard(card))
+}
 
 /** iso3 → CONTINENT from world geojson features. */
 export function buildContinentLookup(world: WorldGeoJson): Map<string, string> {
@@ -228,6 +245,44 @@ export function buildCustomRegionCards(
       sequenced,
     }
   }).sort((a, b) => b.sequenced - a.sequenced || a.name.localeCompare(b.name))
+}
+
+function specialRegionDisplayName(card: RegionCard): string {
+  const raw = (card.name || '').trim()
+  if (!raw || raw.toLowerCase() === 'nd') {
+    return card.iso3 === 'XUN' ? 'Unknown' : card.iso3 || 'Unknown'
+  }
+  return raw
+}
+
+/**
+ * Seas/oceans (Unknown continent) and city-states without basemap polygons.
+ * Reuses kind "country" so selection filters by ISO3 and plots via centroids.
+ * Keeps the real collection continent for URL/hydration; subtitle is display-only.
+ */
+export function buildSpecialRegionCards(countryCards: RegionCard[]): RegionCard[] {
+  return countryCards
+    .filter((card) => isSpecialRegionCard(card) && card.sequenced > 0)
+    .map((card) => ({
+      ...card,
+      name: specialRegionDisplayName(card),
+      subtitle:
+        card.iso3 && CITY_STATE_ISO3.has(card.iso3) ? 'City-state' : 'Region',
+    }))
+    .sort(
+      (a, b) =>
+        b.sequenced - a.sequenced || a.name.localeCompare(b.name),
+    )
+}
+
+/** Regions tab: multi-country atlases first, then special single entities. */
+export function buildRegionsTabCards(
+  countryCards: RegionCard[],
+  continentLookup: Map<string, string>,
+): RegionCard[] {
+  const atlases = buildCustomRegionCards(countryCards, continentLookup)
+  const specials = buildSpecialRegionCards(countryCards)
+  return [...atlases, ...specials]
 }
 
 /**

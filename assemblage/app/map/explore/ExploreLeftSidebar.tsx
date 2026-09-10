@@ -13,7 +13,7 @@ import {
 } from './exploreData'
 import DestinationBars from './DestinationBars'
 
-export type ExploreTab = 'custom' | 'continents' | 'countries'
+export type ExploreTab = 'regions' | 'continents' | 'countries'
 
 type ExploreLeftSidebarProps = {
   geoFilter: GeoFilter
@@ -68,7 +68,7 @@ function RegionCardButton({
       <div className="region-card-head">
         <strong>{card.name}</strong>
         {card.kind !== 'continent' && (
-          <span className="region-card-sub">{card.continent}</span>
+          <span className="region-card-sub">{card.subtitle ?? card.continent}</span>
         )}
       </div>
       <div className="region-card-metrics">
@@ -109,7 +109,7 @@ function ListState({
 
   const cards = useMemo(() => {
     const source =
-      tab === 'custom'
+      tab === 'regions'
         ? customCards
         : tab === 'continents'
           ? continentCards
@@ -118,8 +118,8 @@ function ListState({
   }, [tab, continentCards, countryCards, customCards, query])
 
   const searchPlaceholder =
-    tab === 'custom'
-      ? 'Search custom regions…'
+    tab === 'regions'
+      ? 'Search regions…'
       : tab === 'countries'
         ? 'Search countries…'
         : 'Search continents…'
@@ -141,11 +141,11 @@ function ListState({
           <button
             type="button"
             role="tab"
-            className={`explore-tab ${tab === 'custom' ? 'is-active' : ''}`}
-            aria-selected={tab === 'custom'}
-            onClick={() => setTab('custom')}
+            className={`explore-tab ${tab === 'regions' ? 'is-active' : ''}`}
+            aria-selected={tab === 'regions'}
+            onClick={() => setTab('regions')}
           >
-            Custom
+            Regions
           </button>
           <button
             type="button"

@@ -12,7 +12,8 @@ import {
   buildContinentCards,
   buildContinentLookup,
   buildCountryCards,
-  buildCustomRegionCards,
+  buildRegionsTabCards,
+  filterCountryCardsForCountriesTab,
   buildAllCustomIso3Sets,
   customIso3SetForFilter,
   isCustomRegionId,
@@ -209,6 +210,25 @@ function MapPageInner() {
         })
         return
       }
+      // Special-region display names (e.g. empty/nd → "Unknown" for XUN).
+      const isoMatch =
+        geoFilter.country === 'Unknown'
+          ? flows.find(
+              (row) =>
+                row.collection_country_iso3 === 'XUN' &&
+                (!geoFilter.continent ||
+                  row.collection_continent === geoFilter.continent),
+            )
+          : null
+      if (isoMatch) {
+        setGeoFilter({
+          continent: isoMatch.collection_continent,
+          country: 'Unknown',
+          countryIso3: isoMatch.collection_country_iso3,
+          customId: null,
+        })
+        return
+      }
       setGeoFilter(EMPTY_GEO_FILTER)
       return
     }
@@ -326,15 +346,20 @@ function MapPageInner() {
     [speciesCounts, allCountryTotals, membershipLookup],
   )
 
-  const countryCards = useMemo(
+  const allCountryCards = useMemo(
     () =>
       buildCountryCards(speciesCounts ?? [], allCountryTotals, membershipLookup),
     [speciesCounts, allCountryTotals, membershipLookup],
   )
 
+  const countryCards = useMemo(
+    () => filterCountryCardsForCountriesTab(allCountryCards),
+    [allCountryCards],
+  )
+
   const customCards = useMemo(
-    () => buildCustomRegionCards(countryCards, membershipLookup),
-    [countryCards, membershipLookup],
+    () => buildRegionsTabCards(allCountryCards, membershipLookup),
+    [allCountryCards, membershipLookup],
   )
 
   const coverage = useMemo(

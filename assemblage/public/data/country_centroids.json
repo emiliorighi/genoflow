@@ -883,5 +883,295 @@
     "name": "S. Sudan",
     "lon": 30.198617,
     "lat": 7.29289
+  },
+  "SGP": {
+    "name": "Singapore",
+    "lon": 103.82,
+    "lat": 1.35
+  },
+  "HKG": {
+    "name": "Hong Kong",
+    "lon": 114.17,
+    "lat": 22.32
+  },
+  "GUF": {
+    "name": "French Guiana",
+    "lon": -53.0,
+    "lat": 4.0
+  },
+  "PYF": {
+    "name": "French Polynesia",
+    "lon": -149.4,
+    "lat": -17.7
+  },
+  "GUM": {
+    "name": "Guam",
+    "lon": 144.79,
+    "lat": 13.44
+  },
+  "STP": {
+    "name": "Sao Tome and Principe",
+    "lon": 6.73,
+    "lat": 0.34
+  },
+  "REU": {
+    "name": "Reunion",
+    "lon": 55.54,
+    "lat": -21.12
+  },
+  "CUW": {
+    "name": "Curacao",
+    "lon": -68.99,
+    "lat": 12.17
+  },
+  "CPV": {
+    "name": "Cape Verde",
+    "lon": -23.61,
+    "lat": 15.12
+  },
+  "FRO": {
+    "name": "Faroe Islands",
+    "lon": -6.91,
+    "lat": 62.0
+  },
+  "SYC": {
+    "name": "Seychelles",
+    "lon": 55.45,
+    "lat": -4.68
+  },
+  "MUS": {
+    "name": "Mauritius",
+    "lon": 57.55,
+    "lat": -20.3
+  },
+  "VGB": {
+    "name": "British Virgin Islands",
+    "lon": -64.62,
+    "lat": 18.42
+  },
+  "MNP": {
+    "name": "Northern Mariana Islands",
+    "lon": 145.75,
+    "lat": 15.2
+  },
+  "MHL": {
+    "name": "Marshall Islands",
+    "lon": 171.18,
+    "lat": 7.13
+  },
+  "VCT": {
+    "name": "Saint Vincent and the Grenadines",
+    "lon": -61.2,
+    "lat": 13.25
+  },
+  "DMA": {
+    "name": "Dominica",
+    "lon": -61.37,
+    "lat": 15.43
+  },
+  "PLW": {
+    "name": "Palau",
+    "lon": 134.58,
+    "lat": 7.5
+  },
+  "KNA": {
+    "name": "Saint Kitts and Nevis",
+    "lon": -62.78,
+    "lat": 17.34
+  },
+  "LCA": {
+    "name": "Saint Lucia",
+    "lon": -60.98,
+    "lat": 13.91
+  },
+  "GLP": {
+    "name": "Guadeloupe",
+    "lon": -61.55,
+    "lat": 16.25
+  },
+  "MYT": {
+    "name": "Mayotte",
+    "lon": 45.17,
+    "lat": -12.83
+  },
+  "BRB": {
+    "name": "Barbados",
+    "lon": -59.55,
+    "lat": 13.19
+  },
+  "SHN": {
+    "name": "Saint Helena",
+    "lon": -5.72,
+    "lat": -15.96
+  },
+  "TCA": {
+    "name": "Turks and Caicos Islands",
+    "lon": -71.8,
+    "lat": 21.7
+  },
+  "TON": {
+    "name": "Tonga",
+    "lon": -175.2,
+    "lat": -21.18
+  },
+  "SJM": {
+    "name": "Svalbard",
+    "lon": 18.75,
+    "lat": 78.22
+  },
+  "BMU": {
+    "name": "Bermuda",
+    "lon": -64.75,
+    "lat": 32.3
+  },
+  "COM": {
+    "name": "Comoros",
+    "lon": 43.33,
+    "lat": -11.65
+  },
+  "MLT": {
+    "name": "Malta",
+    "lon": 14.51,
+    "lat": 35.9
+  },
+  "MCO": {
+    "name": "Monaco",
+    "lon": 7.42,
+    "lat": 43.74
+  },
+  "MAC": {
+    "name": "Macao",
+    "lon": 113.54,
+    "lat": 22.2
+  },
+  "ASM": {
+    "name": "American Samoa",
+    "lon": -170.7,
+    "lat": -14.3
+  },
+  "PCN": {
+    "name": "Pitcairn Islands",
+    "lon": -130.1,
+    "lat": -25.07
+  },
+  "CCK": {
+    "name": "Cocos Islands",
+    "lon": 96.87,
+    "lat": -12.16
+  },
+  "JEY": {
+    "name": "Jersey",
+    "lon": -2.13,
+    "lat": 49.21
+  },
+  "BLM": {
+    "name": "Saint Barthelemy",
+    "lon": -62.83,
+    "lat": 17.9
+  },
+  "SGS": {
+    "name": "South Georgia and the South Sandwich Islands",
+    "lon": -36.5,
+    "lat": -54.5
+  },
+  "VIR": {
+    "name": "Virgin Islands",
+    "lon": -64.9,
+    "lat": 18.35
+  },
+  "FSM": {
+    "name": "Micronesia",
+    "lon": 158.2,
+    "lat": 6.9
+  },
+  "GRD": {
+    "name": "Grenada",
+    "lon": -61.68,
+    "lat": 12.11
+  },
+  "BHR": {
+    "name": "Bahrain",
+    "lon": 50.55,
+    "lat": 26.03
+  },
+  "MDV": {
+    "name": "Maldives",
+    "lon": 73.51,
+    "lat": 4.17
+  },
+  "WSM": {
+    "name": "Samoa",
+    "lon": -172.1,
+    "lat": -13.8
+  },
+  "XKX": {
+    "name": "Kosovo",
+    "lon": 20.9,
+    "lat": 42.55
+  },
+  "MTQ": {
+    "name": "Martinique",
+    "lon": -61.02,
+    "lat": 14.64
+  },
+  "XPA": {
+    "name": "Pacific Ocean",
+    "lon": -160.0,
+    "lat": 0.0
+  },
+  "XIN": {
+    "name": "Indian Ocean",
+    "lon": 80.0,
+    "lat": -20.0
+  },
+  "XAT": {
+    "name": "Atlantic Ocean",
+    "lon": -30.0,
+    "lat": 0.0
+  },
+  "XME": {
+    "name": "Mediterranean Sea",
+    "lon": 18.0,
+    "lat": 35.0
+  },
+  "XNS": {
+    "name": "North Sea",
+    "lon": 3.0,
+    "lat": 56.0
+  },
+  "XBA": {
+    "name": "Baltic Sea",
+    "lon": 20.0,
+    "lat": 58.0
+  },
+  "XSO": {
+    "name": "Southern Ocean",
+    "lon": 0.0,
+    "lat": -60.0
+  },
+  "XAR": {
+    "name": "Arctic Ocean",
+    "lon": 0.0,
+    "lat": 85.0
+  },
+  "XBN": {
+    "name": "Borneo",
+    "lon": 114.0,
+    "lat": 0.5
+  },
+  "XWA": {
+    "name": "W. Africa",
+    "lon": -5.0,
+    "lat": 8.0
+  },
+  "XAF": {
+    "name": "Africa",
+    "lon": 20.0,
+    "lat": 5.0
+  },
+  "XUN": {
+    "name": "Unknown",
+    "lon": 0.0,
+    "lat": 0.0
   }
 }
