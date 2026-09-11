@@ -7,34 +7,40 @@ import {
   type SpeciesFlow,
 } from '../types'
 
-/** Stable mode keys; UI labels are All outreach / Collected here / Sequenced here. */
-export type OutreachMode = 'all' | 'inshore' | 'offshore'
+/** Stable mode keys; UI labels are the three disjoint flow slices. */
+export type OutreachMode = 'local' | 'exported' | 'imported'
 
 export type OutreachCounts = {
-  all: number
-  inshore: number
-  offshore: number
+  local: number
+  exported: number
+  imported: number
+  /** Species collected in the region (local + exported). */
+  originTotal: number
 }
 
 export type OutreachPartition<T extends RegionFlow | SpeciesFlow> = {
-  inshore: T[]
-  offshore: T[]
+  local: T[]
+  exported: T[]
+  imported: T[]
   counts: OutreachCounts
 }
 
+export const DEFAULT_OUTREACH_MODE: OutreachMode = 'local'
+
 export const OUTREACH_MODE_LABELS: Record<OutreachMode, string> = {
-  all: 'All outreach',
-  inshore: 'Collected here',
-  offshore: 'Sequenced here',
+  local: 'Local',
+  exported: 'Exported',
+  imported: 'Imported',
 }
 
-export const OUTREACH_MODE_SUBTITLES: Record<OutreachMode, string> = {
-  all: 'Origin or destination',
-  inshore: 'Current view',
-  offshore: 'Collected elsewhere',
+/** Full definitions for help popover and radio aria-labels. */
+export const OUTREACH_MODE_DESCRIPTIONS: Record<OutreachMode, string> = {
+  local: 'Collected here and sequenced here.',
+  exported: 'Collected here, sequenced elsewhere.',
+  imported: 'Collected elsewhere, sequenced here.',
 }
 
-export const OUTREACH_MODES: OutreachMode[] = ['all', 'inshore', 'offshore']
+export const OUTREACH_MODES: OutreachMode[] = ['local', 'exported', 'imported']
 
 /**
  * Institute geography membership for continent / country / custom region.
@@ -74,16 +80,20 @@ export function matchesInstituteGeoFilter(
   return true
 }
 
-/** Classify a row relative to the selected region. null = unrelated. */
+/**
+ * Classify a row relative to the selected region.
+ * Collection checked first; unknown institute with collection in-region → exported.
+ * null = unrelated (neither origin nor destination here).
+ */
 export function classifyOutreach(
   row: RegionFlow | SpeciesFlow,
   geoFilter: GeoFilter,
   customIso3Set: Set<string> | null = null,
-): 'inshore' | 'offshore' | null {
+): OutreachMode | null {
   const collectionIn = matchesGeoFilter(row, geoFilter, customIso3Set)
-  if (collectionIn) return 'inshore'
   const instituteIn = matchesInstituteGeoFilter(row, geoFilter, customIso3Set)
-  if (instituteIn) return 'offshore'
+  if (collectionIn) return instituteIn ? 'local' : 'exported'
+  if (instituteIn) return 'imported'
   return null
 }
 
@@ -93,49 +103,84 @@ export function matchesOutreachMode(
   mode: OutreachMode,
   customIso3Set: Set<string> | null = null,
 ): boolean {
-  const collectionIn = matchesGeoFilter(row, geoFilter, customIso3Set)
-  if (mode === 'inshore') return collectionIn
-  const instituteIn = matchesInstituteGeoFilter(row, geoFilter, customIso3Set)
-  if (mode === 'offshore') return instituteIn && !collectionIn
-  return collectionIn || instituteIn
+  return classifyOutreach(row, geoFilter, customIso3Set) === mode
 }
 
 /**
- * Single-pass partition into Collected here (inshore) and Sequenced here (offshore).
- * All outreach = inshore ∪ offshore; counts.all = inshore + offshore.
+ * Single-pass partition into local / exported / imported.
+ * originTotal = local + exported (species collected in the region).
  */
 export function partitionOutreachFlows<T extends RegionFlow | SpeciesFlow>(
   flows: T[],
   geoFilter: GeoFilter,
   customIso3Set: Set<string> | null = null,
 ): OutreachPartition<T> {
-  const inshore: T[] = []
-  const offshore: T[] = []
+  const local: T[] = []
+  const exported: T[] = []
+  const imported: T[] = []
   for (const row of flows) {
     const kind = classifyOutreach(row, geoFilter, customIso3Set)
-    if (kind === 'inshore') inshore.push(row)
-    else if (kind === 'offshore') offshore.push(row)
+    if (kind === 'local') local.push(row)
+    else if (kind === 'exported') exported.push(row)
+    else if (kind === 'imported') imported.push(row)
   }
   return {
-    inshore,
-    offshore,
+    local,
+    exported,
+    imported,
     counts: {
-      inshore: inshore.length,
-      offshore: offshore.length,
-      all: inshore.length + offshore.length,
+      local: local.length,
+      exported: exported.length,
+      imported: imported.length,
+      originTotal: local.length + exported.length,
     },
   }
+}
+
+/** Counts-only sibling of partitionOutreachFlows (no row arrays allocated). */
+export function countOutreachFlows<T extends RegionFlow | SpeciesFlow>(
+  flows: T[],
+  geoFilter: GeoFilter,
+  customIso3Set: Set<string> | null = null,
+): OutreachCounts {
+  let local = 0
+  let exported = 0
+  let imported = 0
+  for (const row of flows) {
+    const kind = classifyOutreach(row, geoFilter, customIso3Set)
+    if (kind === 'local') local++
+    else if (kind === 'exported') exported++
+    else if (kind === 'imported') imported++
+  }
+  return { local, exported, imported, originTotal: local + exported }
 }
 
 export function flowsForOutreachMode<T extends RegionFlow | SpeciesFlow>(
   partition: OutreachPartition<T>,
   mode: OutreachMode,
 ): T[] {
-  if (mode === 'inshore') return partition.inshore
-  if (mode === 'offshore') return partition.offshore
-  if (partition.offshore.length === 0) return partition.inshore
-  if (partition.inshore.length === 0) return partition.offshore
-  return partition.inshore.concat(partition.offshore)
+  if (mode === 'local') return partition.local
+  if (mode === 'exported') return partition.exported
+  return partition.imported
+}
+
+/**
+ * Share of origin total (local + exported), one decimal.
+ * Returns null when originTotal is 0 (omit % rather than 0% / infinity).
+ * Imported / originTotal can exceed 100.
+ */
+export function originSharePct(count: number, originTotal: number): number | null {
+  if (originTotal <= 0) return null
+  return Math.round((1000 * count) / originTotal) / 10
+}
+
+/** Prefer local; if empty, exported; otherwise keep local (may still be empty). */
+export function defaultOutreachModeForPartition(
+  partition: OutreachPartition<RegionFlow | SpeciesFlow>,
+): OutreachMode {
+  if (partition.local.length > 0) return 'local'
+  if (partition.exported.length > 0) return 'exported'
+  return 'local'
 }
 
 /** Rank-only filter over an already outreach-scoped slice. */

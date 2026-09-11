@@ -29,6 +29,8 @@ import {
   type SpeciesCountRow,
 } from './regionData'
 import {
+  DEFAULT_OUTREACH_MODE,
+  defaultOutreachModeForPartition,
   filterByRank,
   flowsForOutreachMode,
   partitionOutreachFlows,
@@ -118,7 +120,7 @@ function MapPageInner() {
     () => initialParams.current.get(MAP_QUERY_KEYS.taxon) || '',
   )
   const [scopeBarsToTaxon, setScopeBarsToTaxon] = useState(false)
-  const [outreachMode, setOutreachMode] = useState<OutreachMode>('inshore')
+  const [outreachMode, setOutreachMode] = useState<OutreachMode>(DEFAULT_OUTREACH_MODE)
   const [searchMode, setSearchMode] = useState<SearchMode>('species')
   const geoHydrated = useRef(false)
 
@@ -286,9 +288,10 @@ function MapPageInner() {
   }, [flows, geoFilter, hasRegion, activeCustomIso3Set])
 
   const outreachCounts = outreachPartition?.counts ?? {
-    all: 0,
-    inshore: 0,
-    offshore: 0,
+    local: 0,
+    exported: 0,
+    imported: 0,
+    originTotal: 0,
   }
 
   const regionFlows = useMemo(() => {
@@ -347,15 +350,21 @@ function MapPageInner() {
   ])
 
   const continentCards = useMemo(
-    () =>
-      buildContinentCards(speciesCounts ?? [], allCountryTotals, membershipLookup),
-    [speciesCounts, allCountryTotals, membershipLookup],
+    () => (flows ? buildContinentCards(flows) : []),
+    [flows],
   )
 
   const allCountryCards = useMemo(
     () =>
-      buildCountryCards(speciesCounts ?? [], allCountryTotals, membershipLookup),
-    [speciesCounts, allCountryTotals, membershipLookup],
+      flows
+        ? buildCountryCards(
+            flows,
+            speciesCounts ?? [],
+            allCountryTotals,
+            membershipLookup,
+          )
+        : [],
+    [flows, speciesCounts, allCountryTotals, membershipLookup],
   )
 
   const countryCards = useMemo(
@@ -364,8 +373,11 @@ function MapPageInner() {
   )
 
   const customCards = useMemo(
-    () => buildRegionsTabCards(allCountryCards, membershipLookup),
-    [allCountryCards, membershipLookup],
+    () =>
+      flows
+        ? buildRegionsTabCards(flows, allCountryCards, membershipLookup)
+        : [],
+    [flows, allCountryCards, membershipLookup],
   )
 
   const rankSummaries = useMemo(
@@ -423,34 +435,40 @@ function MapPageInner() {
     setHoverPreview(null)
     clearSelection()
     setScopeBarsToTaxon(false)
-    setOutreachMode('inshore')
+    let nextFilter: GeoFilter
     if (card.kind === 'custom') {
       const customId = card.id.startsWith('custom:')
         ? card.id.slice('custom:'.length)
         : card.id
-      setGeoFilter({
+      nextFilter = {
         continent: null,
         country: null,
         countryIso3: null,
         customId,
-      })
-      return
-    }
-    if (card.kind === 'continent') {
-      setGeoFilter({
+      }
+    } else if (card.kind === 'continent') {
+      nextFilter = {
         continent: card.name,
         country: null,
         countryIso3: null,
         customId: null,
-      })
-      return
+      }
+    } else {
+      nextFilter = {
+        continent: card.continent,
+        country: card.name,
+        countryIso3: card.iso3,
+        customId: null,
+      }
     }
-    setGeoFilter({
-      continent: card.continent,
-      country: card.name,
-      countryIso3: card.iso3,
-      customId: null,
-    })
+    setGeoFilter(nextFilter)
+    if (flows) {
+      const isoSet = customIso3SetForFilter(nextFilter.customId, customIso3Sets)
+      const partition = partitionOutreachFlows(flows, nextFilter, isoSet)
+      setOutreachMode(defaultOutreachModeForPartition(partition))
+    } else {
+      setOutreachMode(DEFAULT_OUTREACH_MODE)
+    }
   }
 
   const onHoverRegion = (card: RegionCard | null) => {
@@ -492,7 +510,7 @@ function MapPageInner() {
     setGeoFilter(EMPTY_GEO_FILTER)
     clearSelection()
     setScopeBarsToTaxon(false)
-    setOutreachMode('inshore')
+    setOutreachMode(DEFAULT_OUTREACH_MODE)
   }
 
   const title = regionTitle(geoFilter)

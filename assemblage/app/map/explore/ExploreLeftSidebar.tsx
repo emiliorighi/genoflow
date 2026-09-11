@@ -1,9 +1,17 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import { ArrowLeft, Search } from 'lucide-react'
+import { ArrowLeft, CircleHelp, Search } from 'lucide-react'
 import { regionTitle } from '../SidebarPanels'
-import type { GeoFilter, RegionFlow } from '../types'
+import { TAXON_RANKS, type GeoFilter, type RegionFlow } from '../types'
+import {
+  Popover,
+  PopoverContent,
+  PopoverDescription,
+  PopoverHeader,
+  PopoverTitle,
+  PopoverTrigger,
+} from '@/components/ui/popover'
 import {
   buildSequencingBreakdown,
   filterCards,
@@ -12,14 +20,183 @@ import {
 } from './exploreData'
 import DestinationBars from './DestinationBars'
 import {
+  OUTREACH_MODE_DESCRIPTIONS,
   OUTREACH_MODE_LABELS,
-  OUTREACH_MODE_SUBTITLES,
   OUTREACH_MODES,
+  originSharePct,
   type OutreachCounts,
   type OutreachMode,
 } from './outreachFilter'
 
 export type ExploreTab = 'regions' | 'continents' | 'countries'
+
+function GuideKpiMock() {
+  return (
+    <div className="guide-kpi-mock" aria-hidden="true">
+      {OUTREACH_MODES.map((mode) => (
+        <div key={mode} className="guide-kpi-mock-cell">
+          <span>{OUTREACH_MODE_LABELS[mode]}</span>
+          <b>—</b>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function GuideRegionCardMock() {
+  return (
+    <div className="guide-region-mock" aria-hidden="true">
+      <div className="guide-region-mock-head">
+        <strong>Example region</strong>
+        <span>Hover or click</span>
+      </div>
+      <div className="guide-kpi-mock guide-kpi-mock-compact">
+        {OUTREACH_MODES.map((mode) => (
+          <div key={mode} className="guide-kpi-mock-cell">
+            <span>{OUTREACH_MODE_LABELS[mode]}</span>
+            <b>—</b>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function GuideToolbarMock() {
+  return (
+    <div className="guide-toolbar-mock" aria-hidden="true">
+      <div className="guide-rank-mock">
+        {TAXON_RANKS.map((rank) => (
+          <span key={rank} className="guide-rank-mock-badge">
+            {rank}
+          </span>
+        ))}
+      </div>
+      <div className="guide-search-mode-mock">
+        <span className="is-active">Species</span>
+        <span>Institutes</span>
+      </div>
+    </div>
+  )
+}
+
+function GuideLegendMock() {
+  return (
+    <ul className="map-legend-help-list guide-legend-mock" aria-hidden="true">
+      <li>
+        <span className="legend-dot amber" />
+        <div>
+          <strong>Collected</strong>
+          <p>Exact collection site when coordinates are known.</p>
+        </div>
+      </li>
+      <li>
+        <span className="legend-dot green" />
+        <div>
+          <strong>Centroid</strong>
+          <p>Country center when precise coordinates are missing.</p>
+        </div>
+      </li>
+      <li>
+        <span className="legend-dot blue" />
+        <div>
+          <strong>Submitted</strong>
+          <p>Institute that submitted the genome for sequencing.</p>
+        </div>
+      </li>
+      <li>
+        <span className="legend-line" />
+        <div>
+          <strong>Flow</strong>
+          <p>Link from collection site to sequencing institute.</p>
+        </div>
+      </li>
+    </ul>
+  )
+}
+
+function FlowMapGuideHelp() {
+  return (
+    <Popover>
+      <PopoverTrigger
+        className="map-legend-help"
+        aria-label="How to use the Flow Map"
+      >
+        <CircleHelp size={13} aria-hidden="true" />
+      </PopoverTrigger>
+      <PopoverContent
+        side="bottom"
+        align="start"
+        sideOffset={10}
+        className="flow-map-guide-popover ring-0"
+      >
+        <PopoverHeader>
+          <PopoverTitle>How to use the Flow Map</PopoverTitle>
+          <PopoverDescription>
+            A short guide to reading flows, filtering taxa, and exploring the
+            map.
+          </PopoverDescription>
+        </PopoverHeader>
+
+        <div className="flow-map-guide-body">
+          <section className="flow-map-guide-section">
+            <h3>Species flow counts</h3>
+            <GuideKpiMock />
+            <ul className="flow-map-guide-defs">
+              {OUTREACH_MODES.map((mode) => (
+                <li key={mode}>
+                  <strong>{OUTREACH_MODE_LABELS[mode]}</strong>
+                  <span>{OUTREACH_MODE_DESCRIPTIONS[mode]}</span>
+                </li>
+              ))}
+            </ul>
+            <p>
+              Region cards and detail radios show the same three counts.
+              Percentages compare each slice to species collected here (Local +
+              Exported). Imported can go above 100% when a region sequences more
+              than it collects.
+            </p>
+          </section>
+
+          <section className="flow-map-guide-section">
+            <h3>Hover &amp; select a region</h3>
+            <GuideRegionCardMock />
+            <p>
+              Hover a region to preview its <strong>Local</strong> flows on the
+              map (or <strong>Exported</strong> if none are local). Click to open
+              region details. Use the Local / Exported / Imported radios to
+              choose which slice the map shows.
+            </p>
+          </section>
+
+          <section className="flow-map-guide-section">
+            <h3>Toolbar filters</h3>
+            <GuideToolbarMock />
+            <p>
+              Rank badges and the Species / Institutes search narrow what appears
+              on the map. When you select a region, those filters update to that
+              region&apos;s current flow slice—so counts and search results stay
+              in sync with what you are viewing.
+            </p>
+          </section>
+
+          <section className="flow-map-guide-section">
+            <h3>Map colors</h3>
+            <GuideLegendMock />
+          </section>
+
+          <section className="flow-map-guide-section">
+            <h3>Everything is clickable</h3>
+            <p>
+              Collection points, sequencing institutes, flow lines, and species
+              can all be clicked to open related details in the side panels.
+            </p>
+          </section>
+        </div>
+      </PopoverContent>
+    </Popover>
+  )
+}
 
 type ExploreLeftSidebarProps = {
   geoFilter: GeoFilter
@@ -76,16 +253,16 @@ function RegionCardButton({
       </div>
       <div className="region-card-metrics">
         <div>
-          <span>GBIF</span>
-          <b>{formatCount(card.gbif)}</b>
+          <span>{OUTREACH_MODE_LABELS.local}</span>
+          <b>{formatCount(card.local)}</b>
         </div>
         <div>
-          <span>iNat</span>
-          <b>{formatCount(card.inat)}</b>
+          <span>{OUTREACH_MODE_LABELS.exported}</span>
+          <b>{formatCount(card.exported)}</b>
         </div>
         <div>
-          <span>Sequenced</span>
-          <b>{formatCount(card.sequenced)}</b>
+          <span>{OUTREACH_MODE_LABELS.imported}</span>
+          <b>{formatCount(card.imported)}</b>
         </div>
       </div>
     </button>
@@ -117,29 +294,13 @@ function ListState({
         : tab === 'continents'
           ? continentCards
           : countryCards
+    if (tab !== 'countries') return source
     return filterCards(source, query)
   }, [tab, continentCards, countryCards, customCards, query])
-
-  const searchPlaceholder =
-    tab === 'regions'
-      ? 'Search regions…'
-      : tab === 'countries'
-        ? 'Search countries…'
-        : 'Search continents…'
 
   return (
     <div className="explore-list">
       <div className="explore-filter-row">
-        <label className="explore-search">
-          <Search size={13} aria-hidden="true" />
-          <input
-            type="search"
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder={searchPlaceholder}
-            aria-label="Search regions"
-          />
-        </label>
         <div className="explore-tabs" role="tablist" aria-label="Region type">
           <button
             type="button"
@@ -171,12 +332,29 @@ function ListState({
         </div>
       </div>
 
+      {tab === 'countries' ? (
+        <div className="explore-countries-search">
+          <label className="explore-search">
+            <Search size={13} aria-hidden="true" />
+            <input
+              type="search"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="Search countries…"
+              aria-label="Search countries"
+            />
+          </label>
+        </div>
+      ) : null}
+
       <div className="explore-card-list" role="list">
         {loading ? (
           <p className="explore-empty">Loading regions…</p>
         ) : cards.length === 0 ? (
           <p className="explore-empty">
-            {query ? `No matches for “${query}”.` : 'No regions available.'}
+            {tab === 'countries' && query
+              ? `No matches for “${query}”.`
+              : 'No regions available.'}
           </p>
         ) : (
           cards.map((card) => (
@@ -248,22 +426,31 @@ function DetailState({
         <div
           className="kpi-grid coverage-kpi-grid"
           role="radiogroup"
-          aria-label="Regional outreach mode"
+          aria-label="Species flow"
         >
           {OUTREACH_MODES.map((mode) => {
             const active = outreachMode === mode
+            const share = originSharePct(
+              outreachCounts[mode],
+              outreachCounts.originTotal,
+            )
             return (
               <button
                 key={mode}
                 type="button"
                 role="radio"
                 aria-checked={active}
+                aria-label={`${OUTREACH_MODE_LABELS[mode]}: ${OUTREACH_MODE_DESCRIPTIONS[mode]}`}
                 className={`kpi-card kpi-card-toggle ${active ? 'is-active' : ''}`}
                 onClick={() => onOutreachModeChange(mode)}
               >
                 <span>{OUTREACH_MODE_LABELS[mode]}</span>
-                <b>{outreachCounts[mode].toLocaleString()}</b>
-                <small>{OUTREACH_MODE_SUBTITLES[mode]}</small>
+                <div className="kpi-card-value">
+                  <b>{outreachCounts[mode].toLocaleString()}</b>
+                  {share != null ? (
+                    <em className="kpi-card-pct">{share}%</em>
+                  ) : null}
+                </div>
               </button>
             )
           })}
@@ -367,6 +554,10 @@ export default function ExploreLeftSidebar({
 
   return (
     <aside className="explore-left">
+      <header className="explore-sidebar-title">
+        <h1>Flow Map</h1>
+        <FlowMapGuideHelp />
+      </header>
       {hasRegion ? (
         <DetailState
           geoFilter={geoFilter}
