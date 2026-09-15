@@ -77,11 +77,11 @@ export default async function Page() {
   const speciesWithGeography = kpis?.speciesWithGeography ?? 23237
   const speciesWithGeographyPct = kpis?.speciesWithGeographyPct ?? 79.0
   const totalInstitutes = kpis?.totalInstitutes ?? 5697
-  const institutesWithCoordinates = kpis?.institutesWithCoordinates ?? 3619
-  const institutesWithCoordinatesPct = kpis?.institutesWithCoordinatesPct ?? 63.5
+  const institutesWithCoordinates = kpis?.institutesWithCoordinates ?? 4307
+  const institutesWithCoordinatesPct = kpis?.institutesWithCoordinatesPct ?? 75.6
   const speciesInAtlas = kpis?.speciesInAtlas ?? 23237
-  const speciesWithInstituteArc = kpis?.speciesWithInstituteArc ?? 17784
-  const speciesWithInstituteArcPct = kpis?.speciesWithInstituteArcPct ?? 76.5
+  const speciesWithInstituteArc = kpis?.speciesWithInstituteArc ?? 20589
+  const speciesWithInstituteArcPct = kpis?.speciesWithInstituteArcPct ?? 88.6
 
   return (
     <main className="landing-shell">
