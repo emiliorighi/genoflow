@@ -2,7 +2,19 @@ graphify.out/
 graphify-out/
 .cursor/
 .corepack-home/
-/data/
+
+# data/: ignore by default, then selectively track pipeline outputs + caches
+/data/*
+!/data/eukaryote_assemblies.tsv
+!/data/taxonomic_tree.tsv
+!/data/submitter_institutes.tsv
+!/data/ne_50m_admin_0_countries.geojson
+!/data/raw/
+/data/raw/*
+!/data/raw/ena_taxonomy_nodes.jsonl
+!/data/raw/ror_submitter_cache.jsonl
+# ROR data dump zip (~35MB) stays ignored; download locally for audit_unresolved_institutes.py
+
 .env
 assemblage/package-lock.json
 scripts/__pycache__/
