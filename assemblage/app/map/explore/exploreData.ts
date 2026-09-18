@@ -132,6 +132,17 @@ function bucketContinentOutreach(flows: RegionFlow[]): Map<string, OutreachAcc> 
 /** City-states without Natural Earth 110m polygons — shown under Regions, not Countries. */
 export const CITY_STATE_ISO3 = new Set(['SGP', 'HKG'])
 
+/**
+ * Regions tab allowlist (others are still built / kept in data, just not listed).
+ * Order is the display order.
+ */
+export const REGIONS_TAB_VISIBLE_IDS = [
+  'custom:global-north',
+  'custom:global-south',
+  'country:CHN',
+  'custom:latin-america',
+] as const
+
 /** Whether a country-like card belongs on the Regions tab as a single entity. */
 export function isSpecialRegionCard(card: RegionCard): boolean {
   if (!card.iso3) return false
@@ -335,7 +346,29 @@ export function buildRegionsTabCards(
 ): RegionCard[] {
   const atlases = buildCustomRegionCards(flows, continentLookup)
   const specials = buildSpecialRegionCards(countryCards)
-  return [...atlases, ...specials]
+  // Featured country entries that live on Regions alongside atlases (e.g. China).
+  const featuredCountries = countryCards
+    .filter(
+      (card) =>
+        card.iso3 === 'CHN' &&
+        cardTotal(card) > 0 &&
+        !isSpecialRegionCard(card),
+    )
+    .map((card) => ({
+      ...card,
+      subtitle: card.continent || undefined,
+    }))
+
+  // Keep computing atlases + specials; only surface the allowlisted subset for now.
+  const byId = new Map<string, RegionCard>()
+  for (const card of [...atlases, ...featuredCountries, ...specials]) {
+    byId.set(card.id, card)
+  }
+
+  return REGIONS_TAB_VISIBLE_IDS.flatMap((id) => {
+    const card = byId.get(id)
+    return card ? [card] : []
+  })
 }
 
 /**

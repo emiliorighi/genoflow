@@ -23,6 +23,21 @@ export const SE_ASIA_ISO3 = new Set([
   'VNM',
 ])
 
+/** South Asian members of Global South (beyond SE Asia). */
+export const GLOBAL_SOUTH_SOUTH_ASIA_ISO3 = new Set([
+  'IND', // India
+  'NPL', // Nepal
+  'BGD', // Bangladesh
+  'BTN', // Bhutan
+])
+
+const GLOBAL_SOUTH_SOUTH_ASIA_NAMES = new Set([
+  'india',
+  'nepal',
+  'bangladesh',
+  'bhutan',
+])
+
 const LATAM_EXCLUDED_NORTH_AMERICA = new Set(['USA', 'CAN', 'GRL'])
 const GLOBAL_NORTH_EXTRA = new Set(['CAN', 'USA', 'JPN'])
 
@@ -51,7 +66,8 @@ export const CUSTOM_REGIONS: CustomRegionDef[] = [
   {
     id: 'global-south',
     name: 'Global South',
-    description: 'Latin America, Africa, and Southeast Asia',
+    description:
+      'Latin America, Africa, Southeast Asia, India, Nepal, Bangladesh, and Bhutan',
   },
   {
     id: 'global-north',
@@ -99,7 +115,8 @@ export function isCustomRegionMember(
     if (isCustomRegionMember('latin-america', iso3, continent, countryName)) return true
     if (continent === 'Africa') return true
     if (iso3 && SE_ASIA_ISO3.has(iso3)) return true
-    return false
+    if (iso3 && GLOBAL_SOUTH_SOUTH_ASIA_ISO3.has(iso3)) return true
+    return GLOBAL_SOUTH_SOUTH_ASIA_NAMES.has(normalizeCountryName(countryName))
   }
 
   // global-north

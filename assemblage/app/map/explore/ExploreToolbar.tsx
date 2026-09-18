@@ -1,211 +1,44 @@
 'use client'
 
-import { useEffect, useMemo, useRef, useState } from 'react'
-import { Search, X } from 'lucide-react'
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
+import { useMemo } from 'react'
+import { X } from 'lucide-react'
 import { Combobox, type ComboboxOption } from '../Combobox'
-import {
-  TAXON_RANKS,
-  instituteKey,
-  type RegionFlow,
-  type Selection,
-  type TaxonRank,
-} from '../types'
-import type { TaxonRankSummaries } from './exploreData'
+import { instituteKey, type RegionFlow, type Selection } from '../types'
 
 export type SearchMode = 'species' | 'institute'
+export type FilterFocus = 'region' | 'taxon'
 
 type ExploreToolbarProps = {
   mapFlows: RegionFlow[]
-  rankSummaries: TaxonRankSummaries
-  rankLevel: TaxonRank | ''
-  rankTaxid: string
-  rankTaxidLabel: string
-  onPickTaxon: (rank: TaxonRank, taxid: string) => void
-  onClearTaxon: () => void
   searchMode: SearchMode
   onSearchModeChange: (mode: SearchMode) => void
   selection: Selection
   onSelect: (selection: Selection) => void
   disabled?: boolean
-}
-
-const POPOVER_SEARCH_THRESHOLD = 20
-const PAGE_SIZE = 50
-const SCROLL_LOAD_THRESHOLD_PX = 40
-
-function RankBadge({
-  rank,
-  summary,
-  isActive,
-  activeLabel,
-  activeTaxid,
-  onPick,
-  onClear,
-  disabled,
-}: {
-  rank: TaxonRank
-  summary: { count: number; options: { taxid: string; name: string; speciesCount: number }[] }
-  isActive: boolean
-  activeLabel: string
-  activeTaxid: string
-  onPick: (taxid: string) => void
-  onClear: () => void
-  disabled?: boolean
-}) {
-  const [open, setOpen] = useState(false)
-  const [query, setQuery] = useState('')
-  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
-  const listRef = useRef<HTMLUListElement>(null)
-
-  useEffect(() => {
-    if (!open) setQuery('')
-    setVisibleCount(PAGE_SIZE)
-  }, [open])
-
-  useEffect(() => {
-    setVisibleCount(PAGE_SIZE)
-  }, [query])
-
-  const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase()
-    if (!q) return summary.options
-    return summary.options.filter((opt) => opt.name.toLowerCase().includes(q))
-  }, [summary.options, query])
-
-  const visible = filtered.slice(0, visibleCount)
-  const hasMore = visible.length < filtered.length
-  const showSearch = summary.options.length > POPOVER_SEARCH_THRESHOLD
-
-  function onListScroll() {
-    const el = listRef.current
-    if (!el || !hasMore) return
-    const nearBottom =
-      el.scrollTop + el.clientHeight >= el.scrollHeight - SCROLL_LOAD_THRESHOLD_PX
-    if (!nearBottom) return
-    setVisibleCount((n) => Math.min(n + PAGE_SIZE, filtered.length))
-  }
-
-  return (
-    <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger
-        disabled={disabled || summary.count === 0}
-        className={`explore-rank-badge ${isActive ? 'is-active' : ''}`}
-        aria-label={
-          isActive
-            ? `${rank}: ${activeLabel}`
-            : `${rank}, ${summary.count.toLocaleString()} taxa`
-        }
-      >
-        <span className="explore-rank-badge-rank">{rank}</span>
-        {isActive ? (
-          <>
-            <span className="explore-rank-badge-taxon" title={activeLabel}>
-              {activeLabel}
-            </span>
-            <span
-              role="button"
-              tabIndex={0}
-              className="explore-rank-badge-clear"
-              aria-label={`Clear ${rank} filter`}
-              onClick={(event) => {
-                event.preventDefault()
-                event.stopPropagation()
-                onClear()
-                setOpen(false)
-              }}
-              onKeyDown={(event) => {
-                if (event.key === 'Enter' || event.key === ' ') {
-                  event.preventDefault()
-                  event.stopPropagation()
-                  onClear()
-                  setOpen(false)
-                }
-              }}
-            >
-              <X size={11} />
-            </span>
-          </>
-        ) : (
-          <span className="explore-rank-badge-count">{summary.count.toLocaleString()}</span>
-        )}
-      </PopoverTrigger>
-      <PopoverContent align="start" className="explore-taxon-popover">
-        <div className="explore-taxon-popover-head">
-          <span>{rank}</span>
-          <span>{summary.count.toLocaleString()} taxa</span>
-        </div>
-        {showSearch && (
-          <label className="explore-taxon-search">
-            <Search size={12} aria-hidden="true" />
-            <input
-              type="search"
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              placeholder={`Search ${rank}…`}
-              aria-label={`Search ${rank}`}
-            />
-          </label>
-        )}
-        <ul
-          ref={listRef}
-          className="explore-taxon-list"
-          role="listbox"
-          aria-label={`${rank} taxa`}
-          onScroll={onListScroll}
-        >
-          {filtered.length === 0 ? (
-            <li className="explore-taxon-empty">
-              {query ? `No matches for “${query}”.` : 'No taxa in scope.'}
-            </li>
-          ) : (
-            <>
-              {visible.map((opt) => (
-                <li key={opt.taxid}>
-                  <button
-                    type="button"
-                    className="explore-taxon-row"
-                    role="option"
-                    aria-selected={isActive && opt.taxid === activeTaxid}
-                    onClick={() => {
-                      onPick(opt.taxid)
-                      setOpen(false)
-                    }}
-                  >
-                    <span className="explore-taxon-name">{opt.name}</span>
-                    <span className="explore-taxon-count">
-                      {opt.speciesCount.toLocaleString()}
-                    </span>
-                  </button>
-                </li>
-              ))}
-              {hasMore && (
-                <li className="explore-taxon-empty" aria-live="polite">
-                  Showing {visible.length.toLocaleString()} of{' '}
-                  {filtered.length.toLocaleString()}
-                </li>
-              )}
-            </>
-          )}
-        </ul>
-      </PopoverContent>
-    </Popover>
-  )
+  /** Interaction-ordered peer filters for the breadcrumb. */
+  filterFocusOrder: FilterFocus[]
+  regionLabel: string
+  taxonLabel: string
+  hasRegion: boolean
+  hasTaxon: boolean
+  onClearRegion: () => void
+  onClearTaxon: () => void
 }
 
 export default function ExploreToolbar({
   mapFlows,
-  rankSummaries,
-  rankLevel,
-  rankTaxid,
-  rankTaxidLabel,
-  onPickTaxon,
-  onClearTaxon,
   searchMode,
   onSearchModeChange,
   selection,
   onSelect,
   disabled,
+  filterFocusOrder,
+  regionLabel,
+  taxonLabel,
+  hasRegion,
+  hasTaxon,
+  onClearRegion,
+  onClearTaxon,
 }: ExploreToolbarProps) {
   const searchOptions: ComboboxOption[] = useMemo(() => {
     if (searchMode === 'species') {
@@ -255,23 +88,46 @@ export default function ExploreToolbar({
     ? searchOptions.find((opt) => opt.key === selectedKey)?.label ?? ''
     : ''
 
+  const crumbs = filterFocusOrder.filter((focus) =>
+    focus === 'region' ? hasRegion : hasTaxon,
+  )
+
   return (
     <div className="explore-toolbar">
-      <div className="explore-rank-badges" role="group" aria-label="Taxonomic ranks">
-        {TAXON_RANKS.map((rank) => (
-          <RankBadge
-            key={rank}
-            rank={rank}
-            summary={rankSummaries[rank]}
-            isActive={rankLevel === rank && Boolean(rankTaxid)}
-            activeLabel={rankTaxidLabel}
-            activeTaxid={rankTaxid}
-            onPick={(taxid) => onPickTaxon(rank, taxid)}
-            onClear={onClearTaxon}
-            disabled={disabled}
-          />
-        ))}
-      </div>
+      {crumbs.length > 0 ? (
+        <nav className="explore-toolbar-breadcrumb" aria-label="Active filters">
+          {crumbs.map((focus, index) => {
+            const label = focus === 'region' ? regionLabel : taxonLabel
+            const onClear = focus === 'region' ? onClearRegion : onClearTaxon
+            const clearLabel =
+              focus === 'region' ? 'Clear region filter' : 'Clear taxon filter'
+            return (
+              <span key={focus} className="explore-breadcrumb-item">
+                {index > 0 ? (
+                  <span className="explore-breadcrumb-sep" aria-hidden="true">
+                    ›
+                  </span>
+                ) : null}
+                <span className="explore-breadcrumb-chip">
+                  <span className="explore-breadcrumb-chip-text" title={label}>
+                    {label}
+                  </span>
+                  <button
+                    type="button"
+                    className="explore-breadcrumb-chip-clear"
+                    aria-label={clearLabel}
+                    onClick={onClear}
+                  >
+                    <X size={11} />
+                  </button>
+                </span>
+              </span>
+            )
+          })}
+        </nav>
+      ) : (
+        <div className="explore-toolbar-breadcrumb-spacer" aria-hidden="true" />
+      )}
 
       <div className="explore-toolbar-search">
         <div className="explore-search-mode" role="group" aria-label="Search mode">
@@ -316,4 +172,3 @@ export default function ExploreToolbar({
     </div>
   )
 }
-
