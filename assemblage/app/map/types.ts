@@ -133,21 +133,6 @@ export function matchesGeoFilter(
   return true
 }
 
-export function filterFlows<T extends RegionFlow | SpeciesFlow>(
-  flows: T[],
-  rankFilter: RankFilter | null,
-  geoFilter: GeoFilter,
-  customIso3Set: Set<string> | null = null,
-): T[] {
-  return flows.filter((row) => {
-    if (rankFilter) {
-      const taxid = row[`${rankFilter.rank}_taxid` as keyof T]
-      if (taxid !== rankFilter.taxid) return false
-    }
-    return matchesGeoFilter(row, geoFilter, customIso3Set)
-  })
-}
-
 /** Query param keys used to make the map's filter/selection state shareable via URL. */
 export const MAP_QUERY_KEYS = {
   rank: 'rank',
@@ -318,36 +303,3 @@ export function normalizeRegionFlows(table: unknown): RegionFlow[] {
   }
   return flows
 }
-
-export const PARQUET_COLUMNS = [
-  'species_taxid',
-  'species_scientific_name',
-  'assembly_accession',
-  'assembly_level',
-  'collection_lat',
-  'collection_lon',
-  'institute_lat',
-  'institute_lon',
-  'has_institute_coordinates',
-  'collection_country',
-  'collection_continent',
-  'collection_country_iso3',
-  'submitter_name',
-  'institute_name',
-  'institute_ror_id',
-  'institute_country',
-  'institute_continent',
-  'institute_country_iso3',
-  'kingdom_taxid',
-  'kingdom_name',
-  'phylum_taxid',
-  'phylum_name',
-  'class_taxid',
-  'class_name',
-  'order_taxid',
-  'order_name',
-  'family_taxid',
-  'family_name',
-  'genus_taxid',
-  'genus_name',
-] as const

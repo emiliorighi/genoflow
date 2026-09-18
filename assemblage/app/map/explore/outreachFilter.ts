@@ -25,8 +25,6 @@ export type OutreachPartition<T extends RegionFlow | SpeciesFlow> = {
   counts: OutreachCounts
 }
 
-export const DEFAULT_OUTREACH_MODE: OutreachMode = 'local'
-
 export const OUTREACH_MODE_LABELS: Record<OutreachMode, string> = {
   local: 'Local',
   exported: 'Exported',
@@ -125,15 +123,6 @@ export function classifyOutreach(
   return null
 }
 
-export function matchesOutreachMode(
-  row: RegionFlow | SpeciesFlow,
-  geoFilter: GeoFilter,
-  mode: OutreachMode,
-  customIso3Set: Set<string> | null = null,
-): boolean {
-  return classifyOutreach(row, geoFilter, customIso3Set) === mode
-}
-
 /**
  * Single-pass partition into local / exported / imported.
  * originTotal = local + exported (species collected in the region).
@@ -181,15 +170,6 @@ export function countOutreachFlows<T extends RegionFlow | SpeciesFlow>(
     else if (kind === 'imported') imported++
   }
   return { local, exported, imported, originTotal: local + exported }
-}
-
-export function flowsForOutreachMode<T extends RegionFlow | SpeciesFlow>(
-  partition: OutreachPartition<T>,
-  mode: OutreachMode,
-): T[] {
-  if (mode === 'local') return partition.local
-  if (mode === 'exported') return partition.exported
-  return partition.imported
 }
 
 /** Union of every enabled slice (Local counted once). */
@@ -258,16 +238,6 @@ export function isCollectedShortcutOn(slices: MapSliceSelection): boolean {
 
 export function isSequencedShortcutOn(slices: MapSliceSelection): boolean {
   return slices.local && slices.imported
-}
-
-/**
- * Share of origin total (local + exported), one decimal.
- * Returns null when originTotal is 0 (omit % rather than 0% / infinity).
- * Imported / originTotal can exceed 100.
- */
-export function originSharePct(count: number, originTotal: number): number | null {
-  if (originTotal <= 0) return null
-  return Math.round((1000 * count) / originTotal) / 10
 }
 
 /** Always start with the full region union (all slices on). */
