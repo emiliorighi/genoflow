@@ -1,13 +1,13 @@
 'use client'
 
 import Link from 'next/link'
-import { Suspense, useEffect, useMemo, useRef, useState } from 'react'
+import { Suspense, startTransition, useEffect, useMemo, useRef, useState } from 'react'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { Info } from 'lucide-react'
 import { load } from '@loaders.gl/core'
 import ExploreLeftSidebar from './explore/ExploreLeftSidebar'
 import ExploreMap, { type ExploreLayers } from './explore/ExploreMap'
-import ExploreToolbar, { type SearchMode } from './explore/ExploreToolbar'
+import ExploreToolbar, { type FilterFocus, type SearchMode } from './explore/ExploreToolbar'
 import {
   buildContinentCards,
   buildContinentLookup,
@@ -29,12 +29,12 @@ import {
   type SpeciesCountRow,
 } from './regionData'
 import {
-  DEFAULT_OUTREACH_MODE,
-  defaultOutreachModeForPartition,
+  DEFAULT_MAP_SLICES,
+  defaultMapSlicesForPartition,
   filterByRank,
-  flowsForOutreachMode,
+  flowsForMapSlices,
   partitionOutreachFlows,
-  type OutreachMode,
+  type MapSliceSelection,
 } from './explore/outreachFilter'
 import {
   InstituteDetail,
@@ -119,10 +119,32 @@ function MapPageInner() {
   const [rankTaxid, setRankTaxid] = useState(
     () => initialParams.current.get(MAP_QUERY_KEYS.taxon) || '',
   )
-  const [scopeBarsToTaxon, setScopeBarsToTaxon] = useState(false)
-  const [outreachMode, setOutreachMode] = useState<OutreachMode>(DEFAULT_OUTREACH_MODE)
+  const [mapSlices, setMapSlices] = useState<MapSliceSelection>(DEFAULT_MAP_SLICES)
+  const [filterFocusOrder, setFilterFocusOrder] = useState<FilterFocus[]>(() => {
+    const order: FilterFocus[] = []
+    const hasGeo =
+      Boolean(initialParams.current.get(MAP_QUERY_KEYS.custom)) ||
+      Boolean(initialParams.current.get(MAP_QUERY_KEYS.continent)) ||
+      Boolean(initialParams.current.get(MAP_QUERY_KEYS.country))
+    const hasTaxon =
+      Boolean(initialParams.current.get(MAP_QUERY_KEYS.rank)) &&
+      Boolean(initialParams.current.get(MAP_QUERY_KEYS.taxon))
+    // Deep-link with both: region then taxon
+    if (hasGeo) order.push('region')
+    if (hasTaxon) order.push('taxon')
+    return order
+  })
   const [searchMode, setSearchMode] = useState<SearchMode>('species')
   const geoHydrated = useRef(false)
+  const mapSlicesHydrated = useRef(false)
+
+  function appendFilterFocus(focus: FilterFocus) {
+    setFilterFocusOrder((prev) => (prev.includes(focus) ? prev : [...prev, focus]))
+  }
+
+  function removeFilterFocus(focus: FilterFocus) {
+    setFilterFocusOrder((prev) => prev.filter((f) => f !== focus))
+  }
 
   const clearSelection = () => {
     setSelection(null)
@@ -282,34 +304,46 @@ function MapPageInner() {
   const rankFilter: RankFilter | null =
     rankLevel && rankTaxid ? { rank: rankLevel, taxid: rankTaxid } : null
 
-  const outreachPartition = useMemo(() => {
+  const taxonFilteredFlows = useMemo(
+    () => filterByRank(flows ?? [], rankFilter),
+    // rankFilter is derived from rankLevel + rankTaxid
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [flows, rankLevel, rankTaxid],
+  )
+
+  /** Geo partition over all taxa — drives taxon picker options/counts. */
+  const geoPartition = useMemo(() => {
     if (!flows || !hasRegion) return null
     return partitionOutreachFlows(flows, geoFilter, activeCustomIso3Set)
   }, [flows, geoFilter, hasRegion, activeCustomIso3Set])
 
-  const outreachCounts = outreachPartition?.counts ?? {
+  /** Geo partition scoped to the active taxon — drives KPI counts and map slices. */
+  const taxonPartition = useMemo(() => {
+    if (!flows || !hasRegion) return null
+    return partitionOutreachFlows(taxonFilteredFlows, geoFilter, activeCustomIso3Set)
+  }, [flows, taxonFilteredFlows, geoFilter, hasRegion, activeCustomIso3Set])
+
+  const outreachCounts = taxonPartition?.counts ?? {
     local: 0,
     exported: 0,
     imported: 0,
     originTotal: 0,
   }
 
-  const regionFlows = useMemo(() => {
-    if (!flows) return []
-    if (!hasRegion || !outreachPartition) return flows
-    return flowsForOutreachMode(outreachPartition, outreachMode)
-  }, [flows, hasRegion, outreachPartition, outreachMode])
+  // Deep-link / first paint: full union once geo data is ready.
+  useEffect(() => {
+    if (mapSlicesHydrated.current || !flows || !hasRegion || !taxonPartition) return
+    mapSlicesHydrated.current = true
+    setMapSlices(defaultMapSlicesForPartition(taxonPartition))
+  }, [flows, hasRegion, taxonPartition])
 
   const mapFlows = useMemo(() => {
     if (!flows) return []
-    if (!hasRegion) return filterByRank(flows, rankFilter)
-    return filterByRank(regionFlows, rankFilter)
-  }, [flows, hasRegion, regionFlows, rankFilter])
+    if (!hasRegion || !taxonPartition) return taxonFilteredFlows
+    return flowsForMapSlices(taxonPartition, mapSlices)
+  }, [flows, hasRegion, taxonPartition, mapSlices, taxonFilteredFlows])
 
-  const barsFlows = useMemo(() => {
-    if (scopeBarsToTaxon && rankFilter) return mapFlows
-    return regionFlows
-  }, [scopeBarsToTaxon, rankFilter, mapFlows, regionFlows])
+  const barsFlows = mapFlows
 
   useEffect(() => {
     if (!selection || !flows) return
@@ -349,22 +383,24 @@ function MapPageInner() {
     searchParams,
   ])
 
+  // Defer expensive list-card rebuilds while a region detail is open.
   const continentCards = useMemo(
-    () => (flows ? buildContinentCards(flows) : []),
-    [flows],
+    () =>
+      !hasRegion && flows ? buildContinentCards(taxonFilteredFlows) : [],
+    [hasRegion, flows, taxonFilteredFlows],
   )
 
   const allCountryCards = useMemo(
     () =>
-      flows
+      !hasRegion && flows
         ? buildCountryCards(
-            flows,
+            taxonFilteredFlows,
             speciesCounts ?? [],
             allCountryTotals,
             membershipLookup,
           )
         : [],
-    [flows, speciesCounts, allCountryTotals, membershipLookup],
+    [hasRegion, flows, taxonFilteredFlows, speciesCounts, allCountryTotals, membershipLookup],
   )
 
   const countryCards = useMemo(
@@ -374,15 +410,21 @@ function MapPageInner() {
 
   const customCards = useMemo(
     () =>
-      flows
-        ? buildRegionsTabCards(flows, allCountryCards, membershipLookup)
+      !hasRegion && flows
+        ? buildRegionsTabCards(taxonFilteredFlows, allCountryCards, membershipLookup)
         : [],
-    [flows, allCountryCards, membershipLookup],
+    [hasRegion, flows, taxonFilteredFlows, allCountryCards, membershipLookup],
   )
 
+  const chipScopeFlows = useMemo(() => {
+    if (!flows) return []
+    if (!hasRegion || !geoPartition) return flows
+    return [...geoPartition.local, ...geoPartition.exported, ...geoPartition.imported]
+  }, [flows, hasRegion, geoPartition])
+
   const rankSummaries = useMemo(
-    () => buildTaxonRankSummaries(regionFlows),
-    [regionFlows],
+    () => buildTaxonRankSummaries(chipScopeFlows),
+    [chipScopeFlows],
   )
 
   const rankTaxidLabel = useMemo(() => {
@@ -400,7 +442,7 @@ function MapPageInner() {
     if (!stillPresent) {
       setRankLevel('')
       setRankTaxid('')
-      setScopeBarsToTaxon(false)
+      setFilterFocusOrder((prev) => prev.filter((f) => f !== 'taxon'))
     }
   }, [rankSummaries, rankLevel, rankTaxid, flows])
 
@@ -421,20 +463,37 @@ function MapPageInner() {
   }, [mapFlows, selection, centroids])
 
   const onPickTaxon = (rank: TaxonRank, taxid: string) => {
-    setRankLevel(rank)
-    setRankTaxid(taxid)
+    appendFilterFocus('taxon')
+    // Defer expensive list-card rebuilds only while the region list is visible.
+    // With a region open, update urgently so map/KPI stay snappy.
+    if (hasRegion) {
+      setRankLevel(rank)
+      setRankTaxid(taxid)
+      return
+    }
+    startTransition(() => {
+      setRankLevel(rank)
+      setRankTaxid(taxid)
+    })
   }
 
   const onClearTaxon = () => {
-    setRankLevel('')
-    setRankTaxid('')
-    setScopeBarsToTaxon(false)
+    if (hasRegion) {
+      setRankLevel('')
+      setRankTaxid('')
+      removeFilterFocus('taxon')
+      return
+    }
+    startTransition(() => {
+      setRankLevel('')
+      setRankTaxid('')
+      removeFilterFocus('taxon')
+    })
   }
 
   const onSelectRegion = (card: RegionCard) => {
     setHoverPreview(null)
     clearSelection()
-    setScopeBarsToTaxon(false)
     let nextFilter: GeoFilter
     if (card.kind === 'custom') {
       const customId = card.id.startsWith('custom:')
@@ -462,13 +521,9 @@ function MapPageInner() {
       }
     }
     setGeoFilter(nextFilter)
-    if (flows) {
-      const isoSet = customIso3SetForFilter(nextFilter.customId, customIso3Sets)
-      const partition = partitionOutreachFlows(flows, nextFilter, isoSet)
-      setOutreachMode(defaultOutreachModeForPartition(partition))
-    } else {
-      setOutreachMode(DEFAULT_OUTREACH_MODE)
-    }
+    appendFilterFocus('region')
+    setMapSlices(DEFAULT_MAP_SLICES)
+    mapSlicesHydrated.current = true
   }
 
   const onHoverRegion = (card: RegionCard | null) => {
@@ -507,10 +562,14 @@ function MapPageInner() {
 
   const onClearRegion = () => {
     setHoverPreview(null)
-    setGeoFilter(EMPTY_GEO_FILTER)
     clearSelection()
-    setScopeBarsToTaxon(false)
-    setOutreachMode(DEFAULT_OUTREACH_MODE)
+    setMapSlices(DEFAULT_MAP_SLICES)
+    // Returning to the list: defer continent/country/custom card rebuilds
+    // and keep breadcrumb/focus order in the same transition as geo clear.
+    startTransition(() => {
+      setGeoFilter(EMPTY_GEO_FILTER)
+      removeFilterFocus('region')
+    })
   }
 
   const title = regionTitle(geoFilter)
@@ -519,6 +578,29 @@ function MapPageInner() {
       (selection?.type === 'institute' && selectedInstituteRows.length > 0) ||
       (selection?.type === 'point' && selectedPointRows.length > 0),
   )
+
+  /** Species in region across all map-view slices (all taxa). */
+  const allSpeciesCount = useMemo(() => {
+    if (!geoPartition) return 0
+    return (
+      geoPartition.local.length +
+      geoPartition.exported.length +
+      geoPartition.imported.length
+    )
+  }, [geoPartition])
+
+  /** Species in region for the active taxon (all map-view slices). */
+  const taxonSpeciesCount = useMemo(() => {
+    if (!taxonPartition) return 0
+    return (
+      taxonPartition.local.length +
+      taxonPartition.exported.length +
+      taxonPartition.imported.length
+    )
+  }, [taxonPartition])
+
+  const taxonBreadcrumbLabel =
+    rankLevel && rankTaxidLabel ? `${rankTaxidLabel} (${rankLevel})` : ''
 
   return (
     <main className="atlas-shell">
@@ -544,37 +626,43 @@ function MapPageInner() {
           continentCards={continentCards}
           countryCards={countryCards}
           customCards={customCards}
-          outreachMode={outreachMode}
+          mapSlices={mapSlices}
+          onMapSlicesChange={setMapSlices}
           outreachCounts={outreachCounts}
-          onOutreachModeChange={setOutreachMode}
           barsFlows={barsFlows}
+          activeMapCount={mapFlows.length}
           loading={!flows || !speciesCounts}
           onSelectRegion={onSelectRegion}
           onHoverRegion={onHoverRegion}
           onClearRegion={onClearRegion}
           onSelectInstitute={(key) => select({ type: 'institute', key })}
+          rankSummaries={rankSummaries}
+          rankLevel={rankLevel}
+          rankTaxid={rankTaxid}
           rankTaxidLabel={rankTaxidLabel}
+          onPickTaxon={onPickTaxon}
+          onClearTaxon={onClearTaxon}
           hasTaxonFilter={Boolean(rankFilter)}
-          allSpeciesCount={regionFlows.length}
-          taxonSpeciesCount={mapFlows.length}
-          scopeBarsToTaxon={scopeBarsToTaxon}
-          onScopeBarsToTaxonChange={setScopeBarsToTaxon}
+          allSpeciesCount={allSpeciesCount}
+          taxonSpeciesCount={taxonSpeciesCount}
+          taxonPickerDisabled={!flows}
         />
 
         <div className="explore-center">
           <ExploreToolbar
             mapFlows={mapFlows}
-            rankSummaries={rankSummaries}
-            rankLevel={rankLevel}
-            rankTaxid={rankTaxid}
-            rankTaxidLabel={rankTaxidLabel}
-            onPickTaxon={onPickTaxon}
-            onClearTaxon={onClearTaxon}
             searchMode={searchMode}
             onSearchModeChange={setSearchMode}
             selection={selection}
             onSelect={select}
             disabled={!flows}
+            filterFocusOrder={filterFocusOrder}
+            regionLabel={title}
+            taxonLabel={taxonBreadcrumbLabel}
+            hasRegion={hasRegion}
+            hasTaxon={Boolean(rankFilter)}
+            onClearRegion={onClearRegion}
+            onClearTaxon={onClearTaxon}
           />
           <div className="explore-map-stage">
             <ExploreMap

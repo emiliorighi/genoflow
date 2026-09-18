@@ -1,9 +1,9 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import { ArrowLeft, CircleHelp, Search } from 'lucide-react'
+import { CircleHelp, Search, X } from 'lucide-react'
 import { regionTitle } from '../SidebarPanels'
-import { TAXON_RANKS, type GeoFilter, type RegionFlow } from '../types'
+import { type GeoFilter, type RegionFlow, type TaxonRank } from '../types'
 import {
   Popover,
   PopoverContent,
@@ -17,111 +17,27 @@ import {
   filterCards,
   type DestinationMode,
   type RegionCard,
+  type TaxonRankSummaries,
 } from './exploreData'
 import DestinationBars from './DestinationBars'
+import MapViewToggles from './MapViewToggles'
+import TaxonPicker from './TaxonPicker'
 import {
+  MAP_SHORTCUT_DESCRIPTIONS,
+  MAP_SHORTCUT_LABELS,
   OUTREACH_MODE_DESCRIPTIONS,
   OUTREACH_MODE_LABELS,
   OUTREACH_MODES,
-  originSharePct,
+  type MapSliceSelection,
   type OutreachCounts,
-  type OutreachMode,
 } from './outreachFilter'
 
 export type ExploreTab = 'regions' | 'continents' | 'countries'
 
-function GuideKpiMock() {
-  return (
-    <div className="guide-kpi-mock" aria-hidden="true">
-      {OUTREACH_MODES.map((mode) => (
-        <div key={mode} className="guide-kpi-mock-cell">
-          <span>{OUTREACH_MODE_LABELS[mode]}</span>
-          <b>—</b>
-        </div>
-      ))}
-    </div>
-  )
-}
-
-function GuideRegionCardMock() {
-  return (
-    <div className="guide-region-mock" aria-hidden="true">
-      <div className="guide-region-mock-head">
-        <strong>Example region</strong>
-        <span>Hover or click</span>
-      </div>
-      <div className="guide-kpi-mock guide-kpi-mock-compact">
-        {OUTREACH_MODES.map((mode) => (
-          <div key={mode} className="guide-kpi-mock-cell">
-            <span>{OUTREACH_MODE_LABELS[mode]}</span>
-            <b>—</b>
-          </div>
-        ))}
-      </div>
-    </div>
-  )
-}
-
-function GuideToolbarMock() {
-  return (
-    <div className="guide-toolbar-mock" aria-hidden="true">
-      <div className="guide-rank-mock">
-        {TAXON_RANKS.map((rank) => (
-          <span key={rank} className="guide-rank-mock-badge">
-            {rank}
-          </span>
-        ))}
-      </div>
-      <div className="guide-search-mode-mock">
-        <span className="is-active">Species</span>
-        <span>Institutes</span>
-      </div>
-    </div>
-  )
-}
-
-function GuideLegendMock() {
-  return (
-    <ul className="map-legend-help-list guide-legend-mock" aria-hidden="true">
-      <li>
-        <span className="legend-dot amber" />
-        <div>
-          <strong>Collected</strong>
-          <p>Exact collection site when coordinates are known.</p>
-        </div>
-      </li>
-      <li>
-        <span className="legend-dot green" />
-        <div>
-          <strong>Centroid</strong>
-          <p>Country center when precise coordinates are missing.</p>
-        </div>
-      </li>
-      <li>
-        <span className="legend-dot blue" />
-        <div>
-          <strong>Submitted</strong>
-          <p>Institute that submitted the genome for sequencing.</p>
-        </div>
-      </li>
-      <li>
-        <span className="legend-line" />
-        <div>
-          <strong>Flow</strong>
-          <p>Link from collection site to sequencing institute.</p>
-        </div>
-      </li>
-    </ul>
-  )
-}
-
 function FlowMapGuideHelp() {
   return (
     <Popover>
-      <PopoverTrigger
-        className="map-legend-help"
-        aria-label="How to use the Flow Map"
-      >
+      <PopoverTrigger className="map-legend-help" aria-label="How to use the Flow Map">
         <CircleHelp size={13} aria-hidden="true" />
       </PopoverTrigger>
       <PopoverContent
@@ -133,16 +49,39 @@ function FlowMapGuideHelp() {
         <PopoverHeader>
           <PopoverTitle>How to use the Flow Map</PopoverTitle>
           <PopoverDescription>
-            A short guide to reading flows, filtering taxa, and exploring the
-            map.
+            Region and taxon are peer filters. Map view toggles choose which
+            flows to plot.
           </PopoverDescription>
         </PopoverHeader>
-
         <div className="flow-map-guide-body">
           <section className="flow-map-guide-section">
-            <h3>Species flow counts</h3>
-            <GuideKpiMock />
+            <h3>Peer filters</h3>
+            <p>
+              Use the Region and Taxon pills in the sidebar (and the toolbar
+              breadcrumb) to narrow scope. Either can be set first; each updates
+              the other&apos;s counts.
+            </p>
+          </section>
+          <section className="flow-map-guide-section">
+            <h3>Hover &amp; select</h3>
+            <p>
+              Hover a region to preview <strong>all</strong> flows that touch it
+              (local + exported + imported). Click to open details. The default
+              map view shows that full union; toggle Collected / Sequenced or
+              individual slices to refine.
+            </p>
+          </section>
+          <section className="flow-map-guide-section">
+            <h3>Flow slices</h3>
             <ul className="flow-map-guide-defs">
+              <li>
+                <strong>{MAP_SHORTCUT_LABELS.collected}</strong>
+                <span>{MAP_SHORTCUT_DESCRIPTIONS.collected}</span>
+              </li>
+              <li>
+                <strong>{MAP_SHORTCUT_LABELS.sequenced}</strong>
+                <span>{MAP_SHORTCUT_DESCRIPTIONS.sequenced}</span>
+              </li>
               {OUTREACH_MODES.map((mode) => (
                 <li key={mode}>
                   <strong>{OUTREACH_MODE_LABELS[mode]}</strong>
@@ -150,47 +89,6 @@ function FlowMapGuideHelp() {
                 </li>
               ))}
             </ul>
-            <p>
-              Region cards and detail radios show the same three counts.
-              Percentages compare each slice to species collected here (Local +
-              Exported). Imported can go above 100% when a region sequences more
-              than it collects.
-            </p>
-          </section>
-
-          <section className="flow-map-guide-section">
-            <h3>Hover &amp; select a region</h3>
-            <GuideRegionCardMock />
-            <p>
-              Hover a region to preview its <strong>Local</strong> flows on the
-              map (or <strong>Exported</strong> if none are local). Click to open
-              region details. Use the Local / Exported / Imported radios to
-              choose which slice the map shows.
-            </p>
-          </section>
-
-          <section className="flow-map-guide-section">
-            <h3>Toolbar filters</h3>
-            <GuideToolbarMock />
-            <p>
-              Rank badges and the Species / Institutes search narrow what appears
-              on the map. When you select a region, those filters update to that
-              region&apos;s current flow slice—so counts and search results stay
-              in sync with what you are viewing.
-            </p>
-          </section>
-
-          <section className="flow-map-guide-section">
-            <h3>Map colors</h3>
-            <GuideLegendMock />
-          </section>
-
-          <section className="flow-map-guide-section">
-            <h3>Everything is clickable</h3>
-            <p>
-              Collection points, sequencing institutes, flow lines, and species
-              can all be clicked to open related details in the side panels.
-            </p>
           </section>
         </div>
       </PopoverContent>
@@ -203,29 +101,26 @@ type ExploreLeftSidebarProps = {
   continentCards: RegionCard[]
   countryCards: RegionCard[]
   customCards: RegionCard[]
-  outreachMode: OutreachMode
+  mapSlices: MapSliceSelection
+  onMapSlicesChange: (next: MapSliceSelection) => void
   outreachCounts: OutreachCounts
-  onOutreachModeChange: (mode: OutreachMode) => void
-  /** Flows for DestinationBars (region totals or taxon-scoped). */
   barsFlows: RegionFlow[]
+  activeMapCount: number
   loading: boolean
   onSelectRegion: (card: RegionCard) => void
   onHoverRegion: (card: RegionCard | null) => void
   onClearRegion: () => void
   onSelectInstitute: (key: string) => void
+  rankSummaries: TaxonRankSummaries
+  rankLevel: TaxonRank | ''
+  rankTaxid: string
   rankTaxidLabel: string
+  onPickTaxon: (rank: TaxonRank, taxid: string) => void
+  onClearTaxon: () => void
   hasTaxonFilter: boolean
-  /** Species count in the region (no taxon filter). */
   allSpeciesCount: number
-  /** Species count for the selected taxon within the region. */
   taxonSpeciesCount: number
-  scopeBarsToTaxon: boolean
-  onScopeBarsToTaxonChange: (scoped: boolean) => void
-}
-
-function formatCount(value: number | null): string {
-  if (value == null) return '—'
-  return value.toLocaleString()
+  taxonPickerDisabled?: boolean
 }
 
 function RegionCardButton({
@@ -237,6 +132,8 @@ function RegionCardButton({
   onSelect: (card: RegionCard) => void
   onHover: (card: RegionCard | null) => void
 }) {
+  const collected = card.local + card.exported
+  const sequenced = card.local + card.imported
   return (
     <button
       type="button"
@@ -251,19 +148,10 @@ function RegionCardButton({
           <span className="region-card-sub">{card.subtitle ?? card.continent}</span>
         )}
       </div>
-      <div className="region-card-metrics">
-        <div>
-          <span>{OUTREACH_MODE_LABELS.local}</span>
-          <b>{formatCount(card.local)}</b>
-        </div>
-        <div>
-          <span>{OUTREACH_MODE_LABELS.exported}</span>
-          <b>{formatCount(card.exported)}</b>
-        </div>
-        <div>
-          <span>{OUTREACH_MODE_LABELS.imported}</span>
-          <b>{formatCount(card.imported)}</b>
-        </div>
+      <div className="region-card-quiet-metrics">
+        <span>{collected.toLocaleString()} collected</span>
+        <span className="region-card-quiet-sep">·</span>
+        <span>{sequenced.toLocaleString()} sequenced</span>
       </div>
     </button>
   )
@@ -302,33 +190,18 @@ function ListState({
     <div className="explore-list">
       <div className="explore-filter-row">
         <div className="explore-tabs" role="tablist" aria-label="Region type">
-          <button
-            type="button"
-            role="tab"
-            className={`explore-tab ${tab === 'regions' ? 'is-active' : ''}`}
-            aria-selected={tab === 'regions'}
-            onClick={() => setTab('regions')}
-          >
-            Regions
-          </button>
-          <button
-            type="button"
-            role="tab"
-            className={`explore-tab ${tab === 'continents' ? 'is-active' : ''}`}
-            aria-selected={tab === 'continents'}
-            onClick={() => setTab('continents')}
-          >
-            Continents
-          </button>
-          <button
-            type="button"
-            role="tab"
-            className={`explore-tab ${tab === 'countries' ? 'is-active' : ''}`}
-            aria-selected={tab === 'countries'}
-            onClick={() => setTab('countries')}
-          >
-            Countries
-          </button>
+          {(['regions', 'continents', 'countries'] as ExploreTab[]).map((id) => (
+            <button
+              key={id}
+              type="button"
+              role="tab"
+              className={`explore-tab ${tab === id ? 'is-active' : ''}`}
+              aria-selected={tab === id}
+              onClick={() => setTab(id)}
+            >
+              {id === 'regions' ? 'Regions' : id === 'continents' ? 'Continents' : 'Countries'}
+            </button>
+          ))}
         </div>
       </div>
 
@@ -374,48 +247,39 @@ function ListState({
 
 function DetailState({
   geoFilter,
-  outreachMode,
+  mapSlices,
+  onMapSlicesChange,
   outreachCounts,
-  onOutreachModeChange,
   barsFlows,
-  onClearRegion,
+  activeMapCount,
   onSelectInstitute,
   rankTaxidLabel,
   hasTaxonFilter,
   allSpeciesCount,
   taxonSpeciesCount,
-  scopeBarsToTaxon,
-  onScopeBarsToTaxonChange,
 }: {
   geoFilter: GeoFilter
-  outreachMode: OutreachMode
+  mapSlices: MapSliceSelection
+  onMapSlicesChange: (next: MapSliceSelection) => void
   outreachCounts: OutreachCounts
-  onOutreachModeChange: (mode: OutreachMode) => void
   barsFlows: RegionFlow[]
-  onClearRegion: () => void
+  activeMapCount: number
   onSelectInstitute: (key: string) => void
   rankTaxidLabel: string
   hasTaxonFilter: boolean
   allSpeciesCount: number
   taxonSpeciesCount: number
-  scopeBarsToTaxon: boolean
-  onScopeBarsToTaxonChange: (scoped: boolean) => void
 }) {
   const title = regionTitle(geoFilter)
-  const modeLabel = OUTREACH_MODE_LABELS[outreachMode]
   const [destMode, setDestMode] = useState<DestinationMode>('country')
   const groups = useMemo(
     () => buildSequencingBreakdown(barsFlows, destMode),
     [barsFlows, destMode],
   )
-  const barsTotal = barsFlows.length
 
   return (
     <div className="explore-detail">
       <div className="explore-detail-head">
-        <button type="button" className="back-index" onClick={onClearRegion}>
-          <ArrowLeft size={15} /> All regions
-        </button>
         <div className="region-title explore-detail-title">
           <span className="detail-kicker">Region details</span>
           <h2>{title}</h2>
@@ -423,38 +287,13 @@ function DetailState({
       </div>
 
       <section className="explore-section explore-section-flush">
-        <div
-          className="kpi-grid coverage-kpi-grid"
-          role="radiogroup"
-          aria-label="Species flow"
-        >
-          {OUTREACH_MODES.map((mode) => {
-            const active = outreachMode === mode
-            const share = originSharePct(
-              outreachCounts[mode],
-              outreachCounts.originTotal,
-            )
-            return (
-              <button
-                key={mode}
-                type="button"
-                role="radio"
-                aria-checked={active}
-                aria-label={`${OUTREACH_MODE_LABELS[mode]}: ${OUTREACH_MODE_DESCRIPTIONS[mode]}`}
-                className={`kpi-card kpi-card-toggle ${active ? 'is-active' : ''}`}
-                onClick={() => onOutreachModeChange(mode)}
-              >
-                <span>{OUTREACH_MODE_LABELS[mode]}</span>
-                <div className="kpi-card-value">
-                  <b>{outreachCounts[mode].toLocaleString()}</b>
-                  {share != null ? (
-                    <em className="kpi-card-pct">{share}%</em>
-                  ) : null}
-                </div>
-              </button>
-            )
-          })}
-        </div>
+        <MapViewToggles
+          slices={mapSlices}
+          counts={outreachCounts}
+          onChange={onMapSlicesChange}
+          activeCount={activeMapCount}
+          taxonLabel={hasTaxonFilter ? rankTaxidLabel : undefined}
+        />
       </section>
 
       <section className="explore-section">
@@ -486,38 +325,14 @@ function DetailState({
           </div>
         </div>
         {hasTaxonFilter ? (
-          <div
-            className="explore-bars-scope explore-bars-scope-taxon"
-            role="group"
-            aria-label="Destination bar scope"
-          >
-            <button
-              type="button"
-              className={`explore-bars-scope-btn ${!scopeBarsToTaxon ? 'is-active' : ''}`}
-              aria-pressed={!scopeBarsToTaxon}
-              onClick={() => onScopeBarsToTaxonChange(false)}
-            >
-              All species ({allSpeciesCount.toLocaleString()})
-            </button>
-            <button
-              type="button"
-              className={`explore-bars-scope-btn explore-bars-scope-btn-taxon ${scopeBarsToTaxon ? 'is-active' : ''}`}
-              aria-pressed={scopeBarsToTaxon}
-              onClick={() => onScopeBarsToTaxonChange(true)}
-              title={`${rankTaxidLabel} (${taxonSpeciesCount.toLocaleString()})`}
-            >
-              <span className="explore-bars-scope-taxon-name">
-                {rankTaxidLabel || 'Selected taxon'}
-              </span>
-              <span className="explore-bars-scope-taxon-count">
-                ({taxonSpeciesCount.toLocaleString()})
-              </span>
-            </button>
-          </div>
+          <p className="explore-taxon-caption">
+            {rankTaxidLabel} — {taxonSpeciesCount.toLocaleString()} of{' '}
+            {allSpeciesCount.toLocaleString()} species in {title}
+          </p>
         ) : null}
         <DestinationBars
-          regionLabel={`${title} · ${modeLabel}`}
-          total={barsTotal}
+          regionLabel={title}
+          total={barsFlows.length}
           mode={destMode}
           groups={groups}
           onSelectInstitute={onSelectInstitute}
@@ -527,26 +342,92 @@ function DetailState({
   )
 }
 
+function FilterStrip({
+  geoFilter,
+  hasRegion,
+  onClearRegion,
+  rankSummaries,
+  rankLevel,
+  rankTaxid,
+  rankTaxidLabel,
+  onPickTaxon,
+  onClearTaxon,
+  taxonPickerDisabled,
+}: {
+  geoFilter: GeoFilter
+  hasRegion: boolean
+  onClearRegion: () => void
+  rankSummaries: TaxonRankSummaries
+  rankLevel: TaxonRank | ''
+  rankTaxid: string
+  rankTaxidLabel: string
+  onPickTaxon: (rank: TaxonRank, taxid: string) => void
+  onClearTaxon: () => void
+  taxonPickerDisabled?: boolean
+}) {
+  const title = regionTitle(geoFilter)
+  return (
+    <div className="sidebar-filter-strip justify-between">
+      <div className="sidebar-filter-peer">
+        <span className="sidebar-filter-peer-label">Region</span>
+        {hasRegion ? (
+          <span className="sidebar-filter-pill is-set">
+            <span className="sidebar-filter-pill-text" title={title}>
+              {title}
+            </span>
+            <button
+              type="button"
+              className="sidebar-filter-pill-clear"
+              aria-label="Clear region"
+              onClick={onClearRegion}
+            >
+              <X size={12} />
+            </button>
+          </span>
+        ) : (
+          <span className="sidebar-filter-pill sidebar-filter-pill-static">
+            <span className="sidebar-filter-pill-text">All</span>
+          </span>
+        )}
+      </div>
+      <TaxonPicker
+        rankSummaries={rankSummaries}
+        rankLevel={rankLevel}
+        rankTaxid={rankTaxid}
+        rankTaxidLabel={rankTaxidLabel}
+        onPickTaxon={onPickTaxon}
+        onClearTaxon={onClearTaxon}
+        disabled={taxonPickerDisabled}
+      />
+    </div>
+  )
+}
+
 export default function ExploreLeftSidebar({
   geoFilter,
   continentCards,
   countryCards,
   customCards,
-  outreachMode,
+  mapSlices,
+  onMapSlicesChange,
   outreachCounts,
-  onOutreachModeChange,
   barsFlows,
+  activeMapCount,
   loading,
   onSelectRegion,
   onHoverRegion,
   onClearRegion,
   onSelectInstitute,
+  rankSummaries,
+  rankLevel,
+  rankTaxid,
   rankTaxidLabel,
+  onPickTaxon,
+  onClearTaxon,
   hasTaxonFilter,
   allSpeciesCount,
   taxonSpeciesCount,
-  scopeBarsToTaxon,
-  onScopeBarsToTaxonChange,
+  taxonPickerDisabled,
 }: ExploreLeftSidebarProps) {
   const hasRegion = Boolean(
     geoFilter.continent || geoFilter.country || geoFilter.customId,
@@ -558,21 +439,31 @@ export default function ExploreLeftSidebar({
         <h1>Flow Map</h1>
         <FlowMapGuideHelp />
       </header>
+      <FilterStrip
+        geoFilter={geoFilter}
+        hasRegion={hasRegion}
+        onClearRegion={onClearRegion}
+        rankSummaries={rankSummaries}
+        rankLevel={rankLevel}
+        rankTaxid={rankTaxid}
+        rankTaxidLabel={rankTaxidLabel}
+        onPickTaxon={onPickTaxon}
+        onClearTaxon={onClearTaxon}
+        taxonPickerDisabled={taxonPickerDisabled}
+      />
       {hasRegion ? (
         <DetailState
           geoFilter={geoFilter}
-          outreachMode={outreachMode}
+          mapSlices={mapSlices}
+          onMapSlicesChange={onMapSlicesChange}
           outreachCounts={outreachCounts}
-          onOutreachModeChange={onOutreachModeChange}
           barsFlows={barsFlows}
-          onClearRegion={onClearRegion}
+          activeMapCount={activeMapCount}
           onSelectInstitute={onSelectInstitute}
           rankTaxidLabel={rankTaxidLabel}
           hasTaxonFilter={hasTaxonFilter}
           allSpeciesCount={allSpeciesCount}
           taxonSpeciesCount={taxonSpeciesCount}
-          scopeBarsToTaxon={scopeBarsToTaxon}
-          onScopeBarsToTaxonChange={onScopeBarsToTaxonChange}
         />
       ) : (
         <ListState

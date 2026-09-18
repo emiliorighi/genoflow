@@ -25,8 +25,6 @@ export type OutreachPartition<T extends RegionFlow | SpeciesFlow> = {
   counts: OutreachCounts
 }
 
-export const DEFAULT_OUTREACH_MODE: OutreachMode = 'local'
-
 export const OUTREACH_MODE_LABELS: Record<OutreachMode, string> = {
   local: 'Local',
   exported: 'Exported',
@@ -41,6 +39,34 @@ export const OUTREACH_MODE_DESCRIPTIONS: Record<OutreachMode, string> = {
 }
 
 export const OUTREACH_MODES: OutreachMode[] = ['local', 'exported', 'imported']
+
+/** Disjoint flow slices that can be multi-selected for the map. */
+export type FlowSlice = OutreachMode
+
+export type MapSliceSelection = {
+  local: boolean
+  exported: boolean
+  imported: boolean
+}
+
+/** Default: show every flow that touches the region. */
+export const DEFAULT_MAP_SLICES: MapSliceSelection = {
+  local: true,
+  exported: true,
+  imported: true,
+}
+
+export const FLOW_SLICES: FlowSlice[] = ['local', 'exported', 'imported']
+
+export const MAP_SHORTCUT_LABELS = {
+  collected: 'Collected here',
+  sequenced: 'Sequenced here',
+} as const
+
+export const MAP_SHORTCUT_DESCRIPTIONS = {
+  collected: 'Collected here (local + exported).',
+  sequenced: 'Sequenced here (local + imported).',
+} as const
 
 /**
  * Institute geography membership for continent / country / custom region.
@@ -97,15 +123,6 @@ export function classifyOutreach(
   return null
 }
 
-export function matchesOutreachMode(
-  row: RegionFlow | SpeciesFlow,
-  geoFilter: GeoFilter,
-  mode: OutreachMode,
-  customIso3Set: Set<string> | null = null,
-): boolean {
-  return classifyOutreach(row, geoFilter, customIso3Set) === mode
-}
-
 /**
  * Single-pass partition into local / exported / imported.
  * originTotal = local + exported (species collected in the region).
@@ -155,32 +172,79 @@ export function countOutreachFlows<T extends RegionFlow | SpeciesFlow>(
   return { local, exported, imported, originTotal: local + exported }
 }
 
-export function flowsForOutreachMode<T extends RegionFlow | SpeciesFlow>(
+/** Union of every enabled slice (Local counted once). */
+export function flowsForMapSlices<T extends RegionFlow | SpeciesFlow>(
   partition: OutreachPartition<T>,
-  mode: OutreachMode,
+  slices: MapSliceSelection,
 ): T[] {
-  if (mode === 'local') return partition.local
-  if (mode === 'exported') return partition.exported
-  return partition.imported
+  const out: T[] = []
+  if (slices.local) out.push(...partition.local)
+  if (slices.exported) out.push(...partition.exported)
+  if (slices.imported) out.push(...partition.imported)
+  return out
+}
+
+export function countActiveMapSlices(slices: MapSliceSelection): number {
+  return (slices.local ? 1 : 0) + (slices.exported ? 1 : 0) + (slices.imported ? 1 : 0)
+}
+
+/** Toggle one slice; refuse to clear the last active slice. */
+export function toggleMapSlice(
+  slices: MapSliceSelection,
+  slice: FlowSlice,
+): MapSliceSelection {
+  const next = { ...slices, [slice]: !slices[slice] }
+  if (countActiveMapSlices(next) === 0) return slices
+  return next
 }
 
 /**
- * Share of origin total (local + exported), one decimal.
- * Returns null when originTotal is 0 (omit % rather than 0% / infinity).
- * Imported / originTotal can exceed 100.
+ * Toggle the Collected (local+exported) or Sequenced (local+imported) pair.
+ * Turning a pair on sets both members true. Turning it off clears the pair's
+ * unique member and clears local only when the other shortcut is also off.
  */
-export function originSharePct(count: number, originTotal: number): number | null {
-  if (originTotal <= 0) return null
-  return Math.round((1000 * count) / originTotal) / 10
+export function toggleMapShortcut(
+  slices: MapSliceSelection,
+  shortcut: 'collected' | 'sequenced',
+): MapSliceSelection {
+  if (shortcut === 'collected') {
+    const on = slices.local && slices.exported
+    if (!on) return { ...slices, local: true, exported: true }
+    const sequencedOn = slices.local && slices.imported
+    const next: MapSliceSelection = {
+      ...slices,
+      exported: false,
+      local: sequencedOn,
+    }
+    if (countActiveMapSlices(next) === 0) return slices
+    return next
+  }
+
+  const on = slices.local && slices.imported
+  if (!on) return { ...slices, local: true, imported: true }
+  const collectedOn = slices.local && slices.exported
+  const next: MapSliceSelection = {
+    ...slices,
+    imported: false,
+    local: collectedOn,
+  }
+  if (countActiveMapSlices(next) === 0) return slices
+  return next
 }
 
-/** Prefer local; if empty, exported; otherwise keep local (may still be empty). */
-export function defaultOutreachModeForPartition(
-  partition: OutreachPartition<RegionFlow | SpeciesFlow>,
-): OutreachMode {
-  if (partition.local.length > 0) return 'local'
-  if (partition.exported.length > 0) return 'exported'
-  return 'local'
+export function isCollectedShortcutOn(slices: MapSliceSelection): boolean {
+  return slices.local && slices.exported
+}
+
+export function isSequencedShortcutOn(slices: MapSliceSelection): boolean {
+  return slices.local && slices.imported
+}
+
+/** Always start with the full region union (all slices on). */
+export function defaultMapSlicesForPartition(
+  _partition?: OutreachPartition<RegionFlow | SpeciesFlow>,
+): MapSliceSelection {
+  return { ...DEFAULT_MAP_SLICES }
 }
 
 /** Rank-only filter over an already outreach-scoped slice. */

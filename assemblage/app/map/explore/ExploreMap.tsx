@@ -404,18 +404,11 @@ export default function ExploreMap({
 
   const hoverIsolatedPlotted = useMemo(() => {
     if (!isolateHoverActive || !isolateHover) return null
-    const localRows = plotted.filter(
-      (row) =>
-        classifyOutreach(row, isolateHover, isolateHoverCustomIso3Set) === 'local',
-    )
-    if (localRows.length > 0) return localRows
-    const exportedRows = plotted.filter(
-      (row) =>
-        classifyOutreach(row, isolateHover, isolateHoverCustomIso3Set) ===
-        'exported',
-    )
-    if (exportedRows.length > 0) return exportedRows
-    return []
+    // Preview all flows that touch the region (local + exported + imported).
+    return plotted.filter((row) => {
+      const kind = classifyOutreach(row, isolateHover, isolateHoverCustomIso3Set)
+      return kind === 'local' || kind === 'exported' || kind === 'imported'
+    })
   }, [isolateHoverActive, isolateHover, plotted, isolateHoverCustomIso3Set])
 
   const hoverIsolatedWithInstitute = useMemo(() => {
