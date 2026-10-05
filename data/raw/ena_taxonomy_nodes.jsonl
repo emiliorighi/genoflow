@@ -52582,3 +52582,169 @@
 {"taxid": "3132163", "parent_taxid": "2492674", "rank": "no rank", "scientific_name": "unclassified Phanerodontia"}
 {"taxid": "3870909", "parent_taxid": "2593313", "rank": "species", "scientific_name": "Penicillium sp. CB3"}
 {"taxid": "3876528", "parent_taxid": "2641443", "rank": "species", "scientific_name": "Kodamaea sp. BD-2026a"}
+{"taxid": "7807", "parent_taxid": "7806", "rank": "species", "scientific_name": "Carcharhinus obscurus"}
+{"taxid": "7819", "parent_taxid": "7818", "rank": "species", "scientific_name": "Galeocerdo cuvier"}
+{"taxid": "7818", "parent_taxid": "7805", "rank": "genus", "scientific_name": "Galeocerdo"}
+{"taxid": "13029", "parent_taxid": "13028", "rank": "species", "scientific_name": "Cynoscion nebulosus"}
+{"taxid": "13028", "parent_taxid": "30870", "rank": "genus", "scientific_name": "Cynoscion"}
+{"taxid": "39296", "parent_taxid": "39166", "rank": "species", "scientific_name": "Dracocephalum moldavica"}
+{"taxid": "43729", "parent_taxid": "43728", "rank": "species", "scientific_name": "Simarouba glauca"}
+{"taxid": "55702", "parent_taxid": "55701", "rank": "species", "scientific_name": "Sthenelais boa"}
+{"taxid": "108771", "parent_taxid": "108657", "rank": "species", "scientific_name": "Minotetrastichus frontalis"}
+{"taxid": "108657", "parent_taxid": "150276", "rank": "genus", "scientific_name": "Minotetrastichus"}
+{"taxid": "190712", "parent_taxid": "63484", "rank": "species", "scientific_name": "Periploca sepium"}
+{"taxid": "63484", "parent_taxid": "167485", "rank": "genus", "scientific_name": "Periploca"}
+{"taxid": "167485", "parent_taxid": "4056", "rank": "subfamily", "scientific_name": "Periplocoideae"}
+{"taxid": "196469", "parent_taxid": "30176", "rank": "species", "scientific_name": "Hormaphis betulae"}
+{"taxid": "196470", "parent_taxid": "30176", "rank": "species", "scientific_name": "Hormaphis hamamelidis"}
+{"taxid": "202583", "parent_taxid": "202582", "rank": "species", "scientific_name": "Acantholabrus palloni"}
+{"taxid": "202582", "parent_taxid": "8247", "rank": "genus", "scientific_name": "Acantholabrus"}
+{"taxid": "228216", "parent_taxid": "5320", "rank": "species", "scientific_name": "Pleurotus nebrodensis"}
+{"taxid": "242806", "parent_taxid": "59660", "rank": "species", "scientific_name": "Scarus ghobban"}
+{"taxid": "263526", "parent_taxid": "263524", "rank": "species", "scientific_name": "Ptychobarbus chungtienensis"}
+{"taxid": "263686", "parent_taxid": "7806", "rank": "species", "scientific_name": "Carcharhinus melanopterus"}
+{"taxid": "287196", "parent_taxid": "47718", "rank": "species", "scientific_name": "Cobitis hankugensis"}
+{"taxid": "317498", "parent_taxid": "51788", "rank": "species", "scientific_name": "Halichoeres brownfieldi"}
+{"taxid": "326689", "parent_taxid": "108653", "rank": "species", "scientific_name": "Hemiptarsenus unguicellus"}
+{"taxid": "108653", "parent_taxid": "150275", "rank": "genus", "scientific_name": "Hemiptarsenus"}
+{"taxid": "150275", "parent_taxid": "107755", "rank": "subfamily", "scientific_name": "Eulophinae"}
+{"taxid": "329030", "parent_taxid": "329029", "rank": "species", "scientific_name": "Psammoperca waigiensis"}
+{"taxid": "329029", "parent_taxid": "8184", "rank": "genus", "scientific_name": "Psammoperca"}
+{"taxid": "344925", "parent_taxid": "344924", "rank": "species", "scientific_name": "Ditrupa arietina"}
+{"taxid": "344924", "parent_taxid": "51280", "rank": "genus", "scientific_name": "Ditrupa"}
+{"taxid": "428427", "parent_taxid": "270577", "rank": "species", "scientific_name": "Pseudanthias pleurotaenia"}
+{"taxid": "270577", "parent_taxid": "3363800", "rank": "genus", "scientific_name": "Pseudanthias"}
+{"taxid": "435128", "parent_taxid": "435127", "rank": "species", "scientific_name": "Netuma thalassina"}
+{"taxid": "495868", "parent_taxid": "86365", "rank": "species", "scientific_name": "Mobula japanica"}
+{"taxid": "496413", "parent_taxid": "496412", "rank": "species", "scientific_name": "Triaenodon obesus"}
+{"taxid": "496412", "parent_taxid": "7805", "rank": "genus", "scientific_name": "Triaenodon"}
+{"taxid": "497154", "parent_taxid": "181465", "rank": "species", "scientific_name": "Pterocaesio digramma"}
+{"taxid": "181465", "parent_taxid": "119692", "rank": "genus", "scientific_name": "Pterocaesio"}
+{"taxid": "499989", "parent_taxid": "53907", "rank": "species", "scientific_name": "Ormosia balansae"}
+{"taxid": "503180", "parent_taxid": "503169", "rank": "species", "scientific_name": "Hydrozetes lacustris"}
+{"taxid": "503169", "parent_taxid": "229837", "rank": "genus", "scientific_name": "Hydrozetes"}
+{"taxid": "229837", "parent_taxid": "229836", "rank": "family", "scientific_name": "Hydrozetidae"}
+{"taxid": "229836", "parent_taxid": "229894", "rank": "superfamily", "scientific_name": "Hydrozetoidea"}
+{"taxid": "652448", "parent_taxid": "334899", "rank": "species", "scientific_name": "Parupeneus spilurus"}
+{"taxid": "865980", "parent_taxid": "865979", "rank": "species", "scientific_name": "Oomyzus sokolowskii"}
+{"taxid": "865979", "parent_taxid": "150276", "rank": "genus", "scientific_name": "Oomyzus"}
+{"taxid": "981037", "parent_taxid": "981036", "rank": "species", "scientific_name": "Crataepus marbis"}
+{"taxid": "981036", "parent_taxid": "150276", "rank": "genus", "scientific_name": "Crataepus"}
+{"taxid": "994942", "parent_taxid": "994936", "rank": "species", "scientific_name": "Caribachlamys ornata"}
+{"taxid": "994936", "parent_taxid": "6566", "rank": "genus", "scientific_name": "Caribachlamys"}
+{"taxid": "1031396", "parent_taxid": "29042", "rank": "species", "scientific_name": "Melittobia acasta"}
+{"taxid": "29042", "parent_taxid": "150276", "rank": "genus", "scientific_name": "Melittobia"}
+{"taxid": "1462674", "parent_taxid": "108669", "rank": "species", "scientific_name": "Quadrastichus mendeli"}
+{"taxid": "1515623", "parent_taxid": "1515622", "rank": "species", "scientific_name": "Yongeichthys criniger"}
+{"taxid": "1515622", "parent_taxid": "497223", "rank": "genus", "scientific_name": "Yongeichthys"}
+{"taxid": "1618146", "parent_taxid": "2856495", "rank": "species", "scientific_name": "Martadoris mediterranea"}
+{"taxid": "2856495", "parent_taxid": "71317", "rank": "genus", "scientific_name": "Martadoris"}
+{"taxid": "1619589", "parent_taxid": "46594", "rank": "species", "scientific_name": "Harmothoe fraserthomsoni"}
+{"taxid": "1714309", "parent_taxid": "1134217", "rank": "species", "scientific_name": "Anaprostocetus acuminatus"}
+{"taxid": "1134217", "parent_taxid": "150276", "rank": "genus", "scientific_name": "Anaprostocetus"}
+{"taxid": "1844856", "parent_taxid": "271487", "rank": "species", "scientific_name": "Calappa ocellata"}
+{"taxid": "1895156", "parent_taxid": "108669", "rank": "species", "scientific_name": "Quadrastichus vacuna"}
+{"taxid": "1914584", "parent_taxid": "503169", "rank": "species", "scientific_name": "Hydrozetes thienemanni"}
+{"taxid": "2479355", "parent_taxid": "326698", "rank": "species", "scientific_name": "Tamarixia pubescens"}
+{"taxid": "326698", "parent_taxid": "150276", "rank": "genus", "scientific_name": "Tamarixia"}
+{"taxid": "2572165", "parent_taxid": "108673", "rank": "species", "scientific_name": "Tetrastichus miser"}
+{"taxid": "108673", "parent_taxid": "150276", "rank": "genus", "scientific_name": "Tetrastichus"}
+{"taxid": "2609493", "parent_taxid": "121281", "rank": "species", "scientific_name": "Gymnothorax cribroris"}
+{"taxid": "2721775", "parent_taxid": "865979", "rank": "species", "scientific_name": "Oomyzus scaposus"}
+{"taxid": "2721820", "parent_taxid": "865979", "rank": "species", "scientific_name": "Oomyzus spiraculus"}
+{"taxid": "2727976", "parent_taxid": "2727975", "rank": "species", "scientific_name": "Sigmophora brevicornis"}
+{"taxid": "2727975", "parent_taxid": "150276", "rank": "genus", "scientific_name": "Sigmophora"}
+{"taxid": "2740778", "parent_taxid": "2740777", "rank": "species", "scientific_name": "Posidonichthys hutchinsi"}
+{"taxid": "2740777", "parent_taxid": "557415", "rank": "genus", "scientific_name": "Posidonichthys"}
+{"taxid": "2931442", "parent_taxid": "108673", "rank": "species", "scientific_name": "Tetrastichus argutus"}
+{"taxid": "2931444", "parent_taxid": "108673", "rank": "species", "scientific_name": "Tetrastichus atratulus"}
+{"taxid": "2931456", "parent_taxid": "108673", "rank": "species", "scientific_name": "Tetrastichus cumulus"}
+{"taxid": "2931458", "parent_taxid": "108673", "rank": "species", "scientific_name": "Tetrastichus decrescens"}
+{"taxid": "2931477", "parent_taxid": "108673", "rank": "species", "scientific_name": "Tetrastichus inscitus"}
+{"taxid": "2931486", "parent_taxid": "108673", "rank": "species", "scientific_name": "Tetrastichus leocrates"}
+{"taxid": "2931489", "parent_taxid": "108673", "rank": "species", "scientific_name": "Tetrastichus lyridice"}
+{"taxid": "2931494", "parent_taxid": "108673", "rank": "species", "scientific_name": "Tetrastichus nymphae"}
+{"taxid": "2931498", "parent_taxid": "108673", "rank": "species", "scientific_name": "Tetrastichus pixius"}
+{"taxid": "2931509", "parent_taxid": "108673", "rank": "species", "scientific_name": "Tetrastichus temporalis"}
+{"taxid": "2981714", "parent_taxid": "2426890", "rank": "species", "scientific_name": "Chaenotetrastichus semiflavus"}
+{"taxid": "2426890", "parent_taxid": "150276", "rank": "genus", "scientific_name": "Chaenotetrastichus"}
+{"taxid": "2982949", "parent_taxid": "2653287", "rank": "species", "scientific_name": "Burkseus vittatus"}
+{"taxid": "2653287", "parent_taxid": "150275", "rank": "genus", "scientific_name": "Burkseus"}
+{"taxid": "2986115", "parent_taxid": "2986111", "rank": "species", "scientific_name": "Dotalabrus aurantiacus"}
+{"taxid": "2986111", "parent_taxid": "8247", "rank": "genus", "scientific_name": "Dotalabrus"}
+{"taxid": "2986119", "parent_taxid": "2986118", "rank": "species", "scientific_name": "Sheardichthys radiatus"}
+{"taxid": "2986118", "parent_taxid": "241355", "rank": "genus", "scientific_name": "Sheardichthys"}
+{"taxid": "3109951", "parent_taxid": "3109950", "rank": "species", "scientific_name": "Sphecodoptera sheni"}
+{"taxid": "3109950", "parent_taxid": "301638", "rank": "genus", "scientific_name": "Sphecodoptera"}
+{"taxid": "3358813", "parent_taxid": "990996", "rank": "species", "scientific_name": "Paracaesio xanthurus"}
+{"taxid": "3394878", "parent_taxid": "2633721", "rank": "species", "scientific_name": "Pomacentrus sp. OG412"}
+{"taxid": "2633721", "parent_taxid": "61808", "rank": "no rank", "scientific_name": "unclassified Pomacentrus"}
+{"taxid": "3394882", "parent_taxid": "2629774", "rank": "species", "scientific_name": "Upeneus sp. OG468"}
+{"taxid": "3445978", "parent_taxid": "2618487", "rank": "species", "scientific_name": "Lethrinus sp. OG476"}
+{"taxid": "3455190", "parent_taxid": "865979", "rank": "species", "scientific_name": "Oomyzus incertus"}
+{"taxid": "3456228", "parent_taxid": "865979", "rank": "species", "scientific_name": "Oomyzus anomalus"}
+{"taxid": "3456229", "parent_taxid": "865979", "rank": "species", "scientific_name": "Oomyzus sempronius"}
+{"taxid": "3456231", "parent_taxid": "108669", "rank": "species", "scientific_name": "Quadrastichus anysis"}
+{"taxid": "3456232", "parent_taxid": "108669", "rank": "species", "scientific_name": "Quadrastichus brevinervis"}
+{"taxid": "3456233", "parent_taxid": "108669", "rank": "species", "scientific_name": "Quadrastichus citrinus"}
+{"taxid": "3456234", "parent_taxid": "108669", "rank": "species", "scientific_name": "Quadrastichus pedicellaris"}
+{"taxid": "3569136", "parent_taxid": "2727894", "rank": "species", "scientific_name": "Neotrichoporoides viridimaculatus"}
+{"taxid": "2727894", "parent_taxid": "150276", "rank": "genus", "scientific_name": "Neotrichoporoides"}
+{"taxid": "3698410", "parent_taxid": "326698", "rank": "species", "scientific_name": "Tamarixia monesus"}
+{"taxid": "3734463", "parent_taxid": "2633539", "rank": "species", "scientific_name": "Wickerhamiella sp. UFMG-CM-Y7513"}
+{"taxid": "3734464", "parent_taxid": "2597647", "rank": "species", "scientific_name": "Starmerella sp. UFMG-CM-Y7514"}
+{"taxid": "2597647", "parent_taxid": "75735", "rank": "no rank", "scientific_name": "unclassified Starmerella"}
+{"taxid": "3734465", "parent_taxid": "2618177", "rank": "species", "scientific_name": "Zygoascus sp. UFMG-CM-Y7515"}
+{"taxid": "3734466", "parent_taxid": "2618177", "rank": "species", "scientific_name": "Zygoascus sp. UFMG-CM-Y7516"}
+{"taxid": "3735054", "parent_taxid": "2598979", "rank": "species", "scientific_name": "Coniochaeta sp. 121E"}
+{"taxid": "3735055", "parent_taxid": "2012145", "rank": "species", "scientific_name": "Hysteriaceae sp. 121F"}
+{"taxid": "2012145", "parent_taxid": "100025", "rank": "no rank", "scientific_name": "unclassified Hysteriaceae"}
+{"taxid": "3735056", "parent_taxid": "2614628", "rank": "species", "scientific_name": "Cladosporium sp. 121G"}
+{"taxid": "3738761", "parent_taxid": "2617765", "rank": "species", "scientific_name": "Baryscapus sp. EU553"}
+{"taxid": "2617765", "parent_taxid": "108628", "rank": "no rank", "scientific_name": "unclassified Baryscapus"}
+{"taxid": "3738762", "parent_taxid": "3698418", "rank": "species", "scientific_name": "Ceratoneura sp. EU787"}
+{"taxid": "3698418", "parent_taxid": "3698417", "rank": "no rank", "scientific_name": "unclassified Ceratoneura"}
+{"taxid": "3698417", "parent_taxid": "150276", "rank": "genus", "scientific_name": "Ceratoneura"}
+{"taxid": "3738763", "parent_taxid": "2640719", "rank": "species", "scientific_name": "Chaenotetrastichus sp. 00227762"}
+{"taxid": "2640719", "parent_taxid": "2426890", "rank": "no rank", "scientific_name": "unclassified Chaenotetrastichus"}
+{"taxid": "3738764", "parent_taxid": "2640719", "rank": "species", "scientific_name": "Chaenotetrastichus sp. 00227763"}
+{"taxid": "3738765", "parent_taxid": "2640719", "rank": "species", "scientific_name": "Chaenotetrastichus sp. 00227764"}
+{"taxid": "3738766", "parent_taxid": "3698421", "rank": "species", "scientific_name": "Eriastichus sp. EU786"}
+{"taxid": "3698421", "parent_taxid": "3698420", "rank": "no rank", "scientific_name": "unclassified Eriastichus"}
+{"taxid": "3698420", "parent_taxid": "150276", "rank": "genus", "scientific_name": "Eriastichus"}
+{"taxid": "3738767", "parent_taxid": "3558253", "rank": "species", "scientific_name": "Henryana sp. EU785"}
+{"taxid": "3558253", "parent_taxid": "108654", "rank": "no rank", "scientific_name": "unclassified Henryana"}
+{"taxid": "108654", "parent_taxid": "150276", "rank": "genus", "scientific_name": "Henryana"}
+{"taxid": "3738768", "parent_taxid": "2621692", "rank": "species", "scientific_name": "Holcotetrastichus sp. EU715"}
+{"taxid": "2621692", "parent_taxid": "1421403", "rank": "no rank", "scientific_name": "unclassified Holcotetrastichus"}
+{"taxid": "1421403", "parent_taxid": "150276", "rank": "genus", "scientific_name": "Holcotetrastichus"}
+{"taxid": "3738769", "parent_taxid": "2721819", "rank": "species", "scientific_name": "Oomyzus sp. EU507"}
+{"taxid": "2721819", "parent_taxid": "865979", "rank": "no rank", "scientific_name": "unclassified Oomyzus"}
+{"taxid": "3738770", "parent_taxid": "2721819", "rank": "species", "scientific_name": "Oomyzus sp. EU700"}
+{"taxid": "3738771", "parent_taxid": "2721819", "rank": "species", "scientific_name": "Oomyzus sp. EU712"}
+{"taxid": "3738773", "parent_taxid": "2645974", "rank": "species", "scientific_name": "Paragaleopsomyia sp. EU772"}
+{"taxid": "2645974", "parent_taxid": "2440839", "rank": "no rank", "scientific_name": "unclassified Paragaleopsomyia"}
+{"taxid": "2440839", "parent_taxid": "150276", "rank": "genus", "scientific_name": "Paragaleopsomyia"}
+{"taxid": "3738774", "parent_taxid": "3620444", "rank": "species", "scientific_name": "Pentastichus sp. EU774"}
+{"taxid": "3620444", "parent_taxid": "2727964", "rank": "no rank", "scientific_name": "unclassified Pentastichus"}
+{"taxid": "2727964", "parent_taxid": "150276", "rank": "genus", "scientific_name": "Pentastichus"}
+{"taxid": "3738776", "parent_taxid": "2628825", "rank": "species", "scientific_name": "Quadrastichus sp. EU419"}
+{"taxid": "3738777", "parent_taxid": "2628825", "rank": "species", "scientific_name": "Quadrastichus sp. EU425"}
+{"taxid": "3738778", "parent_taxid": "2628825", "rank": "species", "scientific_name": "Quadrastichus sp. EU473"}
+{"taxid": "3738779", "parent_taxid": "2628825", "rank": "species", "scientific_name": "Quadrastichus sp. EU491"}
+{"taxid": "3738780", "parent_taxid": "2628825", "rank": "species", "scientific_name": "Quadrastichus sp. EU586"}
+{"taxid": "3738781", "parent_taxid": "2628825", "rank": "species", "scientific_name": "Quadrastichus sp. EU686"}
+{"taxid": "3738783", "parent_taxid": "2628825", "rank": "species", "scientific_name": "Quadrastichus sp. EU749"}
+{"taxid": "3738784", "parent_taxid": "2628825", "rank": "species", "scientific_name": "Quadrastichus sp. EU750"}
+{"taxid": "3738785", "parent_taxid": "2628825", "rank": "species", "scientific_name": "Quadrastichus sp. EU753"}
+{"taxid": "3738786", "parent_taxid": "2628825", "rank": "species", "scientific_name": "Quadrastichus sp. EU756"}
+{"taxid": "3738787", "parent_taxid": "2628825", "rank": "species", "scientific_name": "Quadrastichus sp. EU759"}
+{"taxid": "3738795", "parent_taxid": "2639207", "rank": "species", "scientific_name": "Tetrastichus sp. EU382"}
+{"taxid": "2639207", "parent_taxid": "108673", "rank": "no rank", "scientific_name": "unclassified Tetrastichus"}
+{"taxid": "3738796", "parent_taxid": "2639207", "rank": "species", "scientific_name": "Tetrastichus sp. EU511"}
+{"taxid": "3738797", "parent_taxid": "2639207", "rank": "species", "scientific_name": "Tetrastichus sp. EU613"}
+{"taxid": "3738798", "parent_taxid": "2639207", "rank": "species", "scientific_name": "Tetrastichus sp. EU794"}
+{"taxid": "3738799", "parent_taxid": "2628825", "rank": "species", "scientific_name": "Quadrastichus sp. EU797"}
+{"taxid": "3738800", "parent_taxid": "2688571", "rank": "species", "scientific_name": "Hyssopus sp. EU023"}
+{"taxid": "2688571", "parent_taxid": "108394", "rank": "no rank", "scientific_name": "unclassified Hyssopus (in: wasps, ants & bees)"}
+{"taxid": "108394", "parent_taxid": "150275", "rank": "genus", "scientific_name": "Hyssopus"}
