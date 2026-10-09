@@ -7,7 +7,7 @@ import { Info } from 'lucide-react'
 import { load } from '@loaders.gl/core'
 import ExploreLeftSidebar from './explore/ExploreLeftSidebar'
 import ExploreMap, { type ExploreLayers } from './explore/ExploreMap'
-import ExploreToolbar, { type FilterFocus, type SearchMode } from './explore/ExploreToolbar'
+import ExploreToolbar, { type SearchMode } from './explore/ExploreToolbar'
 import {
   buildContinentCards,
   buildContinentLookup,
@@ -15,7 +15,6 @@ import {
   buildRegionsTabCards,
   filterCountryCardsForCountriesTab,
   buildAllCustomIso3Sets,
-  customIso3SetForFilter,
   isCustomRegionId,
   buildTaxonRankSummaries,
   flowMatchesSelection,
@@ -23,6 +22,13 @@ import {
   plotPositionKey,
   type RegionCard,
 } from './explore/exploreData'
+import {
+  buildFlowIndex,
+  filterPartitionByRank,
+  flowsFromLists,
+  partitionForGeoFilter,
+  type FlowIndex,
+} from './explore/flowIndex'
 import {
   buildCountryTotals,
   type CountryCentroids,
@@ -32,8 +38,6 @@ import {
   DEFAULT_MAP_SLICES,
   defaultMapSlicesForPartition,
   filterByRank,
-  flowsForMapSlices,
-  partitionOutreachFlows,
   type MapSliceSelection,
 } from './explore/outreachFilter'
 import {
@@ -120,31 +124,9 @@ function MapPageInner() {
     () => initialParams.current.get(MAP_QUERY_KEYS.taxon) || '',
   )
   const [mapSlices, setMapSlices] = useState<MapSliceSelection>(DEFAULT_MAP_SLICES)
-  const [filterFocusOrder, setFilterFocusOrder] = useState<FilterFocus[]>(() => {
-    const order: FilterFocus[] = []
-    const hasGeo =
-      Boolean(initialParams.current.get(MAP_QUERY_KEYS.custom)) ||
-      Boolean(initialParams.current.get(MAP_QUERY_KEYS.continent)) ||
-      Boolean(initialParams.current.get(MAP_QUERY_KEYS.country))
-    const hasTaxon =
-      Boolean(initialParams.current.get(MAP_QUERY_KEYS.rank)) &&
-      Boolean(initialParams.current.get(MAP_QUERY_KEYS.taxon))
-    // Deep-link with both: region then taxon
-    if (hasGeo) order.push('region')
-    if (hasTaxon) order.push('taxon')
-    return order
-  })
   const [searchMode, setSearchMode] = useState<SearchMode>('species')
   const geoHydrated = useRef(false)
   const mapSlicesHydrated = useRef(false)
-
-  function appendFilterFocus(focus: FilterFocus) {
-    setFilterFocusOrder((prev) => (prev.includes(focus) ? prev : [...prev, focus]))
-  }
-
-  function removeFilterFocus(focus: FilterFocus) {
-    setFilterFocusOrder((prev) => prev.filter((f) => f !== focus))
-  }
 
   const clearSelection = () => {
     setSelection(null)
@@ -293,11 +275,6 @@ function MapPageInner() {
     [membershipLookup],
   )
 
-  const activeCustomIso3Set = useMemo(
-    () => customIso3SetForFilter(geoFilter.customId, customIso3Sets),
-    [geoFilter.customId, customIso3Sets],
-  )
-
   const hasRegion = Boolean(
     geoFilter.continent || geoFilter.country || geoFilter.customId,
   )
@@ -311,21 +288,36 @@ function MapPageInner() {
     [flows, rankLevel, rankTaxid],
   )
 
+  /** Full-table index — list cards (no taxon) and region geo partition. */
+  const fullIndex = useMemo(
+    () => (flows ? buildFlowIndex(flows, customIso3Sets) : null),
+    [flows, customIso3Sets],
+  )
+
+  /** Taxon-scoped index when a taxon filter is active; otherwise aliases fullIndex. */
+  const listIndex = useMemo((): FlowIndex | null => {
+    if (!flows || !fullIndex) return null
+    if (!rankFilter) return fullIndex
+    return buildFlowIndex(taxonFilteredFlows, customIso3Sets)
+  }, [flows, fullIndex, rankFilter, taxonFilteredFlows, customIso3Sets])
+
   /** Geo partition over all taxa — drives taxon picker options/counts. */
   const geoPartition = useMemo(() => {
-    if (!flows || !hasRegion) return null
-    return partitionOutreachFlows(flows, geoFilter, activeCustomIso3Set)
-  }, [flows, geoFilter, hasRegion, activeCustomIso3Set])
+    if (!fullIndex || !hasRegion) return null
+    return partitionForGeoFilter(fullIndex, geoFilter)
+  }, [fullIndex, geoFilter, hasRegion])
 
   /** Geo partition scoped to the active taxon — drives KPI counts and map slices. */
   const taxonPartition = useMemo(() => {
-    if (!flows || !hasRegion) return null
-    return partitionOutreachFlows(taxonFilteredFlows, geoFilter, activeCustomIso3Set)
-  }, [flows, taxonFilteredFlows, geoFilter, hasRegion, activeCustomIso3Set])
+    if (!hasRegion || !geoPartition) return null
+    if (!rankFilter) return geoPartition
+    return filterPartitionByRank(geoPartition, rankFilter)
+  }, [hasRegion, geoPartition, rankFilter])
 
   const outreachCounts = taxonPartition?.counts ?? {
     local: 0,
     exported: 0,
+    unknown: 0,
     imported: 0,
     originTotal: 0,
   }
@@ -340,7 +332,7 @@ function MapPageInner() {
   const mapFlows = useMemo(() => {
     if (!flows) return []
     if (!hasRegion || !taxonPartition) return taxonFilteredFlows
-    return flowsForMapSlices(taxonPartition, mapSlices)
+    return flowsFromLists(taxonPartition, mapSlices)
   }, [flows, hasRegion, taxonPartition, mapSlices, taxonFilteredFlows])
 
   const barsFlows = mapFlows
@@ -385,22 +377,21 @@ function MapPageInner() {
 
   // Defer expensive list-card rebuilds while a region detail is open.
   const continentCards = useMemo(
-    () =>
-      !hasRegion && flows ? buildContinentCards(taxonFilteredFlows) : [],
-    [hasRegion, flows, taxonFilteredFlows],
+    () => (!hasRegion && listIndex ? buildContinentCards(listIndex) : []),
+    [hasRegion, listIndex],
   )
 
   const allCountryCards = useMemo(
     () =>
-      !hasRegion && flows
+      !hasRegion && listIndex
         ? buildCountryCards(
-            taxonFilteredFlows,
+            listIndex,
             speciesCounts ?? [],
             allCountryTotals,
             membershipLookup,
           )
         : [],
-    [hasRegion, flows, taxonFilteredFlows, speciesCounts, allCountryTotals, membershipLookup],
+    [hasRegion, listIndex, speciesCounts, allCountryTotals, membershipLookup],
   )
 
   const countryCards = useMemo(
@@ -410,22 +401,21 @@ function MapPageInner() {
 
   const customCards = useMemo(
     () =>
-      !hasRegion && flows
-        ? buildRegionsTabCards(taxonFilteredFlows, allCountryCards, membershipLookup)
+      !hasRegion && listIndex
+        ? buildRegionsTabCards(listIndex, allCountryCards)
         : [],
-    [hasRegion, flows, taxonFilteredFlows, allCountryCards, membershipLookup],
+    [hasRegion, listIndex, allCountryCards],
   )
 
-  const chipScopeFlows = useMemo(() => {
-    if (!flows) return []
-    if (!hasRegion || !geoPartition) return flows
-    return [...geoPartition.local, ...geoPartition.exported, ...geoPartition.imported]
+  const rankSummaries = useMemo(() => {
+    if (!flows) {
+      return buildTaxonRankSummaries([])
+    }
+    if (!hasRegion || !geoPartition) {
+      return buildTaxonRankSummaries(flows)
+    }
+    return buildTaxonRankSummaries(geoPartition)
   }, [flows, hasRegion, geoPartition])
-
-  const rankSummaries = useMemo(
-    () => buildTaxonRankSummaries(chipScopeFlows),
-    [chipScopeFlows],
-  )
 
   const rankTaxidLabel = useMemo(() => {
     if (!rankLevel || !rankTaxid) return ''
@@ -442,7 +432,6 @@ function MapPageInner() {
     if (!stillPresent) {
       setRankLevel('')
       setRankTaxid('')
-      setFilterFocusOrder((prev) => prev.filter((f) => f !== 'taxon'))
     }
   }, [rankSummaries, rankLevel, rankTaxid, flows])
 
@@ -463,7 +452,6 @@ function MapPageInner() {
   }, [mapFlows, selection, centroids])
 
   const onPickTaxon = (rank: TaxonRank, taxid: string) => {
-    appendFilterFocus('taxon')
     // Defer expensive list-card rebuilds only while the region list is visible.
     // With a region open, update urgently so map/KPI stay snappy.
     if (hasRegion) {
@@ -481,13 +469,11 @@ function MapPageInner() {
     if (hasRegion) {
       setRankLevel('')
       setRankTaxid('')
-      removeFilterFocus('taxon')
       return
     }
     startTransition(() => {
       setRankLevel('')
       setRankTaxid('')
-      removeFilterFocus('taxon')
     })
   }
 
@@ -520,10 +506,11 @@ function MapPageInner() {
         customId: null,
       }
     }
-    setGeoFilter(nextFilter)
-    appendFilterFocus('region')
-    setMapSlices(DEFAULT_MAP_SLICES)
     mapSlicesHydrated.current = true
+    startTransition(() => {
+      setGeoFilter(nextFilter)
+      setMapSlices(DEFAULT_MAP_SLICES)
+    })
   }
 
   const onHoverRegion = (card: RegionCard | null) => {
@@ -564,11 +551,9 @@ function MapPageInner() {
     setHoverPreview(null)
     clearSelection()
     setMapSlices(DEFAULT_MAP_SLICES)
-    // Returning to the list: defer continent/country/custom card rebuilds
-    // and keep breadcrumb/focus order in the same transition as geo clear.
+    // Returning to the list: defer continent/country/custom card rebuilds.
     startTransition(() => {
       setGeoFilter(EMPTY_GEO_FILTER)
-      removeFilterFocus('region')
     })
   }
 
@@ -585,6 +570,7 @@ function MapPageInner() {
     return (
       geoPartition.local.length +
       geoPartition.exported.length +
+      geoPartition.unknown.length +
       geoPartition.imported.length
     )
   }, [geoPartition])
@@ -595,12 +581,10 @@ function MapPageInner() {
     return (
       taxonPartition.local.length +
       taxonPartition.exported.length +
+      taxonPartition.unknown.length +
       taxonPartition.imported.length
     )
   }, [taxonPartition])
-
-  const taxonBreadcrumbLabel =
-    rankLevel && rankTaxidLabel ? `${rankTaxidLabel} (${rankLevel})` : ''
 
   return (
     <main className="atlas-shell">
@@ -610,6 +594,12 @@ function MapPageInner() {
         </Link>
         <div className="atlas-title">Atlas</div>
         <div className="topbar-info">
+          <Link href="/rankings" className="pull-rank-top-link">
+            Pull index
+          </Link>
+          <span className="pull-rank-topbar-sep" aria-hidden="true">
+            ·
+          </span>
           <Info size={14} aria-hidden="true" /> Region explorer · live atlas
         </div>
       </header>
@@ -627,7 +617,9 @@ function MapPageInner() {
           countryCards={countryCards}
           customCards={customCards}
           mapSlices={mapSlices}
-          onMapSlicesChange={setMapSlices}
+          onMapSlicesChange={(next) => {
+            startTransition(() => setMapSlices(next))
+          }}
           outreachCounts={outreachCounts}
           barsFlows={barsFlows}
           activeMapCount={mapFlows.length}
@@ -656,13 +648,6 @@ function MapPageInner() {
             selection={selection}
             onSelect={select}
             disabled={!flows}
-            filterFocusOrder={filterFocusOrder}
-            regionLabel={title}
-            taxonLabel={taxonBreadcrumbLabel}
-            hasRegion={hasRegion}
-            hasTaxon={Boolean(rankFilter)}
-            onClearRegion={onClearRegion}
-            onClearTaxon={onClearTaxon}
           />
           <div className="explore-map-stage">
             <ExploreMap
@@ -674,6 +659,7 @@ function MapPageInner() {
               geoFilter={geoFilter}
               hoverPreview={hoverPreview}
               customIso3Sets={customIso3Sets}
+              flowIndex={listIndex}
               selection={selection}
               totalCount={flows?.length ?? null}
               onSelect={select}

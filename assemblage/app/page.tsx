@@ -93,6 +93,7 @@ export default async function Page() {
         <div className="nav-links">
           <a href="#about">About</a>
           <a href="#pipeline">Pipeline</a>
+          <Link href="/rankings">Pull index</Link>
           <Link href="/map" className="nav-map-link">
             Open the map <ArrowUpRight size={14} aria-hidden="true" />
           </Link>

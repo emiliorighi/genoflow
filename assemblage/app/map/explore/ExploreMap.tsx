@@ -34,7 +34,12 @@ import {
   customIso3SetForFilter,
   type CustomRegionId,
 } from './customRegions'
-import { classifyOutreach } from './outreachFilter'
+import { hasInstituteGeography } from './outreachFilter'
+import {
+  forEachInLists,
+  listsForGeoFilter,
+  type FlowIndex,
+} from './flowIndex'
 
 function MapLegendHelp() {
   return (
@@ -62,7 +67,11 @@ function MapLegendHelp() {
             <span className="legend-dot amber" aria-hidden="true" />
             <div>
               <strong>Collected</strong>
-              <p>Exact collection site when the biosample has latitude and longitude.</p>
+              <p>
+                Exact collection site when the biosample has latitude and longitude.
+                A sample with no known sequencing place uses this same mark and has
+                no flow line.
+              </p>
             </div>
           </li>
           <li>
@@ -148,20 +157,26 @@ function withAlpha(
   return [color[0], color[1], color[2], alpha]
 }
 
-function collectionFill(usedCentroid: boolean): [number, number, number, number] {
-  return usedCentroid ? GREEN : AMBER
+type CollectionMark = RegionFlow & { used_centroid: boolean }
+
+function collectionFill(row: CollectionMark): [number, number, number, number] {
+  return row.used_centroid ? GREEN : AMBER
 }
 
-function collectionLine(usedCentroid: boolean): [number, number, number, number] {
-  return usedCentroid ? CENTROID_LINE : COLLECTION_LINE
+function collectionLine(row: CollectionMark): [number, number, number, number] {
+  return row.used_centroid ? CENTROID_LINE : COLLECTION_LINE
 }
 
-function collectionHotFill(usedCentroid: boolean): [number, number, number, number] {
-  return usedCentroid ? GREEN_HOT : AMBER_HOT
+function collectionHotFill(row: CollectionMark): [number, number, number, number] {
+  return row.used_centroid ? GREEN_HOT : AMBER_HOT
 }
 
-function collectionHotStroke(usedCentroid: boolean): [number, number, number, number] {
-  return usedCentroid ? CENTROID_HOT_STROKE : COLLECTION_HOT_STROKE
+function collectionHotStroke(row: CollectionMark): [number, number, number, number] {
+  return row.used_centroid ? CENTROID_HOT_STROKE : COLLECTION_HOT_STROKE
+}
+
+function canDrawInstitute(row: RegionFlow & { has_institute_coordinates: boolean }): boolean {
+  return row.has_institute_coordinates && hasInstituteGeography(row)
 }
 
 function arcSourceDefault(usedCentroid: boolean): [number, number, number, number] {
@@ -178,6 +193,10 @@ type PlottedFlow = RegionFlow & {
   used_centroid: boolean
 }
 
+function flowRowKey(row: RegionFlow): string {
+  return `${row.assembly_accession}|${row.species_taxid}`
+}
+
 type ExploreMapProps = {
   filteredFlows: RegionFlow[]
   centroids: CountryCentroids | null
@@ -188,6 +207,8 @@ type ExploreMapProps = {
   hoverPreview?: GeoFilter | null
   /** iso3 membership for custom regions (latin-america, etc.). */
   customIso3Sets?: Map<CustomRegionId, Set<string>> | null
+  /** Precomputed outreach index for O(1) hover isolation. */
+  flowIndex?: FlowIndex | null
   selection: Selection
   totalCount: number | null
   onSelect: (selection: Selection) => void
@@ -277,6 +298,7 @@ export default function ExploreMap({
   geoFilter,
   hoverPreview = null,
   customIso3Sets = null,
+  flowIndex = null,
   selection,
   totalCount,
   onSelect,
@@ -315,7 +337,7 @@ export default function ExploreMap({
   }, [plotted])
 
   const withInstitute = useMemo(
-    () => plotted.filter((row) => row.has_institute_coordinates),
+    () => plotted.filter((row) => canDrawInstitute(row)),
     [plotted],
   )
 
@@ -325,7 +347,7 @@ export default function ExploreMap({
   }, [plotted, selection, centroids])
 
   const selectedWithInstitute = useMemo(
-    () => selectedFlows.filter((row) => row.has_institute_coordinates),
+    () => selectedFlows.filter((row) => canDrawInstitute(row)),
     [selectedFlows],
   )
 
@@ -397,23 +419,18 @@ export default function ExploreMap({
       !hasSelection,
   )
 
-  const isolateHoverCustomIso3Set = useMemo(
-    () => customIso3SetForFilter(isolateHover?.customId, customIso3Sets),
-    [isolateHover?.customId, customIso3Sets],
-  )
-
   const hoverIsolatedPlotted = useMemo(() => {
-    if (!isolateHoverActive || !isolateHover) return null
-    // Preview all flows that touch the region (local + exported + imported).
-    return plotted.filter((row) => {
-      const kind = classifyOutreach(row, isolateHover, isolateHoverCustomIso3Set)
-      return kind === 'local' || kind === 'exported' || kind === 'imported'
-    })
-  }, [isolateHoverActive, isolateHover, plotted, isolateHoverCustomIso3Set])
+    if (!isolateHoverActive || !isolateHover || !flowIndex) return null
+    const lists = listsForGeoFilter(flowIndex, isolateHover)
+    if (!lists) return null
+    const keys = new Set<string>()
+    forEachInLists(lists, (row) => keys.add(flowRowKey(row)))
+    return plotted.filter((row) => keys.has(flowRowKey(row)))
+  }, [isolateHoverActive, isolateHover, flowIndex, plotted])
 
   const hoverIsolatedWithInstitute = useMemo(() => {
     if (!hoverIsolatedPlotted) return null
-    return hoverIsolatedPlotted.filter((row) => row.has_institute_coordinates)
+    return hoverIsolatedPlotted.filter((row) => canDrawInstitute(row))
   }, [hoverIsolatedPlotted])
 
   /** Point-cluster selection still dims others; species/institute/hover isolate instead. */
@@ -560,13 +577,13 @@ export default function ExploreMap({
           getPosition: (d) => [d.plot_lon, d.plot_lat],
           getRadius: (d) => (d.used_centroid ? 4 : 3),
           getFillColor: (d) => {
-            const fill = collectionFill(d.used_centroid)
+            const fill = collectionFill(d)
             return dimOthers && !flowIsFocused(d)
               ? withAlpha(fill, focusDimAlpha)
               : fill
           },
           getLineColor: (d) => {
-            const line = collectionLine(d.used_centroid)
+            const line = collectionLine(d)
             return dimOthers && !flowIsFocused(d)
               ? withAlpha(line, focusDimAlpha)
               : line
@@ -663,8 +680,8 @@ export default function ExploreMap({
           radiusMaxPixels: 10,
           getPosition: (d) => [d.plot_lon, d.plot_lat],
           getRadius: 5,
-          getFillColor: (d) => collectionHotFill(d.used_centroid),
-          getLineColor: (d) => collectionHotStroke(d.used_centroid),
+          getFillColor: (d) => collectionHotFill(d),
+          getLineColor: (d) => collectionHotStroke(d),
           lineWidthMinPixels: 1.5,
           stroked: true,
           parameters: NO_DEPTH,
@@ -703,7 +720,7 @@ export default function ExploreMap({
     }
 
     if (showHover && hoveredRow) {
-      if (hoveredRow.has_institute_coordinates && layers.flow) {
+      if (canDrawInstitute(hoveredRow) && layers.flow) {
         built.push(
           new ArcLayer<PlottedFlow>({
             id: 'explore-hover-arc',
@@ -734,8 +751,8 @@ export default function ExploreMap({
             radiusMaxPixels: 10,
             getPosition: (d) => [d.plot_lon, d.plot_lat],
             getRadius: 5,
-            getFillColor: (d) => collectionHotFill(d.used_centroid),
-            getLineColor: (d) => collectionHotStroke(d.used_centroid),
+            getFillColor: (d) => collectionHotFill(d),
+            getLineColor: (d) => collectionHotStroke(d),
             lineWidthMinPixels: 1.5,
             stroked: true,
             parameters: NO_DEPTH,
@@ -746,7 +763,7 @@ export default function ExploreMap({
           }),
         )
       }
-      if (hoveredRow.has_institute_coordinates && layers.submitter) {
+      if (canDrawInstitute(hoveredRow) && layers.submitter) {
         built.push(
           new ScatterplotLayer<PlottedFlow>({
             id: 'explore-hover-institute',
