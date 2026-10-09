@@ -666,104 +666,89 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
   background: #14110e;
 }
 
-/* Multi-select map view toggles */
-.map-view-toggles {
+.flow-slice-panel {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: 12px 18px 14px;
-}
-.map-view-toggles-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   gap: 10px;
-  min-width: 0;
 }
-.map-view-toggles-label-group {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  flex-shrink: 0;
+.flow-slice-panel .section-label {
+  margin-bottom: 0;
 }
-.map-view-toggles-label {
-  color: var(--dim);
-  font: 10px monospace;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
-.map-view-toggles-help {
-  display: grid;
-  place-items: center;
-  width: 18px;
-  height: 18px;
-  padding: 0;
-  border: 0;
-  border-radius: 2px;
-  background: transparent;
-  color: var(--dim);
-}
-.map-view-toggles-help:hover,
-.map-view-toggles-help[data-popup-open],
-.map-view-toggles-help[data-state='open'] {
-  color: var(--paper);
-}
-.map-view-toggles-tooltip {
-  max-width: 220px;
-  text-wrap: balance;
-}
-.map-view-toggles-row {
-  display: grid;
-  gap: 6px;
-}
-.map-view-toggles-shortcuts {
-  grid-template-columns: 1fr 1fr;
-}
-.map-view-toggles-slices {
-  grid-template-columns: repeat(3, 1fr);
-}
-.map-view-toggle {
+.flow-slice-list {
   display: flex;
   flex-direction: column;
-  gap: 3px;
-  min-width: 0;
-  padding: 8px 10px;
-  border: 1px solid var(--line);
+  gap: 2px;
+}
+.flow-slice-row {
+  position: relative;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 8px;
   border-radius: 2px;
-  background: #0b0f12;
-  color: var(--dim);
+  cursor: pointer;
   text-align: left;
 }
-.map-view-toggle span {
-  font: 9px monospace;
-  letter-spacing: .06em;
-  text-transform: uppercase;
+.flow-slice-check {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  flex-shrink: 0;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: transparent;
+  display: grid;
+  place-items: center;
 }
-.map-view-toggle b {
-  color: var(--muted);
-  font: 400 16px Georgia, serif;
-  letter-spacing: -.02em;
+.flow-slice-check.is-amber { --slice-color: var(--amber); }
+.flow-slice-check.is-blue { --slice-color: var(--blue); }
+.flow-slice-check:checked {
+  background: var(--slice-color);
+  border-color: var(--slice-color);
 }
-.map-view-toggle:hover {
-  border-color: #3a464e;
-  color: var(--paper);
+.flow-slice-check:checked::after {
+  content: '';
+  width: 7px;
+  height: 4px;
+  border-left: 1.5px solid #17110c;
+  border-bottom: 1.5px solid #17110c;
+  transform: rotate(-45deg) translateY(-1px);
 }
-.map-view-toggle:focus-visible {
+.flow-slice-check:focus-visible {
   outline: 1px solid var(--amber);
-  outline-offset: 1px;
+  outline-offset: 2px;
 }
-.map-view-toggle.is-active {
-  border-color: #6b4937;
-  background: #14110e;
-  color: var(--paper);
+.flow-slice-row.is-checked {
+  background: #141b1f;
 }
-.map-view-toggle.is-active b {
-  color: var(--paper);
-}
-.map-view-toggles-caption {
-  margin: 2px 0 0;
+.flow-slice-row:not(.is-checked) .explore-taxon-name {
   color: var(--dim);
-  font: 11px/1.4 Georgia, serif;
+}
+.flow-slice-label {
+  display: flex;
+  align-items: flex-start;
+  flex: 1 1 auto;
+  gap: 8px;
+  min-width: 0;
+  text-align: left;
+}
+.flow-slice-row .explore-taxon-name {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+  text-align: left;
+}
+.flow-slice-row .explore-taxon-count {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+.map-legend {
+  flex-wrap: wrap;
+  max-width: calc(100% - 180px);
+}
+.flow-slice-caption {
+  margin: 2px 0 0;
 }
 
 .region-card-quiet-metrics {
@@ -1188,6 +1173,12 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
 .dest-stats b {
   color: var(--paper);
   font-weight: 400;
+}
+.dest-unknown-place {
+  margin-top: 12px;
+}
+.dest-bars > .dest-unknown-place:first-child {
+  margin-top: 0;
 }
 .dest-bar-track {
   height: 7px;

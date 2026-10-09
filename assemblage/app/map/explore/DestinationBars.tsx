@@ -10,6 +10,8 @@ import {
 type DestinationBarsProps = {
   regionLabel: string
   total: number
+  /** Collected rows in scope whose sequencing institute could not be placed. */
+  unknownPlaceCount: number
   mode: DestinationMode
   groups: DestinationContinentGroup[]
   onSelectInstitute: (key: string) => void
@@ -21,6 +23,24 @@ const UNRESOLVED_COUNTRY_TIP =
   'Assemblies whose submitting institute country is missing or unknown.'
 const UNRESOLVED_INSTITUTE_TIP =
   'Assemblies whose submitting institute could not be identified.'
+const UNKNOWN_PLACE_TIP =
+  'Assemblies collected in this scope whose sequencing institute could not be placed.'
+
+function UnknownPlaceRow({ count }: { count: number }) {
+  if (count <= 0) return null
+  return (
+    <div className="dest-meta dest-unknown-place">
+      <span className="dest-label">
+        <span className="legend-dot amber" aria-hidden="true" />
+        <span className="dest-label-main">Sequencing place unknown</span>
+        <DestHelpTip text={UNKNOWN_PLACE_TIP} />
+      </span>
+      <span className="dest-stats">
+        <b>{count.toLocaleString()}</b>
+      </span>
+    </div>
+  )
+}
 
 function pctOf(part: number, total: number): number {
   if (total <= 0) return 0
@@ -100,14 +120,27 @@ function ChildRowContent({
 export default function DestinationBars({
   regionLabel,
   total,
+  unknownPlaceCount,
   mode,
   groups,
   onSelectInstitute,
 }: DestinationBarsProps) {
-  if (total <= 0 || groups.length === 0) {
+  if ((total <= 0 || groups.length === 0) && unknownPlaceCount <= 0) {
     return (
       <div className="dest-empty">
         <p>No sequencing destinations in this scope.</p>
+      </div>
+    )
+  }
+
+  if (total <= 0 || groups.length === 0) {
+    return (
+      <div
+        className="dest-bars"
+        role="group"
+        aria-label={`Sequencing destinations for ${regionLabel}`}
+      >
+        <UnknownPlaceRow count={unknownPlaceCount} />
       </div>
     )
   }
@@ -204,6 +237,7 @@ export default function DestinationBars({
           )
         })}
       </ul>
+      <UnknownPlaceRow count={unknownPlaceCount} />
     </div>
   )
 }

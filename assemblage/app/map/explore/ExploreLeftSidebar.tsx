@@ -23,11 +23,9 @@ import DestinationBars from './DestinationBars'
 import MapViewToggles from './MapViewToggles'
 import TaxonPicker from './TaxonPicker'
 import {
-  MAP_SHORTCUT_DESCRIPTIONS,
-  MAP_SHORTCUT_LABELS,
-  OUTREACH_MODE_DESCRIPTIONS,
-  OUTREACH_MODE_LABELS,
-  OUTREACH_MODES,
+  FLOW_PRESETS,
+  FLOW_SLICE_LABELS,
+  FLOW_SLICES,
   type MapSliceSelection,
   type OutreachCounts,
 } from './outreachFilter'
@@ -49,8 +47,8 @@ function FlowMapGuideHelp() {
         <PopoverHeader>
           <PopoverTitle>How to use the Flow Map</PopoverTitle>
           <PopoverDescription>
-            Region and taxon are peer filters. Map view toggles choose which
-            flows to plot.
+            Region and taxon are peer filters. Quick select and the flow
+            checkboxes choose which species to plot.
           </PopoverDescription>
         </PopoverHeader>
         <div className="flow-map-guide-body">
@@ -65,27 +63,33 @@ function FlowMapGuideHelp() {
           <section className="flow-map-guide-section">
             <h3>Hover &amp; select</h3>
             <p>
-              Hover a region to preview <strong>all</strong> flows that touch it
-              (local + exported + imported). Click to open details. The default
-              map view shows that full union; toggle Collected / Sequenced or
-              individual slices to refine.
+              Hover a region to preview every flow that touches it. Click to
+              open details. The map starts with all flows checked.
             </p>
           </section>
           <section className="flow-map-guide-section">
-            <h3>Flow slices</h3>
+            <h3>Quick select</h3>
             <ul className="flow-map-guide-defs">
-              <li>
-                <strong>{MAP_SHORTCUT_LABELS.collected}</strong>
-                <span>{MAP_SHORTCUT_DESCRIPTIONS.collected}</span>
-              </li>
-              <li>
-                <strong>{MAP_SHORTCUT_LABELS.sequenced}</strong>
-                <span>{MAP_SHORTCUT_DESCRIPTIONS.sequenced}</span>
-              </li>
-              {OUTREACH_MODES.map((mode) => (
-                <li key={mode}>
-                  <strong>{OUTREACH_MODE_LABELS[mode]}</strong>
-                  <span>{OUTREACH_MODE_DESCRIPTIONS[mode]}</span>
+              {FLOW_PRESETS.map((preset) => (
+                <li key={preset.id}>
+                  <strong>{preset.label}</strong>
+                  <span>
+                    {preset.id === 'all'
+                      ? 'Every flow that touches the region.'
+                      : preset.id === 'collected'
+                        ? 'Collected here, including an unknown sequencing place.'
+                        : 'Sequenced here, whether or not it was collected here.'}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </section>
+          <section className="flow-map-guide-section">
+            <h3>Flows</h3>
+            <ul className="flow-map-guide-defs">
+              {FLOW_SLICES.map((slice) => (
+                <li key={slice}>
+                  <strong>{FLOW_SLICE_LABELS[slice]}</strong>
                 </li>
               ))}
             </ul>
@@ -132,7 +136,7 @@ function RegionCardButton({
   onSelect: (card: RegionCard) => void
   onHover: (card: RegionCard | null) => void
 }) {
-  const collected = card.local + card.exported
+  const collected = card.local + card.exported + card.unknown
   const sequenced = card.local + card.imported
   return (
     <button
@@ -272,7 +276,7 @@ function DetailState({
 }) {
   const title = regionTitle(geoFilter)
   const [destMode, setDestMode] = useState<DestinationMode>('country')
-  const groups = useMemo(
+  const { groups, unknownPlaceCount } = useMemo(
     () => buildSequencingBreakdown(barsFlows, destMode),
     [barsFlows, destMode],
   )
@@ -286,13 +290,12 @@ function DetailState({
         </div>
       </div>
 
-      <section className="explore-section explore-section-flush">
+      <section className="explore-section">
         <MapViewToggles
           slices={mapSlices}
           counts={outreachCounts}
           onChange={onMapSlicesChange}
           activeCount={activeMapCount}
-          taxonLabel={hasTaxonFilter ? rankTaxidLabel : undefined}
         />
       </section>
 
@@ -332,7 +335,8 @@ function DetailState({
         ) : null}
         <DestinationBars
           regionLabel={title}
-          total={barsFlows.length}
+          total={barsFlows.length - unknownPlaceCount}
+          unknownPlaceCount={unknownPlaceCount}
           mode={destMode}
           groups={groups}
           onSelectInstitute={onSelectInstitute}

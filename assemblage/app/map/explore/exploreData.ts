@@ -5,11 +5,14 @@ import type {
   CountryTotal,
   SpeciesCountRow,
 } from '../regionData'
+import { CUSTOM_REGIONS } from './customRegions'
+import { hasInstituteGeography } from './outreachFilter'
 import {
-  CUSTOM_REGIONS,
-  buildCustomRegionIso3Set,
-} from './customRegions'
-import { countOutreachFlows } from './outreachFilter'
+  countsFromLists,
+  type FlowIndex,
+  forEachInLists,
+  type SliceLists,
+} from './flowIndex'
 
 export type { CountryCentroids, CountryTotal, SpeciesCountRow }
 export type { CustomRegionId } from './customRegions'
@@ -35,6 +38,7 @@ export type RegionCard = {
   subtitle?: string
   local: number
   exported: number
+  unknown: number
   imported: number
 }
 
@@ -56,77 +60,27 @@ export type DestinationMode = 'country' | 'institute'
 
 export const DESTINATION_UNRESOLVED = 'Unresolved'
 
-type OutreachAcc = {
+/** Visibility / sort key for list cards (every flow that touches the region). */
+export function cardTotal(
+  card: Pick<RegionCard, 'local' | 'exported' | 'unknown' | 'imported'>,
+): number {
+  return card.local + card.exported + card.unknown + card.imported
+}
+
+function countsOrZero(lists: SliceLists | undefined): {
   local: number
   exported: number
+  unknown: number
   imported: number
-}
-
-function emptyOutreachAcc(): OutreachAcc {
-  return { local: 0, exported: 0, imported: 0 }
-}
-
-/** Visibility / sort key for list cards (local + exported + imported). */
-export function cardTotal(
-  card: Pick<RegionCard, 'local' | 'exported' | 'imported'>,
-): number {
-  return card.local + card.exported + card.imported
-}
-
-/**
- * Country-scoped outreach buckets.
- * Mirrors classifyOutreach for a countryIso3 geo filter (iso3 equality on both ends).
- */
-function bucketCountryOutreach(flows: RegionFlow[]): Map<string, OutreachAcc> {
-  const byIso = new Map<string, OutreachAcc>()
-  const ensure = (iso3: string): OutreachAcc => {
-    let acc = byIso.get(iso3)
-    if (!acc) {
-      acc = emptyOutreachAcc()
-      byIso.set(iso3, acc)
-    }
-    return acc
+} {
+  if (!lists) return { local: 0, exported: 0, unknown: 0, imported: 0 }
+  const c = countsFromLists(lists)
+  return {
+    local: c.local,
+    exported: c.exported,
+    unknown: c.unknown,
+    imported: c.imported,
   }
-
-  for (const row of flows) {
-    const coll = row.collection_country_iso3
-    const inst = row.institute_country_iso3
-    if (coll && inst && coll === inst) {
-      ensure(coll).local++
-      continue
-    }
-    if (coll) ensure(coll).exported++
-    if (inst) ensure(inst).imported++
-  }
-  return byIso
-}
-
-/**
- * Continent-scoped outreach buckets.
- * Mirrors classifyOutreach for a continent geo filter.
- */
-function bucketContinentOutreach(flows: RegionFlow[]): Map<string, OutreachAcc> {
-  const byContinent = new Map<string, OutreachAcc>()
-  const ensure = (continent: string): OutreachAcc => {
-    let acc = byContinent.get(continent)
-    if (!acc) {
-      acc = emptyOutreachAcc()
-      byContinent.set(continent, acc)
-    }
-    return acc
-  }
-
-  for (const row of flows) {
-    const coll = row.collection_continent.trim() || DESTINATION_UNRESOLVED
-    const inst = row.institute_continent?.trim() || null
-    if (inst && coll === inst) {
-      ensure(coll).local++
-      continue
-    }
-    ensure(coll).exported++
-    if (inst) ensure(inst).imported++
-  }
-  return byContinent
 }
 
 /** City-states without Natural Earth 110m polygons — shown under Regions, not Countries. */
@@ -168,12 +122,11 @@ export function buildContinentLookup(world: WorldGeoJson): Map<string, string> {
 }
 
 export function buildCountryCards(
-  flows: RegionFlow[],
+  index: FlowIndex,
   speciesCounts: SpeciesCountRow[],
   countryTotals: CountryTotal[],
   continentLookup: Map<string, string>,
 ): RegionCard[] {
-  const outreachByIso = bucketCountryOutreach(flows)
   const sequencedByIso = new Map(countryTotals.map((t) => [t.iso3, t]))
   const cards: RegionCard[] = []
   const seen = new Set<string>()
@@ -181,28 +134,30 @@ export function buildCountryCards(
   for (const row of speciesCounts) {
     if (!row.iso3) continue
     const sequenced = sequencedByIso.get(row.iso3)
-    const counts = outreachByIso.get(row.iso3) ?? emptyOutreachAcc()
+    const counts = countsOrZero(index.byCountryIso3.get(row.iso3))
+    const meta = index.countryMeta.get(row.iso3)
     const continent =
       sequenced?.continent ||
       continentLookup.get(row.iso3) ||
+      meta?.continent ||
       DESTINATION_UNRESOLVED
     cards.push({
       id: `country:${row.iso3}`,
       kind: 'country',
-      name: row.country_name || sequenced?.countryName || row.iso3,
+      name: row.country_name || sequenced?.countryName || meta?.name || row.iso3,
       iso3: row.iso3,
       continent,
       local: counts.local,
       exported: counts.exported,
+      unknown: counts.unknown,
       imported: counts.imported,
     })
     seen.add(row.iso3)
   }
 
-  // Include sequenced / outreach countries missing from GBIF/iNat table.
   for (const total of countryTotals) {
     if (seen.has(total.iso3)) continue
-    const counts = outreachByIso.get(total.iso3) ?? emptyOutreachAcc()
+    const counts = countsOrZero(index.byCountryIso3.get(total.iso3))
     cards.push({
       id: `country:${total.iso3}`,
       kind: 'country',
@@ -211,36 +166,27 @@ export function buildCountryCards(
       continent: total.continent,
       local: counts.local,
       exported: counts.exported,
+      unknown: counts.unknown,
       imported: counts.imported,
     })
     seen.add(total.iso3)
   }
 
-  // Import-only hubs (institute activity, no collection rows / speciesCounts entry).
-  for (const [iso3, counts] of outreachByIso) {
+  // Import-only hubs / outreach countries missing from GBIF and totals tables.
+  for (const [iso3, lists] of index.byCountryIso3) {
     if (seen.has(iso3)) continue
-    let countryName = iso3
-    let continent = continentLookup.get(iso3) || DESTINATION_UNRESOLVED
-    for (const row of flows) {
-      if (row.institute_country_iso3 === iso3) {
-        countryName = row.institute_country || iso3
-        continent = row.institute_continent?.trim() || continent
-        break
-      }
-      if (row.collection_country_iso3 === iso3) {
-        countryName = row.collection_country || iso3
-        continent = row.collection_continent || continent
-        break
-      }
-    }
+    const counts = countsOrZero(lists)
+    const meta = index.countryMeta.get(iso3)
     cards.push({
       id: `country:${iso3}`,
       kind: 'country',
-      name: countryName,
+      name: meta?.name || iso3,
       iso3,
-      continent,
+      continent:
+        continentLookup.get(iso3) || meta?.continent || DESTINATION_UNRESOLVED,
       local: counts.local,
       exported: counts.exported,
+      unknown: counts.unknown,
       imported: counts.imported,
     })
     seen.add(iso3)
@@ -254,49 +200,38 @@ export function buildCountryCards(
     )
 }
 
-export function buildContinentCards(flows: RegionFlow[]): RegionCard[] {
-  const outreachByContinent = bucketContinentOutreach(flows)
-
-  return [...outreachByContinent.entries()]
+export function buildContinentCards(index: FlowIndex): RegionCard[] {
+  return [...index.byContinent.entries()]
     .filter(
       ([name]) =>
-        name !== DESTINATION_UNRESOLVED || outreachByContinent.size === 1,
+        name !== DESTINATION_UNRESOLVED || index.byContinent.size === 1,
     )
-    .map(([name, counts]) => ({
-      id: `continent:${name}`,
-      kind: 'continent' as const,
-      name,
-      iso3: null,
-      continent: name,
-      local: counts.local,
-      exported: counts.exported,
-      imported: counts.imported,
-    }))
+    .map(([name, lists]) => {
+      const counts = countsOrZero(lists)
+      return {
+        id: `continent:${name}`,
+        kind: 'continent' as const,
+        name,
+        iso3: null,
+        continent: name,
+        local: counts.local,
+        exported: counts.exported,
+        unknown: counts.unknown,
+        imported: counts.imported,
+      }
+    })
     .filter((card) => cardTotal(card) > 0)
     .sort((a, b) => {
-      if (a.name === 'Unknown') return 1
-      if (b.name === 'Unknown') return -1
+      if (a.name === 'Unknown' || a.name === DESTINATION_UNRESOLVED) return 1
+      if (b.name === 'Unknown' || b.name === DESTINATION_UNRESOLVED) return -1
       return cardTotal(b) - cardTotal(a) || a.name.localeCompare(b.name)
     })
 }
 
 /** Aggregate outreach counts for the three predefined custom regions. */
-export function buildCustomRegionCards(
-  flows: RegionFlow[],
-  continentLookup: Map<string, string>,
-): RegionCard[] {
+export function buildCustomRegionCards(index: FlowIndex): RegionCard[] {
   return CUSTOM_REGIONS.map((region) => {
-    const members = buildCustomRegionIso3Set(region.id, continentLookup)
-    const counts = countOutreachFlows(
-      flows,
-      {
-        continent: null,
-        country: null,
-        countryIso3: null,
-        customId: region.id,
-      },
-      members,
-    )
+    const counts = countsOrZero(index.byCustom.get(region.id))
     return {
       id: `custom:${region.id}`,
       kind: 'custom' as const,
@@ -305,6 +240,7 @@ export function buildCustomRegionCards(
       continent: 'Custom region',
       local: counts.local,
       exported: counts.exported,
+      unknown: counts.unknown,
       imported: counts.imported,
     }
   }).sort((a, b) => cardTotal(b) - cardTotal(a) || a.name.localeCompare(b.name))
@@ -340,11 +276,10 @@ export function buildSpecialRegionCards(countryCards: RegionCard[]): RegionCard[
 
 /** Regions tab: multi-country atlases first, then special single entities. */
 export function buildRegionsTabCards(
-  flows: RegionFlow[],
+  index: FlowIndex,
   countryCards: RegionCard[],
-  continentLookup: Map<string, string>,
 ): RegionCard[] {
-  const atlases = buildCustomRegionCards(flows, continentLookup)
+  const atlases = buildCustomRegionCards(index)
   const specials = buildSpecialRegionCards(countryCards)
   // Featured country entries that live on Regions alongside atlases (e.g. China).
   const featuredCountries = countryCards
@@ -371,15 +306,20 @@ export function buildRegionsTabCards(
   })
 }
 
+export type SequencingBreakdown = {
+  groups: DestinationContinentGroup[]
+  /** Rows in scope with no institute geography (shown under the bars). */
+  unknownPlaceCount: number
+}
+
 /**
  * Groups scoped flows by institute continent → nested country or institute.
- * Rows missing institute geography roll into "Unresolved" so the diagram
- * total always equals the scope's sequenced-species count.
+ * Rows with no institute geography are counted in unknownPlaceCount, not the bars.
  */
 export function buildSequencingBreakdown(
   flows: RegionFlow[],
   mode: DestinationMode = 'country',
-): DestinationContinentGroup[] {
+): SequencingBreakdown {
   type ChildAcc = {
     key: string
     label: string
@@ -387,8 +327,13 @@ export function buildSequencingBreakdown(
     count: number
   }
   const byContinent = new Map<string, Map<string, ChildAcc>>()
+  let unknownPlaceCount = 0
 
   for (const row of flows) {
+    if (!hasInstituteGeography(row)) {
+      unknownPlaceCount++
+      continue
+    }
     const continent = row.institute_continent?.trim() || DESTINATION_UNRESOLVED
     let childKey: string
     let childLabel: string
@@ -422,7 +367,7 @@ export function buildSequencingBreakdown(
     }
   }
 
-  return [...byContinent.entries()]
+  const groups = [...byContinent.entries()]
     .map(([continent, children]) => {
       const sorted = [...children.values()].sort(
         (a, b) => b.count - a.count || a.label.localeCompare(b.label),
@@ -441,6 +386,8 @@ export function buildSequencingBreakdown(
       if (b.continent === DESTINATION_UNRESOLVED) return -1
       return b.total - a.total || a.continent.localeCompare(b.continent)
     })
+
+  return { groups, unknownPlaceCount }
 }
 
 export function resolveCollectionPosition(
@@ -519,30 +466,43 @@ export type TaxonRankSummary = {
 
 export type TaxonRankSummaries = Record<TaxonRank, TaxonRankSummary>
 
-/** Distinct taxa per rank with species counts, from the given (already geo-scoped) flows. */
-export function buildTaxonRankSummaries(flows: RegionFlow[]): TaxonRankSummaries {
+/**
+ * Distinct taxa per rank with species counts.
+ * Pass slice lists (or a partition) to avoid concatenating the region union first.
+ */
+export function buildTaxonRankSummaries(
+  flowsOrLists: RegionFlow[] | Pick<SliceLists, 'local' | 'exported' | 'unknown' | 'imported'>,
+): TaxonRankSummaries {
   const empty = (): TaxonRankSummary => ({ count: 0, options: [] })
   const result = Object.fromEntries(TAXON_RANKS.map((r) => [r, empty()])) as TaxonRankSummaries
 
-  for (const rank of TAXON_RANKS) {
-    const taxidKey = `${rank}_taxid` as keyof RegionFlow
-    const nameKey = `${rank}_name` as keyof RegionFlow
-    const byTaxid = new Map<string, { name: string; species: Set<string> }>()
+  const byRank = Object.fromEntries(
+    TAXON_RANKS.map((r) => [r, new Map<string, { name: string; species: Set<string> }>()]),
+  ) as Record<TaxonRank, Map<string, { name: string; species: Set<string> }>>
 
-    for (const row of flows) {
-      const taxid = row[taxidKey]
-      const name = row[nameKey]
+  const visit = (row: RegionFlow) => {
+    for (const rank of TAXON_RANKS) {
+      const taxid = row[`${rank}_taxid` as keyof RegionFlow]
+      const name = row[`${rank}_name` as keyof RegionFlow]
       if (typeof taxid !== 'string' || !taxid) continue
       if (typeof name !== 'string' || !name) continue
-      let entry = byTaxid.get(taxid)
+      let entry = byRank[rank].get(taxid)
       if (!entry) {
         entry = { name, species: new Set() }
-        byTaxid.set(taxid, entry)
+        byRank[rank].set(taxid, entry)
       }
       if (row.species_taxid) entry.species.add(row.species_taxid)
     }
+  }
 
-    const options = [...byTaxid.entries()]
+  if (Array.isArray(flowsOrLists)) {
+    for (const row of flowsOrLists) visit(row)
+  } else {
+    forEachInLists(flowsOrLists, visit)
+  }
+
+  for (const rank of TAXON_RANKS) {
+    const options = [...byRank[rank].entries()]
       .map(([taxid, { name, species }]) => ({
         taxid,
         name,
@@ -552,7 +512,6 @@ export function buildTaxonRankSummaries(flows: RegionFlow[]): TaxonRankSummaries
         (a, b) =>
           b.speciesCount - a.speciesCount || a.name.localeCompare(b.name),
       )
-
     result[rank] = { count: options.length, options }
   }
 
