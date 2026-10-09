@@ -1,7 +1,7 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import { CircleHelp, Search, X } from 'lucide-react'
+import { ChevronLeft, CircleHelp, Search } from 'lucide-react'
 import { regionTitle } from '../SidebarPanels'
 import { type GeoFilter, type RegionFlow, type TaxonRank } from '../types'
 import {
@@ -23,7 +23,6 @@ import DestinationBars from './DestinationBars'
 import MapViewToggles from './MapViewToggles'
 import TaxonPicker from './TaxonPicker'
 import {
-  FLOW_PRESETS,
   FLOW_SLICE_LABELS,
   FLOW_SLICES,
   type MapSliceSelection,
@@ -47,17 +46,17 @@ function FlowMapGuideHelp() {
         <PopoverHeader>
           <PopoverTitle>How to use the Flow Map</PopoverTitle>
           <PopoverDescription>
-            Region and taxon are peer filters. Quick select and the flow
-            checkboxes choose which species to plot.
+            Region and taxon are peer filters. Flow checkboxes choose which
+            species to plot.
           </PopoverDescription>
         </PopoverHeader>
         <div className="flow-map-guide-body">
           <section className="flow-map-guide-section">
             <h3>Peer filters</h3>
             <p>
-              Use the Region and Taxon pills in the sidebar (and the toolbar
-              breadcrumb) to narrow scope. Either can be set first; each updates
-              the other&apos;s counts.
+              Pick a region from the list below, and use Taxon in the header to
+              narrow scope. Either can be set first; each updates the
+              other&apos;s counts.
             </p>
           </section>
           <section className="flow-map-guide-section">
@@ -66,23 +65,6 @@ function FlowMapGuideHelp() {
               Hover a region to preview every flow that touches it. Click to
               open details. The map starts with all flows checked.
             </p>
-          </section>
-          <section className="flow-map-guide-section">
-            <h3>Quick select</h3>
-            <ul className="flow-map-guide-defs">
-              {FLOW_PRESETS.map((preset) => (
-                <li key={preset.id}>
-                  <strong>{preset.label}</strong>
-                  <span>
-                    {preset.id === 'all'
-                      ? 'Every flow that touches the region.'
-                      : preset.id === 'collected'
-                        ? 'Collected here, including an unknown sequencing place.'
-                        : 'Sequenced here, whether or not it was collected here.'}
-                  </span>
-                </li>
-              ))}
-            </ul>
           </section>
           <section className="flow-map-guide-section">
             <h3>Flows</h3>
@@ -162,6 +144,8 @@ function RegionCardButton({
 }
 
 function ListState({
+  tab,
+  onTabChange,
   continentCards,
   countryCards,
   customCards,
@@ -169,6 +153,8 @@ function ListState({
   onSelectRegion,
   onHoverRegion,
 }: {
+  tab: ExploreTab
+  onTabChange: (tab: ExploreTab) => void
   continentCards: RegionCard[]
   countryCards: RegionCard[]
   customCards: RegionCard[]
@@ -176,7 +162,6 @@ function ListState({
   onSelectRegion: (card: RegionCard) => void
   onHoverRegion: (card: RegionCard | null) => void
 }) {
-  const [tab, setTab] = useState<ExploreTab>('continents')
   const [query, setQuery] = useState('')
 
   const cards = useMemo(() => {
@@ -201,7 +186,7 @@ function ListState({
               role="tab"
               className={`explore-tab ${tab === id ? 'is-active' : ''}`}
               aria-selected={tab === id}
-              onClick={() => setTab(id)}
+              onClick={() => onTabChange(id)}
             >
               {id === 'regions' ? 'Regions' : id === 'continents' ? 'Continents' : 'Countries'}
             </button>
@@ -256,6 +241,7 @@ function DetailState({
   outreachCounts,
   barsFlows,
   activeMapCount,
+  onClearRegion,
   onSelectInstitute,
   rankTaxidLabel,
   hasTaxonFilter,
@@ -268,6 +254,7 @@ function DetailState({
   outreachCounts: OutreachCounts
   barsFlows: RegionFlow[]
   activeMapCount: number
+  onClearRegion: () => void
   onSelectInstitute: (key: string) => void
   rankTaxidLabel: string
   hasTaxonFilter: boolean
@@ -285,7 +272,15 @@ function DetailState({
     <div className="explore-detail">
       <div className="explore-detail-head">
         <div className="region-title explore-detail-title">
-          <span className="detail-kicker">Region details</span>
+          <button
+            type="button"
+            className="explore-detail-back"
+            aria-label="Back to region list"
+            onClick={onClearRegion}
+          >
+            <ChevronLeft size={14} aria-hidden="true" />
+            Back to Regions
+          </button>
           <h2>{title}</h2>
         </div>
       </div>
@@ -346,67 +341,6 @@ function DetailState({
   )
 }
 
-function FilterStrip({
-  geoFilter,
-  hasRegion,
-  onClearRegion,
-  rankSummaries,
-  rankLevel,
-  rankTaxid,
-  rankTaxidLabel,
-  onPickTaxon,
-  onClearTaxon,
-  taxonPickerDisabled,
-}: {
-  geoFilter: GeoFilter
-  hasRegion: boolean
-  onClearRegion: () => void
-  rankSummaries: TaxonRankSummaries
-  rankLevel: TaxonRank | ''
-  rankTaxid: string
-  rankTaxidLabel: string
-  onPickTaxon: (rank: TaxonRank, taxid: string) => void
-  onClearTaxon: () => void
-  taxonPickerDisabled?: boolean
-}) {
-  const title = regionTitle(geoFilter)
-  return (
-    <div className="sidebar-filter-strip justify-between">
-      <div className="sidebar-filter-peer">
-        <span className="sidebar-filter-peer-label">Region</span>
-        {hasRegion ? (
-          <span className="sidebar-filter-pill is-set">
-            <span className="sidebar-filter-pill-text" title={title}>
-              {title}
-            </span>
-            <button
-              type="button"
-              className="sidebar-filter-pill-clear"
-              aria-label="Clear region"
-              onClick={onClearRegion}
-            >
-              <X size={12} />
-            </button>
-          </span>
-        ) : (
-          <span className="sidebar-filter-pill sidebar-filter-pill-static">
-            <span className="sidebar-filter-pill-text">All</span>
-          </span>
-        )}
-      </div>
-      <TaxonPicker
-        rankSummaries={rankSummaries}
-        rankLevel={rankLevel}
-        rankTaxid={rankTaxid}
-        rankTaxidLabel={rankTaxidLabel}
-        onPickTaxon={onPickTaxon}
-        onClearTaxon={onClearTaxon}
-        disabled={taxonPickerDisabled}
-      />
-    </div>
-  )
-}
-
 export default function ExploreLeftSidebar({
   geoFilter,
   continentCards,
@@ -436,25 +370,25 @@ export default function ExploreLeftSidebar({
   const hasRegion = Boolean(
     geoFilter.continent || geoFilter.country || geoFilter.customId,
   )
+  const [listTab, setListTab] = useState<ExploreTab>('continents')
 
   return (
     <aside className="explore-left">
       <header className="explore-sidebar-title">
-        <h1>Flow Map</h1>
-        <FlowMapGuideHelp />
+        <div className="explore-sidebar-title-brand">
+          <h1>Flow Map</h1>
+          <FlowMapGuideHelp />
+        </div>
+        <TaxonPicker
+          rankSummaries={rankSummaries}
+          rankLevel={rankLevel}
+          rankTaxid={rankTaxid}
+          rankTaxidLabel={rankTaxidLabel}
+          onPickTaxon={onPickTaxon}
+          onClearTaxon={onClearTaxon}
+          disabled={taxonPickerDisabled}
+        />
       </header>
-      <FilterStrip
-        geoFilter={geoFilter}
-        hasRegion={hasRegion}
-        onClearRegion={onClearRegion}
-        rankSummaries={rankSummaries}
-        rankLevel={rankLevel}
-        rankTaxid={rankTaxid}
-        rankTaxidLabel={rankTaxidLabel}
-        onPickTaxon={onPickTaxon}
-        onClearTaxon={onClearTaxon}
-        taxonPickerDisabled={taxonPickerDisabled}
-      />
       {hasRegion ? (
         <DetailState
           geoFilter={geoFilter}
@@ -463,6 +397,7 @@ export default function ExploreLeftSidebar({
           outreachCounts={outreachCounts}
           barsFlows={barsFlows}
           activeMapCount={activeMapCount}
+          onClearRegion={onClearRegion}
           onSelectInstitute={onSelectInstitute}
           rankTaxidLabel={rankTaxidLabel}
           hasTaxonFilter={hasTaxonFilter}
@@ -471,6 +406,8 @@ export default function ExploreLeftSidebar({
         />
       ) : (
         <ListState
+          tab={listTab}
+          onTabChange={setListTab}
           continentCards={continentCards}
           countryCards={countryCards}
           customCards={customCards}

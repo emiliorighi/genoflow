@@ -7,7 +7,7 @@ import { Info } from 'lucide-react'
 import { load } from '@loaders.gl/core'
 import ExploreLeftSidebar from './explore/ExploreLeftSidebar'
 import ExploreMap, { type ExploreLayers } from './explore/ExploreMap'
-import ExploreToolbar, { type FilterFocus, type SearchMode } from './explore/ExploreToolbar'
+import ExploreToolbar, { type SearchMode } from './explore/ExploreToolbar'
 import {
   buildContinentCards,
   buildContinentLookup,
@@ -124,31 +124,9 @@ function MapPageInner() {
     () => initialParams.current.get(MAP_QUERY_KEYS.taxon) || '',
   )
   const [mapSlices, setMapSlices] = useState<MapSliceSelection>(DEFAULT_MAP_SLICES)
-  const [filterFocusOrder, setFilterFocusOrder] = useState<FilterFocus[]>(() => {
-    const order: FilterFocus[] = []
-    const hasGeo =
-      Boolean(initialParams.current.get(MAP_QUERY_KEYS.custom)) ||
-      Boolean(initialParams.current.get(MAP_QUERY_KEYS.continent)) ||
-      Boolean(initialParams.current.get(MAP_QUERY_KEYS.country))
-    const hasTaxon =
-      Boolean(initialParams.current.get(MAP_QUERY_KEYS.rank)) &&
-      Boolean(initialParams.current.get(MAP_QUERY_KEYS.taxon))
-    // Deep-link with both: region then taxon
-    if (hasGeo) order.push('region')
-    if (hasTaxon) order.push('taxon')
-    return order
-  })
   const [searchMode, setSearchMode] = useState<SearchMode>('species')
   const geoHydrated = useRef(false)
   const mapSlicesHydrated = useRef(false)
-
-  function appendFilterFocus(focus: FilterFocus) {
-    setFilterFocusOrder((prev) => (prev.includes(focus) ? prev : [...prev, focus]))
-  }
-
-  function removeFilterFocus(focus: FilterFocus) {
-    setFilterFocusOrder((prev) => prev.filter((f) => f !== focus))
-  }
 
   const clearSelection = () => {
     setSelection(null)
@@ -454,7 +432,6 @@ function MapPageInner() {
     if (!stillPresent) {
       setRankLevel('')
       setRankTaxid('')
-      setFilterFocusOrder((prev) => prev.filter((f) => f !== 'taxon'))
     }
   }, [rankSummaries, rankLevel, rankTaxid, flows])
 
@@ -475,7 +452,6 @@ function MapPageInner() {
   }, [mapFlows, selection, centroids])
 
   const onPickTaxon = (rank: TaxonRank, taxid: string) => {
-    appendFilterFocus('taxon')
     // Defer expensive list-card rebuilds only while the region list is visible.
     // With a region open, update urgently so map/KPI stay snappy.
     if (hasRegion) {
@@ -493,13 +469,11 @@ function MapPageInner() {
     if (hasRegion) {
       setRankLevel('')
       setRankTaxid('')
-      removeFilterFocus('taxon')
       return
     }
     startTransition(() => {
       setRankLevel('')
       setRankTaxid('')
-      removeFilterFocus('taxon')
     })
   }
 
@@ -532,7 +506,6 @@ function MapPageInner() {
         customId: null,
       }
     }
-    appendFilterFocus('region')
     mapSlicesHydrated.current = true
     startTransition(() => {
       setGeoFilter(nextFilter)
@@ -578,11 +551,9 @@ function MapPageInner() {
     setHoverPreview(null)
     clearSelection()
     setMapSlices(DEFAULT_MAP_SLICES)
-    // Returning to the list: defer continent/country/custom card rebuilds
-    // and keep breadcrumb/focus order in the same transition as geo clear.
+    // Returning to the list: defer continent/country/custom card rebuilds.
     startTransition(() => {
       setGeoFilter(EMPTY_GEO_FILTER)
-      removeFilterFocus('region')
     })
   }
 
@@ -615,9 +586,6 @@ function MapPageInner() {
     )
   }, [taxonPartition])
 
-  const taxonBreadcrumbLabel =
-    rankLevel && rankTaxidLabel ? `${rankTaxidLabel} (${rankLevel})` : ''
-
   return (
     <main className="atlas-shell">
       <header className="atlas-topbar">
@@ -626,6 +594,12 @@ function MapPageInner() {
         </Link>
         <div className="atlas-title">Atlas</div>
         <div className="topbar-info">
+          <Link href="/rankings" className="pull-rank-top-link">
+            Pull index
+          </Link>
+          <span className="pull-rank-topbar-sep" aria-hidden="true">
+            ·
+          </span>
           <Info size={14} aria-hidden="true" /> Region explorer · live atlas
         </div>
       </header>
@@ -674,13 +648,6 @@ function MapPageInner() {
             selection={selection}
             onSelect={select}
             disabled={!flows}
-            filterFocusOrder={filterFocusOrder}
-            regionLabel={title}
-            taxonLabel={taxonBreadcrumbLabel}
-            hasRegion={hasRegion}
-            hasTaxon={Boolean(rankFilter)}
-            onClearRegion={onClearRegion}
-            onClearTaxon={onClearTaxon}
           />
           <div className="explore-map-stage">
             <ExploreMap

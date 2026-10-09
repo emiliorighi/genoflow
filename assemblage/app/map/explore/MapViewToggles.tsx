@@ -1,11 +1,9 @@
 'use client'
 
+import { CircleHelp } from 'lucide-react'
 import {
-  FLOW_PRESETS,
   FLOW_SLICES,
   FLOW_SLICE_LABELS,
-  applyFlowPreset,
-  matchingFlowPreset,
   toggleFlowSlice,
   type FlowSlice,
   type MapSliceSelection,
@@ -18,6 +16,22 @@ const SLICE_CHECK: Record<FlowSlice, 'amber' | 'blue'> = {
   exported: 'amber',
   unknown: 'amber',
   imported: 'blue',
+}
+
+const PULL_INDEX_TIP =
+  'Of species sequenced here, the fraction collected elsewhere.'
+
+function PullIndexHelp() {
+  return (
+    <span
+      className="dest-help"
+      title={PULL_INDEX_TIP}
+      role="img"
+      aria-label={PULL_INDEX_TIP}
+    >
+      <CircleHelp size={12} aria-hidden="true" />
+    </span>
+  )
 }
 
 type MapViewTogglesProps = {
@@ -34,36 +48,28 @@ export default function MapViewToggles({
   onChange,
   activeCount,
 }: MapViewTogglesProps) {
-  const activePreset = matchingFlowPreset(slices)
+  const sequenced = counts.local + counts.imported
+  const pullIndexLabel =
+    sequenced > 0
+      ? `${Math.round((1000 * counts.imported) / sequenced) / 10}%`
+      : '—'
 
   return (
     <div className="flow-slice-panel">
-      <div className="section-label">Quick select</div>
-      <div className="explore-tabs" role="group" aria-label="Quick select">
-        {FLOW_PRESETS.map((preset) => {
-          const active = activePreset === preset.id
-          return (
-            <button
-              key={preset.id}
-              type="button"
-              className={`explore-tab ${active ? 'is-active' : ''}`}
-              aria-pressed={active}
-              onClick={() => onChange(applyFlowPreset(preset.id))}
-            >
-              {preset.label}
-            </button>
-          )
-        })}
+      <div className="flow-slice-head">
+        <div className="section-label">Flows</div>
+        <div className="region-card-quiet-metrics pull-index-metrics">
+          <span>Pull index</span>
+          <span className="pull-index-value">{pullIndexLabel}</span>
+          <PullIndexHelp />
+        </div>
       </div>
 
       <div className="flow-slice-list" role="group" aria-label="Flows to show">
         {FLOW_SLICES.map((slice) => {
           const checked = slices[slice]
           return (
-            <label
-              key={slice}
-              className={`explore-taxon-row flow-slice-row ${checked ? 'is-checked' : ''}`}
-            >
+            <label key={slice} className="explore-taxon-row flow-slice-row">
               <input
                 type="checkbox"
                 className={`flow-slice-check is-${SLICE_CHECK[slice]}`}
