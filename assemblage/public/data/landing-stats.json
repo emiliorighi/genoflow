@@ -1,22 +1,22 @@
 {
-  "generatedAt": "2026-10-05T11:30:49+00:00",
+  "generatedAt": "2026-10-12T12:00:46+00:00",
   "kpis": {
-    "speciesWithAssemblies": 30226,
-    "speciesWithCoordinates": 11588,
-    "speciesWithCoordinatesPct": 38.3,
-    "speciesWithGeography": 23946,
-    "speciesWithGeographyPct": 79.2,
-    "totalInstitutes": 5756,
-    "institutesWithCoordinates": 3655,
+    "speciesWithAssemblies": 30340,
+    "speciesWithCoordinates": 11718,
+    "speciesWithCoordinatesPct": 38.6,
+    "speciesWithGeography": 24066,
+    "speciesWithGeographyPct": 79.3,
+    "totalInstitutes": 5764,
+    "institutesWithCoordinates": 3659,
     "institutesWithCoordinatesPct": 63.5,
-    "speciesInAtlas": 23946,
-    "speciesWithInstituteArc": 18279,
-    "speciesWithInstituteArcPct": 76.3,
+    "speciesInAtlas": 24066,
+    "speciesWithInstituteArc": 18394,
+    "speciesWithInstituteArcPct": 76.4,
     "topInstituteCount": 5,
-    "topInstituteSharePct": 35.9,
+    "topInstituteSharePct": 36.3,
     "topInstituteName": "Wellcome Sanger Institute",
-    "topInstituteSpeciesCount": 4667,
-    "topInstituteShareSinglePct": 25.5
+    "topInstituteSpeciesCount": 4769,
+    "topInstituteShareSinglePct": 25.9
   },
   "pipeline": [
     {
@@ -42,21 +42,21 @@
   ],
   "offshore": {
     "definitionNote": "Offshore = collection country ISO3 differs from submitter institute country ISO3, among species with both endpoints resolved.",
-    "comparableSpecies": 18186,
-    "offshoreSpecies": 7058,
-    "offshoreSpeciesPct": 38.8,
+    "comparableSpecies": 18301,
+    "offshoreSpecies": 7091,
+    "offshoreSpeciesPct": 38.7,
     "topCollectionCountries": [
       {
         "country": "USA",
         "offshoreCount": 585,
-        "totalWithGeo": 2612,
-        "offshorePct": 22.4
+        "totalWithGeo": 2628,
+        "offshorePct": 22.3
       },
       {
         "country": "Finland",
-        "offshoreCount": 367,
-        "totalWithGeo": 379,
-        "offshorePct": 96.8
+        "offshoreCount": 381,
+        "totalWithGeo": 393,
+        "offshorePct": 96.9
       },
       {
         "country": "Brazil",
@@ -66,9 +66,9 @@
       },
       {
         "country": "Spain",
-        "offshoreCount": 265,
-        "totalWithGeo": 336,
-        "offshorePct": 78.9
+        "offshoreCount": 269,
+        "totalWithGeo": 340,
+        "offshorePct": 79.1
       },
       {
         "country": "Australia",
@@ -80,21 +80,21 @@
     "topInstituteCountries": [
       {
         "country": "United States",
-        "offshoreCount": 2389,
-        "totalWithGeo": 4416,
-        "offshorePct": 54.1
+        "offshoreCount": 2390,
+        "totalWithGeo": 4433,
+        "offshorePct": 53.9
       },
       {
         "country": "United Kingdom",
-        "offshoreCount": 1648,
-        "totalWithGeo": 5060,
+        "offshoreCount": 1682,
+        "totalWithGeo": 5162,
         "offshorePct": 32.6
       },
       {
         "country": "France",
-        "offshoreCount": 469,
-        "totalWithGeo": 573,
-        "offshorePct": 81.8
+        "offshoreCount": 475,
+        "totalWithGeo": 579,
+        "offshorePct": 82.0
       },
       {
         "country": "China",
@@ -103,21 +103,21 @@
         "offshorePct": 11.0
       },
       {
-        "country": "Denmark",
-        "offshoreCount": 323,
-        "totalWithGeo": 359,
-        "offshorePct": 90.0
+        "country": "Canada",
+        "offshoreCount": 315,
+        "totalWithGeo": 485,
+        "offshorePct": 64.9
       }
     ]
   },
   "disclaimers": [
     {
       "id": "institute-concentration",
-      "text": "High counts for a few institutes — notably Wellcome Sanger Institute (4,667 species, ~25.5% of resolved arcs) — can reflect stricter control over sample and assembly metadata rather than exclusive sequencing capacity. Incomplete geo metadata elsewhere will under-count other labs."
+      "text": "High counts for a few institutes — notably Wellcome Sanger Institute (4,769 species, ~25.9% of resolved arcs) — can reflect stricter control over sample and assembly metadata rather than exclusive sequencing capacity. Incomplete geo metadata elsewhere will under-count other labs."
     },
     {
       "id": "missing-geography",
-      "text": "Only 23,946 of 30,226 species with GenBank assemblies (79.2%) carry some retrievable geography (country and/or coordinates). Many species never enter the atlas, so visible flows are a biased slice of real sequencing geography."
+      "text": "Only 24,066 of 30,340 species with GenBank assemblies (79.3%) carry some retrievable geography (country and/or coordinates). Many species never enter the atlas, so visible flows are a biased slice of real sequencing geography."
     },
     {
       "id": "geo-is-proxy",
