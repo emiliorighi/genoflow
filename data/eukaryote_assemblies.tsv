@@ -582,6 +582,7 @@ GCA_986708575.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	572548	Acr
 GCA_986708535.1	Scaffold	WELLCOME SANGER INSTITUTE		572548	Acrodactyla quadrisculpta	53.53	-0.98	United Kingdom	true	true	true
 GCA_033807595.1	Complete Genome	Academia Sinica	reference genome	150365	Acrodontium crateriforme	25.10146975	121.86099142	Taiwan	true	true	true
 GCA_050084415.1	Chromosome	BGI Research	reference genome	1755700	Acrolejeunea sandvicensis			China	true	false	true
+GCA_062034335.1	Chromosome	Huangshan University		1755700	Acrolejeunea sandvicensis			China	true	false	true
 GCA_977014555.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	1291411	Acrolepia autumnitella	61.4442	24.141	Finland	true	true	true
 GCA_977014675.1	Scaffold	WELLCOME SANGER INSTITUTE		1291411	Acrolepia autumnitella	61.4442	24.141	Finland	true	true	true
 GCA_966185125.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	57686	Acrolepiopsis assectella	55.652	13.214	Sweden	true	true	true
@@ -708,6 +709,28 @@ GCA_051167385.1	Chromosome	Guizhou Institute of Pomology Science		1590841	Actini
 GCA_024454175.1	Chromosome	Sichuan Agricultural University	reference genome	3627	Actinidia deliciosa			China	true	false	true
 GCA_004150315.1	Chromosome	Cornell University		165200	Actinidia eriantha			China	true	false	true
 GCA_019202715.1	Chromosome	Zhejiang University		165200	Actinidia eriantha			China	true	false	true
+GCA_062041551.1	Chromosome	Anhui Agricultural University		165200	Actinidia eriantha	26.156546	118.192313	China	true	true	true
+GCA_062041556.1	Chromosome	Anhui Agricultural University		165200	Actinidia eriantha	26.156546	118.192313	China	true	true	true
+GCA_062041557.1	Chromosome	Anhui Agricultural University		165200	Actinidia eriantha	26.165815	118.197579	China	true	true	true
+GCA_062041574.1	Chromosome	Anhui Agricultural University		165200	Actinidia eriantha	26.165815	118.197579	China	true	true	true
+GCA_062041578.1	Chromosome	Anhui Agricultural University		165200	Actinidia eriantha	27.518015	119.814148	China	true	true	true
+GCA_062041579.1	Chromosome	Anhui Agricultural University		165200	Actinidia eriantha	27.518015	119.814148	China	true	true	true
+GCA_062041587.1	Chromosome	Anhui Agricultural University		165200	Actinidia eriantha	24.674474	113.056183	China	true	true	true
+GCA_062041590.1	Chromosome	Anhui Agricultural University		165200	Actinidia eriantha	24.674474	113.056183	China	true	true	true
+GCA_062041591.1	Chromosome	Anhui Agricultural University		165200	Actinidia eriantha	28.297126	117.745972	China	true	true	true
+GCA_062041595.1	Chromosome	Anhui Agricultural University		165200	Actinidia eriantha	26.053724	118.882756	China	true	true	true
+GCA_062041607.1	Chromosome	Anhui Agricultural University		165200	Actinidia eriantha	28.045319	120.064087	China	true	true	true
+GCA_062041608.1	Chromosome	Anhui Agricultural University		165200	Actinidia eriantha	26.053724	118.882756	China	true	true	true
+GCA_062041609.1	Chromosome	Anhui Agricultural University		165200	Actinidia eriantha	28.045319	120.064087	China	true	true	true
+GCA_062041622.1	Chromosome	Anhui Agricultural University		165200	Actinidia eriantha	27.068227	113.561919	China	true	true	true
+GCA_062041623.1	Chromosome	Anhui Agricultural University		165200	Actinidia eriantha	27.068227	113.561919	China	true	true	true
+GCA_062041627.1	Chromosome	Anhui Agricultural University		165200	Actinidia eriantha	27.521293	117.260915	China	true	true	true
+GCA_062041637.1	Chromosome	Anhui Agricultural University		165200	Actinidia eriantha	27.521293	117.260915	China	true	true	true
+GCA_062041641.1	Chromosome	Anhui Agricultural University		165200	Actinidia eriantha	26.149891	109.051666	China	true	true	true
+GCA_062041642.1	Chromosome	Anhui Agricultural University		165200	Actinidia eriantha	26.149891	109.051666	China	true	true	true
+GCA_062041649.1	Chromosome	Anhui Agricultural University		165200	Actinidia eriantha	25.549876	114.307938	China	true	true	true
+GCA_062041652.1	Chromosome	Anhui Agricultural University		165200	Actinidia eriantha	25.549876	114.307938	China	true	true	true
+GCA_062041671.1	Chromosome	Anhui Agricultural University		165200	Actinidia eriantha	28.297126	117.745972	China	true	true	true
 GCA_982292445.1	Contig	South China Botanical Garden, Chinese Academy of Sciences		165200	Actinidia eriantha			China	true	false	true
 GCA_982292455.1	Contig	South China Botanical Garden, Chinese Academy of Sciences	reference genome	165200	Actinidia eriantha			China	true	false	true
 GCA_059340855.1	Complete Genome	South China botanical garden	reference genome	222502	Actinidia hubeiensis				true	false	true
@@ -874,7 +897,8 @@ GCA_053567775.1	Chromosome	Kansas State University	reference genome	130459	Aegil
 GCA_964264335.1	Chromosome	Leibniz Institute of Plant Genetics and Crop Plant Research	reference genome	4486	Aegilops longissima				true	false	true
 GCA_021605205.1	Chromosome	Northeast Normal University		4486	Aegilops longissima			China	true	false	true
 GCA_904067125.1	Chromosome	Leibniz Institute of Plant Genetics and Crop Plant Research		4486	Aegilops longissima				true	false	true
-GCA_052815875.1	Chromosome	Agriculture and Agri-Food Canada (AAFC)	reference genome	4494	Aegilops markgrafii			Canada	true	false	true
+GCA_062042614.1	Chromosome	Peking University Institute of Advanced Agricultural Sciences	reference genome	4494	Aegilops markgrafii				true	false	true
+GCA_052815875.1	Chromosome	Agriculture and Agri-Food Canada (AAFC)		4494	Aegilops markgrafii			Canada	true	false	true
 GCA_060658385.1	Chromosome	North Dakota State University	reference genome	130461	Aegilops peregrina			USA	true	false	true
 GCA_021605185.1	Chromosome	Northeast Normal University		4487	Aegilops searsii			China	true	false	true
 GCA_904067115.1	Chromosome	Leibniz Institute of Plant Genetics and Crop Plant Research	reference genome	58530	Aegilops sharonensis				true	false	true
@@ -2494,12 +2518,10 @@ GCA_965178155.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	1869462	An
 GCA_965178195.1	Scaffold	WELLCOME SANGER INSTITUTE		1869462	Anarta stigmosa	45.011	29.071	Romania	true	true	true
 GCA_979610145.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	987454	Anarta trifolii	53.53	-0.98	United Kingdom	true	true	true
 GCA_979608685.1	Scaffold	WELLCOME SANGER INSTITUTE		987454	Anarta trifolii	53.53	-0.98	United Kingdom	true	true	true
-GCA_988290355.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	28680	Anas acuta	51.73	-2.4	United Kingdom	true	true	true
+GCA_053567805.1	Chromosome	China Agricultural University	reference genome	28680	Anas acuta				true	false	true
 GCA_036026395.1	Scaffold	Iridian Genomes		28680	Anas acuta				true	false	true
-GCA_053567805.1	Chromosome	China Agricultural University		28680	Anas acuta				true	false	true
 GCA_056561645.1	Scaffold	Bird 10,000 Genomes (B10K) consortium		28680	Anas acuta			USA	true	false	true
 GCA_982556955.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen		28680	Anas acuta			USA	true	false	true
-GCA_988290345.1	Scaffold	WELLCOME SANGER INSTITUTE		28680	Anas acuta	51.73	-2.4	United Kingdom	true	true	true
 GCA_056523205.1	Scaffold	Iridian Genomes	reference genome	3149377	Anas albogularis				true	false	true
 GCA_056591935.1	Scaffold	Iridian Genomes	reference genome	3129163	Anas andium				true	false	true
 GCA_038406075.1	Scaffold	Iridian Genomes	reference genome	75833	Anas aucklandica				true	false	true
@@ -2547,8 +2569,6 @@ GCA_056880675.1	Chromosome	Sichuan University of Arts and Science		8839	Anas pla
 GCA_059339885.1	Chromosome	China Agricultural University		8839	Anas platyrhynchos			China	true	false	true
 GCA_061193775.1	Chromosome	Sichuan University of Arts and Science		8839	Anas platyrhynchos			China	true	false	true
 GCA_900411745.1	Chromosome	zhao_yue		8839	Anas platyrhynchos				true	false	true
-GCA_988290335.1	Scaffold	WELLCOME SANGER INSTITUTE		8839	Anas platyrhynchos	51.73	-2.4	United Kingdom	true	true	true
-GCA_988290365.1	Chromosome	WELLCOME SANGER INSTITUTE		8839	Anas platyrhynchos	51.73	-2.4	United Kingdom	true	true	true
 GCA_002743455.1	Chromosome	China Agricultural University		8840	Anas platyrhynchos platyrhynchos				false	false	true
 GCA_040966495.1	Scaffold	Iridian Genomes	reference genome	75854	Anas poecilorhyncha				true	false	true
 GCA_057588035.1	Scaffold	Iridian Genomes	reference genome	45632	Anas superciliosa				true	false	true
@@ -2628,6 +2648,7 @@ GCA_977019785.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	1391524	An
 GCA_977019805.1	Scaffold	WELLCOME SANGER INSTITUTE		1391524	Ancylis unculana	51.51	-1.11	United Kingdom	true	true	true
 GCA_982936515.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	2560959	Ancylis upupana	60.9244	24.1878	Finland	true	true	true
 GCA_982935475.1	Scaffold	WELLCOME SANGER INSTITUTE		2560959	Ancylis upupana	60.9244	24.1878	Finland	true	true	true
+GCA_062043556.1	Scaffold	Yokohama National University	reference genome	3104263	Ancylistes closterii	42.252917	-83.7	USA	true	true	true
 GCA_050230475.1	Contig	University of Bristol		3114438	Ancylonema sp.	46.418	9.933	Switzerland	false	true	true
 GCA_037903475.1	Scaffold	University of Nebraska Medical Center	reference genome	29170	Ancylostoma caninum			USA	true	false	true
 GCA_003336725.2	Scaffold	The Genome Institute		29170	Ancylostoma caninum	39.28	-76.61	USA	true	true	true
@@ -3101,10 +3122,8 @@ GCA_965277985.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	132586	Ans
 GCA_051252735.1	Scaffold	Iridian Genomes		132586	Anser erythropus			USA	true	false	true
 GCA_965277975.1	Scaffold	WELLCOME SANGER INSTITUTE		132586	Anser erythropus	51.73	-2.4	United Kingdom	true	true	true
 GCA_982553315.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen		132586	Anser erythropus			Sweden	true	false	true
-GCA_988290455.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	132587	Anser fabalis	51.73	-2.4	United Kingdom	true	true	true
+GCA_982553455.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen	reference genome	132587	Anser fabalis			Sweden	true	false	true
 GCA_056577465.1	Scaffold	Bird 10,000 Genomes (B10K) consortium		132587	Anser fabalis			Sweden	true	false	true
-GCA_982553455.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen		132587	Anser fabalis			Sweden	true	false	true
-GCA_988290475.1	Scaffold	WELLCOME SANGER INSTITUTE		132587	Anser fabalis	51.73	-2.4	United Kingdom	true	true	true
 GCA_025583725.1	Chromosome	China Agricultural University	reference genome	8846	Anser indicus				true	false	true
 GCA_006229135.1	Scaffold	State Key Laboratory of Plateau Ecology and Agriculture, Qinghai University		8846	Anser indicus	36.74164	101.40856	China	true	true	true
 GCA_050573435.1	Scaffold	Iridian Genomes		8846	Anser indicus				true	false	true
@@ -3627,7 +3646,9 @@ GCA_059101585.1	Scaffold	Canada's national platform for genome sequencing and an
 GCA_055615905.1	Chromosome	Fujian Agriculture and Forestry University	reference genome	464926	Aphis aurantii	25.994274	118.993454	China	true	true	true
 GCA_986269975.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	223852	Aphis citricidus	52.621515	1.221512	United Kingdom	true	true	true
 GCA_986269985.1	Scaffold	WELLCOME SANGER INSTITUTE		223852	Aphis citricidus	52.621515	1.221512	United Kingdom	true	true	true
-GCA_009835225.1	Scaffold	Belarusian State University	reference genome	307492	Aphis craccivora	54.2	27.85	Belarus	true	true	true
+GCA_062041546.1	Scaffold	Canada's national platform for genome sequencing and analysis	reference genome	307492	Aphis craccivora			Canada	true	false	true
+GCA_009835225.1	Scaffold	Belarusian State University		307492	Aphis craccivora	54.2	27.85	Belarus	true	true	true
+GCA_062041550.1	Scaffold	Canada's national platform for genome sequencing and analysis		307492	Aphis craccivora			Canada	true	false	true
 GCA_984580985.1	Chromosome	CENTRE FOR GENOMIC RESEARCH UNIVERSITY OF LIVERPOOL	reference genome	191316	Aphis fabae			United Kingdom	true	false	true
 GCA_058127675.1	Scaffold	Canada's national platform for genome sequencing and analysis		191316	Aphis fabae			Canada	true	false	true
 GCA_058127695.1	Scaffold	Canada's national platform for genome sequencing and analysis		191316	Aphis fabae			Canada	true	false	true
@@ -7074,6 +7095,7 @@ GCA_977012865.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	3037401	At
 GCA_977012915.1	Scaffold	WELLCOME SANGER INSTITUTE		3037401	Atylotus latistriatus	52.96	-0.98	United Kingdom	true	true	true
 GCA_978045085.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	2968928	Atylotus rusticus	51.34	0.89	United Kingdom	true	true	true
 GCA_978045185.1	Chromosome	WELLCOME SANGER INSTITUTE		2968928	Atylotus rusticus	51.34	0.89	United Kingdom	true	true	true
+GCA_062039086.1	Chromosome	hubei university	reference genome	1649349	Atypus heterothecus				true	false	true
 GCA_054135865.1	Chromosome	INSTITUTE OF ZOOLOGY, CHINESE ACADEMY OF SCIENCES		3395887	Atypus sp. ZY-2024a			China	false	false	true
 GCA_030370435.1	Chromosome	The University of Warwick	reference genome	1963013	Auanema freiburgensis			Germany	true	false	true
 GCA_964057225.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	473160	Auanema rhodense				true	false	true
@@ -7591,8 +7613,6 @@ GCA_982555735.1	Scaffold	Center for Evolutionary Hologenomics, University of Cop
 GCA_009819795.1	Chromosome	Vertebrate Genomes Project	reference genome	219594	Aythya fuligula	59.8509	17.63	Sweden	true	true	true
 GCA_009819845.1	Scaffold	Vertebrate Genomes Project		219594	Aythya fuligula	59.8509	17.63	Sweden	true	true	true
 GCA_050125195.1	Scaffold	Iridian Genomes		219594	Aythya fuligula				true	false	true
-GCA_988290385.1	Scaffold	WELLCOME SANGER INSTITUTE		219594	Aythya fuligula	51.73	-2.4	United Kingdom	true	true	true
-GCA_988290415.1	Chromosome	WELLCOME SANGER INSTITUTE		219594	Aythya fuligula	51.73	-2.4	United Kingdom	true	true	true
 GCA_051419715.1	Scaffold	Iridian Genomes	reference genome	3149454	Aythya innotata			Madagascar	true	false	true
 GCA_029042245.1	Chromosome	Qufu normal university		189534	Aythya marila				true	false	true
 GCA_056319845.1	Scaffold	Iridian Genomes		189534	Aythya marila				true	false	true
@@ -7729,6 +7749,8 @@ GCA_029030885.1	Contig	Institute of Plant Physiology and Ecology,SIBS,CAS		27457
 GCA_030710565.1	Chromosome	China Agricultural University		27457	Bactrocera dorsalis			China	true	false	true
 GCA_037783465.2	Scaffold	McGill University		27457	Bactrocera dorsalis				true	false	true
 GCA_037783525.2	Scaffold	McGill University		27457	Bactrocera dorsalis				true	false	true
+GCA_062034341.1	Contig	Rahul Vivek Rane	reference genome	69615	Bactrocera frauenfeldi			Australia	true	false	true
+GCA_062034344.1	Contig	Rahul Vivek Rane	reference genome	1051279	Bactrocera kraussi			Australia	true	false	true
 GCA_001853355.1	Scaffold	USDA-ARS	reference genome	174628	Bactrocera latifrons			USA	true	false	true
 GCA_021498325.1	Contig	CAS Center for Excellence in Molecular Plant Sciences	reference genome	104690	Bactrocera minax			China	true	false	true
 GCA_021035045.1	Scaffold	South China Agricultural University		104690	Bactrocera minax				true	false	true
@@ -10001,6 +10023,7 @@ GCA_018282465.1	Chromosome	USDA ARS		297284	Bos taurus x Bison bison				false	fa
 GCA_030254855.1	Chromosome	Texas A&M University		297284	Bos taurus x Bison bison				false	false	true
 GCA_058219715.1	Scaffold	UNIVERSITY OF BASEL		3688120	Bosmina sp. FI-BAL1-1	59.845123	23.249092	Finland	false	true	true
 GCA_050630625.1	Chromosome	Max Planck Institute for Biology	reference genome	103713	Bostrychia moritziana			South Africa	true	false	true
+GCA_062041673.1	Chromosome	Xiamen University	reference genome	3405230	Bostrychus donghaiensis				true	false	true
 GCA_020698575.1	Chromosome	Zhejiang Ocean University	reference genome	86224	Bostrychus sinensis				true	false	true
 GCA_018703735.1	Scaffold	Xiamen University		86224	Bostrychus sinensis	24.479834	118.089424	China	true	true	true
 GCA_051993035.1	Scaffold	Fish10K		86224	Bostrychus sinensis			China	true	false	true
@@ -10398,6 +10421,7 @@ GCA_047715955.2	Chromosome	Vertebrate Genomes Project		179887	Bradypodion pumilu
 GCA_047715975.2	Chromosome	Vertebrate Genomes Project		179887	Bradypodion pumilum	-34.03	18.73	South Africa	true	true	true
 GCA_035047345.1	Scaffold	South African National Biodiversity Institute	reference genome	179890	Bradypodion ventrale	-26.15	28.07	South Africa	true	true	true
 GCA_963992745.1	Chromosome	Leibniz Institute for Zoo and Wildlife Research	reference genome	227087	Bradypus torquatus	-42.34378136	-22.53165855	Brazil	true	true	true
+GCA_062042609.1	Scaffold	CNRS - Universite de Montpellier	reference genome	9354	Bradypus tridactylus			French Guiana	true	false	true
 GCA_004027775.1	Scaffold	Broad Institute	reference genome	9355	Bradypus variegatus				true	false	true
 GCA_049901615.1	Scaffold	University of Edinburgh	reference genome	1260807	Bradysia alpicola			Slovakia	true	false	true
 GCA_047370885.1	Scaffold	University of Edinburgh	reference genome	1817600	Bradysia confinis			Slovakia	true	false	true
@@ -10449,12 +10473,10 @@ GCA_975705955.1	Chromosome	WELLCOME SANGER INSTITUTE		3002669	Branchipolynoe sp.
 GCA_982556705.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen	reference genome	184712	Branta bernicla			USA	true	false	true
 GCA_051254435.1	Scaffold	Iridian Genomes		184712	Branta bernicla			USA	true	false	true
 GCA_056561165.1	Scaffold	Bird 10,000 Genomes (B10K) consortium		184712	Branta bernicla			USA	true	false	true
-GCA_988290425.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	8853	Branta canadensis	50.86	-0.55	United Kingdom	true	true	true
+GCA_059051965.1	Scaffold	Canada's national platform for genome sequencing and analysis	reference genome	8853	Branta canadensis			Canada	true	false	true
 GCA_006130075.1	Scaffold	Canada's Genomic Enterprise		8853	Branta canadensis	49.2857524	-123.1436606	Canada	true	true	true
 GCA_049942515.1	Scaffold	Iridian Genomes		8853	Branta canadensis				true	false	true
 GCA_059051945.1	Scaffold	Canada's national platform for genome sequencing and analysis		8853	Branta canadensis			Canada	true	false	true
-GCA_059051965.1	Scaffold	Canada's national platform for genome sequencing and analysis		8853	Branta canadensis			Canada	true	false	true
-GCA_988290465.1	Scaffold	WELLCOME SANGER INSTITUTE		8853	Branta canadensis	50.86	-0.55	United Kingdom	true	true	true
 GCA_982555005.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen	reference genome	371860	Branta hutchinsii			USA	true	false	true
 GCA_032270845.1	Scaffold	Iridian Genomes		371860	Branta hutchinsii				true	false	true
 GCA_056578065.1	Scaffold	Bird 10,000 Genomes (B10K) consortium		371860	Branta hutchinsii			USA	true	false	true
@@ -10479,6 +10501,8 @@ GCA_003260655.2	Scaffold	University of Exeter	reference genome	69181	Brassica cr
 GCA_003260635.2	Scaffold	University of Exeter		69181	Brassica cretica			Greece	true	false	true
 GCA_003260675.2	Scaffold	University of Exeter		69181	Brassica cretica			Greece	true	false	true
 GCA_003260695.2	Scaffold	University of Exeter		69181	Brassica cretica			Greece	true	false	true
+GCA_062043729.1	Chromosome	Linnean Center for Plant Biology; Swedish University of Agricultural Sciences	reference genome	308264	Brassica fruticulosa	42.112472	3.165444	Spain	true	true	true
+GCA_062043728.1	Chromosome	Linnean Center for Plant Biology; Swedish University of Agricultural Sciences		308264	Brassica fruticulosa	42.112472	3.165444	Spain	true	true	true
 GCA_945779075.1	Scaffold	FUNCTIONAL GENOMICS CENTER ZURICH	reference genome	129365	Brassica incana				true	false	true
 GCA_018703725.1	Chromosome	Hunan agricultural university	reference genome	3707	Brassica juncea			China	true	false	true
 GCA_015484525.1	Chromosome	CGMCP		3707	Brassica juncea			India	true	false	true
@@ -10627,6 +10651,7 @@ GCA_034639695.1	Chromosome	Institute of Vegetables and Flowers, Chinese Academy 
 GCA_034638795.1	Chromosome	Institute of Vegetables and Flowers, Chinese Academy of Agricultural Sciences		178616	Brassica oleracea var. gemmifera			China	false	false	true
 GCA_034621495.1	Chromosome	Institute of Vegetables and Flowers, Chinese Academy of Agricultural Sciences		109379	Brassica oleracea var. gongylodes			China	false	false	true
 GCA_034640335.1	Chromosome	Institute of Vegetables and Flowers, Chinese Academy of Agricultural Sciences		109379	Brassica oleracea var. gongylodes			Netherlands	false	false	true
+GCA_062044109.1	Scaffold	Plant Breeding Faculty of Agriculture, Niigata University		109379	Brassica oleracea var. gongylodes			Japan	false	false	true
 GCA_034640255.1	Chromosome	Institute of Vegetables and Flowers, Chinese Academy of Agricultural Sciences		36774	Brassica oleracea var. italica			Netherlands	false	false	true
 GCA_000695525.1	Chromosome	CanSeq	reference genome	109376	Brassica oleracea var. oleracea	52.1333	-106.6833	Canada	false	true	true
 GCA_034639375.1	Chromosome	Institute of Vegetables and Flowers, Chinese Academy of Agricultural Sciences		2070382	Brassica oleracea var. palmifolia			China	false	false	true
@@ -10863,11 +10888,9 @@ GCA_988265015.1	Scaffold	WELLCOME SANGER INSTITUTE		1594241	Bucculatrix nigricom
 GCA_965637495.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	1100929	Bucculatrix thoracella	51.48	-0.19	United Kingdom	true	true	true
 GCA_965637435.1	Scaffold	WELLCOME SANGER INSTITUTE		1100929	Bucculatrix thoracella	51.48	-0.19	United Kingdom	true	true	true
 GCA_056318225.1	Scaffold	Iridian Genomes	reference genome	279934	Bucephala albeola			USA	true	false	true
-GCA_988290395.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	107022	Bucephala clangula	51.73	-2.4	United Kingdom	true	true	true
+GCA_982553445.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen	reference genome	107022	Bucephala clangula			Sweden	true	false	true
 GCA_051254135.1	Scaffold	Iridian Genomes		107022	Bucephala clangula			USA	true	false	true
 GCA_056577445.1	Scaffold	Bird 10,000 Genomes (B10K) consortium		107022	Bucephala clangula			Sweden	true	false	true
-GCA_982553445.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen		107022	Bucephala clangula			Sweden	true	false	true
-GCA_988291795.1	Scaffold	WELLCOME SANGER INSTITUTE		107022	Bucephala clangula	51.73	-2.4	United Kingdom	true	true	true
 GCA_982556285.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen	reference genome	40833	Bucephala islandica			USA	true	false	true
 GCA_056577045.1	Scaffold	Bird 10,000 Genomes (B10K) consortium		40833	Bucephala islandica			USA	true	false	true
 GCA_027563805.1	Scaffold	Iridian Genomes	reference genome	175830	Buceros bicornis				true	false	true
@@ -11237,6 +11260,7 @@ GCA_002259225.3	Chromosome	University of Oregon		31234	Caenorhabditis remanei	39
 GCA_010183535.1	Chromosome	University of Oregon	reference genome	31234	Caenorhabditis remanei			Canada	true	false	true
 GCA_018990105.1	Scaffold	University of Alabama		31234	Caenorhabditis remanei				true	false	true
 GCA_963932045.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	1550068	Caenorhabditis sinica				true	false	true
+GCA_062039099.1	Scaffold	City University of Hong Kong		1550068	Caenorhabditis sinica			China	true	false	true
 GCA_963932085.1	Contig	WELLCOME SANGER INSTITUTE		1550068	Caenorhabditis sinica				true	false	true
 GCA_981319255.1	Scaffold	WELLCOME SANGER INSTITUTE		3115683	Caenorhabditis sp. 25 ZF1457			France	false	false	true
 GCA_981319295.1	Chromosome	WELLCOME SANGER INSTITUTE		3115683	Caenorhabditis sp. 25 ZF1457			France	false	false	true
@@ -11262,6 +11286,7 @@ GCA_977926005.1	Scaffold	WELLCOME SANGER INSTITUTE		2306311	Caenorhabditis tribu
 GCA_043792875.1	Chromosome	New York University	reference genome	1561998	Caenorhabditis tropicalis				true	false	true
 GCA_000186765.1	Scaffold	The Genome Center,  Washington University School of Medicine, St Louis, MO		1561998	Caenorhabditis tropicalis				true	false	true
 GCA_016735795.1	Chromosome	UCLA		1561998	Caenorhabditis tropicalis				true	false	true
+GCA_062042530.1	Contig	Institute of Molecular Biotechnology		1561998	Caenorhabditis tropicalis			Taiwan	true	false	true
 GCA_963573275.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	2305860	Caenorhabditis uteleia				true	false	true
 GCA_900536295.3	Scaffold	BANG		2305860	Caenorhabditis uteleia				true	false	true
 GCA_963572225.1	Scaffold	WELLCOME SANGER INSTITUTE		2305860	Caenorhabditis uteleia				true	false	true
@@ -11629,9 +11654,7 @@ GCA_013403825.1	Scaffold	FABI	reference genome	2064841	Calonectria pseudoturangi
 GCA_022837005.1	Scaffold	Universidade Federal de Vicosa	reference genome	40267	Calonectria pteridis	-0.54754941	-52.41502405	Brazil	true	true	true
 GCA_049190905.1	Contig	USDA ARS		3085211	Calonectria sp. 134-2022	37.4316	-78.6569	USA	false	true	true
 GCA_046056135.1	Contig	Lingnan Normal University (LNU)		3074715	Calonectria sp. QL-2023a	23.39	100.84	China	false	true	true
-GCA_988290445.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	1323832	Calonectris borealis	27.8444	-15.7886	Spain	true	true	true
-GCA_013401115.1	Scaffold	B10K Consortium		1323832	Calonectris borealis	27.84	-15.79	Spain	true	true	true
-GCA_988290485.1	Scaffold	WELLCOME SANGER INSTITUTE		1323832	Calonectris borealis	27.8444	-15.7886	Spain	true	true	true
+GCA_013401115.1	Scaffold	B10K Consortium	reference genome	1323832	Calonectris borealis	27.84	-15.79	Spain	true	true	true
 GCA_982555725.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen	reference genome	52122	Calonectris diomedea			USA	true	false	true
 GCA_056577105.1	Scaffold	Bird 10,000 Genomes (B10K) consortium		52122	Calonectris diomedea			USA	true	false	true
 GCA_037113605.1	Chromosome	Lanzhou University	reference genome	1641257	Calophaca sinica			China	true	false	true
@@ -13374,6 +13397,18 @@ GCA_062012705.1	Contig	Los Angeles County Public Health Lab microbial pathogen s
 GCA_062012707.1	Contig	Los Angeles County Public Health Lab microbial pathogen submission group		498019	Candidozyma auris			USA	true	false	true
 GCA_062012710.1	Contig	Los Angeles County Public Health Lab microbial pathogen submission group		498019	Candidozyma auris			USA	true	false	true
 GCA_062012711.1	Contig	Los Angeles County Public Health Lab microbial pathogen submission group		498019	Candidozyma auris			USA	true	false	true
+GCA_062034305.1	Contig	Los Angeles County Public Health Lab microbial pathogen submission group		498019	Candidozyma auris			USA	true	false	true
+GCA_062034306.1	Contig	Los Angeles County Public Health Lab microbial pathogen submission group		498019	Candidozyma auris			USA	true	false	true
+GCA_062034307.1	Contig	Los Angeles County Public Health Lab microbial pathogen submission group		498019	Candidozyma auris			USA	true	false	true
+GCA_062034308.1	Contig	Los Angeles County Public Health Lab microbial pathogen submission group		498019	Candidozyma auris			USA	true	false	true
+GCA_062034309.1	Contig	Los Angeles County Public Health Lab microbial pathogen submission group		498019	Candidozyma auris			USA	true	false	true
+GCA_062034310.1	Contig	Los Angeles County Public Health Lab microbial pathogen submission group		498019	Candidozyma auris			USA	true	false	true
+GCA_062034311.1	Contig	Los Angeles County Public Health Lab microbial pathogen submission group		498019	Candidozyma auris			USA	true	false	true
+GCA_062034312.1	Contig	Los Angeles County Public Health Lab microbial pathogen submission group		498019	Candidozyma auris			USA	true	false	true
+GCA_062034313.1	Contig	Los Angeles County Public Health Lab microbial pathogen submission group		498019	Candidozyma auris			USA	true	false	true
+GCA_062034314.1	Contig	Los Angeles County Public Health Lab microbial pathogen submission group		498019	Candidozyma auris			USA	true	false	true
+GCA_062034315.1	Contig	Los Angeles County Public Health Lab microbial pathogen submission group		498019	Candidozyma auris			USA	true	false	true
+GCA_062034316.1	Contig	Los Angeles County Public Health Lab microbial pathogen submission group		498019	Candidozyma auris			USA	true	false	true
 GCA_902703435.1	Scaffold	KAUST		498019	Candidozyma auris	24.68816	46.7046	Saudi Arabia	true	true	true
 GCA_902703445.1	Scaffold	KAUST		498019	Candidozyma auris	24.68816	46.7046	Saudi Arabia	true	true	true
 GCA_902703455.1	Scaffold	KAUST		498019	Candidozyma auris	24.68816	46.7046	Saudi Arabia	true	true	true
@@ -13531,7 +13566,7 @@ GCA_016415525.1	Contig	Medicinal Genomics		3483	Cannabis sativa			USA	true	false
 GCA_025232715.1	Chromosome	Phylos Bioscience, Inc.		3483	Cannabis sativa			USA	true	false	true
 GCA_029168945.1	Chromosome	Kangwon National University	reference genome	3483	Cannabis sativa	37.86747	127.74938	South Korea	true	true	true
 GCA_049724855.1	Chromosome	Pontificia Universidad Javeriana		3483	Cannabis sativa	3.5	-73.6	Colombia	true	true	true
-GCA_049725155.1	Chromosome	Pontificia Universidad Javeriana		3483	Cannabis sativa	3.5	-73.6	Colombia	true	true	true
+GCA_049725155.2	Chromosome	Pontificia Universidad Javeriana		3483	Cannabis sativa	3.5	-73.6	Colombia	true	true	true
 GCA_051911645.1	Chromosome	Pontificia Universidad Javeriana		3483	Cannabis sativa			Canada	true	false	true
 GCA_051911655.1	Chromosome	Pontificia Universidad Javeriana		3483	Cannabis sativa			Canada	true	false	true
 GCA_051911675.1	Chromosome	Pontificia Universidad Javeriana		3483	Cannabis sativa			Canada	true	false	true
@@ -13666,10 +13701,8 @@ GCA_000751575.1	Scaffold	UNIMELB		9858	Capreolus capreolus				true	false	true
 GCA_012922965.1	Scaffold	Northwestern Polytechnical University	reference genome	48560	Capreolus pygargus			China	true	false	true
 GCA_032405125.2	Chromosome	Northwest A&F University	reference genome	34865	Capricornis sumatraensis			China	true	false	true
 GCA_055772955.1	Scaffold	Bird 10,000 Genomes (B10K) consortium	reference genome	723173	Caprimulgus aegyptius				true	false	true
-GCA_988290435.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	111811	Caprimulgus europaeus	40.79404	13.42777	Italy	true	true	true
+GCA_982554365.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen	reference genome	111811	Caprimulgus europaeus			Denmark	true	false	true
 GCA_045788555.1	Scaffold	Bird 10,000 Genomes (B10K) consortium		111811	Caprimulgus europaeus			Denmark	true	false	true
-GCA_982554365.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen		111811	Caprimulgus europaeus			Denmark	true	false	true
-GCA_988290375.1	Chromosome	WELLCOME SANGER INSTITUTE		111811	Caprimulgus europaeus	40.79404	13.42777	Italy	true	true	true
 GCA_982554325.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen	reference genome	3149524	Caprimulgus ruficollis			Spain	true	false	true
 GCA_004027915.1	Scaffold	Broad Institute	reference genome	34842	Capromys pilorides				true	false	true
 GCA_016110215.1	Scaffold	Research Center for Medical Mycology - Peking University First Hospital	reference genome	5601	Capronia americana	29.56	106.55	China	true	true	true
@@ -13795,6 +13828,7 @@ GCA_023724075.1	Chromosome	IGB Leibniz-Institute of Freshwater Ecology and Inlan
 GCA_023724085.1	Chromosome	IGB Leibniz-Institute of Freshwater Ecology and Inland Fisheries		101364	Carassius gibelio				true	false	true
 GCA_023724105.1	Chromosome	IGB Leibniz-Institute of Freshwater Ecology and Inland Fisheries	reference genome	101364	Carassius gibelio				true	false	true
 GCA_043790415.1	Chromosome	Anyang Institute of Technology		101364	Carassius gibelio			China	true	false	true
+GCA_062034296.1	Chromosome	Stanford University	reference genome	495832	Carcharhinus albimarginatus			Mauritius	true	false	true
 GCA_965287045.1	Chromosome	Area of Ecology and Biodiversity, School of Biological Sciences, The University of Hong Kong	reference genome	263684	Carcharhinus amblyrhynchos			New Caledonia	true	false	true
 GCA_965295155.1	Chromosome	Area of Ecology and Biodiversity, School of Biological Sciences, The University of Hong Kong		263684	Carcharhinus amblyrhynchos			New Caledonia	true	false	true
 GCA_988288925.1	Contig	Minderoo OceanOmics Centre at UWA		263684	Carcharhinus amblyrhynchos			Australia	true	false	true
@@ -13872,7 +13906,8 @@ GCA_015109895.1	Scaffold	"""CICHLID~X"""		32492	Cardiopharynx schoutedeni				tru
 GCA_031304145.1	Chromosome	South China Agricultural University	reference genome	289799	Cardiospermum halicacabum			China	true	false	true
 GCA_015476325.1	Contig	University of Rhode Island	reference genome	476202	Cardiosporidium cionae	41.38706	-71.51708	USA	true	true	true
 GCA_055682385.1	Contig	Center for Ecological and Environmental Sciences	reference genome	6766	Cardisoma carnifex			China	true	false	true
-GCA_982725865.1	Contig	The Department of Biological Sciences, Geological and Environmental Sciences	reference genome	457647	Cardita leana			Japan	true	false	true
+GCA_062029958.1	Contig	University of Bologna	reference genome	457647	Cardita leana			Japan	true	false	true
+GCA_982725865.1	Contig	The Department of Biological Sciences, Geological and Environmental Sciences		457647	Cardita leana			Japan	true	false	true
 GCA_987197145.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	37600	Carduelis carduelis	51.53668	-0.15491	United Kingdom	true	true	true
 GCA_032274745.1	Scaffold	Iridian Genomes		37600	Carduelis carduelis				true	false	true
 GCA_056576505.1	Scaffold	Bird 10,000 Genomes (B10K) consortium		37600	Carduelis carduelis			Greece	true	false	true
@@ -14049,12 +14084,14 @@ GCA_977014985.1	Chromosome	WELLCOME SANGER INSTITUTE		12990	Carpinus betulus	51.
 GCA_977015005.1	Chromosome	WELLCOME SANGER INSTITUTE		12990	Carpinus betulus	51.4476	-0.299	United Kingdom	true	true	true
 GCA_006937295.1	Chromosome	Lanzhou University	reference genome	176857	Carpinus fangiana			China	true	false	true
 GCA_013348765.1	Chromosome	Sichuan University	reference genome	176864	Carpinus viminea			China	true	false	true
+GCA_062034325.1	Contig	University of California, Santa Barbara	reference genome	142000	Carpobrotus chilensis	34.03295	-120.363932	USA	true	true	true
 GCA_965788445.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	379215	Carpobrotus edulis	49.959	-5.206	United Kingdom	true	true	true
 GCA_965782825.1	Scaffold	WELLCOME SANGER INSTITUTE		379215	Carpobrotus edulis	49.959	-5.206	United Kingdom	true	true	true
 GCA_046618655.1	Contig	Harvard University	reference genome	175930	Carpodacus erythrinus	48.4255	106.834333	Mongolia	true	true	true
 GCA_046618715.1	Contig	Harvard University		175930	Carpodacus erythrinus	48.4255	106.834333	Mongolia	true	true	true
 GCA_982553275.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen		175930	Carpodacus erythrinus			Denmark	true	false	true
 GCA_051106175.1	Chromosome	Guizhou University	reference genome	223459	Carpoglyphus lactis			China	true	false	true
+GCA_062038065.1	Chromosome	Yunnan Istitute of Tropical Crops	reference genome	913117	Carpophilus dimidiatus	22.018333	100.778056	China	true	true	true
 GCA_014607495.2	Chromosome	Beijing Academy of Agriculture and Forestry Sciences	reference genome	252295	Carposina sasakii	40.432594	115.90375	China	true	true	true
 GCA_964340635.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	685404	Carsia sororiata	57.61	-5.31	United Kingdom	true	true	true
 GCA_964340605.1	Scaffold	WELLCOME SANGER INSTITUTE		685404	Carsia sororiata	57.61	-5.31	United Kingdom	true	true	true
@@ -15327,6 +15364,7 @@ GCA_036417535.1	Chromosome	Vertebrate Genomes Project	reference genome	187382	Ch
 GCA_036418225.1	Chromosome	Vertebrate Genomes Project		187382	Chlamydotis macqueenii	25.82191	51.33107	Qatar	true	true	true
 GCA_058152245.1	Contig	OIKOS Genomics		187382	Chlamydotis macqueenii				true	false	true
 GCA_003400225.3	Contig	International Fund for Houbara Conservation	reference genome	187383	Chlamydotis undulata undulata				false	false	true
+GCA_062042607.1	Scaffold	CNRS - Universite de Montpellier	reference genome	450267	Chlamyphorus truncatus			Argentina	true	false	true
 GCA_032359455.1	Scaffold	Iridian Genomes	reference genome	644113	Chlamys rubida				true	false	true
 GCA_982554355.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen	reference genome	297805	Chlidonias hybrida			Italy	true	false	true
 GCA_045838335.1	Scaffold	Bird 10,000 Genomes (B10K) consortium		297805	Chlidonias hybrida			Italy	true	false	true
@@ -15499,6 +15537,7 @@ GCA_949316135.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	1209621	Ch
 GCA_949316125.1	Contig	WELLCOME SANGER INSTITUTE		1209621	Choreutis nemorana	51.51	-0.17	United Kingdom	true	true	true
 GCA_958009055.1	Chromosome	WELLCOME SANGER INSTITUTE		3025909	Choricystis sp. odSpoLacu1	53.528618	-113.525646	Canada	false	true	true
 GCA_958009065.1	Contig	WELLCOME SANGER INSTITUTE		3025909	Choricystis sp. odSpoLacu1	53.528618	-113.525646	Canada	false	true	true
+GCA_062043696.1	Contig	Utsunomiya University, Center for Bioscience Research and Education	reference genome	96582	Chorioactis geaster	32.028798	131.194416	Japan	true	true	true
 GCA_988282115.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	96657	Choriorhabditis dudichi			USA	true	false	true
 GCA_988282145.1	Contig	WELLCOME SANGER INSTITUTE		96657	Choriorhabditis dudichi			USA	true	false	true
 GCA_050002275.1	Scaffold	BGI Research	reference genome	910423	Chorisodontium aciphyllum			Chile	true	false	true
@@ -15802,6 +15841,7 @@ GCA_963662255.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	127875	Cin
 GCA_963662415.1	Contig	WELLCOME SANGER INSTITUTE		127875	Cinclus cinclus	54.334784	-2.5608506	United Kingdom	true	true	true
 GCA_982556105.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen		127875	Cinclus cinclus			Greece	true	false	true
 GCA_013399935.1	Scaffold	B10K Consortium	reference genome	161649	Cinclus mexicanus	47.03	-120.94	USA	true	true	true
+GCA_062042622.1	Scaffold	Nanjing Institute of Geology and Palaeontology, Chinese Academy of Sciences	reference genome	2750869	Cincticostella fusca				true	false	true
 GCA_027576395.1	Scaffold	Iridian Genomes	reference genome	591316	Cinetodus carinatus			Papua New Guinea	true	false	true
 GCA_027576035.1	Scaffold	Iridian Genomes	reference genome	591332	Cinetodus crassilabris			Papua New Guinea	true	false	true
 GCA_027576635.1	Scaffold	Iridian Genomes	reference genome	591317	Cinetodus froggatti			Papua New Guinea	true	false	true
@@ -15816,7 +15856,7 @@ GCA_035048185.1	Scaffold	Iridian Genomes	reference genome	1851192	Cinnycerthia u
 GCA_055771155.1	Scaffold	Bird 10,000 Genomes (B10K) consortium	reference genome	282501	Cinnyris chalybeus			South Africa	true	false	true
 GCA_977968265.1	Scaffold	B10K project		282501	Cinnyris chalybeus				true	false	true
 GCA_000183065.1	Scaffold	DOE Joint Genome Institute		7719	Ciona intestinalis			USA	true	false	true
-GCA_000224145.2	Chromosome	Department of Zoology, Graduate School of Science; Sakyo-ku, Kyoto		7719	Ciona intestinalis				true	false	true
+GCA_000224145.2	Chromosome	Department of Zoology, Graduate School of Science; Sakyo-ku, Kyoto	reference genome	7719	Ciona intestinalis				true	false	true
 GCA_009617815.2	Chromosome	Kyoto University		7719	Ciona intestinalis				true	false	true
 GCA_018327805.2	Chromosome	Kyoto University		7719	Ciona intestinalis	50.364398	-4.127688	United Kingdom	true	true	true
 GCA_018327825.2	Chromosome	Kyoto University	reference genome	7719	Ciona intestinalis	48.716306	-3.965778	France	true	true	true
@@ -16360,12 +16400,10 @@ GCA_056577345.1	Scaffold	Bird 10,000 Genomes (B10K) consortium		2677969	Clanga c
 GCA_034782435.1	Scaffold	Iridian Genomes	reference genome	321970	Clanga hastata				true	false	true
 GCA_982553635.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen	reference genome	2675520	Clanga pomarina			Israel	true	false	true
 GCA_045784265.1	Scaffold	Bird 10,000 Genomes (B10K) consortium		2675520	Clanga pomarina			Israel	true	false	true
-GCA_988291785.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	197941	Clangula hyemalis	50.86	-0.55	United Kingdom	true	true	true
+GCA_050573455.1	Scaffold	Iridian Genomes	reference genome	197941	Clangula hyemalis			USA	true	false	true
 GCA_029619115.1	Scaffold	Aarhus University		197941	Clangula hyemalis				true	false	true
-GCA_050573455.1	Scaffold	Iridian Genomes		197941	Clangula hyemalis			USA	true	false	true
 GCA_056578245.1	Scaffold	Bird 10,000 Genomes (B10K) consortium		197941	Clangula hyemalis			Norway	true	false	true
 GCA_982554835.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen		197941	Clangula hyemalis			Norway	true	false	true
-GCA_988291115.1	Scaffold	WELLCOME SANGER INSTITUTE		197941	Clangula hyemalis	50.86	-0.55	United Kingdom	true	true	true
 GCA_036417725.1	Chromosome	Nanjing Agricultural University	reference genome	215161	Clanis bilineata			China	true	false	true
 GCA_030014275.1	Scaffold	Iridian Genomes	reference genome	1676874	Clariallabes melas				true	false	true
 GCA_030014215.1	Scaffold	Iridian Genomes	reference genome	2969109	Clariallabes teugelsi				true	false	true
@@ -16721,6 +16759,7 @@ GCA_963966135.1	Scaffold	WELLCOME SANGER INSTITUTE		795047	Clivina fossor	51.786
 GCA_902829235.1	Scaffold	CNAG		197152	Cloeon dipterum				true	false	true
 GCA_949628225.1	Contig	WELLCOME SANGER INSTITUTE		197152	Cloeon dipterum	50.92824	0.264207	United Kingdom	true	true	true
 GCA_949628265.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	197152	Cloeon dipterum	50.92824	0.264207	United Kingdom	true	true	true
+GCA_062042623.1	Scaffold	Nanjing Institute of Geology and Palaeontology, Chinese Academy of Sciences	reference genome	1825471	Cloeon viridulum				true	false	true
 GCA_965637365.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	85120	Clogmia albipunctata	51.47	-0.19	United Kingdom	true	true	true
 GCA_001014945.1	Scaffold	UC Berkeley		85120	Clogmia albipunctata				true	false	true
 GCA_022818195.1	Scaffold	Centre for genomic regulation (CRG)		85120	Clogmia albipunctata				true	false	true
@@ -17295,7 +17334,7 @@ GCA_977969135.1	Scaffold	B10K project		381865	Colaptes punctigula				true	false	
 GCA_060230915.1	Chromosome	Guzihou University	reference genome	3342242	Colaspoides femoralis			China	true	false	true
 GCA_984574005.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	45005	Colchicum autumnale	51.7659	-1.311	United Kingdom	true	true	true
 GCA_984574075.1	Scaffold	WELLCOME SANGER INSTITUTE		45005	Colchicum autumnale	51.7659	-1.311	United Kingdom	true	true	true
-GCA_058578215.1	Scaffold	University of the Philippines Visayas, Miagao, Iloilo	reference genome	2829421	Coleodictyospora muriformis			Philippines	true	false	true
+GCA_058578215.2	Scaffold	University of the Philippines Visayas, Miagao, Iloilo	reference genome	2829421	Coleodictyospora muriformis			Philippines	true	false	true
 GCA_043090795.1	Scaffold	Iridian Genomes	reference genome	449387	Coleonyx elegans				true	false	true
 GCA_003369635.1	Scaffold	The University of Texas Health Science Center at Houston	reference genome	565419	Coleophoma crateriformis			Japan	true	false	true
 GCA_003369665.1	Scaffold	The University of Texas Health Science Center at Houston	reference genome	1849047	Coleophoma cylindrospora			Japan	true	false	true
@@ -17715,6 +17754,7 @@ GCA_057924635.1	Scaffold	University of Bologna		306554	Colletotrichum nymphaeae	
 GCA_057924655.1	Scaffold	University of Bologna		306554	Colletotrichum nymphaeae	45.0592	11.639	Italy	true	true	true
 GCA_057924715.1	Scaffold	University of Bologna		306554	Colletotrichum nymphaeae	45.6432	12.5929	Italy	true	true	true
 GCA_057924775.1	Scaffold	University of Bologna		306554	Colletotrichum nymphaeae	45.6798	11.7741	Italy	true	true	true
+GCA_062042562.1	Contig	Shandong Academy of Agricultural Sciences		306554	Colletotrichum nymphaeae			China	true	false	true
 GCA_001563115.1	Scaffold	Universidad de Salamanca		1460502	Colletotrichum nymphaeae SA-01			Denmark	false	false	true
 GCA_056956705.1	Scaffold	Yunnan university	reference genome	2904276	Colletotrichum oblongisporum			China	true	false	true
 GCA_000350065.2	Scaffold	RIKEN Plant Science Center	reference genome	1213857	Colletotrichum orbiculare MAFF 240422			Japan	false	false	true
@@ -17940,8 +17980,6 @@ GCA_062014567.1	Chromosome	Vertebrate Genomes Project		160229	Columba oenas	25.3
 GCA_982553435.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen		160229	Columba oenas			Sweden	true	false	true
 GCA_987196055.1	Chromosome	WELLCOME SANGER INSTITUTE		160229	Columba oenas	52.75405	-1.05834	United Kingdom	true	true	true
 GCA_987197705.1	Scaffold	WELLCOME SANGER INSTITUTE		160229	Columba oenas	52.75405	-1.05834	United Kingdom	true	true	true
-GCA_988290405.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	8934	Columba palumbus	51.73	-2.4	United Kingdom	true	true	true
-GCA_988291125.1	Scaffold	WELLCOME SANGER INSTITUTE		8934	Columba palumbus	51.73	-2.4	United Kingdom	true	true	true
 GCA_016920875.1	Scaffold	University of Utah	reference genome	128991	Columbicola columbae			USA	true	false	true
 GCA_055683175.1	Contig	University of Kerbala		128991	Columbicola columbae			Iraq	true	false	true
 GCA_013397635.1	Scaffold	B10K Consortium	reference genome	115618	Columbina picui	-33.77	-57.38	Uruguay	true	true	true
@@ -18286,6 +18324,7 @@ GCA_031479575.1	Chromosome	Heilongjiang River Fisheries Research Institute	refer
 GCA_054643355.1	Chromosome	Southwest University	reference genome	328532	Coreius guichenoti			China	true	false	true
 GCA_039654105.1	Chromosome	Yangtze River Fisheries Research Institute, Chinese Academy of Fishery Sciences.		328532	Coreius guichenoti			China	true	false	true
 GCA_061598105.1	Chromosome	Chinese Sturgeon Research Institute of China Three Gorges Corporation		328532	Coreius guichenoti			China	true	false	true
+GCA_062042563.1	Chromosome	Zhejiang Institute of Freshwater Fisheries		328532	Coreius guichenoti			China	true	false	true
 GCA_054643365.1	Chromosome	Southwest University & Integrative Science Center of Germplasm Creation in Western China (CHONGQING)	reference genome	171525	Coreius heterodon			China	true	false	true
 GCA_061598095.1	Chromosome	Chinese Sturgeon Research Institute of China Three Gorges Corporation		171525	Coreius heterodon			China	true	false	true
 GCA_963082865.1	Contig	WELLCOME SANGER INSTITUTE		431183	Corella eumyota	50.36446	-4.13208	United Kingdom	true	true	true
@@ -18405,7 +18444,8 @@ GCA_965233385.2	Scaffold	WELLCOME SANGER INSTITUTE		101193	Corylus colurna	55.85
 GCA_016403345.1	Chromosome	Chinese Academy of Forestry	reference genome	80754	Corylus heterophylla			China	true	false	true
 GCA_019343435.1	Scaffold	Jilin Normal University		80754	Corylus heterophylla			China	true	false	true
 GCA_014182845.1	Chromosome	Australian National University	reference genome	34324	Corymbia calophylla	-35.27411825	149.1056542	Australia	true	true	true
-GCA_014858505.1	Chromosome	DOE Joint Genome Institute	reference genome	360336	Corymbia citriodora subsp. variegata				false	false	true
+GCA_062042559.1	Complete Genome	Guangxi Forestry Research Institute	reference genome	34329	Corymbia citriodora				true	false	true
+GCA_014858505.1	Chromosome	DOE Joint Genome Institute		360336	Corymbia citriodora subsp. variegata				false	false	true
 GCA_014182735.1	Chromosome	Australian National University	reference genome	87660	Corymbia maculata			Australia	true	false	true
 GCA_979016875.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	51773	Corynactis viridis	50.459362	-3.527395	United Kingdom	true	true	true
 GCA_979016815.1	Scaffold	WELLCOME SANGER INSTITUTE		51773	Corynactis viridis	50.459362	-3.527395	United Kingdom	true	true	true
@@ -19828,6 +19868,7 @@ GCA_977927295.1	Scaffold	National Technical University of Athens		1973307	Cycloc
 GCA_013376435.1	Scaffold	Beijing Institute of Genomics, CAS	reference genome	1593264	Cyclocybe cylindracea			China	true	false	true
 GCA_003316655.1	Scaffold	Kunming University of Science and Technology		1593264	Cyclocybe cylindracea	25.04	102.73	China	true	true	true
 GCA_018251175.1	Contig	Florida Museum of Natural History	reference genome	354881	Cycloglypha thrasibulus	10.77079	-85.37422	Costa Rica	true	true	true
+GCA_062042615.1	Scaffold	CNRS - Universite de Montpellier	reference genome	84074	Cyclopes didactylus			French Guiana	true	false	true
 GCA_963082685.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	505405	Cyclophora albipunctata	57.41353	-4.72574	United Kingdom	true	true	true
 GCA_963082705.1	Contig	WELLCOME SANGER INSTITUTE		505405	Cyclophora albipunctata	57.41353	-4.72574	United Kingdom	true	true	true
 GCA_987569885.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	986959	Cyclophora annularia	51.63	-0.74	United Kingdom	true	true	true
@@ -19940,11 +19981,9 @@ GCA_055268985.1	Scaffold	Canada's national platform for genome sequencing and an
 GCA_019232035.1	Scaffold	United States Geological Survey		48397	Cygnus buccinator				true	false	true
 GCA_051254395.1	Scaffold	Iridian Genomes		48397	Cygnus buccinator			USA	true	false	true
 GCA_055268945.1	Scaffold	Canada's national platform for genome sequencing and analysis		48397	Cygnus buccinator			Canada	true	false	true
-GCA_988290555.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	110926	Cygnus columbianus	51.66	-4.12	United Kingdom	true	true	true
+GCA_982554475.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen	reference genome	110926	Cygnus columbianus			Denmark	true	false	true
 GCA_049176835.1	Scaffold	Iridian Genomes		110926	Cygnus columbianus			USA	true	false	true
 GCA_056578405.1	Scaffold	Bird 10,000 Genomes (B10K) consortium		110926	Cygnus columbianus			Denmark	true	false	true
-GCA_982554475.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen		110926	Cygnus columbianus			Denmark	true	false	true
-GCA_988291775.1	Scaffold	WELLCOME SANGER INSTITUTE		110926	Cygnus columbianus	51.66	-4.12	United Kingdom	true	true	true
 GCA_965278775.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	219595	Cygnus cygnus	52.52	-0.28	United Kingdom	true	true	true
 GCA_014362685.1	Scaffold	Environmental Genomics Office, Center for Environmental Biology and Ecosystem Studies, National Institute for Environmental Studies		219595	Cygnus cygnus			Japan	true	false	true
 GCA_051419375.1	Scaffold	Iridian Genomes		219595	Cygnus cygnus			USA	true	false	true
@@ -21642,6 +21681,7 @@ GCA_965286845.1	Complete Genome	Genoscope CEA		45537	Diutina catenulata			France
 GCA_965358655.1	Complete Genome	Genoscope CEA		45537	Diutina catenulata			French Guiana	true	false	true
 GCA_965358665.1	Complete Genome	Genoscope CEA		45537	Diutina catenulata			France	true	false	true
 GCA_965358675.1	Complete Genome	Genoscope CEA		45537	Diutina catenulata			France	true	false	true
+GCA_062042558.1	Complete Genome	Westerdijk Fungal Biodiversity Institute	reference genome	3713335	Diutina cutanea			USA	true	false	true
 GCA_030674695.1	Scaffold	UW-Madison	reference genome	1229076	Diutina mesorugosa			USA	true	false	true
 GCA_030578555.1	Scaffold	UW-Madison	reference genome	1714406	Diutina neorugosa			USA	true	false	true
 GCA_030580175.1	Scaffold	UW-Madison	reference genome	1035112	Diutina pseudorugosa			USA	true	false	true
@@ -21911,8 +21951,8 @@ GCA_035045905.1	Contig	Stanford University	reference genome	2793621	Drosophila a
 GCA_018905855.1	Scaffold	University of Montana		2793621	Drosophila anomelani			India	true	false	true
 GCA_030914385.1	Contig	Instituto de Ecologia, Genetica y Evolucion de Buenos Aires (IEGEBA, UBA-CONICET)	reference genome	198036	Drosophila antonietae	-34.182483	-58.249109	Argentina	true	true	true
 GCA_018151165.1	Contig	Stanford University	reference genome	30017	Drosophila arawakana			Saint Kitts and Nevis	true	false	true
-GCA_001654025.1	Scaffold	Biotechnology Institute of UNAM	reference genome	7263	Drosophila arizonae			Mexico	true	false	true
-GCA_054131065.1	Chromosome	University of Arizona		7263	Drosophila arizonae			Mexico	true	false	true
+GCA_001654025.1	Scaffold	Biotechnology Institute of UNAM		7263	Drosophila arizonae			Mexico	true	false	true
+GCA_054131065.1	Chromosome	University of Arizona	reference genome	7263	Drosophila arizonae			Mexico	true	false	true
 GCA_054642915.1	Chromosome	University of Arizona		7263	Drosophila arizonae			Mexico	true	false	true
 GCA_008042795.1	Scaffold	University of California, Berkeley	reference genome	154832	Drosophila asahinai			Japan	true	false	true
 GCA_008121215.1	Chromosome	UC Berkeley	reference genome	7248	Drosophila athabasca			USA	true	false	true
@@ -22198,6 +22238,7 @@ GCA_059582525.1	Chromosome	Texas A&M University		7227	Drosophila melanogaster			
 GCA_059582535.1	Chromosome	Texas A&M University		7227	Drosophila melanogaster			Zimbabwe	true	false	true
 GCA_059582545.1	Chromosome	Texas A&M University		7227	Drosophila melanogaster			Guam	true	false	true
 GCA_062014768.1	Scaffold	Texas A&M University		7227	Drosophila melanogaster				true	false	true
+GCA_062029496.1	Chromosome	University of California Irvine		7227	Drosophila melanogaster			USA	true	false	true
 GCA_927717585.1	Scaffold	treep lbbe ucbl		7227	Drosophila melanogaster				true	false	true
 GCA_927718685.1	Scaffold	treep lbbe ucbl		7227	Drosophila melanogaster				true	false	true
 GCA_927718715.1	Scaffold	treep lbbe ucbl		7227	Drosophila melanogaster				true	false	true
@@ -23247,7 +23288,7 @@ GCA_976940595.1	Chromosome	Genoscope CEA	reference genome	2033273	Empusa pennico
 GCA_004319985.1	Scaffold	Kyoto University	reference genome	34996	Emydocephalus ijimae	26.43	127.78	Japan	true	true	true
 GCA_036785055.1	Scaffold	Canada's Genomic Enterprise	reference genome	85613	Emydoidea blandingii			Canada	true	false	true
 GCA_036785025.1	Scaffold	Canada's Genomic Enterprise		85613	Emydoidea blandingii			Canada	true	false	true
-GCA_029449355.1	Complete Genome	University of Illinois Urbana-Champaign	reference genome	2070801	Emydomyces testavorans			USA	true	false	true
+GCA_029449355.2	Complete Genome	University of Illinois Urbana-Champaign	reference genome	2070801	Emydomyces testavorans			USA	true	false	true
 GCA_062024761.1	Complete Genome	University of Illinois Urbana-Champaign		2070801	Emydomyces testavorans			USA	true	false	true
 GCA_026122565.2	Contig	CSIRO Applied Genomics Initiative	reference genome	1129001	Emydura macquarii macquarii			Australia	false	false	true
 GCA_054346155.1	Chromosome	Anhui normal university	reference genome	251359	Emydura subglobosa			China	true	false	true
@@ -23619,6 +23660,7 @@ GCA_964256415.1	Scaffold	Spribille Lab	reference genome	2840201	Ephebe solida	34
 GCA_057802365.1	Chromosome	Southwest University	reference genome	1097458	Ephedrus lacertosus			China	true	false	true
 GCA_000507165.2	Scaffold	The i5k Initiative		1049336	Ephemera danica	50.438047	6.931415	Germany	true	true	true
 GCA_059058835.1	Chromosome	Korea University	reference genome	515277	Ephemera orientalis			Korea	true	false	true
+GCA_062042618.1	Scaffold	Nanjing Institute of Geology and Palaeontology, Chinese Academy of Sciences	reference genome	3345129	Ephemera pictipennis				true	false	true
 GCA_977061575.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	364141	Ephemera vulgata	51.783	-1.318	United Kingdom	true	true	true
 GCA_040583845.1	Contig	Wageningen University & Research		364141	Ephemera vulgata			Netherlands	true	false	true
 GCA_977061585.1	Chromosome	WELLCOME SANGER INSTITUTE		364141	Ephemera vulgata	51.783	-1.318	United Kingdom	true	true	true
@@ -23984,6 +24026,8 @@ GCA_037783145.1	Chromosome	University of Minnesota	reference genome	9798	Equus p
 GCA_037783155.1	Chromosome	University of Minnesota		9798	Equus przewalskii			USA	true	false	true
 GCA_061207945.1	Contig	Institute of Plant Biology and Biotechnology		9798	Equus przewalskii			Kazakhstan	true	false	true
 GCA_021613505.1	Chromosome	University of California Los Angeles	reference genome	89248	Equus quagga			Namibia	true	false	true
+GCA_062041549.1	Scaffold	Stanford University		89248	Equus quagga			Mozambique	true	false	true
+GCA_062041555.1	Scaffold	Stanford University		89248	Equus quagga			Mozambique	true	false	true
 GCA_026770645.1	Scaffold	Inner Mongolian Agricultural University		89252	Equus quagga burchellii			China	false	false	true
 GCA_977020525.1	Scaffold	institute of clinical molecular biology (Kiel)	reference genome	73335	Equus zebra hartmannae			Germany	false	false	true
 GCA_018250095.1	Contig	Florida Museum of Natural History	reference genome	2201551	Eracon sarahburnsae	10.96187	-85.28045	Costa Rica	true	true	true
@@ -24934,6 +24978,7 @@ GCA_051253635.1	Scaffold	Iridian Genomes	reference genome	154997	Euphorbia stygi
 GCA_039660915.1	Chromosome	South China National Botanical Garden	reference genome	142860	Euphorbia tirucalli			China	true	false	true
 GCA_949668995.1	Contig	Cornell University		142860	Euphorbia tirucalli			China	true	false	true
 GCA_051453605.1	Scaffold	Iridian Genomes	reference genome	154998	Euphorbia tuckeyana			Cape Verde	true	false	true
+GCA_062042611.1	Scaffold	CNRS - Universite de Montpellier	reference genome	143300	Euphractus sexcinctus			France	true	false	true
 GCA_014843705.1	Scaffold	University of Edinburgh	reference genome	474999	Euphrasia arctica			United Kingdom	true	false	true
 GCA_954870475.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	475003	Euphrasia confusa	50.811333	-1.715972	United Kingdom	true	true	true
 GCA_954870545.1	Contig	WELLCOME SANGER INSTITUTE		475003	Euphrasia confusa	50.811333	-1.715972	United Kingdom	true	true	true
@@ -25870,6 +25915,7 @@ GCA_013399695.1	Scaffold	B10K Consortium	reference genome	1118560	Formicarius ru
 GCA_055771635.1	Scaffold	Bird 10,000 Genomes (B10K) consortium	reference genome	88171	Formicivora grisea				true	false	true
 GCA_977968735.1	Scaffold	B10K project		88171	Formicivora grisea				true	false	true
 GCA_048543855.1	Scaffold	GAGA	reference genome	609915	Formicoxenus nitidulus			Poland	true	false	true
+GCA_062034304.1	Chromosome	College of Life Sciences	reference genome	215042	Formosatettix dayaoshanensis			China	true	false	true
 GCA_034782915.1	Scaffold	Iridian Genomes	reference genome	309844	Forpus coelestis				true	false	true
 GCA_031762855.1	Scaffold	Iridian Genomes	reference genome	1265750	Forpus conspicillatus				true	false	true
 GCA_032466695.1	Scaffold	Iridian Genomes	reference genome	345188	Forpus crassirostris				true	false	true
@@ -25923,9 +25969,12 @@ GCA_050043575.1	Chromosome	National Institute of Horticultural & Herbal Science	
 GCA_058969905.1	Chromosome	National Institute of Horticultural & Herbal Science		3747	Fragaria x ananassa			South Korea	false	false	true
 GCA_060308725.1	Chromosome	National Agriculture and Food Research Organization		3747	Fragaria x ananassa	33.30599662	130.5464681	Japan	false	true	true
 GCA_060308735.1	Chromosome	National Agriculture and Food Research Organization		3747	Fragaria x ananassa	33.30599662	130.5464681	Japan	false	true	true
+GCA_062029960.1	Chromosome	University of California, Davis		3747	Fragaria x ananassa			USA	false	false	true
+GCA_062029961.1	Chromosome	University of California, Davis		3747	Fragaria x ananassa			USA	false	false	true
 GCA_019968535.1	Contig	University of Tyumen	reference genome	1670756	Fragariocoptes setiger	58.486544	30.338933	Russia	true	true	true
 GCA_022925895.1	Contig	University of Tennessee Knoxville	reference genome	210448	Fragilaria crotonensis				true	false	true
 GCA_900642245.1	Scaffold	LIMNOLOGICAL INSTITUTE SB RAS	reference genome	2109649	Fragilaria radians				true	false	true
+GCA_988427225.1	Chromosome	Genoscope		3451521	Fragilariaceae sp. RCC3059	-38.72	77.53	Indian Ocean	false	true	true
 GCA_023346165.1	Contig	University of Luxembourg		2902755	Fragilariophycidae sp.				false	false	true
 GCA_023346305.1	Contig	University of Luxembourg		2902755	Fragilariophycidae sp.				false	false	true
 GCA_023346465.1	Contig	University of Luxembourg		2902755	Fragilariophycidae sp.				false	false	true
@@ -27514,6 +27563,8 @@ GCA_032206225.1	Chromosome	INRA, Unite de Recherche en Biotechnologie		72712	Fus
 GCA_014843455.1	Contig	United States Department of Agriculture		224912	Fusarium oxysporum f. sp. apii	34.9331	-120.5357	USA	false	true	true
 GCA_014843555.1	Scaffold	United States Department of Agriculture		224912	Fusarium oxysporum f. sp. apii	34.2124	-119.0586	USA	false	true	true
 GCA_014843565.1	Contig	United States Department of Agriculture		224912	Fusarium oxysporum f. sp. apii			USA	false	false	true
+GCA_062043674.1	Contig	Tokyo University of Agriculture and Technology		224912	Fusarium oxysporum f. sp. apii			Japan	false	false	true
+GCA_062043676.1	Scaffold	Tokyo University of Agriculture and Technology		224912	Fusarium oxysporum f. sp. apii			Germany	false	false	true
 GCA_025203065.1	Contig	AGRIBIO, CENTRE FOR AGRIBIOSCIENC		121232	Fusarium oxysporum f. sp. basilici			Australia	false	false	true
 GCA_025203075.1	Contig	AGRIBIO, CENTRE FOR AGRIBIOSCIENC		121232	Fusarium oxysporum f. sp. basilici			Australia	false	false	true
 GCA_025203115.1	Contig	AGRIBIO, CENTRE FOR AGRIBIOSCIENC		121232	Fusarium oxysporum f. sp. basilici			Australia	false	false	true
@@ -27540,6 +27591,10 @@ GCA_000222805.1	Contig	CSIRO		660025	Fusarium oxysporum f. sp. conglutinans Fo51
 GCA_000260215.2	Scaffold	Broad Institute		1089457	Fusarium oxysporum f. sp. conglutinans race 2 54008				false	false	true
 GCA_014843415.1	Contig	United States Department of Agriculture		2717166	Fusarium oxysporum f. sp. coriandrii	34.2274	-118.9837	USA	false	true	true
 GCA_014843445.1	Contig	United States Department of Agriculture		2717166	Fusarium oxysporum f. sp. coriandrii			USA	false	false	true
+GCA_062043685.1	Contig	Tokyo University of Agriculture and Technology		2717166	Fusarium oxysporum f. sp. coriandrii	36.1253	140.4663	Japan	false	true	true
+GCA_062043679.1	Contig	Tokyo University of Agriculture and Technology		5507	Fusarium oxysporum	36.1325	140.5145	Japan	true	true	true
+GCA_062043680.1	Contig	Tokyo University of Agriculture and Technology		5507	Fusarium oxysporum	36.1325	140.5145	Japan	true	true	true
+GCA_062043684.1	Contig	Tokyo University of Agriculture and Technology		5507	Fusarium oxysporum	36.1325	140.5145	Japan	true	true	true
 GCA_001696625.1	Contig	University of Malaya		61366	Fusarium oxysporum f. sp. cubense	5.3333	103.15	Malaysia	false	true	true
 GCA_005930515.1	Contig	RIKEN		61366	Fusarium oxysporum f. sp. cubense			Japan	false	false	true
 GCA_007994515.1	Contig	University of Exeter		61366	Fusarium oxysporum f. sp. cubense			United Kingdom	false	false	true
@@ -27685,6 +27740,7 @@ GCA_025217165.1	Contig	AGRIBIO, CENTRE FOR AGRIBIOSCIENC		59765	Fusarium oxyspor
 GCA_051107395.1	Scaffold	Kuban State Agrarian University		59765	Fusarium oxysporum f. sp. lycopersici			Russia	false	false	true
 GCA_060702595.1	Chromosome	University of Amsterdam		59765	Fusarium oxysporum f. sp. lycopersici			France	false	false	true
 GCA_061232755.1	Contig	Tokyo University of Agriculture and Technology		59765	Fusarium oxysporum f. sp. lycopersici			Japan	false	false	true
+GCA_062041668.1	Contig	University of Amsterdam		59765	Fusarium oxysporum f. sp. lycopersici				false	false	true
 GCA_000149955.2	Chromosome	Broad Institute		426428	Fusarium oxysporum f. sp. lycopersici 4287				false	false	true
 GCA_001703175.2	Contig	University of Amsterdam		426428	Fusarium oxysporum f. sp. lycopersici 4287				false	false	true
 GCA_001703185.1	Contig	University of Amsterdam		426428	Fusarium oxysporum f. sp. lycopersici 4287				false	false	true
@@ -27908,6 +27964,7 @@ GCA_057676105.1	Scaffold	NVWA		2951362	Fusarium papillatum	7.2906	80.6337	Sri La
 GCA_013623825.1	Scaffold	US Department of Agriculture, Agriculture Research Service	reference genome	3323875	Fusarium parabolicum			USA	true	false	true
 GCA_027886155.1	Scaffold	UENF	reference genome	1395126	Fusarium paranaense			Brazil	true	false	true
 GCA_013623535.1	Scaffold	US Department of Agriculture, Agriculture Research Service	reference genome	587888	Fusarium penzigii			Sri Lanka	true	false	true
+GCA_062034328.1	Scaffold	University of Campinas	reference genome	2562765	Fusarium pernambucanum	-10.54	-37.4	Brazil	true	true	true
 GCA_050370095.1	Contig	National Chung Hsing University	reference genome	3417454	Fusarium phalaenopsidis			Taiwan	true	false	true
 GCA_001680515.1	Contig	Iowa State University	reference genome	120645	Fusarium phaseoli			USA	true	false	true
 GCA_040822225.1	Complete Genome	Wageningen University and Research	reference genome	2750198	Fusarium phialophorum	9.748917	-83.753428	Costa Rica	true	true	true
@@ -29340,6 +29397,7 @@ GCA_061194135.1	Chromosome	Shihezi University	reference genome	74614	Glycyrrhiza
 GCA_061194305.1	Complete Genome	Shihezi University	reference genome	74613	Glycyrrhiza uralensis				true	false	true
 GCA_027886165.2	Chromosome	Genome Research Foundation		74613	Glycyrrhiza uralensis			China	true	false	true
 GCA_030159175.1	Scaffold	Kazusa DNA Research Institute		74613	Glycyrrhiza uralensis				true	false	true
+GCA_062034333.1	Chromosome	Shihezi University		74613	Glycyrrhiza uralensis				true	false	true
 GCA_975480685.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	1869956	Glyphipterix bergstraesserella	60.9929	24.0338	Finland	true	true	true
 GCA_975259185.1	Scaffold	WELLCOME SANGER INSTITUTE		1869956	Glyphipterix bergstraesserella	60.9929	24.0338	Finland	true	true	true
 GCA_977013705.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	1291413	Glyphipterix forsterella	51.72	-1.265	United Kingdom	true	true	true
@@ -29857,10 +29915,8 @@ GCA_013390085.1	Scaffold	B10K Consortium		9117	Grus americana	28.27	-81.96	USA	t
 GCA_028858595.1	Chromosome	Vertebrate Genomes Project		9117	Grus americana	43.5477	-89.7563	USA	true	true	true
 GCA_028858705.1	Chromosome	Vertebrate Genomes Project	reference genome	9117	Grus americana	43.5477	-89.7563	USA	true	true	true
 GCA_036939035.1	Contig	Texas A&M University		9117	Grus americana	39.05428454	-76.81750062	USA	true	true	true
-GCA_988425555.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	40816	Grus grus	51.73	-2.4	United Kingdom	true	true	true
+GCA_982554755.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen	reference genome	40816	Grus grus			Denmark	true	false	true
 GCA_045788445.1	Scaffold	Bird 10,000 Genomes (B10K) consortium		40816	Grus grus			Denmark	true	false	true
-GCA_982554755.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen		40816	Grus grus			Denmark	true	false	true
-GCA_988292845.1	Scaffold	WELLCOME SANGER INSTITUTE		40816	Grus grus	51.73	-2.4	United Kingdom	true	true	true
 GCA_045298695.1	Scaffold	National Institute for Environmental Studies, Japan	reference genome	30415	Grus japonensis			Japan	true	false	true
 GCA_002002985.2	Scaffold	Laboratory of Ecogenetics, Environmental Biology Division, National Institute for Environmental Studies		30415	Grus japonensis			Japan	true	false	true
 GCA_052814845.1	Contig	Zhejiang Uinveristy		30415	Grus japonensis				true	false	true
@@ -29924,7 +29980,8 @@ GCA_049180535.1	Scaffold	Iridian Genomes	reference genome	310929	Gymnallabes typ
 GCA_965653945.1	Chromosome	Genoscope	reference genome	1306753	Gymnammodytes semisquamatus	48.64	-2.2081666	Atlantic Ocean	true	true	true
 GCA_988284305.1	Contig	Minderoo OceanOmics Centre at UWA	reference genome	274718	Gymnapistes marmoratus			Australia	true	false	true
 GCA_029814585.1	Scaffold	Iridian Genomes	reference genome	2943265	Gymnapogon annona				true	false	true
-GCA_009936485.2	Scaffold	IRIDIAN GENOMES	reference genome	42648	Gymnarchus niloticus				true	false	true
+GCA_062034318.1	Chromosome	Michigan State University	reference genome	42648	Gymnarchus niloticus				true	false	true
+GCA_009936485.2	Scaffold	IRIDIAN GENOMES		42648	Gymnarchus niloticus				true	false	true
 GCA_988135495.1	Contig	Indian Biological Data Centre	reference genome	166389	Gymnascella dankaliensis			India	true	false	true
 GCA_011680675.2	Scaffold	Deakin University	reference genome	38618	Gymnobelideus leadbeateri	-37.833333	145.483333	Australia	true	true	true
 GCA_904812035.1	Contig	AUSTRALIAN NATIONAL UNIVERSITY		38618	Gymnobelideus leadbeateri			Australia	true	false	true
@@ -30082,11 +30139,9 @@ GCA_003970955.1	Contig	Shenzhen university		44745	Haematococcus lacustris			Germ
 GCA_011766145.1	Scaffold	Kyoto University		44745	Haematococcus lacustris				true	false	true
 GCA_050941845.1	Contig	DOE Joint Genome Institute		44745	Haematococcus lacustris				true	false	true
 GCA_004335575.1	Scaffold	New York University AbuDhabi, UAE		2056399	Haematococcus sp. NG2			United Arab Emirates	false	false	true
-GCA_988324725.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	31908	Haematopus ostralegus	51.74	-2.41	United Kingdom	true	true	true
+GCA_982556295.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen	reference genome	31908	Haematopus ostralegus				true	false	true
 GCA_048591965.1	Scaffold	Iridian Genomes		31908	Haematopus ostralegus				true	false	true
 GCA_056577185.1	Scaffold	Bird 10,000 Genomes (B10K) consortium		31908	Haematopus ostralegus				true	false	true
-GCA_982556295.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen		31908	Haematopus ostralegus				true	false	true
-GCA_988291735.1	Scaffold	WELLCOME SANGER INSTITUTE		31908	Haematopus ostralegus	51.74	-2.41	United Kingdom	true	true	true
 GCA_055772655.1	Scaffold	Bird 10,000 Genomes (B10K) consortium	reference genome	279960	Haematopus palliatus				true	false	true
 GCA_977969625.1	Scaffold	B10K project		279960	Haematopus palliatus				true	false	true
 GCA_000469685.2	Chromosome	WTSI	reference genome	6289	Haemonchus contortus				true	false	true
@@ -30609,6 +30664,7 @@ GCA_026652165.1	Chromosome	International Consortium on Sunflower Genomics		4232	
 GCA_042477455.1	Chromosome	Inner Mongolia Agricultural University		4232	Helianthus annuus			China	true	false	true
 GCA_042479495.1	Chromosome	Inner Mongolia Agricultural University		4232	Helianthus annuus			China	true	false	true
 GCA_059609505.1	Chromosome	IAS-CSIC		4232	Helianthus annuus			France	true	false	true
+GCA_062031094.1	Chromosome	Genomics of Sunflower Project		4232	Helianthus annuus				true	false	true
 GCA_047456115.1	Chromosome	INRAE/CNRS	reference genome	73274	Helianthus anomalus			USA	true	false	true
 GCA_052426805.1	Scaffold	ICSG	reference genome	74142	Helianthus debilis subsp. tardiflorus			USA	false	false	true
 GCA_030545235.1	Chromosome	Agricultural Genomics Institute at Shenzhen, Chinese Academy of Agricultural Sciences	reference genome	4233	Helianthus tuberosus			China	true	false	true
@@ -31085,6 +31141,7 @@ GCA_042246355.1	Chromosome	Guangdong Academy of Sciences	reference genome	158974
 GCA_017165825.1	Chromosome	BGI	reference genome	42563	Hepsetus odoe				true	false	true
 GCA_037577115.1	Scaffold	Iridian Genomes		42563	Hepsetus odoe				true	false	true
 GCA_051993775.1	Scaffold	Fish10K		42563	Hepsetus odoe				true	false	true
+GCA_062042625.1	Scaffold	Nanjing Institute of Geology and Palaeontology, Chinese Academy of Sciences	reference genome	2873651	Heptagenia ngi				true	false	true
 GCA_056321795.1	Chromosome	South China Botanical Garden, Chinese Academy of Sciences	reference genome	46415	Heptapleurum arboricola				true	false	true
 GCA_022817405.1	Scaffold	The Ohio State University		2729032	Heptascelio sp. ZL-2020			Thailand	false	false	true
 GCA_035084135.2	Chromosome	Vertebrate Genomes Project		212740	Heptranchias perlo	26.5	127.9333	Japan	true	true	true
@@ -31264,6 +31321,7 @@ GCA_988382695.1	Chromosome	Transylvanian Institute of Neuroscience		10181	Hetero
 GCA_988382735.1	Chromosome	Transylvanian Institute of Neuroscience		10181	Heterocephalus glaber			United Kingdom	true	false	true
 GCA_988384755.1	Chromosome	Transylvanian Institute of Neuroscience		10181	Heterocephalus glaber			United Kingdom	true	false	true
 GCA_988384785.1	Chromosome	Transylvanian Institute of Neuroscience		10181	Heterocephalus glaber			United Kingdom	true	false	true
+GCA_988425695.1	Chromosome	Transylvanian Institute of Neuroscience		10181	Heterocephalus glaber			Canada	true	false	true
 GCA_056900535.1	Scaffold	Iridian Genomes	reference genome	73563	Heterochromis multidens			Democratic Republic of the Congo	true	false	true
 GCA_015108495.1	Scaffold	"""CICHLID~X"""		73563	Heterochromis multidens				true	false	true
 GCA_964605405.2	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	271739	Heterocladium heteropterum	55.462401	-3.370351	United Kingdom	true	true	true
@@ -31575,6 +31633,7 @@ GCA_020186115.1	Scaffold	University Clinic for Poultry and Fish Medicine - Vetme
 GCA_013420885.1	Scaffold	Northern Kentucky University		5037	Histoplasma capsulatum	9.0327	-79.6263	Panama	true	true	true
 GCA_017310585.1	Complete Genome	University of California, San Francisco		5037	Histoplasma capsulatum			USA	true	false	true
 GCA_017607465.1	Contig	University of California, San Francisco		5037	Histoplasma capsulatum			Panama	true	false	true
+GCA_062029959.1	Contig	University of North Carolina at Chapel Hill		5037	Histoplasma capsulatum			Colombia	true	false	true
 GCA_000150115.1	Scaffold	WashU	reference genome	447093	Histoplasma capsulatum G186AR				false	false	true
 GCA_017355575.1	Complete Genome	University of California, San Francisco		447093	Histoplasma capsulatum G186AR			Panama	false	false	true
 GCA_000151035.1	Scaffold	Broad Institute		544712	Histoplasma capsulatum H143				false	false	true
@@ -33862,6 +33921,7 @@ GCA_062016266.1	Scaffold	Chungnam National University		9606	Homo sapiens			Japan
 GCA_062016268.1	Scaffold	Chungnam National University		9606	Homo sapiens			Japan	true	false	true
 GCA_062016271.1	Scaffold	Chungnam National University		9606	Homo sapiens			USA	true	false	true
 GCA_062016277.1	Scaffold	Chungnam National University		9606	Homo sapiens			USA	true	false	true
+GCA_062034340.1	Chromosome	The Hospital for Sick Children		9606	Homo sapiens			Canada	true	false	true
 GCA_900007475.2	Scaffold	STANFORD UNIVERSITY		9606	Homo sapiens				true	false	true
 GCA_900007485.2	Scaffold	STANFORD UNIVERSITY		9606	Homo sapiens				true	false	true
 GCA_900007495.2	Scaffold	STANFORD UNIVERSITY		9606	Homo sapiens				true	false	true
@@ -35287,6 +35347,10 @@ GCA_982556625.1	Scaffold	Center for Evolutionary Hologenomics, University of Cop
 GCA_056561225.1	Scaffold	Bird 10,000 Genomes (B10K) consortium		126702	Ichthyaetus ichthyaetus			Russia	true	false	true
 GCA_982554505.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen	reference genome	1288290	Ichthyaetus melanocephalus				true	false	true
 GCA_056578185.1	Scaffold	Bird 10,000 Genomes (B10K) consortium		1288290	Ichthyaetus melanocephalus				true	false	true
+GCA_062039095.1	Chromosome	Vertebrate Genomes Project	reference genome	302709	Ichthyomyzon gagei	45.821882	-91.933136	USA	true	true	true
+GCA_062039092.1	Chromosome	Vertebrate Genomes Project		302709	Ichthyomyzon gagei	45.821882	-91.933136	USA	true	true	true
+GCA_062039093.1	Chromosome	Vertebrate Genomes Project		302709	Ichthyomyzon gagei	45.821882	-91.933136	USA	true	true	true
+GCA_062039094.1	Chromosome	Vertebrate Genomes Project		302709	Ichthyomyzon gagei	45.821882	-91.933136	USA	true	true	true
 GCA_033557465.1	Chromosome	Northwestern Polytechnical University	reference genome	8453	Ichthyophis bannanicus			China	true	false	true
 GCA_002751075.1	Scaffold	NOAA, National Marine Fisheries Service, Northwest Fisheries Science Center	reference genome	39843	Ichthyophonus hoferi	64.7875	-141.2014	USA	true	true	true
 GCA_000220395.1	Scaffold	J. Craig Venter Institute	reference genome	5932	Ichthyophthirius multifiliis				true	false	true
@@ -35659,6 +35723,7 @@ GCA_053542185.1	Contig	Okinawa Institute of Science and Technology OIST	referenc
 GCA_977066705.1	Chromosome	Genoscope	reference genome	66828	Isognomon alatus	16.27675	-61.557	Atlantic Ocean	true	true	true
 GCA_034696485.1	Contig	LOEWE Centre for Translational Biodiversity Genomics	reference genome	947160	Isohypsibius dastychi			Germany	true	false	true
 GCA_986174655.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	76455	Isolepis cernua	49.9702	-5.2139	United Kingdom	true	true	true
+GCA_062042621.1	Scaffold	Nanjing Institute of Geology and Palaeontology, Chinese Academy of Sciences	reference genome	1470551	Isonychia kiangsinensis				true	false	true
 GCA_904811175.1	Contig	AUSTRALIAN NATIONAL UNIVERSITY		1031270	Isoodon auratus auratus	-14.52	125.78	Australia	false	true	true
 GCA_904811225.1	Contig	AUSTRALIAN NATIONAL UNIVERSITY		1031270	Isoodon auratus auratus	-15.39	124.59	Australia	false	true	true
 GCA_904811015.1	Contig	AUSTRALIAN NATIONAL UNIVERSITY		120736	Isoodon auratus barrowensis	-20.83	115.44	Australia	false	true	true
@@ -35843,6 +35908,7 @@ GCA_018251235.1	Contig	Florida Museum of Natural History		2201569	Jera tricuspid
 GCA_003990745.1	Contig	DOE Joint Genome Institute	reference genome	994334	Jimgerdemannia flammicorona	42.941	-84.4042	USA	true	true	true
 GCA_003990765.1	Contig	DOE Joint Genome Institute		994334	Jimgerdemannia flammicorona	45.6454	8.0945	Italy	true	true	true
 GCA_003951145.1	Contig	Oregon State University	reference genome	324621	Jimgerdemannia lactiflua	44.6	-123.4	USA	true	true	true
+GCA_062029495.1	Chromosome	Institute of Hydrobiology, Chinese Academy of Sciences	reference genome	278181	Jinshaia abbreviata			China	true	false	true
 GCA_964656515.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	934874	Jodis lactearia	43.186093	-1.357981	France	true	true	true
 GCA_964656555.1	Chromosome	WELLCOME SANGER INSTITUTE		934874	Jodis lactearia	43.186093	-1.357981	France	true	true	true
 GCA_964273755.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	104463	Jodis putata	62.0233	29.9761	Finland	true	true	true
@@ -36175,7 +36241,9 @@ GCA_986449215.1	Scaffold	WELLCOME SANGER INSTITUTE		1572685	Karpatiosorbus devon
 GCA_010093485.1	Scaffold	DOE Joint Genome Institute	reference genome	1392251	Karstenula rhodostoma CBS 690.94				false	false	true
 GCA_048542725.1	Scaffold	GAGA	reference genome	610646	Kartidris nyos			China	true	false	true
 GCA_046271085.1	Scaffold	Iridian Genomes	reference genome	3102983	Kassina somalica				true	false	true
-GCA_032466195.1	Scaffold	Iridian Genomes	reference genome	34587	Katharina tunicata				true	false	true
+GCA_062042550.1	Scaffold	Canada's national platform for genome sequencing and analysis	reference genome	34587	Katharina tunicata	48.834526	-125.1473	Canada	true	true	true
+GCA_032466195.1	Scaffold	Iridian Genomes		34587	Katharina tunicata				true	false	true
+GCA_062042549.1	Scaffold	Canada's national platform for genome sequencing and analysis		34587	Katharina tunicata	48.834526	-125.1473	Canada	true	true	true
 GCA_988283995.1	Contig	Minderoo OceanOmics Centre at UWA	reference genome	348050	Kathetostoma nigrofasciatum			Australia	true	false	true
 GCA_018247435.1	Contig	Florida Museum of Natural History	reference genome	1607945	Katreus johnstonii			Cameroon	true	false	true
 GCA_018245315.1	Contig	Florida Museum of Natural History		1607945	Katreus johnstonii			Sierra Leone	true	false	true
@@ -36332,6 +36400,7 @@ GCA_030569915.1	Scaffold	UW-Madison	reference genome	74104	Kluyveromyces nonferm
 GCA_003670155.1	Scaffold	UW-Madison		74104	Kluyveromyces nonfermentans			USA	true	false	true
 GCA_030579315.1	Scaffold	UW-Madison	reference genome	452579	Kluyveromyces siamensis			USA	true	false	true
 GCA_017427045.1	Contig	CSIR-IHBT PALAMPUR		2804499	Kluyveromyces sp. PCH397			India	false	false	true
+GCA_062044104.1	Contig	Department of Biotechnology and Life Sciences, Sojo University		3895892	Kluyveromyces sp. TN1103			Japan	false	false	true
 GCA_030462825.1	Scaffold	UW-Madison		2866342	Kluyveromyces sp. yHMH660			USA	false	false	true
 GCA_030705165.1	Contig	UW-Madison	reference genome	2613904	Kluyveromyces starmeri			USA	true	false	true
 GCA_008973615.1	Contig	UFMG - Universidade Federal de Minas Gerais		2613904	Kluyveromyces starmeri	-12.42	-46.25	Brazil	true	true	true
@@ -36739,6 +36808,7 @@ GCA_025447835.1	Scaffold	IRIDIAN GENOMES	reference genome	1916250	Labidoglobus n
 GCA_051313465.2	Scaffold	Canada's national platform for genome sequencing and analysis	reference genome	131652	Labidomera clivicollis	45.909	-76.042	Canada	true	true	true
 GCA_051313455.2	Scaffold	Canada's national platform for genome sequencing and analysis		131652	Labidomera clivicollis	45.909	-76.042	Canada	true	true	true
 GCA_027574705.1	Scaffold	IRIDIAN GENOMES	reference genome	1916252	Labidopullus appendiculatus			USA	true	false	true
+GCA_062042616.1	Scaffold	Nanjing Institute of Geology and Palaeontology, Chinese Academy of Sciences	reference genome	2950792	Labiobaetis ancoralis				true	false	true
 GCA_053542855.1	Contig	Okinawa Institute of Science and Technology OIST	reference genome	370423	Labiotermes labralis			French Guiana	true	false	true
 GCA_051403735.1	Complete Genome	Institute of Virology and Biotechnology	reference genome	35936	Lablab purpureus			China	true	false	true
 GCA_030347555.1	Chromosome	Lablab Genome Sequencing Consortium		35936	Lablab purpureus			India	true	false	true
@@ -37019,6 +37089,7 @@ GCA_041295975.1	Scaffold	Iridian Genomes	reference genome	1476580	Laemanctus ser
 GCA_900303225.1	Scaffold	CEES	reference genome	1784819	Laemonema laureysi				true	false	true
 GCA_964417165.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	1107672	Laeosopis roboris	42.102863	-3.238864	Spain	true	true	true
 GCA_964417055.1	Scaffold	WELLCOME SANGER INSTITUTE		1107672	Laeosopis roboris	42.102863	-3.238864	Spain	true	true	true
+GCA_062042560.1	Contig	Beijing Forestry University	reference genome	1537583	Laetiporus ailaoshanensis			China	true	false	true
 GCA_057380915.1	Scaffold	Zhejiang Sci-Tech University	reference genome	1531367	Laetiporus cremeiporus			China	true	false	true
 GCA_003521245.1	Scaffold	Kunming University of Science and Technology		5630	Laetiporus sulphureus	25.04	102.73	China	true	true	true
 GCA_016068325.1	Scaffold	Brazilian Center for Research in Energy and Materials (CNPEM)		5630	Laetiporus sulphureus				true	false	true
@@ -37324,24 +37395,18 @@ GCA_027924585.1	Contig	Kazusa DNA Research Institute	reference genome	54800	Lari
 GCA_013171265.2	Contig	CAF		54800	Larix kaempferi			China	true	false	true
 GCA_054347415.1	Contig	Canada's national platform for genome sequencing and analysis	reference genome	3327	Larix occidentalis	49.233333	-115.833333	Canada	true	true	true
 GCA_004151065.3	Scaffold	Siberian Federal University	reference genome	62751	Larix sibirica			Russia	true	false	true
-GCA_988324595.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	35669	Larus argentatus	59.9131	10.758	Norway	true	true	true
+GCA_055772855.1	Scaffold	Bird 10,000 Genomes (B10K) consortium	reference genome	35669	Larus argentatus			Denmark	true	false	true
 GCA_028571125.1	Scaffold	Iridian Genomes		35669	Larus argentatus				true	false	true
-GCA_055772855.1	Scaffold	Bird 10,000 Genomes (B10K) consortium		35669	Larus argentatus			Denmark	true	false	true
-GCA_988324105.1	Chromosome	WELLCOME SANGER INSTITUTE		35669	Larus argentatus	59.9131	10.758	Norway	true	true	true
 GCA_055772895.1	Scaffold	Bird 10,000 Genomes (B10K) consortium	reference genome	119635	Larus armenicus				true	false	true
 GCA_982555375.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen	reference genome	119609	Larus cachinnans			Kazakhstan	true	false	true
 GCA_045783775.1	Scaffold	Bird 10,000 Genomes (B10K) consortium		119609	Larus cachinnans			Kazakhstan	true	false	true
-GCA_988323945.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	28681	Larus canus	59.926	10.703	Norway	true	true	true
+GCA_982556785.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen	reference genome	28681	Larus canus			USA	true	false	true
 GCA_056561355.1	Scaffold	Bird 10,000 Genomes (B10K) consortium		28681	Larus canus			USA	true	false	true
 GCA_982290585.1	Scaffold	B10K project		28681	Larus canus				true	false	true
-GCA_982556785.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen		28681	Larus canus			USA	true	false	true
-GCA_988323675.1	Chromosome	WELLCOME SANGER INSTITUTE		28681	Larus canus	59.926	10.703	Norway	true	true	true
 GCA_982554895.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen	reference genome	126683	Larus delawarensis			USA	true	false	true
 GCA_056578085.1	Scaffold	Bird 10,000 Genomes (B10K) consortium		126683	Larus delawarensis			USA	true	false	true
-GCA_988324555.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	8915	Larus fuscus	51.73	-2.4	United Kingdom	true	true	true
+GCA_982555915.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen	reference genome	8915	Larus fuscus			United Kingdom	true	false	true
 GCA_056576145.1	Scaffold	Bird 10,000 Genomes (B10K) consortium		8915	Larus fuscus			United Kingdom	true	false	true
-GCA_982555915.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen		8915	Larus fuscus			United Kingdom	true	false	true
-GCA_988324605.1	Chromosome	WELLCOME SANGER INSTITUTE		8915	Larus fuscus	51.73	-2.4	United Kingdom	true	true	true
 GCA_965654465.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	119606	Larus glaucescens	59.43611	-146.32889	USA	true	true	true
 GCA_055773275.1	Scaffold	Bird 10,000 Genomes (B10K) consortium		119606	Larus glaucescens				true	false	true
 GCA_965654385.1	Chromosome	WELLCOME SANGER INSTITUTE		119606	Larus glaucescens	59.43611	-146.32889	USA	true	true	true
@@ -37351,12 +37416,8 @@ GCA_965654415.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	119637	Lar
 GCA_056577925.1	Scaffold	Bird 10,000 Genomes (B10K) consortium		119637	Larus hyperboreus			Norway	true	false	true
 GCA_965654215.1	Chromosome	WELLCOME SANGER INSTITUTE		119637	Larus hyperboreus	78.917703	12.019866	Norway	true	true	true
 GCA_982555085.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen		119637	Larus hyperboreus			Norway	true	false	true
-GCA_988323735.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	8912	Larus marinus	59.9115	10.7525	Norway	true	true	true
-GCA_988323895.1	Chromosome	WELLCOME SANGER INSTITUTE		8912	Larus marinus	59.9115	10.7525	Norway	true	true	true
-GCA_988324135.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	119627	Larus michahellis	46.94177724	7.47155206	Switzerland	true	true	true
+GCA_982553405.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen	reference genome	119627	Larus michahellis			Italy	true	false	true
 GCA_045784605.1	Scaffold	Bird 10,000 Genomes (B10K) consortium		119627	Larus michahellis			Italy	true	false	true
-GCA_982553405.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen		119627	Larus michahellis			Italy	true	false	true
-GCA_988324715.1	Chromosome	WELLCOME SANGER INSTITUTE		119627	Larus michahellis	46.94177724	7.47155206	Switzerland	true	true	true
 GCA_965654445.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	126713	Larus occidentalis	37.89962	-122.36101	USA	true	true	true
 GCA_965654455.1	Chromosome	WELLCOME SANGER INSTITUTE		126713	Larus occidentalis	37.89962	-122.36101	USA	true	true	true
 GCA_013400295.1	Scaffold	B10K Consortium	reference genome	243888	Larus smithsonianus	54.62	-111.64	Canada	true	true	true
@@ -37685,8 +37746,9 @@ GCA_042242185.1	Scaffold	UNC Charlotte	reference genome	1159925	Leiobunum manubr
 GCA_980474605.1	Chromosome	Centro Nacional de Análisis Genómico	reference genome	3082394	Leiobunum rupestre	46.617815	15.578507	Slovenia	true	true	true
 GCA_980473025.1	Chromosome	Centro Nacional de Análisis Genómico		3082394	Leiobunum rupestre	46.617815	15.578507	Slovenia	true	true	true
 GCA_965184155.1	Chromosome	Centro Nacional de Análisis Genómico	reference genome	3086104	Leiobunum subalpinum	46.4811	15.2751	Slovenia	true	true	true
-GCA_058744705.1	Chromosome	Perl River Fisheries Research Institute, Chinese Academy of Fishery Sciences	reference genome	175787	Leiocassis longirostris			China	true	false	true
+GCA_062029891.1	Chromosome	Anhui Academy of Agricultural Sciences	reference genome	175787	Leiocassis longirostris			China	true	false	true
 GCA_041146805.1	Chromosome	Perl River Fisheries Research Institute, Chinese Academy of Fishery Sciences		175787	Leiocassis longirostris			China	true	false	true
+GCA_058744705.1	Chromosome	Perl River Fisheries Research Institute, Chinese Academy of Fishery Sciences		175787	Leiocassis longirostris			China	true	false	true
 GCA_028565275.1	Scaffold	Iridian Genomes	reference genome	337770	Leiocassis micropogon				true	false	true
 GCA_051995615.1	Scaffold	Fish10K	reference genome	435159	Leiognathus brevirostris			Indian Ocean	true	false	true
 GCA_049181515.1	Scaffold	Iridian Genomes	reference genome	2893490	Leiognathus equula				true	false	true
@@ -38647,8 +38709,10 @@ GCA_029449235.1	Contig	Shandong Normal University	reference genome	64567	Linnema
 GCA_015502505.1	Scaffold	DOE Joint Genome Institute		64567	Linnemannia schmuckeri				true	false	true
 GCA_015847235.1	Scaffold	DOE Joint Genome Institute	reference genome	979765	Linnemannia zychae				true	false	true
 GCA_015847195.1	Scaffold	DOE Joint Genome Institute		979765	Linnemannia zychae	22.645	120.61	Taiwan	true	true	true
-GCA_058382145.1	Scaffold	Agriculture and Agri-Food Canada	reference genome	347648	Linum bienne			Spain	true	false	true
+GCA_062029890.1	Chromosome	Engelhardt Institute of Molecular Biology, Russian Academy of Sciences	reference genome	347648	Linum bienne			Russia	true	false	true
 GCA_010665285.1	Scaffold	Gansu Academy of Agricultural Sciences		347648	Linum bienne			China	true	false	true
+GCA_058382145.1	Scaffold	Agriculture and Agri-Food Canada		347648	Linum bienne			Spain	true	false	true
+GCA_062029888.1	Chromosome	Engelhardt Institute of Molecular Biology, Russian Academy of Sciences		347648	Linum bienne			Russia	true	false	true
 GCA_965366135.1	Scaffold	WELLCOME SANGER INSTITUTE		347648	Linum bienne	51.48319	-0.29304	United Kingdom	true	true	true
 GCA_965366145.1	Chromosome	WELLCOME SANGER INSTITUTE		347648	Linum bienne	51.48319	-0.29304	United Kingdom	true	true	true
 GCA_986265355.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	524254	Linum catharticum	51.7711	-1.3382	United Kingdom	true	true	true
@@ -39255,6 +39319,8 @@ GCA_001735685.1	Scaffold	rutgers university		4522	Lolium perenne			USA	true	fals
 GCA_019359855.2	Chromosome	Molecular Plant Breeding Group, ETH Zurich	reference genome	4522	Lolium perenne			Switzerland	true	false	true
 GCA_046864775.1	Chromosome	Molecular Plant Breeding Group, ETH Zurich		4522	Lolium perenne			Switzerland	true	false	true
 GCA_046864785.1	Chromosome	Molecular Plant Breeding Group, ETH Zurich		4522	Lolium perenne			Switzerland	true	false	true
+GCA_062029956.1	Chromosome	USDA ARS		4522	Lolium perenne			USA	true	false	true
+GCA_062029957.1	Chromosome	USDA ARS		4522	Lolium perenne			USA	true	false	true
 GCA_022539505.1	Chromosome	Australian Pest Genome Partnership	reference genome	89674	Lolium rigidum			Australia	true	false	true
 GCA_037974715.1	Scaffold	Iridian Genomes	reference genome	1170244	Lomanotus vermiformis				true	false	true
 GCA_988282155.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	722666	Lomaspilis marginata	51.09	-0.94	United Kingdom	true	true	true
@@ -40399,6 +40465,7 @@ GCA_060134225.1	Chromosome	Vertebrate Genomes Project	reference genome	1464014	M
 GCA_060134305.1	Chromosome	Vertebrate Genomes Project		1464014	Macropygia unchall	25.3548	51.1839	Qatar	true	true	true
 GCA_987433295.1	Chromosome	Genoscope	reference genome	206124	Macroramphosus scolopax	46.5740293	-4.7287176	Atlantic Ocean	true	true	true
 GCA_901007825.1	Scaffold	CEES		206124	Macroramphosus scolopax				true	false	true
+GCA_062031095.1	Scaffold	Iridian Genomes	reference genome	2578299	Macrorhamphosodes platycheilus				true	false	true
 GCA_062027063.1	Scaffold	Iridian Genomes	reference genome	384593	Macrorhamphosodes uradoi				true	false	true
 GCA_044705635.1	Contig	University of Minnesota	reference genome	1887496	Macrosaccus morrisella			USA	true	false	true
 GCA_978019455.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	994498	Macrosiphum cholodkovskyi	52.666675	1.088741	United Kingdom	true	true	true
@@ -40608,6 +40675,7 @@ GCA_030826685.1	Scaffold	NHGRI/NIH		55194	Malassezia furfur	38.999838	-77.106017
 GCA_051944075.2	Scaffold	SkinScience, Zealand University Hospital		55194	Malassezia furfur			France	true	false	true
 GCA_052054945.2	Scaffold	SkinScience, Zealand University Hospital		55194	Malassezia furfur			India	true	false	true
 GCA_052055015.2	Scaffold	SkinScience, Zealand University Hospital		55194	Malassezia furfur				true	false	true
+GCA_062034330.1	Complete Genome	Case Western Reserve University		55194	Malassezia furfur				true	false	true
 GCA_001264795.1	Scaffold	Genome Institute of Singapore		76773	Malassezia globosa	53.8	-1.58	United Kingdom	true	true	true
 GCA_001264805.1	Scaffold	Genome Institute of Singapore		76773	Malassezia globosa	51.5	-0.13	United Kingdom	true	true	true
 GCA_001264815.1	Scaffold	Genome Institute of Singapore		76773	Malassezia globosa	51.5	-0.12	United Kingdom	true	true	true
@@ -41386,6 +41454,7 @@ GCA_984657715.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	1871975	Me
 GCA_984657725.1	Scaffold	WELLCOME SANGER INSTITUTE		1871975	Megalepthyphantes collinus			United Kingdom	true	false	true
 GCA_009869865.1	Scaffold	Hunan Normal Univesity		75352	Megalobrama amblycephala				true	false	true
 GCA_018812025.1	Chromosome	Huazhong Agricultural University	reference genome	75352	Megalobrama amblycephala				true	false	true
+GCA_062042552.1	Contig	Hangzhou Academy of Agricultural Sciences		3897197	Megalobrama sp. SJF			China	false	false	true
 GCA_034642435.1	Chromosome	Jiangsu University of Science and Technology	reference genome	511882	Megalocaria dilatata	30.63007	104.11429	China	true	true	true
 GCA_905120125.1	Scaffold	Institute of Clinical Molecular Biology		227166	Megaloceros giganteus				true	false	true
 GCA_905120135.1	Contig	Institute of Clinical Molecular Biology		227166	Megaloceros giganteus				true	false	true
@@ -41819,10 +41888,8 @@ GCA_056576825.1	Scaffold	Bird 10,000 Genomes (B10K) consortium		8880	Mergus merg
 GCA_982555645.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen		8880	Mergus merganser			USA	true	false	true
 GCA_036873955.1	Chromosome	Vertebrate Genomes Project	reference genome	1570318	Mergus octosetaceus	-20.27	-46.61	Brazil	true	true	true
 GCA_036850655.1	Chromosome	Vertebrate Genomes Project		1570318	Mergus octosetaceus	-20.27	-46.61	Brazil	true	true	true
-GCA_988425565.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	8879	Mergus serrator	51.73	-2.4	United Kingdom	true	true	true
+GCA_982556655.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen	reference genome	8879	Mergus serrator			USA	true	false	true
 GCA_045782145.1	Scaffold	Bird 10,000 Genomes (B10K) consortium		8879	Mergus serrator			USA	true	false	true
-GCA_982556655.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen		8879	Mergus serrator			USA	true	false	true
-GCA_988322485.1	Chromosome	WELLCOME SANGER INSTITUTE		8879	Mergus serrator	51.73	-2.4	United Kingdom	true	true	true
 GCA_061099185.1	Chromosome	Manchester Metropolitan University	reference genome	670348	Mergus squamatus			United Kingdom	true	false	true
 GCA_051419615.1	Scaffold	Iridian Genomes		670348	Mergus squamatus				true	false	true
 GCA_036365155.1	Scaffold	INSTITUTE OF ZOOLOGY, CHINESE ACADEMY OF SCIENCES	reference genome	2800508	Meriones psammophilus				true	false	true
@@ -42748,6 +42815,7 @@ GCA_986264825.1	Chromosome	Genoscope CEA		2593073	Minidiscus spinulatus	48.75	-3
 GCA_984582945.1	Chromosome	Genoscope	reference genome	659878	Minidiscus variabilis	48.75	-3.95	Atlantic Ocean	true	true	true
 GCA_985616665.1	Scaffold	WELLCOME SANGER INSTITUTE	reference genome	117605	Miniopterus australis			Malaysia	true	false	true
 GCA_051201465.1	Contig	Chinese Academy of Sciences	reference genome	187007	Miniopterus fuliginosus			China	true	false	true
+GCA_062043725.1	Contig	National Institute for Environmental Studies, Japan		187007	Miniopterus fuliginosus			Japan	true	false	true
 GCA_001595765.1	Scaffold	University of California, San Francisco		291302	Miniopterus natalensis			South Africa	true	false	true
 GCA_054644295.1	Chromosome	Bat1K Project	reference genome	291302	Miniopterus natalensis	-15.975527	35.65425	Malawi	true	true	true
 GCA_054644305.1	Chromosome	Bat1K Project		291302	Miniopterus natalensis	-15.975527	35.65425	Malawi	true	true	true
@@ -42936,6 +43004,7 @@ GCA_024449045.1	Contig	Korea Polar Research Institute		89489	Monascus ruber			So
 GCA_027569325.1	Contig	Northwestern University		89489	Monascus ruber			France	true	false	true
 GCA_032348355.1	Scaffold	Zhejiang University of Science and Technology		89489	Monascus ruber			China	true	false	true
 GCA_900184055.1	Scaffold	WAGENINGEN UNIVERSITY		89489	Monascus ruber				true	false	true
+GCA_062042632.1	Complete Genome	USDA Agricultural Research Service	reference genome	2982816	Monelliopsis pecanis				true	false	true
 GCA_946863485.1	Contig	MAX PLANCK INSTITUTE FOR DEVELOPMENTAL BIOLOGY	reference genome	5936	Moneuplotes crassus				true	false	true
 GCA_001880385.1	Contig	Brigham and Women's Hospital		5936	Moneuplotes crassus			Somalia	true	false	true
 GCA_055699045.1	Scaffold	China Agricultural University	reference genome	3681317	Mongoleon kaszabi			China	true	false	true
@@ -43951,7 +44020,8 @@ GCA_981428695.1	Scaffold	B10K project	reference genome	889805	Myrmecocichla form
 GCA_981463015.1	Scaffold	B10K project	reference genome	3150179	Myrmecocichla monticola				true	false	true
 GCA_048544835.1	Chromosome	GAGA		3380360	Myrmecocystus cf. mendax GAGA-0026			USA	false	false	true
 GCA_058129445.1	Contig	University of Bristol	reference genome	271132	Myrmecocystus mexicanus			USA	true	false	true
-GCA_004026745.1	Scaffold	Broad Institute	reference genome	71006	Myrmecophaga tridactyla				true	false	true
+GCA_062042610.1	Scaffold	CNRS - Universite de Montpellier	reference genome	71006	Myrmecophaga tridactyla			French Guiana	true	false	true
+GCA_004026745.1	Scaffold	Broad Institute		71006	Myrmecophaga tridactyla				true	false	true
 GCA_046865745.1	Chromosome	University of Lausanne	reference genome	3238574	Myrmecophilus myrmecophilus			France	true	false	true
 GCA_055703785.1	Scaffold	China Agricultural University	reference genome	2028636	Myrmeleon acer			Australia	true	false	true
 GCA_055701275.1	Scaffold	China Agricultural University	reference genome	1368273	Myrmeleon alcestris			Namibia	true	false	true
@@ -44103,6 +44173,8 @@ GCA_028015205.1	Chromosome	Ocean University of China	reference genome	2547956	My
 GCA_026413285.1	Scaffold	Iridian Genomes		2547956	Mytilisepta virgata			Japan	true	false	true
 GCA_021869535.1	Scaffold	UCLA	reference genome	6549	Mytilus californianus			USA	true	false	true
 GCA_021869935.1	Scaffold	UCLA		6549	Mytilus californianus			USA	true	false	true
+GCA_062041537.1	Scaffold	Canada's national platform for genome sequencing and analysis		6549	Mytilus californianus	48.834526	-125.1473	Canada	true	true	true
+GCA_062041542.1	Scaffold	Canada's national platform for genome sequencing and analysis		6549	Mytilus californianus	48.834526	-125.1473	Canada	true	true	true
 GCA_059745995.1	Chromosome	Zhejiang Ocean University	reference genome	42192	Mytilus coruscus			China	true	false	true
 GCA_011752425.2	Scaffold	NINGBO UNIVERSITY		42192	Mytilus coruscus			China	true	false	true
 GCA_017311375.1	Chromosome	Shanghai Ocean University		42192	Mytilus coruscus	30.72	122.78		true	true	true
@@ -45823,11 +45895,9 @@ GCA_056248275.1	Scaffold	Montana State University		371917	Nucifraga columbiana	4
 GCA_049996435.1	Scaffold	University of Exeter	reference genome	1300064	Nucleospora cyclopteri	64.9631	-19.0208	Iceland	true	true	true
 GCA_963556515.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	988003	Nudaria mundana	51.772	-1.338	United Kingdom	true	true	true
 GCA_963556505.1	Contig	WELLCOME SANGER INSTITUTE		988003	Nudaria mundana	51.772	-1.338	United Kingdom	true	true	true
-GCA_988323825.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	31919	Numenius arquata	52.3532975	-9.48929614	Ireland	true	true	true
-GCA_046244895.1	Scaffold	Iridian Genomes		31919	Numenius arquata				true	false	true
+GCA_046244895.1	Scaffold	Iridian Genomes	reference genome	31919	Numenius arquata				true	false	true
 GCA_056578425.1	Scaffold	Bird 10,000 Genomes (B10K) consortium		31919	Numenius arquata			Greenland	true	false	true
 GCA_982554445.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen		31919	Numenius arquata			Greenland	true	false	true
-GCA_988323715.1	Scaffold	WELLCOME SANGER INSTITUTE		31919	Numenius arquata	52.3532975	-9.48929614	Ireland	true	true	true
 GCA_030770645.1	Scaffold	National University of Singapore	reference genome	161676	Numenius phaeopus	62.1554554	-7.07544336	Faroe Islands	true	true	true
 GCA_056561515.1	Scaffold	Bird 10,000 Genomes (B10K) consortium		161676	Numenius phaeopus			USA	true	false	true
 GCA_982556835.1	Scaffold	Center for Evolutionary Hologenomics, University of Copenhagen		161676	Numenius phaeopus			USA	true	false	true
@@ -45981,8 +46051,8 @@ GCA_034190945.1	Chromosome	China Jiliang University	reference genome	1432747	Oct
 GCA_002564305.1	Scaffold	McMaster University	reference genome	135583	Octomys mimax			Argentina	true	false	true
 GCA_038502835.1	Chromosome	INSTITUTE OF ZOOLOGY, CHINESE ACADEMY OF SCIENCES	reference genome	198412	Octonoba sinensis			China	true	false	true
 GCA_027568995.1	Scaffold	Iridian Genomes	reference genome	2703946	Octopus americanus				true	false	true
-GCA_001194135.2	Chromosome	UC Berkeley	reference genome	37653	Octopus bimaculoides			Pacific Ocean	true	false	true
-GCA_046866305.1	Chromosome	University of Oregon		37653	Octopus bimaculoides			Pacific Ocean	true	false	true
+GCA_001194135.2	Chromosome	UC Berkeley		37653	Octopus bimaculoides			Pacific Ocean	true	false	true
+GCA_046866305.1	Chromosome	University of Oregon	reference genome	37653	Octopus bimaculoides			Pacific Ocean	true	false	true
 GCA_059762105.1	Scaffold	Iridian Genomes		37653	Octopus bimaculoides				true	false	true
 GCA_029874955.1	Contig	Rockefeller University	reference genome	1423836	Octopus insularis			USA	true	false	true
 GCA_034509045.1	Scaffold	Iridian Genomes	reference genome	1917152	Octopus jollyorum				true	false	true
@@ -46278,6 +46348,7 @@ GCA_057876665.1	Chromosome	Vertebrate Genomes Project		37017	Oligoryzomys nigrip
 GCA_030264595.1	Scaffold	California Institute of Technology		3032619	Oligota sp. GC000189	34.21640506	-118.14634763	USA	false	true	true
 GCA_059341555.1	Scaffold	Brigham Young University	reference genome	62801	Oligotoma nigra			USA	true	false	true
 GCA_977013005.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	201549	Oligotrichum hercynicum	55.39722222	-3.45527778	United Kingdom	true	true	true
+GCA_062034337.1	Scaffold	Keio University		3435794	Olios sp. 1 KA-2025a			Japan	false	false	true
 GCA_984755515.1	Chromosome	Minderoo OceanOmics Centre at University of the Western Australia	reference genome	1605466	Olisthops cyanomelas			Australia	true	false	true
 GCA_984755405.1	Chromosome	Minderoo OceanOmics Centre at University of the Western Australia		1605466	Olisthops cyanomelas			Australia	true	false	true
 GCA_988290055.1	Contig	Minderoo OceanOmics Centre at UWA		1605466	Olisthops cyanomelas			Australia	true	false	true
@@ -46333,6 +46404,8 @@ GCA_021184085.1	Chromosome	Fisheries and Oceans Canada	reference genome	8017	Onc
 GCA_012931545.1	Chromosome	Fisheries and Oceans Canada		8018	Oncorhynchus keta			Canada	true	false	true
 GCA_023373465.1	Chromosome	Fisheries and Oceans Canada	reference genome	8018	Oncorhynchus keta			Canada	true	false	true
 GCA_002021735.2	Chromosome	University of Victoria	reference genome	8019	Oncorhynchus kisutch			Canada	true	false	true
+GCA_062034336.1	Contig	Academia Sinica		8020	Oncorhynchus masou			Taiwan	true	false	true
+GCA_062034338.1	Scaffold	Academia Sinica		8020	Oncorhynchus masou			Taiwan	true	false	true
 GCA_036245685.1	Scaffold	Center for Ecological Research, Kyoto University		8021	Oncorhynchus masou ishikawae	34.04	135.31	Japan	false	true	true
 GCA_036934945.2	Chromosome	University of Victoria	reference genome	90313	Oncorhynchus masou masou			Japan	false	false	true
 GCA_052849655.1	Chromosome	Guangdong Key Laboratory of Animal Conservation and Resource Utilization		90313	Oncorhynchus masou masou			China	false	false	true
@@ -46652,6 +46725,7 @@ GCA_943138245.1	Contig	WELLCOME SANGER INSTITUTE		247415	Ophonus ardosiacus	51.7
 GCA_035357415.1	Chromosome	Chinese Academy of Agricultural Sciences	reference genome	38162	Ophraella communa			China	true	false	true
 GCA_902651945.1	Contig	SIB		38162	Ophraella communa				true	false	true
 GCA_030141585.1	Scaffold	University of Florida	reference genome	110372	Ophryocystis elektroscirrha	30.07348585	-84.17946334	USA	true	true	true
+GCA_062034326.1	Contig	University of Florida		3738019	Ophryocystis sp. AM-2026a	52.3559099	4.95575848	Netherlands	false	true	true
 GCA_023806825.1	Contig	Northwest Agriculture and Forestry University	reference genome	358021	Ophryoscolex caudatus	34.2721	108.0884	China	true	true	true
 GCA_023783155.1	Contig	Northwest Agriculture and Forestry University		358021	Ophryoscolex caudatus	34.2721	108.0915	China	true	true	true
 GCA_023783195.1	Contig	Northwest Agriculture and Forestry University		358021	Ophryoscolex caudatus	34.2721	108.0896	China	true	true	true
@@ -46727,8 +46801,8 @@ GCA_046742065.1	Chromosome	Yancheng teachers university	reference genome	337810	
 GCA_977012875.1	Contig	WELLCOME SANGER INSTITUTE	reference genome	48500	Orbicella annularis	9.326	-82.198	Panama	true	true	true
 GCA_977012905.1	Contig	WELLCOME SANGER INSTITUTE		48500	Orbicella annularis	9.326	-82.198	Panama	true	true	true
 GCA_001896105.1	Scaffold	STRI		48498	Orbicella faveolata			USA	true	false	true
-GCA_002042975.1	Scaffold	Smithsonian Tropical Research Institute	reference genome	48498	Orbicella faveolata			Panama	true	false	true
-GCA_042242905.1	Contig	NOAA		48498	Orbicella faveolata			USA	true	false	true
+GCA_002042975.1	Scaffold	Smithsonian Tropical Research Institute		48498	Orbicella faveolata			Panama	true	false	true
+GCA_042242905.1	Contig	NOAA	reference genome	48498	Orbicella faveolata			USA	true	false	true
 GCA_964199315.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	48499	Orbicella franksi	9.326	-82.198	Panama	true	true	true
 GCA_964199325.1	Contig	WELLCOME SANGER INSTITUTE		48499	Orbicella franksi	9.326	-82.198	Panama	true	true	true
 GCA_036872755.1	Contig	Academia Sinica	reference genome	1796055	Orbilia blumenaviensis	25.033	121.5654	Taiwan	true	true	true
@@ -47014,8 +47088,8 @@ GCA_026770175.1	Scaffold	Universiti Putra Malaysia		72550	Oryctes rhinoceros			M
 GCA_000003625.1	Chromosome	The Broad Institute of MIT and Harvard		9986	Oryctolagus cuniculus				true	false	true
 GCA_009806435.2	Chromosome	Shanghai Institutes for Biological Sciences		9986	Oryctolagus cuniculus				true	false	true
 GCA_047671645.1	Chromosome	Shangdong Agriculture University		9986	Oryctolagus cuniculus			China	true	false	true
-GCA_051225735.1	Chromosome	Fujian University of Traditional Chinese Medicine		9986	Oryctolagus cuniculus			China	true	false	true
-GCA_964237555.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	9986	Oryctolagus cuniculus	51.73	-2.4	United Kingdom	true	true	true
+GCA_051225735.1	Chromosome	Fujian University of Traditional Chinese Medicine	reference genome	9986	Oryctolagus cuniculus			China	true	false	true
+GCA_964237555.1	Chromosome	WELLCOME SANGER INSTITUTE		9986	Oryctolagus cuniculus	51.73	-2.4	United Kingdom	true	true	true
 GCA_964237575.1	Contig	WELLCOME SANGER INSTITUTE		9986	Oryctolagus cuniculus	51.73	-2.4	United Kingdom	true	true	true
 GCA_982758555.1	Chromosome	Uppsala University		9986	Oryctolagus cuniculus			Spain	true	false	true
 GCA_982769885.1	Chromosome	Uppsala University		9986	Oryctolagus cuniculus			Spain	true	false	true
@@ -47988,6 +48062,7 @@ GCA_028128575.1	Scaffold	Universiti Sains Malaysia	reference genome	857642	Paedo
 GCA_028031935.1	Chromosome	Universiti Sains Malaysia	reference genome	1093616	Paedocypris micromegethes				true	false	true
 GCA_017309765.1	Scaffold	Institute of Molecular and Cell Biology, A*STAR, Singapore		432429	Paedocypris sp. Pulau Singkep			Indonesia	false	false	true
 GCA_017309775.1	Scaffold	Institute of Molecular and Cell Biology, A*STAR, Singapore		432429	Paedocypris sp. Pulau Singkep			Indonesia	false	false	true
+GCA_062042620.1	Scaffold	Nanjing Institute of Geology and Palaeontology, Chinese Academy of Sciences	reference genome	747259	Paegniodes cupulatus				true	false	true
 GCA_011317855.2	Scaffold	IRIDIAN GENOMES	reference genome	1769963	Paelopatides confundens				true	false	true
 GCA_032362305.1	Scaffold	Iridian Genomes	reference genome	35924	Paeonia lactiflora				true	false	true
 GCA_987348135.1	Chromosome	Genoscope	reference genome	98817	Pagellus acarne	43.6947537	-1.4885243	Atlantic Ocean	true	true	true
@@ -48656,6 +48731,7 @@ GCA_026780785.1	Scaffold	IRIDIAN GENOMES	reference genome	112141	Paramormyrops h
 GCA_002872115.1	Scaffold	Michigan State University		1676925	Paramormyrops kingsleyae	-2.16341666	11.46185	Gabon	true	true	true
 GCA_025177845.1	Scaffold	Michigan State University		1676925	Paramormyrops kingsleyae				true	false	true
 GCA_048594095.1	Chromosome	Michigan State University	reference genome	1676925	Paramormyrops kingsleyae			Gabon	true	false	true
+GCA_062034317.1	Scaffold	Michigan State University		1676925	Paramormyrops kingsleyae			Gabon	true	false	true
 GCA_027576875.1	Scaffold	IRIDIAN GENOMES		191268	Paramormyrops sp. MAG				false	false	true
 GCA_049181475.1	Scaffold	Iridian Genomes	reference genome	1233697	Paramphilius baudoni			Democratic Republic of the Congo	true	false	true
 GCA_977018925.1	Contig	WELLCOME SANGER INSTITUTE	reference genome	869566	Paramuricea biscaya	27.1105	-91.165	USA	true	true	true
@@ -50660,14 +50736,10 @@ GCA_055473895.1	Scaffold	University of Georgia		170000	Phakopsora pachyrhizi			U
 GCA_055473915.1	Scaffold	University of Georgia		170000	Phakopsora pachyrhizi			USA	true	false	true
 GCA_943181505.1	Contig	The John Innes Centre		170000	Phakopsora pachyrhizi				true	false	true
 GCA_943846425.1	Scaffold	SYNGENTA / RWTH Aachen University		170000	Phakopsora pachyrhizi				true	false	true
-GCA_988324325.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	126867	Phalacrocorax aristotelis	56.1902	-2.5736	United Kingdom	true	true	true
-GCA_055773075.1	Scaffold	Bird 10,000 Genomes (B10K) consortium		126867	Phalacrocorax aristotelis			Faroe Islands	true	false	true
-GCA_988324425.1	Chromosome	WELLCOME SANGER INSTITUTE		126867	Phalacrocorax aristotelis	56.1902	-2.5736	United Kingdom	true	true	true
+GCA_055773075.1	Scaffold	Bird 10,000 Genomes (B10K) consortium	reference genome	126867	Phalacrocorax aristotelis			Faroe Islands	true	false	true
 GCA_002173455.1	Scaffold	UCLA	reference genome	56069	Phalacrocorax auritus	43.84	-93.86	USA	true	true	true
 GCA_002174335.1	Scaffold	UCLA	reference genome	37046	Phalacrocorax brasilianus	-39.9498	-73.3031	Chile	true	true	true
-GCA_988324335.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	9209	Phalacrocorax carbo	34.14444444	132.2277778	Japan	true	true	true
-GCA_000708925.1	Scaffold	BGI		9209	Phalacrocorax carbo			Denmark	true	false	true
-GCA_988324445.1	Scaffold	WELLCOME SANGER INSTITUTE		9209	Phalacrocorax carbo	34.14444444	132.2277778	Japan	true	true	true
+GCA_000708925.1	Scaffold	BGI	reference genome	9209	Phalacrocorax carbo			Denmark	true	false	true
 GCA_002173475.1	Scaffold	UCLA	reference genome	473964	Phalacrocorax harrisi			Ecuador	true	false	true
 GCA_002173435.1	Scaffold	UCLA	reference genome	2723871	Phalacrocorax pelagicus	59.4375	-146.3275	USA	true	true	true
 GCA_003013225.1	Scaffold	Academia Sinica	reference genome	212056	Phalaenopsis aphrodite			Taiwan	true	false	true
@@ -51142,6 +51214,7 @@ GCA_966185175.1	Scaffold	WELLCOME SANGER INSTITUTE		1858059	Phycitodes albatella
 GCA_988221935.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	1594333	Phycitodes saxicola	59.825	23.0169	Finland	true	true	true
 GCA_988221845.1	Scaffold	WELLCOME SANGER INSTITUTE		1594333	Phycitodes saxicola	59.825	23.0169	Finland	true	true	true
 GCA_024500275.1	Chromosome	University of Oregon	reference genome	693459	Phycodurus eques				true	false	true
+GCA_062034300.1	Contig	South China Sea Institute of Oceanology, Chinese Academy of Sciences		693459	Phycodurus eques			Australia	true	false	true
 GCA_040209145.1	Contig	DOE Joint Genome Institute		4837	Phycomyces blakesleeanus				true	false	true
 GCA_040209185.1	Contig	DOE Joint Genome Institute		4837	Phycomyces blakesleeanus				true	false	true
 GCA_001638985.2	Scaffold	JGI-PSF	reference genome	763407	Phycomyces blakesleeanus NRRL 1555(-)				false	false	true
@@ -51414,15 +51487,19 @@ GCA_000582765.1	Scaffold	Genoscope CEA		479712	Phytomonas sp. EM1				false	false
 GCA_000982615.1	Scaffold	Genoscope CEA		223615	Phytomonas sp. Hart1				false	false	true
 GCA_060309105.1	Chromosome	Chinese Academy of Agricultural Sciences	reference genome	498712	Phytomyza vitalbae	40.16752	94.71456	China	true	true	true
 GCA_052575295.1	Scaffold	Pacific Forestry Centre/Natural Resources Canada	reference genome	2488101	Phytophthora abietivora	45.991139	-71.485611	Canada	true	true	true
+GCA_062042596.1	Contig	University of California, Davis	reference genome	1241941	Phytophthora acerina				true	false	true
 GCA_025722995.1	Chromosome	Massey University	reference genome	1642459	Phytophthora agathidicida			New Zealand	true	false	true
 GCA_001314435.1	Scaffold	University of Exeter		1642459	Phytophthora agathidicida			New Zealand	true	false	true
 GCA_001314445.1	Scaffold	University of Exeter		1642459	Phytophthora agathidicida			New Zealand	true	false	true
 GCA_018873745.1	Scaffold	University of Exeter	reference genome	2496075	Phytophthora aleatoria			New Zealand	true	false	true
+GCA_062042583.1	Contig	University of California, Davis	reference genome	1196597	Phytophthora amnicola				true	false	true
 GCA_042082275.1	Scaffold	Kazimierz Wielki University	reference genome	1529059	Phytophthora asiatica			Japan	true	false	true
+GCA_062042573.1	Contig	University of California, Davis	reference genome	631358	Phytophthora asparagi				true	false	true
 GCA_042082295.1	Scaffold	Kazimierz Wielki University	reference genome	1861846	Phytophthora attenuata			Taiwan	true	false	true
 GCA_055305935.1	Scaffold	University of Edinburgh	reference genome	631361	Phytophthora austrocedri			United Kingdom	true	false	true
 GCA_055305815.1	Scaffold	University of Edinburgh		631361	Phytophthora austrocedri			Argentina	true	false	true
 GCA_011320135.1	Contig	Universidad de los Andes	reference genome	2714593	Phytophthora betacei			Colombia	true	false	true
+GCA_062042576.1	Contig	University of California, Davis	reference genome	1197710	Phytophthora bilorbang				true	false	true
 GCA_011947355.1	Contig	Contact; Gloria.Abad@aphis.usda.gov, USDA-APHIS-PPQ-S&T	reference genome	109152	Phytophthora boehmeriae				true	false	true
 GCA_019155685.1	Scaffold	University of St Andrews		109152	Phytophthora boehmeriae			United Kingdom	true	false	true
 GCA_024679105.1	Scaffold	Oregon State University		109152	Phytophthora boehmeriae				true	false	true
@@ -51477,7 +51554,8 @@ GCA_949795465.1	Contig	inrae centre paca ur1052		4784	Phytophthora capsici			Fra
 GCA_000325885.1	Contig	JGI		763924	Phytophthora capsici LT1534			USA	false	false	true
 GCA_949795235.1	Contig	inrae centre paca ur1052		763924	Phytophthora capsici LT1534			USA	false	false	true
 GCA_014706115.1	Contig	United States Department of Agriculture	reference genome	1985165	Phytophthora castanetorum				true	false	true
-GCA_012295415.1	Scaffold	Maynooth University	reference genome	1692154	Phytophthora chlamydospora			Ireland	true	false	true
+GCA_062042582.1	Contig	University of California, Davis	reference genome	1692154	Phytophthora chlamydospora				true	false	true
+GCA_012295415.1	Scaffold	Maynooth University		1692154	Phytophthora chlamydospora			Ireland	true	false	true
 GCA_001314365.1	Scaffold	University of Exeter		4785	Phytophthora cinnamomi			Australia	true	false	true
 GCA_001314505.1	Scaffold	University of Exeter		4785	Phytophthora cinnamomi			New Zealand	true	false	true
 GCA_002734105.1	Scaffold	Deakin University		4785	Phytophthora cinnamomi			Australia	true	false	true
@@ -51494,9 +51572,11 @@ GCA_035080265.1	Scaffold	University of California, Riverside		4793	Phytophthora 
 GCA_018806915.1	Contig	Fujian Agriculture and Forestry University	reference genome	129350	Phytophthora colocasiae			China	true	false	true
 GCA_002288995.1	Scaffold	Sveriges lantbruksuniversite		129350	Phytophthora colocasiae			Viet Nam	true	false	true
 GCA_020226015.1	Contig	RIKEN		129350	Phytophthora colocasiae			Japan	true	false	true
+GCA_062042589.1	Contig	University of California, Davis	reference genome	2054051	Phytophthora condilina				true	false	true
 GCA_011947335.1	Contig	Contact; Gloria.Abad@aphis.usda.gov, USDA-APHIS-PPQ-S&T	reference genome	929565	Phytophthora constricta				true	false	true
 GCA_033557995.1	Contig	California State Polytechnic University, Humboldt	reference genome	1771973	Phytophthora crassamura				true	false	true
 GCA_042082245.1	Scaffold	Kazimierz Wielki University		1771973	Phytophthora crassamura			Italy	true	false	true
+GCA_062042584.1	Contig	University of California, Davis		1771973	Phytophthora crassamura				true	false	true
 GCA_000468175.2	Scaffold	Tree Aggressors Identification using Genomic Approaches	reference genome	4786	Phytophthora cryptogea				true	false	true
 GCA_042082345.1	Scaffold	Kazimierz Wielki University	reference genome	905063	Phytophthora elongata			Australia	true	false	true
 GCA_030463285.1	Scaffold	Phytophthora Genome Sequencing Consortium	reference genome	180900	Phytophthora europaea				true	false	true
@@ -51522,9 +51602,13 @@ GCA_012295475.1	Scaffold	Maynooth University	reference genome	78237	Phytophthora
 GCA_047676585.1	Scaffold	Agriculture and Agri-Food Canada		78237	Phytophthora gonapodyides			Canada	true	false	true
 GCA_042082525.1	Scaffold	Kazimierz Wielki University	reference genome	880412	Phytophthora gregata			Australia	true	false	true
 GCA_042082605.1	Scaffold	Kazimierz Wielki University	reference genome	295481	Phytophthora hedraiandra			Netherlands	true	false	true
+GCA_062042599.1	Contig	University of California, Davis		295481	Phytophthora hedraiandra				true	false	true
 GCA_012656075.1	Contig	Contact; Gloria.Abad@aphis.usda.gov, USDA-APHIS-PPQ-S&T	reference genome	175300	Phytophthora hibernalis				true	false	true
 GCA_024679025.1	Scaffold	Oregon State University		175300	Phytophthora hibernalis				true	false	true
-GCA_042082705.1	Scaffold	Kazimierz Wielki University	reference genome	129352	Phytophthora humicola			Taiwan	true	false	true
+GCA_062042569.1	Contig	University of California, Davis	reference genome	565288	Phytophthora honggalleglyana				true	false	true
+GCA_062042588.1	Contig	University of California, Davis	reference genome	129352	Phytophthora humicola				true	false	true
+GCA_042082705.1	Scaffold	Kazimierz Wielki University		129352	Phytophthora humicola			Taiwan	true	false	true
+GCA_062042587.1	Contig	University of California, Davis	reference genome	2065305	Phytophthora humicola x Phytophthora inundata				false	false	true
 GCA_016880985.1	Scaffold	NIAB-East Malling Research	reference genome	53986	Phytophthora idaei			United Kingdom	true	false	true
 GCA_016865095.1	Scaffold	NIAB-East Malling Research		53986	Phytophthora idaei			United Kingdom	true	false	true
 GCA_016880175.1	Scaffold	NIAB-East Malling Research		53986	Phytophthora idaei			United Kingdom	true	false	true
@@ -51536,6 +51620,8 @@ GCA_026225685.1	Chromosome	University of California		4787	Phytophthora infestans
 GCA_044509515.1	Contig	IBCH RAS		4787	Phytophthora infestans			Russia	true	false	true
 GCA_000142945.1	Scaffold	Broad Institute	reference genome	403677	Phytophthora infestans T30-4				false	false	true
 GCA_042082625.1	Scaffold	Kazimierz Wielki University	reference genome	1861860	Phytophthora intricata			Taiwan	true	false	true
+GCA_062042585.1	Contig	University of California, Davis	reference genome	244122	Phytophthora inundata				true	false	true
+GCA_062042571.1	Contig	University of California, Davis	reference genome	2805668	Phytophthora kelmanii				true	false	true
 GCA_008080845.1	Contig	Contact; Gloria Abad Z, USDA-APHIS-PPQ-S&T	reference genome	325452	Phytophthora kernoviae	55.3781	-3.436	United Kingdom	true	true	true
 GCA_000448265.2	Scaffold	Tree Aggressors Identification using Genomic Approaches		325452	Phytophthora kernoviae				true	false	true
 GCA_000785725.3	Scaffold	University of Exeter		325452	Phytophthora kernoviae			New Zealand	true	false	true
@@ -51548,6 +51634,7 @@ GCA_001712715.2	Scaffold	University of Exeter		325452	Phytophthora kernoviae			C
 GCA_000333075.3	Scaffold	University of Exeter		1284355	Phytophthora kernoviae 00238/432			United Kingdom	false	false	true
 GCA_000333095.2	Scaffold	University of Exeter		1284356	Phytophthora kernoviae 00629/1			United Kingdom	false	false	true
 GCA_000333115.2	Scaffold	University of Exeter		1284357	Phytophthora kernoviae 00844/4			United Kingdom	false	false	true
+GCA_062042577.1	Contig	University of California, Davis	reference genome	1190534	Phytophthora lacustris				true	false	true
 GCA_000500205.2	Scaffold	Tree Aggressors Identification using Genomic Approaches	reference genome	129355	Phytophthora lateralis				true	false	true
 GCA_000333055.2	Scaffold	University of Exeter		129355	Phytophthora lateralis				true	false	true
 GCA_000318465.3	Scaffold	University of Exeter		1254522	Phytophthora lateralis MPF4			United Kingdom	false	false	true
@@ -51562,12 +51649,14 @@ GCA_032432875.1	Scaffold	ICAR-Central Plantation Crops Research Institute	refere
 GCA_042082825.1	Scaffold	Kazimierz Wielki University		192975	Phytophthora meadii			India	true	false	true
 GCA_056364845.1	Contig	Hawkesbury Institute for the Environment, Western Sydney University	reference genome	54510	Phytophthora medicaginis	-26.47	147.53	Australia	true	true	true
 GCA_002215365.1	Scaffold	Beltsville Agricultural Research Center	reference genome	4795	Phytophthora megakarya			Cameroon	true	false	true
+GCA_062042581.1	Contig	University of California, Davis	reference genome	4788	Phytophthora megasperma				true	false	true
 GCA_024211575.1	Contig	Zhejiang Academy of Agricultural Sciences	reference genome	120023	Phytophthora melonis			China	true	false	true
 GCA_008553785.1	Contig	Contact; Gloria Abad Z, USDA-APHIS-PPQ-S&T		120023	Phytophthora melonis				true	false	true
 GCA_024679155.1	Scaffold	Oregon State University		120023	Phytophthora melonis				true	false	true
 GCA_042257365.1	Scaffold	Indian Institute Of Chemical biology		120023	Phytophthora melonis	22.91566	88.351204	India	true	true	true
 GCA_977064985.1	Scaffold	Indian Biological Data Centre		120023	Phytophthora melonis			India	true	false	true
-GCA_001314345.1	Scaffold	University of Exeter	reference genome	596104	Phytophthora multivora			New Zealand	true	false	true
+GCA_062042597.1	Contig	University of California, Davis	reference genome	596104	Phytophthora multivora				true	false	true
+GCA_001314345.1	Scaffold	University of Exeter		596104	Phytophthora multivora			New Zealand	true	false	true
 GCA_001314355.1	Scaffold	University of Exeter		596104	Phytophthora multivora			New Zealand	true	false	true
 GCA_042082745.1	Scaffold	Kazimierz Wielki University		596104	Phytophthora multivora			Australia	true	false	true
 GCA_042082865.1	Scaffold	Kazimierz Wielki University	reference genome	1525714	Phytophthora nagaii			Japan	true	false	true
@@ -51579,22 +51668,27 @@ GCA_001482985.1	Scaffold	Chinese Academy of Sciences		4792	Phytophthora nicotian
 GCA_001483015.1	Scaffold	Chinese Academy of Sciences		4792	Phytophthora nicotianae			China	true	false	true
 GCA_003328465.1	Scaffold	Tobacco research institute of Chinese Academy of Agricultural Sciences		4792	Phytophthora nicotianae	36.4539	120.5886	China	true	true	true
 GCA_012658955.1	Contig	Contact; Gloria.Abad@aphis.usda.gov, USDA-APHIS-PPQ-S&T		4792	Phytophthora nicotianae				true	false	true
+GCA_062042600.1	Contig	University of California, Davis		4792	Phytophthora nicotianae				true	false	true
 GCA_000365545.1	Contig	Broad Institute		1317063	Phytophthora nicotianae CJ01A1			USA	false	false	true
 GCA_000247585.2	Scaffold	Broad Institute	reference genome	761204	Phytophthora nicotianae INRA-310				false	false	true
 GCA_000367145.1	Contig	Broad Institute		1317064	Phytophthora nicotianae P10297			USA	false	false	true
 GCA_000365505.1	Contig	Broad Institute		1317065	Phytophthora nicotianae P1569			USA	false	false	true
 GCA_000365525.1	Contig	Broad Institute		1317066	Phytophthora nicotianae P1976			USA	false	false	true
 GCA_024679275.1	Scaffold	Oregon State University	reference genome	2651253	Phytophthora niederhauseri				true	false	true
+GCA_062042598.1	Contig	University of California, Davis	reference genome	1385620	Phytophthora occultans				true	false	true
 GCA_014706125.1	Contig	United States Department of Agriculture	reference genome	508680	Phytophthora ohioensis (nom. inval.)				false	false	true
 GCA_046127205.1	Contig	Aarhus University	reference genome	2107226	Phytophthora oleae	37.25492	15.096775	Italy	true	true	true
 GCA_042082885.1	Scaffold	Kazimierz Wielki University	reference genome	1696062	Phytophthora ornamentata			Italy	true	false	true
 GCA_008079305.1	Contig	Colombian Oil palm Research Center, Cenipalma	reference genome	4796	Phytophthora palmivora	7.22436	-73.76428	Colombia	true	true	true
 GCA_002911725.1	Scaffold	Beltsville Agricultural Research Center		4796	Phytophthora palmivora			Cote d'Ivoire	true	false	true
 GCA_012932265.1	Scaffold	Malaysian Cocoa Board		4796	Phytophthora palmivora	1.494981	110.412479	Malaysia	true	true	true
+GCA_062042592.1	Contig	University of California, Davis		4796	Phytophthora palmivora				true	false	true
+GCA_062042568.1	Contig	University of California, Davis	reference genome	544909	Phytophthora parsiana				true	false	true
 GCA_024679295.1	Scaffold	Oregon State University	reference genome	540036	Phytophthora parvispora				true	false	true
 GCA_023611945.1	Contig	Nanjing Forestry University	reference genome	658425	Phytophthora pini			China	true	false	true
 GCA_024679215.1	Scaffold	Oregon State University		658425	Phytophthora pini				true	false	true
 GCA_033558055.1	Contig	California State Polytechnic University, Humboldt		658425	Phytophthora pini			USA	true	false	true
+GCA_062042595.1	Contig	University of California, Davis		658425	Phytophthora pini				true	false	true
 GCA_000500225.2	Scaffold	Tree Aggressors Identification using Genomic Approaches	reference genome	538568	Phytophthora pinifolia				true	false	true
 GCA_024679225.1	Scaffold	Oregon State University	reference genome	1131323	Phytophthora pisi				true	false	true
 GCA_000751395.2	Scaffold	Uppsala BioCenter		1131323	Phytophthora pisi	56.246116	12.608528	Sweden	true	true	true
@@ -51606,10 +51700,15 @@ GCA_001314425.1	Scaffold	University of Exeter	reference genome	1330343	Phytophth
 GCA_001314455.1	Scaffold	University of Exeter		1330343	Phytophthora pluvialis			New Zealand	true	false	true
 GCA_001314375.1	Scaffold	University of Exeter	reference genome	1690101	Phytophthora podocarpi			New Zealand	true	false	true
 GCA_001314925.1	Scaffold	University of Exeter		1690101	Phytophthora podocarpi			New Zealand	true	false	true
+GCA_062042570.1	Contig	University of California, Davis	reference genome	1821206	Phytophthora pseudocryptogea				true	false	true
 GCA_042083055.1	Scaffold	Kazimierz Wielki University	reference genome	2077275	Phytophthora pseudolactucae			Japan	true	false	true
-GCA_019155715.1	Scaffold	University of St Andrews	reference genome	221518	Phytophthora pseudosyringae			United Kingdom	true	false	true
+GCA_062042594.1	Contig	University of California, Davis	reference genome	221518	Phytophthora pseudosyringae				true	false	true
 GCA_012295425.1	Scaffold	Maynooth University		221518	Phytophthora pseudosyringae			Ireland	true	false	true
+GCA_019155715.1	Scaffold	University of St Andrews		221518	Phytophthora pseudosyringae			United Kingdom	true	false	true
+GCA_062042593.1	Contig	University of California, Davis	reference genome	180901	Phytophthora psychrophila				true	false	true
+GCA_062042591.1	Contig	University of California, Davis	reference genome	459883	Phytophthora quercetorum				true	false	true
 GCA_014706105.1	Contig	United States Department of Agriculture	reference genome	78236	Phytophthora quercina				true	false	true
+GCA_062042566.1	Contig	University of California, Davis		78236	Phytophthora quercina				true	false	true
 GCA_011947345.1	Contig	Contact; Gloria.Abad@aphis.usda.gov, USDA-APHIS-PPQ-S&T	reference genome	134455	Phytophthora quininea				true	false	true
 GCA_020800215.2	Chromosome	USDA ARS	reference genome	164328	Phytophthora ramorum			USA	true	false	true
 GCA_000149735.1	Scaffold	US DOE Joint Genome Institute (JGI)		164328	Phytophthora ramorum				true	false	true
@@ -51642,8 +51741,11 @@ GCA_020800235.2	Scaffold	USDA ARS		164328	Phytophthora ramorum			USA	true	false	
 GCA_046861845.1	Scaffold	Oregon State University		164328	Phytophthora ramorum			Viet Nam	true	false	true
 GCA_046861995.1	Scaffold	Oregon State University		164328	Phytophthora ramorum			Japan	true	false	true
 GCA_046862035.1	Scaffold	Oregon State University		164328	Phytophthora ramorum			Viet Nam	true	false	true
-GCA_975902205.1	Contig	huqiuan	reference genome	244167	Phytophthora rosacearum			China	true	false	true
+GCA_062042572.1	Contig	University of California, Davis		164328	Phytophthora ramorum				true	false	true
+GCA_062042574.1	Contig	University of California, Davis	reference genome	1185511	Phytophthora riparia				true	false	true
+GCA_062042586.1	Contig	University of California, Davis	reference genome	244167	Phytophthora rosacearum				true	false	true
 GCA_042082915.1	Scaffold	Kazimierz Wielki University		244167	Phytophthora rosacearum			USA	true	false	true
+GCA_975902205.1	Contig	huqiuan		244167	Phytophthora rosacearum			China	true	false	true
 GCA_000687305.2	Scaffold	Shenzhen Entry-Exit Inspection and Quarantine Bureau	reference genome	129364	Phytophthora rubi	22	113	China	true	true	true
 GCA_002025925.1	Scaffold	Oregon State University		129364	Phytophthora rubi			Netherlands	true	false	true
 GCA_009732905.1	Scaffold	NIAB EMR		129364	Phytophthora rubi			Germany	true	false	true
@@ -51662,18 +51764,24 @@ GCA_030279085.1	Chromosome	National Institute of Crop Science		67593	Phytophthor
 GCA_030279095.1	Chromosome	National Institute of Crop Science		67593	Phytophthora sojae			South Korea	true	false	true
 GCA_030279125.1	Chromosome	National Institute of Crop Science		67593	Phytophthora sojae			South Korea	true	false	true
 GCA_039619315.1	Complete Genome	Nanjing agricultural university		67593	Phytophthora sojae			China	true	false	true
+GCA_062042575.1	Contig	University of California, Davis		2060693	Phytophthora sp. 'cadmea'				false	false	true
 GCA_033558025.1	Contig	California State Polytechnic University, Humboldt		2116650	Phytophthora sp. 'mugwort'	37.31	-121.79	USA	false	true	true
 GCA_059928095.1	Contig	South China Agricultural University		3715156	Phytophthora sp. P3 RZ-2026			China	false	false	true
 GCA_014706145.1	Contig	United States Department of Agriculture		2750334	Phytophthora sp. ST_20190627				false	false	true
 GCA_012656105.1	Scaffold	Contact; Gloria.Abad@aphis.usda.gov, USDA-APHIS-PPQ-S&T	reference genome	67594	Phytophthora syringae				true	false	true
 GCA_024679005.1	Scaffold	Oregon State University		67594	Phytophthora syringae				true	false	true
 GCA_035080225.1	Scaffold	University of California, Riverside		67594	Phytophthora syringae			USA	true	false	true
+GCA_062042567.1	Contig	University of California, Davis		67594	Phytophthora syringae				true	false	true
 GCA_033558005.1	Contig	California State Polytechnic University, Humboldt		2065309	Phytophthora taxon juncus	37.2357	-121.7606	USA	false	true	true
+GCA_062042578.1	Contig	University of California, Davis		554913	Phytophthora taxon raspberry				false	false	true
+GCA_062042590.1	Contig	University of California, Davis		1194341	Phytophthora taxon walnut				false	false	true
 GCA_033557915.1	Contig	California State Polytechnic University, Humboldt	reference genome	129362	Phytophthora tentaculata			USA	true	false	true
 GCA_060308665.1	Scaffold	University of California Davis	reference genome	2811959	Phytophthora theobromicola			Brazil	true	false	true
 GCA_060308645.1	Scaffold	University of California Davis		2811959	Phytophthora theobromicola			Brazil	true	false	true
 GCA_060308685.1	Scaffold	University of California Davis		2811959	Phytophthora theobromicola			Brazil	true	false	true
 GCA_060308705.1	Scaffold	University of California Davis		2811959	Phytophthora theobromicola			Brazil	true	false	true
+GCA_062042579.1	Contig	University of California, Davis	reference genome	880414	Phytophthora thermophila				true	false	true
+GCA_062042580.1	Contig	University of California, Davis	reference genome	1216510	Phytophthora thermophila x Phytophthora amnicola				false	false	true
 GCA_014706135.1	Contig	United States Department of Agriculture	reference genome	1985166	Phytophthora tubulina				true	false	true
 GCA_042083075.1	Scaffold	Kazimierz Wielki University		1985166	Phytophthora tubulina			Austria	true	false	true
 GCA_024679075.1	Scaffold	Oregon State University	reference genome	180902	Phytophthora uliginosa				true	false	true
@@ -52723,6 +52831,34 @@ GCA_022343315.1	Scaffold	Chinese Academy of Inspection and Quarantine	reference 
 GCA_022609245.1	Scaffold	Institute of Microbiology, Chinese Academy of Sciences		5022	Plenodomus lingam			Netherlands	true	false	true
 GCA_056957255.1	Complete Genome	Huazhong Agricultural University		5022	Plenodomus lingam	60	-100	Canada	true	true	true
 GCA_059453465.1	Complete Genome	Agriculture and Agri-Food Canada		5022	Plenodomus lingam				true	false	true
+GCA_062044432.1	Contig	University of Manitoba		5022	Plenodomus lingam				true	false	true
+GCA_062044433.1	Contig	University of Manitoba		5022	Plenodomus lingam				true	false	true
+GCA_062044434.1	Contig	University of Manitoba		5022	Plenodomus lingam				true	false	true
+GCA_062044435.1	Contig	University of Manitoba		5022	Plenodomus lingam				true	false	true
+GCA_062044436.1	Contig	University of Manitoba		5022	Plenodomus lingam				true	false	true
+GCA_062044437.1	Contig	University of Manitoba		5022	Plenodomus lingam				true	false	true
+GCA_062044438.1	Contig	University of Manitoba		5022	Plenodomus lingam				true	false	true
+GCA_062044439.1	Contig	University of Manitoba		5022	Plenodomus lingam				true	false	true
+GCA_062044440.1	Contig	University of Manitoba		5022	Plenodomus lingam				true	false	true
+GCA_062044441.1	Contig	University of Manitoba		5022	Plenodomus lingam				true	false	true
+GCA_062044442.1	Contig	University of Manitoba		5022	Plenodomus lingam				true	false	true
+GCA_062044443.1	Contig	University of Manitoba		5022	Plenodomus lingam				true	false	true
+GCA_062044444.1	Contig	University of Manitoba		5022	Plenodomus lingam				true	false	true
+GCA_062044445.1	Contig	University of Manitoba		5022	Plenodomus lingam				true	false	true
+GCA_062044446.1	Contig	University of Manitoba		5022	Plenodomus lingam				true	false	true
+GCA_062044447.1	Contig	University of Manitoba		5022	Plenodomus lingam				true	false	true
+GCA_062044448.1	Contig	University of Manitoba		5022	Plenodomus lingam				true	false	true
+GCA_062044449.1	Contig	University of Manitoba		5022	Plenodomus lingam				true	false	true
+GCA_062044450.1	Contig	University of Manitoba		5022	Plenodomus lingam				true	false	true
+GCA_062044451.1	Contig	University of Manitoba		5022	Plenodomus lingam				true	false	true
+GCA_062044452.1	Contig	University of Manitoba		5022	Plenodomus lingam				true	false	true
+GCA_062044453.1	Contig	University of Manitoba		5022	Plenodomus lingam				true	false	true
+GCA_062044454.1	Contig	University of Manitoba		5022	Plenodomus lingam				true	false	true
+GCA_062044455.1	Contig	University of Manitoba		5022	Plenodomus lingam				true	false	true
+GCA_062044456.1	Contig	University of Manitoba		5022	Plenodomus lingam				true	false	true
+GCA_062044457.1	Contig	University of Manitoba		5022	Plenodomus lingam				true	false	true
+GCA_062044458.1	Contig	University of Manitoba		5022	Plenodomus lingam				true	false	true
+GCA_062044459.1	Contig	University of Manitoba		5022	Plenodomus lingam				true	false	true
 GCA_900538235.1	Scaffold	GSC		5022	Plenodomus lingam				true	false	true
 GCA_000230375.1	Scaffold	Genoscope		985895	Plenodomus lingam JN3				false	false	true
 GCA_900465115.1	Contig	GSC		225342	Plenodomus lingam/Leptosphaeria maculans 'brassicae' group				false	false	true
@@ -53570,6 +53706,7 @@ GCA_000006255.1	Scaffold	DOE Joint Genome Institute		561896	Postia placenta Mad-
 GCA_002117355.1	Scaffold	DOE Joint Genome Institute	reference genome	670580	Postia placenta MAD-698-R-SB12				false	false	true
 GCA_018250815.1	Contig	Florida Museum of Natural History	reference genome	2201596	Potamanaxas melicertes	10.98931	-85.42581	Costa Rica	true	true	true
 GCA_018252075.1	Contig	Florida Museum of Natural History	reference genome	355096	Potamanaxas unifasciata			Panama	true	false	true
+GCA_062042619.1	Scaffold	Nanjing Institute of Geology and Palaeontology, Chinese Academy of Sciences	reference genome	2600087	Potamanthellus chinensis				true	false	true
 GCA_027576435.1	Scaffold	Iridian Genomes	reference genome	419349	Potamarius nelsoni				true	false	true
 GCA_025447855.1	Scaffold	Iridian Genomes	reference genome	419350	Potamarius usumacintae			Mexico	true	false	true
 GCA_016746295.1	Scaffold	University of Texas at Austin	reference genome	2493646	Potamilus streckersoni			USA	true	false	true
@@ -53640,7 +53777,6 @@ GCA_030444845.1	Scaffold	UCLA	reference genome	262038	Prenolepis imparis	37.3068
 GCA_963573905.1	Scaffold	IBE(CSIC-UNIVERSITAT POMPEU FABRA)	reference genome	78452	Presbytis comata				true	false	true
 GCA_963575215.1	Scaffold	IBE(CSIC-UNIVERSITAT POMPEU FABRA)	reference genome	272115	Presbytis melalophos mitrata				false	false	true
 GCA_047496705.1	Scaffold	Northwest University	reference genome	1046098	Presbytis potenziani				true	false	true
-GCA_061099305.1	Chromosome	Fujian Agriculture and Forestry University	reference genome	270572	Priacanthus macracanthus	20.0999	109.74139	China	true	true	true
 GCA_988284805.1	Contig	Minderoo OceanOmics Centre at UWA	reference genome	443711	Priacanthus tayenus			Australia	true	false	true
 GCA_988285205.1	Contig	Minderoo OceanOmics Centre at UWA		443711	Priacanthus tayenus			Australia	true	false	true
 GCA_000281835.1	Contig	University of Memphis		50550	Priacma serrata			USA	true	false	true
@@ -53658,17 +53794,21 @@ GCA_031081885.1	Scaffold	University of Ljubljana	reference genome	27298	Priceomy
 GCA_030574515.1	Scaffold	UW-Madison		27298	Priceomyces melissophilus			USA	true	false	true
 GCA_025728095.1	Scaffold	Iridian Genomes	reference genome	255567	Prietella phreatophila				true	false	true
 GCA_002335605.1	Scaffold	RIKEN Center for Life Science Technologies, Division of Genomic Technologies	reference genome	181175	Prillingera fragicola				true	false	true
+GCA_062042553.1	Scaffold	Canada's national platform for genome sequencing and analysis	reference genome	328425	Primnoa pacifica	53.3173	-135.568	Canada	true	true	true
+GCA_062042551.1	Scaffold	Canada's national platform for genome sequencing and analysis		328425	Primnoa pacifica	53.3173	-135.568	Canada	true	true	true
 GCA_026284745.2	Scaffold	Iridian Genomes	reference genome	178892	Primolius auricollis				true	false	true
 GCA_024331605.1	Scaffold	Iridian Genomes	reference genome	178893	Primolius couloni				true	false	true
 GCA_026283845.1	Scaffold	Iridian Genomes	reference genome	178894	Primolius maracana				true	false	true
 GCA_978041845.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	133892	Primula farinosa	54.649868	-2.2365537	United Kingdom	true	true	true
 GCA_978041795.1	Scaffold	WELLCOME SANGER INSTITUTE		133892	Primula farinosa	54.649868	-2.2365537	United Kingdom	true	true	true
-GCA_060230645.1	Scaffold	Universitaet Potsdam	reference genome	175067	Primula forbesii			Germany	true	false	true
+GCA_062041539.1	Chromosome	Sichuan Agricultural University	reference genome	175067	Primula forbesii			China	true	false	true
+GCA_060230645.1	Scaffold	Universitaet Potsdam		175067	Primula forbesii			Germany	true	false	true
 GCA_965603815.1	Chromosome	Genoscope CEA	reference genome	184183	Primula hirsuta	47.35925	8.56055	Switzerland	true	true	true
 GCA_054094925.1	Chromosome	South China Botanical Garden	reference genome	1637976	Primula kwangtungensis			China	true	false	true
 GCA_060229955.1	Chromosome	University of Sannio	reference genome	110762	Primula palinuri			Italy	true	false	true
 GCA_965240305.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	175095	Primula scotica	55.9671861	-3.20983888	United Kingdom	true	true	true
 GCA_965240245.1	Chromosome	WELLCOME SANGER INSTITUTE		175095	Primula scotica	55.9671861	-3.20983888	United Kingdom	true	true	true
+GCA_062038069.1	Chromosome	Kunming Institute of Botany	reference genome	170926	Primula sinensis			China	true	false	true
 GCA_963682055.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	170927	Primula veris	55.853643	-3.1635345	United Kingdom	true	true	true
 GCA_000788445.1	Scaffold	University of Zurich		170927	Primula veris				true	false	true
 GCA_963682145.1	Contig	WELLCOME SANGER INSTITUTE		170927	Primula veris	55.853643	-3.1635345	United Kingdom	true	true	true
@@ -53682,6 +53822,7 @@ GCA_021018805.3	Chromosome	University of Missouri	reference genome	208062	Prinia
 GCA_032719365.1	Chromosome	Chengdu University	reference genome	32240	Prinsepia uniflora			China	true	false	true
 GCA_963942575.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	1747324	Priocnemis perturbator	51.769	-1.328	United Kingdom	true	true	true
 GCA_963942535.1	Contig	WELLCOME SANGER INSTITUTE		1747324	Priocnemis perturbator	51.769	-1.328	United Kingdom	true	true	true
+GCA_062042612.1	Scaffold	CNRS - Universite de Montpellier	reference genome	183752	Priodontes maximus			French Guiana	true	false	true
 GCA_037974335.1	Chromosome	shanghai ocean university	reference genome	7815	Prionace glauca			Pacific Ocean	true	false	true
 GCA_057534265.1	Contig	Polytechnic of Leiria		7815	Prionace glauca	38.04	-15.23	Atlantic Ocean	true	true	true
 GCA_016509475.2	Chromosome	Texas A&M University	reference genome	37029	Prionailurus bengalensis				true	false	true
@@ -53829,6 +53970,7 @@ GCA_982551655.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	1918294	Pr
 GCA_982551565.1	Scaffold	WELLCOME SANGER INSTITUTE		1918294	Prosena siberita	51.51	-1.11	United Kingdom	true	true	true
 GCA_056824915.1	Scaffold	Bird 10,000 Genomes (B10K) consortium	reference genome	2338444	Prosopeia personata			Fiji	true	false	true
 GCA_029017545.1	Scaffold	UAE University	reference genome	364024	Prosopis cineraria			United Arab Emirates	true	false	true
+GCA_062042624.1	Scaffold	Nanjing Institute of Geology and Palaeontology, Chinese Academy of Sciences	reference genome	3345130	Prosopistoma ocellatum				true	false	true
 GCA_059725385.1	Scaffold	Group of Integrative Ecology and Evolution, Department of Biological Science, School of Science, Nagoya University	reference genome	231741	Prosopocoilus inclinatus inclinatus	35.618873	139.3823	Japan	false	true	true
 GCA_036172665.1	Chromosome	TIBET ACADEMY OF AGRICULTURAL AND ANIMAL HUSBANDRY SCIENCES	reference genome	618466	Prosopocoilus inquinatus			China	true	false	true
 GCA_907163375.1	Scaffold	durham university	reference genome	2291463	Prostheceraeus crozeri				true	false	true
@@ -54659,6 +54801,7 @@ GCA_043644785.1	Chromosome	American Museum of Natural History	reference genome	2
 GCA_058219175.1	Chromosome	Wuhan University	reference genome	94956	Pteronotus davyi			Belize	true	false	true
 GCA_021234165.1	Scaffold	CSHL	reference genome	1884717	Pteronotus mesoamericanus				true	false	true
 GCA_056363955.1	Chromosome	Bat1K Project		1884717	Pteronotus mesoamericanus	9.081813	-79.705108	Panama	true	true	true
+GCA_062034346.1	Scaffold	Wuhan University		1884717	Pteronotus mesoamericanus			Belize	true	false	true
 GCA_000465405.1	Scaffold	School of Biological & Chemical Sciences, Queen Mary University of London		59476	Pteronotus parnellii				true	false	true
 GCA_036768555.1	Scaffold	INSTITUTO POLITECNICO NACIONAL	reference genome	1884721	Pteronotus parnellii mexicanus			Mexico	false	false	true
 GCA_004024605.1	Scaffold	Broad Institute	reference genome	9672	Pteronura brasiliensis				true	false	true
@@ -55450,7 +55593,7 @@ GCA_031208725.1	Contig	University of Kentucky		318829	Pyricularia oryzae			Brazi
 GCA_031211395.1	Scaffold	University of Kentucky		318829	Pyricularia oryzae			Brazil	true	false	true
 GCA_031212055.1	Contig	University of Kentucky		318829	Pyricularia oryzae			Brazil	true	false	true
 GCA_031306055.1	Scaffold	University of Kentucky		318829	Pyricularia oryzae			Uruguay	true	false	true
-GCA_031306085.1	Scaffold	University of Kentucky		318829	Pyricularia oryzae			Brazil	true	false	true
+GCA_031306085.2	Scaffold	University of Kentucky		318829	Pyricularia oryzae			Brazil	true	false	true
 GCA_031466475.1	Contig	University of Kentucky		318829	Pyricularia oryzae			Brazil	true	false	true
 GCA_031466495.1	Scaffold	University of Kentucky		318829	Pyricularia oryzae			Brazil	true	false	true
 GCA_032881745.1	Scaffold	University of Kentucky		318829	Pyricularia oryzae			Brazil	true	false	true
@@ -55666,6 +55809,9 @@ GCA_061476605.1	Scaffold	University of Kentucky		318829	Pyricularia oryzae			USA
 GCA_061597655.1	Scaffold	University of Kentucky		318829	Pyricularia oryzae			Uruguay	true	false	true
 GCA_061597675.1	Scaffold	University of Kentucky		318829	Pyricularia oryzae			Uruguay	true	false	true
 GCA_061597725.1	Scaffold	University of Kentucky		318829	Pyricularia oryzae			Brazil	true	false	true
+GCA_062039096.1	Contig	Pacto da Bioeconomia Azul		318829	Pyricularia oryzae				true	false	true
+GCA_062039097.1	Contig	Pacto da Bioeconomia Azul		318829	Pyricularia oryzae				true	false	true
+GCA_062042561.1	Complete Genome	Zhejiang Academy of Agricultural Sciences		318829	Pyricularia oryzae				true	false	true
 GCA_900474175.3	Contig	THE SAINSBURY LABORATORY		318829	Pyricularia oryzae				true	false	true
 GCA_900474225.2	Contig	THE SAINSBURY LABORATORY		318829	Pyricularia oryzae				true	false	true
 GCA_900474375.2	Contig	THE SAINSBURY LABORATORY		318829	Pyricularia oryzae				true	false	true
@@ -55950,7 +56096,9 @@ GCA_023336345.1	Contig	Agriculture and Agri-Food Canada	reference genome	82938	P
 GCA_022836835.1	Contig	The third affiliated hospital of Sun Yat-sen University	reference genome	114742	Pythium insidiosum	23	113	China	true	true	true
 GCA_000764265.1	Scaffold	University of Florida		114742	Pythium insidiosum	35	-89	USA	true	true	true
 GCA_001029375.2	Contig	King Mongkut's University of Technology Thonburi		114742	Pythium insidiosum	13.757925	100.485849	Thailand	true	true	true
+GCA_001950795.2	Contig	System Biology and Bioinformatics, System Biology and Bioinformatics, King Mongkut's University of Technology Thonburi		114742	Pythium insidiosum	14.32	100.55	Thailand	true	true	true
 GCA_001950815.1	Scaffold	System Biology and Bioinformatics, System Biology and Bioinformatics, King Mongkut's University of Technology Thonburi		114742	Pythium insidiosum	35.45	-86.15	USA	true	true	true
+GCA_001950835.2	Contig	System Biology and Bioinformatics, System Biology and Bioinformatics, King Mongkut's University of Technology Thonburi		114742	Pythium insidiosum	10	-84	Costa Rica	true	true	true
 GCA_001950855.1	Scaffold	System Biology and Bioinformatics, System Biology and Bioinformatics, King Mongkut's University of Technology Thonburi		114742	Pythium insidiosum	-10	-55	Brazil	true	true	true
 GCA_001950875.1	Scaffold	System Biology and Bioinformatics, System Biology and Bioinformatics, King Mongkut's University of Technology Thonburi		114742	Pythium insidiosum	-25	135	Australia	true	true	true
 GCA_001950895.1	Scaffold	System Biology and Bioinformatics, System Biology and Bioinformatics, King Mongkut's University of Technology Thonburi		114742	Pythium insidiosum	19.54	99.49	Thailand	true	true	true
@@ -56019,7 +56167,8 @@ GCA_023334575.1	Contig	Agriculture and Agri-Food Canada	reference genome	82953	P
 GCA_000186305.2	Scaffold	The Consortium for Comparative Genomics, UC Denver		176946	Python bivittatus			USA	true	false	true
 GCA_054923595.1	Scaffold	Iridian Genomes		176946	Python bivittatus			Puerto Rico	true	false	true
 GCA_059951505.1	Contig	BGI	reference genome	176946	Python bivittatus			Hong Kong	true	false	true
-GCA_059341745.1	Contig	Prinses maxima centrum	reference genome	51751	Python regius			Netherlands	true	false	true
+GCA_062034297.1	Scaffold	University of Colorado Boulder	reference genome	51751	Python regius			USA	true	false	true
+GCA_059341745.1	Contig	Prinses maxima centrum		51751	Python regius			Netherlands	true	false	true
 GCA_018252455.1	Contig	Florida Museum of Natural History	reference genome	355103	Pythonides amaryllis	10.9163	-85.37869	Costa Rica	true	true	true
 GCA_984901695.1	Chromosome	Genoscope CEA	reference genome	1206975	Pyura microcosmus	48.70106667	-2.1645	Atlantic Ocean	true	true	true
 GCA_984895145.1	Chromosome	Genoscope		1206975	Pyura microcosmus	48.70106667	-2.1645	Atlantic Ocean	true	true	true
@@ -56212,8 +56361,6 @@ GCA_002777955.1	Scaffold	University of Montana		2036197	Raffaelea sp. RL272			US
 GCA_009866635.1	Scaffold	Southern Illinois University		1477589	Rafflesia leonardi	18.04	122.06	Philippines	true	true	true
 GCA_044473425.1	Scaffold	Iridian Genomes	reference genome	3286151	Ragactis hyalina				true	false	true
 GCA_036172245.1	Scaffold	University of Central Florida	reference genome	1382697	Raillietiella orientalis	28.6349263	-81.2773628	USA	true	true	true
-GCA_988324735.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	223862	Raja brachyura	50.325291	-4.236297	United Kingdom	true	true	true
-GCA_988324365.1	Chromosome	WELLCOME SANGER INSTITUTE		223862	Raja brachyura	50.325291	-4.236297	United Kingdom	true	true	true
 GCA_980434695.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	7781	Raja clavata	50.3368	-4.255667	United Kingdom	true	true	true
 GCA_980432155.1	Scaffold	WELLCOME SANGER INSTITUTE		7781	Raja clavata	50.3368	-4.255667	United Kingdom	true	true	true
 GCA_982319585.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	223863	Raja microocellata	50.32529	-4.2363	United Kingdom	true	true	true
@@ -56260,7 +56407,8 @@ GCA_040966935.1	Scaffold	Iridian Genomes	reference genome	91781	Ramphastos cuvie
 GCA_040966975.1	Scaffold	Iridian Genomes	reference genome	322580	Ramphastos dicolorus				true	false	true
 GCA_013399055.1	Scaffold	B10K Consortium	reference genome	322582	Ramphastos sulfuratus	9.15	-82.06	Panama	true	true	true
 GCA_040967055.1	Scaffold	Iridian Genomes	reference genome	207748	Ramphastos swainsonii				true	false	true
-GCA_040967075.1	Scaffold	Iridian Genomes	reference genome	95723	Ramphastos toco				true	false	true
+GCA_062034327.1	Chromosome	Universidade Federal de Sao Carlos	reference genome	95723	Ramphastos toco			Brazil	true	false	true
+GCA_040967075.1	Scaffold	Iridian Genomes		95723	Ramphastos toco				true	false	true
 GCA_040967755.1	Scaffold	Iridian Genomes	reference genome	125240	Ramphastos tucanus				true	false	true
 GCA_040967795.1	Scaffold	Iridian Genomes	reference genome	91793	Ramphastos vitellinus				true	false	true
 GCA_056825045.1	Scaffold	Bird 10,000 Genomes (B10K) consortium	reference genome	266379	Ramsayornis fasciatus			Australia	true	false	true
@@ -56344,7 +56492,7 @@ GCA_041956645.1	Scaffold	DOE Joint Genome Institute	reference genome	89139	Rasam
 GCA_055762005.1	Contig	University of California Riverside	reference genome	1826649	Rasamsonia columbiensis			USA	true	false	true
 GCA_041956655.1	Scaffold	DOE Joint Genome Institute		68825	Rasamsonia emersonii				true	false	true
 GCA_000968595.1	Contig	DSM Bio-based Products & Services B.V.	reference genome	1408163	Rasamsonia emersonii CBS 393.64				false	false	true
-GCA_054507245.1	Scaffold	Faculty of Biology Universitas Gadjah Mada	reference genome	590941	Rasbora lateristriata			Indonesia	true	false	true
+GCA_054507245.2	Chromosome	Faculty of Biology Universitas Gadjah Mada	reference genome	590941	Rasbora lateristriata			Indonesia	true	false	true
 GCA_024605115.1	Scaffold	Faculty of Science, Prince of Songkla University	reference genome	334878	Rastrelliger brachysoma				true	false	true
 GCA_988285715.1	Contig	Minderoo OceanOmics Centre at UWA	reference genome	384378	Rastrelliger faughni	26.18333	56.25	Oman	true	true	true
 GCA_988285645.1	Contig	Minderoo OceanOmics Centre at UWA	reference genome	70446	Rastrelliger kanagurta	-11.4611	143.7772	Australia	true	true	true
@@ -56766,6 +56914,7 @@ GCA_900004065.1	Scaffold	Zhang Zhang		106626	Rhizophora apiculata			China	true	f
 GCA_900174605.1	Scaffold	Zhang Zhang		106626	Rhizophora apiculata				true	false	true
 GCA_037832345.1	Contig	Sun Yat-sen University	reference genome	40031	Rhizophora mangle			China	true	false	true
 GCA_053455985.1	Scaffold	National Science and Technology Development Agency	reference genome	61149	Rhizophora mucronata			Thailand	true	false	true
+GCA_062043716.1	Contig	Yokohama National University		2741988	Rhizophydiales sp. PSC023	42.45963997	-84.00920736	USA	false	true	true
 GCA_002995455.1	Scaffold	Oregon State University	reference genome	87122	Rhizopogon fuscorubens			USA	true	false	true
 GCA_002994995.1	Scaffold	Oregon State University	reference genome	98233	Rhizopogon hawkerae	44.87	-121.82	USA	true	true	true
 GCA_002995035.1	Scaffold	Oregon State University		98233	Rhizopogon hawkerae	44.96	-122.03	USA	true	true	true
@@ -56874,6 +57023,7 @@ GCA_011763915.1	Scaffold	J Craig Venter Institute		936053	Rhizopus delemar	40.44
 GCA_011764145.1	Scaffold	J Craig Venter Institute		936053	Rhizopus delemar	40.440611	-79.995889	USA	true	true	true
 GCA_019022795.1	Contig	Soongsil university		936053	Rhizopus delemar			Viet Nam	true	false	true
 GCA_054127015.1	Contig	Beijing Technology and Business University		936053	Rhizopus delemar			China	true	false	true
+GCA_062034329.1	Contig	University of Massachusetts Amherst		936053	Rhizopus delemar			USA	true	false	true
 GCA_000149305.1	Scaffold	Broad Institute	reference genome	246409	Rhizopus delemar RA 99-880				false	false	true
 GCA_000738605.1	Scaffold	IGS		1279484	Rhizopus delemar Type II NRRL 21446			USA	false	false	true
 GCA_000738595.1	Scaffold	IGS		1279483	Rhizopus delemar Type II NRRL 21447			Canada	false	false	true
@@ -60617,8 +60767,8 @@ GCA_022817585.1	Scaffold	The Ohio State University		2729063	Scelioninae gen. 2 s
 GCA_964204855.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	2998547	Scellus notatus	51.77	-1.331	United Kingdom	true	true	true
 GCA_964204915.1	Scaffold	WELLCOME SANGER INSTITUTE		2998547	Scellus notatus	51.77	-1.331	United Kingdom	true	true	true
 GCA_043090945.1	Scaffold	Iridian Genomes	reference genome	43620	Sceloporus chrysostictus				true	false	true
-GCA_023333645.1	Scaffold	UCLA	reference genome	8519	Sceloporus occidentalis	37.72642	-119.38959	USA	true	true	true
 GCA_023333635.1	Scaffold	UCLA		8519	Sceloporus occidentalis	37.72642	-119.38959	USA	true	true	true
+GCA_023333645.1	Scaffold	UCLA	reference genome	8519	Sceloporus occidentalis	37.72642	-119.38959	USA	true	true	true
 GCA_016801065.1	Chromosome	Univeristy of Washington	reference genome	190870	Sceloporus tristichus	34.899667	-110.151333	USA	true	true	true
 GCA_016801415.1	Chromosome	Univeristy of Washington		190870	Sceloporus tristichus	34.527889	-110.080722	USA	true	true	true
 GCA_019175285.1	Chromosome	Auburn University	reference genome	8520	Sceloporus undulatus	31.0915	-86.5454	USA	true	true	true
@@ -61151,8 +61301,10 @@ GCA_002162575.1	Scaffold	University of Toronto Mississauga	reference genome	1074
 GCA_025389075.1	Contig	None	reference genome	38451	Sclerotinia minor			United Kingdom	true	false	true
 GCA_024586315.1	Scaffold	Forestry and Agricultural Biotechnology Institute		38451	Sclerotinia minor			Chile	true	false	true
 GCA_029034665.1	Scaffold	Forestry and Agricultural Biotechnology Institute		38451	Sclerotinia minor			Italy	true	false	true
-GCA_029531795.1	Contig	Northwest A&F University	reference genome	352851	Sclerotinia nivalis	34.07	107.32	China	true	true	true
+GCA_062042565.1	Chromosome	INRAE	reference genome	352851	Sclerotinia nivalis	35.6682156	139.6584681	Japan	true	true	true
+GCA_029531795.1	Contig	Northwest A&F University		352851	Sclerotinia nivalis	34.07	107.32	China	true	true	true
 GCA_059058745.1	Contig	Moscow Timiryazev Agricultural Academy		352851	Sclerotinia nivalis	55.3833	43.8	Russia	true	true	true
+GCA_062042564.1	Contig	INRAE		352851	Sclerotinia nivalis	43	142	Japan	true	true	true
 GCA_040955825.1	Scaffold	Forestry and Agricultural Biotechnology	reference genome	2075361	Sclerotinia sativa				true	false	true
 GCA_019022465.1	Contig	Chinese Academy of Agricultural Sciences		5180	Sclerotinia sclerotiorum			China	true	false	true
 GCA_025389095.1	Contig	None		5180	Sclerotinia sclerotiorum	52.0649	-2.4047	United Kingdom	true	true	true
@@ -61602,6 +61754,7 @@ GCA_056825065.1	Scaffold	Bird 10,000 Genomes (B10K) consortium	reference genome	
 GCA_964300435.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	6610	Sepia officinalis	42.487769	3.130993	France	true	true	true
 GCA_050097725.1	Chromosome	Max-Planck Institute for Brain Research		6610	Sepia officinalis			Portugal	true	false	true
 GCA_964300445.1	Contig	WELLCOME SANGER INSTITUTE		6610	Sepia officinalis	42.487769	3.130993	France	true	true	true
+GCA_062044026.1	Chromosome	Zhejiang Ocean University	reference genome	279094	Sepiella japonica				true	false	true
 GCA_965124075.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	84402	Sepietta obscura	42.487769	3.130993	France	true	true	true
 GCA_965140845.1	Scaffold	WELLCOME SANGER INSTITUTE		84402	Sepietta obscura	42.487769	3.130993	France	true	true	true
 GCA_964339045.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	70192	Sepiola affinis	42.487769	3.130993	France	true	true	true
@@ -61629,10 +61782,14 @@ GCA_019623665.1	Scaffold	DOE Joint Genome Institute		2600210	Serendipita sp. 397
 GCA_019623675.1	Scaffold	DOE Joint Genome Institute		2600211	Serendipita sp. 398				false	false	true
 GCA_019627685.1	Scaffold	DOE Joint Genome Institute		2600212	Serendipita sp. 399				false	false	true
 GCA_019627735.1	Scaffold	DOE Joint Genome Institute		2600213	Serendipita sp. 400				false	false	true
+GCA_062034319.1	Contig	DOE Joint Genome Institute		2600213	Serendipita sp. 400				false	false	true
 GCA_019627725.1	Scaffold	DOE Joint Genome Institute		2600214	Serendipita sp. 401				false	false	true
 GCA_019627745.1	Scaffold	DOE Joint Genome Institute		2600215	Serendipita sp. 405				false	false	true
+GCA_062034320.1	Contig	DOE Joint Genome Institute		2600215	Serendipita sp. 405				false	false	true
 GCA_019633565.1	Scaffold	University of Missouri		2136033	Serendipita sp. 407	26.1859	-81.4059	USA	false	true	true
+GCA_062034322.1	Contig	DOE Joint Genome Institute		2136033	Serendipita sp. 407				false	false	true
 GCA_019627755.1	Scaffold	DOE Joint Genome Institute		2600216	Serendipita sp. 411				false	false	true
+GCA_062034321.1	Contig	DOE Joint Genome Institute		2600216	Serendipita sp. 411				false	false	true
 GCA_003073295.1	Scaffold	DOE Joint Genome Institute		109899	Serendipita vermifera				true	false	true
 GCA_000827415.1	Scaffold	DOE Joint Genome Institute	reference genome	933852	Serendipita vermifera MAFF 305830				false	false	true
 GCA_030849805.1	Scaffold	University of Ostrava	reference genome	424813	Sergeia podlipaevii			Czech Republic	true	false	true
@@ -62028,7 +62185,9 @@ GCA_042767305.1	Scaffold	UCLA		71773	Siphateles bicolor	37.68917	-118.838547	USA
 GCA_051911475.1	Contig	Oregon State University	reference genome	180520	Siphateles boraxobius	42.32757783	-118.60186035	USA	true	true	true
 GCA_949825025.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	248243	Siphlonurus alternatus	54.92	-4.77	United Kingdom	true	true	true
 GCA_949824885.1	Contig	WELLCOME SANGER INSTITUTE		248243	Siphlonurus alternatus	54.92	-4.77	United Kingdom	true	true	true
+GCA_062042617.1	Scaffold	Nanjing Institute of Geology and Palaeontology, Chinese Academy of Sciences		3345131	Siphlonurus sp. 1 CYC-2024a				false	false	true
 GCA_046270405.1	Scaffold	Iridian Genomes	reference genome	121382	Siphlophis compressus				true	false	true
+GCA_062042627.1	Scaffold	Nanjing Institute of Geology and Palaeontology, Chinese Academy of Sciences	reference genome	981053	Siphluriscus chinensis				true	false	true
 GCA_978134735.1	Chromosome	NBIS (National Bioinformatics Infrastructure Sweden)	reference genome	57642	Siphonaria pectinata	36.793583	-2.06165149	Spain	true	true	true
 GCA_027596065.1	Contig	DOE Joint Genome Institute		2723227	Siphonaria sp. JEL0065				false	false	true
 GCA_032622095.1	Chromosome	The University of Alabama	reference genome	3019061	Siphonodentalium dalli	-63.93518	-56.57053	Antarctica	true	true	true
@@ -62044,6 +62203,8 @@ GCA_001632355.1	Scaffold	DOE Joint Genome Institute	reference genome	1314776	Sis
 GCA_039880765.1	Chromosome	Canada's national platform for genome sequencing and analysis	reference genome	8756	Sistrurus catenatus			Canada	true	false	true
 GCA_037127405.1	Scaffold	The Ohio State University		8756	Sistrurus catenatus			USA	true	false	true
 GCA_039880715.1	Scaffold	Canada's national platform for genome sequencing and analysis		8756	Sistrurus catenatus			Canada	true	false	true
+GCA_062034332.1	Chromosome	The Ohio State University	reference genome	8758	Sistrurus miliarius				true	false	true
+GCA_062034334.1	Chromosome	The Ohio State University	reference genome	8757	Sistrurus tergeminus				true	false	true
 GCA_900406495.1	Scaffold	MAX PLANCK INSTITUTE FOR PLANT BREEDING RESEARCH	reference genome	71365	Sisymbrium altissimum				true	false	true
 GCA_000411075.1	Scaffold	McGill University	reference genome	3730	Sisymbrium irio	40.5	-3.683333	Spain	true	true	true
 GCA_988288955.1	Chromosome	WELLCOME SANGER INSTITUTE		203583	Sisymbrium orientale	56.034339	-2.8354285	United Kingdom	true	true	true
@@ -62306,6 +62467,8 @@ GCA_054833465.1	Chromosome	Guangxi Academy of Agricultural Sciences		4111	Solanu
 GCA_057556385.1	Chromosome	CIRAD		4111	Solanum melongena			Reunion	true	false	true
 GCA_059480125.1	Chromosome	CIRAD		4111	Solanum melongena			Reunion	true	false	true
 GCA_059480215.1	Chromosome	CIRAD		4111	Solanum melongena			Reunion	true	false	true
+GCA_062029954.1	Contig	CIRAD france		4111	Solanum melongena			France	true	false	true
+GCA_062029955.1	Contig	CIRAD france		4111	Solanum melongena			France	true	false	true
 GCA_965654555.1	Chromosome	disafa_plant_genetics		4111	Solanum melongena			Italy	true	false	true
 GCA_965654565.1	Chromosome	disafa_plant_genetics		4111	Solanum melongena			Italy	true	false	true
 GCA_965654575.1	Chromosome	disafa_plant_genetics		4111	Solanum melongena			Italy	true	false	true
@@ -64596,6 +64759,7 @@ GCA_049308365.1	Contig	University of California, Santa Cruz		133113	Tamalia cowe
 GCA_004025105.1	Scaffold	Broad Institute		48850	Tamandua tetradactyla				true	false	true
 GCA_023851605.1	Chromosome	Vertebrate Genomes Project	reference genome	48850	Tamandua tetradactyla	4.917311	-58.943462	Guyana	true	true	true
 GCA_023853755.1	Scaffold	Vertebrate Genomes Project		48850	Tamandua tetradactyla	4.917311	-58.943462	Guyana	true	true	true
+GCA_062042608.1	Scaffold	CNRS - Universite de Montpellier		48850	Tamandua tetradactyla	5.8	-52.42	French Guiana	true	true	true
 GCA_039764185.1	Chromosome	Chinese Academy of Forestry	reference genome	262213	Tamarix austromongolica			China	true	false	true
 GCA_030549775.1	Chromosome	Shandong Agricultural University	reference genome	189791	Tamarix chinensis			China	true	false	true
 GCA_964205315.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	125585	Tamarix gallica	50.8241	-0.3011	United Kingdom	true	true	true
@@ -64898,7 +65062,8 @@ GCA_046270905.1	Scaffold	Iridian Genomes	reference genome	1562990	Tepuihyla exop
 GCA_024811115.1	Contig	Friedrich-Schiller-University	reference genome	40462	Terana coerulea	50.10440215	4.66163163	Belgium	true	true	true
 GCA_058748175.2	Chromosome	National Taiwan Ocean University	reference genome	163131	Terapon jarbua			Taiwan	true	false	true
 GCA_028564955.1	Scaffold	Iridian Genomes	reference genome	1161363	Terapon puta				true	false	true
-GCA_054122135.1	Contig	Kyoto University	reference genome	1873345	Teratoramularia rumicicola	36.08	140.11	Japan	true	true	true
+GCA_062034324.1	Contig	Kyoto University	reference genome	1873345	Teratoramularia rumicicola			Japan	true	false	true
+GCA_054122135.1	Contig	Kyoto University		1873345	Teratoramularia rumicicola	36.08	140.11	Japan	true	true	true
 GCA_060658785.1	Contig	Kyoto University		3758606	Teratoramularia sp. RD051456			Japan	false	false	true
 GCA_051473905.1	Chromosome	Xinjiang Agricultural University	reference genome	102174	Teratoscincus roborowskii			China	true	false	true
 GCA_010367425.1	Scaffold	Forestry and Agricultural Biotechnology Institute (FABI), University of Pretoria	reference genome	418781	Teratosphaeria destructans			Indonesia	true	false	true
@@ -65072,13 +65237,13 @@ GCA_057930795.1	Contig	Ghent University	reference genome	178897	Tetranychus evan
 GCA_036759885.1	Chromosome	Nanjing Agricultural University	reference genome	93131	Tetranychus piercei			China	true	false	true
 GCA_028476895.1	Chromosome	Nanjing Agricultural University	reference genome	93132	Tetranychus truncatus			China	true	false	true
 GCA_057073485.1	Chromosome	Nanjing Agricultural University	reference genome	133227	Tetranychus turkestani			China	true	false	true
-GCA_000239435.1	Scaffold	DOE Joint Genome Institute	reference genome	32264	Tetranychus urticae				true	false	true
+GCA_000239435.1	Scaffold	DOE Joint Genome Institute		32264	Tetranychus urticae				true	false	true
 GCA_030522305.1	Contig	University of Utah		32264	Tetranychus urticae			Italy	true	false	true
 GCA_030522315.1	Contig	University of Utah		32264	Tetranychus urticae			Belgium	true	false	true
 GCA_030522325.1	Scaffold	University of Utah		32264	Tetranychus urticae			Netherlands	true	false	true
 GCA_035773135.1	Contig	Elizabeth Macarthur Agricultural Institute		32264	Tetranychus urticae			Australia	true	false	true
 GCA_036877765.1	Chromosome	Beijing Academy of Agriculture and Forestry Sciences		32264	Tetranychus urticae			China	true	false	true
-GCA_039701765.1	Chromosome	Nanjing agricultural university		32264	Tetranychus urticae	36.4	117.183	China	true	true	true
+GCA_039701765.1	Chromosome	Nanjing agricultural university	reference genome	32264	Tetranychus urticae	36.4	117.183	China	true	true	true
 GCA_051529885.1	Contig	Vavilov Institute of General Genetics RAS		32264	Tetranychus urticae				true	false	true
 GCA_965642085.1	Chromosome	WELLCOME SANGER INSTITUTE		32264	Tetranychus urticae	52.354431	4.9563	Netherlands	true	true	true
 GCA_965642115.1	Chromosome	WELLCOME SANGER INSTITUTE		32264	Tetranychus urticae	52.354431	4.9563	Netherlands	true	true	true
@@ -66604,6 +66769,7 @@ GCA_018804165.1	Scaffold	INAIL-DIT, Research Area		49224	Trichoderma hamatum			P
 GCA_046127165.1	Contig	Yunnan Agricultural University, YAU		49224	Trichoderma hamatum			China	true	false	true
 GCA_049996655.1	Contig	Institute of Agrophysics, Polish Academy of Sciences		49224	Trichoderma hamatum	51.346004	22.266099	Poland	true	true	true
 GCA_054127445.1	Scaffold	Shandong Agriculture University		49224	Trichoderma hamatum	36.17	117.16	China	true	true	true
+GCA_062034331.1	Scaffold	Zhejiang A&F University		49224	Trichoderma hamatum			China	true	false	true
 GCA_000331835.2	Scaffold	University of Exeter		1247866	Trichoderma hamatum GD12			United Kingdom	false	false	true
 GCA_000988865.1	Scaffold	University of Pisa		5544	Trichoderma harzianum			Italy	true	false	true
 GCA_001990665.1	Scaffold	AIT-Austrian Institute of Technology		5544	Trichoderma harzianum			France	true	false	true
@@ -66715,6 +66881,7 @@ GCA_059056935.1	Contig	Government of Canada		3695247	Trichoderma sp. ARE 21-36		
 GCA_059056855.1	Contig	Government of Canada		3695245	Trichoderma sp. ARE 7.A.2			Canada	false	false	true
 GCA_030015385.1	Scaffold	Universidad Autonoma del Estado de Morelos		3036682	Trichoderma sp. BMH-0061	18.58	-99.13	Mexico	false	true	true
 GCA_046056035.1	Contig	China Agricultural University		3344515	Trichoderma sp. CAU-M14			China	false	false	true
+GCA_062029889.1	Scaffold	University of Antioquia		3835411	Trichoderma sp. CB2-2026	7.8763	-76.6436	Colombia	false	true	true
 GCA_030708095.1	Contig	University of Campinas		2898082	Trichoderma sp. CBMAI-0020	-22.77686	-47.02818	Brazil	false	true	true
 GCA_029844175.1	Contig	University of Campinas		2898081	Trichoderma sp. CBMAI-0179	-22.77686	-47.02818	Brazil	false	true	true
 GCA_030708105.1	Contig	University of Campinas		2898083	Trichoderma sp. CBMAI-0711	-22.77686	-47.02818	Brazil	false	true	true
@@ -67242,6 +67409,8 @@ GCA_046128435.1	Scaffold	University of California, Santa Cruz	reference genome	2
 GCA_046128455.1	Contig	University of California, Santa Cruz		2919430	Trigonoscuta pilosa	37.600866	-122.499766	USA	true	true	true
 GCA_054471025.1	Contig	Institute of Microbiology, Chinese Academy of Sciences		3467459	Trigonosporomyces sp. YL-2025a			China	false	false	true
 GCA_059707865.1	Scaffold	National Parks Board Singapore	reference genome	1504507	Trigonostemon longifolius			Singapore	true	false	true
+GCA_062041663.1	Scaffold	Canada's national platform for genome sequencing and analysis	reference genome	881767	Trigonotylus caelestialium			Canada	true	false	true
+GCA_062041543.1	Scaffold	Canada's national platform for genome sequencing and analysis		881767	Trigonotylus caelestialium			Canada	true	false	true
 GCA_030248225.1	Contig	Academia Sinica	reference genome	3040840	Trileptium ribeirensis				true	false	true
 GCA_030269945.2	Chromosome	Shimada-lab Faculty of Science Department of Life Science, Gakushuin University	reference genome	941097	Trilocha varians				true	false	true
 GCA_045862255.1	Chromosome	Shimada-lab, Faculty of Science, Department of Life Science, Gakushuin University		941097	Trilocha varians				true	false	true
@@ -67669,6 +67838,7 @@ GCA_053525015.1	Scaffold	Uniba	reference genome	3041299	Trypanosoma platydactyli
 GCA_030849675.1	Scaffold	University of Ostrava		3041299	Trypanosoma platydactyli			France	true	false	true
 GCA_977064345.1	Scaffold	Universita degli Studi di Bari Aldo Moro		3041299	Trypanosoma platydactyli			Italy	true	false	true
 GCA_003719475.1	Scaffold	Virginia Commonwealth University	reference genome	5698	Trypanosoma rangeli			Brazil	true	false	true
+GCA_062034323.1	Contig	Protozoology Lab (Federal University of Santa Catarina)		5698	Trypanosoma rangeli	-27.7	-48.5228	Brazil	true	true	true
 GCA_000492115.1	Contig	BiowebDB		429131	Trypanosoma rangeli SC58	-27.7	-48.5228	Brazil	false	true	true
 GCA_030849745.1	Scaffold	University of Ostrava	reference genome	51349	Trypanosoma scelopori			USA	true	false	true
 GCA_964197925.1	Contig	Earlham Institute	reference genome	2583291	Trypanosoma suis				true	false	true
@@ -69089,11 +69259,13 @@ GCA_044589855.1	Chromosome	Peking University Institute of Advanced Agricultural 
 GCA_965260705.1	Chromosome	Peking University Institute of Advanced Agricultural Sciences	reference genome	2021217	Vitis lanceolatifoliosa				true	false	true
 GCA_044592055.1	Chromosome	Peking University Institute of Advanced Agricultural Sciences	reference genome	3079804	Vitis mustangensis x V. labrusca x V. rupestris x V. riparia x V. vinifera			USA	false	false	true
 GCA_044592045.1	Chromosome	Peking University Institute of Advanced Agricultural Sciences		3079804	Vitis mustangensis x V. labrusca x V. rupestris x V. riparia x V. vinifera			USA	false	false	true
-GCA_044588435.1	Chromosome	Peking University Institute of Advanced Agricultural Sciences	reference genome	228411	Vitis piasezkii			China	true	false	true
+GCA_062042556.1	Complete Genome	Chinese Academy of Agricultural Sciences	reference genome	228411	Vitis piasezkii			China	true	false	true
+GCA_044588435.1	Chromosome	Peking University Institute of Advanced Agricultural Sciences		228411	Vitis piasezkii			China	true	false	true
 GCA_044588445.1	Chromosome	Peking University Institute of Advanced Agricultural Sciences		228411	Vitis piasezkii			China	true	false	true
 GCA_044588455.1	Chromosome	Peking University Institute of Advanced Agricultural Sciences		228411	Vitis piasezkii			China	true	false	true
 GCA_044646525.1	Chromosome	Peking University Institute of Advanced Agricultural Sciences		228411	Vitis piasezkii			China	true	false	true
 GCA_050230495.1	Chromosome	Northwest A&F University		228411	Vitis piasezkii			China	true	false	true
+GCA_062042555.1	Complete Genome	Chinese Academy of Agricultural Sciences		228411	Vitis piasezkii			China	true	false	true
 GCA_965260785.1	Chromosome	Peking University Institute of Advanced Agricultural Sciences		228411	Vitis piasezkii				true	false	true
 GCA_965260685.1	Chromosome	Peking University Institute of Advanced Agricultural Sciences	reference genome	231512	Vitis pseudoreticulata				true	false	true
 GCA_044588405.1	Chromosome	Peking University Institute of Advanced Agricultural Sciences		231512	Vitis pseudoreticulata			China	true	false	true
@@ -69293,6 +69465,8 @@ GCA_051623595.1	Chromosome	Peking University Institute of Advanced Agricultural 
 GCA_051623605.1	Chromosome	Peking University Institute of Advanced Agricultural Sciences		29760	Vitis vinifera			France	true	false	true
 GCA_061611895.1	Scaffold	manisa celal bayar university		29760	Vitis vinifera			Turkey	true	false	true
 GCA_062014573.1	Scaffold	manisa celal bayar university		29760	Vitis vinifera			Turkey	true	false	true
+GCA_062042554.1	Complete Genome	Chinese Academy of Agricultural Sciences		29760	Vitis vinifera			China	true	false	true
+GCA_062042557.1	Complete Genome	Chinese Academy of Agricultural Sciences		29760	Vitis vinifera			China	true	false	true
 GCA_927798595.1	Chromosome	INRAE Grand Est-Colmar		29760	Vitis vinifera			France	true	false	true
 GCA_940446525.1	Contig	CENTER FOR BIOTECHNOLOGY, BIELEFELD UNIVERSITY		29760	Vitis vinifera	49.21866	8.047556		true	true	true
 GCA_964659545.1	Complete Genome	Peking University Institute of Advanced Agricultural Sciences		29760	Vitis vinifera				true	false	true
@@ -69330,6 +69504,7 @@ GCA_008326845.1	Scaffold	Kazusa DNA Research Institute	reference genome	2599122	
 GCA_965260565.1	Chromosome	Peking University Institute of Advanced Agricultural Sciences	reference genome	1306156	Vitis yunnanensis				true	false	true
 GCA_044592545.1	Chromosome	Peking University Institute of Advanced Agricultural Sciences		1306156	Vitis yunnanensis			China	true	false	true
 GCA_044592585.1	Chromosome	Peking University Institute of Advanced Agricultural Sciences		1306156	Vitis yunnanensis			China	true	false	true
+GCA_062034298.1	Chromosome	University of Chinese Academy of Sciences	reference genome	2899773	Vitis zhejiang-adstricta			China	true	false	true
 GCA_001179505.1	Scaffold	KAUST	reference genome	1169539	Vitrella brassicaformis	-33.8441	-151.2789	Australia	true	true	true
 GCA_000231115.1	Scaffold	Broad Institute	reference genome	993615	Vittaforma corneae ATCC 50505				false	false	true
 GCA_036897645.1	Contig	The University of Texas at Austin	reference genome	28971	Viviania marifolia			USA	true	false	true
@@ -69721,6 +69896,7 @@ GCA_978045125.1	Chromosome	WELLCOME SANGER INSTITUTE	reference genome	346870	Xan
 GCA_978045115.1	Scaffold	WELLCOME SANGER INSTITUTE		346870	Xantholinus longiventris	51.767	-1.31	United Kingdom	true	true	true
 GCA_051941585.1	Contig	Royal Botanic Gardens Kew		3058870	Xanthomendoza sp. 1 TL-2023			Mexico	false	false	true
 GCA_051941345.1	Contig	Royal Botanic Gardens Kew		3058875	Xanthomendoza sp. 2 TL-2023			Mexico	false	false	true
+GCA_062041667.1	Complete Genome	Qinghai Normal University	reference genome	324598	Xanthopappus subacaulis			China	true	false	true
 GCA_964256595.1	Scaffold	Spribille Lab		2064934	Xanthoparmelia aff. plittii			USA	false	false	true
 GCA_033085395.1	Scaffold	Shandong Normal University	reference genome	2548433	Xanthoparmelia taractica	44.23	118.75	China	true	true	true
 GCA_964256055.1	Scaffold	Spribille Lab	reference genome	348530	Xanthoparmelia tasmanica			Australia	true	false	true
@@ -70411,6 +70587,7 @@ GCA_051295195.1	Chromosome	Adam Mickiewicz University		4577	Zea mays			Moldova	t
 GCA_051912235.1	Chromosome	China Agriculture University		4577	Zea mays			China	true	false	true
 GCA_059841505.1	Chromosome	Chinese Academy of Agricultural Sciences		4577	Zea mays				true	false	true
 GCA_061312055.1	Chromosome	Yazhouwan National Laboratory		4577	Zea mays			China	true	false	true
+GCA_062039084.1	Chromosome	Sun Yat-sen University		4577	Zea mays				true	false	true
 GCA_902166955.1	Chromosome	MaizeGDB		4577	Zea mays				true	false	true
 GCA_902166965.1	Chromosome	MaizeGDB		4577	Zea mays				true	false	true
 GCA_902166975.1	Chromosome	MaizeGDB		4577	Zea mays				true	false	true

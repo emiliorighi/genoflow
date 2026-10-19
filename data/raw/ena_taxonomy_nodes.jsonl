@@ -52908,3 +52908,105 @@
 {"taxid": "2607757", "parent_taxid": "100037", "rank": "no rank", "scientific_name": "unclassified Montagnula"}
 {"taxid": "100037", "parent_taxid": "221678", "rank": "genus", "scientific_name": "Montagnula"}
 {"taxid": "3895886", "parent_taxid": "2600197", "rank": "species", "scientific_name": "Epicoccum sp. AEH-0020"}
+{"taxid": "4788", "parent_taxid": "4783", "rank": "species", "scientific_name": "Phytophthora megasperma"}
+{"taxid": "8757", "parent_taxid": "8755", "rank": "species", "scientific_name": "Sistrurus tergeminus"}
+{"taxid": "8758", "parent_taxid": "8755", "rank": "species", "scientific_name": "Sistrurus miliarius"}
+{"taxid": "9354", "parent_taxid": "9353", "rank": "species", "scientific_name": "Bradypus tridactylus"}
+{"taxid": "69615", "parent_taxid": "98806", "rank": "species", "scientific_name": "Bactrocera frauenfeldi"}
+{"taxid": "98806", "parent_taxid": "47832", "rank": "no rank", "scientific_name": "Bactrocera frauenfeldi complex"}
+{"taxid": "84074", "parent_taxid": "84073", "rank": "species", "scientific_name": "Cyclopes didactylus"}
+{"taxid": "84073", "parent_taxid": "948954", "rank": "genus", "scientific_name": "Cyclopes"}
+{"taxid": "948954", "parent_taxid": "948952", "rank": "family", "scientific_name": "Cyclopedidae"}
+{"taxid": "96582", "parent_taxid": "96581", "rank": "species", "scientific_name": "Chorioactis geaster"}
+{"taxid": "96581", "parent_taxid": "716658", "rank": "genus", "scientific_name": "Chorioactis"}
+{"taxid": "716658", "parent_taxid": "5185", "rank": "family", "scientific_name": "Chorioactidaceae"}
+{"taxid": "142000", "parent_taxid": "141999", "rank": "species", "scientific_name": "Carpobrotus chilensis"}
+{"taxid": "143300", "parent_taxid": "143299", "rank": "species", "scientific_name": "Euphractus sexcinctus"}
+{"taxid": "143299", "parent_taxid": "1811493", "rank": "genus", "scientific_name": "Euphractus"}
+{"taxid": "170926", "parent_taxid": "49647", "rank": "species", "scientific_name": "Primula sinensis"}
+{"taxid": "180901", "parent_taxid": "4783", "rank": "species", "scientific_name": "Phytophthora psychrophila"}
+{"taxid": "183752", "parent_taxid": "183751", "rank": "species", "scientific_name": "Priodontes maximus"}
+{"taxid": "183751", "parent_taxid": "1811493", "rank": "genus", "scientific_name": "Priodontes"}
+{"taxid": "215042", "parent_taxid": "215041", "rank": "species", "scientific_name": "Formosatettix dayaoshanensis"}
+{"taxid": "215041", "parent_taxid": "1636980", "rank": "genus", "scientific_name": "Formosatettix"}
+{"taxid": "244122", "parent_taxid": "4783", "rank": "species", "scientific_name": "Phytophthora inundata"}
+{"taxid": "278181", "parent_taxid": "241445", "rank": "species", "scientific_name": "Jinshaia abbreviata"}
+{"taxid": "241445", "parent_taxid": "98924", "rank": "genus", "scientific_name": "Jinshaia"}
+{"taxid": "279094", "parent_taxid": "153279", "rank": "species", "scientific_name": "Sepiella japonica"}
+{"taxid": "153279", "parent_taxid": "6608", "rank": "genus", "scientific_name": "Sepiella"}
+{"taxid": "302709", "parent_taxid": "7772", "rank": "species", "scientific_name": "Ichthyomyzon gagei"}
+{"taxid": "7772", "parent_taxid": "7746", "rank": "genus", "scientific_name": "Ichthyomyzon"}
+{"taxid": "308264", "parent_taxid": "3705", "rank": "species", "scientific_name": "Brassica fruticulosa"}
+{"taxid": "324598", "parent_taxid": "324597", "rank": "species", "scientific_name": "Xanthopappus subacaulis"}
+{"taxid": "324597", "parent_taxid": "2846886", "rank": "genus", "scientific_name": "Xanthopappus"}
+{"taxid": "2846886", "parent_taxid": "102818", "rank": "subtribe", "scientific_name": "Onopordinae"}
+{"taxid": "328425", "parent_taxid": "329934", "rank": "species", "scientific_name": "Primnoa pacifica"}
+{"taxid": "329934", "parent_taxid": "44164", "rank": "genus", "scientific_name": "Primnoa"}
+{"taxid": "450267", "parent_taxid": "450266", "rank": "species", "scientific_name": "Chlamyphorus truncatus"}
+{"taxid": "450266", "parent_taxid": "1811493", "rank": "genus", "scientific_name": "Chlamyphorus"}
+{"taxid": "459883", "parent_taxid": "4783", "rank": "species", "scientific_name": "Phytophthora quercetorum"}
+{"taxid": "495832", "parent_taxid": "7806", "rank": "species", "scientific_name": "Carcharhinus albimarginatus"}
+{"taxid": "544909", "parent_taxid": "4783", "rank": "species", "scientific_name": "Phytophthora parsiana"}
+{"taxid": "554913", "parent_taxid": "211524", "rank": "species", "scientific_name": "Phytophthora taxon raspberry"}
+{"taxid": "565288", "parent_taxid": "4783", "rank": "species", "scientific_name": "Phytophthora honggalleglyana"}
+{"taxid": "631358", "parent_taxid": "4783", "rank": "species", "scientific_name": "Phytophthora asparagi"}
+{"taxid": "747259", "parent_taxid": "747258", "rank": "species", "scientific_name": "Paegniodes cupulatus"}
+{"taxid": "747258", "parent_taxid": "178295", "rank": "genus", "scientific_name": "Paegniodes"}
+{"taxid": "880414", "parent_taxid": "4783", "rank": "species", "scientific_name": "Phytophthora thermophila"}
+{"taxid": "881767", "parent_taxid": "236936", "rank": "species", "scientific_name": "Trigonotylus caelestialium"}
+{"taxid": "236936", "parent_taxid": "236662", "rank": "genus", "scientific_name": "Trigonotylus"}
+{"taxid": "913117", "parent_taxid": "225191", "rank": "species", "scientific_name": "Carpophilus dimidiatus"}
+{"taxid": "225191", "parent_taxid": "577237", "rank": "genus", "scientific_name": "Carpophilus"}
+{"taxid": "981053", "parent_taxid": "650634", "rank": "species", "scientific_name": "Siphluriscus chinensis"}
+{"taxid": "650634", "parent_taxid": "219335", "rank": "genus", "scientific_name": "Siphluriscus"}
+{"taxid": "1051279", "parent_taxid": "47832", "rank": "species", "scientific_name": "Bactrocera kraussi"}
+{"taxid": "1185511", "parent_taxid": "4783", "rank": "species", "scientific_name": "Phytophthora riparia"}
+{"taxid": "1190534", "parent_taxid": "4783", "rank": "species", "scientific_name": "Phytophthora lacustris"}
+{"taxid": "1194341", "parent_taxid": "211524", "rank": "species", "scientific_name": "Phytophthora taxon walnut"}
+{"taxid": "1196597", "parent_taxid": "4783", "rank": "species", "scientific_name": "Phytophthora amnicola"}
+{"taxid": "1197710", "parent_taxid": "4783", "rank": "species", "scientific_name": "Phytophthora bilorbang"}
+{"taxid": "1216510", "parent_taxid": "4783", "rank": "species", "scientific_name": "Phytophthora thermophila x Phytophthora amnicola"}
+{"taxid": "1241941", "parent_taxid": "4783", "rank": "species", "scientific_name": "Phytophthora acerina"}
+{"taxid": "1385620", "parent_taxid": "4783", "rank": "species", "scientific_name": "Phytophthora occultans"}
+{"taxid": "1470551", "parent_taxid": "219470", "rank": "species", "scientific_name": "Isonychia kiangsinensis"}
+{"taxid": "219470", "parent_taxid": "219466", "rank": "genus", "scientific_name": "Isonychia"}
+{"taxid": "219466", "parent_taxid": "185810", "rank": "family", "scientific_name": "Isonychiidae"}
+{"taxid": "1537583", "parent_taxid": "5629", "rank": "species", "scientific_name": "Laetiporus ailaoshanensis"}
+{"taxid": "1649349", "parent_taxid": "389724", "rank": "species", "scientific_name": "Atypus heterothecus"}
+{"taxid": "1821206", "parent_taxid": "4783", "rank": "species", "scientific_name": "Phytophthora pseudocryptogea"}
+{"taxid": "1825471", "parent_taxid": "197151", "rank": "species", "scientific_name": "Cloeon viridulum"}
+{"taxid": "2054051", "parent_taxid": "4783", "rank": "species", "scientific_name": "Phytophthora condilina"}
+{"taxid": "2060693", "parent_taxid": "211524", "rank": "species", "scientific_name": "Phytophthora sp. 'cadmea'"}
+{"taxid": "2065305", "parent_taxid": "4783", "rank": "species", "scientific_name": "Phytophthora humicola x Phytophthora inundata"}
+{"taxid": "2562765", "parent_taxid": "450425", "rank": "species", "scientific_name": "Fusarium pernambucanum"}
+{"taxid": "2578299", "parent_taxid": "384592", "rank": "species", "scientific_name": "Macrorhamphosodes platycheilus"}
+{"taxid": "2600087", "parent_taxid": "650628", "rank": "species", "scientific_name": "Potamanthellus chinensis"}
+{"taxid": "650628", "parent_taxid": "219473", "rank": "genus", "scientific_name": "Potamanthellus"}
+{"taxid": "219473", "parent_taxid": "170976", "rank": "family", "scientific_name": "Neoephemeridae"}
+{"taxid": "170976", "parent_taxid": "170974", "rank": "superfamily", "scientific_name": "Caenoidea"}
+{"taxid": "2741988", "parent_taxid": "467802", "rank": "species", "scientific_name": "Rhizophydiales sp. PSC023"}
+{"taxid": "467802", "parent_taxid": "451442", "rank": "no rank", "scientific_name": "unclassified Rhizophydiales"}
+{"taxid": "2750869", "parent_taxid": "643717", "rank": "species", "scientific_name": "Cincticostella fusca"}
+{"taxid": "643717", "parent_taxid": "50633", "rank": "genus", "scientific_name": "Cincticostella"}
+{"taxid": "2805668", "parent_taxid": "4783", "rank": "species", "scientific_name": "Phytophthora kelmanii"}
+{"taxid": "2873651", "parent_taxid": "226220", "rank": "species", "scientific_name": "Heptagenia ngi"}
+{"taxid": "226220", "parent_taxid": "178295", "rank": "genus", "scientific_name": "Heptagenia"}
+{"taxid": "2899773", "parent_taxid": "3603", "rank": "species", "scientific_name": "Vitis zhejiang-adstricta"}
+{"taxid": "2950792", "parent_taxid": "328901", "rank": "species", "scientific_name": "Labiobaetis ancoralis"}
+{"taxid": "328901", "parent_taxid": "172515", "rank": "genus", "scientific_name": "Labiobaetis"}
+{"taxid": "2982816", "parent_taxid": "1082165", "rank": "species", "scientific_name": "Monelliopsis pecanis"}
+{"taxid": "1082165", "parent_taxid": "1656058", "rank": "genus", "scientific_name": "Monelliopsis"}
+{"taxid": "3104263", "parent_taxid": "3104262", "rank": "species", "scientific_name": "Ancylistes closterii"}
+{"taxid": "3104262", "parent_taxid": "34486", "rank": "genus", "scientific_name": "Ancylistes"}
+{"taxid": "34486", "parent_taxid": "4857", "rank": "family", "scientific_name": "Ancylistaceae"}
+{"taxid": "3435794", "parent_taxid": "2637390", "rank": "species", "scientific_name": "Olios sp. 1 KA-2025a"}
+{"taxid": "2637390", "parent_taxid": "658999", "rank": "no rank", "scientific_name": "unclassified Olios"}
+{"taxid": "658999", "parent_taxid": "152923", "rank": "genus", "scientific_name": "Olios"}
+{"taxid": "152923", "parent_taxid": "94015", "rank": "family", "scientific_name": "Sparassidae"}
+{"taxid": "3713335", "parent_taxid": "1910789", "rank": "species", "scientific_name": "Diutina cutanea"}
+{"taxid": "3738019", "parent_taxid": "2878716", "rank": "species", "scientific_name": "Ophryocystis sp. AM-2026a"}
+{"taxid": "2878716", "parent_taxid": "110371", "rank": "no rank", "scientific_name": "unclassified Ophryocystis"}
+{"taxid": "3835411", "parent_taxid": "2600217", "rank": "species", "scientific_name": "Trichoderma sp. CB2-2026"}
+{"taxid": "3895892", "parent_taxid": "2613903", "rank": "species", "scientific_name": "Kluyveromyces sp. TN1103"}
+{"taxid": "3897197", "parent_taxid": "3587159", "rank": "species", "scientific_name": "Megalobrama sp. SJF"}
+{"taxid": "3587159", "parent_taxid": "75351", "rank": "no rank", "scientific_name": "unclassified Megalobrama"}
