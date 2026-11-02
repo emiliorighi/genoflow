@@ -1,31 +1,31 @@
 submitter_name	institute_name_ror	ror_id	country	lat	lon	has_ror_match	has_coordinates	match_method	assembly_count
-WELLCOME SANGER INSTITUTE	Wellcome Sanger Institute	https://ror.org/05cy4wa09	United Kingdom	52.2	0.11667	true	true	affiliation_chosen	9490
-Iridian Genomes	Iridian Genomes	https://ror.org/045qred77	United States	38.98067	-77.10026	true	true	affiliation_chosen	2967
-DOE Joint Genome Institute	Joint Genome Institute	https://ror.org/04xm1d337	United States	37.87159	-122.27275	true	true	affiliation_chosen	1388
+WELLCOME SANGER INSTITUTE	Wellcome Sanger Institute	https://ror.org/05cy4wa09	United Kingdom	52.2	0.11667	true	true	affiliation_chosen	9647
+Iridian Genomes	Iridian Genomes	https://ror.org/045qred77	United States	38.98067	-77.10026	true	true	affiliation_chosen	2972
+DOE Joint Genome Institute	Joint Genome Institute	https://ror.org/04xm1d337	United States	37.87159	-122.27275	true	true	affiliation_chosen	1391
 UW-Madison						false	false	none	1213
 Florida Museum of Natural History	Florida Museum of Natural History	https://ror.org/02pjdv450	United States	29.65163	-82.32483	true	true	affiliation_chosen	830
-Vertebrate Genomes Project						false	false	none	778
+Vertebrate Genomes Project						false	false	none	779
 Dalian Medical University	Dalian Medical University	https://ror.org/04c8eg608	China	38.91222	121.60222	true	true	affiliation_chosen	717
-Genoscope	Genoscope	https://ror.org/028pnqf58	France	48.63389	2.44417	true	true	affiliation_chosen	612
-Los Angeles County Public Health Lab microbial pathogen submission group	Public Health Laboratory	https://ror.org/04gvvdt54	Macao	22.20056	113.54611	true	true	affiliation_chosen	580
+Genoscope	Genoscope	https://ror.org/028pnqf58	France	48.63389	2.44417	true	true	affiliation_chosen	631
+Los Angeles County Public Health Lab microbial pathogen submission group	Public Health Laboratory	https://ror.org/04gvvdt54	Macao	22.20056	113.54611	true	true	affiliation_chosen	628
 USDA	United States Department of Agriculture	https://ror.org/01na82s61	United States	38.89511	-77.03637	true	true	query_exact	549
 Minderoo OceanOmics Centre at UWA						false	false	none	547
 """CICHLID~X"""						false	false	none	539
 NHGRI/NIH						false	false	none	530
 Broad Institute	Broad Institute	https://ror.org/05a0ya142	United States	42.3751	-71.10561	true	true	affiliation_chosen	522
-Bird 10,000 Genomes (B10K) consortium						false	false	none	510
+Bird 10,000 Genomes (B10K) consortium						false	false	none	509
 USDA-ARS						false	false	none	465
 Academia Sinica	Academia Sinica	https://ror.org/05bxb3784	Taiwan	25.05306	121.52639	true	true	affiliation_chosen	459
-Canada's national platform for genome sequencing and analysis						false	false	none	458
+Canada's national platform for genome sequencing and analysis						false	false	none	459
 UCSC Genomics Institute						false	false	none	454
 Helmholtz Centre for Environmental Research - UFZ	Helmholtz Centre for Environmental Research	https://ror.org/000h6jb29	Germany	51.33962	12.37129	true	true	affiliation_chosen	449
-China Agricultural University	China Agricultural University	https://ror.org/04v3ywz14	China	39.9075	116.39723	true	true	affiliation_chosen	402
+China Agricultural University	China Agricultural University	https://ror.org/04v3ywz14	China	39.9075	116.39723	true	true	affiliation_chosen	403
 USDA-ARS-NCAUR						false	false	none	402
 University of Utah	University of Utah	https://ror.org/03r0ha626	United States	40.76078	-111.89105	true	true	affiliation_chosen	381
 Cornell University	Cornell University	https://ror.org/05bnh6r87	United States	42.44063	-76.49661	true	true	affiliation_chosen	377
 University of California, San Francisco	University of California, San Francisco	https://ror.org/043mz5j54	United States	37.77493	-122.41942	true	true	affiliation_chosen	371
 Stanford University	Stanford University	https://ror.org/00f54p054	United States	37.42411	-122.16608	true	true	affiliation_chosen	353
-Center for Evolutionary Hologenomics, University of Copenhagen	University of Copenhagen	https://ror.org/035b05819	Denmark	55.67594	12.56553	true	true	affiliation_chosen	352
+Center for Evolutionary Hologenomics, University of Copenhagen	University of Copenhagen	https://ror.org/035b05819	Denmark	55.67594	12.56553	true	true	affiliation_chosen	351
 Spribille Lab						false	false	none	343
 AUSTRALIAN NATIONAL UNIVERSITY	Australian National University	https://ror.org/019wvm592	Australia	-35.28346	149.12807	true	true	affiliation_chosen	341
 Agriculture and Agri-Food Canada	Agriculture and Agri-Food Canada	https://ror.org/051dzs374	Canada	45.41117	-75.69812	true	true	affiliation_chosen	316
@@ -34,21 +34,21 @@ Institute Of Microbiology Chinese Academy of Sciences	Chinese Academy of Science
 Jet Propulsion Laboratory, California Institute of Technology	California Institute of Technology	https://ror.org/05dxps055	United States	34.14778	-118.14452	true	true	affiliation_chosen	295
 ibps sorbonne universite	Sorbonne Université	https://ror.org/02en5vm52	France	48.85341	2.3488	true	true	affiliation_chosen	269
 B10K Consortium						false	false	none	266
+Leibniz Institute of Plant Genetics and Crop Plant Research	Leibniz-Institut für Pflanzengenetik und Kulturpflanzenforschung (IPK)	https://ror.org/02skbsp27	Germany	51.82215	11.28661	true	true	affiliation_chosen	264
 Harvard University	Harvard University	https://ror.org/03vek6s52	United States	42.3751	-71.10561	true	true	affiliation_chosen	263
 IRIDIAN GENOMES	Iridian Genomes	https://ror.org/045qred77	United States	38.98067	-77.10026	true	true	affiliation_chosen	263
-Leibniz Institute of Plant Genetics and Crop Plant Research	Leibniz-Institut für Pflanzengenetik und Kulturpflanzenforschung (IPK)	https://ror.org/02skbsp27	Germany	51.82215	11.28661	true	true	affiliation_chosen	262
 Northwestern University Feinberg School of Medicine						false	false	none	262
 Quadram Institute Bioscience	Quadram Institute	https://ror.org/04td3ys19	United Kingdom	52.62783	1.29834	true	true	affiliation_chosen	256
 Leibniz-HKI						false	false	none	252
 LOEWE Centre for Translational Biodiversity Genomics	LOEWE Centre for Translational Biodiversity Genomics	https://ror.org/0396gab88	Germany	50.11552	8.68417	true	true	affiliation_chosen	251
 UCLA						false	false	none	237
 Chinese Academy of Agricultural Sciences	Chinese Academy of Agricultural Sciences	https://ror.org/0313jb750	China	39.9075	116.39723	true	true	affiliation_chosen	231
+Genoscope CEA						false	false	none	228
 INRAE - GeT-PlaGe						false	false	none	226
-Genoscope CEA						false	false	none	224
 University of California, Berkeley	University of California, Berkeley	https://ror.org/01an7q238	United States	37.87159	-122.27275	true	true	affiliation_chosen	219
+BGI						false	false	none	214
 National Parks Board Singapore	National Parks Board	https://ror.org/046qg1023	Singapore	1.28967	103.85007	true	true	affiliation_chosen	210
 Northwest A&F University	Northwest A&F University	https://ror.org/0051rme32	China	34.27173	108.07891	true	true	affiliation_chosen	207
-BGI						false	false	none	205
 AGRIBIO, CENTRE FOR AGRIBIOSCIENC						false	false	none	202
 Shandong Agricultural University	Shandong Agricultural University	https://ror.org/02ke8fw32	China	36.18528	117.12	true	true	affiliation_chosen	202
 B10K project						false	false	none	199
@@ -66,7 +66,7 @@ CNRS						false	false	none	175
 University of Kentucky	University of Kentucky	https://ror.org/02k3smh20	United States	37.98869	-84.47772	true	true	query_exact	173
 SC						false	false	none	170
 University of Queensland	The University of Queensland	https://ror.org/00rqy9422	Australia	-27.46794	153.02809	true	true	affiliation_chosen	166
-Beijing Forestry University	Beijing Forestry University	https://ror.org/04xv2pc41	China	39.9075	116.39723	true	true	affiliation_chosen	163
+Beijing Forestry University	Beijing Forestry University	https://ror.org/04xv2pc41	China	39.9075	116.39723	true	true	affiliation_chosen	165
 University of Pennsylvania	University of Pennsylvania	https://ror.org/00b30xv10	United States	39.95238	-75.16362	true	true	affiliation_chosen	162
 University of Warmia and Mazury in Olsztyn	University of Warmia and Mazury in Olsztyn	https://ror.org/05s4feg49	Poland	53.77995	20.49416	true	true	affiliation_chosen	162
 VIB/KULeuven						false	false	none	157
@@ -78,18 +78,18 @@ Huazhong Agricultural University	Huazhong Agricultural University	https://ror.or
 United States Department of Agriculture	United States Department of Agriculture	https://ror.org/01na82s61	United States	38.89511	-77.03637	true	true	affiliation_chosen	148
 Nanjing Agricultural University	Nanjing Agricultural University	https://ror.org/05td3s095	China	32.06167	118.77778	true	true	affiliation_chosen	142
 CAM						false	false	none	141
+University of Georgia						false	false	none	140
 Yunnan Agricultural University	Yunnan Agricultural University	https://ror.org/04dpa3g90	China	25.03889	102.71833	true	true	affiliation_chosen	140
 Zhejiang University	Zhejiang University	https://ror.org/00a2xv884	China	30.29365	120.16142	true	true	affiliation_chosen	140
-University of Georgia						false	false	none	139
 GAGA						false	false	none	137
 University of Guelph	University of Guelph	https://ror.org/01r7awg59	Canada	43.54594	-80.25599	true	true	affiliation_chosen	133
 University of California, Riverside	University of California, Riverside	https://ror.org/03nawhv43	United States	33.95335	-117.39616	true	true	affiliation_chosen	131
 European Bioinformatics Institute	European Bioinformatics Institute	https://ror.org/02catss52	United Kingdom	52.2	0.11667	true	true	affiliation_chosen	130
 BGI Research	BGI Research	https://ror.org/05gsxrt27	China	22.54554	114.0683	true	true	affiliation_chosen	128
+Chinese Academy of Sciences	Chinese Academy of Sciences	https://ror.org/034t30j35	China	39.9075	116.39723	true	true	affiliation_chosen	128
 Institute of Microbiology						false	false	none	128
-Chinese Academy of Sciences	Chinese Academy of Sciences	https://ror.org/034t30j35	China	39.9075	116.39723	true	true	affiliation_chosen	127
 University of Michigan	University of Michigan	https://ror.org/00jmfr291	United States	42.27756	-83.74088	true	true	affiliation_chosen	126
-INRAE	Institut National de Recherche pour l'Agriculture, l'Alimentation et l'Environnement	https://ror.org/003vg9w96	France	48.85341	2.3488	true	true	query_exact	123
+INRAE	Institut National de Recherche pour l'Agriculture, l'Alimentation et l'Environnement	https://ror.org/003vg9w96	France	48.85341	2.3488	true	true	query_exact	124
 Institute of Microbiology, Chinese Academy of Sciences	Chinese Academy of Sciences	https://ror.org/034t30j35	China	39.9075	116.39723	true	true	affiliation_chosen	121
 Technical University of Denmark	Technical University of Denmark	https://ror.org/04qtj9h94	Denmark	55.77044	12.50378	true	true	affiliation_chosen	118
 Tokyo Institute of Technology						false	false	none	118
@@ -115,6 +115,7 @@ UNIVERSITY OF CALIFORNIA AT BERKELEY	University of California, Berkeley	https://
 Uppsala University	Uppsala University	https://ror.org/048a87296	Sweden	59.85882	17.63889	true	true	affiliation_chosen	102
 Aalborg University	Aalborg University	https://ror.org/04m5j1k67	Denmark	57.048	9.9187	true	true	affiliation_chosen	101
 Texas A&M University	Texas A&M University	https://ror.org/01f5ytq51	United States	30.62798	-96.33441	true	true	affiliation_chosen	101
+Centro Nacional de Análisis Genómico	Centro Nacional de Análisis Genómico	https://ror.org/03mynna02	Spain	41.38879	2.15899	true	true	affiliation_chosen	100
 COMPLUTENSE UNIVERSITY OF MADRID	Universidad Complutense de Madrid	https://ror.org/02p0gd045	Spain	40.4165	-3.70256	true	true	affiliation_chosen	100
 Swiss Federal Research Institute WSL						false	false	none	100
 University of Amsterdam	University of Amsterdam	https://ror.org/04dkp9463	The Netherlands	52.37403	4.88969	true	true	affiliation_chosen	100
@@ -125,7 +126,6 @@ University of Melbourne	The University of Melbourne	https://ror.org/01ej9dk98	Au
 UPPSALA UNIVERISTY						false	false	none	98
 Justus Liebig University Giessen	Justus-Liebig-Universität Gießen	https://ror.org/033eqas34	Germany	50.58727	8.67554	true	true	affiliation_chosen	97
 Royal Botanic Gardens Kew						false	false	none	97
-Centro Nacional de Análisis Genómico	Centro Nacional de Análisis Genómico	https://ror.org/03mynna02	Spain	41.38879	2.15899	true	true	affiliation_chosen	96
 STANFORD UNIVERSITY	Stanford University	https://ror.org/00f54p054	United States	37.42411	-122.16608	true	true	affiliation_chosen	96
 University of Wisconsin Madison	University of Wisconsin–Madison	https://ror.org/01y2jtd41	United States	43.07305	-89.40123	true	true	affiliation_chosen	96
 Indian Biological Data Centre						false	false	none	93
@@ -155,14 +155,14 @@ Institute of Oceanology, Chinese Academy of Sciences	Chinese Academy of Sciences
 MPI FOR DEVELOPMENTAL BIOLOGY						false	false	none	73
 IMPERIAL COLLEGE LONDON	Imperial College London	https://ror.org/041kmwe10	United Kingdom	51.50853	-0.12574	true	true	affiliation_chosen	71
 KAUST	King Abdullah University of Science and Technology	https://ror.org/01q3tbs38	Saudi Arabia	21.49012	39.18624	true	true	query_exact	70
+Northwest Agriculture and Forestry University	Agriculture and Forestry University	https://ror.org/01f60xs15	Nepal	27.68027	84.43647	true	true	affiliation_chosen	70
 Southwest University	Southwest University	https://ror.org/01kj4z117	China	29.56026	106.55771	true	true	affiliation_chosen	70
 The Ohio State University	The Ohio State University	https://ror.org/00rs6vg23	United States	39.96118	-82.99879	true	true	affiliation_chosen	70
 WTSI	Wellcome Sanger Institute	https://ror.org/05cy4wa09	United Kingdom	52.2	0.11667	true	true	query_exact	70
 Human Genome Structural Variation Consortium						false	false	none	69
 Kazimierz Wielki University	Kio University	https://ror.org/03b657f73	Japan	34.55071	135.74678	true	true	affiliation_chosen	69
-Northwest Agriculture and Forestry University	Agriculture and Forestry University	https://ror.org/01f60xs15	Nepal	27.68027	84.43647	true	true	affiliation_chosen	69
+Michigan State University	Michigan State University	https://ror.org/05hs6h993	United States	42.73698	-84.48387	true	true	affiliation_chosen	69
 PRJEB62038						false	false	none	69
-Michigan State University	Michigan State University	https://ror.org/05hs6h993	United States	42.73698	-84.48387	true	true	affiliation_chosen	68
 National Institute of Biological Sciences, Beijing	National Institute of Biological Sciences, Beijing	https://ror.org/00wksha49	China	39.9075	116.39723	true	true	affiliation_chosen	68
 NVWA	Netherlands Food and Consumer Product Safety Authority	https://ror.org/03v2e2v10	The Netherlands	52.09083	5.12222	true	true	query_exact	68
 University of California, Santa Cruz	University of California, Santa Cruz	https://ror.org/03s65by71	United States	36.97412	-122.0308	true	true	affiliation_chosen	68
@@ -185,6 +185,7 @@ huqiuan						false	false	none	60
 Australian National University	Australian National University	https://ror.org/019wvm592	Australia	-35.28346	149.12807	true	true	affiliation_chosen	59
 North Carolina State University	North Carolina State University	https://ror.org/04tj63d06	United States	35.7721	-78.63861	true	true	affiliation_chosen	58
 University of Toronto	University of Toronto	https://ror.org/03dbr7087	Canada	43.70643	-79.39864	true	true	affiliation_chosen	58
+Westerdijk Fungal Biodiversity Institute	Westerdijk Fungal Biodiversity Institute	https://ror.org/030a5r161	The Netherlands	52.09083	5.12222	true	true	affiliation_chosen	58
 J Craig Venter Institute	J. Craig Venter Institute	https://ror.org/049r1ts75	United States	32.84727	-117.2742	true	true	affiliation_chosen	57
 UNIVERSITY OF NOTTINGHAM	University of Nottingham	https://ror.org/01ee9ar58	United Kingdom	52.9536	-1.15047	true	true	affiliation_chosen	57
 University of Washington	University of Washington	https://ror.org/00cvxb145	United States	47.60621	-122.33207	true	true	affiliation_chosen	57
@@ -193,24 +194,23 @@ Wageningen University						false	false	none	57
 CEBITEC						false	false	none	56
 Department of Genetics, University of Cambridge	University of Cambridge	https://ror.org/013meh722	United Kingdom	52.2	0.11667	true	true	affiliation_chosen	56
 Jiangxi Cancer Hospital	Jiangxi Provincial Cancer Hospital	https://ror.org/00v8g0168	China	28.68396	115.85306	true	true	affiliation_chosen	56
-Westerdijk Fungal Biodiversity Institute	Westerdijk Fungal Biodiversity Institute	https://ror.org/030a5r161	The Netherlands	52.09083	5.12222	true	true	affiliation_chosen	56
 Bat1K Project						false	false	none	55
 Oklahoma State University	Oklahoma State University	https://ror.org/01g9vbr38	United States	36.11561	-97.05837	true	true	affiliation_chosen	55
 University of Lausanne	University of Lausanne	https://ror.org/019whta54	Switzerland	46.516	6.63282	true	true	affiliation_chosen	55
 DNA Zoo						false	false	none	54
 NBIS (National Bioinformatics Infrastructure Sweden)	National Bioinformatics Infrastructure Sweden	https://ror.org/00enajs79	Sweden	59.85882	17.63889	true	true	affiliation_chosen	54
+Chungnam National University	Chungnam National University	https://ror.org/0227as991	South Korea	36.34913	127.38493	true	true	affiliation_chosen	53
 DISAFA						false	false	none	53
+Max Planck Institute for Plant Breeding Research	Max Planck Institute for Plant Breeding Research	https://ror.org/044g3zk14	Germany	50.93333	6.95	true	true	affiliation_chosen	53
 Minderoo OceanOmics Centre at University of the Western Australia						false	false	none	53
 The University of Auckland	University of Auckland	https://ror.org/03b94tp07	New Zealand	-36.84853	174.76349	true	true	affiliation_chosen	53
 University of Zurich	University of Zurich	https://ror.org/02crff812	Switzerland	47.36667	8.55	true	true	affiliation_chosen	53
+Engelhardt Institute of Molecular Biology, Russian Academy of Sciences	Russian Academy of Sciences	https://ror.org/05qrfxd25	Russia	55.75204	37.61781	true	true	affiliation_chosen	52
 Sorbonne University	Sorbonne Université	https://ror.org/02en5vm52	France	48.85341	2.3488	true	true	affiliation_chosen	52
 Universite Claude Bernard Lyon 1	Lyon 1 Université	https://ror.org/029brtt94	France	45.76601	4.8795	true	true	affiliation_chosen	52
-Chungnam National University	Chungnam National University	https://ror.org/0227as991	South Korea	36.34913	127.38493	true	true	affiliation_chosen	51
 ELIXIR Norway						false	false	none	51
-Max Planck Institute for Plant Breeding Research	Max Planck Institute for Plant Breeding Research	https://ror.org/044g3zk14	Germany	50.93333	6.95	true	true	affiliation_chosen	51
 SkinScience, Zealand University Hospital	Zealand University Hospital	https://ror.org/00363z010	Denmark	55.64152	12.08035	true	true	affiliation_chosen	51
 University of Montana	University of Montana	https://ror.org/0078xmk34	United States	46.87215	-113.994	true	true	affiliation_chosen	51
-Engelhardt Institute of Molecular Biology, Russian Academy of Sciences	Russian Academy of Sciences	https://ror.org/05qrfxd25	Russia	55.75204	37.61781	true	true	affiliation_chosen	50
 IGS						false	false	none	50
 MAX PLANCK INSTITUTE FOR PLANT BREEDING RESEARCH	Max Planck Institute for Plant Breeding Research	https://ror.org/044g3zk14	Germany	50.93333	6.95	true	true	affiliation_chosen	50
 university of florida	University of Florida	https://ror.org/02y3ad647	United States	29.65163	-82.32483	true	true	affiliation_chosen	50
@@ -229,6 +229,7 @@ JGI						false	false	none	46
 Northern Arizona University	Northern Arizona University	https://ror.org/0272j5188	United States	35.19807	-111.65127	true	true	affiliation_chosen	46
 Okinawa Institute of Science and Technology OIST	Okinawa Institute of Science and Technology Graduate University	https://ror.org/02qg15b79	Japan	26.47595	127.85278	true	true	affiliation_chosen	46
 Rothamsted Research	Rothamsted Research	https://ror.org/0347fy350	United Kingdom	51.81684	-0.35706	true	true	affiliation_chosen	46
+University of the Sunshine Coast	University of the Sunshine Coast	https://ror.org/016gb9e15	Australia	-26.65682	153.07955	true	true	affiliation_chosen	46
 Boosting Plant-Endophyte Stability, Compatibility and Performance across scales (BestPass)						false	false	none	45
 CSIRO	Commonwealth Scientific and Industrial Research Organisation	https://ror.org/03qn8fb07	Australia	-35.28346	149.12807	true	true	query_exact	45
 ETH Zurich	ETH Zurich	https://ror.org/05a28rw58	Switzerland	47.36667	8.55	true	true	affiliation_chosen	45
@@ -237,8 +238,8 @@ UNIVERSITY OF LEEDS	University of Leeds	https://ror.org/024mrxd33	United Kingdom
 Colorado State University	Colorado State University	https://ror.org/03k1gpj17	United States	40.58526	-105.08442	true	true	affiliation_chosen	44
 Kunming Institute of Botany	Kunming Institute of Botany	https://ror.org/02e5hx313	China	25.03889	102.71833	true	true	affiliation_chosen	44
 Laboratory of Yeast Systematics, Tokyos NODAI Research Institute, Tokyo University Of Agriculture	Tokyo University of Agriculture	https://ror.org/05crbcr45	Japan	35.6895	139.69171	true	true	affiliation_chosen	44
+New York University	New York University	https://ror.org/0190ak572	United States	40.71427	-74.00597	true	true	query_exact	44
 Massey University	Massey University	https://ror.org/052czxv31	New Zealand	-40.35636	175.61113	true	true	affiliation_chosen	43
-New York University	New York University	https://ror.org/0190ak572	United States	40.71427	-74.00597	true	true	query_exact	43
 The University of Hong Kong						false	false	none	43
 The University of Texas at Austin	The University of Texas at Austin	https://ror.org/00hj54h04	United States	30.26715	-97.74306	true	true	affiliation_chosen	43
 University of California Davis	University of California, Davis	https://ror.org/05rrcem69	United States	38.54491	-121.74052	true	true	affiliation_chosen	43
@@ -264,6 +265,8 @@ Pontificia Universidad Javeriana	Pontificia Universidad Javeriana	https://ror.or
 Research Center for Medical Mycology - Peking University First Hospital	Peking University First Hospital	https://ror.org/02z1vqm45	China	39.9075	116.39723	true	true	affiliation_chosen	39
 University of Cambridge	University of Cambridge	https://ror.org/013meh722	United Kingdom	52.2	0.11667	true	true	affiliation_chosen	39
 University of Ostrava	University of Ostrava	https://ror.org/00pyqav47	Czechia	49.83465	18.28204	true	true	affiliation_chosen	39
+BIOLOGY CENTRE CAS, INSTITUTE OF HYDROBIOLOGY						false	false	none	38
+Kunming Institute of Zoology	Kunming Institute of Zoology	https://ror.org/03m0vk445	China	25.03889	102.71833	true	true	affiliation_chosen	38
 MAX PLANCK INSTITUTE FOR DEVELOPMENTAL BIOLOGY	Max Planck Institute for Developmental Biology	https://ror.org/022jc0g24	Germany	48.52266	9.05222	true	true	affiliation_chosen	38
 National Institute for Communicable Diseases	National Institute for Communicable Diseases	https://ror.org/007wwmx82	South Africa	-26.20227	28.04363	true	true	affiliation_chosen	38
 UNIVERSITY OF BASEL	University of Basel	https://ror.org/02s6k3f65	Switzerland	47.55839	7.57327	true	true	affiliation_chosen	38
@@ -273,6 +276,7 @@ USDA, ARS, Tifton						false	false	none	38
 Brigham Young University	Brigham Young University	https://ror.org/047rhhm47	United States	40.23384	-111.65853	true	true	affiliation_chosen	37
 Jilin Agricultural University	Jilin Agricultural University	https://ror.org/05dmhhd41	China	43.88	125.32278	true	true	affiliation_chosen	37
 Kasetsart University	Kasetsart University	https://ror.org/05gzceg21	Thailand	13.75398	100.50144	true	true	affiliation_chosen	37
+Kunming Institute of Botany, Chinese Academy of Sciences	Chinese Academy of Sciences	https://ror.org/034t30j35	China	39.9075	116.39723	true	true	affiliation_chosen	37
 LBBE	Laboratoire de Biométrie et Biologie Evolutive	https://ror.org/03skt0t88	France	45.76601	4.8795	true	true	query_exact	37
 China-Japan Friendship Hospital	China-Japan Friendship Hospital	https://ror.org/037cjxp13	China	39.9075	116.39723	true	true	affiliation_chosen	36
 Genome Medical Science Project, National Center for Global Health and Medicine	National Center for Global Health and Medicine	https://ror.org/00r9w3j27	Japan	35.6895	139.69171	true	true	affiliation_chosen	36
@@ -296,6 +300,7 @@ Anhui Agricultural University	Anhui Agricultural University	https://ror.org/0327
 Auburn University	Auburn University	https://ror.org/02v80fc35	United States	32.60986	-85.48078	true	true	affiliation_chosen	34
 Institute of Zoology, Chinese Academy of Sciences	Chinese Academy of Sciences	https://ror.org/034t30j35	China	39.9075	116.39723	true	true	affiliation_chosen	34
 Laval University	Université Laval	https://ror.org/04sjchr03	Canada	46.81228	-71.21454	true	true	affiliation_chosen	34
+Lebanese American University	Lebanese American University	https://ror.org/00hqkan37	Lebanon	33.89332	35.50157	true	true	affiliation_chosen	34
 MRSN BI Team						false	false	none	34
 Royal Botanic Gardens, Kew	Royal Botanic Gardens, Kew	https://ror.org/00ynnr806	United Kingdom	51.50853	-0.12574	true	true	affiliation_chosen	34
 Shanghai Ocean University	Shanghai Ocean University	https://ror.org/04n40zv07	China	31.22222	121.45806	true	true	affiliation_chosen	34
@@ -309,13 +314,12 @@ University of Alberta	University of Alberta	https://ror.org/0160cpw27	Canada	53.
 University of California, Irvine	University of California, Irvine	https://ror.org/04gyf1771	United States	33.66946	-117.82311	true	true	affiliation_chosen	33
 University of Cologne	University of Cologne	https://ror.org/00rcxh774	Germany	50.93333	6.95	true	true	affiliation_chosen	33
 Xiamen University	Xiamen University	https://ror.org/00mcjh785	China	24.47979	118.08187	true	true	affiliation_chosen	33
+Agricultural Genomics Institute at Shenzhen, Chinese Academy of Agricultural Sciences	Chinese Academy of Agricultural Sciences	https://ror.org/0313jb750	China	39.9075	116.39723	true	true	affiliation_chosen	32
+Chinese Academy of Sciences (CAS)	Chinese Academy of Sciences	https://ror.org/034t30j35	China	39.9075	116.39723	true	true	affiliation_chosen	32
 Institut de Biologia Evolutiva (CSIC-UPF)	Institut de Biologia Evolutiva	https://ror.org/044mj7r89	Spain	41.38879	2.15899	true	true	affiliation_chosen	32
 Institute of Phytopathology Christian-Albrechts Universitaet Kiel						false	false	none	32
 Sun Yat-Sen University	Sun Yat-sen University	https://ror.org/0064kty71	China	23.11667	113.25	true	true	query_exact	32
-Agricultural Genomics Institute at Shenzhen, Chinese Academy of Agricultural Sciences	Chinese Academy of Agricultural Sciences	https://ror.org/0313jb750	China	39.9075	116.39723	true	true	affiliation_chosen	31
-Chinese Academy of Sciences (CAS)	Chinese Academy of Sciences	https://ror.org/034t30j35	China	39.9075	116.39723	true	true	affiliation_chosen	31
 Technische Universitat Munchen - WZW	Technical University of Munich	https://ror.org/02kkvpp62	Germany	48.13743	11.57549	true	true	affiliation_chosen	31
-BIOLOGY CENTRE CAS, INSTITUTE OF HYDROBIOLOGY						false	false	none	30
 Centers for Disease Control and Prevention						false	false	none	30
 Centre for Crop & Disease Management, Curtin University	Curtin University	https://ror.org/02n415q13	Australia	-31.95224	115.8614	true	true	affiliation_chosen	30
 HKUST						false	false	none	30
@@ -323,10 +327,10 @@ Institut de recherche pour le developpement						false	false	none	30
 Kansas State University	Kansas State University	https://ror.org/05p1j8758	United States	39.18361	-96.57167	true	true	query_exact	30
 QMUL	Queen Mary University of London	https://ror.org/026zzn846	United Kingdom	51.50853	-0.12574	true	true	query_exact	30
 Universidade de Sao Paulo	Universidade de São Paulo	https://ror.org/036rp1748	Brazil	-23.5475	-46.63611	true	true	affiliation_chosen	30
-University of the Sunshine Coast	University of the Sunshine Coast	https://ror.org/016gb9e15	Australia	-26.65682	153.07955	true	true	affiliation_chosen	30
 King Abdullah University of Science and Technology	King Abdullah University of Science and Technology	https://ror.org/01q3tbs38	Saudi Arabia	21.49012	39.18624	true	true	affiliation_chosen	29
 National Science and Technology Development Agency	National Science and Technology Development Agency	https://ror.org/04vy95b61	Thailand	14.01346	100.53049	true	true	affiliation_chosen	29
 RIKEN	RIKEN	https://ror.org/01sjwvz98	Japan	35.78944	139.62333	true	true	affiliation_chosen	29
+Sichuan University	Sichuan University	https://ror.org/011ashp19	China	30.66667	104.06667	true	true	affiliation_chosen	29
 University of Graz	University of Graz	https://ror.org/01faaaf77	Austria	47.06733	15.44197	true	true	affiliation_chosen	29
 VRIJE UNIVERSITEIT BRUSSEL	Vrije Universiteit Brussel	https://ror.org/006e5kg04	Belgium	50.85045	4.34878	true	true	affiliation_chosen	29
 Zhejiang Ocean University	Zhejiang Ocean University	https://ror.org/03mys6533	China	29.98869	122.20488	true	true	affiliation_chosen	29
@@ -344,16 +348,15 @@ EMBL-EBI, WELLCOME TRUST GENOME CAMPUS, CAMBRIDGE	Wellcome Trust	https://ror.org
 Genome Institute of Singapore	Genome Institute of Singapore	https://ror.org/05k8wg936	Singapore	1.28967	103.85007	true	true	affiliation_chosen	27
 Georgia Institute of Technology	Georgia Institute of Technology	https://ror.org/01zkghx44	United States	33.749	-84.38798	true	true	affiliation_chosen	27
 IPK-Gatersleben						false	false	none	27
-Lebanese American University	Lebanese American University	https://ror.org/00hqkan37	Lebanon	33.89332	35.50157	true	true	affiliation_chosen	27
 National Agriculture and Food Research Organization	National Agriculture and Food Research Organization	https://ror.org/023v4bd62	Japan	36.2	140.1	true	true	affiliation_chosen	27
 NIAB						false	false	none	27
 Princeton University	Princeton University	https://ror.org/00hx57361	United States	40.34872	-74.65905	true	true	affiliation_chosen	27
-Sichuan University	Sichuan University	https://ror.org/011ashp19	China	30.66667	104.06667	true	true	affiliation_chosen	27
 Smithsonian Institution	Smithsonian Institution	https://ror.org/01pp8nd67	United States	38.89511	-77.03637	true	true	affiliation_chosen	27
 TU Dresden - IHI Zittau	International University Institute (IHI) Zittau	https://ror.org/03pqf0084	Germany	50.89772	14.80764	true	true	affiliation_chosen	27
 University of Otago	University of Otago	https://ror.org/01jmxt844	New Zealand	-45.87416	170.50361	true	true	affiliation_chosen	27
 WAGENINGEN UNIVERSITY						false	false	none	27
 Wellcome Trust Sanger Institute	Wellcome Sanger Institute	https://ror.org/05cy4wa09	United Kingdom	52.2	0.11667	true	true	affiliation_chosen	27
+Yellow Sea Fisheries Research Institute	Yellow Sea Fisheries Research Institute	https://ror.org/0578w5a44	China	36.33333	118.25	true	true	affiliation_chosen	27
 Agricultural Research Organization	Agricultural Research Organization	https://ror.org/05hbrxp80	Israel	31.97102	34.78939	true	true	affiliation_chosen	26
 California Institute of Technology	California Institute of Technology	https://ror.org/05dxps055	United States	34.14778	-118.14452	true	true	affiliation_chosen	26
 Center for Biotechnology, Bielefeld University	Bielefeld University	https://ror.org/02hpadn98	Germany	52.03333	8.53333	true	true	affiliation_chosen	26
@@ -362,18 +365,17 @@ GenoFish						false	false	none	26
 Indiana University	Indiana University	https://ror.org/01kg8sb98	United States	39.16533	-86.52639	true	true	affiliation_chosen	26
 Institute of advanced agriculture science, Peking university	Peking University	https://ror.org/02v51f717	China	39.9075	116.39723	true	true	affiliation_chosen	26
 Katholieke Universiteit Leuven	KU Leuven	https://ror.org/05f950310	Belgium	50.87959	4.70093	true	true	affiliation_chosen	26
-Kunming Institute of Botany, Chinese Academy of Sciences	Chinese Academy of Sciences	https://ror.org/034t30j35	China	39.9075	116.39723	true	true	affiliation_chosen	26
 Mississippi State University	Mississippi State University	https://ror.org/0432jq872	United States	33.45049	-88.81961	true	true	affiliation_chosen	26
 PacBio	Pacific Biosciences (United States)	https://ror.org/00fcszb13	United States	37.45383	-122.18219	true	true	affiliation_chosen	26
 ROTHAMSTED RESEARCH	Rothamsted Research	https://ror.org/0347fy350	United Kingdom	51.81684	-0.35706	true	true	affiliation_chosen	26
 Sungkyunkwan University	Sungkyunkwan University	https://ror.org/04q78tk20	South Korea	37.29111	127.00889	true	true	affiliation_chosen	26
 The i5k Initiative						false	false	none	26
 University of California Riverside	University of California, Riverside	https://ror.org/03nawhv43	United States	33.95335	-117.39616	true	true	affiliation_chosen	26
-Yellow Sea Fisheries Research Institute	Yellow Sea Fisheries Research Institute	https://ror.org/0578w5a44	China	36.33333	118.25	true	true	affiliation_chosen	26
 Zhejiang Academy of Agricultural Sciences	ZheJiang Academy of Agricultural Sciences	https://ror.org/02qbc3192	China	30.29365	120.16142	true	true	affiliation_chosen	26
 Barcelona Supercomputing Center	Barcelona Supercomputing Center	https://ror.org/05sd8tv96	Spain	41.38879	2.15899	true	true	affiliation_chosen	25
 Geisel School of Medicine at Dartmouth						false	false	none	25
 Guangdong Ocean University	Guangdong Ocean University	https://ror.org/0462wa640	China	21.23391	110.38749	true	true	affiliation_chosen	25
+Henan Agricultural University	Henan Agricultural University	https://ror.org/04eq83d71	China	34.75778	113.64861	true	true	affiliation_chosen	25
 Huazhong Agriculture University						false	false	none	25
 INSTITUTE OF ANIMAL SCIENCES OF CAAS						false	false	none	25
 INSTITUTE OF EVOLUTIONARY BIOLOGY	Institut de Biologia Evolutiva	https://ror.org/044mj7r89	Spain	41.38879	2.15899	true	true	affiliation_chosen	25
@@ -390,7 +392,6 @@ Agricultural Genomics Institute at Shenzhen	Agricultural Genomics Institute at S
 BGI-SZ						false	false	none	24
 California State University, East Bay	California State University, East Bay	https://ror.org/04jaeba88	United States	37.66882	-122.0808	true	true	affiliation_chosen	24
 Guangxi University	Guangxi University	https://ror.org/02c9qn167	China	22.81667	108.31667	true	true	affiliation_chosen	24
-Henan Agricultural University	Henan Agricultural University	https://ror.org/04eq83d71	China	34.75778	113.64861	true	true	affiliation_chosen	24
 Hospital Canselor Tuanku Muhriz, Pusat Perubatan UKM	University Kebangsaan Malaysia Medical Centre	https://ror.org/01590nj79	Malaysia	3.1412	101.68653	true	true	affiliation_chosen	24
 INRA UMR 1319	Interdisciplinarité en Santé Publique Interventions et Instruments de mesure complexes – Région Est	https://ror.org/04dx32582	France	48.66115	6.17114	true	true	affiliation_chosen	24
 Leibniz Institute for Zoo and Wildlife Research	Leibniz Institute for Zoo and Wildlife Research	https://ror.org/05nywn832	Germany	52.52437	13.41053	true	true	affiliation_chosen	24
@@ -400,10 +401,12 @@ RWTH Aachen University	RWTH Aachen University	https://ror.org/04xfq0f34	Germany	
 Salk Institute for Biological Studies	Salk Institute for Biological Studies	https://ror.org/03xez1567	United States	32.84727	-117.2742	true	true	affiliation_chosen	24
 Shanghai Jiao Tong University	Shanghai Jiao Tong University	https://ror.org/0220qvk04	China	31.22222	121.45806	true	true	affiliation_chosen	24
 Skoltech	Skolkovo Institute of Science and Technology	https://ror.org/03f9nc143	Russia	55.68784	37.36836	true	true	affiliation_chosen	24
+University of California Santa Cruz	University of California, Santa Cruz	https://ror.org/03s65by71	United States	36.97412	-122.0308	true	true	affiliation_chosen	24
 Wuhan University	Wuhan University	https://ror.org/033vjfk17	China	30.58333	114.26667	true	true	affiliation_chosen	24
 Yunnan Academy of Forestry and Grassland	Yunnan Academy of Forestry	https://ror.org/05rpf2x18	China	25.03889	102.71833	true	true	affiliation_chosen	24
 Jill Banfield's Lab at Berkeley						false	false	none	23
 Korea University						false	false	none	23
+Lanzhou University	Lanzhou University	https://ror.org/01mkqqe32	China	36.05701	103.83987	true	true	affiliation_chosen	23
 Stellenbosch University	Stellenbosch University	https://ror.org/05bk57929	South Africa	-33.93462	18.86676	true	true	affiliation_chosen	23
 UNICAMP	Universidade Estadual de Campinas (UNICAMP)	https://ror.org/04wffgt70	Brazil	-22.90556	-47.06083	true	true	query_exact	23
 University of Basel	University of Basel	https://ror.org/02s6k3f65	Switzerland	47.55839	7.57327	true	true	affiliation_chosen	23
@@ -412,9 +415,9 @@ University of Warwick	University of Warwick	https://ror.org/01a77tt86	United Kin
 Utah State University	Utah State University	https://ror.org/00h6set76	United States	41.73549	-111.83439	true	true	affiliation_chosen	23
 Institut de Biologia Evolutiva	Institut de Biologia Evolutiva	https://ror.org/044mj7r89	Spain	41.38879	2.15899	true	true	affiliation_chosen	22
 Institute of Vegetables and Flowers, Chinese Academy of Agricultural Sciences	Chinese Academy of Agricultural Sciences	https://ror.org/0313jb750	China	39.9075	116.39723	true	true	affiliation_chosen	22
-Lanzhou University	Lanzhou University	https://ror.org/01mkqqe32	China	36.05701	103.83987	true	true	affiliation_chosen	22
 New York University Abu Dhabi	New York University Abu Dhabi	https://ror.org/00e5k0821	United Arab Emirates	24.45118	54.39696	true	true	query_exact	22
 NORWEGIAN UNIVERSITY OF LIFE SCIENCES	Norwegian University of Life Sciences	https://ror.org/04a1mvv97	Norway	59.66472	10.79465	true	true	affiliation_chosen	22
+Shaanxi Normal University	Shaanxi Normal University	https://ror.org/0170z8493	China	34.25833	108.92861	true	true	affiliation_chosen	22
 Universidad Complutense de Madrid	Universidad Complutense de Madrid	https://ror.org/02p0gd045	Spain	40.4165	-3.70256	true	true	affiliation_chosen	22
 Universidade Federal do Rio de Janeiro	Universidade Federal do Rio de Janeiro	https://ror.org/03490as77	Brazil	-22.90642	-43.18223	true	true	affiliation_chosen	22
 University of Edinburgh	University of Edinburgh	https://ror.org/01nrxwf90	United Kingdom	55.95206	-3.19648	true	true	affiliation_chosen	22
@@ -429,7 +432,6 @@ Hainan University	Hainan University	https://ror.org/03q648j11	China	20.03421	110
 LNCC	Laboratório Nacional de Computação Científica	https://ror.org/0498ekt05	Brazil	-22.505	-43.17861	true	true	query_exact	21
 NIAB EMR						false	false	none	21
 Public Health Wales (Microbiology)	Public Health Wales	https://ror.org/00265c946	United Kingdom	51.48	-3.18	true	true	affiliation_chosen	21
-Shaanxi Normal University	Shaanxi Normal University	https://ror.org/0170z8493	China	34.25833	108.92861	true	true	affiliation_chosen	21
 University of Genoa	University of Genoa	https://ror.org/0107c5v14	Italy	44.40478	8.94439	true	true	affiliation_chosen	21
 University of Ottawa	University of Ottawa	https://ror.org/03c4mmv16	Canada	45.41117	-75.69812	true	true	affiliation_chosen	21
 Washington State University	Washington State University	https://ror.org/05dk0ce17	United States	46.73127	-117.17962	true	true	affiliation_chosen	21
@@ -439,6 +441,7 @@ BGI-Qingdao						false	false	none	20
 Biological Resource Center, National Institute of Technology and Evaluation (NBRC)	National Institute of Technology and Evaluation	https://ror.org/044jdke57	Japan	35.6895	139.69171	true	true	affiliation_chosen	20
 Chinese Academy of Fishery Sciences	Chinese Academy of Fishery Sciences	https://ror.org/02bwk9n38	China	39.9075	116.39723	true	true	affiliation_chosen	20
 College of Animal Science and Technology, Northwest A&F University	Northwest A&F University	https://ror.org/0051rme32	China	34.27173	108.07891	true	true	affiliation_chosen	20
+Department of Microbiology, Medical School, Aristotle University of Thessaloniki, Greece	Aristotle University of Thessaloniki	https://ror.org/02j61yw88	Greece	40.64361	22.93086	true	true	affiliation_chosen	20
 EBI						false	false	none	20
 Field Museum of Natural History	Museo de Historia Natural	https://ror.org/00rs6s651	Peru	-12.04318	-77.02824	true	true	affiliation_chosen	20
 Fudan University	Fudan University	https://ror.org/013q1eq08	China	31.22222	121.45806	true	true	affiliation_chosen	20
@@ -453,7 +456,6 @@ Sir H.N. Reliance Foundation Hospital						false	false	none	20
 South China Normal University	South China Normal University	https://ror.org/01kq0pv72	China	23.11667	113.25	true	true	affiliation_chosen	20
 South China Sea Institute of Oceanology, Chinese Academy of Sciences	Chinese Academy of Sciences	https://ror.org/034t30j35	China	39.9075	116.39723	true	true	affiliation_chosen	20
 The Jackson Laboratory for Genomic Medicine	The Jackson Laboratory for Genomic Medicine	https://ror.org/03cew3973	United States	41.71982	-72.83204	true	true	affiliation_chosen	20
-University of California Santa Cruz	University of California, Santa Cruz	https://ror.org/03s65by71	United States	36.97412	-122.0308	true	true	affiliation_chosen	20
 University of California, Santa Barbara	University of California, Santa Barbara	https://ror.org/02t274463	United States	34.42083	-119.69819	true	true	affiliation_chosen	20
 University of Sydney	The University of Sydney	https://ror.org/0384j8v12	Australia	-33.86785	151.20732	true	true	affiliation_chosen	20
 University of York	University of York	https://ror.org/04m01e293	United Kingdom	53.95763	-1.08271	true	true	affiliation_chosen	20
@@ -464,6 +466,7 @@ Instituto Nacional de Salud						false	false	none	19
 Kangwon National University	Kangwon National University	https://ror.org/01mh5ph17	South Korea	37.87472	127.73417	true	true	affiliation_chosen	19
 Los Alamos National Laboratory	Los Alamos National Laboratory	https://ror.org/01e41cf67	United States	35.88808	-106.30697	true	true	affiliation_chosen	19
 McDonnell Genome Institute - Washington University School of Medicine						false	false	none	19
+Northeast Forestry University	Northeast Forestry University	https://ror.org/02yxnh564	China	45.75	126.65	true	true	affiliation_chosen	19
 Public Health Laboratory Centre	Public Health Laboratory	https://ror.org/04gvvdt54	Macao	22.20056	113.54611	true	true	affiliation_chosen	19
 stanford university school of medicine	Stanford University	https://ror.org/00f54p054	United States	37.42411	-122.16608	true	true	affiliation_chosen	19
 State Key Laboratory of Pathogen and Biosecurity						false	false	none	19
@@ -475,6 +478,7 @@ University of Colorado Denver Health Sciences Center	University of Colorado Denv
 University of Debrecen	University of Debrecen	https://ror.org/02xf66n48	Hungary	47.53167	21.62444	true	true	affiliation_chosen	19
 University of Liverpool	University of Liverpool	https://ror.org/04xs57h96	United Kingdom	53.41058	-2.97794	true	true	affiliation_chosen	19
 University of Neuchatel	University of Neuchâtel	https://ror.org/00vasag41	Switzerland	46.99179	6.931	true	true	affiliation_chosen	19
+University of Pittsburgh	University of Pittsburgh	https://ror.org/01an3r305	United States	40.44062	-79.99589	true	true	affiliation_chosen	19
 Zhejiang A&F University	Zhejiang A & F University	https://ror.org/02vj4rn06	China	30.23333	119.71667	true	true	affiliation_chosen	19
 Agriculture Victoria Research	Agriculture Victoria	https://ror.org/01mqx8q10	Australia	-37.814	144.96332	true	true	affiliation_chosen	18
 Arizona State University	Arizona State University	https://ror.org/03efmqc40	United States	33.41477	-111.90931	true	true	affiliation_chosen	18
@@ -487,21 +491,22 @@ INDIAN INSTITUTE OF TECHNOLOGY DELHI	Indian Institute of Technology Delhi	https:
 Korea Research Institute of Bioscience and Biotechnology	Korea Research Institute of Bioscience and Biotechnology	https://ror.org/03ep23f07	South Korea	36.34913	127.38493	true	true	affiliation_chosen	18
 Louisiana State University	Louisiana State University	https://ror.org/05ect4e57	United States	30.44332	-91.18747	true	true	affiliation_chosen	18
 Max-Planck-Institute for Plant Breeding Research						false	false	none	18
+Nanjing Institute of Geology and Palaeontology, Chinese Academy of Sciences	Chinese Academy of Sciences	https://ror.org/034t30j35	China	39.9075	116.39723	true	true	affiliation_chosen	18
 Nankai University	Nankai University	https://ror.org/01y1kjr75	China	39.14222	117.17667	true	true	affiliation_chosen	18
 National University Hospital						false	false	none	18
-Northeast Forestry University	Northeast Forestry University	https://ror.org/02yxnh564	China	45.75	126.65	true	true	affiliation_chosen	18
 Pwani University Bioscience Research Centre	Pwani University	https://ror.org/02952pd71	Kenya	-3.63045	39.84992	true	true	affiliation_chosen	18
 Sciensano						false	false	none	18
 Shenyang Agricultural University	Shenyang Agricultural University	https://ror.org/01n7x9n08	China	41.79222	123.43278	true	true	affiliation_chosen	18
 Southwest Forestry University	Southwest Forestry University	https://ror.org/03dfa9f06	China	25.03889	102.71833	true	true	affiliation_chosen	18
 The Genome Institute	Joint Genome Institute	https://ror.org/04xm1d337	United States	37.87159	-122.27275	true	true	affiliation_chosen	18
 THE SAINSBURY LABORATORY	Sainsbury Laboratory	https://ror.org/02tdtzx53	United Kingdom	52.62783	1.29834	true	true	affiliation_chosen	18
+University of New Mexico	University of New Mexico	https://ror.org/05fs6jp91	United States	35.08449	-106.65114	true	true	affiliation_chosen	18
 University of Oregon	University of Oregon	https://ror.org/0293rh119	United States	44.05207	-123.08675	true	true	affiliation_chosen	18
-University of Pittsburgh	University of Pittsburgh	https://ror.org/01an3r305	United States	40.44062	-79.99589	true	true	affiliation_chosen	18
 University of Potsdam	University of Potsdam	https://ror.org/03bnmw459	Germany	52.39886	13.06566	true	true	affiliation_chosen	18
 University of Reading	University of Reading	https://ror.org/05v62cm79	United Kingdom	51.45625	-0.97113	true	true	affiliation_chosen	18
 University of Southern Queensland	University of Southern Queensland	https://ror.org/04sjbnx57	Australia	-27.56056	151.95386	true	true	affiliation_chosen	18
 University of Western Ontario	Western University	https://ror.org/02grkyz14	Canada	42.98339	-81.23304	true	true	affiliation_chosen	18
+Clark University	Clark University	https://ror.org/04123ky43	United States	42.26259	-71.80229	true	true	affiliation_chosen	17
 Forestry and Agricultural Biotechnology Institute (FABI), University of Pretoria	University of Pretoria	https://ror.org/00g0p6g84	South Africa	-25.74486	28.18783	true	true	affiliation_chosen	17
 G10K						false	false	none	17
 Illinois Institute of Technology	Illinois Institute of Technology	https://ror.org/037t3ry66	United States	41.85003	-87.65005	true	true	affiliation_chosen	17
@@ -515,7 +520,6 @@ Swiss Institute of Bioinformatics	SIB Swiss Institute of Bioinformatics	https://
 The Genome Institute at Washington University School of Medicine						false	false	none	17
 University of Bristol	University of Bristol	https://ror.org/0524sp257	United Kingdom	51.45523	-2.59665	true	true	affiliation_chosen	17
 University of Kerbala	University of Kerbala	https://ror.org/0449bkp65	Iraq	32.61603	44.02488	true	true	affiliation_chosen	17
-University of New Mexico	University of New Mexico	https://ror.org/05fs6jp91	United States	35.08449	-106.65114	true	true	affiliation_chosen	17
 UNIVERSITY OF NEW SOUTH WALES	UNSW Sydney	https://ror.org/03r8z3t63	Australia	-33.86785	151.20732	true	true	affiliation_chosen	17
 University of Pavia	University of Pavia	https://ror.org/00s6t1f81	Italy	45.19205	9.15917	true	true	affiliation_chosen	17
 Wageningen University & Research	Wageningen University & Research	https://ror.org/04qw24q55	The Netherlands	51.97	5.66667	true	true	affiliation_chosen	17
@@ -524,7 +528,6 @@ Anhui University	Anhui University	https://ror.org/05th6yx34	China	31.86389	117.2
 Chongqing Traditional Chinese Medicine Hospital	Jining Traditional Chinese Medicine Hospital	https://ror.org/027f56t09	China	35.405	116.58139	true	true	affiliation_chosen	16
 Clemson University	Clemson University	https://ror.org/037s24f05	United States	34.68344	-82.83737	true	true	affiliation_chosen	16
 Concordia University						false	false	none	16
-Department of Microbiology, Medical School, Aristotle University of Thessaloniki, Greece	Aristotle University of Thessaloniki	https://ror.org/02j61yw88	Greece	40.64361	22.93086	true	true	affiliation_chosen	16
 Environmental Genomics Office, Center for Enviromental Biology and Ecosystem Studies, National Institute for Environmental Studies	National Institute for Environmental Studies	https://ror.org/02hw5fp67	Japan	36.2	140.1	true	true	affiliation_chosen	16
 Evolutionary Biology and Animal Ecology						false	false	none	16
 Flanders Research Institute for Agriculture, Fisheries and Food						false	false	none	16
@@ -546,7 +549,6 @@ University of Pisa	University of Pisa	https://ror.org/03ad39j10	Italy	43.70853	1
 USDA-Agricultural Research Service, USA	Agricultural Research Service	https://ror.org/02d2m2044	United States	38.89511	-77.03637	true	true	affiliation_chosen	16
 Yunnan University	Yunnan University	https://ror.org/0040axw97	China	25.03889	102.71833	true	true	affiliation_chosen	16
 Brood Parasitic Bird Genomes Consortium						false	false	none	15
-Clark University	Clark University	https://ror.org/04123ky43	United States	42.26259	-71.80229	true	true	affiliation_chosen	15
 Conway Institute, University College Dublin	University College Dublin	https://ror.org/05m7pjf47	Ireland	53.33306	-6.24889	true	true	affiliation_chosen	15
 Delft University of Technology	Delft University of Technology	https://ror.org/02e2c7k09	The Netherlands	52.00667	4.35556	true	true	affiliation_chosen	15
 EI						false	false	none	15
@@ -587,6 +589,7 @@ Nagoya university	Nagoya University	https://ror.org/04chrp450	Japan	35.18147	136
 National Institute of Biological Resources	National Institute of Biological Resources	https://ror.org/012a41834	South Korea	37.45646	126.70515	true	true	affiliation_chosen	14
 Perl River Fisheries Research Institute, Chinese Academy of Fishery Sciences	Chinese Academy of Fishery Sciences	https://ror.org/02bwk9n38	China	39.9075	116.39723	true	true	affiliation_chosen	14
 RMIT University	RMIT University	https://ror.org/04ttjf776	Australia	-37.814	144.96332	true	true	affiliation_chosen	14
+Shandong Academy of Agricultural Sciences	Shandong Academy of Agricultural Sciences	https://ror.org/01fbgjv04	China	36.66833	116.99722	true	true	affiliation_chosen	14
 UMR 9191 CNRS	Évolution, Génomes, Comportement, Écologie	https://ror.org/011abem59	France	48.85341	2.3488	true	true	affiliation_chosen	14
 Universite Paris Saclay / CNRS						false	false	none	14
 University of California - Irvine						false	false	none	14
@@ -608,7 +611,6 @@ International Crops Research Institute for the Semi-Arid Tropics (ICRISAT)						
 International Weed Genomics Consortium						false	false	none	13
 Jilin University	Jilin University	https://ror.org/00js3aw79	China	43.88	125.32278	true	true	affiliation_chosen	13
 Max Planck Institute for Evolutionary Biology	Max Planck Institute for Evolutionary Biology	https://ror.org/0534re684	Germany	54.16202	10.42765	true	true	affiliation_chosen	13
-Nanjing Institute of Geology and Palaeontology, Chinese Academy of Sciences	Chinese Academy of Sciences	https://ror.org/034t30j35	China	39.9075	116.39723	true	true	affiliation_chosen	13
 Nanjing Tech University	Nanjing Tech University	https://ror.org/03sd35x91	China	32.06167	118.77778	true	true	affiliation_chosen	13
 Nanyang Normal University	Nanyang Normal University	https://ror.org/01f7yer47	China	32.99472	112.53278	true	true	query_exact	13
 National Institute of Genetics	National Institute of Genetics	https://ror.org/02xg1m795	Japan	35.11667	138.91667	true	true	affiliation_chosen	13
@@ -617,7 +619,6 @@ Ori-Gene Co. Ltd.						false	false	none	13
 Pearl River Fisheries Research Institute, Chinese Academy of Fishery Sciences	Chinese Academy of Fishery Sciences	https://ror.org/02bwk9n38	China	39.9075	116.39723	true	true	affiliation_chosen	13
 Pennsylvania State University	Pennsylvania State University	https://ror.org/04p491231	United States	40.79339	-77.86	true	true	affiliation_chosen	13
 Qinghai University	Qinghai University	https://ror.org/05h33bt13	China	36.62554	101.75739	true	true	affiliation_chosen	13
-Shandong Academy of Agricultural Sciences	Shandong Academy of Agricultural Sciences	https://ror.org/01fbgjv04	China	36.66833	116.99722	true	true	affiliation_chosen	13
 Shanxi Agricultural University	Shanxi Agricultural University	https://ror.org/05e9f5362	China	37.73639	112.55639	true	true	affiliation_chosen	13
 South China Botanical Garden	South China Botanical Garden	https://ror.org/01xqdxh54	China	23.11667	113.25	true	true	affiliation_chosen	13
 Swedish Museum of Natural History	Swedish Museum of Natural History	https://ror.org/05k323c76	Sweden	59.32938	18.06871	true	true	affiliation_chosen	13
@@ -676,7 +677,6 @@ Australian Wine Research Institute	Australian Wine Research Institute	https://ro
 Beijing Normal University	Beijing Normal University	https://ror.org/022k4wk35	China	39.9075	116.39723	true	true	affiliation_chosen	11
 Centre for Crop and Disease Managment						false	false	none	11
 Chulalongkorn University	Chulalongkorn University	https://ror.org/028wp3y58	Thailand	13.75398	100.50144	true	true	affiliation_chosen	11
-CIRAD	Centre de Coopération Internationale en Recherche Agronomique pour le Développement	https://ror.org/05kpkpg04	France	48.85341	2.3488	true	true	query_exact	11
 Complutense University of Madrid	Universidad Complutense de Madrid	https://ror.org/02p0gd045	Spain	40.4165	-3.70256	true	true	affiliation_chosen	11
 CSIC						false	false	none	11
 Estonian University of Life Sciences	Estonian University of Life Sciences	https://ror.org/00s67c790	Estonia	58.38062	26.72509	true	true	affiliation_chosen	11
@@ -718,6 +718,7 @@ University of Geneva	University of Geneva	https://ror.org/01swzsf04	Switzerland	
 University of Miyazaki	University of Miyazaki	https://ror.org/0447kww10	Japan	31.91667	131.41667	true	true	affiliation_chosen	11
 University of Notre Dame	University of Notre Dame	https://ror.org/00mkhxb43	United States	41.70019	-86.23793	true	true	affiliation_chosen	11
 University of Toronto Mississauga	University of Toronto	https://ror.org/03dbr7087	Canada	43.70643	-79.39864	true	true	affiliation_chosen	11
+Yantai University	Yantai University	https://ror.org/01rp41m56	China	37.47649	121.44081	true	true	affiliation_chosen	11
 Agriculture Victoria	Agriculture Victoria	https://ror.org/01mqx8q10	Australia	-37.814	144.96332	true	true	affiliation_chosen	10
 BGI-shenzhen						false	false	none	10
 Canada's Michael Smith Genome Sciences Centre	Canada's Michael Smith Genome Sciences Centre	https://ror.org/0333j0897	Canada	49.24966	-123.11934	true	true	affiliation_chosen	10
@@ -760,6 +761,7 @@ Qingdao Institute of Bioenergy and Bioprocess Technology, Chinese Academy of Sci
 RadboudUMC	Radboud University Medical Center	https://ror.org/05wg1m734	The Netherlands	51.8425	5.85278	true	true	affiliation_chosen	10
 Senckenberg Gesellschaft fuer Naturforschung	Senckenberg - Leibniz Institution for Biodiversity and Earth System Research	https://ror.org/00xmqmx64	Germany	50.11552	8.68417	true	true	affiliation_chosen	10
 Senckenberg Research Institute and Natural History Museum Frankfurt	Senckenberg Research Institute and Natural History Museum Frankfurt/M	https://ror.org/01wz97s39	Germany	50.11552	8.68417	true	true	affiliation_chosen	10
+Shandong University	Shandong University	https://ror.org/0207yh398	China	36.66833	116.99722	true	true	affiliation_chosen	10
 Shihezi University	Shihezi University	https://ror.org/04x0kvm78	China	44.3023	86.03694	true	true	affiliation_chosen	10
 Teesside University	Teesside University	https://ror.org/03z28gk75	United Kingdom	54.57623	-1.23483	true	true	affiliation_chosen	10
 The Institute of Vegetables and Flowers CAAS	Institute of Vegetables and Flowers	https://ror.org/02fnpjd08	China	39.9075	116.39723	true	true	affiliation_chosen	10
@@ -788,7 +790,6 @@ Westfaelische Wilhelms University Muenster						false	false	none	10
 Worcester Polytechnic Institute	Worcester Polytechnic Institute	https://ror.org/05ejpqr48	United States	42.26259	-71.80229	true	true	affiliation_chosen	10
 Wuhan Botanical Garden, Chinese Academy of Sciences	Chinese Academy of Sciences	https://ror.org/034t30j35	China	39.9075	116.39723	true	true	affiliation_chosen	10
 Xinyang Normal University	Xinyang Normal University	https://ror.org/0190x2a66	China	32.12278	114.06556	true	true	affiliation_chosen	10
-Yantai University	Yantai University	https://ror.org/01rp41m56	China	37.47649	121.44081	true	true	affiliation_chosen	10
 Zhejiang University of Technology	Zhejiang University of Technology	https://ror.org/02djqfd08	China	30.29365	120.16142	true	true	affiliation_chosen	10
 Agricultural research council - Vegetable and Ornamental Plants	The Research Council	https://ror.org/03tcppy59	Oman	23.58413	58.40778	true	true	affiliation_chosen	9
 Bioinformatics Research Centre						false	false	none	9
@@ -802,6 +803,7 @@ Designing Future Wheat						false	false	none	9
 Dovetail Genomics						false	false	none	9
 EDB	Economic Development Board	https://ror.org/02nqj0b62	Singapore	1.28967	103.85007	true	true	query_exact	9
 Federal University of Parana						false	false	none	9
+Fiocruz Rondonia						false	false	none	9
 Hochschule Geisenheim University	Hochschule Geisenheim University	https://ror.org/05myv7q56	Germany	49.9847	7.96835	true	true	affiliation_chosen	9
 HudsonAlpha Genome Sequencing Center						false	false	none	9
 Institute for Bioengineering and Biosciences, Instituto Superior Tecnico	Institute for Bioengineering and Biosciences	https://ror.org/003c0jq59	Portugal	38.72509	-9.1498	true	true	affiliation_chosen	9
@@ -820,13 +822,13 @@ NATURHISTORISKA RIKSMUSEET	Swedish Museum of Natural History	https://ror.org/05k
 NDSU	North Dakota State University	https://ror.org/05h1bnb22	United States	46.87719	-96.7898	true	true	query_exact	9
 NIAB-EMR						false	false	none	9
 NWAFU	Northwest A&F University	https://ror.org/0051rme32	China	34.27173	108.07891	true	true	query_exact	9
+Oak Ridge National Laboratory	Oak Ridge National Laboratory	https://ror.org/01qz5mb56	United States	36.01036	-84.26964	true	true	affiliation_chosen	9
 Ocean university of China	Ocean University of China	https://ror.org/04rdtx186	China	36.06488	120.38042	true	true	affiliation_chosen	9
 Pavol Jozef Safarik University in Kosice						false	false	none	9
 Peiking University	Godfrey Okoye University	https://ror.org/04japw488	Nigeria	6.44132	7.49883	true	true	affiliation_chosen	9
 Robert Koch-Institut	Robert Koch Institute	https://ror.org/01k5qnb77	Germany	52.52437	13.41053	true	true	affiliation_chosen	9
 Rural Development Administration	Rural Development Administration	https://ror.org/03xs9yg50	South Korea	35.82194	127.14889	true	true	affiliation_chosen	9
 Sejong University	Sejong University	https://ror.org/00aft1q37	South Korea	37.566	126.9784	true	true	affiliation_chosen	9
-Shandong University	Shandong University	https://ror.org/0207yh398	China	36.66833	116.99722	true	true	affiliation_chosen	9
 Shanghai Institutes for Biological Sciences, CAS	Shanghai Institutes for Biological Sciences	https://ror.org/011rf9d86	China	31.22222	121.45806	true	true	affiliation_chosen	9
 Simon Fraser University	Simon Fraser University	https://ror.org/0213rcc28	Canada	49.26636	-122.95263	true	true	affiliation_chosen	9
 System Biology and Bioinformatics, System Biology and Bioinformatics, King Mongkut's University of Technology Thonburi	King Mongkut's University of Technology Thonburi	https://ror.org/0057ax056	Thailand	13.75398	100.50144	true	true	affiliation_chosen	9
@@ -916,6 +918,7 @@ THE AUSTRALIAN WINE RESEARCH INSTITUTE	Australian Wine Research Institute	https:
 The First Affiliated Hospital Sun Yat sen University						false	false	none	8
 The University of New South Wales	UNSW Sydney	https://ror.org/03r8z3t63	Australia	-33.86785	151.20732	true	true	affiliation_chosen	8
 Tokyo University of Agriculture	Tokyo University of Agriculture	https://ror.org/05crbcr45	Japan	35.6895	139.69171	true	true	affiliation_chosen	8
+Transylvanian Institute of Neuroscience	Transylvanian Institute of Neuroscience	https://ror.org/05mkatf28	Romania	46.76667	23.6	true	true	affiliation_chosen	8
 treep lbbe ucbl						false	false	none	8
 UMR 1095 INRA/UCA, Genetics, Diversity and Ecophysiology of Cereals	Génétique, Diversité, Écophysiologie des Céréales	https://ror.org/04397qy32	France	45.77969	3.08682	true	true	affiliation_chosen	8
 United States Geological Survey	Pacific Island Ecosystems Research Center	https://ror.org/03eg83y24	United States	19.41938	-155.2885	true	true	affiliation_chosen	8
@@ -953,6 +956,7 @@ CFSAN	Center for Food Safety and Applied Nutrition	https://ror.org/05hzdft06	Uni
 Chemical Life Science, Bioinformatics Center, Institute for Chemical Research, Kyoto University	Kyoto University Institute for Chemical Research	https://ror.org/0349bbg69	Japan	35.02107	135.75385	true	true	affiliation_chosen	7
 Chinese Academy of Agricultural Science Institute of Vegetables and Flowers	Institute of Vegetables and Flowers	https://ror.org/02fnpjd08	China	39.9075	116.39723	true	true	affiliation_chosen	7
 Chinese Academy of Science	Chinese Academy of Sciences	https://ror.org/034t30j35	China	39.9075	116.39723	true	true	affiliation_chosen	7
+CIRAD	Centre de Coopération Internationale en Recherche Agronomique pour le Développement	https://ror.org/05kpkpg04	France	48.85341	2.3488	true	true	query_exact	7
 CNGB	China National GeneBank	https://ror.org/03n9hr695	China	22.54554	114.0683	true	true	query_exact	7
 Cold Spring Harbor Laboratory	Cold Spring Harbor Laboratory	https://ror.org/02qz8b764	United States	40.87149	-73.45679	true	true	affiliation_chosen	7
 Contact; Gloria.Abad@aphis.usda.gov, USDA-APHIS-PPQ-S&T						false	false	none	7
@@ -981,12 +985,15 @@ Liaoning Ocean and Fisheries Science Research Institute						false	false	none	7
 LOEWE Centre for Translational Biodiversity Genomics (LOEWE-TBG)	LOEWE Centre for Translational Biodiversity Genomics	https://ror.org/0396gab88	Germany	50.11552	8.68417	true	true	affiliation_chosen	7
 Los Alamos National Lab						false	false	none	7
 Martin Luther University Halle-Wittenberg	Martin Luther University Halle-Wittenberg	https://ror.org/05gqaka33	Germany	51.48158	11.97947	true	true	affiliation_chosen	7
+Murdoch University	Murdoch University	https://ror.org/00r4sry34	Australia	-31.95224	115.8614	true	true	affiliation_chosen	7
 Nanjing University	Nanjing University	https://ror.org/01rxvg760	China	32.06167	118.77778	true	true	affiliation_chosen	7
 National Institute for Environmental Studies	National Institute for Environmental Studies	https://ror.org/02hw5fp67	Japan	36.2	140.1	true	true	affiliation_chosen	7
 National Institute of Agricultural Sciences, Rural Development Administration	Rural Development Administration	https://ror.org/03xs9yg50	South Korea	35.82194	127.14889	true	true	affiliation_chosen	7
+Natural History Museum	Natural History Museum	https://ror.org/039zvsn29	United Kingdom	51.50853	-0.12574	true	true	query_exact	7
 Northwest Institute of Plateau Biology, Chinese Academy of Sciences	Chinese Academy of Sciences	https://ror.org/034t30j35	China	39.9075	116.39723	true	true	affiliation_chosen	7
 PARC-National Agricultural Research Center	National Agricultural Research Center	https://ror.org/04gd9nv85	Jordan	31.95522	35.94503	true	true	affiliation_chosen	7
 Plant and Food Research	Plant & Food Research	https://ror.org/02bchch95	New Zealand	-36.84853	174.76349	true	true	affiliation_chosen	7
+Punjab Agricultural University	Punjab Agricultural University	https://ror.org/02qbzdk74	India	30.91204	75.85379	true	true	affiliation_chosen	7
 Qufu Normal University	Qufu Normal University	https://ror.org/03ceheh96	China	35.59667	116.99111	true	true	affiliation_chosen	7
 Rockefeller University	Rockefeller University	https://ror.org/0420db125	United States	40.71427	-74.00597	true	true	affiliation_chosen	7
 Shanxi University	Shanxi University	https://ror.org/03y3e3s17	China	37.86944	112.56028	true	true	affiliation_chosen	7
@@ -997,11 +1004,11 @@ Texas A&M						false	false	none	7
 The Genome Analysis Centre	Earlham Institute	https://ror.org/018cxtf62	United Kingdom	52.62783	1.29834	true	true	affiliation_chosen	7
 The George Washington University	George Washington University	https://ror.org/00y4zzh67	United States	38.89511	-77.03637	true	true	affiliation_chosen	7
 the University of Sydney	The University of Sydney	https://ror.org/0384j8v12	Australia	-33.86785	151.20732	true	true	affiliation_chosen	7
-Transylvanian Institute of Neuroscience	Transylvanian Institute of Neuroscience	https://ror.org/05mkatf28	Romania	46.76667	23.6	true	true	affiliation_chosen	7
 TU Wien	TU Wien	https://ror.org/04d836q62	Austria	48.20849	16.37208	true	true	affiliation_chosen	7
 Umea University	Umeå University	https://ror.org/05kb8h459	Sweden	63.82842	20.25972	true	true	affiliation_chosen	7
 UNESP-FCAV						false	false	none	7
 United States Deparment of Agriculture-Agricultural Research Service	Agricultural Research Service	https://ror.org/02d2m2044	United States	38.89511	-77.03637	true	true	affiliation_chosen	7
+Universidade Estadual de Campinas	Universidade Estadual de Campinas (UNICAMP)	https://ror.org/04wffgt70	Brazil	-22.90556	-47.06083	true	true	affiliation_chosen	7
 Universita degli Studi della Tuscia	Università degli Studi della Tuscia	https://ror.org/03svwq685	Italy	42.41937	12.1056	true	true	affiliation_chosen	7
 universitat de barcelona	Universitat de Barcelona	https://ror.org/021018s57	Spain	41.38879	2.15899	true	true	affiliation_chosen	7
 Universite de Montreal	Université de Montréal	https://ror.org/0161xgx34	Canada	45.50884	-73.58781	true	true	affiliation_chosen	7
@@ -1026,6 +1033,7 @@ University of Wuerzburg						false	false	none	7
 Unversity of Ljubljana						false	false	none	7
 UT Southwestern Medical Center	Southwestern Medical Center	https://ror.org/05d80e146	United States	34.60869	-98.39033	true	true	affiliation_chosen	7
 VatCo						false	false	none	7
+Virginia Polytechnic Institute and State University	Virginia Tech	https://ror.org/02smfhw86	United States	37.22957	-80.41394	true	true	affiliation_chosen	7
 VitisGen						false	false	none	7
 Wageningen UR						false	false	none	7
 Washington University School of Medicine, Genome Sequencing Center						false	false	none	7
@@ -1079,7 +1087,6 @@ JiLin Agricultural University	Jilin Agricultural University	https://ror.org/05dm
 Johns Hopkins Medical Institution						false	false	none	6
 Keio University	Keio University	https://ror.org/02kn6nx58	Japan	35.6895	139.69171	true	true	affiliation_chosen	6
 Kinetoplastid Genomes Consortium						false	false	none	6
-Kunming Institute of Zoology	Kunming Institute of Zoology	https://ror.org/03m0vk445	China	25.03889	102.71833	true	true	affiliation_chosen	6
 Kyungpook National University	Kyungpook National University	https://ror.org/040c17130	South Korea	35.87028	128.59111	true	true	affiliation_chosen	6
 Kyushu Institute of Technology	Kyushu Institute of Technology	https://ror.org/02278tr80	Japan	33.85181	130.85034	true	true	affiliation_chosen	6
 Lab. of Plant Genome Informatics, Department of Plant Genome Research, Kazusa DNA Research Institute	Kazusa DNA Research Institute	https://ror.org/04pnjx786	Japan	35.38329	139.93254	true	true	affiliation_chosen	6
@@ -1089,7 +1096,6 @@ Max Planck Genome Center Cologne						false	false	none	6
 Max Planck Institute for Multidisciplinary Sciences	Max Planck Institute for Multidisciplinary Sciences	https://ror.org/03av75f26	Germany	51.53443	9.93228	true	true	affiliation_chosen	6
 Max Planck Institute of Molecular Cell Biology and Genetics	Max Planck Institute of Molecular Cell Biology and Genetics	https://ror.org/05b8d3w18	Germany	51.05089	13.73832	true	true	affiliation_chosen	6
 Maynooth University	National University of Ireland, Maynooth	https://ror.org/048nfjm95	Ireland	53.385	-6.59361	true	true	affiliation_chosen	6
-Murdoch University	Murdoch University	https://ror.org/00r4sry34	Australia	-31.95224	115.8614	true	true	affiliation_chosen	6
 Nanjing Normal University	Nanjing Normal University	https://ror.org/036trcv74	China	32.06167	118.77778	true	true	affiliation_chosen	6
 Nanyang Technological University	Nanyang Technological University	https://ror.org/02e7b5302	Singapore	1.28967	103.85007	true	true	affiliation_chosen	6
 Nation Taiwan University						false	false	none	6
@@ -1102,7 +1108,6 @@ National Institutes Of Health						false	false	none	6
 National Marine Biodiversity Institute of Korea	Marine Biodiversity Institute of Korea	https://ror.org/03p3sm411	South Korea	36.59245	127.29223	true	true	affiliation_chosen	6
 National Research and Innovation Agency	National Research and Innovation Agency	https://ror.org/02hmjzt55	Indonesia	-6.21462	106.84513	true	true	affiliation_chosen	6
 National Resource Institute (NRI)						false	false	none	6
-Natural History Museum	Natural History Museum	https://ror.org/039zvsn29	United Kingdom	51.50853	-0.12574	true	true	query_exact	6
 Ningxia University	Ningxia University	https://ror.org/04j7b2v61	China	38.46806	106.27306	true	true	affiliation_chosen	6
 NLM/NCBI						false	false	none	6
 Northwest Potato Research Consortium						false	false	none	6
@@ -1114,7 +1119,6 @@ Paris-Saclay University						false	false	none	6
 Peking University Institute of Advanced Agricultural Science	Peking University	https://ror.org/02v51f717	China	39.9075	116.39723	true	true	affiliation_chosen	6
 Plant Health Institute of Montpellier (PHIM)	Plant Health Institute de Montpellier	https://ror.org/05y5s3h28	France	43.61093	3.87635	true	true	affiliation_chosen	6
 PShum						false	false	none	6
-Punjab Agricultural University	Punjab Agricultural University	https://ror.org/02qbzdk74	India	30.91204	75.85379	true	true	affiliation_chosen	6
 Queen Mary University of London	Queen Mary University of London	https://ror.org/026zzn846	United Kingdom	51.50853	-0.12574	true	true	affiliation_chosen	6
 Reneco International Wildlife Consultants						false	false	none	6
 Royal Botanic Garden Edinburgh	Royal Botanic Garden Edinburgh	https://ror.org/0349vqz63	United Kingdom	55.95206	-3.19648	true	true	affiliation_chosen	6
@@ -1166,7 +1170,6 @@ University of Tuebingen						false	false	none	6
 University of Virginia	University of Virginia	https://ror.org/0153tk833	United States	38.02931	-78.47668	true	true	affiliation_chosen	6
 University of Washington School of Medicine	University of Washington	https://ror.org/00cvxb145	United States	47.60621	-122.33207	true	true	affiliation_chosen	6
 US FDA						false	false	none	6
-Virginia Polytechnic Institute and State University	Virginia Tech	https://ror.org/02smfhw86	United States	37.22957	-80.41394	true	true	affiliation_chosen	6
 WAGENINGEN UR						false	false	none	6
 WELLCOME TRUST SANGER INSTITUTE	Wellcome Sanger Institute	https://ror.org/05cy4wa09	United Kingdom	52.2	0.11667	true	true	affiliation_chosen	6
 Wolfe Laboratory, Smurfit Institute of Genetics, Trinity College Dublin, Ireland	Trinity College Dublin	https://ror.org/02tyrky19	Ireland	53.33306	-6.24889	true	true	affiliation_chosen	6
@@ -1212,7 +1215,6 @@ Evolutionary Genetics Laboratory, Department of Biological Sciences, Tokyo Metro
 Ewha Womans University	Ewha Womans University	https://ror.org/053fp5c05	South Korea	37.566	126.9784	true	true	affiliation_chosen	5
 Federal University of Mato Grosso do Sul	Universidade Federal de Mato Grosso do Sul	https://ror.org/0366d2847	Brazil	-20.44278	-54.64639	true	true	affiliation_chosen	5
 Felidae consortium						false	false	none	5
-Fiocruz Rondonia						false	false	none	5
 Forestry and Agricultural Biotechnology						false	false	none	5
 Forestry and Agricultural Biotechnology Institute, University of Pretoria	University of Pretoria	https://ror.org/00g0p6g84	South Africa	-25.74486	28.18783	true	true	affiliation_chosen	5
 Friedrich-Schiller Univerisitat Jena						false	false	none	5
@@ -1242,6 +1244,7 @@ Institute of Microbiology of Czech academy of science	Czech Academy of Sciences	
 INSTITUTE OF MICROBIOLOGY, ETH ZURICH	ETH Zurich	https://ror.org/05a28rw58	Switzerland	47.36667	8.55	true	true	affiliation_chosen	5
 Institute of Zoology						false	false	none	5
 Instituto evandro Chagas	Instituto Evandro Chagas	https://ror.org/04xk4hz96	Brazil	-1.36556	-48.37222	true	true	affiliation_chosen	5
+Instituto Politecnico Nacional	Instituto Politécnico Nacional	https://ror.org/059sp8j34	Mexico	19.42847	-99.12766	true	true	affiliation_chosen	5
 IPF						false	false	none	5
 IRHS	Institut de Recherche en Horticulture et Semences	https://ror.org/02xq0x374	France	47.47514	-0.63219	true	true	query_exact	5
 James Cook University	James Cook University	https://ror.org/04gsp2c11	Australia	-19.26639	146.80569	true	true	affiliation_chosen	5
@@ -1306,7 +1309,6 @@ UNIMI	University of Milan	https://ror.org/00wjc7c48	Italy	45.46427	9.18951	true	
 Universidad de Oviedo	Universidad de Oviedo	https://ror.org/006gksa02	Spain	43.36029	-5.84476	true	true	affiliation_chosen	5
 Universidad de Salamanca	Universidad de Salamanca	https://ror.org/02f40zc51	Spain	40.96882	-5.66388	true	true	affiliation_chosen	5
 Universidad Nacional Autonoma de Mexico	Universidad Nacional Autónoma de México	https://ror.org/01tmp8f25	Mexico	19.42847	-99.12766	true	true	affiliation_chosen	5
-Universidade Estadual de Campinas	Universidade Estadual de Campinas (UNICAMP)	https://ror.org/04wffgt70	Brazil	-22.90556	-47.06083	true	true	affiliation_chosen	5
 Universidade Federal de Goias	Universidade Federal de Goiás	https://ror.org/0039d5757	Brazil	-16.67861	-49.25389	true	true	affiliation_chosen	5
 Universita degli Studi di Bari Aldo Moro	University of Bari Aldo Moro	https://ror.org/027ynra39	Italy	41.12066	16.86982	true	true	affiliation_chosen	5
 Universite Lyon 1	Lyon 1 Université	https://ror.org/029brtt94	France	45.76601	4.8795	true	true	affiliation_chosen	5
@@ -1335,6 +1337,7 @@ VIB						false	false	none	5
 Walter Reed Army Institute of Research	Walter Reed Army Institute of Research	https://ror.org/0145znz58	United States	38.99067	-77.02609	true	true	affiliation_chosen	5
 Washington State University Mount Vernon Northwestern Washington Research and Extension Center	Washington State University	https://ror.org/05dk0ce17	United States	46.73127	-117.17962	true	true	affiliation_chosen	5
 Washington University in St. Louis	Washington University in St. Louis	https://ror.org/01yc7t268	United States	38.62727	-90.19789	true	true	affiliation_chosen	5
+West China Hospital, Sichuan University	Sichuan University	https://ror.org/011ashp19	China	30.66667	104.06667	true	true	affiliation_chosen	5
 Whitney Laboratory for Marine Bioscience						false	false	none	5
 WUGSC						false	false	none	5
 Wuhan Botanical Garden	Wuhan Botanical Garden	https://ror.org/02j0gyf89	China	30.58333	114.26667	true	true	affiliation_chosen	5
@@ -1351,6 +1354,7 @@ Agricultural University of Georgia	Agricultural University of Georgia	https://ro
 Agroscope	Agroscope	https://ror.org/04d8ztx87	Switzerland	46.94809	7.44744	true	true	affiliation_chosen	4
 AIT-Austrian Institute of Technology	AIT Austrian Institute of Technology GmbH	https://ror.org/04knbh022	Austria	48.20849	16.37208	true	true	affiliation_chosen	4
 Anhui Provincial Key Laboratory of Microbial Pest Control						false	false	none	4
+Anyang Institute of Technology	Anyang Institute of Technology	https://ror.org/03sd3t490	China	36.096	114.38278	true	true	affiliation_chosen	4
 Applied Bioscience, Kindai University, Faculty of Agriculture	Kindai University	https://ror.org/05kt9ap64	Japan	34.69379	135.50107	true	true	affiliation_chosen	4
 ARO						false	false	none	4
 ARVALIS						false	false	none	4
@@ -1409,11 +1413,13 @@ Fermentation Microbiology, Education and Research Center for Fermentation Studie
 Florida State University	Florida State University	https://ror.org/05g3dte14	United States	30.43826	-84.28073	true	true	affiliation_chosen	4
 Food Safety and Authenticity Group Division of Food Quality and Safety Research, Food Research Institute, NARO						false	false	none	4
 Forestry and Agricultural Biotechnology Institute (FABI)	Forestry and Agricultural Biotechnology Institute	https://ror.org/00nm7mw87	South Africa	-25.74486	28.18783	true	true	affiliation_chosen	4
+Freshwater Fisheries Research Center	Freshwater Fisheries Research Center	https://ror.org/02h2xja52	China	31.56887	120.28857	true	true	affiliation_chosen	4
 Freshwater Fisheries Research Center, Chinese Academy of Fishery Sciences	Chinese Academy of Fishery Sciences	https://ror.org/02bwk9n38	China	39.9075	116.39723	true	true	affiliation_chosen	4
 Fundacion para el estudio de especies invasoras						false	false	none	4
 GEROMICS						false	false	none	4
 Graduate School of Science and Engineering, University of Toyama	University of Toyama	https://ror.org/0445phv87	Japan	36.7	137.21667	true	true	affiliation_chosen	4
 Guangdong Laboratory Animals Monitoring Institute	Guangdong Laboratory Animals Monitoring Institute	https://ror.org/02mxq6q49	China	23.11667	113.25	true	true	affiliation_chosen	4
+Gujarat Biotechnology Research Centre	Gujarat Biotechnology Research Centre	https://ror.org/01kv6na45	India	23.21667	72.68333	true	true	affiliation_chosen	4
 hainan university	Hainan University	https://ror.org/03q648j11	China	20.03421	110.34651	true	true	affiliation_chosen	4
 Henan University of Technology	Henan University of Technology	https://ror.org/05sbgwt55	China	34.75778	113.64861	true	true	affiliation_chosen	4
 Huazhi Biotechnology Co., Ltd						false	false	none	4
@@ -1446,7 +1452,6 @@ Institute of Zoology,Chinese Academy of Sciences	Chinese Academy of Sciences	htt
 Instituto de Biologia, Universidad Nacional Autonoma de Mexico	Universidad Nacional Autónoma de México	https://ror.org/01tmp8f25	Mexico	19.42847	-99.12766	true	true	affiliation_chosen	4
 Instituto de Ecologia, Genetica y Evolucion de Buenos Aires (IEGEBA, UBA-CONICET)	Instituto de Ecología	https://ror.org/03yvabt26	Mexico	19.53124	-96.91589	true	true	affiliation_chosen	4
 Instituto de Parasitologia y Biomedicina Lopez-Neyra (IPBLN-CSIC)	"Instituto de Parasitología y Biomedicina ""López - Neyra"""	https://ror.org/05ncvzk72	Spain	37.14386	-3.62534	true	true	affiliation_chosen	4
-Instituto Politecnico Nacional	Instituto Politécnico Nacional	https://ror.org/059sp8j34	Mexico	19.42847	-99.12766	true	true	affiliation_chosen	4
 INSTITUTO POLITECNICO NACIONAL	Instituto Politécnico Nacional	https://ror.org/059sp8j34	Mexico	19.42847	-99.12766	true	true	affiliation_chosen	4
 Instituto Tecnologico Vale	Vale Technological Institute	https://ror.org/05wnasr61	Brazil	-1.45583	-48.50444	true	true	affiliation_chosen	4
 International Centre for Genetic Engineering and Biotechnology						false	false	none	4
@@ -1454,6 +1459,7 @@ IRD						false	false	none	4
 IRSET	Institut de Recherche en Santé, Environnement et Travail	https://ror.org/01p178v10	France	48.11198	-1.67429	true	true	query_exact	4
 ISEM						false	false	none	4
 Jilin Agricultural Unversity	Jilin Agricultural University	https://ror.org/05dmhhd41	China	43.88	125.32278	true	true	affiliation_chosen	4
+Jimei University	Jimei University	https://ror.org/03hknyb50	China	24.47979	118.08187	true	true	affiliation_chosen	4
 KASETSART UNIVERSITY, Faculty of Science, Department of Genetics, Animal Genomics and Bioresource	Kasetsart University	https://ror.org/05gzceg21	Thailand	13.75398	100.50144	true	true	affiliation_chosen	4
 Kenlab_group						false	false	none	4
 King Mongkut's University of Technology Thonburi	King Mongkut's University of Technology Thonburi	https://ror.org/0057ax056	Thailand	13.75398	100.50144	true	true	affiliation_chosen	4
@@ -1478,6 +1484,7 @@ Max Planck Institute for Medical Research	Max Planck Institute for Medical Resea
 Max Planck Institute for Molecular Genetics	Max Planck Institute for Molecular Genetics	https://ror.org/03ate3e03	Germany	52.52437	13.41053	true	true	affiliation_chosen	4
 Max-Planck institute for plant breeding research	Max Planck Institute for Plant Breeding Research	https://ror.org/044g3zk14	Germany	50.93333	6.95	true	true	affiliation_chosen	4
 McMaster University	McMaster University	https://ror.org/02fa3aq29	Canada	43.25011	-79.84963	true	true	affiliation_chosen	4
+Moscow State University of Technologies and Management (FCU)						false	false	none	4
 Munekage Lab., School of Science and Technology, Kwansei Gakuin University	Kwansei Gakuin University	https://ror.org/02qf2tx24	Japan	34.71562	135.33199	true	true	affiliation_chosen	4
 Myongji University	Myongji University	https://ror.org/00s9dpb54	South Korea	37.566	126.9784	true	true	affiliation_chosen	4
 Nagoya University	Nagoya University	https://ror.org/04chrp450	Japan	35.18147	136.90641	true	true	affiliation_chosen	4
@@ -1579,6 +1586,7 @@ Universiti Teknologi Malaysia	University of Technology Malaysia	https://ror.org/
 University Malaya						false	false	none	4
 University of Alaska Fairbanks	University of Alaska Fairbanks	https://ror.org/01j7nq853	United States	64.83778	-147.71639	true	true	affiliation_chosen	4
 University of Arkansas Division of Agriculture						false	false	none	4
+University of Brasilia	Universidade de Brasília	https://ror.org/02xfp8v59	Brazil	-15.77972	-47.92972	true	true	affiliation_chosen	4
 UNIVERSITY OF BRISTOL	University of Bristol	https://ror.org/0524sp257	United Kingdom	51.45523	-2.59665	true	true	affiliation_chosen	4
 University of Bucharest	University of Bucharest	https://ror.org/02x2v6p15	Romania	44.43225	26.10626	true	true	affiliation_chosen	4
 University of California - Berkeley						false	false	none	4
@@ -1610,9 +1618,9 @@ Vavilov Institute of General Genetics RAS	Vavilov Institute of General Genetics	
 Venturia comparative genomics consortium						false	false	none	4
 Warsaw University of Technology	Warsaw University of Technology	https://ror.org/00y0xnp53	Poland	52.22977	21.01178	true	true	affiliation_chosen	4
 Wenchao Gao (Third Affiliated Hospital of Sun Yat-sen University, Guangzhou, Guangdong, China), Sun Yao (Third Affiliated Hospital of Sun Yat-sen University, Guangzhou, Guangdong, China), Domenico Giosa (University of Messina, Italy), Letterio Giuffrè (University of Messina, Italy), Huaiqiu Huang (Third Affiliated Hospital of Sun Yat-sen University, Guangzhou, Guangdong, China)	Third Affiliated Hospital of Sun Yat-sen University	https://ror.org/04tm3k558	China	23.11667	113.25	true	true	affiliation_chosen	4
-West China Hospital, Sichuan University	Sichuan University	https://ror.org/011ashp19	China	30.66667	104.06667	true	true	affiliation_chosen	4
 West Virignia University						false	false	none	4
 xiamen university	Xiamen University	https://ror.org/00mcjh785	China	24.47979	118.08187	true	true	affiliation_chosen	4
+Yangtze University	Yangtze University	https://ror.org/05bhmhz54	China	30.35028	112.19028	true	true	affiliation_chosen	4
 Yantai Institute of Coastal Zone Research	Yantai Institute of Coastal Zone Research	https://ror.org/01pab2602	China	37.47649	121.44081	true	true	affiliation_chosen	4
 Yellow Sea fisheries Research Institution	Yellow Sea Fisheries Research Institute	https://ror.org/0578w5a44	China	36.33333	118.25	true	true	affiliation_chosen	4
 Yokohama National University	Yokohama National University	https://ror.org/03zyp6p76	Japan	35.43333	139.65	true	true	affiliation_chosen	4
@@ -1627,7 +1635,6 @@ Anhui Academy of Agricultural Sciences	Anhui Academy of Agricultural Sciences	ht
 Anhui Normal University	Anhui Normal University	https://ror.org/05fsfvw79	China	31.35259	118.42947	true	true	query_exact	3
 animal breeding and genomics						false	false	none	3
 ANTI-VeC Network	Energy Consulting Network (Denmark)	https://ror.org/05apy4h12	Denmark	56.15674	10.21076	true	true	affiliation_chosen	3
-Anyang Institute of Technology	Anyang Institute of Technology	https://ror.org/03sd3t490	China	36.096	114.38278	true	true	affiliation_chosen	3
 Applied Genomics Initiative						false	false	none	3
 AUBURN UNIVERSITY	Auburn University	https://ror.org/02v80fc35	United States	32.60986	-85.48078	true	true	affiliation_chosen	3
 Baotou Medical College	Baotou Medical College	https://ror.org/04t44qh67	China	40.6516	109.84389	true	true	affiliation_chosen	3
@@ -1723,7 +1730,6 @@ First Institute of Oceanography, Ministry of Natural Resources						false	false	
 Foshan University	Foshan University	https://ror.org/02xvvvp28	China	23.02677	113.13148	true	true	affiliation_chosen	3
 Frasergen bioinfomatics						false	false	none	3
 Fraunhofer Institute for Molecular Biology and Applied Ecology (IME)	Fraunhofer Institute for Molecular Biology and Applied Ecology	https://ror.org/03j85fc72	Germany	51.15473	8.28505	true	true	affiliation_chosen	3
-Freshwater Fisheries Research Center	Freshwater Fisheries Research Center	https://ror.org/02h2xja52	China	31.56887	120.28857	true	true	affiliation_chosen	3
 Freshwater Fisheries Research Center of Chinese Academy of Fishery Sciences	Chinese Academy of Fishery Sciences	https://ror.org/02bwk9n38	China	39.9075	116.39723	true	true	affiliation_chosen	3
 Friedrich-Schiller-University						false	false	none	3
 FuJian Agriculture and Forestry University	Fujian Agriculture and Forestry University	https://ror.org/04kx2sy84	China	26.06139	119.30611	true	true	affiliation_chosen	3
@@ -1744,7 +1750,6 @@ Guangxi Academy of Fisheries Sciences						false	false	none	3
 Guangxi Institute of Fishery Sciences						false	false	none	3
 Guangzhou Medical University	Guangzhou Medical University	https://ror.org/00zat6v61	China	23.11667	113.25	true	true	affiliation_chosen	3
 Guizhou university	Guizhou University	https://ror.org/02wmsc916	China	26.58333	106.71667	true	true	affiliation_chosen	3
-Gujarat Biotechnology Research Centre	Gujarat Biotechnology Research Centre	https://ror.org/01kv6na45	India	23.21667	72.68333	true	true	affiliation_chosen	3
 GWU						false	false	none	3
 Gyeongsang National University	Gyeongsang National University	https://ror.org/00saywf64	South Korea	35.20445	128.12408	true	true	affiliation_chosen	3
 Hainan Academy of Agricultural Sciences						false	false	none	3
@@ -1811,7 +1816,6 @@ Jay Goldberg						false	false	none	3
 Jiangsu University	Jiangsu University	https://ror.org/03jc41j30	China	32.21086	119.45508	true	true	affiliation_chosen	3
 Jiangxi Academy of Forestry	Jiangxi Academy of Forestry	https://ror.org/05808qp03	China	28.68396	115.85306	true	true	affiliation_chosen	3
 Jiaying University	Jiaying University	https://ror.org/018jdfk45	China	24.28859	116.11768	true	true	affiliation_chosen	3
-Jimei University	Jimei University	https://ror.org/03hknyb50	China	24.47979	118.08187	true	true	affiliation_chosen	3
 JIMEI UNIVERSITY	Jimei University	https://ror.org/03hknyb50	China	24.47979	118.08187	true	true	affiliation_chosen	3
 Johns Hopkins Medical Institute						false	false	none	3
 Jong S Leong, Ben F Koop, Eric B Rondeau						false	false	none	3
@@ -1864,6 +1868,7 @@ National Institute of Technology, Asahikawa College	National Institute of Techno
 National Research Council (CNR)						false	false	none	3
 National Research Council of Canada	National Research Council Canada	https://ror.org/04mte1k06	Canada	45.41117	-75.69812	true	true	affiliation_chosen	3
 National Research Institute of Fisheries Science	National Research Institute	https://ror.org/02201aj62	United States	34.05223	-118.24368	true	true	affiliation_chosen	3
+National Sun Yat-sen University	National Sun Yat-sen University	https://ror.org/00mjawt10	Taiwan	22.61626	120.31333	true	true	query_exact	3
 National Technical University of Athens	National Technical University of Athens	https://ror.org/03cx6bg69	Greece	37.98376	23.72784	true	true	affiliation_chosen	3
 Natural Resources Canada	Natural Resources Canada	https://ror.org/05hepy730	Canada	45.41117	-75.69812	true	true	affiliation_chosen	3
 Naturalis Biodiversity Center	Naturalis Biodiversity Center	https://ror.org/0566bfb96	The Netherlands	52.15833	4.49306	true	true	affiliation_chosen	3
@@ -1881,7 +1886,6 @@ Northwest Agricultural&Forestry University						false	false	none	3
 northwestern polytechnology university						false	false	none	3
 Novartis AG						false	false	none	3
 Novogene Bioinformatics Technology Corporation						false	false	none	3
-Oak Ridge National Laboratory	Oak Ridge National Laboratory	https://ror.org/01qz5mb56	United States	36.01036	-84.26964	true	true	affiliation_chosen	3
 Ocean Genomes						false	false	none	3
 Ocra Biotechnology Co., Limited						false	false	none	3
 Okinawa Institute of Science and Technology Graduate University (OIST)	Okinawa Institute of Science and Technology Graduate University	https://ror.org/02qg15b79	Japan	26.47595	127.85278	true	true	affiliation_chosen	3
@@ -1917,6 +1921,7 @@ Selmecki Lab						false	false	none	3
 Senckenberg Research Institute						false	false	none	3
 Senckenberg Research Institute and Natural History Museum						false	false	none	3
 Seoul National Univ.						false	false	none	3
+Seoul national university	Seoul National University	https://ror.org/04h9pn542	South Korea	37.566	126.9784	true	true	affiliation_chosen	3
 Shaanxi University of Science & Technolo						false	false	none	3
 Shaheed Zulfikar Ali Bhutto Institute of Science and Technology						false	false	none	3
 Shandong Academy of Agricultural Science	Shandong Academy of Agricultural Sciences	https://ror.org/01fbgjv04	China	36.66833	116.99722	true	true	affiliation_chosen	3
@@ -1977,7 +1982,6 @@ Universiti Sains Malaysia	Universiti Sains Malaysia	https://ror.org/02rgb2k63	Ma
 University of Applied Sciences of Western Switzerland						false	false	none	3
 "University of Bari ""A. Moro"""	University of Bari Aldo Moro	https://ror.org/027ynra39	Italy	41.12066	16.86982	true	true	affiliation_chosen	3
 University of Birmingham	University of Birmingham	https://ror.org/03angcq70	United Kingdom	52.48142	-1.89983	true	true	affiliation_chosen	3
-University of Brasilia	Universidade de Brasília	https://ror.org/02xfp8v59	Brazil	-15.77972	-47.92972	true	true	affiliation_chosen	3
 University of California Davis, Department of Viticulture and Enology	University of California, Davis	https://ror.org/05rrcem69	United States	38.54491	-121.74052	true	true	affiliation_chosen	3
 UNIVERSITY OF CALIFORNIA, IRVINE	University of California, Irvine	https://ror.org/04gyf1771	United States	33.66946	-117.82311	true	true	affiliation_chosen	3
 University of Colorado						false	false	none	3
@@ -2026,7 +2030,6 @@ West Virginia University	West Virginia University	https://ror.org/011vxgd24	Unit
 Westfaelische Wilhelms-University						false	false	none	3
 Wright State University	Wright State University	https://ror.org/04qk6pt94	United States	39.75895	-84.19161	true	true	affiliation_chosen	3
 Wuhan Donghu University	Wuhan Donghu University	https://ror.org/017swdq34	China	30.58333	114.26667	true	true	affiliation_chosen	3
-Yangtze University	Yangtze University	https://ror.org/05bhmhz54	China	30.35028	112.19028	true	true	affiliation_chosen	3
 Yangzhou university	Yangzhou University	https://ror.org/03tqb8s11	China	32.39722	119.43583	true	true	affiliation_chosen	3
 Yantai university	Yantai University	https://ror.org/01rp41m56	China	37.47649	121.44081	true	true	affiliation_chosen	3
 YeastGenomesMx						false	false	none	3
@@ -2047,6 +2050,7 @@ Academia Sinica, Taiwan and Fisheries Research Institute, Taiwan						false	fals
 Academy of National Food and Strategic Rserves Administration						false	false	none	2
 ACHARYA N.G AGRICULTURAL UNIVERSITY						false	false	none	2
 Acharya N.G. Ranga Agricultural University	Acharya N. G. Ranga Agricultural University	https://ror.org/00tjh4k26	India	16.29974	80.45729	true	true	affiliation_chosen	2
+Addis Ababa University	Addis Ababa University	https://ror.org/038b8e254	Ethiopia	9.02497	38.74689	true	true	affiliation_chosen	2
 AGIS	AGIS	https://ror.org/0164nmw44	United States	37.77993	-121.97802	true	true	query_exact	2
 Agricultural Genomics institute at Shenzhen	Agricultural Genomics Institute at Shenzhen	https://ror.org/0066zpp98	China	22.54554	114.0683	true	true	affiliation_chosen	2
 Agricultural Research Organisation	Agricultural Research Organization	https://ror.org/05hbrxp80	Israel	31.97102	34.78939	true	true	affiliation_chosen	2
@@ -2218,6 +2222,7 @@ Division of Applied Genetics, Insect Genome Research and Engineering Unit Instit
 Division of Evolutionary Biology, National Institute for Basic Biology	National Institute for Basic Biology	https://ror.org/05q8wtt20	Japan	34.95	137.16667	true	true	affiliation_chosen	2
 DOE-Joint Genome Institute	Joint Genome Institute	https://ror.org/04xm1d337	United States	37.87159	-122.27275	true	true	affiliation_chosen	2
 DSMZ (Plant Virus Department), TU Braunschweig	Technische Universität Braunschweig	https://ror.org/010nsgg66	Germany	52.26594	10.52673	true	true	affiliation_chosen	2
+DTU National Food Institute						false	false	none	2
 Duke Institue for Genome Sciences and Policy						false	false	none	2
 Duke University Medical Center	Duke Medical Center	https://ror.org/03njmea73	United States	35.99403	-78.89862	true	true	affiliation_chosen	2
 DuPont						false	false	none	2
@@ -2302,6 +2307,7 @@ Guizhou Academy of Science	Guizhou Academy of Sciences	https://ror.org/05ty2n298
 Guizhou Education Univerity	Guizhou Education University	https://ror.org/002x6f380	China	26.58333	106.71667	true	true	affiliation_chosen	2
 Guizhou Institute of Pomology Science						false	false	none	2
 Guizhou Normal University	Guizhou Normal University	https://ror.org/02x1pa065	China	26.58333	106.71667	true	true	affiliation_chosen	2
+Guizhou Provincial Center for Livestock and Poultry Germplasm Determination						false	false	none	2
 guizhou university	Guizhou University	https://ror.org/02wmsc916	China	26.58333	106.71667	true	true	affiliation_chosen	2
 Harvard University / Howard Hughes Medical Institute	Howard Hughes Medical Institute	https://ror.org/006w34k90	United States	39.00287	-77.07115	true	true	affiliation_chosen	2
 Harvrad University						false	false	none	2
@@ -2338,6 +2344,7 @@ Hunan Academy of forestry						false	false	none	2
 I.U. COLMAYOR						false	false	none	2
 IARI						false	false	none	2
 IBAB	Institute of Bioinformatics and Applied Biotechnology	https://ror.org/04qcpkd70	India	12.97194	77.59369	true	true	query_exact	2
+IBCAS						false	false	none	2
 ICAR - National Research Centre on Pomegranate	National Research Centre	https://ror.org/02n85j827	Egypt	30.00944	31.20861	true	true	affiliation_chosen	2
 ICAR IIPR						false	false	none	2
 ICAR Indian Institute of Rice Research	Indian Institute of Rice Research	https://ror.org/021j5pp16	India	17.38405	78.45636	true	true	affiliation_chosen	2
@@ -2559,7 +2566,6 @@ National Livestock and Fisheries Development program						false	false	none	2
 National Natural Science Foundation of China	National Natural Science Foundation of China	https://ror.org/01h0zpd94	China	39.9075	116.39723	true	true	affiliation_chosen	2
 National Renewable Energy Laboratory	National Laboratory of the Rockies	https://ror.org/036266993	United States	39.75554	-105.2211	true	true	affiliation_chosen	2
 "National Research Center ""Kurchatov Institute"""	Kurchatov Institute	https://ror.org/00n1nz186	Russia	55.75204	37.61781	true	true	affiliation_chosen	2
-National Sun Yat-sen University	National Sun Yat-sen University	https://ror.org/00mjawt10	Taiwan	22.61626	120.31333	true	true	query_exact	2
 National Technical University of Athens (NTUA)	National Technical University of Athens	https://ror.org/03cx6bg69	Greece	37.98376	23.72784	true	true	affiliation_chosen	2
 National University ofSingapore						false	false	none	2
 Natural History Museum of Geneva	Natural History Museum of Geneva	https://ror.org/03ftcjb67	Switzerland	46.20222	6.14569	true	true	affiliation_chosen	2
@@ -2662,6 +2668,7 @@ Senckenberg Biodiversity and Climate Research Center, Frankfurt am Main	Senckenb
 Seqomics Ltd.						false	false	none	2
 Shaanxi university of science and technology	Shaanxi University of Science and Technology	https://ror.org/034t3zs45	China	34.25833	108.92861	true	true	affiliation_chosen	2
 Shandong University of Technology	Shandong University of Technology	https://ror.org/02mr3ar13	China	36.79056	118.06333	true	true	affiliation_chosen	2
+Shang Dong Agricultural University						false	false	none	2
 Shanghai Center for Plant Stress Biology						false	false	none	2
 Shanghai Customs College	Shanghai Customs College	https://ror.org/01agvej60	China	31.22222	121.45806	true	true	affiliation_chosen	2
 Shanghai Key Laboratory of Molecular Medical Mycology, Department of Dermatology, Shanghai Changzheng Hospital; Academy of Military Medical Sciences	Academy of Military Medical Sciences	https://ror.org/02bv3c993	China	39.9075	116.39723	true	true	affiliation_chosen	2
@@ -2735,6 +2742,7 @@ The Roslin Institute	Roslin Institute	https://ror.org/01920rj20	United Kingdom	5
 The Salk Institute for Biological Studies	Salk Institute for Biological Studies	https://ror.org/03xez1567	United States	32.84727	-117.2742	true	true	affiliation_chosen	2
 The Second Clinical College, Guangzhou University of Chinese Medicine	Guangzhou University of Chinese Medicine	https://ror.org/03qb7bg95	China	23.11667	113.25	true	true	affiliation_chosen	2
 The University of British Columbia	University of British Columbia	https://ror.org/03rmrcq20	Canada	49.24966	-123.11934	true	true	affiliation_chosen	2
+The University of Burdwan	University of Burdwan	https://ror.org/05cyd8v32	India	23.25572	87.85691	true	true	affiliation_chosen	2
 The University of Texas Southwestern Medical Center	The University of Texas Southwestern Medical Center	https://ror.org/05byvp690	United States	32.78306	-96.80667	true	true	affiliation_chosen	2
 The University of Trans-Disciplinary Health Sciences and Technology	University of Trans-Disciplinary Health Sciences and Technology	https://ror.org/014femp80	India	12.97194	77.59369	true	true	affiliation_chosen	2
 The University of Trans-disciplinary Health Sciences and Technology	University of Trans-Disciplinary Health Sciences and Technology	https://ror.org/014femp80	India	12.97194	77.59369	true	true	affiliation_chosen	2
@@ -2858,6 +2866,7 @@ University of the Sunshine coast	University of the Sunshine Coast	https://ror.or
 University of the Western Cape	University of the Western Cape	https://ror.org/00h2vm590	South Africa	-33.92584	18.42322	true	true	affiliation_chosen	2
 University of Tokyo						false	false	none	2
 University of Toronto, Department of Ecology and Evolutionary Biology	University of Toronto	https://ror.org/03dbr7087	Canada	43.70643	-79.39864	true	true	affiliation_chosen	2
+university of turin	University of Turin	https://ror.org/048tbm396	Italy	45.07049	7.68682	true	true	affiliation_chosen	2
 University of Valencia	Universitat de València	https://ror.org/043nxc105	Spain	39.47391	-0.37966	true	true	affiliation_chosen	2
 UNIVERSITY OF VALENCIA	Universitat de València	https://ror.org/043nxc105	Spain	39.47391	-0.37966	true	true	affiliation_chosen	2
 University of Veterinary Medicine Vienna	University of Veterinary Medicine Vienna	https://ror.org/01w6qp003	Austria	48.20849	16.37208	true	true	affiliation_chosen	2
@@ -2901,6 +2910,7 @@ Wolfe Lab, Conway Institute, University College Dublin	University College Dublin
 Wroclaw University of Environmental and Life Sciences	Wrocław University of Environmental and Life Sciences	https://ror.org/05cs8k179	Poland	51.10286	17.03006	true	true	affiliation_chosen	2
 Wuhan Academy of Agricultural Sciences	Wuhan Academy of Agricultural Sciences	https://ror.org/035mna818	China	30.58333	114.26667	true	true	affiliation_chosen	2
 Wuhan academy of agricultural sciences	Wuhan Academy of Agricultural Sciences	https://ror.org/035mna818	China	30.58333	114.26667	true	true	affiliation_chosen	2
+Wuhan Huaming Biotechnology Co., Ltd.						false	false	none	2
 Wuhan Onemore-tech Co						false	false	none	2
 Wuhan Polytechnic University	Wuhan Polytechnic University	https://ror.org/05w0e5j23	China	30.58333	114.26667	true	true	affiliation_chosen	2
 Wuxi People's Hospital Affiliated to Nanjing Medical University	Nanjing Medical University	https://ror.org/059gcgy73	China	32.06167	118.77778	true	true	affiliation_chosen	2
@@ -2934,6 +2944,7 @@ Zoological Research Museum Alexander Koenig	Zoological Research Museum Alexander
 4DWheat						false	false	none	1
 4DWheat: Diversity, Discovery, Design and Delivery						false	false	none	1
 5.Shandong Vocational Animal Science and Veterinary College						false	false	none	1
+_MUSCLE						false	false	none	1
 A Global Network for Neglected Tropical Diseases						false	false	none	1
 A.N. Bach Institute of Biochemistry						false	false	none	1
 Aarhus University, Denmark	Aarhus University	https://ror.org/01aj84f44	Denmark	56.15674	10.21076	true	true	affiliation_chosen	1
@@ -2947,7 +2958,6 @@ Academy of National Food and Strategic Reserves Administration						false	false	
 Acharya Narendra Dev College						false	false	none	1
 ACIB	Austrian Centre of Industrial Biotechnology (Austria)	https://ror.org/03dm7dd93	Austria	47.06733	15.44197	true	true	query_exact	1
 Adam Mickiewicz University, Poznan, Faculty of Biology						false	false	none	1
-Addis Ababa University	Addis Ababa University	https://ror.org/038b8e254	Ethiopia	9.02497	38.74689	true	true	affiliation_chosen	1
 Advanced Agriecological Research Sdn. Bhd.						false	false	none	1
 Advanced Studies in Genomics, Proteomics and Bioinformatics (ASGPB), University of Hawaii at Manoa	University of Hawaiʻi at Mānoa	https://ror.org/01wspgy28	United States	21.30694	-157.85833	true	true	affiliation_chosen	1
 Advanced Studies of Genomics, Proteomics and Bioinformatics (ASGPB), University of Hawaii & Basic and Applied Research on Jute (BARJ), Bangladesh Jute Research Institute	Bangladesh Jute Research Institute	https://ror.org/00prhpp43	Bangladesh	23.7104	90.40744	true	true	affiliation_chosen	1
@@ -3009,6 +3019,7 @@ Animal and Plant Quarantine Agency	Animal and Plant Quarantine Agency	https://ro
 Animal breeding and genomics						false	false	none	1
 Animal Breeding and Genomics Centre, Wageningen University						false	false	none	1
 Ankang Academy of Agricultural Sciences						false	false	none	1
+Ankang university	Ankang University	https://ror.org/053ax8j41	China	32.68	109.01722	true	true	affiliation_chosen	1
 Annamalai university	Annamalai University	https://ror.org/01x24z140	India	11.39933	79.69144	true	true	affiliation_chosen	1
 Anqing normal university	Anqing Normal University	https://ror.org/0127ytz78	China	30.51365	117.04723	true	true	query_exact	1
 Anser cygnoides Genome consortium						false	false	none	1
@@ -3053,6 +3064,7 @@ Bangladesh Goat Genome Consortium (BGGC)						false	false	none	1
 Bangladesh Jute Research Institute	Bangladesh Jute Research Institute	https://ror.org/00prhpp43	Bangladesh	23.7104	90.40744	true	true	affiliation_chosen	1
 Bangladesh Livestock Research Institute; Chittagong Veterinary and Animal Sciences University	Chattogram Veterinary and Animal Sciences University	https://ror.org/045v4z873	Bangladesh	22.3384	91.83168	true	true	affiliation_chosen	1
 Barkatullah University	Barkatullah University	https://ror.org/02ax13658	India	23.25469	77.40289	true	true	affiliation_chosen	1
+Baruch College	Baruch College	https://ror.org/023qavy03	United States	40.71427	-74.00597	true	true	affiliation_chosen	1
 Baruch College, City University of New York	City University of New York	https://ror.org/00453a208	United States	40.71427	-74.00597	true	true	affiliation_chosen	1
 BAYER CROPSCIENCE						false	false	none	1
 Baylor College of Medicine Genome Sequencing Center	Baylor College of Medicine	https://ror.org/02pttbw34	United States	29.76328	-95.36327	true	true	affiliation_chosen	1
@@ -3127,6 +3139,7 @@ Blumeria Genome Sequencing Consortium						false	false	none	1
 Bogazici university	Boğaziçi University	https://ror.org/03z9tma90	Türkiye	41.01384	28.94966	true	true	affiliation_chosen	1
 Bogong moth genome consortium						false	false	none	1
 Boland Lab at University of Guelph	University of Guelph	https://ror.org/01r7awg59	Canada	43.54594	-80.25599	true	true	affiliation_chosen	1
+BoSS40						false	false	none	1
 Boston University	Boston University	https://ror.org/05qwgg493	United States	42.35843	-71.05977	true	true	affiliation_chosen	1
 Boston University School of Medicine	Boston University	https://ror.org/05qwgg493	United States	42.35843	-71.05977	true	true	affiliation_chosen	1
 Bovine Pangenome Consortium						false	false	none	1
@@ -3398,6 +3411,7 @@ CONACYT-Instituto Tecnologico de Sonora	Sonora Institute of Technology	https://r
 concordia university						false	false	none	1
 Consejo Superior de Investigaciones Cientificas (CSIC)	Consejo Superior de Investigaciones Científicas	https://ror.org/02gfc7t72	Spain	40.4165	-3.70256	true	true	affiliation_chosen	1
 ConSERT						false	false	none	1
+Conservation of Forest Biodiversity in Multiple-Use Landscapes of Central Europe						false	false	none	1
 Consortium for Plant Invasion Genomics (CPING)						false	false	none	1
 Consortium Research Platform on Genmics, ICAR, India						false	false	none	1
 Consortium Research Platform on Genomics						false	false	none	1
@@ -3725,6 +3739,7 @@ Graduate School of Biological Science, Nara Institute of Science and Technology	
 Graduate School of Frontier Biosciences, Osaka University	The University of Osaka	https://ror.org/035t8zc32	Japan	34.69379	135.50107	true	true	affiliation_chosen	1
 Graduate School of Medicine, The University of Tokyo, Bunkyo, Tokyo, Japan,	The University of Tokyo	https://ror.org/057zh3y96	Japan	35.6895	139.69171	true	true	affiliation_chosen	1
 Grandomics						false	false	none	1
+Grant IDs 497640428, 424119118, 388941457; Deutsche Forschungsgemeinschaft	Deutsche Forschungsgemeinschaft	https://ror.org/018mejw64	Germany	50.73438	7.09549	true	true	affiliation_chosen	1
 Group of Integrative Ecology and Evolution, Department of Biological Science, School of Science, Nagoya University						false	false	none	1
 Grupo de Investigaciones Microbiologicas - UR (GIMUR)						false	false	none	1
 guangdong academy of agricultural sciences	Guangdong Academy of Agricultural Sciences	https://ror.org/01rkwtz72	China	25.25104	113.48015	true	true	affiliation_chosen	1
@@ -3754,7 +3769,6 @@ Guizhou Academy of Forestry						false	false	none	1
 Guizhou Education University	Guizhou Education University	https://ror.org/002x6f380	China	26.58333	106.71667	true	true	affiliation_chosen	1
 Guizhou institute of biotechnology	Guizhou Electric Power Design and Research Institute	https://ror.org/055f13495	China	26.58333	106.71667	true	true	affiliation_chosen	1
 Guizhou Medical University	Guiyang Medical University	https://ror.org/035y7a716	China	26.58333	106.71667	true	true	affiliation_chosen	1
-Guizhou Provincial Center for Livestock and Poultry Germplasm Determination						false	false	none	1
 Guizhou Tea Research Institute	Tea Research Institute	https://ror.org/056w1kd89	China	30.29365	120.16142	true	true	affiliation_chosen	1
 Guizhou Tobacco Science Institute						false	false	none	1
 Guizhou Univeresity						false	false	none	1
@@ -3872,7 +3886,6 @@ IAS-CSIC						false	false	none	1
 IASMA research center						false	false	none	1
 Ibaraki University College of Agriculture	Ibaraki University	https://ror.org/00sjd5653	Japan	34.81641	135.56828	true	true	affiliation_chosen	1
 iBB- IST						false	false	none	1
-IBCAS						false	false	none	1
 IBCH RAS						false	false	none	1
 IBE CSIC-UPF						false	false	none	1
 IBENS	Institut de Biologie de l'École Normale Supérieure	https://ror.org/03mxktp47	France	48.85341	2.3488	true	true	query_exact	1
@@ -3893,6 +3906,7 @@ ICAR-Central Institute of Brackishwater Aquaculture	Central Institute of Brackis
 ICAR-Central Institute of Freshwater Aquaculture	Central Institute of Freshwater Aquaculture	https://ror.org/041137e25	India	20.27241	85.83385	true	true	affiliation_chosen	1
 ICAR-Central Potato Research Institute, Shimla	Central Potato Research Institute	https://ror.org/019nmf858	India	31.10442	77.16662	true	true	affiliation_chosen	1
 ICAR-Central Research Institute for Jute and Allied Fibres (CRIJAF)	Central Research Institute for Jute and Allied Fibres	https://ror.org/01tk0cw08	India	22.76602	88.36336	true	true	affiliation_chosen	1
+ICAR-CMFRI VRC						false	false	none	1
 ICAR-CPCRI, Kasaragod						false	false	none	1
 ICAR-CRP Genomics						false	false	none	1
 ICAR-Directorate of Cashew Research	Directorate of Cashew Research	https://ror.org/018jrds86	India	13.33467	74.74617	true	true	affiliation_chosen	1
@@ -4387,6 +4401,8 @@ Leshan Vocational & Technical College	Handan Polytechnic College	https://ror.org
 Lettuce Genome Sequencing Consortium						false	false	none	1
 Liaocheng University	Liaocheng University	https://ror.org/03yh0n709	China	36.45064	116.00247	true	true	affiliation_chosen	1
 Liaoning Academy of Agricultural Sciences	Liaoning Academy of Agricultural Sciences	https://ror.org/03vnb1535	China	41.79222	123.43278	true	true	affiliation_chosen	1
+Liaoning University of Traditional Chinese Medicine	Liaoning University of Traditional Chinese Medicine	https://ror.org/030e3n504	China	41.79222	123.43278	true	true	affiliation_chosen	1
+LIB Museum Koenig						false	false	none	1
 Life Outdoors						false	false	none	1
 Life Science Center for Survival Dynamics, University of Tsukuba	University of Tsukuba	https://ror.org/02956yf07	Japan	36.08333	140.11667	true	true	affiliation_chosen	1
 LIMNOLOGICAL INSTITUTE SB RAS	Limnological Institute	https://ror.org/04tfjah29	Russia	52.29778	104.29639	true	true	affiliation_chosen	1
@@ -4911,7 +4927,6 @@ Senckenberg Biodiversity and Climate Research Center	Senckenberg Biodiversity an
 Senckenberg Biodiversity and Climate Research Center (SBiK-F)	Senckenberg Biodiversity and Climate Research Centre	https://ror.org/01amp2a31	Germany	50.11552	8.68417	true	true	affiliation_chosen	1
 Senckenberg Biodiversity and Climate Research Centre (BIK-F)	Senckenberg Biodiversity and Climate Research Centre	https://ror.org/01amp2a31	Germany	50.11552	8.68417	true	true	affiliation_chosen	1
 Senckenberg Gesellschaft - Biodiversity and Climate research center						false	false	none	1
-Seoul national university	Seoul National University	https://ror.org/04h9pn542	South Korea	37.566	126.9784	true	true	affiliation_chosen	1
 Sericultural Research Institute of Liaoning Province	Sericultural Research Institute	https://ror.org/0464wn274	China	32.21086	119.45508	true	true	affiliation_chosen	1
 SEX'PERCH						false	false	none	1
 Seychelles Warbler Project						false	false	none	1
@@ -4929,7 +4944,6 @@ Shandong Institute of Pomology, Shandong Academy of Agricultural Sciences	Shando
 Shandong Peanut Research Institute						false	false	none	1
 SHANDONG UNIVERSITY	Shandong University	https://ror.org/0207yh398	China	36.66833	116.99722	true	true	affiliation_chosen	1
 Shandong University, lushanwang	Shandong University	https://ror.org/0207yh398	China	36.66833	116.99722	true	true	affiliation_chosen	1
-Shang Dong Agricultural University						false	false	none	1
 Shangdong Agriculture University						false	false	none	1
 Shanghai Academy of Agricultural	Shanghai Anti-Cancer Association	https://ror.org/031vgn537	China	31.22222	121.45806	true	true	affiliation_chosen	1
 Shanghai Academy of Agricultural Science	Shanghai Academy of Agricultural Sciences	https://ror.org/04ejmmq75	China	31.22222	121.45806	true	true	affiliation_chosen	1
@@ -4999,6 +5013,7 @@ Smithsonian Institution NZP	Smithsonian Institution	https://ror.org/01pp8nd67	Un
 Smithsonian Institution, National Museum of Natural History						false	false	none	1
 Smithsonian National Zoological Park and Conservation Biology Institute	Conservation Biology Institute	https://ror.org/04gktak93	United States	44.56457	-123.26204	true	true	affiliation_chosen	1
 Smithsonian Natural History Museum						false	false	none	1
+snailomics @ nottingham						false	false	none	1
 SNSB - Zoologische Staatssammlung Munchen	Bavarian State Collection of Zoology	https://ror.org/04rekk491	Germany	48.13743	11.57549	true	true	affiliation_chosen	1
 SNUR&DB foundation						false	false	none	1
 Sojo University	Sojo University	https://ror.org/014fz7968	Japan	32.80589	130.69181	true	true	affiliation_chosen	1
@@ -5163,6 +5178,8 @@ The First Affiliated Hospital of Xinjiang Medical University	First Affiliated Ho
 The First Affiliated Hospital of Zhengzhou University	First Affiliated Hospital of Zhengzhou University	https://ror.org/056swr059	China	34.75778	113.64861	true	true	affiliation_chosen	1
 The First Institute of Oceanography,MNR	First Institute of Oceanography	https://ror.org/01y34t753	China	36.06488	120.38042	true	true	affiliation_chosen	1
 The FlyBase Consortium/Berkeley Drosophila Genome Project/Celera Genomics						false	false	none	1
+The Francis Crick Institute	The Francis Crick Institute	https://ror.org/04tnbqb63	United Kingdom	51.50853	-0.12574	true	true	affiliation_chosen	1
+The French Agricultural Research Centre for International Development	Centre de Coopération Internationale en Recherche Agronomique pour le Développement	https://ror.org/05kpkpg04	France	48.85341	2.3488	true	true	affiliation_chosen	1
 The French-Italian Tuber Genome Consortium						false	false	none	1
 The Frontier Research Institute for Interdisciplinary Sciences, Tohoku University	Tohoku University	https://ror.org/01dq60k83	Japan	38.26667	140.86667	true	true	affiliation_chosen	1
 The Fugu Genome Sequencing Consortium						false	false	none	1
@@ -5216,7 +5233,6 @@ The third affiliated hospital of Sun Yat-sen University						false	false	none	1
 The Tria Project						false	false	none	1
 The Tria Project: Mountain Pine Beetle System Genomics						false	false	none	1
 The United Graduate School of Agricultural Sciences Kagoshima University	Kagoshima University	https://ror.org/03ss88z23	Japan	31.56667	130.55	true	true	affiliation_chosen	1
-The University of Burdwan	University of Burdwan	https://ror.org/05cyd8v32	India	23.25572	87.85691	true	true	affiliation_chosen	1
 THE UNIVERSITY OF EDINBURGH	University of Edinburgh	https://ror.org/01nrxwf90	United Kingdom	55.95206	-3.19648	true	true	affiliation_chosen	1
 the University of Hong Kong						false	false	none	1
 THE UNIVERSITY OF NEW SOUTH WALES	UNSW Sydney	https://ror.org/03r8z3t63	Australia	-33.86785	151.20732	true	true	affiliation_chosen	1
@@ -5361,6 +5377,7 @@ Universidad Nacional Toribio Rodriguez de Mendoza de Amazonas	National Universit
 Universidad Nacional Toribio Rodríguez de Mendoza de Amazonas	National University Toribio Rodríguez de Mendoza	https://ror.org/0323wfn23	Peru	-6.23169	-77.86903	true	true	affiliation_chosen	1
 Universidad Nacional, Costa Rica	Universidad Nacional	https://ror.org/01t466c14	Costa Rica	9.99872	-84.11587	true	true	affiliation_chosen	1
 Universidad Peruana Cayetano Heredia	Universidad Peruana Cayetano Heredia	https://ror.org/03yczjf25	Peru	-12.04318	-77.02824	true	true	affiliation_chosen	1
+Universidad Politecnica del Estado de Morelos	Universidad Politecnica del Estado de Morelos	https://ror.org/04m34bn97	Mexico	18.88139	-99.17778	true	true	affiliation_chosen	1
 UNIVERSIDAD REY JUAN CARLOS	Universidad Rey Juan Carlos	https://ror.org/01v5cv687	Spain	40.4165	-3.70256	true	true	affiliation_chosen	1
 Universidad Veracruzana	Universidad Veracruzana	https://ror.org/03efxn362	Mexico	19.53124	-96.91589	true	true	affiliation_chosen	1
 Universidade de Vigo	Universidade de Vigo	https://ror.org/05rdf8595	Spain	42.23282	-8.72264	true	true	affiliation_chosen	1
@@ -5493,6 +5510,7 @@ UNIVERSITY OF LIVERPOOL	University of Liverpool	https://ror.org/04xs57h96	United
 University of Liverpool, Institute of Integrative Biology	Institute of Integrative Biology	https://ror.org/01kwjhv40	Switzerland	47.36667	8.55	true	true	affiliation_chosen	1
 University of Ljubljana, Faculty of Medicine, Institute of Biochemistry	University of Ljubljana	https://ror.org/05njb9z20	Slovenia	46.05108	14.50513	true	true	affiliation_chosen	1
 university of lleida	Universitat de Lleida	https://ror.org/050c3cw24	Spain	41.61674	0.62218	true	true	affiliation_chosen	1
+University of Lleida	Universitat de Lleida	https://ror.org/050c3cw24	Spain	41.61674	0.62218	true	true	affiliation_chosen	1
 University of Louisville	University of Louisville	https://ror.org/01ckdn478	United States	38.25424	-85.75941	true	true	affiliation_chosen	1
 University of Manchester	University of Manchester	https://ror.org/027m9bs27	United Kingdom	53.48095	-2.23743	true	true	affiliation_chosen	1
 University of Maryland College Park	University of Maryland, College Park	https://ror.org/047s2c258	United States	38.98067	-76.93692	true	true	affiliation_chosen	1
@@ -5570,7 +5588,6 @@ University of the sunshine coast	University of the Sunshine Coast	https://ror.or
 University of Thessaly	University of Thessaly	https://ror.org/04v4g9h31	Greece	39.36923	22.94769	true	true	affiliation_chosen	1
 University of Toronto Scarborough	University of Toronto Scarborough	https://ror.org/05k33q843	Canada	43.77223	-79.25666	true	true	affiliation_chosen	1
 University of Tours	Université de Tours	https://ror.org/02wwzvj46	France	47.39484	0.70398	true	true	affiliation_chosen	1
-university of turin	University of Turin	https://ror.org/048tbm396	Italy	45.07049	7.68682	true	true	affiliation_chosen	1
 University of Tyumen	University of Tyumen	https://ror.org/05vehv290	Russia	57.15222	65.52722	true	true	affiliation_chosen	1
 University of Udine	University of Udine	https://ror.org/05ht0mh31	Italy	46.0693	13.23715	true	true	affiliation_chosen	1
 University of Venda	University of Venda	https://ror.org/0338xea48	South Africa	-22.94564	30.48497	true	true	affiliation_chosen	1
@@ -5685,7 +5702,6 @@ WormBase group, EBI	Advanced Semiconductor Engineering (Taiwan)	https://ror.org/
 WSL						false	false	none	1
 Wuhan Botanical Garden, Chinese Academy of Science	Chinese Academy of Sciences	https://ror.org/034t30j35	China	39.9075	116.39723	true	true	affiliation_chosen	1
 Wuhan Botanical Garden, University of Chinese Academy of Sciences	University of Chinese Academy of Sciences	https://ror.org/05qbk4x57	China	39.9075	116.39723	true	true	affiliation_chosen	1
-Wuhan Huaming Biotechnology Co., Ltd.						false	false	none	1
 Wuhan Onemore-tech Co., Ltd.						false	false	none	1
 Wuhan university	Wuhan University	https://ror.org/033vjfk17	China	30.58333	114.26667	true	true	affiliation_chosen	1
 Wuhan University, College of Life Sciences	Wuhan University	https://ror.org/033vjfk17	China	30.58333	114.26667	true	true	affiliation_chosen	1
