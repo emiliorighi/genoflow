@@ -31,7 +31,7 @@ services:
     restart: always
     environment:
       - WATCHTOWER_LABEL_ENABLE=true      # only touch containers labelled above
-      - WATCHTOWER_POLL_INTERVAL=600      # seconds
+      - WATCHTOWER_POLL_INTERVAL=21600    # seconds (6h; data updates weekly)
       - WATCHTOWER_CLEANUP=true           # remove old images
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
