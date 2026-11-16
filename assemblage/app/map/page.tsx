@@ -1,13 +1,28 @@
 'use client'
 
 import Link from 'next/link'
-import { Suspense, startTransition, useEffect, useMemo, useRef, useState } from 'react'
+import {
+  Suspense,
+  startTransition,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { Info } from 'lucide-react'
 import { load } from '@loaders.gl/core'
 import ExploreLeftSidebar from './explore/ExploreLeftSidebar'
 import ExploreMap, { type ExploreLayers } from './explore/ExploreMap'
 import ExploreToolbar, { type SearchMode } from './explore/ExploreToolbar'
+import YearRangeFilter from './explore/YearRangeFilter'
+import {
+  buildYearHistogram,
+  computeYearBounds,
+  filterByYearRange,
+  normalizeYearRange,
+} from './explore/yearRange'
 import {
   buildContinentCards,
   buildContinentLookup,
@@ -55,12 +70,14 @@ import {
   encodeSelectionParam,
   instituteKey,
   normalizeRegionFlows,
+  parseYearRangeParams,
   type GeoFilter,
   type RankFilter,
   type RegionFlow,
   type Selection,
   type TaxonRank,
   type WorldGeoJson,
+  type YearRange,
 } from './types'
 
 function parseRankParam(raw: string | null): TaxonRank | '' {
@@ -122,6 +139,13 @@ function MapPageInner() {
   )
   const [rankTaxid, setRankTaxid] = useState(
     () => initialParams.current.get(MAP_QUERY_KEYS.taxon) || '',
+  )
+  // Requested range from the URL; normalized against real bounds once data loads.
+  const [yearRange, setYearRange] = useState<YearRange | null>(() =>
+    parseYearRangeParams(
+      initialParams.current.get(MAP_QUERY_KEYS.yearFrom),
+      initialParams.current.get(MAP_QUERY_KEYS.yearTo),
+    ),
   )
   const [mapSlices, setMapSlices] = useState<MapSliceSelection>(DEFAULT_MAP_SLICES)
   const [searchMode, setSearchMode] = useState<SearchMode>('species')
@@ -281,25 +305,42 @@ function MapPageInner() {
   const rankFilter: RankFilter | null =
     rankLevel && rankTaxid ? { rank: rankLevel, taxid: rankTaxid } : null
 
+  /** Release-year extent of the whole dataset (stable while filters change). */
+  const yearBounds = useMemo(() => (flows ? computeYearBounds(flows) : null), [flows])
+
+  /** Requested range clamped to the data; null when it covers every year. */
+  const activeYearRange = useMemo(
+    () => normalizeYearRange(yearRange, yearBounds),
+    [yearRange, yearBounds],
+  )
+
+  /** Every downstream view (index, cards, taxon options, map) starts from this. */
+  const yearFlows = useMemo(
+    () => (flows ? filterByYearRange(flows, activeYearRange) : null),
+    [flows, activeYearRange],
+  )
+
   const taxonFilteredFlows = useMemo(
-    () => filterByRank(flows ?? [], rankFilter),
+    () => filterByRank(yearFlows ?? [], rankFilter),
     // rankFilter is derived from rankLevel + rankTaxid
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [flows, rankLevel, rankTaxid],
+    [yearFlows, rankLevel, rankTaxid],
   )
 
   /** Full-table index — list cards (no taxon) and region geo partition. */
   const fullIndex = useMemo(
-    () => (flows ? buildFlowIndex(flows, customIso3Sets) : null),
-    [flows, customIso3Sets],
+    () => (yearFlows ? buildFlowIndex(yearFlows, customIso3Sets) : null),
+    [yearFlows, customIso3Sets],
   )
 
   /** Taxon-scoped index when a taxon filter is active; otherwise aliases fullIndex. */
   const listIndex = useMemo((): FlowIndex | null => {
-    if (!flows || !fullIndex) return null
+    if (!yearFlows || !fullIndex) return null
     if (!rankFilter) return fullIndex
     return buildFlowIndex(taxonFilteredFlows, customIso3Sets)
-  }, [flows, fullIndex, rankFilter, taxonFilteredFlows, customIso3Sets])
+    // rankFilter is derived from rankLevel + rankTaxid
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [yearFlows, fullIndex, rankLevel, rankTaxid, taxonFilteredFlows, customIso3Sets])
 
   /** Geo partition over all taxa — drives taxon picker options/counts. */
   const geoPartition = useMemo(() => {
@@ -337,6 +378,33 @@ function MapPageInner() {
 
   const barsFlows = mapFlows
 
+  const yearActive = activeYearRange !== null
+
+  /** Year-agnostic index, built only while a range is active (otherwise `fullIndex` is it). */
+  const allYearsIndex = useMemo(
+    () => (yearActive && flows ? buildFlowIndex(flows, customIso3Sets) : null),
+    [yearActive, flows, customIso3Sets],
+  )
+
+  /** Rows in the current taxon / region / flow-toggle scope, ignoring the year range. */
+  const histogramFlows = useMemo((): RegionFlow[] | null => {
+    if (!flows) return null
+    if (!yearActive) return mapFlows
+    if (!hasRegion) return filterByRank(flows, rankFilter)
+    if (!allYearsIndex) return null
+    const part = partitionForGeoFilter(allYearsIndex, geoFilter)
+    if (!part) return []
+    return flowsFromLists(rankFilter ? filterPartitionByRank(part, rankFilter) : part, mapSlices)
+    // rankFilter is derived from rankLevel + rankTaxid
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [flows, yearActive, mapFlows, hasRegion, allYearsIndex, geoFilter, rankLevel, rankTaxid, mapSlices])
+
+  /** Chip chart: species per release year for the same scope the map shows (minus years). */
+  const yearHistogram = useMemo(
+    () => (histogramFlows && yearBounds ? buildYearHistogram(histogramFlows, yearBounds) : null),
+    [histogramFlows, yearBounds],
+  )
+
   useEffect(() => {
     if (!selection || !flows) return
     const stillVisible = mapFlows.some((row) =>
@@ -357,6 +425,14 @@ function MapPageInner() {
       if (geoFilter.continent) params.set(MAP_QUERY_KEYS.continent, geoFilter.continent)
       if (geoFilter.country) params.set(MAP_QUERY_KEYS.country, geoFilter.country)
     }
+    if (activeYearRange) {
+      params.set(MAP_QUERY_KEYS.yearFrom, String(activeYearRange.from))
+      params.set(MAP_QUERY_KEYS.yearTo, String(activeYearRange.to))
+    } else if (!flows && yearRange) {
+      // Keep the requested range in the URL until data loads and it can be validated.
+      params.set(MAP_QUERY_KEYS.yearFrom, String(yearRange.from))
+      params.set(MAP_QUERY_KEYS.yearTo, String(yearRange.to))
+    }
     const encodedSelection = encodeSelectionParam(selection)
     if (encodedSelection) params.set(MAP_QUERY_KEYS.select, encodedSelection)
 
@@ -369,6 +445,9 @@ function MapPageInner() {
     geoFilter.continent,
     geoFilter.country,
     geoFilter.customId,
+    activeYearRange,
+    yearRange,
+    flows,
     selection,
     pathname,
     router,
@@ -408,32 +487,36 @@ function MapPageInner() {
   )
 
   const rankSummaries = useMemo(() => {
-    if (!flows) {
+    if (!yearFlows) {
       return buildTaxonRankSummaries([])
     }
     if (!hasRegion || !geoPartition) {
-      return buildTaxonRankSummaries(flows)
+      return buildTaxonRankSummaries(yearFlows)
     }
     return buildTaxonRankSummaries(geoPartition)
-  }, [flows, hasRegion, geoPartition])
+  }, [yearFlows, hasRegion, geoPartition])
 
   const rankTaxidLabel = useMemo(() => {
     if (!rankLevel || !rankTaxid) return ''
-    return (
-      rankSummaries[rankLevel].options.find((opt) => opt.taxid === rankTaxid)?.name ??
-      ''
-    )
-  }, [rankSummaries, rankLevel, rankTaxid])
+    const fromOptions = rankSummaries[rankLevel].options.find(
+      (opt) => opt.taxid === rankTaxid,
+    )?.name
+    if (fromOptions) return fromOptions
+    // A year range can hide the taxon from the options; look the name up in the full data.
+    const row = flows?.find((r) => r[`${rankLevel}_taxid`] === rankTaxid)
+    return row?.[`${rankLevel}_name`] ?? ''
+  }, [rankSummaries, rankLevel, rankTaxid, flows])
 
   // Drop taxon if it disappears from the current region scope (e.g. region change).
   useEffect(() => {
-    if (!rankLevel || !rankTaxid || !flows) return
+    // A year range may legitimately leave a taxon empty; only region changes drop it.
+    if (!rankLevel || !rankTaxid || !flows || activeYearRange) return
     const stillPresent = rankSummaries[rankLevel].options.some((opt) => opt.taxid === rankTaxid)
     if (!stillPresent) {
       setRankLevel('')
       setRankTaxid('')
     }
-  }, [rankSummaries, rankLevel, rankTaxid, flows])
+  }, [rankSummaries, rankLevel, rankTaxid, flows, activeYearRange])
 
   const selectedSpeciesRow = useMemo(() => {
     if (selection?.type !== 'species') return null
@@ -464,6 +547,12 @@ function MapPageInner() {
       setRankTaxid(taxid)
     })
   }
+
+  // Stable identity so the memoized year chip doesn't re-render with every map state change.
+  const onYearRangeChange = useCallback((next: YearRange | null) => {
+    // Rebuilding indexes/cards is the expensive part; keep the slider responsive.
+    startTransition(() => setYearRange(next))
+  }, [])
 
   const onClearTaxon = () => {
     if (hasRegion) {
@@ -648,6 +737,15 @@ function MapPageInner() {
             selection={selection}
             onSelect={select}
             disabled={!flows}
+            leading={
+              <YearRangeFilter
+                bounds={yearBounds}
+                histogram={yearHistogram}
+                range={activeYearRange}
+                onChange={onYearRangeChange}
+                disabled={!flows}
+              />
+            }
           />
           <div className="explore-map-stage">
             <ExploreMap

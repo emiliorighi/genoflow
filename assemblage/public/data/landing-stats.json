@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-05T11:30:49+00:00",
+  "generatedAt": "2026-11-16T08:28:59+00:00",
   "kpis": {
     "speciesWithAssemblies": 30226,
     "speciesWithCoordinates": 11588,
@@ -123,5 +123,439 @@
       "id": "geo-is-proxy",
       "text": "geo_loc_name is sample collection locality, not always wild origin. Submitter country (via ROR) is a proxy for where the assembly was deposited — not necessarily where sequencing was performed. Data sourced from INSDC / NCBI GenBank eukaryote assemblies and ROR."
     }
-  ]
+  ],
+  "charts": {
+    "yearly": [
+      {
+        "year": 2006,
+        "species": 3
+      },
+      {
+        "year": 2007,
+        "species": 1
+      },
+      {
+        "year": 2008,
+        "species": 5
+      },
+      {
+        "year": 2009,
+        "species": 3
+      },
+      {
+        "year": 2010,
+        "species": 3
+      },
+      {
+        "year": 2011,
+        "species": 17
+      },
+      {
+        "year": 2012,
+        "species": 52
+      },
+      {
+        "year": 2013,
+        "species": 82
+      },
+      {
+        "year": 2014,
+        "species": 190
+      },
+      {
+        "year": 2015,
+        "species": 184
+      },
+      {
+        "year": 2016,
+        "species": 221
+      },
+      {
+        "year": 2017,
+        "species": 378
+      },
+      {
+        "year": 2018,
+        "species": 446
+      },
+      {
+        "year": 2019,
+        "species": 520
+      },
+      {
+        "year": 2020,
+        "species": 1043
+      },
+      {
+        "year": 2021,
+        "species": 1886
+      },
+      {
+        "year": 2022,
+        "species": 1990
+      },
+      {
+        "year": 2023,
+        "species": 3416
+      },
+      {
+        "year": 2024,
+        "species": 3656
+      },
+      {
+        "year": 2025,
+        "species": 4217
+      },
+      {
+        "year": 2026,
+        "species": 5633
+      }
+    ],
+    "flow": {
+      "unresolvedLabel": "Unresolved",
+      "links": [
+        {
+          "source": "Europe",
+          "target": "Europe",
+          "value": 5922
+        },
+        {
+          "source": "Asia",
+          "target": "Asia",
+          "value": 4033
+        },
+        {
+          "source": "North America",
+          "target": "North America",
+          "value": 2752
+        },
+        {
+          "source": "North America",
+          "target": "Unresolved",
+          "value": 2425
+        },
+        {
+          "source": "Asia",
+          "target": "Unresolved",
+          "value": 1155
+        },
+        {
+          "source": "Europe",
+          "target": "Unresolved",
+          "value": 806
+        },
+        {
+          "source": "Asia",
+          "target": "North America",
+          "value": 587
+        },
+        {
+          "source": "North America",
+          "target": "Europe",
+          "value": 547
+        },
+        {
+          "source": "South America",
+          "target": "North America",
+          "value": 523
+        },
+        {
+          "source": "Europe",
+          "target": "North America",
+          "value": 492
+        },
+        {
+          "source": "Oceania",
+          "target": "Unresolved",
+          "value": 485
+        },
+        {
+          "source": "Oceania",
+          "target": "Oceania",
+          "value": 445
+        },
+        {
+          "source": "Unknown",
+          "target": "Europe",
+          "value": 391
+        },
+        {
+          "source": "Asia",
+          "target": "Europe",
+          "value": 369
+        },
+        {
+          "source": "South America",
+          "target": "Unresolved",
+          "value": 358
+        },
+        {
+          "source": "Africa",
+          "target": "North America",
+          "value": 349
+        },
+        {
+          "source": "Africa",
+          "target": "Unresolved",
+          "value": 263
+        },
+        {
+          "source": "South America",
+          "target": "Europe",
+          "value": 228
+        },
+        {
+          "source": "Africa",
+          "target": "Europe",
+          "value": 223
+        },
+        {
+          "source": "Oceania",
+          "target": "North America",
+          "value": 208
+        },
+        {
+          "source": "South America",
+          "target": "South America",
+          "value": 182
+        },
+        {
+          "source": "Unknown",
+          "target": "Unresolved",
+          "value": 146
+        },
+        {
+          "source": "Europe",
+          "target": "Asia",
+          "value": 136
+        },
+        {
+          "source": "North America",
+          "target": "Asia",
+          "value": 136
+        },
+        {
+          "source": "Oceania",
+          "target": "Europe",
+          "value": 127
+        },
+        {
+          "source": "Unknown",
+          "target": "North America",
+          "value": 96
+        },
+        {
+          "source": "Africa",
+          "target": "Asia",
+          "value": 71
+        },
+        {
+          "source": "Africa",
+          "target": "Africa",
+          "value": 70
+        },
+        {
+          "source": "South America",
+          "target": "Asia",
+          "value": 66
+        },
+        {
+          "source": "Unknown",
+          "target": "Asia",
+          "value": 50
+        },
+        {
+          "source": "Oceania",
+          "target": "Asia",
+          "value": 39
+        },
+        {
+          "source": "Antarctica",
+          "target": "Unresolved",
+          "value": 29
+        },
+        {
+          "source": "Asia",
+          "target": "Oceania",
+          "value": 25
+        },
+        {
+          "source": "Antarctica",
+          "target": "North America",
+          "value": 21
+        },
+        {
+          "source": "Antarctica",
+          "target": "Asia",
+          "value": 21
+        },
+        {
+          "source": "North America",
+          "target": "Africa",
+          "value": 19
+        },
+        {
+          "source": "Europe",
+          "target": "Africa",
+          "value": 18
+        },
+        {
+          "source": "North America",
+          "target": "South America",
+          "value": 17
+        },
+        {
+          "source": "Asia",
+          "target": "Africa",
+          "value": 17
+        },
+        {
+          "source": "North America",
+          "target": "Oceania",
+          "value": 15
+        },
+        {
+          "source": "Asia",
+          "target": "South America",
+          "value": 15
+        },
+        {
+          "source": "South America",
+          "target": "Africa",
+          "value": 13
+        },
+        {
+          "source": "Europe",
+          "target": "Oceania",
+          "value": 10
+        },
+        {
+          "source": "Antarctica",
+          "target": "South America",
+          "value": 10
+        },
+        {
+          "source": "Oceania",
+          "target": "Africa",
+          "value": 10
+        },
+        {
+          "source": "Antarctica",
+          "target": "Europe",
+          "value": 8
+        },
+        {
+          "source": "Europe",
+          "target": "South America",
+          "value": 8
+        },
+        {
+          "source": "Africa",
+          "target": "Oceania",
+          "value": 3
+        },
+        {
+          "source": "Antarctica",
+          "target": "Oceania",
+          "value": 2
+        },
+        {
+          "source": "South America",
+          "target": "Oceania",
+          "value": 2
+        },
+        {
+          "source": "Oceania",
+          "target": "South America",
+          "value": 2
+        },
+        {
+          "source": "Unknown",
+          "target": "South America",
+          "value": 1
+        }
+      ]
+    },
+    "classes": {
+      "rank": "class",
+      "items": [
+        {
+          "taxid": "50557",
+          "name": "Insecta",
+          "species": 5897,
+          "fullFlow": 5216
+        },
+        {
+          "taxid": "3398",
+          "name": "Magnoliopsida",
+          "species": 3139,
+          "fullFlow": 2676
+        },
+        {
+          "taxid": "147550",
+          "name": "Sordariomycetes",
+          "species": 1540,
+          "fullFlow": 1167
+        },
+        {
+          "taxid": "186623",
+          "name": "Actinopteri",
+          "species": 1531,
+          "fullFlow": 966
+        },
+        {
+          "taxid": "8782",
+          "name": "Aves",
+          "species": 1197,
+          "fullFlow": 631
+        },
+        {
+          "taxid": "155619",
+          "name": "Agaricomycetes",
+          "species": 949,
+          "fullFlow": 895
+        },
+        {
+          "taxid": "40674",
+          "name": "Mammalia",
+          "species": 827,
+          "fullFlow": 579
+        },
+        {
+          "taxid": "3239874",
+          "name": "Pichiomycetes",
+          "species": 701,
+          "fullFlow": 187
+        },
+        {
+          "taxid": "147545",
+          "name": "Eurotiomycetes",
+          "species": 643,
+          "fullFlow": 499
+        },
+        {
+          "taxid": "147541",
+          "name": "Dothideomycetes",
+          "species": 580,
+          "fullFlow": 481
+        },
+        {
+          "taxid": "4891",
+          "name": "Saccharomycetes",
+          "species": 491,
+          "fullFlow": 232
+        },
+        {
+          "taxid": "147547",
+          "name": "Lecanoromycetes",
+          "species": 402,
+          "fullFlow": 75
+        }
+      ],
+      "other": {
+        "species": 6049,
+        "fullFlow": 4675
+      }
+    }
+  }
 }

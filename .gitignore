@@ -2,6 +2,7 @@ graphify.out/
 graphify-out/
 .cursor/
 .corepack-home/
+.claude/
 
 # data/: ignore by default, then selectively track pipeline outputs + caches
 /data/*

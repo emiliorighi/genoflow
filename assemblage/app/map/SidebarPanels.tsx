@@ -243,6 +243,16 @@ export function SpeciesDetail({
             <b>{row.assembly_level || '—'}</b>
           </div>
           <div>
+            <span>Released</span>
+            <b>{row.assembly_release_date || '—'}</b>
+          </div>
+          {row.first_release_date && row.first_release_date !== row.assembly_release_date && (
+            <div>
+              <span>First assembly</span>
+              <b>{row.first_release_date}</b>
+            </div>
+          )}
+          <div>
             <span>Submitter</span>
             <b>{row.submitter_name || '—'}</b>
           </div>

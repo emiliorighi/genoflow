@@ -16,6 +16,12 @@ export type SpeciesFlow = {
   species_scientific_name: string
   assembly_accession: string
   assembly_level: string | null
+  /** ISO date (YYYY-MM-DD) the selected assembly was publicly released. */
+  assembly_release_date: string | null
+  /** Earliest release date across all of the species' assemblies. */
+  first_release_date: string | null
+  /** Year of `assembly_release_date`; the field the year-range filter uses. */
+  release_year: number | null
   collection_lat: number
   collection_lon: number
   institute_lat: number | null
@@ -133,6 +139,27 @@ export function matchesGeoFilter(
   return true
 }
 
+/** Inclusive release-year window; `null` means "all years". */
+export type YearRange = { from: number; to: number }
+
+/** Parse an ISO date prefix ("2014-06-05") to its year, or null when malformed. */
+export function yearFromIsoDate(value: string | null): number | null {
+  if (!value || value.length < 4) return null
+  const year = Number(value.slice(0, 4))
+  return Number.isInteger(year) && year >= 1900 && year <= 2200 ? year : null
+}
+
+/** Parse `from`/`to` query params into a range (swapping if reversed), or null. */
+export function parseYearRangeParams(
+  rawFrom: string | null,
+  rawTo: string | null,
+): YearRange | null {
+  const from = rawFrom ? Number.parseInt(rawFrom, 10) : NaN
+  const to = rawTo ? Number.parseInt(rawTo, 10) : NaN
+  if (!Number.isFinite(from) || !Number.isFinite(to)) return null
+  return from <= to ? { from, to } : { from: to, to: from }
+}
+
 /** Query param keys used to make the map's filter/selection state shareable via URL. */
 export const MAP_QUERY_KEYS = {
   rank: 'rank',
@@ -141,6 +168,8 @@ export const MAP_QUERY_KEYS = {
   country: 'country',
   custom: 'custom',
   select: 'select',
+  yearFrom: 'from',
+  yearTo: 'to',
 } as const
 
 export function encodeSelectionParam(selection: Selection): string | null {
@@ -176,6 +205,8 @@ export type MapDeepLinkState = {
   continent?: string
   country?: string
   customId?: string
+  yearFrom?: number
+  yearTo?: number
 }
 
 /** Build a `/map?...` deep link for quick-start entry points (e.g. from the landing page). */
@@ -190,6 +221,10 @@ export function buildMapHref(state: MapDeepLinkState): string {
   } else {
     if (state.continent) params.set(MAP_QUERY_KEYS.continent, state.continent)
     if (state.country) params.set(MAP_QUERY_KEYS.country, state.country)
+  }
+  if (state.yearFrom != null && state.yearTo != null) {
+    params.set(MAP_QUERY_KEYS.yearFrom, String(state.yearFrom))
+    params.set(MAP_QUERY_KEYS.yearTo, String(state.yearTo))
   }
   const qs = params.toString()
   return qs ? `/map?${qs}` : '/map'
@@ -224,6 +259,7 @@ function mapFlowRow(row: Record<string, unknown>): {
 
   const species_taxid = String(row.species_taxid ?? '')
   if (!species_taxid) return null
+  const releaseDate = optionalString(row.assembly_release_date)
 
   return {
     collection_lat,
@@ -236,6 +272,9 @@ function mapFlowRow(row: Record<string, unknown>): {
       species_scientific_name: String(row.species_scientific_name ?? ''),
       assembly_accession: String(row.assembly_accession ?? ''),
       assembly_level: optionalString(row.assembly_level),
+      assembly_release_date: releaseDate,
+      first_release_date: optionalString(row.first_release_date),
+      release_year: yearFromIsoDate(releaseDate),
       collection_country: String(row.collection_country ?? '').trim(),
       collection_continent: String(row.collection_continent ?? 'Unknown').trim() || 'Unknown',
       collection_country_iso3: optionalString(row.collection_country_iso3),

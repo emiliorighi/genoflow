@@ -130,9 +130,13 @@ export default function PullIndexRankings({
           aria-label="Pull index diverging bar chart"
         >
           <div className="pull-rank-col-heads" aria-hidden="true">
-            <span className="pull-rank-col-head is-collected">Collected</span>
+            <span className="pull-rank-col-head is-collected">
+              Exported · Kept
+            </span>
             <span className="pull-rank-col-head is-axis" />
-            <span className="pull-rank-col-head is-sequenced">Sequenced</span>
+            <span className="pull-rank-col-head is-sequenced">
+              Local · Imported
+            </span>
           </div>
           <div className="pull-rank-list">
             {cards.map((card) => (

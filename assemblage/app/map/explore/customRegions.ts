@@ -1,6 +1,10 @@
 /** Predefined multi-country atlas regions for the Custom tab. */
 
-export type CustomRegionId = 'latin-america' | 'global-south' | 'global-north'
+export type CustomRegionId =
+  | 'latin-america'
+  | 'global-south'
+  | 'global-north'
+  | 'mediterranean'
 
 export type CustomRegionDef = {
   id: CustomRegionId
@@ -31,11 +35,70 @@ export const GLOBAL_SOUTH_SOUTH_ASIA_ISO3 = new Set([
   'BTN', // Bhutan
 ])
 
+/**
+ * Countries with a Mediterranean Sea coastline (Barcelona Convention riparian
+ * states, plus Palestine).
+ */
+export const MEDITERRANEAN_ISO3 = new Set([
+  'ALB', // Albania
+  'DZA', // Algeria
+  'BIH', // Bosnia and Herzegovina
+  'HRV', // Croatia
+  'CYP', // Cyprus
+  'EGY', // Egypt
+  'FRA', // France
+  'GRC', // Greece
+  'ISR', // Israel
+  'ITA', // Italy
+  'LBN', // Lebanon
+  'LBY', // Libya
+  'MLT', // Malta
+  'MCO', // Monaco
+  'MNE', // Montenegro
+  'MAR', // Morocco
+  'PSE', // Palestine
+  'SVN', // Slovenia
+  'ESP', // Spain
+  'SYR', // Syria
+  'TUN', // Tunisia
+  'TUR', // Turkey
+])
+
 const GLOBAL_SOUTH_SOUTH_ASIA_NAMES = new Set([
   'india',
   'nepal',
   'bangladesh',
   'bhutan',
+])
+
+const MEDITERRANEAN_NAMES = new Set([
+  'albania',
+  'algeria',
+  'bosnia and herzegovina',
+  'bosnia',
+  'croatia',
+  'cyprus',
+  'egypt',
+  'france',
+  'greece',
+  'israel',
+  'italy',
+  'lebanon',
+  'libya',
+  'malta',
+  'monaco',
+  'montenegro',
+  'morocco',
+  'palestine',
+  'state of palestine',
+  'slovenia',
+  'spain',
+  'syria',
+  'syrian arab republic',
+  'tunisia',
+  'turkey',
+  'türkiye',
+  'turkiye',
 ])
 
 const LATAM_EXCLUDED_NORTH_AMERICA = new Set(['USA', 'CAN', 'GRL'])
@@ -73,6 +136,11 @@ export const CUSTOM_REGIONS: CustomRegionDef[] = [
     id: 'global-north',
     name: 'Global North',
     description: 'Europe, Canada, USA, and Japan',
+  },
+  {
+    id: 'mediterranean',
+    name: 'Mediterranean',
+    description: 'Countries with a Mediterranean Sea coastline',
   },
 ]
 
@@ -117,6 +185,11 @@ export function isCustomRegionMember(
     if (iso3 && SE_ASIA_ISO3.has(iso3)) return true
     if (iso3 && GLOBAL_SOUTH_SOUTH_ASIA_ISO3.has(iso3)) return true
     return GLOBAL_SOUTH_SOUTH_ASIA_NAMES.has(normalizeCountryName(countryName))
+  }
+
+  if (id === 'mediterranean') {
+    if (iso3 && MEDITERRANEAN_ISO3.has(iso3)) return true
+    return MEDITERRANEAN_NAMES.has(normalizeCountryName(countryName))
   }
 
   // global-north

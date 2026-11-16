@@ -1,0 +1,13 @@
+.git
+.github
+.cursor
+.claude
+.corepack-home
+graphify-out
+**/graphify-out
+data
+scripts
+**/node_modules
+**/.next
+**/out
+**/*.tsbuildinfo

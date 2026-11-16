@@ -39,6 +39,8 @@ PARQUET_COLUMNS = [
     "assembly_accession",
     "assembly_level",
     "assembly_refseq_category",
+    "assembly_release_date",
+    "first_release_date",
     "assemblies_count_total",
     "kingdom_taxid",
     "kingdom_name",
@@ -527,19 +529,31 @@ def load_institutes(path: Path) -> dict[str, dict[str, str]]:
     return institutes
 
 
+DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+
+
+def clean_date(raw: Any) -> str:
+    """Return an ISO YYYY-MM-DD date string, or '' when missing/malformed."""
+    text = str(raw or "").strip()
+    return text if DATE_RE.match(text) else ""
+
+
 def select_latest_assemblies(
     path: Path,
     exclude_taxids: set[str],
-) -> tuple[dict[str, dict[str, str]], dict[str, int], int, int]:
+) -> tuple[dict[str, dict[str, str]], dict[str, int], dict[str, str], int, int]:
     """Exclude taxa; pick one assembly per species (coords preferred, else country).
 
     Returns:
       selected: species_taxid -> assembly row
       totals: species_taxid -> assemblies_count_total (all assemblies, excl. taxa)
+      first_dates: species_taxid -> earliest assembly release date (ISO) across
+        all of the species' assemblies (excl. taxa); missing when no dates known
       skipped_excluded: count of rows dropped for excluded taxids
       skipped_bad_acc: count of eligible rows with unparseable accession
     """
     totals: dict[str, int] = Counter()
+    first_dates: dict[str, str] = {}
     coord_candidates: dict[str, tuple[tuple[int, int], dict[str, str]]] = {}
     country_candidates: dict[str, tuple[tuple[int, int], dict[str, str]]] = {}
     skipped_excluded = 0
@@ -571,6 +585,9 @@ def select_latest_assemblies(
                 skipped_excluded += 1
                 continue
             totals[taxid] += 1
+            released = clean_date(row.get("assembly_release_date"))
+            if released and (taxid not in first_dates or released < first_dates[taxid]):
+                first_dates[taxid] = released
 
             has_coords = (
                 (row.get("has_biosample_coordinates") or "").strip().casefold()
@@ -608,12 +625,13 @@ def select_latest_assemblies(
         f"excluded {skipped_excluded} human/mouse rows; "
         f"{skipped_bad_acc} bad accessions)"
     )
-    return selected, dict(totals), skipped_excluded, skipped_bad_acc
+    return selected, dict(totals), first_dates, skipped_excluded, skipped_bad_acc
 
 
 def assemble_records(
     selected: dict[str, dict[str, str]],
     totals: dict[str, int],
+    first_dates: dict[str, str],
     nodes: dict[str, dict[str, str]],
     institutes: dict[str, dict[str, str]],
 ) -> list[dict[str, Any]]:
@@ -648,6 +666,8 @@ def assemble_records(
             "assembly_refseq_category": (
                 row.get("assembly_refseq_category") or ""
             ).strip(),
+            "assembly_release_date": clean_date(row.get("assembly_release_date")) or None,
+            "first_release_date": first_dates.get(taxid) or None,
             "assemblies_count_total": int(totals.get(taxid, 0)),
             "collection_lat": parse_float(row.get("biosample_lat")),
             "collection_lon": parse_float(row.get("biosample_lon")),
@@ -710,6 +730,12 @@ def write_parquet(path: Path, records: list[dict[str, Any]]) -> None:
             "assembly_level": pa.array(arrays["assembly_level"], type=pa.string()),
             "assembly_refseq_category": pa.array(
                 arrays["assembly_refseq_category"], type=pa.string()
+            ),
+            "assembly_release_date": pa.array(
+                arrays["assembly_release_date"], type=pa.string()
+            ),
+            "first_release_date": pa.array(
+                arrays["first_release_date"], type=pa.string()
             ),
             "assemblies_count_total": pa.array(
                 arrays["assemblies_count_total"], type=pa.int32()
@@ -877,7 +903,7 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     nodes = load_tree_nodes(args.tree_input)
     institutes = load_institutes(args.institutes_input)
-    selected, totals, skipped_excluded, _bad = select_latest_assemblies(
+    selected, totals, first_dates, skipped_excluded, _bad = select_latest_assemblies(
         args.assemblies_input, exclude
     )
     if not selected:
@@ -886,7 +912,9 @@ def main(argv: Optional[list[str]] = None) -> int:
         return 0
 
     eprint(f"Flattening ranks and joining institutes for {len(selected)} species...")
-    records = assemble_records(selected, totals, nodes, institutes)
+    records = assemble_records(
+        selected, totals, first_dates, nodes, institutes
+    )
     records = fill_countries_from_coordinates(records, args.countries_geojson)
     write_parquet(args.output, records)
     print_summary(records, skipped_excluded, args.output)

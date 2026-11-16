@@ -95,6 +95,7 @@ export const REGIONS_TAB_VISIBLE_IDS = [
   'custom:global-south',
   'country:CHN',
   'custom:latin-america',
+  'custom:mediterranean',
 ] as const
 
 /** Whether a country-like card belongs on the Regions tab as a single entity. */
