@@ -1,21 +1,21 @@
 {
-  "generatedAt": "2026-11-09T12:54:14+00:00",
+  "generatedAt": "2026-11-16T12:47:13+00:00",
   "kpis": {
-    "speciesWithAssemblies": 30715,
-    "speciesWithCoordinates": 11947,
+    "speciesWithAssemblies": 30738,
+    "speciesWithCoordinates": 11953,
     "speciesWithCoordinatesPct": 38.9,
-    "speciesWithGeography": 24432,
+    "speciesWithGeography": 24452,
     "speciesWithGeographyPct": 79.5,
-    "totalInstitutes": 5826,
-    "institutesWithCoordinates": 3698,
+    "totalInstitutes": 5831,
+    "institutesWithCoordinates": 3702,
     "institutesWithCoordinatesPct": 63.5,
-    "speciesInAtlas": 24432,
-    "speciesWithInstituteArc": 18739,
+    "speciesInAtlas": 24452,
+    "speciesWithInstituteArc": 18757,
     "speciesWithInstituteArcPct": 76.7,
     "topInstituteCount": 5,
     "topInstituteSharePct": 36.6,
     "topInstituteName": "Wellcome Sanger Institute",
-    "topInstituteSpeciesCount": 4886,
+    "topInstituteSpeciesCount": 4889,
     "topInstituteShareSinglePct": 26.1
   },
   "pipeline": [
@@ -42,20 +42,20 @@
   ],
   "offshore": {
     "definitionNote": "Offshore = collection country ISO3 differs from submitter institute country ISO3, among species with both endpoints resolved.",
-    "comparableSpecies": 18646,
-    "offshoreSpecies": 7189,
-    "offshoreSpeciesPct": 38.6,
+    "comparableSpecies": 18664,
+    "offshoreSpecies": 7194,
+    "offshoreSpeciesPct": 38.5,
     "topCollectionCountries": [
       {
         "country": "USA",
         "offshoreCount": 592,
-        "totalWithGeo": 2692,
+        "totalWithGeo": 2693,
         "offshorePct": 22.0
       },
       {
         "country": "Finland",
-        "offshoreCount": 400,
-        "totalWithGeo": 412,
+        "offshoreCount": 401,
+        "totalWithGeo": 413,
         "offshorePct": 97.1
       },
       {
@@ -81,43 +81,43 @@
       {
         "country": "United States",
         "offshoreCount": 2400,
-        "totalWithGeo": 4500,
+        "totalWithGeo": 4501,
         "offshorePct": 53.3
       },
       {
         "country": "United Kingdom",
-        "offshoreCount": 1728,
-        "totalWithGeo": 5280,
+        "offshoreCount": 1729,
+        "totalWithGeo": 5283,
         "offshorePct": 32.7
       },
       {
         "country": "France",
-        "offshoreCount": 516,
-        "totalWithGeo": 621,
+        "offshoreCount": 518,
+        "totalWithGeo": 623,
         "offshorePct": 83.1
       },
       {
         "country": "China",
-        "offshoreCount": 351,
-        "totalWithGeo": 3242,
+        "offshoreCount": 352,
+        "totalWithGeo": 3251,
         "offshorePct": 10.8
       },
       {
         "country": "Canada",
-        "offshoreCount": 314,
-        "totalWithGeo": 486,
-        "offshorePct": 64.6
+        "offshoreCount": 315,
+        "totalWithGeo": 488,
+        "offshorePct": 64.5
       }
     ]
   },
   "disclaimers": [
     {
       "id": "institute-concentration",
-      "text": "High counts for a few institutes — notably Wellcome Sanger Institute (4,886 species, ~26.1% of resolved arcs) — can reflect stricter control over sample and assembly metadata rather than exclusive sequencing capacity. Incomplete geo metadata elsewhere will under-count other labs."
+      "text": "High counts for a few institutes — notably Wellcome Sanger Institute (4,889 species, ~26.1% of resolved arcs) — can reflect stricter control over sample and assembly metadata rather than exclusive sequencing capacity. Incomplete geo metadata elsewhere will under-count other labs."
     },
     {
       "id": "missing-geography",
-      "text": "Only 24,432 of 30,715 species with GenBank assemblies (79.5%) carry some retrievable geography (country and/or coordinates). Many species never enter the atlas, so visible flows are a biased slice of real sequencing geography."
+      "text": "Only 24,452 of 30,738 species with GenBank assemblies (79.5%) carry some retrievable geography (country and/or coordinates). Many species never enter the atlas, so visible flows are a biased slice of real sequencing geography."
     },
     {
       "id": "geo-is-proxy",

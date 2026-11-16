@@ -53514,3 +53514,37 @@
 {"taxid": "123423", "parent_taxid": "4305", "rank": "genus", "scientific_name": "Gymnosporia"}
 {"taxid": "3899386", "parent_taxid": "3801", "rank": "species", "scientific_name": "Ribes leptostachyum"}
 {"taxid": "3905138", "parent_taxid": "50409", "rank": "species", "scientific_name": "Thinornis dubius"}
+{"taxid": "6618", "parent_taxid": "6616", "rank": "species", "scientific_name": "Loligo forbesii"}
+{"taxid": "6616", "parent_taxid": "6615", "rank": "genus", "scientific_name": "Loligo"}
+{"taxid": "61077", "parent_taxid": "3869", "rank": "species", "scientific_name": "Lupinus mexicanus"}
+{"taxid": "66718", "parent_taxid": "8254", "rank": "species", "scientific_name": "Paralichthys dentatus"}
+{"taxid": "171647", "parent_taxid": "52205", "rank": "species", "scientific_name": "Phrynocephalus helioscopus"}
+{"taxid": "175203", "parent_taxid": "3801", "rank": "species", "scientific_name": "Ribes hirtellum"}
+{"taxid": "175209", "parent_taxid": "3801", "rank": "species", "scientific_name": "Ribes lacustre"}
+{"taxid": "180561", "parent_taxid": "87007", "rank": "species", "scientific_name": "Scabiosa columbaria"}
+{"taxid": "189638", "parent_taxid": "189637", "rank": "species", "scientific_name": "Halurus flosculosus"}
+{"taxid": "189637", "parent_taxid": "756396", "rank": "genus", "scientific_name": "Halurus"}
+{"taxid": "756396", "parent_taxid": "2802", "rank": "family", "scientific_name": "Wrangeliaceae"}
+{"taxid": "207516", "parent_taxid": "3801", "rank": "species", "scientific_name": "Ribes brachybotrys"}
+{"taxid": "207519", "parent_taxid": "3801", "rank": "species", "scientific_name": "Ribes cuneifolium"}
+{"taxid": "283210", "parent_taxid": "3749", "rank": "species", "scientific_name": "Malus pumila"}
+{"taxid": "475346", "parent_taxid": "475345", "rank": "species", "scientific_name": "Poecilocampa populi"}
+{"taxid": "475345", "parent_taxid": "475344", "rank": "genus", "scientific_name": "Poecilocampa"}
+{"taxid": "475344", "parent_taxid": "7096", "rank": "subfamily", "scientific_name": "Poecilocampinae"}
+{"taxid": "577683", "parent_taxid": "151794", "rank": "species", "scientific_name": "Banisteriopsis caapi"}
+{"taxid": "151794", "parent_taxid": "4268", "rank": "genus", "scientific_name": "Banisteriopsis"}
+{"taxid": "1283839", "parent_taxid": "72018", "rank": "species", "scientific_name": "Sphaeroforma tapetis"}
+{"taxid": "1301432", "parent_taxid": "1301146", "rank": "species", "scientific_name": "Gondwania regalis"}
+{"taxid": "1301146", "parent_taxid": "1301143", "rank": "genus", "scientific_name": "Gondwania"}
+{"taxid": "1302775", "parent_taxid": "244453", "rank": "species", "scientific_name": "Zebrias zebrinus"}
+{"taxid": "244453", "parent_taxid": "30948", "rank": "genus", "scientific_name": "Zebrias"}
+{"taxid": "1869590", "parent_taxid": "688930", "rank": "species", "scientific_name": "Cochylidia richteriana"}
+{"taxid": "1934738", "parent_taxid": "1912890", "rank": "species", "scientific_name": "Tritia reticulata"}
+{"taxid": "1977848", "parent_taxid": "1977843", "rank": "species", "scientific_name": "Hypania invalida"}
+{"taxid": "1977843", "parent_taxid": "6374", "rank": "genus", "scientific_name": "Hypania"}
+{"taxid": "2135296", "parent_taxid": "1175439", "rank": "species", "scientific_name": "Morchella galilaea"}
+{"taxid": "2171546", "parent_taxid": "463593", "rank": "species", "scientific_name": "Opisthopappus longilobus"}
+{"taxid": "463593", "parent_taxid": "886714", "rank": "genus", "scientific_name": "Opisthopappus"}
+{"taxid": "2969386", "parent_taxid": "4346", "rank": "species", "scientific_name": "Rhododendron platyphyllum"}
+{"taxid": "3092193", "parent_taxid": "1301146", "rank": "species", "scientific_name": "Gondwania joannae"}
+{"taxid": "3131917", "parent_taxid": "28793", "rank": "species", "scientific_name": "Notropis buccula"}
