@@ -53548,3 +53548,88 @@
 {"taxid": "2969386", "parent_taxid": "4346", "rank": "species", "scientific_name": "Rhododendron platyphyllum"}
 {"taxid": "3092193", "parent_taxid": "1301146", "rank": "species", "scientific_name": "Gondwania joannae"}
 {"taxid": "3131917", "parent_taxid": "28793", "rank": "species", "scientific_name": "Notropis buccula"}
+{"taxid": "148945", "parent_taxid": "76312", "rank": "species", "scientific_name": "Caulerpa cupressoides"}
+{"taxid": "249565", "parent_taxid": "249564", "rank": "species", "scientific_name": "Puto albicans"}
+{"taxid": "249564", "parent_taxid": "30190", "rank": "genus", "scientific_name": "Puto"}
+{"taxid": "280160", "parent_taxid": "9524", "rank": "species", "scientific_name": "Chiropotes utahickae"}
+{"taxid": "301681", "parent_taxid": "301040", "rank": "species", "scientific_name": "Pyropteron triannuliforme"}
+{"taxid": "505407", "parent_taxid": "104443", "rank": "species", "scientific_name": "Scopula decorata"}
+{"taxid": "587680", "parent_taxid": "53171", "rank": "species", "scientific_name": "Stachys geobombycis"}
+{"taxid": "987861", "parent_taxid": "56362", "rank": "species", "scientific_name": "Acronicta euphorbiae"}
+{"taxid": "987904", "parent_taxid": "320101", "rank": "species", "scientific_name": "Conistra erythrocephala"}
+{"taxid": "997524", "parent_taxid": "47766", "rank": "species", "scientific_name": "Agrotis cinerea"}
+{"taxid": "1384901", "parent_taxid": "520955", "rank": "species", "scientific_name": "Macrophya duodecimpunctata"}
+{"taxid": "1870658", "parent_taxid": "1870657", "rank": "species", "scientific_name": "Jodia croceago"}
+{"taxid": "1870657", "parent_taxid": "572922", "rank": "genus", "scientific_name": "Jodia"}
+{"taxid": "1870693", "parent_taxid": "1870692", "rank": "species", "scientific_name": "Periphanes delphinii"}
+{"taxid": "1870692", "parent_taxid": "95178", "rank": "genus", "scientific_name": "Periphanes"}
+{"taxid": "1930554", "parent_taxid": "265382", "rank": "species", "scientific_name": "Polyommatus orphicus"}
+{"taxid": "1934952", "parent_taxid": "1934951", "rank": "species", "scientific_name": "Dicranura ulmi"}
+{"taxid": "1934951", "parent_taxid": "319766", "rank": "genus", "scientific_name": "Dicranura"}
+{"taxid": "2560952", "parent_taxid": "700132", "rank": "species", "scientific_name": "Anacampsis timidella"}
+{"taxid": "3088264", "parent_taxid": "241153", "rank": "species", "scientific_name": "Acanthocardia deshayesii"}
+{"taxid": "3089532", "parent_taxid": "397459", "rank": "species", "scientific_name": "Mytilaster marioni"}
+{"taxid": "397459", "parent_taxid": "1605174", "rank": "genus", "scientific_name": "Mytilaster"}
+{"taxid": "3256806", "parent_taxid": "7684", "rank": "species", "scientific_name": "Holothuria princeps"}
+{"taxid": "3272347", "parent_taxid": "418360", "rank": "species", "scientific_name": "Syllis parapari"}
+{"taxid": "418360", "parent_taxid": "122238", "rank": "genus", "scientific_name": "Syllis"}
+{"taxid": "3291107", "parent_taxid": "279629", "rank": "species", "scientific_name": "Chelonaplysilla americana"}
+{"taxid": "279629", "parent_taxid": "119425", "rank": "genus", "scientific_name": "Chelonaplysilla"}
+{"taxid": "3345129", "parent_taxid": "50582", "rank": "species", "scientific_name": "Ephemera pictipennis"}
+{"taxid": "3345130", "parent_taxid": "309646", "rank": "species", "scientific_name": "Prosopistoma ocellatum"}
+{"taxid": "309646", "parent_taxid": "309645", "rank": "genus", "scientific_name": "Prosopistoma"}
+{"taxid": "309645", "parent_taxid": "185811", "rank": "family", "scientific_name": "Prosopistomatidae"}
+{"taxid": "185811", "parent_taxid": "30073", "rank": "suborder", "scientific_name": "Carapacea"}
+{"taxid": "3345131", "parent_taxid": "2647582", "rank": "species", "scientific_name": "Siphlonurus sp. 1 CYC-2024a"}
+{"taxid": "2647582", "parent_taxid": "219336", "rank": "no rank", "scientific_name": "unclassified Siphlonurus"}
+{"taxid": "3345133", "parent_taxid": "3345132", "rank": "species", "scientific_name": "Chankagenesia yangi"}
+{"taxid": "3345132", "parent_taxid": "241026", "rank": "genus", "scientific_name": "Chankagenesia"}
+{"taxid": "241026", "parent_taxid": "185816", "rank": "family", "scientific_name": "Palingeniidae"}
+{"taxid": "3359044", "parent_taxid": "3056076", "rank": "species", "scientific_name": "Paraplesiops meleagris"}
+{"taxid": "3056076", "parent_taxid": "546541", "rank": "genus", "scientific_name": "Paraplesiops"}
+{"taxid": "3367073", "parent_taxid": "2609239", "rank": "species", "scientific_name": "Morchella sp. 21189"}
+{"taxid": "3436981", "parent_taxid": "319971", "rank": "species", "scientific_name": "Acontia titania"}
+{"taxid": "3465873", "parent_taxid": "572852", "rank": "species", "scientific_name": "Hedya atropunctana"}
+{"taxid": "3695533", "parent_taxid": "2975538", "rank": "species", "scientific_name": "Pseudomitrula sp. PDD 121212"}
+{"taxid": "2975538", "parent_taxid": "2975537", "rank": "no rank", "scientific_name": "unclassified Pseudomitrula"}
+{"taxid": "2975537", "parent_taxid": "159639", "rank": "genus", "scientific_name": "Pseudomitrula"}
+{"taxid": "3695534", "parent_taxid": "54695", "rank": "species", "scientific_name": "Helotiales sp. PDD 92176"}
+{"taxid": "3695535", "parent_taxid": "54695", "rank": "species", "scientific_name": "Helotiales sp. PDD 105286"}
+{"taxid": "3695536", "parent_taxid": "2800370", "rank": "species", "scientific_name": "Lachnaceae sp. PDD 60116"}
+{"taxid": "2800370", "parent_taxid": "2589077", "rank": "no rank", "scientific_name": "unclassified Lachnaceae"}
+{"taxid": "3695537", "parent_taxid": "153036", "rank": "species", "scientific_name": "Helotiaceae sp. PDD 59981"}
+{"taxid": "153036", "parent_taxid": "5181", "rank": "no rank", "scientific_name": "unclassified Helotiaceae"}
+{"taxid": "3695538", "parent_taxid": "2800370", "rank": "species", "scientific_name": "Lachnaceae sp. PDD 119487"}
+{"taxid": "3695539", "parent_taxid": "2640334", "rank": "species", "scientific_name": "Lachnum sp. PDD 93687"}
+{"taxid": "2640334", "parent_taxid": "47817", "rank": "no rank", "scientific_name": "unclassified Lachnum"}
+{"taxid": "3695562", "parent_taxid": "2637121", "rank": "species", "scientific_name": "Pseudogymnoascus sp. ICMP 22791"}
+{"taxid": "3695848", "parent_taxid": "67608", "rank": "species", "scientific_name": "Microdochium maydis"}
+{"taxid": "3698376", "parent_taxid": "108626", "rank": "species", "scientific_name": "Aprostocetus cf. epicharmus"}
+{"taxid": "3698389", "parent_taxid": "865979", "rank": "species", "scientific_name": "Oomyzus cf. incertus"}
+{"taxid": "3698392", "parent_taxid": "865979", "rank": "species", "scientific_name": "Oomyzus propodealis"}
+{"taxid": "3698393", "parent_taxid": "865979", "rank": "species", "scientific_name": "Oomyzus repentinus"}
+{"taxid": "3698394", "parent_taxid": "865979", "rank": "species", "scientific_name": "Oomyzus tanaceti"}
+{"taxid": "3698396", "parent_taxid": "108665", "rank": "species", "scientific_name": "Pediobius cf. eubius"}
+{"taxid": "108665", "parent_taxid": "150273", "rank": "genus", "scientific_name": "Pediobius"}
+{"taxid": "3698398", "parent_taxid": "2727971", "rank": "species", "scientific_name": "Puklina amblyteles"}
+{"taxid": "2727971", "parent_taxid": "150276", "rank": "genus", "scientific_name": "Puklina"}
+{"taxid": "3698399", "parent_taxid": "108669", "rank": "species", "scientific_name": "Quadrastichus artemisiphilus"}
+{"taxid": "3698400", "parent_taxid": "108669", "rank": "species", "scientific_name": "Quadrastichus centor"}
+{"taxid": "3698403", "parent_taxid": "108669", "rank": "species", "scientific_name": "Quadrastichus malhamensis"}
+{"taxid": "3698406", "parent_taxid": "108669", "rank": "species", "scientific_name": "Quadrastichus ventricosus"}
+{"taxid": "3698407", "parent_taxid": "3424762", "rank": "species", "scientific_name": "Stepanovia aurantiaca"}
+{"taxid": "3424762", "parent_taxid": "150276", "rank": "genus", "scientific_name": "Stepanovia"}
+{"taxid": "3698411", "parent_taxid": "326698", "rank": "species", "scientific_name": "Tamarixia poddubnyi"}
+{"taxid": "3706531", "parent_taxid": "2629553", "rank": "species", "scientific_name": "Pleurobranchus sp. A-P8ZY7MZOX"}
+{"taxid": "2629553", "parent_taxid": "157720", "rank": "no rank", "scientific_name": "unclassified Pleurobranchus"}
+{"taxid": "157720", "parent_taxid": "71291", "rank": "genus", "scientific_name": "Pleurobranchus"}
+{"taxid": "3707074", "parent_taxid": "2685643", "rank": "species", "scientific_name": "Dipsastraea sp. UDUK0000336"}
+{"taxid": "2685643", "parent_taxid": "1328267", "rank": "no rank", "scientific_name": "unclassified Dipsastraea"}
+{"taxid": "1328267", "parent_taxid": "46736", "rank": "genus", "scientific_name": "Dipsastraea"}
+{"taxid": "3739503", "parent_taxid": "249564", "rank": "species", "scientific_name": "Puto arctostaphyli"}
+{"taxid": "3750259", "parent_taxid": "2666603", "rank": "species", "scientific_name": "Balaustium sp. GZU-HX-2025-01"}
+{"taxid": "2666603", "parent_taxid": "423220", "rank": "no rank", "scientific_name": "unclassified Balaustium"}
+{"taxid": "423220", "parent_taxid": "406626", "rank": "genus", "scientific_name": "Balaustium"}
+{"taxid": "406626", "parent_taxid": "92103", "rank": "subfamily", "scientific_name": "Erythraeinae"}
+{"taxid": "92103", "parent_taxid": "83142", "rank": "family", "scientific_name": "Erythraeidae"}
+{"taxid": "83142", "parent_taxid": "83141", "rank": "superfamily", "scientific_name": "Erythraeoidea"}

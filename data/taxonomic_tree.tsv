@@ -1,28 +1,28 @@
 taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_count	biosamples_with_coordinates_count	rank	scientific_name
-2759		72192	72192	5831	246	23981	domain	Eukaryota
-33154	2759	58708	58708	4489	242	20445	clade	Opisthokonta
-33208	33154	31865	31865	2597	217	12369	kingdom	Metazoa
-6072	33208	31618	31618	2591	217	12142	clade	Eumetazoa
-33213	6072	31055	31055	2548	216	11883	clade	Bilateria
-33511	33213	15985	15985	1501	179	3617	clade	Deuterostomia
-7711	33511	15770	15770	1465	179	3530	phylum	Chordata
-89593	7711	15623	15623	1448	179	3429	subphylum	Craniata
-7742	89593	15623	15623	1448	179	3429	clade	Vertebrata
-7776	7742	15577	15577	1444	179	3407	clade	Gnathostomata
-117570	7776	15374	15374	1426	178	3327	clade	Teleostomi
-117571	117570	15374	15374	1426	178	3327	clade	Euteleostomi
-8287	117571	10685	10685	979	157	2373	superclass	Sarcopterygii
-1338369	8287	10681	10681	979	156	2371	clade	Dipnotetrapodomorpha
-32523	1338369	10675	10675	978	156	2371	clade	Tetrapoda
-32524	32523	10295	10295	950	155	2237	clade	Amniota
-40674	32524	5731	5731	633	109	923	class	Mammalia
-32525	40674	5724	5724	633	109	921	clade	Theria
-9347	32525	5323	5323	623	106	639	clade	Eutheria
-1437010	9347	5242	5242	616	106	610	clade	Boreoeutheria
-314146	1437010	3583	3583	307	68	214	superorder	Euarchontoglires
-9443	314146	3072	3072	153	50	91	order	Primates
-376913	9443	2988	2988	144	49	81	suborder	Haplorrhini
-314293	376913	2981	2981	144	49	79	infraorder	Simiiformes
+2759		72257	72257	5832	246	24026	domain	Eukaryota
+33154	2759	58771	58771	4489	242	20489	clade	Opisthokonta
+33208	33154	31915	31915	2597	218	12404	kingdom	Metazoa
+6072	33208	31667	31667	2591	218	12176	clade	Eumetazoa
+33213	6072	31102	31102	2548	217	11915	clade	Bilateria
+33511	33213	15993	15993	1501	179	3618	clade	Deuterostomia
+7711	33511	15777	15777	1465	179	3530	phylum	Chordata
+89593	7711	15630	15630	1448	179	3429	subphylum	Craniata
+7742	89593	15630	15630	1448	179	3429	clade	Vertebrata
+7776	7742	15584	15584	1444	179	3407	clade	Gnathostomata
+117570	7776	15381	15381	1426	178	3327	clade	Teleostomi
+117571	117570	15381	15381	1426	178	3327	clade	Euteleostomi
+8287	117571	10687	10687	979	157	2373	superclass	Sarcopterygii
+1338369	8287	10683	10683	979	156	2371	clade	Dipnotetrapodomorpha
+32523	1338369	10677	10677	978	156	2371	clade	Tetrapoda
+32524	32523	10297	10297	950	155	2237	clade	Amniota
+40674	32524	5733	5733	634	109	923	class	Mammalia
+32525	40674	5726	5726	634	109	921	clade	Theria
+9347	32525	5325	5325	624	106	639	clade	Eutheria
+1437010	9347	5244	5244	617	106	610	clade	Boreoeutheria
+314146	1437010	3585	3585	308	68	214	superorder	Euarchontoglires
+9443	314146	3074	3074	154	50	91	order	Primates
+376913	9443	2990	2990	145	49	81	suborder	Haplorrhini
+314293	376913	2983	2983	145	49	79	infraorder	Simiiformes
 9526	314293	2839	2839	129	46	11	parvorder	Catarrhini
 314295	9526	2669	2669	98	36	3	superfamily	Hominoidea
 9604	314295	2643	2643	94	36	3	family	Hominidae
@@ -182,7 +182,7 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 1046098	9573	1	1	1	0	0	species	Presbytis potenziani
 1203020	9569	1	1	1	0	0	genus	Simias
 170207	1203020	1	1	1	0	0	species	Simias concolor
-9479	314293	142	142	27	5	68	parvorder	Platyrrhini
+9479	314293	144	144	28	5	68	parvorder	Platyrrhini
 9498	9479	69	69	20	3	25	family	Cebidae
 9480	9498	49	49	16	2	16	subfamily	Callitrichinae
 9481	9480	20	20	13	1	3	genus	Callithrix
@@ -260,7 +260,25 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 2946512	9499	1	1	1	1	1	species	Alouatta juara
 198115	9499	1	1	1	1	1	species	Alouatta macconnelli
 2905218	9499	1	1	1	1	0	species	Alouatta ululata
-376919	9479	31	31	5	2	26	family	Pitheciidae
+376919	9479	33	33	6	2	26	family	Pitheciidae
+38039	376919	17	17	5	1	12	subfamily	Pitheciinae
+30597	38039	9	9	4	1	6	genus	Pithecia
+43777	30597	3	3	3	0	0	species	Pithecia pithecia
+2946514	30597	1	1	1	1	1	species	Pithecia albicans
+2946515	30597	1	1	1	1	1	species	Pithecia chrysocephala
+2946516	30597	1	1	1	1	1	species	Pithecia hirsuta
+2946517	30597	1	1	1	1	1	species	Pithecia mittermeieri
+2946518	30597	1	1	1	1	1	species	Pithecia pissinatti
+2946519	30597	1	1	1	1	1	species	Pithecia vanzolinii
+30595	38039	4	4	1	1	4	genus	Cacajao
+535896	30595	1	1	1	1	1	species	Cacajao ayresi
+30596	30595	1	1	1	1	1	species	Cacajao calvus
+535897	30595	1	1	1	1	1	species	Cacajao hosomi
+70825	30595	1	1	1	1	1	species	Cacajao melanocephalus
+9524	38039	4	4	2	1	2	genus	Chiropotes
+280160	9524	2	2	1	0	0	species	Chiropotes utahickae
+658221	9524	1	1	1	1	1	species	Chiropotes chiropotes
+3134011	9524	1	1	1	1	1	species	Chiropotes sagulatus
 38069	376919	16	16	3	2	14	subfamily	Callicebinae
 1812035	38069	12	12	3	2	10	genus	Plecturocebus
 867332	1812035	2	2	1	1	2	species	Plecturocebus caligatus
@@ -278,23 +296,6 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 210166	1812102	1	1	1	1	1	species	Cheracebus lugens
 1812110	1812102	1	1	1	1	1	species	Cheracebus regulus
 30592	1812102	1	1	1	1	1	species	Cheracebus torquatus
-38039	376919	15	15	4	1	12	subfamily	Pitheciinae
-30597	38039	9	9	4	1	6	genus	Pithecia
-43777	30597	3	3	3	0	0	species	Pithecia pithecia
-2946514	30597	1	1	1	1	1	species	Pithecia albicans
-2946515	30597	1	1	1	1	1	species	Pithecia chrysocephala
-2946516	30597	1	1	1	1	1	species	Pithecia hirsuta
-2946517	30597	1	1	1	1	1	species	Pithecia mittermeieri
-2946518	30597	1	1	1	1	1	species	Pithecia pissinatti
-2946519	30597	1	1	1	1	1	species	Pithecia vanzolinii
-30595	38039	4	4	1	1	4	genus	Cacajao
-535896	30595	1	1	1	1	1	species	Cacajao ayresi
-30596	30595	1	1	1	1	1	species	Cacajao calvus
-535897	30595	1	1	1	1	1	species	Cacajao hosomi
-70825	30595	1	1	1	1	1	species	Cacajao melanocephalus
-9524	38039	2	2	1	1	2	genus	Chiropotes
-658221	9524	1	1	1	1	1	species	Chiropotes chiropotes
-3134011	9524	1	1	1	1	1	species	Chiropotes sagulatus
 376918	9479	8	8	3	1	2	family	Aotidae
 9504	376918	8	8	3	1	2	genus	Aotus
 37293	9504	4	4	2	0	0	species	Aotus nancymaae
@@ -7036,20 +7037,20 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 7895	7894	4	4	3	2	2	family	Coelacanthidae
 7896	7895	4	4	3	2	2	genus	Latimeria
 7897	7896	4	4	3	2	2	species	Latimeria chalumnae
-7898	117571	4689	4689	618	109	954	superclass	Actinopterygii
-186623	7898	4684	4684	618	109	954	class	Actinopteri
-41665	186623	4662	4662	609	109	949	subclass	Neopterygii
-32443	41665	4648	4648	607	109	939	infraclass	Teleostei
-1489341	32443	4588	4588	599	108	915	clade	Osteoglossocephalai
-186625	1489341	4494	4494	597	108	905	clade	Clupeocephala
-1489388	186625	3484	3484	422	83	737	cohort	Euteleosteomorpha
-123365	1489388	3310	3310	386	81	658	clade	Neoteleostei
-123366	123365	3309	3309	386	81	658	clade	Eurypterygia
-123367	123366	3291	3291	386	81	654	clade	Ctenosquamata
-123368	123367	3273	3273	386	81	640	clade	Acanthomorphata
-123369	123368	3125	3125	377	80	599	clade	Euacanthomorphacea
-1489872	123369	3082	3082	374	80	591	clade	Percomorphaceae
-1489908	1489872	1253	1253	129	46	127	clade	Ovalentaria
+7898	117571	4694	4694	618	109	954	superclass	Actinopterygii
+186623	7898	4689	4689	618	109	954	class	Actinopteri
+41665	186623	4667	4667	609	109	949	subclass	Neopterygii
+32443	41665	4653	4653	607	109	939	infraclass	Teleostei
+1489341	32443	4593	4593	599	108	915	clade	Osteoglossocephalai
+186625	1489341	4499	4499	597	108	905	clade	Clupeocephala
+1489388	186625	3487	3487	422	83	737	cohort	Euteleosteomorpha
+123365	1489388	3313	3313	386	81	658	clade	Neoteleostei
+123366	123365	3312	3312	386	81	658	clade	Eurypterygia
+123367	123366	3294	3294	386	81	654	clade	Ctenosquamata
+123368	123367	3276	3276	386	81	640	clade	Acanthomorphata
+123369	123368	3128	3128	377	80	599	clade	Euacanthomorphacea
+1489872	123369	3085	3085	374	80	591	clade	Percomorphaceae
+1489908	1489872	1256	1256	129	46	127	clade	Ovalentaria
 1489910	1489908	746	746	43	16	31	superorder	Cichlomorphae
 1489911	1489910	746	746	43	16	31	order	Cichliformes
 8113	1489911	744	744	42	15	29	family	Cichlidae
@@ -8038,7 +8039,7 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 238703	8075	2	2	1	1	2	family	Telmatherinidae
 270533	238703	2	2	1	1	2	genus	Telmatherina
 446457	270533	2	2	1	1	2	species	Telmatherina bonti
-1489909	1489908	60	60	18	7	12	no rank	Ovalentaria incertae sedis
+1489909	1489908	63	63	18	7	12	no rank	Ovalentaria incertae sedis
 30863	1489909	42	42	13	6	6	family	Pomacentridae
 36213	30863	12	12	3	2	1	genus	Abudefduf
 80948	36213	4	4	1	1	0	species	Abudefduf sexfasciatus
@@ -8098,16 +8099,18 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 100186	51787	1	1	1	1	0	species	Amphistichus argenteus
 100187	50791	1	1	1	1	1	genus	Brachyistius
 100188	100187	1	1	1	1	1	species	Brachyistius frenatus
+30861	1489909	5	5	2	1	0	family	Plesiopidae
+546541	30861	5	5	2	1	0	subfamily	Plesiopinae
+3056076	546541	3	3	1	1	0	genus	Paraplesiops
+3359044	3056076	3	3	1	1	0	species	Paraplesiops meleagris
+1040956	546541	2	2	1	1	0	genus	Trachinops
+3231499	1040956	2	2	1	1	0	species	Trachinops noarlungae
 30866	1489909	3	3	2	1	0	family	Pseudochromidae
 659117	30866	3	3	2	1	0	subfamily	Pseudochrominae
 646042	659117	2	2	1	1	0	genus	Cypho
 646043	646042	2	2	1	1	0	species	Cypho purpurascens
 280672	659117	1	1	1	0	0	genus	Pseudochromis
 280673	280672	1	1	1	0	0	species	Pseudochromis fuscus
-30861	1489909	2	2	1	1	0	family	Plesiopidae
-546541	30861	2	2	1	1	0	subfamily	Plesiopinae
-1040956	546541	2	2	1	1	0	genus	Trachinops
-3231499	1040956	2	2	1	1	0	species	Trachinops noarlungae
 1489920	1489908	46	46	13	10	23	clade	Blenniimorphae
 1489921	1489920	46	46	13	10	23	order	Blenniiformes
 56717	1489921	33	33	12	9	15	suborder	Blennioidei
@@ -9554,7 +9557,7 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 8254	171414	13	13	8	2	0	genus	Paralichthys
 8255	8254	9	9	6	1	0	species	Paralichthys olivaceus
 319776	8254	2	2	1	1	0	species	Paralichthys californicus
-66718	8254	2	2	1	0	0	species	Paralichthys dentatus
+66718	8254	2	2	1	1	0	species	Paralichthys dentatus
 171415	171414	4	4	2	1	0	genus	Pseudorhombus
 253863	171415	1	1	1	0	0	species	Pseudorhombus arsius
 367197	171415	1	1	1	0	0	species	Pseudorhombus dupliciocellatus
@@ -10653,9 +10656,9 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 130262	1489795	1	1	1	0	0	subfamily	Lepidogalaxiidae
 89577	130262	1	1	1	0	0	genus	Lepidogalaxias
 89578	89577	1	1	1	0	0	species	Lepidogalaxias salamandroides
-186634	186625	1010	1010	264	64	168	cohort	Otomorpha
-32519	186634	904	904	240	58	112	subcohort	Ostariophysi
-186626	32519	900	900	239	58	112	clade	Otophysi
+186634	186625	1012	1012	264	64	168	cohort	Otomorpha
+32519	186634	906	906	240	58	112	subcohort	Ostariophysi
+186626	32519	902	902	239	58	112	clade	Otophysi
 186627	186626	484	484	179	26	75	superorder	Cypriniphysae
 7952	186627	484	484	179	26	75	order	Cypriniformes
 30727	7952	420	420	155	22	65	suborder	Cyprinoidei
@@ -11115,7 +11118,7 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 154816	98398	2	2	2	1	0	species	Gyrinocheilus aymonieri
 2624534	98398	1	1	1	1	0	no rank	unclassified Gyrinocheilus
 3396949	2624534	1	1	1	1	0	species	Gyrinocheilus sp. Fish10K-Assembly38
-186628	186626	416	416	83	46	37	superorder	Characiphysae
+186628	186626	418	418	83	46	37	superorder	Characiphysae
 7995	186628	318	318	65	42	20	order	Siluriformes
 1489793	7995	289	289	61	42	18	suborder	Siluroidei
 31017	1489793	69	69	4	15	2	family	Ariidae
@@ -11540,8 +11543,8 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 31007	1489792	1	1	1	0	0	family	Diplomystidae
 1344483	31007	1	1	1	0	0	genus	Olivaichthys
 462334	1344483	1	1	1	0	0	species	Olivaichthys viedmensis
-7991	186628	82	82	21	8	15	order	Characiformes
-1489739	7991	74	74	21	8	15	suborder	Characoidei
+7991	186628	84	84	21	8	15	order	Characiformes
+1489739	7991	76	76	21	8	15	suborder	Characoidei
 61319	1489739	23	23	2	2	0	family	Alestidae
 42483	61319	3	3	1	1	0	genus	Alestes
 1003153	42483	1	1	1	0	0	species	Alestes dentex
@@ -11621,12 +11624,12 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 148989	27694	1	1	1	0	0	species	Prochilodus magdalenae
 143039	27693	2	2	2	1	0	genus	Semaprochilodus
 642563	143039	2	2	2	1	0	species	Semaprochilodus insignis
-7986	1489739	3	3	3	1	0	family	Anostomidae
-1925018	7986	2	2	2	1	0	genus	Megaleporinus
+7986	1489739	5	5	3	1	0	family	Anostomidae
+1925018	7986	3	3	2	1	0	genus	Megaleporinus
+327003	1925018	2	2	1	1	0	species	Megaleporinus macrocephalus
 7988	1925018	1	1	1	0	0	species	Megaleporinus elongatus
-327003	1925018	1	1	1	1	0	species	Megaleporinus macrocephalus
-7987	7986	1	1	1	0	0	genus	Leporinus
-137515	7987	1	1	1	0	0	species	Leporinus friderici
+7987	7986	2	2	2	1	0	genus	Leporinus
+137515	7987	2	2	2	1	0	species	Leporinus friderici
 909851	1489739	3	3	2	1	2	family	Crenuchidae
 42559	909851	2	2	1	1	2	subfamily	Characidiinae
 42560	42559	2	2	1	1	2	genus	Characidium
@@ -12435,12 +12438,12 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 7739	7737	1	1	1	1	0	species	Branchiostoma floridae
 355595	7736	1	1	1	1	0	genus	Asymmetron
 223987	355595	1	1	1	1	0	species	Asymmetron lucayanum
-7586	33511	207	207	66	25	84	phylum	Echinodermata
-133551	7586	194	194	65	25	78	clade	Eleutherozoa
-7624	133551	105	105	45	20	31	superclass	Echinozoa
-7705	7624	56	56	24	12	13	class	Holothuroidea
-7681	7705	39	39	20	9	11	subclass	Aspidochirotacea
-7682	7681	36	36	20	9	11	order	Aspidochirotida
+7586	33511	208	208	66	25	85	phylum	Echinodermata
+133551	7586	195	195	65	25	79	clade	Eleutherozoa
+7624	133551	106	106	45	20	32	superclass	Echinozoa
+7705	7624	57	57	24	12	14	class	Holothuroidea
+7681	7705	40	40	20	10	12	subclass	Aspidochirotacea
+7682	7681	37	37	20	10	12	order	Aspidochirotida
 7687	7682	19	19	14	6	5	family	Stichopodidae
 307971	7687	8	8	7	3	3	genus	Apostichopus
 307972	307971	4	4	3	2	2	species	Apostichopus japonicus
@@ -12459,8 +12462,8 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 576896	576895	1	1	1	0	0	species	Australostichopus mollis
 200382	7687	1	1	1	1	1	genus	Isostichopus
 200383	200382	1	1	1	1	1	species	Isostichopus fuscus
-7683	7682	16	16	9	5	6	family	Holothuriidae
-7684	7683	13	13	8	4	5	genus	Holothuria
+7683	7682	17	17	9	6	7	family	Holothuriidae
+7684	7683	14	14	9	5	6	genus	Holothuria
 72674	7684	2	2	1	1	2	species	Holothuria forskali
 206669	7684	2	2	2	1	0	species	Holothuria leucospilota
 1072197	7684	2	2	1	1	2	species	Holothuria poli
@@ -12469,6 +12472,7 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 1072188	7684	1	1	1	1	0	species	Holothuria fuscocinerea
 31192	7684	1	1	1	1	0	species	Holothuria glaberrima
 566282	7684	1	1	1	1	0	species	Holothuria ocellata
+3256806	7684	1	1	1	1	1	species	Holothuria princeps
 491806	7684	1	1	1	1	1	species	Holothuria sanctori
 206674	7683	3	3	3	2	1	genus	Actinopyga
 571810	206674	2	2	2	1	0	species	Actinopyga echinites
@@ -12798,31 +12802,31 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 1118796	10220	1	1	1	1	1	family	Spengelidae
 1118797	1118796	1	1	1	1	1	genus	Glandiceps
 1443217	1118797	1	1	1	1	1	species	Glandiceps talaboti
-33317	33213	15056	15056	1404	181	8258	clade	Protostomia
-1206794	33317	13529	13529	1191	173	7559	clade	Ecdysozoa
-88770	1206794	12726	12726	1059	170	7420	clade	Panarthropoda
-6656	88770	12716	12716	1055	170	7418	phylum	Arthropoda
-197563	6656	12211	12211	974	169	7237	clade	Mandibulata
-197562	197563	12126	12126	971	169	7209	clade	Pancrustacea
-3701028	197562	12122	12122	970	169	7208	clade	Altocrustacea
-3701030	3701028	11896	11896	910	164	7140	clade	Allotriocarida
-6960	3701030	11737	11737	879	162	7076	subphylum	Hexapoda
-50557	6960	11522	11522	870	162	7033	class	Insecta
-85512	50557	11521	11521	870	162	7033	clade	Dicondylia
-7496	85512	11516	11516	870	161	7029	subclass	Pterygota
-33340	7496	11422	11422	863	160	6965	infraclass	Neoptera
-3701061	33340	11130	11130	827	159	6871	clade	Eumetabola
-33392	3701061	10541	10541	728	158	6608	cohort	Endopterygota
-3701062	33392	8908	8908	591	152	5740	clade	Aparaglossata
-3701063	3701062	7611	7611	457	146	4935	clade	Panorpida
-85604	3701063	5387	5387	235	118	3839	superorder	Amphiesmenoptera
-7088	85604	5285	5285	227	117	3757	order	Lepidoptera
-41191	7088	5281	5281	227	117	3754	suborder	Glossata
-41196	41191	5270	5270	226	117	3744	infraorder	Neolepidoptera
-41197	41196	5264	5264	225	117	3739	parvorder	Heteroneura
-37567	41197	5215	5215	225	117	3691	clade	Ditrysia
-104431	37567	4051	4051	194	114	2574	clade	Obtectomera
-37572	104431	1481	1481	77	88	536	superfamily	Papilionoidea
+33317	33213	15095	15095	1404	182	8289	clade	Protostomia
+1206794	33317	13564	13564	1191	174	7586	clade	Ecdysozoa
+88770	1206794	12761	12761	1059	171	7447	clade	Panarthropoda
+6656	88770	12751	12751	1055	171	7445	phylum	Arthropoda
+197563	6656	12245	12245	974	170	7264	clade	Mandibulata
+197562	197563	12160	12160	971	170	7236	clade	Pancrustacea
+3701028	197562	12156	12156	970	170	7235	clade	Altocrustacea
+3701030	3701028	11930	11930	910	165	7167	clade	Allotriocarida
+6960	3701030	11771	11771	879	163	7103	subphylum	Hexapoda
+50557	6960	11556	11556	870	163	7060	class	Insecta
+85512	50557	11555	11555	870	163	7060	clade	Dicondylia
+7496	85512	11550	11550	870	162	7056	subclass	Pterygota
+33340	7496	11452	11452	863	161	6992	infraclass	Neoptera
+3701061	33340	11160	11160	827	160	6898	clade	Eumetabola
+33392	3701061	10569	10569	728	159	6635	cohort	Endopterygota
+3701062	33392	8921	8921	591	153	5753	clade	Aparaglossata
+3701063	3701062	7624	7624	457	147	4948	clade	Panorpida
+85604	3701063	5400	5400	235	119	3852	superorder	Amphiesmenoptera
+7088	85604	5298	5298	227	118	3770	order	Lepidoptera
+41191	7088	5294	5294	227	118	3767	suborder	Glossata
+41196	41191	5283	5283	226	118	3757	infraorder	Neolepidoptera
+41197	41196	5277	5277	225	118	3752	parvorder	Heteroneura
+37567	41197	5228	5228	225	118	3704	clade	Ditrysia
+104431	37567	4060	4060	194	115	2583	clade	Obtectomera
+37572	104431	1482	1482	77	89	537	superfamily	Papilionoidea
 33415	37572	874	874	51	52	340	family	Nymphalidae
 40037	33415	310	310	18	18	84	subfamily	Heliconiinae
 127322	40037	260	260	15	12	42	tribe	Heliconiini
@@ -13627,9 +13631,9 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 132693	7143	2	2	2	1	0	subfamily	Baroniinae
 132694	132693	2	2	2	1	0	genus	Baronia
 132695	132694	2	2	2	1	0	species	Baronia brevicornis
-27544	37572	129	129	13	18	109	family	Lycaenidae
-42297	27544	87	87	11	14	75	subfamily	Polyommatinae
-265382	42297	13	13	2	5	12	genus	Polyommatus
+27544	37572	130	130	13	19	110	family	Lycaenidae
+42297	27544	88	88	11	15	76	subfamily	Polyommatinae
+265382	42297	14	14	2	6	13	genus	Polyommatus
 712039	265382	2	2	1	1	2	species	Polyommatus atlantica
 712041	265382	2	2	1	1	2	species	Polyommatus golgus
 265386	265382	2	2	1	1	2	species	Polyommatus icarus
@@ -13637,6 +13641,7 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 2079168	265382	2	2	1	1	2	species	Polyommatus szabokyi
 856255	265382	2	2	1	1	2	species	Polyommatus violetae
 282397	265382	1	1	1	1	0	species	Polyommatus eros
+1930554	265382	1	1	1	1	1	species	Polyommatus orphicus
 91737	42297	12	12	3	4	12	genus	Aricia
 91739	91737	4	4	3	1	4	species	Aricia agestis
 91738	91737	2	2	1	1	2	species	Aricia artaxerxes
@@ -13955,9 +13960,9 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 717276	124345	1	1	1	1	0	species	Euselasia chrysippe
 328886	378408	1	1	1	1	0	genus	Styx
 328887	328886	1	1	1	1	0	species	Styx infernalis
-37570	104431	950	950	64	33	826	superfamily	Noctuoidea
-7100	37570	661	661	45	27	562	family	Noctuidae
-95179	7100	285	285	12	16	270	subfamily	Noctuinae
+37570	104431	957	957	64	33	833	superfamily	Noctuoidea
+7100	37570	667	667	45	27	568	family	Noctuidae
+95179	7100	286	286	12	16	271	subfamily	Noctuinae
 95244	95179	102	102	8	11	93	tribe	Hadenini
 103830	95244	34	34	6	5	26	genus	Mythimna
 271217	103830	7	7	4	2	0	species	Mythimna separata
@@ -14031,7 +14036,7 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 1858102	1858101	2	2	1	1	2	species	Senta flammea
 689148	95244	2	2	1	1	2	genus	Sideridis
 997543	689148	2	2	1	1	2	species	Sideridis reticulatus
-2555566	95179	88	88	7	10	84	tribe	Noctuini
+2555566	95179	89	89	7	10	85	tribe	Noctuini
 320016	2555566	20	20	2	2	20	genus	Xestia
 988048	320016	4	4	1	1	4	species	Xestia triangulum
 988043	320016	2	2	1	1	2	species	Xestia ashworthii
@@ -14042,7 +14047,7 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 997545	320016	2	2	1	1	2	species	Xestia sexstrigata
 943756	320016	2	2	1	1	2	species	Xestia speciosa
 988049	320016	2	2	1	1	2	species	Xestia xanthographa
-47766	2555566	16	16	5	4	12	genus	Agrotis
+47766	2555566	17	17	5	5	13	genus	Agrotis
 1869440	47766	2	2	1	1	2	species	Agrotis bigramma
 997525	47766	2	2	1	1	2	species	Agrotis clavis
 215162	47766	2	2	1	1	2	species	Agrotis exclamationis
@@ -14050,6 +14055,7 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 1857961	47766	2	2	1	1	2	species	Agrotis puta
 1857962	47766	2	2	1	1	2	species	Agrotis ripae
 987416	47766	2	2	1	1	2	species	Agrotis vestigialis
+997524	47766	1	1	1	1	1	species	Agrotis cinerea
 1555321	47766	1	1	1	1	0	species	Agrotis infusa
 47767	47766	1	1	1	1	0	species	Agrotis segetum
 214276	2555566	14	14	3	3	14	genus	Noctua
@@ -14163,7 +14169,7 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 988158	988157	2	2	1	1	2	species	Standfussiana lucernea
 1341316	95179	1	1	1	1	0	genus	Hermonassa
 2673479	1341316	1	1	1	1	0	species	Hermonassa cecilia
-572922	7100	109	109	2	8	109	subfamily	Xyleninae
+572922	7100	110	110	2	9	110	subfamily	Xyleninae
 689302	572922	12	12	1	2	12	genus	Agrochola
 987866	689302	2	2	1	1	2	species	Agrochola circellaris
 987869	689302	2	2	1	1	2	species	Agrochola litura
@@ -14257,6 +14263,8 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 1870735	1870734	2	2	1	1	2	species	Trigonophora flammea
 997548	572922	1	1	1	1	1	genus	Calamia
 997549	997548	1	1	1	1	1	species	Calamia tridens
+1870657	572922	1	1	1	1	1	genus	Jodia
+1870658	1870657	1	1	1	1	1	species	Jodia croceago
 95182	7100	88	88	22	15	25	subfamily	Amphipyrinae
 7106	95182	62	62	18	11	5	genus	Spodoptera
 7108	7106	48	48	11	6	1	species	Spodoptera frugiperda
@@ -14316,7 +14324,7 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 1241360	254422	2	2	1	1	2	species	Syngrapha hochenwarthi
 254369	95186	1	1	1	1	0	genus	Ctenoplusia
 254370	254369	1	1	1	1	0	species	Ctenoplusia agnata
-95187	7100	33	33	1	6	33	subfamily	Cuculliinae
+95187	7100	34	34	1	6	34	subfamily	Cuculliinae
 56391	95187	8	8	1	1	8	genus	Lithophane
 1870035	56391	2	2	1	1	2	species	Lithophane leautieri
 987973	56391	2	2	1	1	2	species	Lithophane ornitopus
@@ -14327,10 +14335,11 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 987467	987465	2	2	1	1	2	species	Shargacucullia prenanthis
 987468	987465	2	2	1	1	2	species	Shargacucullia scrophulariae
 987469	987465	2	2	1	1	2	species	Shargacucullia verbasci
-320101	95187	6	6	1	2	6	genus	Conistra
+320101	95187	7	7	1	3	7	genus	Conistra
 987905	320101	2	2	1	1	2	species	Conistra ligula
 987906	320101	2	2	1	1	2	species	Conistra rubiginosa
 706635	320101	2	2	1	1	2	species	Conistra vaccinii
+987904	320101	1	1	1	1	1	species	Conistra erythrocephala
 214384	95187	4	4	1	1	4	genus	Xylena
 1870429	214384	2	2	1	1	2	species	Xylena solidaginis
 988050	214384	2	2	1	1	2	species	Xylena vetusta
@@ -14342,7 +14351,7 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 3119807	3119806	2	2	1	1	2	species	Recoropha canteneri
 988082	95187	1	1	1	1	1	genus	Callierges
 988083	988082	1	1	1	1	1	species	Callierges ramosa
-95178	7100	27	27	14	6	13	subfamily	Heliothinae
+95178	7100	28	28	14	6	14	subfamily	Heliothinae
 7112	95178	17	17	12	5	5	genus	Helicoverpa
 29058	7112	9	9	8	5	4	species	Helicoverpa armigera
 182075	29058	1	1	1	1	0	subspecies	Helicoverpa armigera conferta
@@ -14358,8 +14367,10 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 1341294	1341293	2	2	1	1	2	species	Protoschinia scutosa
 38057	95178	2	2	1	1	2	genus	Pyrrhia
 753223	38057	2	2	1	1	2	species	Pyrrhia umbra
-95175	7100	26	26	2	4	26	subfamily	Acronictinae
-56362	95175	18	18	1	3	18	genus	Acronicta
+1870692	95178	1	1	1	1	1	genus	Periphanes
+1870693	1870692	1	1	1	1	1	species	Periphanes delphinii
+95175	7100	27	27	2	5	27	subfamily	Acronictinae
+56362	95175	19	19	1	4	19	genus	Acronicta
 987859	56362	2	2	1	1	2	species	Acronicta aceris
 3411907	56362	2	2	1	1	2	species	Acronicta albovenosa
 987860	56362	2	2	1	1	2	species	Acronicta alni
@@ -14369,6 +14380,7 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 753146	56362	2	2	1	1	2	species	Acronicta rumicis
 3411911	56362	2	2	1	1	2	species	Acronicta serratae
 997509	56362	2	2	1	1	2	species	Acronicta strigosa
+987861	56362	1	1	1	1	1	species	Acronicta euphorbiae
 938225	95175	4	4	2	2	4	genus	Craniophora
 938226	938225	2	2	1	1	2	species	Craniophora ligustri
 1754071	938225	2	2	1	1	2	species	Craniophora pontica
@@ -14376,9 +14388,10 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 997521	997520	2	2	1	1	2	species	Moma alpium
 1870727	95175	2	2	1	1	2	genus	Subacronicta
 1870728	1870727	2	2	1	1	2	species	Subacronicta megacephala
-95214	7100	10	10	1	3	10	subfamily	Acontiinae
-319971	95214	2	2	1	1	2	genus	Acontia
+95214	7100	11	11	1	3	11	subfamily	Acontiinae
+319971	95214	3	3	1	1	3	genus	Acontia
 753144	319971	2	2	1	1	2	species	Acontia lucida
+3436981	319971	1	1	1	1	1	species	Acontia titania
 1559543	95214	2	2	1	1	2	genus	Calymma
 3127325	1559543	2	2	1	1	2	species	Calymma communimacula
 938229	95214	2	2	1	1	2	genus	Emmelia
@@ -14625,7 +14638,7 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 691686	695564	2	2	1	1	2	subfamily	Hypenodinae
 753345	691686	2	2	1	1	2	genus	Hypenodes
 3234172	753345	2	2	1	1	2	species	Hypenodes pannonica
-37571	37570	56	56	6	10	54	family	Notodontidae
+37571	37570	57	57	6	11	55	family	Notodontidae
 319765	37571	22	22	3	4	22	subfamily	Notodontinae
 988175	319765	6	6	1	2	6	genus	Drymonia
 988176	988175	2	2	1	1	2	species	Drymonia dodonaea
@@ -14665,11 +14678,13 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 2562041	2562040	2	2	1	1	2	species	Pygaera timon
 1101154	319762	2	2	1	1	2	genus	Spatalia
 1101155	1101154	2	2	1	1	2	species	Spatalia argentina
-319766	37571	6	6	1	3	6	subfamily	Stauropinae
+319766	37571	7	7	1	4	7	subfamily	Stauropinae
 56587	319766	6	6	1	3	6	genus	Furcula
 987941	56587	2	2	1	1	2	species	Furcula bicuspis
 987942	56587	2	2	1	1	2	species	Furcula bifida
 987943	56587	2	2	1	1	2	species	Furcula furcula
+1934951	319766	1	1	1	1	1	genus	Dicranura
+1934952	1934951	1	1	1	1	1	species	Dicranura ulmi
 208014	37571	5	5	2	3	4	subfamily	Thaumetopoeinae
 208015	208014	5	5	2	3	4	genus	Thaumetopoea
 499230	208015	2	2	1	1	2	species	Thaumetopoea processionea
@@ -14698,8 +14713,8 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 656906	656902	3	3	2	2	3	genus	Earias
 753175	656906	2	2	1	1	2	species	Earias clorana
 1869821	656906	1	1	1	1	1	species	Earias vernana
-82592	104431	550	550	10	15	544	superfamily	Geometroidea
-82593	82592	550	550	10	15	544	family	Geometridae
+82592	104431	551	551	10	15	545	superfamily	Geometroidea
+82593	82592	551	551	10	15	545	family	Geometridae
 104450	82593	253	253	3	11	250	subfamily	Larentiinae
 214137	104450	70	70	1	4	70	genus	Eupithecia
 934840	214137	2	2	1	1	2	species	Eupithecia abbreviata
@@ -15040,7 +15055,7 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 3229189	704810	1	1	1	1	1	species	Nychiodes aphrodite
 339842	82596	1	1	1	1	0	genus	Phthonandria
 339843	339842	1	1	1	1	0	species	Phthonandria atrilineata
-104442	82593	82	82	1	9	82	subfamily	Sterrhinae
+104442	82593	83	83	1	9	83	subfamily	Sterrhinae
 104446	104442	48	48	1	8	48	genus	Idaea
 104447	104446	2	2	1	1	2	species	Idaea aversata
 104448	104446	2	2	1	1	2	species	Idaea biselata
@@ -15066,7 +15081,7 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 986997	104446	2	2	1	1	2	species	Idaea sylvestraria
 1441566	104446	2	2	1	1	2	species	Idaea trigeminata
 1101011	104446	2	2	1	1	2	species	Idaea typicata
-104443	104442	18	18	1	6	18	genus	Scopula
+104443	104442	19	19	1	6	19	genus	Scopula
 1441582	104443	2	2	1	1	2	species	Scopula confinaria
 934891	104443	2	2	1	1	2	species	Scopula floslactata
 104444	104443	2	2	1	1	2	species	Scopula immorata
@@ -15076,6 +15091,7 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 190361	104443	2	2	1	1	2	species	Scopula rubiginata
 987007	104443	2	2	1	1	2	species	Scopula ternata
 1441592	104443	2	2	1	1	2	species	Scopula tessellaria
+505407	104443	1	1	1	1	1	species	Scopula decorata
 190338	104442	10	10	1	1	10	genus	Cyclophora
 505405	190338	2	2	1	1	2	species	Cyclophora albipunctata
 986959	190338	2	2	1	1	2	species	Cyclophora annularia
@@ -16387,10 +16403,10 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 268500	104494	1	1	1	1	0	family	Hyblaeidae
 268501	268500	1	1	1	1	0	genus	Hyblaea
 268502	268501	1	1	1	1	0	species	Hyblaea puera
-104430	37567	554	554	19	20	534	clade	Apoditrysia
-37568	104430	466	466	14	13	449	superfamily	Tortricoidea
-7139	37568	466	466	14	13	449	family	Tortricidae
-81687	7139	278	278	9	10	268	subfamily	Olethreutinae
+104430	37567	557	557	19	21	537	clade	Apoditrysia
+37568	104430	468	468	14	13	451	superfamily	Tortricoidea
+7139	37568	468	468	14	13	451	family	Tortricidae
+81687	7139	280	280	9	10	270	subfamily	Olethreutinae
 581385	81687	93	93	3	5	93	tribe	Eucosmini
 29054	581385	36	36	1	4	36	genus	Epinotia
 1594292	29054	2	2	1	1	2	species	Epinotia abbreviana
@@ -16505,7 +16521,7 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 1035111	581577	1	1	1	1	0	species	Leguminivora glycinivorella
 463828	581387	1	1	1	1	0	genus	Thaumatotibia
 463830	463828	1	1	1	1	0	species	Thaumatotibia leucotreta
-581389	81687	64	64	3	3	64	tribe	Olethreutini
+581389	81687	66	66	3	3	66	tribe	Olethreutini
 572704	581389	10	10	3	2	10	genus	Apotomis
 1100915	572704	2	2	1	1	2	species	Apotomis betuletana
 989741	572704	2	2	1	1	2	species	Apotomis capreana
@@ -16518,17 +16534,18 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 1030480	581636	2	2	1	1	2	species	Celypha rufana
 1030481	581636	2	2	1	1	2	species	Celypha striana
 2561073	581636	2	2	1	1	2	species	Celypha tiedemanniana
+572852	581389	10	10	1	2	10	genus	Hedya
+3465873	572852	2	2	1	1	2	species	Hedya atropunctana
+572853	572852	2	2	1	1	2	species	Hedya nubiferana
+989781	572852	2	2	1	1	2	species	Hedya ochroleucana
+1594309	572852	2	2	1	1	2	species	Hedya pruniana
+1869985	572852	2	2	1	1	2	species	Hedya salicella
 1101139	581389	10	10	1	1	10	genus	Phiaris
 1101140	1101139	2	2	1	1	2	species	Phiaris bipunctana
 1594328	1101139	2	2	1	1	2	species	Phiaris dissolutana
 1101141	1101139	2	2	1	1	2	species	Phiaris metallicana
 1594330	1101139	2	2	1	1	2	species	Phiaris schulziana
 2561601	1101139	2	2	1	1	2	species	Phiaris umbrosana
-572852	581389	8	8	1	2	8	genus	Hedya
-572853	572852	2	2	1	1	2	species	Hedya nubiferana
-989781	572852	2	2	1	1	2	species	Hedya ochroleucana
-1594309	572852	2	2	1	1	2	species	Hedya pruniana
-1869985	572852	2	2	1	1	2	species	Hedya salicella
 209533	581389	8	8	1	2	8	genus	Lobesia
 1870039	209533	2	2	1	1	2	species	Lobesia abscisana
 2561470	209533	2	2	1	1	2	species	Lobesia littoralis
@@ -16752,10 +16769,10 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 287132	104435	2	2	1	1	2	family	Heterogynidae
 287160	287132	2	2	1	1	2	genus	Heterogynis
 1085962	287160	2	2	1	1	2	species	Heterogynis canalensis
-104434	104430	31	31	2	4	30	superfamily	Sesioidea
-106496	104434	21	21	2	4	20	family	Sesiidae
-106499	106496	21	21	2	4	20	subfamily	Sesiinae
-301641	106499	16	16	1	3	16	tribe	Synanthedonini
+104434	104430	32	32	2	5	31	superfamily	Sesioidea
+106496	104434	22	22	2	5	21	family	Sesiidae
+106499	106496	22	22	2	5	21	subfamily	Sesiinae
+301641	106499	17	17	1	4	17	tribe	Synanthedonini
 106500	301641	12	12	1	2	12	genus	Synanthedon
 1108569	106500	2	2	1	1	2	species	Synanthedon andrenaeformis
 301036	106500	2	2	1	1	2	species	Synanthedon formicaeformis
@@ -16763,10 +16780,11 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 233843	106500	2	2	1	1	2	species	Synanthedon spheciformis
 301680	106500	2	2	1	1	2	species	Synanthedon tipuliformis
 1660703	106500	2	2	1	1	2	species	Synanthedon vespiformis
+301040	301641	3	3	1	2	3	genus	Pyropteron
+301041	301040	2	2	1	1	2	species	Pyropteron chrysidiforme
+301681	301040	1	1	1	1	1	species	Pyropteron triannuliforme
 300855	301641	2	2	1	1	2	genus	Bembecia
 301037	300855	2	2	1	1	2	species	Bembecia ichneumoniformis
-301040	301641	2	2	1	1	2	genus	Pyropteron
-301041	301040	2	2	1	1	2	species	Pyropteron chrysidiforme
 301638	106499	5	5	2	2	4	tribe	Sesiini
 287191	301638	4	4	1	1	4	genus	Sesia
 748215	287191	2	2	1	1	2	species	Sesia apiformis
@@ -16813,8 +16831,8 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 252293	104437	1	1	1	1	1	family	Carposinidae
 252294	252293	1	1	1	1	1	genus	Carposina
 252295	252294	1	1	1	1	1	species	Carposina sasakii
-37581	37567	376	376	18	16	362	superfamily	Gelechioidea
-32434	37581	171	171	12	12	159	family	Gelechiidae
+37581	37567	377	377	18	17	363	superfamily	Gelechioidea
+32434	37581	172	172	12	13	160	family	Gelechiidae
 347697	32434	70	70	7	9	63	subfamily	Gelechiinae
 687130	347697	9	9	2	3	8	genus	Scrobipalpa
 1858070	687130	2	2	1	1	2	species	Scrobipalpa costella
@@ -16904,11 +16922,12 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 1594443	1594442	2	2	1	1	2	species	Argolamprotes micella
 1280456	3444125	2	2	1	1	2	genus	Isophrictis
 1280457	1280456	2	2	1	1	2	species	Isophrictis striatella
-347701	32434	26	26	1	3	26	subfamily	Anacampsinae
-700132	347701	6	6	1	2	6	genus	Anacampsis
+347701	32434	27	27	1	4	27	subfamily	Anacampsinae
+700132	347701	7	7	1	3	7	genus	Anacampsis
 1594228	700132	2	2	1	1	2	species	Anacampsis blattariella
 753152	700132	2	2	1	1	2	species	Anacampsis populella
 2560951	700132	2	2	1	1	2	species	Anacampsis temerella
+2560952	700132	1	1	1	1	1	species	Anacampsis timidella
 1280450	347701	6	6	1	2	6	genus	Aproaerema
 2566302	1280450	2	2	1	1	2	species	Aproaerema cinctella
 2566309	1280450	2	2	1	1	2	species	Aproaerema taeniolella
@@ -21388,8 +21407,8 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 50600	50599	1	1	1	0	0	family	Mengenillidae
 50601	50600	1	1	1	0	0	genus	Mengenilla
 1155016	50601	1	1	1	0	0	species	Mengenilla moldrzyki
-7399	33392	1633	1633	213	72	868	order	Hymenoptera
-7400	7399	1504	1504	208	72	776	suborder	Apocrita
+7399	33392	1648	1648	213	72	882	order	Hymenoptera
+7400	7399	1518	1518	208	72	789	suborder	Apocrita
 7434	7400	809	809	145	58	380	infraorder	Aculeata
 34735	7434	411	411	81	29	278	superfamily	Apoidea
 3042114	34735	366	366	75	28	239	clade	Anthophila
@@ -22365,11 +22384,11 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 3749284	3749279	1	1	1	1	0	species	Regiscolia maculata
 92419	7435	1	1	1	1	0	genus	Scolia
 330855	92419	1	1	1	1	0	species	Scolia hirta
-1955251	7400	378	378	54	43	169	infraorder	Proctotrupomorpha
-7422	1955251	249	249	40	30	146	superfamily	Chalcidoidea
-107755	7422	145	145	7	17	126	family	Eulophidae
-150276	107755	141	141	6	17	122	subfamily	Tetrastichinae
-108669	150276	58	58	2	12	48	genus	Quadrastichus
+1955251	7400	392	392	54	44	182	infraorder	Proctotrupomorpha
+7422	1955251	263	263	40	31	159	superfamily	Chalcidoidea
+107755	7422	159	159	7	18	139	family	Eulophidae
+150276	107755	154	154	6	18	134	subfamily	Tetrastichinae
+108669	150276	62	62	2	12	52	genus	Quadrastichus
 2628825	108669	20	20	1	7	13	no rank	unclassified Quadrastichus
 3738775	2628825	1	1	1	1	1	species	Quadrastichus sp. EU101
 3738776	2628825	1	1	1	1	1	species	Quadrastichus sp. EU419
@@ -22397,16 +22416,20 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 425690	108669	2	2	1	1	2	species	Quadrastichus erythrinae
 3456235	108669	2	2	1	1	2	species	Quadrastichus praecox
 3456236	108669	2	2	1	1	2	species	Quadrastichus sajoi
+3698399	108669	1	1	1	1	1	species	Quadrastichus artemisiphilus
 3456232	108669	1	1	1	1	1	species	Quadrastichus brevinervis
+3698400	108669	1	1	1	1	1	species	Quadrastichus centor
 3456233	108669	1	1	1	1	0	species	Quadrastichus citrinus
 656808	108669	1	1	1	1	0	species	Quadrastichus haitiensis
 3343262	108669	1	1	1	1	1	species	Quadrastichus lasiocerus
 3698402	108669	1	1	1	1	0	species	Quadrastichus liriomyzae
+3698403	108669	1	1	1	1	1	species	Quadrastichus malhamensis
 1462674	108669	1	1	1	1	1	species	Quadrastichus mendeli
 3456234	108669	1	1	1	1	1	species	Quadrastichus pedicellaris
 3698404	108669	1	1	1	1	1	species	Quadrastichus perissiae
 3698405	108669	1	1	1	1	1	species	Quadrastichus stenocranus
-865979	150276	20	20	1	7	19	genus	Oomyzus
+3698406	108669	1	1	1	1	1	species	Quadrastichus ventricosus
+865979	150276	25	25	1	7	24	genus	Oomyzus
 3455190	865979	7	7	1	3	7	species	Oomyzus incertus
 2721819	865979	3	3	1	2	3	no rank	unclassified Oomyzus
 3738769	2721819	1	1	1	1	1	species	Oomyzus sp. EU507
@@ -22414,11 +22437,15 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 3738771	2721819	1	1	1	1	1	species	Oomyzus sp. EU712
 3456228	865979	2	2	1	1	2	species	Oomyzus anomalus
 3698390	865979	2	2	1	1	2	species	Oomyzus galerucivorus
+3698392	865979	2	2	1	1	2	species	Oomyzus propodealis
 3456229	865979	2	2	1	2	2	species	Oomyzus sempronius
+3698389	865979	1	1	1	1	1	species	Oomyzus cf. incertus
 3698391	865979	1	1	1	1	1	species	Oomyzus gallerucae
+3698393	865979	1	1	1	1	1	species	Oomyzus repentinus
 2721775	865979	1	1	1	1	1	species	Oomyzus scaposus
 865980	865979	1	1	1	1	0	species	Oomyzus sokolowskii
 2721820	865979	1	1	1	1	1	species	Oomyzus spiraculus
+3698394	865979	1	1	1	1	1	species	Oomyzus tanaceti
 108673	150276	16	16	1	2	16	genus	Tetrastichus
 2639207	108673	4	4	1	2	4	no rank	unclassified Tetrastichus
 3738795	2639207	1	1	1	1	1	species	Tetrastichus sp. EU382
@@ -22436,6 +22463,23 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 2931494	108673	1	1	1	1	1	species	Tetrastichus nymphae
 2931498	108673	1	1	1	1	1	species	Tetrastichus pixius
 2931509	108673	1	1	1	1	1	species	Tetrastichus temporalis
+326698	150276	8	8	1	2	8	genus	Tamarixia
+3698408	326698	1	1	1	1	1	species	Tamarixia actis
+3698409	326698	1	1	1	1	1	species	Tamarixia flavimacula
+3698410	326698	1	1	1	1	1	species	Tamarixia monesus
+3698411	326698	1	1	1	1	1	species	Tamarixia poddubnyi
+3400600	326698	1	1	1	1	1	species	Tamarixia pronomus
+2479355	326698	1	1	1	1	1	species	Tamarixia pubescens
+3400601	326698	1	1	1	1	1	species	Tamarixia tremblayi
+3698412	326698	1	1	1	1	1	species	Tamarixia upis
+108626	150276	7	7	1	1	7	genus	Aprostocetus
+3698373	108626	1	1	1	1	1	species	Aprostocetus apama
+3698374	108626	1	1	1	1	1	species	Aprostocetus calamarius
+3698376	108626	1	1	1	1	1	species	Aprostocetus cf. epicharmus
+3698377	108626	1	1	1	1	1	species	Aprostocetus eurytus
+3698378	108626	1	1	1	1	1	species	Aprostocetus fulvipes
+3698379	108626	1	1	1	1	1	species	Aprostocetus gratus
+3698381	108626	1	1	1	1	1	species	Aprostocetus oreophilus
 2426890	150276	7	7	1	3	6	genus	Chaenotetrastichus
 3698386	2426890	3	3	1	2	3	species	Chaenotetrastichus grangeri
 2640719	2426890	3	3	1	1	2	no rank	unclassified Chaenotetrastichus
@@ -22443,21 +22487,6 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 3738764	2640719	1	1	1	1	0	species	Chaenotetrastichus sp. 00227763
 3738765	2640719	1	1	1	1	1	species	Chaenotetrastichus sp. 00227764
 2981714	2426890	1	1	1	1	1	species	Chaenotetrastichus semiflavus
-326698	150276	7	7	1	2	7	genus	Tamarixia
-3698408	326698	1	1	1	1	1	species	Tamarixia actis
-3698409	326698	1	1	1	1	1	species	Tamarixia flavimacula
-3698410	326698	1	1	1	1	1	species	Tamarixia monesus
-3400600	326698	1	1	1	1	1	species	Tamarixia pronomus
-2479355	326698	1	1	1	1	1	species	Tamarixia pubescens
-3400601	326698	1	1	1	1	1	species	Tamarixia tremblayi
-3698412	326698	1	1	1	1	1	species	Tamarixia upis
-108626	150276	6	6	1	1	6	genus	Aprostocetus
-3698373	108626	1	1	1	1	1	species	Aprostocetus apama
-3698374	108626	1	1	1	1	1	species	Aprostocetus calamarius
-3698377	108626	1	1	1	1	1	species	Aprostocetus eurytus
-3698378	108626	1	1	1	1	1	species	Aprostocetus fulvipes
-3698379	108626	1	1	1	1	1	species	Aprostocetus gratus
-3698381	108626	1	1	1	1	1	species	Aprostocetus oreophilus
 108628	150276	4	4	2	2	3	genus	Baryscapus
 2980436	108628	1	1	1	1	0	species	Baryscapus dioryctriae
 3698384	108628	1	1	1	1	1	species	Baryscapus gradwelli
@@ -22513,8 +22542,12 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 108790	108666	1	1	1	1	0	species	Phymastichus coffea
 1107388	150276	1	1	1	1	1	genus	Pronotalia
 3698397	1107388	1	1	1	1	1	species	Pronotalia carlinarum
+2727971	150276	1	1	1	1	0	genus	Puklina
+3698398	2727971	1	1	1	1	0	species	Puklina amblyteles
 2727975	150276	1	1	1	1	1	genus	Sigmophora
 2727976	2727975	1	1	1	1	1	species	Sigmophora brevicornis
+3424762	150276	1	1	1	1	1	genus	Stepanovia
+3698407	3424762	1	1	1	1	1	species	Stepanovia aurantiaca
 150275	107755	3	3	1	1	3	subfamily	Eulophinae
 2653287	150275	1	1	1	1	1	genus	Burkseus
 2982949	2653287	1	1	1	1	1	species	Burkseus vittatus
@@ -22523,9 +22556,11 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 108394	150275	1	1	1	1	1	genus	Hyssopus
 2688571	108394	1	1	1	1	1	no rank	unclassified Hyssopus (in: wasps, ants & bees)
 3738800	2688571	1	1	1	1	1	species	Hyssopus sp. EU023
-150273	107755	1	1	1	1	1	subfamily	Entedoninae
+150273	107755	2	2	2	1	2	subfamily	Entedoninae
 108627	150273	1	1	1	1	1	genus	Asecodes
 1325227	108627	1	1	1	1	1	species	Asecodes parviclava
+108665	150273	1	1	1	1	1	genus	Pediobius
+3698396	108665	1	1	1	1	1	species	Pediobius cf. eubius
 7423	7422	25	25	10	7	7	family	Pteromalidae
 272242	7423	22	22	10	6	5	subfamily	Pteromalinae
 7424	272242	6	6	3	1	0	genus	Nasonia
@@ -23361,9 +23396,9 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 32404	32401	4	4	1	1	4	genus	Gasteruption
 1473642	32404	2	2	1	1	2	species	Gasteruption assectator
 2718756	32404	2	2	1	1	2	species	Gasteruption jaculator
-85772	7399	92	92	6	7	81	superfamily	Tenthredinoidea
-27532	85772	64	64	3	4	61	family	Tenthredinidae
-112287	27532	24	24	1	1	24	subfamily	Tenthredininae
+85772	7399	93	93	6	7	82	superfamily	Tenthredinoidea
+27532	85772	65	65	3	4	62	family	Tenthredinidae
+112287	27532	25	25	1	1	25	subfamily	Tenthredininae
 112291	112287	14	14	1	1	14	genus	Tenthredo
 520940	112291	2	2	1	1	2	species	Tenthredo amoena
 112292	112291	2	2	1	1	2	species	Tenthredo arcuata
@@ -23373,11 +23408,12 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 1385169	112291	2	2	1	1	2	species	Tenthredo zona
 1385102	112291	1	1	1	1	1	species	Tenthredo distinguenda
 520932	112291	1	1	1	1	1	species	Tenthredo scrophulariae
-520955	112287	7	7	1	1	7	genus	Macrophya
+520955	112287	8	8	1	1	8	genus	Macrophya
 1384894	520955	2	2	1	1	2	species	Macrophya alboannulata
 1384908	520955	2	2	1	1	2	species	Macrophya punctumalbum
 1384895	520955	1	1	1	1	1	species	Macrophya annulata
 1384897	520955	1	1	1	1	1	species	Macrophya blanda
+1384901	520955	1	1	1	1	1	species	Macrophya duodecimpunctata
 1384909	520955	1	1	1	1	1	species	Macrophya ribis
 1250642	112287	2	2	1	1	2	genus	Rhogogaster
 1385029	1250642	2	2	1	1	2	species	Rhogogaster chlorosoma
@@ -23506,9 +23542,9 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 36763	222825	1	1	1	1	1	family	Siricidae
 222806	36763	1	1	1	1	1	genus	Urocerus
 1507180	222806	1	1	1	1	1	species	Urocerus augur
-33342	3701061	589	589	173	42	263	cohort	Paraneoptera
-7524	33342	542	542	153	40	253	order	Hemiptera
-33373	7524	263	263	89	26	84	suborder	Sternorrhyncha
+33342	3701061	591	591	173	42	263	cohort	Paraneoptera
+7524	33342	544	544	153	40	253	order	Hemiptera
+33373	7524	265	265	89	26	84	suborder	Sternorrhyncha
 33380	33373	190	190	60	16	67	infraorder	Aphidomorpha
 33385	33380	182	182	57	15	65	superfamily	Aphidoidea
 27482	33385	173	173	56	14	64	family	Aphididae
@@ -23687,8 +23723,8 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 33384	33382	1	1	1	1	1	family	Phylloxeridae
 58001	33384	1	1	1	1	1	genus	Daktulosphaira
 58002	58001	1	1	1	1	1	species	Daktulosphaira vitifoliae
-33381	33373	43	43	26	11	14	superfamily	Coccoidea
-30190	33381	18	18	10	5	3	family	Pseudococcidae
+33381	33373	45	45	26	11	14	superfamily	Coccoidea
+30190	33381	20	20	10	5	3	family	Pseudococcidae
 40929	30190	3	3	2	2	0	genus	Planococcus
 170843	40929	2	2	1	1	0	species	Planococcus citri
 40930	40929	1	1	1	1	0	species	Planococcus lilacinus
@@ -23702,6 +23738,9 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 177089	177088	2	2	2	1	0	species	Maconellicoccus hirsutus
 249411	30190	2	2	2	1	0	genus	Paracoccus
 252483	249411	2	2	2	1	0	species	Paracoccus marginatus
+249564	30190	2	2	1	1	0	genus	Puto
+249565	249564	1	1	1	1	0	species	Puto albicans
+3739503	249564	1	1	1	1	0	species	Puto arctostaphyli
 223226	30190	1	1	1	0	0	genus	Ferrisia
 223228	223226	1	1	1	0	0	species	Ferrisia virgata
 249507	30190	1	1	1	1	1	genus	Hypogeococcus
@@ -24826,7 +24865,7 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 3435242	2982326	1	1	1	1	0	no rank	Brazilozoros sp. CCY13
 2705130	2982325	1	1	1	1	0	genus	Latinozoros
 2951789	2705130	1	1	1	1	0	species	Latinozoros cacaoensis
-33339	7496	94	94	25	13	64	infraclass	Palaeoptera
+33339	7496	98	98	25	13	64	infraclass	Palaeoptera
 6961	33339	56	56	15	10	44	order	Odonata
 2510002	6961	30	30	9	7	21	suborder	Epiprocta
 6962	2510002	30	30	9	7	21	infraorder	Anisoptera
@@ -24908,8 +24947,8 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 411067	411066	2	2	1	1	2	species	Archilestes grandis
 181491	126180	2	2	1	1	2	genus	Lestes
 197164	181491	2	2	1	1	2	species	Lestes sponsa
-30073	33339	38	38	11	7	20	order	Ephemeroptera
-185809	30073	17	17	5	3	11	suborder	Pisciforma
+30073	33339	42	42	11	7	20	order	Ephemeroptera
+185809	30073	18	18	5	3	11	suborder	Pisciforma
 172515	185809	14	14	5	3	9	family	Baetidae
 189838	172515	5	5	2	1	5	genus	Baetis
 189839	189838	3	3	2	1	3	species	Baetis rhodani
@@ -24925,12 +24964,24 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 2078957	2078956	1	1	1	1	0	species	Neocloeon triangulifer
 767790	172515	1	1	1	1	0	genus	Takobia
 743459	767790	1	1	1	1	0	species	Takobia yixiani
-219335	185809	3	3	2	2	2	family	Siphlonuridae
-219336	219335	2	2	1	1	2	genus	Siphlonurus
+219335	185809	4	4	2	2	2	family	Siphlonuridae
+219336	219335	3	3	2	2	2	genus	Siphlonurus
 248243	219336	2	2	1	1	2	species	Siphlonurus alternatus
+2647582	219336	1	1	1	1	0	no rank	unclassified Siphlonurus
+3345131	2647582	1	1	1	1	0	species	Siphlonurus sp. 1 CYC-2024a
 650634	219335	1	1	1	1	0	genus	Siphluriscus
 981053	650634	1	1	1	1	0	species	Siphluriscus chinensis
-185812	30073	11	11	5	5	5	suborder	Furcatergalia
+185812	30073	13	13	5	5	5	suborder	Furcatergalia
+185816	185812	7	7	5	5	3	infraorder	Scapphodonta
+50581	185816	6	6	5	5	3	family	Ephemeridae
+50582	50581	6	6	5	5	3	genus	Ephemera
+364141	50582	3	3	2	2	2	species	Ephemera vulgata
+1049336	50582	1	1	1	1	1	species	Ephemera danica
+515277	50582	1	1	1	1	0	species	Ephemera orientalis
+3345129	50582	1	1	1	1	0	species	Ephemera pictipennis
+241026	185816	1	1	1	1	0	family	Palingeniidae
+3345132	241026	1	1	1	1	0	genus	Chankagenesia
+3345133	3345132	1	1	1	1	0	species	Chankagenesia yangi
 170974	185812	5	5	2	2	2	infraorder	Pannota
 170975	170974	3	3	2	2	2	superfamily	Ephemerelloidea
 50633	170975	3	3	2	2	2	family	Ephemerellidae
@@ -24946,12 +24997,6 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 219473	170976	1	1	1	1	0	family	Neoephemeridae
 650628	219473	1	1	1	1	0	genus	Potamanthellus
 2600087	650628	1	1	1	1	0	species	Potamanthellus chinensis
-185816	185812	5	5	4	4	3	infraorder	Scapphodonta
-50581	185816	5	5	4	4	3	family	Ephemeridae
-50582	50581	5	5	4	4	3	genus	Ephemera
-364141	50582	3	3	2	2	2	species	Ephemera vulgata
-1049336	50582	1	1	1	1	1	species	Ephemera danica
-515277	50582	1	1	1	1	0	species	Ephemera orientalis
 185814	185812	1	1	1	1	0	infraorder	Lanceolata
 170979	185814	1	1	1	1	0	superfamily	Leptophlebioidea
 89829	170979	1	1	1	1	0	family	Leptophlebiidae
@@ -24974,6 +25019,10 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 219466	185810	1	1	1	1	0	family	Isonychiidae
 219470	219466	1	1	1	1	0	genus	Isonychia
 1470551	219470	1	1	1	1	0	species	Isonychia kiangsinensis
+185811	30073	1	1	1	1	0	suborder	Carapacea
+309645	185811	1	1	1	1	0	family	Prosopistomatidae
+309646	309645	1	1	1	1	0	genus	Prosopistoma
+3345130	309646	1	1	1	1	0	species	Prosopistoma ocellatum
 30264	85512	5	5	2	3	4	order	Zygentoma
 27551	30264	5	5	2	3	4	family	Lepismatidae
 3738406	27551	3	3	2	2	2	subfamily	Lepismatinae
@@ -26066,10 +26115,10 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 61989	2082948	1	1	1	1	0	family	Pauropodidae
 244970	61989	1	1	1	1	0	genus	Allopauropus
 2905841	244970	1	1	1	1	0	species	Allopauropus danicus
-6843	6656	505	505	161	45	181	subphylum	Chelicerata
-6854	6843	494	494	153	45	180	class	Arachnida
-6933	6854	273	273	97	31	37	subclass	Acari
-6946	6933	149	149	48	20	26	superorder	Acariformes
+6843	6656	506	506	161	45	181	subphylum	Chelicerata
+6854	6843	495	495	153	45	180	class	Arachnida
+6933	6854	274	274	97	31	37	subclass	Acari
+6946	6933	150	150	48	20	26	superorder	Acariformes
 83137	6946	114	114	26	12	17	order	Sarcoptiformes
 66551	83137	80	80	6	3	4	suborder	Oribatida
 229894	66551	47	47	4	3	1	infraorder	Brachypylina
@@ -26314,8 +26363,8 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 1712492	1712491	1	1	1	1	0	family	Nematalycidae
 2051722	1712492	1	1	1	1	0	genus	Osperalycus
 2051723	2051722	1	1	1	1	0	species	Osperalycus tenerphagus
-83136	6946	35	35	25	12	9	order	Trombidiformes
-6947	83136	35	35	25	12	9	suborder	Prostigmata
+83136	6946	36	36	25	12	9	order	Trombidiformes
+6947	83136	36	36	25	12	9	suborder	Prostigmata
 83145	6947	25	25	18	8	4	infraorder	Eleutherengona
 188550	83145	21	21	15	6	3	no rank	Raphignathae
 83146	188550	21	21	15	6	3	superfamily	Tetranychoidea
@@ -26372,13 +26421,19 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 296205	94819	1	1	1	1	1	family	Penthaleidae
 2874059	296205	1	1	1	1	1	genus	Halotydeus
 2874060	2874059	1	1	1	1	1	species	Halotydeus destructor
-83138	6947	3	3	2	2	2	infraorder	Anystina
-83141	83138	3	3	2	2	2	clade	Parasitengona
+83138	6947	4	4	3	2	2	infraorder	Anystina
+83141	83138	4	4	3	2	2	clade	Parasitengona
 92088	83141	2	2	2	1	1	superfamily	Trombiculoidea
 92251	92088	2	2	2	1	1	family	Trombiculidae
 279271	92251	2	2	2	1	1	genus	Leptotrombidium
 299467	279271	1	1	1	1	1	species	Leptotrombidium deliense
 279272	279271	1	1	1	0	0	species	Leptotrombidium pallidum
+83142	83141	1	1	1	0	0	superfamily	Erythraeoidea
+92103	83142	1	1	1	0	0	family	Erythraeidae
+406626	92103	1	1	1	0	0	subfamily	Erythraeinae
+423220	406626	1	1	1	0	0	genus	Balaustium
+2666603	423220	1	1	1	0	0	no rank	unclassified Balaustium
+3750259	2666603	1	1	1	0	0	species	Balaustium sp. GZU-HX-2025-01
 83143	83141	1	1	1	1	1	superfamily	Trombidioidea
 83144	83143	1	1	1	1	1	family	Trombidiidae
 58781	83144	1	1	1	1	1	genus	Dinothrombium
@@ -27574,12 +27629,12 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 121010	2082909	1	1	1	1	1	family	Tubiluchidae
 121011	121010	1	1	1	1	1	genus	Tubiluchus
 121012	121011	1	1	1	1	1	species	Tubiluchus corallicola
-2697495	33317	1527	1527	333	80	699	clade	Spiralia
-1206795	2697495	1420	1420	320	77	695	clade	Lophotrochozoa
-6447	1206795	943	943	211	57	457	phylum	Mollusca
-6448	6447	428	428	100	37	192	class	Gastropoda
-216305	6448	200	200	49	20	83	subclass	Heterobranchia
-216307	216305	195	195	49	20	83	clade	Euthyneura
+2697495	33317	1531	1531	333	80	703	clade	Spiralia
+1206795	2697495	1424	1424	320	77	699	clade	Lophotrochozoa
+6447	1206795	946	946	211	57	460	phylum	Mollusca
+6448	6447	429	429	100	37	193	class	Gastropoda
+216305	6448	201	201	49	20	84	subclass	Heterobranchia
+216307	216305	196	196	49	20	84	clade	Euthyneura
 977775	216307	105	105	42	18	52	clade	Panpulmonata
 120490	977775	54	54	21	14	30	superorder	Eupulmonata
 6527	120490	47	47	20	13	28	order	Stylommatophora
@@ -27745,7 +27800,7 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 52929	216442	1	1	1	1	1	family	Siphonariidae
 52930	52929	1	1	1	1	1	genus	Siphonaria
 57642	52930	1	1	1	1	1	species	Siphonaria pectinata
-680346	216307	77	77	7	6	27	superorder	Nudipleura
+680346	216307	78	78	7	6	28	superorder	Nudipleura
 70849	680346	76	76	7	6	26	order	Nudibranchia
 1707744	70849	39	39	4	3	12	suborder	Cladobranchia
 71481	1707744	19	19	4	3	7	superfamily	Aeolidioidea
@@ -27902,11 +27957,14 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 71283	216335	1	1	1	0	0	family	Onchidorididae
 1639836	71283	1	1	1	0	0	genus	Corambe
 3035712	1639836	1	1	1	0	0	species	Corambe burchi
-2340904	680346	1	1	1	1	1	order	Pleurobranchida
-216325	2340904	1	1	1	1	1	superfamily	Pleurobranchoidea
-71291	216325	1	1	1	1	1	family	Pleurobranchidae
+2340904	680346	2	2	1	2	2	order	Pleurobranchida
+216325	2340904	2	2	1	2	2	superfamily	Pleurobranchoidea
+71291	216325	2	2	1	2	2	family	Pleurobranchidae
 154619	71291	1	1	1	1	1	genus	Berthellina
 676947	154619	1	1	1	1	1	species	Berthellina edwardsii
+157720	71291	1	1	1	1	1	genus	Pleurobranchus
+2629553	157720	1	1	1	1	1	no rank	unclassified Pleurobranchus
+3706531	2629553	1	1	1	1	1	species	Pleurobranchus sp. A-P8ZY7MZOX
 2836391	216307	13	13	8	5	4	clade	Tectipleura
 6497	2836391	5	5	4	3	2	order	Aplysiida
 216318	6497	5	5	4	3	2	superfamily	Aplysioidea
@@ -28366,12 +28424,12 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 200187	977769	1	1	1	1	0	family	Hydrocenidae
 200188	200187	1	1	1	1	0	genus	Georissa
 2067674	200188	1	1	1	1	0	species	Georissa laseroni
-6544	6447	393	393	117	42	224	class	Bivalvia
-2785011	6544	390	390	115	42	224	subclass	Autobranchia
-6599	2785011	221	221	64	31	139	clade	Heteroconchia
-735337	6599	202	202	51	29	134	infraclass	Euheterodonta
-2785015	735337	198	198	50	28	131	superorder	Imparidentia
-2908833	2785015	150	150	46	25	92	clade	Neoheterodontei
+6544	6447	395	395	117	42	226	class	Bivalvia
+2785011	6544	392	392	115	42	226	subclass	Autobranchia
+6599	2785011	222	222	64	31	140	clade	Heteroconchia
+735337	6599	203	203	51	29	135	infraclass	Euheterodonta
+2785015	735337	199	199	50	28	132	superorder	Imparidentia
+2908833	2785015	151	151	46	25	93	clade	Neoheterodontei
 6580	2908833	72	72	33	19	37	order	Venerida
 74489	6580	51	51	22	14	28	superfamily	Veneroidea
 6592	74489	49	49	22	14	26	family	Veneridae
@@ -28451,9 +28509,9 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 6588	106229	1	1	1	1	1	family	Vesicomyidae
 1298642	6588	1	1	1	1	1	genus	Archivesica
 2291877	1298642	1	1	1	1	1	species	Archivesica marissinica
-2783445	2908833	66	66	13	12	47	order	Cardiida
-105710	2783445	40	40	10	10	27	superfamily	Cardioidea
-55708	105710	40	40	10	10	27	family	Cardiidae
+2783445	2908833	67	67	13	12	48	order	Cardiida
+105710	2783445	41	41	10	10	28	superfamily	Cardioidea
+55708	105710	41	41	10	10	28	family	Cardiidae
 2787989	55708	14	14	1	2	14	subfamily	Fraginae
 80820	2787989	10	10	1	2	10	genus	Fragum
 561456	80820	2	2	1	1	2	species	Fragum erugatum
@@ -28473,12 +28531,13 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 80832	52939	1	1	1	0	1	species	Tridacna maxima
 80817	2787994	2	2	1	1	0	genus	Hippopus
 80818	80817	2	2	1	1	0	species	Hippopus hippopus
-2787991	55708	8	8	3	2	7	subfamily	Lymnocardiinae
+2787991	55708	9	9	3	3	8	subfamily	Lymnocardiinae
 55709	2787991	5	5	2	1	4	genus	Cerastoderma
 55710	55709	3	3	2	1	2	species	Cerastoderma edule
 94722	55709	2	2	1	1	2	species	Cerastoderma glaucum
-241153	2787991	2	2	1	1	2	genus	Acanthocardia
+241153	2787991	3	3	2	2	3	genus	Acanthocardia
 241154	241153	2	2	1	1	2	species	Acanthocardia echinata
+3088264	241153	1	1	1	1	1	species	Acanthocardia deshayesii
 120447	2787991	1	1	1	1	1	genus	Parvicardium
 1676568	120447	1	1	1	1	1	species	Parvicardium scabrum
 2787988	55708	5	5	4	2	2	subfamily	Clinocardiinae
@@ -28663,10 +28722,10 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 457647	52615	2	2	2	1	0	species	Cardita leana
 1582121	52614	1	1	1	1	1	genus	Centrocardita
 1582122	1582121	1	1	1	1	1	species	Centrocardita aculeata
-6545	2785011	169	169	67	24	85	clade	Pteriomorphia
-6546	6545	61	61	27	16	37	order	Mytilida
-106220	6546	61	61	27	16	37	superfamily	Mytiloidea
-6547	106220	39	39	22	13	18	family	Mytilidae
+6545	2785011	170	170	67	24	86	clade	Pteriomorphia
+6546	6545	62	62	27	16	38	order	Mytilida
+106220	6546	62	62	27	16	38	superfamily	Mytiloidea
+6547	106220	40	40	22	13	19	family	Mytilidae
 301959	6547	26	26	16	9	12	subfamily	Mytilinae
 6548	301959	26	26	16	9	12	genus	Mytilus
 29158	6548	10	10	8	5	5	species	Mytilus galloprovincialis
@@ -28686,10 +28745,12 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 112135	31194	2	2	2	1	2	species	Lithophaga lithophaga
 310900	31194	1	1	1	0	0	species	Lithophaga antillarum
 112136	31194	1	1	1	0	0	species	Lithophaga nigra
-1605174	6547	2	2	1	0	0	subfamily	Brachidontinae
+1605174	6547	3	3	2	1	1	subfamily	Brachidontinae
 27806	1605174	2	2	1	0	0	genus	Geukensia
 27807	27806	1	1	1	0	0	species	Geukensia demissa
 296773	27806	1	1	1	0	0	species	Geukensia granosissima
+397459	1605174	1	1	1	1	1	genus	Mytilaster
+3089532	397459	1	1	1	1	1	species	Mytilaster marioni
 3703739	6547	2	2	2	2	0	subfamily	Mytiliseptinae
 1605176	3703739	2	2	2	2	0	genus	Mytilisepta
 2547956	1605176	2	2	2	2	0	species	Mytilisepta virgata
@@ -29074,8 +29135,8 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 3161547	1082332	1	1	1	1	0	no rank	unclassified Veleropilina
 3401147	3161547	1	1	1	1	0	species	Veleropilina sp. TBG_4354
 2053990	1082332	1	1	1	1	1	species	Veleropilina oligotropha
-6340	1206795	251	251	54	28	172	phylum	Annelida
-6341	6340	173	173	29	22	132	class	Polychaeta
+6340	1206795	252	252	54	28	173	phylum	Annelida
+6341	6340	174	174	29	22	133	class	Polychaeta
 105389	6341	97	97	23	15	73	subclass	Sedentaria
 105391	105389	86	86	22	15	66	infraclass	Canalipalpata
 6362	105391	58	58	16	14	45	order	Sabellida
@@ -29218,8 +29279,8 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 6378	105389	2	2	1	1	2	family	Chaetopteridae
 6379	6378	2	2	1	1	2	genus	Chaetopterus
 2704165	6379	2	2	1	1	2	species	Chaetopterus dewysee
-105390	6341	68	68	9	13	54	subclass	Errantia
-6348	105390	62	62	9	12	48	order	Phyllodocida
+105390	6341	69	69	9	13	55	subclass	Errantia
+6348	105390	63	63	9	12	49	order	Phyllodocida
 46593	6348	27	27	6	8	26	family	Polynoidae
 46594	46593	8	8	3	4	8	genus	Harmothoe
 1619589	46594	2	2	1	1	2	species	Harmothoe fraserthomsoni
@@ -29275,12 +29336,14 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 1981583	1981580	1	1	1	1	1	species	Fimbriosthenelais zetlandica
 104729	104728	1	1	1	1	0	genus	Sigalion
 2951299	104729	1	1	1	1	0	species	Sigalion mathildae
-122238	6348	5	5	2	1	2	family	Syllidae
+122238	6348	6	6	3	2	3	family	Syllidae
 199559	122238	5	5	2	1	2	genus	Haplosyllis
 3264620	199559	2	2	1	1	2	species	Haplosyllis basticola
 3082981	199559	1	1	1	0	0	species	Haplosyllis anthogorgicola
 3082983	199559	1	1	1	0	0	species	Haplosyllis eldagainoae
 3082982	199559	1	1	1	0	0	species	Haplosyllis leylae
+418360	122238	1	1	1	1	1	genus	Syllis
+3272347	418360	1	1	1	1	1	species	Syllis parapari
 36119	6348	3	3	1	1	0	family	Nephtyidae
 36120	36119	3	3	1	1	0	genus	Nephtys
 714603	36120	1	1	1	1	0	species	Nephtys caeca
@@ -29969,10 +30032,10 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 1547233	110814	1	1	1	0	0	family	Xenoturbellidae
 110815	1547233	1	1	1	0	0	genus	Xenoturbella
 242395	110815	1	1	1	0	0	species	Xenoturbella bocki
-6073	6072	541	541	106	40	247	phylum	Cnidaria
-6101	6073	384	384	73	33	178	class	Anthozoa
-6102	6101	307	307	63	31	133	subclass	Hexacorallia
-6125	6102	183	183	45	26	100	order	Scleractinia
+6073	6072	543	543	106	40	249	phylum	Cnidaria
+6101	6073	386	386	73	33	180	class	Anthozoa
+6102	6101	309	309	63	31	135	subclass	Hexacorallia
+6125	6102	185	185	45	26	102	order	Scleractinia
 3687091	6125	115	115	30	18	56	suborder	Refertina
 6126	3687091	69	69	17	10	23	family	Acroporidae
 6127	6126	51	51	14	8	14	genus	Acropora
@@ -30065,7 +30128,25 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 3687092	3687091	1	1	1	1	1	family	Pachyseridae
 465078	3687092	1	1	1	1	1	genus	Pachyseris
 497657	465078	1	1	1	1	1	species	Pachyseris speciosa
-3115840	6125	68	68	23	18	44	suborder	Vacatina
+3115840	6125	70	70	23	18	46	suborder	Vacatina
+46736	3115840	18	18	7	8	12	family	Merulinidae
+1920453	46736	7	7	4	2	4	genus	Orbicella
+48498	1920453	3	3	3	2	0	species	Orbicella faveolata
+48500	1920453	2	2	1	1	2	species	Orbicella annularis
+48499	1920453	2	2	1	1	2	species	Orbicella franksi
+46691	46736	3	3	2	2	3	genus	Cyphastrea
+1967629	46691	2	2	1	1	2	species	Cyphastrea salae
+570133	46691	1	1	1	1	1	species	Cyphastrea microphthalma
+46695	46736	2	2	1	1	0	genus	Caulastraea
+46696	46695	2	2	1	1	0	species	Caulastraea furcata
+1328267	46736	2	2	1	1	2	genus	Dipsastraea
+2685643	1328267	2	2	1	1	2	no rank	unclassified Dipsastraea
+3707074	2685643	2	2	1	1	2	species	Dipsastraea sp. UDUK0000336
+46693	46736	2	2	1	1	2	genus	Echinopora
+983564	46693	2	2	1	1	2	species	Echinopora horrida
+102204	46736	2	2	2	2	1	genus	Platygyra
+214987	102204	1	1	1	1	1	species	Platygyra daedalea
+102205	102204	1	1	1	1	0	species	Platygyra sinensis
 46729	3115840	18	18	9	9	7	family	Pocilloporidae
 46730	46729	9	9	6	6	2	genus	Pocillopora
 46731	46730	3	3	2	2	0	species	Pocillopora damicornis
@@ -30077,21 +30158,6 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 123768	46729	4	4	1	1	4	genus	Madracis
 999287	123768	2	2	1	1	2	species	Madracis auretenra
 123773	123768	2	2	1	1	2	species	Madracis senaria
-46736	3115840	16	16	7	8	10	family	Merulinidae
-1920453	46736	7	7	4	2	4	genus	Orbicella
-48498	1920453	3	3	3	2	0	species	Orbicella faveolata
-48500	1920453	2	2	1	1	2	species	Orbicella annularis
-48499	1920453	2	2	1	1	2	species	Orbicella franksi
-46691	46736	3	3	2	2	3	genus	Cyphastrea
-1967629	46691	2	2	1	1	2	species	Cyphastrea salae
-570133	46691	1	1	1	1	1	species	Cyphastrea microphthalma
-46695	46736	2	2	1	1	0	genus	Caulastraea
-46696	46695	2	2	1	1	0	species	Caulastraea furcata
-46693	46736	2	2	1	1	2	genus	Echinopora
-983564	46693	2	2	1	1	2	species	Echinopora horrida
-102204	46736	2	2	2	2	1	genus	Platygyra
-214987	102204	1	1	1	1	1	species	Platygyra daedalea
-102205	102204	1	1	1	1	0	species	Platygyra sinensis
 46756	3115840	7	7	2	2	7	family	Faviidae
 242717	46756	3	3	2	2	3	genus	Colpophyllia
 242718	242717	3	3	2	2	3	species	Colpophyllia natans
@@ -30737,8 +30803,8 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 10228	10227	1	1	1	0	0	species	Trichoplax adhaerens
 2636125	10227	1	1	1	1	0	no rank	unclassified Trichoplax
 287889	2636125	1	1	1	1	0	species	Trichoplax sp. H2
-6040	33208	247	247	21	21	227	phylum	Porifera
-6042	6040	218	218	19	21	200	class	Demospongiae
+6040	33208	248	248	21	21	228	phylum	Porifera
+6042	6040	219	219	19	21	201	class	Demospongiae
 1779146	6042	166	166	15	20	156	subclass	Heteroscleromorpha
 1779164	1779146	40	40	3	8	40	order	Tetractinellida
 1779168	1779164	32	32	3	7	32	suborder	Astrophorina
@@ -30952,7 +31018,7 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 253171	253170	5	5	3	2	4	genus	Halisarca
 2583056	253171	3	3	2	1	2	species	Halisarca dujardinii
 3411723	253171	2	2	1	1	2	species	Halisarca cf. caerulea
-1779147	6042	24	24	3	6	23	subclass	Keratosa
+1779147	6042	25	25	3	6	24	subclass	Keratosa
 119428	1779147	23	23	2	5	22	order	Dictyoceratida
 119429	119428	8	8	1	3	8	family	Spongiidae
 121489	119429	4	4	1	2	4	genus	Spongia
@@ -30980,10 +31046,12 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 190526	190525	3	3	2	1	2	genus	Dysidea
 190527	190526	2	2	1	1	2	species	Dysidea cf. avara
 196820	190526	1	1	1	1	0	species	Dysidea avara
-119424	1779147	1	1	1	1	1	order	Dendroceratida
-119425	119424	1	1	1	1	1	family	Darwinellidae
+119424	1779147	2	2	1	1	2	order	Dendroceratida
+119425	119424	2	2	1	1	2	family	Darwinellidae
 119426	119425	1	1	1	1	1	genus	Aplysilla
 1266580	119426	1	1	1	1	1	species	Aplysilla rubra
+279629	119425	1	1	1	1	1	genus	Chelonaplysilla
+3291107	279629	1	1	1	1	1	species	Chelonaplysilla americana
 60882	6040	19	19	4	6	19	class	Hexactinellida
 60883	60882	17	17	3	5	17	subclass	Hexasterophora
 60884	60883	11	11	2	4	11	order	Lyssacinosida
@@ -31037,20 +31105,20 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 2020472	45128	1	1	1	1	0	species	Clathrina lutea
 1853778	45127	1	1	1	0	0	genus	Nicola
 1853779	1853778	1	1	1	0	0	species	Nicola tetela
-4751	33154	26818	26818	2375	182	8073	kingdom	Fungi
-451864	4751	25666	25666	2305	181	7525	subkingdom	Dikarya
-4890	451864	21923	21923	1960	175	6228	phylum	Ascomycota
-716545	4890	21748	21748	1945	175	6200	clade	saccharomyceta
-147538	716545	14210	14210	1509	157	4622	subphylum	Pezizomycotina
-716546	147538	13957	13957	1490	157	4539	clade	leotiomyceta
-715989	716546	6968	6968	918	141	1806	clade	sordariomyceta
-147550	715989	6504	6504	837	138	1672	class	Sordariomycetes
-222543	147550	4606	4606	675	128	1207	subclass	Hypocreomycetidae
-5125	222543	3826	3826	566	115	968	order	Hypocreales
-110618	5125	2412	2412	300	89	695	family	Nectriaceae
-5506	110618	2226	2226	272	87	648	genus	Fusarium
-171631	5506	912	912	104	41	346	species group	Fusarium oxysporum species complex
-5507	171631	894	894	102	38	336	species	Fusarium oxysporum
+4751	33154	26831	26831	2375	182	8082	kingdom	Fungi
+451864	4751	25679	25679	2305	181	7534	subkingdom	Dikarya
+4890	451864	21935	21935	1960	175	6237	phylum	Ascomycota
+716545	4890	21760	21760	1945	175	6209	clade	saccharomyceta
+147538	716545	14222	14222	1509	157	4631	subphylum	Pezizomycotina
+716546	147538	13968	13968	1490	157	4548	clade	leotiomyceta
+715989	716546	6979	6979	918	141	1815	clade	sordariomyceta
+147550	715989	6507	6507	837	138	1673	class	Sordariomycetes
+222543	147550	4608	4608	675	128	1207	subclass	Hypocreomycetidae
+5125	222543	3828	3828	566	115	968	order	Hypocreales
+110618	5125	2414	2414	300	89	695	family	Nectriaceae
+5506	110618	2228	2228	272	87	648	genus	Fusarium
+171631	5506	914	914	104	41	346	species group	Fusarium oxysporum species complex
+5507	171631	896	896	102	38	336	species	Fusarium oxysporum
 61369	5507	61	61	4	11	0	forma specialis	Fusarium oxysporum f. sp. melonis
 1089452	61369	2	2	2	0	0	strain	Fusarium oxysporum f. sp. melonis 26406
 100903	5507	43	43	4	6	4	forma specialis	Fusarium oxysporum f. sp. fragariae
@@ -33071,8 +33139,8 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 1286976	223192	1	1	1	0	0	strain	Phaeoacremonium minimum UCRPA7
 414583	222544	1	1	1	1	1	no rank	unclassified Sordariomycetidae
 2011687	414583	1	1	1	1	1	species	Sordariomycetidae sp.
-222545	147550	361	361	92	39	135	subclass	Xylariomycetidae
-37989	222545	261	261	64	34	97	order	Xylariales
+222545	147550	362	362	93	39	136	subclass	Xylariomycetidae
+37989	222545	262	262	65	34	98	order	Xylariales
 37990	37989	109	109	30	22	69	family	Xylariaceae
 37991	37990	58	58	22	17	32	genus	Xylaria
 2604348	37991	19	19	12	9	15	no rank	unclassified Xylaria
@@ -33273,11 +33341,12 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 155417	155415	1	1	1	1	0	species	Monosporascus ibericus
 679598	189359	2	2	2	1	0	genus	Hansfordia
 767359	679598	2	2	2	1	0	species	Hansfordia pulvinata
-1682405	37989	7	7	4	2	2	family	Microdochiaceae
-67608	1682405	7	7	4	2	2	genus	Microdochium
+1682405	37989	8	8	5	3	3	family	Microdochiaceae
+67608	1682405	8	8	5	3	3	genus	Microdochium
 5520	67608	3	3	2	2	2	species	Microdochium nivale
 196109	67608	1	1	1	0	0	species	Microdochium bolleyi
 647655	67608	1	1	1	1	0	species	Microdochium majus
+3695848	67608	1	1	1	1	1	species	Microdochium maydis
 1501415	67608	1	1	1	1	0	species	Microdochium paspali
 1682393	67608	1	1	1	0	0	species	Microdochium trichocladiopsis
 127936	37989	4	4	3	2	0	no rank	unclassified Xylariales
@@ -33395,8 +33464,8 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 135653	135652	1	1	1	1	1	family	Lulworthiaceae
 42464	135653	1	1	1	1	1	genus	Zalerion
 339359	42464	1	1	1	1	1	species	Zalerion maritima
-147548	715989	463	463	151	40	133	class	Leotiomycetes
-5178	147548	398	398	134	36	116	order	Helotiales
+147548	715989	471	471	151	40	141	class	Leotiomycetes
+5178	147548	405	405	134	36	123	order	Helotiales
 28983	5178	177	177	49	23	35	family	Sclerotiniaceae
 33196	28983	89	89	21	14	17	genus	Botrytis
 40559	33196	65	65	15	8	13	species	Botrytis cinerea
@@ -33519,7 +33588,7 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 54687	38452	1	1	1	1	0	species	Rutstroemia sydowiana
 54683	110844	1	1	1	1	0	genus	Lanzia
 1424426	54683	1	1	1	1	0	species	Lanzia echinophila
-5181	5178	20	20	10	8	3	family	Helotiaceae
+5181	5178	21	21	10	8	4	family	Helotiaceae
 5182	5181	13	13	5	6	1	genus	Hymenoscyphus
 746836	5182	3	3	3	1	0	species	Hymenoscyphus fraxineus
 595503	5182	1	1	1	0	0	species	Hymenoscyphus albidus
@@ -33548,6 +33617,8 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 2259768	2082975	1	1	1	1	0	species	Hymenotorrendiella dingleyae
 1335925	5181	1	1	1	1	1	genus	Phaeohelotium
 2576867	1335925	1	1	1	1	1	species	Phaeohelotium pateriforme
+153036	5181	1	1	1	1	1	no rank	unclassified Helotiaceae
+3695537	153036	1	1	1	1	1	species	Helotiaceae sp. PDD 59981
 2316155	5178	20	20	14	10	5	family	Ploettnerulaceae
 210567	2316155	12	12	9	6	4	genus	Cadophora
 2637819	210567	6	6	5	3	3	no rank	unclassified Cadophora
@@ -33608,7 +33679,28 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 1569044	698440	2	2	1	1	1	forma specialis	Drepanopeziza brunnea f. sp. 'monogermtubi'
 373114	2793945	1	1	1	1	0	genus	Blumeriella
 373115	373114	1	1	1	1	0	species	Blumeriella jaapii
-159639	5178	13	13	10	9	6	no rank	Helotiales incertae sedis
+2589077	5178	15	15	2	4	13	family	Lachnaceae
+47830	2589077	7	7	1	3	7	genus	Lachnellula
+1316785	47830	1	1	1	1	1	species	Lachnellula arida
+1316786	47830	1	1	1	1	1	species	Lachnellula cervina
+1316788	47830	1	1	1	1	1	species	Lachnellula hyalina
+215460	47830	1	1	1	1	1	species	Lachnellula occidentalis
+602034	47830	1	1	1	1	1	species	Lachnellula subtilissima
+602035	47830	1	1	1	1	1	species	Lachnellula suecica
+215461	47830	1	1	1	1	1	species	Lachnellula willkommii
+47817	2589077	3	3	1	1	2	genus	Lachnum
+199676	47817	1	1	1	1	1	species	Lachnum hyalopus
+2283846	47817	1	1	1	1	0	species	Lachnum nothofagi
+2640334	47817	1	1	1	1	1	no rank	unclassified Lachnum
+3695539	2640334	1	1	1	1	1	species	Lachnum sp. PDD 93687
+3735103	2589077	2	2	1	1	2	genus	Lachnocudoniella
+3735102	3735103	2	2	1	1	2	species	Lachnocudoniella javanica
+2800370	2589077	2	2	1	1	2	no rank	unclassified Lachnaceae
+3695538	2800370	1	1	1	1	1	species	Lachnaceae sp. PDD 119487
+3695536	2800370	1	1	1	1	1	species	Lachnaceae sp. PDD 60116
+47811	2589077	1	1	1	1	0	genus	Proliferodiscus
+2283848	47811	1	1	1	1	0	species	Proliferodiscus dingleyae
+159639	5178	14	14	10	9	7	no rank	Helotiales incertae sedis
 164535	159639	4	4	3	3	2	genus	Tetracladium
 164538	164535	1	1	1	1	1	species	Tetracladium marchalianum
 164539	164535	1	1	1	1	1	species	Tetracladium maxilliforme
@@ -33633,25 +33725,12 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 3375984	3137053	1	1	1	1	1	species	Leptodophora sp. 'Broadleaf-Isolate-01'
 2316363	159639	1	1	1	1	1	genus	Polyphilus
 2137868	2316363	1	1	1	1	1	species	Polyphilus sieberi
+2975537	159639	1	1	1	1	1	genus	Pseudomitrula
+2975538	2975537	1	1	1	1	1	no rank	unclassified Pseudomitrula
+3695533	2975538	1	1	1	1	1	species	Pseudomitrula sp. PDD 121212
 204754	159639	1	1	1	1	0	genus	Rhexocercosporidium
 2606572	204754	1	1	1	1	0	no rank	unclassified Rhexocercosporidium
 2042821	2606572	1	1	1	1	0	species	Rhexocercosporidium sp. MPI-PUGE-AT-0058
-2589077	5178	12	12	2	4	10	family	Lachnaceae
-47830	2589077	7	7	1	3	7	genus	Lachnellula
-1316785	47830	1	1	1	1	1	species	Lachnellula arida
-1316786	47830	1	1	1	1	1	species	Lachnellula cervina
-1316788	47830	1	1	1	1	1	species	Lachnellula hyalina
-215460	47830	1	1	1	1	1	species	Lachnellula occidentalis
-602034	47830	1	1	1	1	1	species	Lachnellula subtilissima
-602035	47830	1	1	1	1	1	species	Lachnellula suecica
-215461	47830	1	1	1	1	1	species	Lachnellula willkommii
-3735103	2589077	2	2	1	1	2	genus	Lachnocudoniella
-3735102	3735103	2	2	1	1	2	species	Lachnocudoniella javanica
-47817	2589077	2	2	1	1	1	genus	Lachnum
-199676	47817	1	1	1	1	1	species	Lachnum hyalopus
-2283846	47817	1	1	1	1	0	species	Lachnum nothofagi
-47811	2589077	1	1	1	1	0	genus	Proliferodiscus
-2283848	47811	1	1	1	1	0	species	Proliferodiscus dingleyae
 47743	5178	7	7	2	1	1	family	Hyaloscyphaceae
 47747	47743	6	6	1	1	1	genus	Hyaloscypha
 186449	47747	5	5	1	1	1	no rank	Hyaloscypha hepaticicola/Rhizoscyphus ericae species complex
@@ -33681,6 +33760,11 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 54692	1971365	4	4	2	2	1	genus	Chlorociboria
 296797	54692	2	2	2	2	1	species	Chlorociboria aeruginascens
 54693	54692	2	2	1	0	0	species	Chlorociboria aeruginosa
+54695	5178	4	4	3	2	2	no rank	unclassified Helotiales
+1117665	54695	1	1	1	0	0	species	Helotiales sp. EF0021
+1967635	54695	1	1	1	1	0	species	Helotiales sp. F229
+3695535	54695	1	1	1	1	1	species	Helotiales sp. PDD 105286
+3695534	54695	1	1	1	1	1	species	Helotiales sp. PDD 92176
 2907085	5178	3	3	3	2	1	family	Amorphothecaceae
 5100	2907085	3	3	3	2	1	genus	Amorphotheca
 5101	5100	3	3	3	2	1	species	Amorphotheca resinae
@@ -33725,9 +33809,6 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 186310	2488219	2	2	2	1	0	genus	Calycina
 253104	186310	1	1	1	1	0	species	Calycina herbarum
 1763456	186310	1	1	1	0	0	species	Calycina marina
-54695	5178	2	2	2	1	0	no rank	unclassified Helotiales
-1117665	54695	1	1	1	0	0	species	Helotiales sp. EF0021
-1967635	54695	1	1	1	1	0	species	Helotiales sp. F229
 292493	5178	2	2	1	2	2	family	Vibrisseaceae
 355356	292493	2	2	1	2	2	genus	Chlorovibrissea
 315225	355356	1	1	1	1	1	species	Chlorovibrissea albofusca
@@ -33747,10 +33828,10 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 2907192	5178	1	1	1	0	0	family	Tricladiaceae
 223899	2907192	1	1	1	0	0	genus	Tricladium
 2075069	223899	1	1	1	0	0	species	Tricladium varicosporioides
-292491	147548	41	41	13	11	9	order	Thelebolales
-46451	292491	41	41	13	11	9	family	Thelebolaceae
-78156	46451	40	40	12	11	8	genus	Pseudogymnoascus
-2637121	78156	25	25	5	7	2	no rank	unclassified Pseudogymnoascus
+292491	147548	42	42	14	12	10	order	Thelebolales
+46451	292491	42	42	14	12	10	family	Thelebolaceae
+78156	46451	41	41	13	12	9	genus	Pseudogymnoascus
+2637121	78156	26	26	6	8	3	no rank	unclassified Pseudogymnoascus
 1622148	2637121	1	1	1	1	0	species	Pseudogymnoascus sp. 03VT05
 1752145	2637121	1	1	1	1	0	species	Pseudogymnoascus sp. 04NY16
 1622149	2637121	1	1	1	1	0	species	Pseudogymnoascus sp. 05NY08
@@ -33760,6 +33841,7 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 1436941	2637121	1	1	1	1	0	species	Pseudogymnoascus sp. BL549
 3462542	2637121	1	1	1	1	1	species	Pseudogymnoascus sp. HDN153126
 3384513	2637121	1	1	1	1	1	species	Pseudogymnoascus sp. HDN17-895
+3695562	2637121	1	1	1	1	1	species	Pseudogymnoascus sp. ICMP 22791
 3041820	2637121	1	1	1	1	0	species	Pseudogymnoascus sp. SDFLT0511
 1420912	2637121	1	1	1	1	0	species	Pseudogymnoascus sp. VKM F-103
 1437433	2637121	1	1	1	1	0	species	Pseudogymnoascus sp. VKM F-3557
@@ -36901,8 +36983,8 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 1217823	1217822	1	1	1	0	0	genus	Xylona
 1217826	1217823	1	1	1	0	0	species	Xylona heveae
 1328760	1217826	1	1	1	0	0	strain	Xylona heveae TC161
-147549	147538	178	178	26	16	49	class	Pezizomycetes
-5185	147549	178	178	26	16	49	order	Pezizales
+147549	147538	179	179	26	16	49	class	Pezizomycetes
+5185	147549	179	179	26	16	49	order	Pezizales
 44615	5185	73	73	2	12	25	family	Discinaceae
 33160	44615	23	23	2	5	10	genus	Gyromitra
 2622709	33160	11	11	1	2	4	no rank	unclassified Gyromitra
@@ -36965,8 +37047,8 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 2303735	3418891	1	1	1	1	0	species	Paradiscina melaleuca
 3138736	44615	1	1	1	1	1	genus	Pseudoverpa
 2107762	3138736	1	1	1	1	1	species	Pseudoverpa anthracobia
-5192	5185	64	64	11	4	14	family	Morchellaceae
-5193	5192	57	57	11	4	14	genus	Morchella
+5192	5185	65	65	11	4	14	family	Morchellaceae
+5193	5192	58	58	11	4	14	genus	Morchella
 1051054	5193	31	31	9	3	9	section	Morchella sect. Distantes
 1582338	1051054	7	7	4	1	4	species	Morchella eximia
 1174677	1051054	4	4	4	1	0	species	Morchella sextelata
@@ -36986,7 +37068,7 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 743780	1051054	1	1	1	0	0	species	Morchella punctipes
 62758	1051054	1	1	1	1	1	species	Morchella semilibera
 1174678	1051054	1	1	1	0	0	species	Morchella snyderi
-2609239	5193	16	16	3	2	1	no rank	unclassified Morchella
+2609239	5193	17	17	4	2	1	no rank	unclassified Morchella
 2944688	2609239	1	1	1	1	0	species	Morchella sp. 2014-9hei
 2944693	2609239	1	1	1	1	0	species	Morchella sp. 2015-shanyang
 2944694	2609239	1	1	1	1	0	species	Morchella sp. 2015-Win8
@@ -37001,6 +37083,7 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 2944895	2609239	1	1	1	1	0	species	Morchella sp. 2018-W30
 2944894	2609239	1	1	1	1	0	species	Morchella sp. 2018-W38C
 2944691	2609239	1	1	1	1	0	species	Morchella sp. 2018-W45
+3367073	2609239	1	1	1	1	0	species	Morchella sp. 21189
 2678603	2609239	1	1	1	1	0	species	Morchella sp. a71
 3459854	2609239	1	1	1	1	1	species	Morchella sp. GAL PhC 278
 1175439	5193	6	6	2	2	3	section	Morchella sect. Morchella
@@ -39124,11 +39207,11 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 129384	4890	1	1	1	0	0	no rank	Ascomycota incertae sedis
 1090492	129384	1	1	1	0	0	genus	Aristastoma
 2074774	1090492	1	1	1	0	0	species	Aristastoma oeconomicum
-5204	451864	3742	3742	611	91	1297	phylum	Basidiomycota
-5302	5204	2736	2736	440	71	1048	subphylum	Agaricomycotina
-155619	5302	2065	2065	330	66	820	class	Agaricomycetes
-452333	155619	1470	1470	187	59	588	subclass	Agaricomycetidae
-5338	452333	928	928	166	51	271	order	Agaricales
+5204	451864	3743	3743	611	91	1297	phylum	Basidiomycota
+5302	5204	2737	2737	440	71	1048	subphylum	Agaricomycotina
+155619	5302	2066	2066	330	66	820	class	Agaricomycetes
+452333	155619	1471	1471	187	59	588	subclass	Agaricomycetidae
+5338	452333	929	929	166	51	271	order	Agaricales
 2982305	5338	419	419	69	26	122	suborder	Agaricineae
 3710399	2982305	153	153	12	6	10	family	Agrocybaceae
 71950	3710399	146	146	9	4	7	genus	Psilocybe
@@ -39576,8 +39659,8 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 2682957	3476784	1	1	1	1	1	species	Stygiomarasmius scandens
 182061	3464759	1	1	1	0	0	genus	Tetrapyrgos
 182062	182061	1	1	1	0	0	species	Tetrapyrgos nigripes
-2982303	5338	141	141	33	22	42	suborder	Tricholomatineae
-930979	2982303	78	78	17	16	12	family	Lyophyllaceae
+2982303	5338	142	142	34	22	42	suborder	Tricholomatineae
+930979	2982303	79	79	18	16	12	family	Lyophyllaceae
 71927	930979	44	44	7	4	7	genus	Termitomyces
 2634893	71927	40	40	7	4	5	no rank	unclassified Termitomyces
 2788930	2634893	1	1	1	1	0	species	Termitomyces sp. 'cryptogamus'
@@ -39624,8 +39707,8 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 171347	71927	1	1	1	1	1	species	Termitomyces eurrhizus
 71929	71927	1	1	1	1	1	species	Termitomyces heimii
 201775	71927	1	1	1	0	0	species	Termitomyces titanicus
-47720	930979	9	9	6	3	1	genus	Lyophyllum
-64660	47720	5	5	3	1	0	species	Lyophyllum decastes
+47720	930979	10	10	7	3	1	genus	Lyophyllum
+64660	47720	6	6	4	1	0	species	Lyophyllum decastes
 47721	47720	2	2	2	1	0	species	Lyophyllum shimeji
 117065	47720	1	1	1	0	1	species	Lyophyllum atratum
 71895	47720	1	1	1	1	0	species	Lyophyllum semitale
@@ -43141,18 +43224,18 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 42461	33154	1	1	1	1	0	no rank	Opisthokonta incertae sedis
 98350	42461	1	1	1	1	0	genus	Corallochytrium
 98351	98350	1	1	1	1	0	species	Corallochytrium limacisporum
-33090	2759	10437	10437	1613	163	2751	kingdom	Viridiplantae
-35493	33090	9828	9828	1476	154	2483	phylum	Streptophyta
-131221	35493	9817	9817	1474	154	2483	subphylum	Streptophytina
-3193	131221	9800	9800	1470	154	2480	clade	Embryophyta
-58023	3193	9420	9420	1454	154	2260	clade	Tracheophyta
-78536	58023	9410	9410	1452	154	2258	clade	Euphyllophyta
-58024	78536	9380	9380	1450	154	2250	clade	Spermatophyta
-3398	58024	9306	9306	1426	154	2217	class	Magnoliopsida
-1437183	3398	9289	9289	1424	154	2209	clade	Mesangiospermae
-71240	1437183	6962	6962	1119	122	1628	clade	eudicotyledons
-91827	71240	6962	6962	1119	122	1628	clade	Gunneridae
-1437201	91827	6960	6960	1119	122	1628	clade	Pentapetalae
+33090	2759	10439	10439	1614	163	2752	kingdom	Viridiplantae
+35493	33090	9829	9829	1477	154	2483	phylum	Streptophyta
+131221	35493	9818	9818	1475	154	2483	subphylum	Streptophytina
+3193	131221	9801	9801	1471	154	2480	clade	Embryophyta
+58023	3193	9421	9421	1455	154	2260	clade	Tracheophyta
+78536	58023	9411	9411	1453	154	2258	clade	Euphyllophyta
+58024	78536	9381	9381	1451	154	2250	clade	Spermatophyta
+3398	58024	9307	9307	1427	154	2217	class	Magnoliopsida
+1437183	3398	9290	9290	1425	154	2209	clade	Mesangiospermae
+71240	1437183	6963	6963	1120	122	1628	clade	eudicotyledons
+91827	71240	6963	6963	1120	122	1628	clade	Gunneridae
+1437201	91827	6961	6961	1120	122	1628	clade	Pentapetalae
 71275	1437201	4393	4393	768	111	896	clade	rosids
 91835	71275	2385	2385	501	89	499	clade	fabids
 3744	91835	684	684	175	28	155	order	Rosales
@@ -45757,8 +45840,8 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 2304099	3602	1	1	1	0	0	tribe	Parthenocisseae
 3606	2304099	1	1	1	0	0	genus	Parthenocissus
 345127	3606	1	1	1	0	0	species	Parthenocissus tricuspidata
-71274	1437201	1821	1821	431	55	574	clade	asterids
-91888	71274	1105	1105	275	48	254	clade	lamiids
+71274	1437201	1822	1822	432	55	574	clade	asterids
+91888	71274	1106	1106	276	48	254	clade	lamiids
 4069	91888	479	479	107	28	50	order	Solanales
 4070	4069	451	451	95	28	39	family	Solanaceae
 424551	4070	416	416	83	25	34	subfamily	Solanoideae
@@ -45933,8 +46016,8 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 3127349	47518	1	1	1	1	0	species	Calystegia stebbinsii
 4122	292917	2	2	1	1	2	genus	Convolvulus
 4123	4122	2	2	1	1	2	species	Convolvulus arvensis
-4143	91888	474	474	131	34	165	order	Lamiales
-4136	4143	140	140	50	16	43	family	Lamiaceae
+4143	91888	475	475	132	34	165	order	Lamiales
+4136	4143	141	141	51	16	43	family	Lamiaceae
 216706	4136	95	95	38	13	15	subfamily	Nepetoideae
 216718	216706	76	76	27	10	12	tribe	Mentheae
 224744	216718	26	26	2	2	0	genus	Micromeria
@@ -46043,21 +46126,22 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 41225	216720	3	3	2	1	1	genus	Elsholtzia
 475396	41225	2	2	1	1	0	species	Elsholtzia splendens
 662901	41225	1	1	1	1	1	species	Elsholtzia ciliata
-216703	4136	24	24	8	4	16	subfamily	Lamioideae
+216703	4136	25	25	9	4	16	subfamily	Lamioideae
+983535	216703	7	7	4	4	4	tribe	Stachydeae
+53171	983535	3	3	2	2	2	genus	Stachys
+694383	53171	2	2	1	1	2	species	Stachys alpina
+587680	53171	1	1	1	1	0	species	Stachys geobombycis
+457146	983535	2	2	1	1	2	genus	Melittis
+457147	457146	2	2	1	1	2	species	Melittis melissophyllum
+155231	983535	1	1	1	1	0	genus	Sideritis
+155261	155231	1	1	1	1	0	species	Sideritis scardica
+141788	983535	1	1	1	1	0	genus	Stenogyne
+141791	141788	1	1	1	1	0	species	Stenogyne calaminthoides
 983547	216703	6	6	1	1	6	tribe	Lamieae
 53158	983547	6	6	1	1	6	genus	Lamium
 53160	53158	2	2	1	1	2	species	Lamium amplexicaule
 53163	53158	2	2	1	1	2	species	Lamium maculatum
 53164	53158	2	2	1	1	2	species	Lamium purpureum
-983535	216703	6	6	3	3	4	tribe	Stachydeae
-457146	983535	2	2	1	1	2	genus	Melittis
-457147	457146	2	2	1	1	2	species	Melittis melissophyllum
-53171	983535	2	2	1	1	2	genus	Stachys
-694383	53171	2	2	1	1	2	species	Stachys alpina
-155231	983535	1	1	1	1	0	genus	Sideritis
-155261	155231	1	1	1	1	0	species	Sideritis scardica
-141788	983535	1	1	1	1	0	genus	Stenogyne
-141791	141788	1	1	1	1	0	species	Stenogyne calaminthoides
 2836356	216703	4	4	1	1	4	tribe	Galeopsideae
 457137	2836356	4	4	1	1	4	genus	Galeopsis
 457138	457137	2	2	1	1	2	species	Galeopsis angustifolia
@@ -50521,8 +50605,8 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 3173	3172	1	1	1	0	0	family	Klebsormidiaceae
 3174	3173	1	1	1	0	0	genus	Klebsormidium
 105231	3174	1	1	1	0	0	species	Klebsormidium nitens
-3041	33090	608	608	187	57	268	phylum	Chlorophyta
-2692248	3041	392	392	158	53	141	clade	core chlorophytes
+3041	33090	609	609	187	57	269	phylum	Chlorophyta
+2692248	3041	393	393	158	53	142	clade	core chlorophytes
 75966	2692248	194	194	87	36	92	class	Trebouxiophyceae
 35460	75966	89	89	55	26	24	order	Chlorellales
 35461	35460	89	89	55	26	24	family	Chlorellaceae
@@ -50875,10 +50959,10 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 33094	33093	1	1	1	1	0	genus	Draparnaldia
 2625342	33094	1	1	1	1	0	no rank	unclassified Draparnaldia
 3345351	2625342	1	1	1	1	0	species	Draparnaldia sp. CCAC 6921
-33103	2692248	33	33	17	12	11	class	Ulvophyceae
-2546214	33103	18	18	10	9	7	clade	TCBD clade
-33104	2546214	12	12	9	8	7	order	Bryopsidales
-2791031	33104	9	9	6	6	7	suborder	Halimedineae
+33103	2692248	34	34	17	12	12	class	Ulvophyceae
+2546214	33103	19	19	10	10	8	clade	TCBD clade
+33104	2546214	13	13	9	9	8	order	Bryopsidales
+2791031	33104	10	10	6	7	8	suborder	Halimedineae
 379500	2791031	6	6	3	3	5	family	Halimedaceae
 2791007	379500	4	4	1	1	4	tribe	Udoteae
 170434	2791007	4	4	1	1	4	genus	Penicillus
@@ -50888,8 +50972,9 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 118221	2791010	2	2	2	2	1	genus	Halimeda
 170411	118221	1	1	1	1	1	species	Halimeda cylindracea
 118223	118221	1	1	1	1	0	species	Halimeda opuntia
-35432	2791031	3	3	3	3	2	family	Caulerpaceae
-76312	35432	3	3	3	3	2	genus	Caulerpa
+35432	2791031	4	4	4	4	3	family	Caulerpaceae
+76312	35432	4	4	4	4	3	genus	Caulerpa
+148945	76312	1	1	1	1	1	species	Caulerpa cupressoides
 148947	76312	1	1	1	1	0	species	Caulerpa lentillifera
 76314	76312	1	1	1	1	1	species	Caulerpa prolifera
 76317	76312	1	1	1	1	1	species	Caulerpa racemosa
