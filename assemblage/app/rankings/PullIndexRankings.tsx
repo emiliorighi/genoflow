@@ -1,21 +1,31 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { CircleHelp } from 'lucide-react'
 import type { RegionCard } from '../map/explore/exploreData'
+import type { FlowIndex } from '../map/explore/flowIndex'
+import type { YearBounds } from '../map/explore/yearRange'
 import {
   collectedCount,
   sequencedCount,
   sortCardsByPullIndex,
 } from '../map/explore/pullIndex'
 import PullIndexBarRow from './PullIndexBarRow'
+import PullTimeCharts from './PullTimeCharts'
 
 export type RankingsTab = 'regions' | 'continents' | 'countries'
 
 const PULL_TIP =
   'Of species sequenced here, the fraction collected elsewhere.'
 
+/** Countries with fewer sequenced species than this are hidden by default (tiny samples). */
+const DEFAULT_MIN_SEQUENCED = 30
+const MIN_PRESETS = [0, 10, 30, 50, 100]
+const MIN_QUERY_KEY = 'min'
+
 type PullIndexRankingsProps = {
+  flowIndex: FlowIndex | null
+  yearBounds: YearBounds | null
   regionCards: RegionCard[]
   continentCards: RegionCard[]
   countryCards: RegionCard[]
@@ -24,6 +34,8 @@ type PullIndexRankingsProps = {
 }
 
 export default function PullIndexRankings({
+  flowIndex,
+  yearBounds,
   regionCards,
   continentCards,
   countryCards,
@@ -31,16 +43,38 @@ export default function PullIndexRankings({
   error,
 }: PullIndexRankingsProps) {
   const [tab, setTab] = useState<RankingsTab>('continents')
+  const [minSequenced, setMinSequenced] = useState(DEFAULT_MIN_SEQUENCED)
+  const [customMin, setCustomMin] = useState(false)
+
+  // Restore a shared ?min= after mount (the page is statically exported, so no SSR read).
+  useEffect(() => {
+    const raw = new URLSearchParams(window.location.search).get(MIN_QUERY_KEY)
+    if (raw == null) return
+    const value = Number.parseInt(raw, 10)
+    if (Number.isFinite(value) && value >= 0) {
+      setMinSequenced(value)
+      setCustomMin(!MIN_PRESETS.includes(value))
+    }
+  }, [])
+
+  const changeMin = (value: number) => {
+    setMinSequenced(value)
+    const url = new URL(window.location.href)
+    if (value === DEFAULT_MIN_SEQUENCED) url.searchParams.delete(MIN_QUERY_KEY)
+    else url.searchParams.set(MIN_QUERY_KEY, String(value))
+    window.history.replaceState(null, '', url)
+  }
+
+  const sourceCards =
+    tab === 'regions' ? regionCards : tab === 'continents' ? continentCards : countryCards
 
   const cards = useMemo(() => {
-    const source =
-      tab === 'regions'
-        ? regionCards
-        : tab === 'continents'
-          ? continentCards
-          : countryCards
-    return sortCardsByPullIndex(source)
-  }, [tab, regionCards, continentCards, countryCards])
+    const kept =
+      tab === 'countries' && minSequenced > 0
+        ? sourceCards.filter((card) => sequencedCount(card) >= minSequenced)
+        : sourceCards
+    return sortCardsByPullIndex(kept)
+  }, [tab, sourceCards, minSequenced])
 
   const maxCount = useMemo(() => {
     let max = 0
@@ -96,6 +130,51 @@ export default function PullIndexRankings({
         </p>
       </div>
 
+      {tab === 'countries' && (
+        <div className="pull-rank-filter">
+          <label htmlFor="pull-min-select">Show countries with at least</label>
+          <select
+            id="pull-min-select"
+            value={customMin ? 'custom' : String(minSequenced)}
+            onChange={(event) => {
+              if (event.target.value === 'custom') {
+                setCustomMin(true)
+                return
+              }
+              setCustomMin(false)
+              changeMin(Number(event.target.value))
+            }}
+          >
+            {MIN_PRESETS.map((n) => (
+              <option key={n} value={n}>
+                {n === 0 ? 'Any number of' : n}
+              </option>
+            ))}
+            <option value="custom">Custom…</option>
+          </select>
+          {customMin && (
+            <input
+              type="number"
+              min={0}
+              step={1}
+              inputMode="numeric"
+              aria-label="Minimum sequenced species"
+              value={minSequenced}
+              onChange={(event) => {
+                const value = Number.parseInt(event.target.value, 10)
+                changeMin(Number.isFinite(value) && value >= 0 ? value : 0)
+              }}
+            />
+          )}
+          <span>sequenced species</span>
+          {!loading && (
+            <span className="pull-rank-filter-count">
+              Showing {cards.length.toLocaleString()} of {countryCards.length.toLocaleString()}
+            </span>
+          )}
+        </div>
+      )}
+
       <div className="pull-rank-legend" aria-hidden="true">
         <span className="pull-rank-legend-group">
           <span className="pull-rank-legend-side">Collected</span>
@@ -146,6 +225,16 @@ export default function PullIndexRankings({
             ))}
           </div>
         </div>
+      )}
+
+      {!loading && !error && tab !== 'countries' && flowIndex && yearBounds && (
+        <PullTimeCharts
+          key={tab}
+          cards={sourceCards}
+          flowIndex={flowIndex}
+          lastYear={yearBounds.max}
+          firstDataYear={yearBounds.min}
+        />
       )}
     </div>
   )

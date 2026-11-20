@@ -66,7 +66,7 @@ function MapLegendHelp() {
           <li>
             <span className="legend-dot amber" aria-hidden="true" />
             <div>
-              <strong>Collected</strong>
+              <strong>Collected (site)</strong>
               <p>
                 Exact collection site when the biosample has latitude and longitude.
                 A sample with no known sequencing place uses this same mark and has
@@ -77,7 +77,7 @@ function MapLegendHelp() {
           <li>
             <span className="legend-dot green" aria-hidden="true" />
             <div>
-              <strong>Centroid</strong>
+              <strong>Collected (country)</strong>
               <p>
                 Approximate country location used when precise coordinates are
                 missing. The point is placed at the country&apos;s geographic
@@ -861,10 +861,10 @@ export default function ExploreMap({
       )}
       <div className="map-legend">
         <div>
-          <span className="legend-dot amber" /> Collected
+          <span className="legend-dot amber" /> Collected (site)
         </div>
         <div>
-          <span className="legend-dot green" /> Centroid
+          <span className="legend-dot green" /> Collected (country)
         </div>
         <div>
           <span className="legend-dot blue" /> Submitted

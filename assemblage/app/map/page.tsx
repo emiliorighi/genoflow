@@ -11,8 +11,8 @@ import {
   useState,
 } from 'react'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { Info } from 'lucide-react'
 import { load } from '@loaders.gl/core'
+import AtlasTopbar from '../components/AtlasTopbar'
 import ExploreLeftSidebar from './explore/ExploreLeftSidebar'
 import ExploreMap, { type ExploreLayers } from './explore/ExploreMap'
 import ExploreToolbar, { type SearchMode } from './explore/ExploreToolbar'
@@ -677,21 +677,7 @@ function MapPageInner() {
 
   return (
     <main className="atlas-shell">
-      <header className="atlas-topbar">
-        <Link href="/" className="wordmark">
-          GenoFlow<span className="wordmark-dot">.</span>
-        </Link>
-        <div className="atlas-title">Atlas</div>
-        <div className="topbar-info">
-          <Link href="/rankings" className="pull-rank-top-link">
-            Pull index
-          </Link>
-          <span className="pull-rank-topbar-sep" aria-hidden="true">
-            ·
-          </span>
-          <Info size={14} aria-hidden="true" /> Region explorer · live atlas
-        </div>
-      </header>
+      <AtlasTopbar current="map" />
 
       <span className="sr-only" role="status" aria-live="polite">
         {flows

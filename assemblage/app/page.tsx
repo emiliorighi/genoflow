@@ -92,7 +92,6 @@ export default async function Page() {
         <Link href="/" className="wordmark">
           GenoFlow<span className="wordmark-dot">.</span>
         </Link>
-        {process.env.NODE_ENV !== 'production' && <span className="mock-badge">MVP</span>}
         <div className="nav-links">
           <a href="#about">About</a>
           {stats?.charts && <a href="#data">Data</a>}
