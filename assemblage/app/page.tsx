@@ -10,6 +10,8 @@ import {
   MapPinned,
 } from 'lucide-react'
 import { buildMapHref } from './map/types'
+import LandingCharts from './landing/LandingCharts'
+import type { LandingCharts as LandingChartsData } from './landing/chartTypes'
 
 type LandingStats = {
   generatedAt: string
@@ -24,6 +26,7 @@ type LandingStats = {
     speciesWithInstituteArc: number
     speciesWithInstituteArcPct: number
   }
+  charts?: LandingChartsData
   pipeline: {
     step: number
     title: string
@@ -89,9 +92,9 @@ export default async function Page() {
         <Link href="/" className="wordmark">
           GenoFlow<span className="wordmark-dot">.</span>
         </Link>
-        {process.env.NODE_ENV !== 'production' && <span className="mock-badge">MVP</span>}
         <div className="nav-links">
           <a href="#about">About</a>
+          {stats?.charts && <a href="#data">Data</a>}
           <a href="#pipeline">Pipeline</a>
           <Link href="/rankings">Pull index</Link>
           <Link href="/map" className="nav-map-link">
@@ -196,6 +199,13 @@ export default async function Page() {
           </article>
         </div>
       </section>
+      {stats?.charts && (
+        <LandingCharts
+          charts={stats.charts}
+          generatedAt={stats.generatedAt}
+          speciesInAtlas={speciesInAtlas}
+        />
+      )}
       {pipeline.length > 0 && (
         <section className="about-section pipeline-section" id="pipeline">
           <div className="section-intro">

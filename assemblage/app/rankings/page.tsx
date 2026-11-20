@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
-import { ArrowUpRight, Info } from 'lucide-react'
 import { load } from '@loaders.gl/core'
 import {
   buildContinentCards,
@@ -13,6 +12,7 @@ import {
   buildAllCustomIso3Sets,
 } from '../map/explore/exploreData'
 import { buildFlowIndex } from '../map/explore/flowIndex'
+import { computeYearBounds } from '../map/explore/yearRange'
 import { buildCountryTotals, type SpeciesCountRow } from '../map/regionData'
 import {
   normalizeRegionFlows,
@@ -20,6 +20,7 @@ import {
   type WorldGeoJson,
 } from '../map/types'
 import { publicUrl } from '../../lib/publicUrl'
+import AtlasTopbar from '../components/AtlasTopbar'
 import PullIndexRankings from './PullIndexRankings'
 
 export default function RankingsPage() {
@@ -99,6 +100,8 @@ export default function RankingsPage() {
     [flows, customIso3Sets],
   )
 
+  const yearBounds = useMemo(() => (flows ? computeYearBounds(flows) : null), [flows])
+
   const continentCards = useMemo(
     () => (flowIndex ? buildContinentCards(flowIndex) : []),
     [flowIndex],
@@ -131,23 +134,7 @@ export default function RankingsPage() {
 
   return (
     <main className="atlas-shell">
-      <header className="atlas-topbar">
-        <Link href="/" className="wordmark">
-          GenoFlow<span className="wordmark-dot">.</span>
-        </Link>
-        <div className="atlas-title">
-          Pull index <span>rankings</span>
-        </div>
-        <div className="topbar-info pull-rank-topbar-links">
-          <Link href="/map" className="pull-rank-top-link">
-            Map <ArrowUpRight size={12} aria-hidden="true" />
-          </Link>
-          <span className="pull-rank-topbar-sep" aria-hidden="true">
-            ·
-          </span>
-          <Info size={14} aria-hidden="true" /> Sorted by pull index
-        </div>
-      </header>
+      <AtlasTopbar current="rankings" />
 
       <div className="pull-rank-page">
         {loadError ? (
@@ -163,6 +150,8 @@ export default function RankingsPage() {
           </div>
         ) : (
           <PullIndexRankings
+            flowIndex={flowIndex}
+            yearBounds={yearBounds}
             regionCards={regionCards}
             continentCards={continentCards}
             countryCards={countryCards}

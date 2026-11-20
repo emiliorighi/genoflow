@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo } from 'react'
+import { useMemo, type ReactNode } from 'react'
 import { Combobox, type ComboboxOption } from '../Combobox'
 import { instituteKey, type RegionFlow, type Selection } from '../types'
 
@@ -13,6 +13,8 @@ type ExploreToolbarProps = {
   selection: Selection
   onSelect: (selection: Selection) => void
   disabled?: boolean
+  /** Rendered at the far left of the strip (e.g. the year-range chip). */
+  leading?: ReactNode
 }
 
 export default function ExploreToolbar({
@@ -22,6 +24,7 @@ export default function ExploreToolbar({
   selection,
   onSelect,
   disabled,
+  leading,
 }: ExploreToolbarProps) {
   const searchOptions: ComboboxOption[] = useMemo(() => {
     if (searchMode === 'species') {
@@ -73,6 +76,7 @@ export default function ExploreToolbar({
 
   return (
     <div className="explore-toolbar">
+      {leading ? <div className="explore-toolbar-leading">{leading}</div> : null}
       <div className="explore-toolbar-search">
         <div className="explore-search-mode" role="group" aria-label="Search mode">
           <button

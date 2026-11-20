@@ -58,6 +58,7 @@ TSV_COLUMNS = [
     "assembly_level",
     "assembly_submitter",
     "assembly_refseq_category",
+    "assembly_release_date",
     "species_taxid",
     "species_scientific_name",
     "biosample_lat",
@@ -383,6 +384,7 @@ def extract_rows(cache_file: Path) -> list[dict[str, Any]]:
                 "assembly_level": ai.get("assembly_level") or "",
                 "assembly_submitter": submitter,
                 "assembly_refseq_category": ai.get("refseq_category") or "",
+                "assembly_release_date": ai.get("release_date") or "",
                 "raw_tax_id": raw_tax_id,
                 "raw_organism_name": raw_name,
                 "biosample_lat": lat,
@@ -502,6 +504,9 @@ def assemble_tsv_rows(
                 "assembly_submitter": sanitize_tsv_field(submitter),
                 "assembly_refseq_category": sanitize_tsv_field(
                     row["assembly_refseq_category"]
+                ),
+                "assembly_release_date": sanitize_tsv_field(
+                    row["assembly_release_date"]
                 ),
                 "species_taxid": sanitize_tsv_field(sp_tid),
                 "species_scientific_name": sanitize_tsv_field(sp_name),

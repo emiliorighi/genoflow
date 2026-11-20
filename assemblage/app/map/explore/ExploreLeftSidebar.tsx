@@ -31,6 +31,12 @@ import {
 
 export type ExploreTab = 'regions' | 'continents' | 'countries'
 
+const TAB_LABELS: Record<ExploreTab, string> = {
+  regions: 'Regions',
+  continents: 'Continents',
+  countries: 'Countries',
+}
+
 function FlowMapGuideHelp() {
   return (
     <Popover>
@@ -247,8 +253,11 @@ function DetailState({
   hasTaxonFilter,
   allSpeciesCount,
   taxonSpeciesCount,
+  backLabel,
 }: {
   geoFilter: GeoFilter
+  /** Name of the list tab the user came from, e.g. "Continents". */
+  backLabel: string
   mapSlices: MapSliceSelection
   onMapSlicesChange: (next: MapSliceSelection) => void
   outreachCounts: OutreachCounts
@@ -275,11 +284,11 @@ function DetailState({
           <button
             type="button"
             className="explore-detail-back"
-            aria-label="Back to region list"
+            aria-label={`Back to ${backLabel.toLowerCase()} list`}
             onClick={onClearRegion}
           >
             <ChevronLeft size={14} aria-hidden="true" />
-            Back to Regions
+            Back to {backLabel}
           </button>
           <h2>{title}</h2>
         </div>
@@ -370,7 +379,10 @@ export default function ExploreLeftSidebar({
   const hasRegion = Boolean(
     geoFilter.continent || geoFilter.country || geoFilter.customId,
   )
-  const [listTab, setListTab] = useState<ExploreTab>('continents')
+  // Seed from the active filter so deep links (?country=…) still go back to the right list.
+  const [listTab, setListTab] = useState<ExploreTab>(() =>
+    geoFilter.customId ? 'regions' : geoFilter.country ? 'countries' : 'continents',
+  )
 
   return (
     <aside className="explore-left">
@@ -392,6 +404,7 @@ export default function ExploreLeftSidebar({
       {hasRegion ? (
         <DetailState
           geoFilter={geoFilter}
+          backLabel={TAB_LABELS[listTab]}
           mapSlices={mapSlices}
           onMapSlicesChange={onMapSlicesChange}
           outreachCounts={outreachCounts}

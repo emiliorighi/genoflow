@@ -1,0 +1,48 @@
+# Production: pulls the image built by GitHub Actions (.github/workflows/docker-image.yml).
+#   docker compose up -d
+# Watchtower polls GHCR and restarts genoflow when a new :latest is pushed.
+# If the GHCR package is private: docker login ghcr.io (PAT with read:packages).
+
+services:
+
+  genoflow:
+    image: ghcr.io/emiliorighi/genoflow:latest
+    container_name: genoflow
+    restart: always
+    expose:
+      - "80"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+      - "traefik.enable=true"
+      - "traefik.docker.network=monstre"
+      - "traefik.http.routers.genoflow.rule=Host(`genome.crg.cat`) && PathPrefix(`/genoflow`)"
+      - "traefik.http.routers.genoflow.tls=true"
+      - "traefik.http.routers.genoflow.entrypoints=web_https"
+      - "traefik.http.routers.genoflow.service=genoflow"
+      - "traefik.http.services.genoflow.loadbalancer.server.port=80"
+    mem_limit: 128m
+    cpus: "0.25"
+    networks:
+      - monstre
+
+  genoflow-watchtower:
+    image: nickfedor/watchtower:latest
+    container_name: genoflow-watchtower
+    restart: always
+    environment:
+      - WATCHTOWER_LABEL_ENABLE=true      # only touch containers labelled above
+      - WATCHTOWER_POLL_INTERVAL=21600    # seconds (6h; data updates weekly)
+      - WATCHTOWER_CLEANUP=true           # remove old images
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      # Needed only for a private GHCR package:
+      # - /root/.docker/config.json:/config.json:ro
+    mem_limit: 64m
+    cpus: "0.1"
+    networks:
+      - monstre
+
+networks:
+  monstre:
+    external: true
+    name: monstre

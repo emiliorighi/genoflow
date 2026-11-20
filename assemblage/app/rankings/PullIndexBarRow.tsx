@@ -40,8 +40,19 @@ export default function PullIndexBarRow({ card, maxCount }: PullIndexBarRowProps
       title={`${card.name} · pull ${pullLabel}`}
     >
       <div className="pull-rank-track is-collected">
-        <span className="pull-rank-count">
-          {collected > 0 ? collected.toLocaleString() : ''}
+        <span
+          className="pull-rank-parts"
+          aria-label={`Exported ${card.exported.toLocaleString()}, kept ${kept.toLocaleString()}`}
+        >
+          <span className="pull-rank-part is-exported">
+            {card.exported.toLocaleString()}
+          </span>
+          <span className="pull-rank-parts-sep" aria-hidden="true">
+            ·
+          </span>
+          <span className="pull-rank-part is-kept">
+            {kept.toLocaleString()}
+          </span>
         </span>
         <div
           className="pull-rank-stack is-collected"
@@ -85,8 +96,19 @@ export default function PullIndexBarRow({ card, maxCount }: PullIndexBarRowProps
             />
           ) : null}
         </div>
-        <span className="pull-rank-count">
-          {sequenced > 0 ? sequenced.toLocaleString() : ''}
+        <span
+          className="pull-rank-parts"
+          aria-label={`Local ${card.local.toLocaleString()}, imported ${card.imported.toLocaleString()}`}
+        >
+          <span className="pull-rank-part is-local">
+            {card.local.toLocaleString()}
+          </span>
+          <span className="pull-rank-parts-sep" aria-hidden="true">
+            ·
+          </span>
+          <span className="pull-rank-part is-imported">
+            {card.imported.toLocaleString()}
+          </span>
         </span>
       </div>
     </Link>

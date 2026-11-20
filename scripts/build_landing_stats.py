@@ -28,6 +28,9 @@ DEFAULT_OUTPUT = REPO_ROOT / "assemblage" / "public" / "data" / "landing-stats.j
 # Match scripts/build_map_dataset.py defaults (Homo sapiens, Mus musculus)
 DEFAULT_EXCLUDE_TAXIDS = frozenset({"9606", "10090"})
 TOP_INSTITUTE_COUNT = 5
+TOP_CLASS_COUNT = 12
+# Right-hand Sankey node for species whose submitter institute is not resolved.
+UNRESOLVED_LABEL = "Unresolved"
 TOP_COUNTRY_COUNT = 5
 
 PIPELINE_STEPS = [
@@ -159,9 +162,89 @@ def load_parquet_records(path: Path) -> list[dict[str, Any]]:
             "collection_country_iso3",
             "institute_country",
             "institute_country_iso3",
+            "collection_continent",
+            "institute_continent",
+            "class_taxid",
+            "class_name",
+            "assembly_release_date",
         ],
     )
     return table.to_pylist()
+
+
+def build_charts(records: list[dict[str, Any]]) -> dict[str, Any]:
+    """Chart-ready aggregates over the atlas (one row per species)."""
+    # 1. Species per release year of the displayed assembly (same field as the map's
+    #    year filter); the page derives the cumulative curve from these counts.
+    by_year: Counter[int] = Counter()
+    for row in records:
+        released = (row.get("assembly_release_date") or "").strip()
+        if len(released) >= 4 and released[:4].isdigit():
+            by_year[int(released[:4])] += 1
+    yearly = (
+        [
+            {"year": y, "species": by_year.get(y, 0)}
+            for y in range(min(by_year), max(by_year) + 1)
+        ]
+        if by_year
+        else []
+    )
+
+    # 2. Collection continent -> submitter institute continent.
+    links: Counter[tuple[str, str]] = Counter()
+    for row in records:
+        source = (row.get("collection_continent") or "").strip() or "Unknown"
+        target = (
+            (row.get("institute_continent") or "").strip() or UNRESOLVED_LABEL
+            if row.get("has_institute_coordinates")
+            else UNRESOLVED_LABEL
+        )
+        links[(source, target)] += 1
+    flow_links = [
+        {"source": src, "target": dst, "value": n}
+        for (src, dst), n in sorted(links.items(), key=lambda kv: -kv[1])
+    ]
+
+    # 3. Atlas species per taxonomic class, split by flow completeness.
+    class_total: Counter[str] = Counter()
+    class_full: Counter[str] = Counter()
+    class_name: dict[str, str] = {}
+    other_total = 0
+    other_full = 0
+    for row in records:
+        taxid = (row.get("class_taxid") or "").strip()
+        full = bool(row.get("has_institute_coordinates"))
+        if not taxid:
+            other_total += 1
+            other_full += full
+            continue
+        class_total[taxid] += 1
+        class_full[taxid] += full
+        class_name.setdefault(taxid, (row.get("class_name") or taxid).strip())
+    top = class_total.most_common(TOP_CLASS_COUNT)
+    top_ids = {tid for tid, _ in top}
+    for tid, n in class_total.items():
+        if tid not in top_ids:
+            other_total += n
+            other_full += class_full[tid]
+    classes = [
+        {
+            "taxid": tid,
+            "name": class_name[tid],
+            "species": n,
+            "fullFlow": class_full[tid],
+        }
+        for tid, n in top
+    ]
+    return {
+        "yearly": yearly,
+        "flow": {"unresolvedLabel": UNRESOLVED_LABEL, "links": flow_links},
+        "classes": {
+            "rank": "class",
+            "items": classes,
+            "other": {"species": other_total, "fullFlow": other_full},
+        },
+    }
 
 
 def country_entry(
@@ -313,6 +396,7 @@ def build_stats(
             "topInstituteCountries": top_institute_countries,
         },
         "disclaimers": disclaimers,
+        "charts": build_charts(records),
     }
 
 
