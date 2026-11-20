@@ -342,6 +342,51 @@ def resolve_submitter(
     return record
 
 
+def load_overrides(path: Path) -> dict[str, dict[str, Any]]:
+    """Manual submitter -> institute decisions that win over any ROR lookup.
+
+    A row with an empty ror_id forces the submitter to stay unresolved (used to
+    reject a wrong automatic match).
+    """
+    overrides: dict[str, dict[str, Any]] = {}
+    if not path.exists():
+        return overrides
+    with path.open(newline="", encoding="utf-8") as fh:
+        for row in csv.DictReader(fh, delimiter="\t"):
+            # Same whitespace collapsing as the output TSV, so odd spacing in the raw
+            # submitter (double spaces, NBSP, BOM) still matches.
+            name = " ".join((row.get("submitter_name") or "").replace("\ufeff", " ").split())
+            if not name:
+                continue
+            ror_id = (row.get("ror_id") or "").strip()
+            if not ror_id:
+                overrides[name] = {
+                    "submitter_name": name,
+                    "match_method": "none",
+                    "ror_id": "",
+                    "institute_name_ror": "",
+                    "country": "",
+                    "lat": None,
+                    "lon": None,
+                }
+                continue
+            try:
+                lat = float(row["lat"])
+                lon = float(row["lon"])
+            except (KeyError, TypeError, ValueError):
+                lat = lon = None
+            overrides[name] = {
+                "submitter_name": name,
+                "match_method": "manual_override",
+                "ror_id": ror_id,
+                "institute_name_ror": (row.get("institute_name_ror") or "").strip(),
+                "country": (row.get("country") or "").strip(),
+                "lat": lat,
+                "lon": lon,
+            }
+    return overrides
+
+
 def record_to_row(record: dict[str, Any], assembly_count: int) -> dict[str, str]:
     lat = record.get("lat")
     lon = record.get("lon")
@@ -425,6 +470,12 @@ def parse_args(argv: Optional[list[str]] = None) -> argparse.Namespace:
         help="JSONL cache of ROR lookups",
     )
     p.add_argument(
+        "--overrides",
+        type=Path,
+        default=repo_root / "data" / "submitter_institute_overrides.tsv",
+        help="Manual overrides TSV (wins over ROR lookups; empty ror_id = unresolved)",
+    )
+    p.add_argument(
         "--skip-fetch",
         action="store_true",
         help="Only use cache; do not call ROR API for missing names",
@@ -483,12 +534,20 @@ def main(argv: Optional[list[str]] = None) -> int:
         eprint(f"Limiting to {len(names)} submitters")
 
     cache = load_cache(args.cache_file)
+    overrides = load_overrides(args.overrides)
+    eprint(f"Loaded {len(overrides)} manual overrides from {args.overrides}")
     client = RorClient(client_id=args.client_id or "", sleep_s=args.sleep)
 
     rows: list[dict[str, str]] = []
     for i, name in enumerate(names, 1):
         if i == 1 or i % 50 == 0 or i == len(names):
             eprint(f"Resolving {i}/{len(names)}: {name[:80]}")
+        norm_name = " ".join(name.replace("\ufeff", " ").split())
+        if norm_name in overrides:
+            rec = dict(overrides[norm_name])
+            rec["submitter_name"] = name
+            rows.append(record_to_row(rec, counts[name]))
+            continue
         record = resolve_submitter(
             client=client,
             submitter=name,

@@ -28,9 +28,11 @@ type MultiLineChartProps = {
   /** Fixed y maximum (e.g. 100 for percentages); otherwise derived from the data. */
   yMax?: number
   formatValue: (value: number) => string
+  /** Plot on a log(1 + v) axis so zeros stay drawable. */
+  logScale?: boolean
 }
 
-function MultiLineChart({ title, years, series, yMax, formatValue }: MultiLineChartProps) {
+function MultiLineChart({ title, years, series, yMax, formatValue, logScale = false }: MultiLineChartProps) {
   const [hover, setHover] = useState<number | null>(null)
   // Draw in real pixels (viewBox = rendered width) so axis text keeps its CSS size.
   const frameRef = useRef<HTMLDivElement>(null)
@@ -55,7 +57,8 @@ function MultiLineChart({ title, years, series, yMax, formatValue }: MultiLineCh
 
   const n = years.length
   const x = (i: number) => (n > 1 ? (i / (n - 1)) * PLOT_W : 0)
-  const y = (v: number) => PLOT_H - (v / max) * PLOT_H
+  const tf = (v: number) => (logScale ? Math.log10(1 + v) : v)
+  const y = (v: number) => PLOT_H - (tf(v) / tf(max)) * PLOT_H
 
   const paths = useMemo(
     () =>
@@ -74,10 +77,16 @@ function MultiLineChart({ title, years, series, yMax, formatValue }: MultiLineCh
       }),
     // x/y close over n and max
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [series, n, max, PLOT_W],
+    [series, n, max, PLOT_W, logScale],
   )
 
-  const ticks = [0, 0.25, 0.5, 0.75, 1].map((f) => f * max)
+  const ticks = useMemo(() => {
+    if (!logScale) return [0, 0.25, 0.5, 0.75, 1].map((f) => f * max)
+    const t = [0]
+    for (let v = 1; v < max; v *= 10) t.push(v)
+    t.push(max)
+    return t
+  }, [logScale, max])
   const xTicks = years.filter(
     (yr, i) => i === 0 || i === n - 1 || (yr % 5 === 0 && n - 1 - i >= 3),
   )

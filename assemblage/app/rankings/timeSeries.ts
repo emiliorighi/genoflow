@@ -22,6 +22,10 @@ function listsForCard(index: FlowIndex, card: RegionCard): SliceLists | null {
     const id = card.id.startsWith('custom:') ? card.id.slice('custom:'.length) : card.id
     return isCustomRegionId(id) ? (index.byCustom.get(id as CustomRegionId) ?? null) : null
   }
+  if (card.kind === 'country') {
+    const byIso = card.iso3 ? index.byCountryIso3.get(card.iso3) : undefined
+    return byIso ?? index.byCountryName.get(card.name) ?? null
+  }
   return null
 }
 

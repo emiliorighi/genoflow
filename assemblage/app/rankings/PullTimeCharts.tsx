@@ -16,6 +16,9 @@ import {
 /** Categorical palette, fixed order; color follows the place, never its rank. */
 const PALETTE = ['#3987e5', '#d95926', '#199e70', '#c98500', '#d55181', '#008300', '#9085e9', '#e66767']
 
+/** Continents left out of the over-time charts (still shown in the bar rows above). */
+const EXCLUDED_FROM_TIME_CHARTS = new Set(['Unknown', 'Antarctica'])
+
 type PullTimeChartsProps = {
   /** Places in list order; colors are assigned by position here, so sorting never repaints. */
   cards: RegionCard[]
@@ -31,6 +34,7 @@ export default function PullTimeCharts({
   firstDataYear,
 }: PullTimeChartsProps) {
   const [basis, setBasis] = useState<TimeBasis>('cumulative')
+  const [logScale, setLogScale] = useState(false)
   const [hidden, setHidden] = useState<Set<string>>(() => new Set())
 
   // Every year in the data, matching the map's year filter bounds.
@@ -44,6 +48,7 @@ export default function PullTimeCharts({
   const places = useMemo(
     () =>
       cards
+        .filter((card) => !(card.kind === 'continent' && EXCLUDED_FROM_TIME_CHARTS.has(card.name)))
         .map((card, i) => ({
           card,
           color: PALETTE[i % PALETTE.length],
@@ -100,21 +105,9 @@ export default function PullTimeCharts({
             species, so their pull index can swing widely.
           </p>
         </div>
-        <div className="explore-search-mode" role="group" aria-label="Time basis">
-          {(['cumulative', 'yearly'] as TimeBasis[]).map((id) => (
-            <button
-              key={id}
-              type="button"
-              className={`explore-search-mode-btn ${basis === id ? 'is-active' : ''}`}
-              aria-pressed={basis === id}
-              onClick={() => setBasis(id)}
-            >
-              {id === 'cumulative' ? 'Cumulative' : 'Per year'}
-            </button>
-          ))}
-        </div>
       </div>
 
+      <div className="time-toolbar">
       <div className="time-legend">
         {places.map((p) => (
           <button
@@ -128,6 +121,38 @@ export default function PullTimeCharts({
             {p.card.name}
           </button>
         ))}
+      </div>
+        <div className="time-controls" role="toolbar" aria-label="Chart options">
+          <div className="time-control-group" role="group" aria-label="Time basis">
+            <span className="time-control-label">Species</span>
+            {(['cumulative', 'yearly'] as TimeBasis[]).map((id) => (
+              <button
+                key={id}
+                type="button"
+                className={`explore-search-mode-btn ${basis === id ? 'is-active' : ''}`}
+                aria-pressed={basis === id}
+                onClick={() => setBasis(id)}
+              >
+                {id === 'cumulative' ? 'Cumulative' : 'Per year'}
+              </button>
+            ))}
+          </div>
+          <span className="time-control-sep" aria-hidden="true" />
+          <div className="time-control-group" role="group" aria-label="Count scale">
+            <span className="time-control-label">Scale</span>
+            {([false, true] as const).map((isLog) => (
+              <button
+                key={String(isLog)}
+                type="button"
+                className={`explore-search-mode-btn ${logScale === isLog ? 'is-active' : ''}`}
+                aria-pressed={logScale === isLog}
+                onClick={() => setLogScale(isLog)}
+              >
+                {isLog ? 'log(1 + n)' : 'Raw'}
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
 
       <div className="time-chart-grid">
@@ -146,6 +171,7 @@ export default function PullTimeCharts({
             title={FLOW_SLICE_LABELS[mode]}
             years={years}
             series={lines}
+            logScale={logScale}
             formatValue={(v) => Math.round(v).toLocaleString()}
           />
         ))}

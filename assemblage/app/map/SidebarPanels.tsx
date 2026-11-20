@@ -9,6 +9,8 @@ import {
   type RegionFlow,
 } from './types'
 import { customRegionLabel } from './explore/customRegions'
+import ConflictChip, { conflictMessage } from './ConflictChip'
+import InferredChip, { INFERRED_HINT, inferredMessage } from './InferredChip'
 
 const PAGE_SIZE = 30
 
@@ -124,7 +126,15 @@ function SpeciesListSection({
           >
             <span>
               <i>{row.species_scientific_name}</i>
-              <small>{row.collection_country || 'Unknown collection country'}</small>
+              <small>
+                {row.collection_country || 'Unknown collection country'}
+                {row.collection_label_conflict && (
+                  <>
+                    {' '}
+                    <ConflictChip row={row} label="Mismatch" />
+                  </>
+                )}
+              </small>
             </span>
             <span className="species-flow">{renderRight(row)}</span>
           </button>
@@ -165,6 +175,8 @@ export function SpeciesDetail({
           <span>{row.collection_country || 'Unknown origin'}</span>
           <span className="spark-arrow">→</span>
           <span>{row.institute_name || 'Submitter unresolved'}</span>
+          <InferredChip row={row} />
+          <ConflictChip row={row} />
         </div>
       </DetailTitle>
       <div className="location-stack">
@@ -185,6 +197,7 @@ export function SpeciesDetail({
               </dd>
             </div>
           </dl>
+          {row.collection_label_conflict && <p className="conflict-note">{conflictMessage(row)}</p>}
         </section>
         <section className="location-card">
           <div className="location-card-head">
@@ -192,6 +205,11 @@ export function SpeciesDetail({
             Submitted <span className="location-label">assembly site</span>
           </div>
           <strong>{row.institute_name || 'Unresolved institute'}</strong>
+          {row.institute_inferred && (
+            <p className="inferred-note">
+              <InferredChip row={row} /> {inferredMessage(row)}
+            </p>
+          )}
           <p>
             {[row.institute_country, row.institute_continent].filter(Boolean).join(' · ') ||
               'No submitter geography'}
@@ -293,6 +311,8 @@ export function InstituteDetail({
   const ror = sample?.institute_ror_id
   const lat = sample?.institute_lat
   const lon = sample?.institute_lon
+  const inferredCount = rows.reduce((n, r) => n + (r.institute_inferred ? 1 : 0), 0)
+  const conflictCount = rows.reduce((n, r) => n + (r.collection_label_conflict ? 1 : 0), 0)
 
   return (
     <div className="detail-panel">
@@ -304,6 +324,21 @@ export function InstituteDetail({
       >
         <div className="detail-flow">
           <span>{rows.length.toLocaleString()} species in current scope</span>
+          {inferredCount > 0 && (
+            <span className="inferred-chip" title={INFERRED_HINT}>
+              {inferredCount === rows.length
+                ? 'All inferred from BioProject'
+                : `${inferredCount.toLocaleString()} inferred from BioProject`}
+            </span>
+          )}
+          {conflictCount > 0 && (
+            <span
+              className="conflict-chip"
+              title="Species whose submitted country label disagrees with their coordinates"
+            >
+              {conflictCount.toLocaleString()} country mismatch{conflictCount === 1 ? '' : 'es'}
+            </span>
+          )}
         </div>
       </DetailTitle>
       <div className="location-stack">
@@ -312,6 +347,14 @@ export function InstituteDetail({
             <span className="card-dot blue" />
             Submitter site
           </div>
+          {inferredCount > 0 && (
+            <p className="inferred-note">
+              {inferredCount === rows.length
+                ? 'This institute is inferred for every species shown.'
+                : `This institute is inferred for ${inferredCount.toLocaleString()} of ${rows.length.toLocaleString()} species shown.`}{' '}
+              {INFERRED_HINT}
+            </p>
+          )}
           <dl>
             {lat != null && lon != null && (
               <div>
@@ -386,7 +429,15 @@ export function PointSpeciesList({
         renderRight={(row) => (
           <span>
             <b>{row.institute_name || 'Unresolved institute'}</b>
-            <small>{row.institute_country || '—'}</small>
+            <small>
+              {row.institute_country || '—'}
+              {row.institute_inferred && (
+                <>
+                  {' '}
+                  <InferredChip row={row} label="Inferred" />
+                </>
+              )}
+            </small>
           </span>
         )}
       />

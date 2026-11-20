@@ -29,8 +29,12 @@ export default function PullIndexBarRow({ card, maxCount }: PullIndexBarRowProps
   const localShare = sequenced > 0 ? (100 * card.local) / sequenced : 0
   const importedShare = sequenced > 0 ? (100 * card.imported) / sequenced : 0
 
-  const kept = card.local + card.unknown
+  // Kept = sequenced in the same region it was collected. Species whose submitter
+  // location is unknown are NOT counted as kept; they get their own segment.
+  const kept = card.local
+  const unknown = card.unknown
   const keptShare = collected > 0 ? (100 * kept) / collected : 0
+  const unknownShare = collected > 0 ? (100 * unknown) / collected : 0
   const exportedShare = collected > 0 ? (100 * card.exported) / collected : 0
 
   return (
@@ -42,7 +46,7 @@ export default function PullIndexBarRow({ card, maxCount }: PullIndexBarRowProps
       <div className="pull-rank-track is-collected">
         <span
           className="pull-rank-parts"
-          aria-label={`Exported ${card.exported.toLocaleString()}, kept ${kept.toLocaleString()}`}
+          aria-label={`Exported ${card.exported.toLocaleString()}, kept ${kept.toLocaleString()}, unknown ${unknown.toLocaleString()}`}
         >
           <span className="pull-rank-part is-exported">
             {card.exported.toLocaleString()}
@@ -53,6 +57,16 @@ export default function PullIndexBarRow({ card, maxCount }: PullIndexBarRowProps
           <span className="pull-rank-part is-kept">
             {kept.toLocaleString()}
           </span>
+          {unknown > 0 ? (
+            <>
+              <span className="pull-rank-parts-sep" aria-hidden="true">
+                ·
+              </span>
+              <span className="pull-rank-part is-unknown" title="Submitter location unknown">
+                {unknown.toLocaleString()}
+              </span>
+            </>
+          ) : null}
         </span>
         <div
           className="pull-rank-stack is-collected"
@@ -68,6 +82,12 @@ export default function PullIndexBarRow({ card, maxCount }: PullIndexBarRowProps
             <span
               className="pull-rank-seg is-kept"
               style={{ flexGrow: keptShare, flexBasis: 0 }}
+            />
+          ) : null}
+          {unknownShare > 0 ? (
+            <span
+              className="pull-rank-seg is-unknown"
+              style={{ flexGrow: unknownShare, flexBasis: 0 }}
             />
           ) : null}
         </div>

@@ -9,6 +9,8 @@ graphify-out/
 !/data/eukaryote_assemblies.tsv
 !/data/taxonomic_tree.tsv
 !/data/submitter_institutes.tsv
+!/data/submitter_institute_overrides.tsv
+!/data/bioproject_inferred_institutes.tsv
 !/data/ne_50m_admin_0_countries.geojson
 !/data/raw/
 /data/raw/*

@@ -15,6 +15,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import math
 import re
 import sys
 from collections import Counter
@@ -24,7 +25,9 @@ from typing import Any, Optional
 import pyarrow as pa
 import pyarrow.parquet as pq
 from shapely.geometry import Point, shape
+from shapely.ops import nearest_points
 from shapely.prepared import prep
+from shapely.strtree import STRtree
 
 EUKARYOTA_TAXID = "2759"
 MAX_WALK_DEPTH = 200
@@ -59,6 +62,13 @@ PARQUET_COLUMNS = [
     "collection_country",
     "collection_continent",
     "collection_country_iso3",
+    "collection_country_label",
+    "collection_resolution_method",
+    "collection_resolution_km",
+    "collection_label_conflict",
+    "collection_coords_valid",
+    "collection_lat_raw",
+    "collection_lon_raw",
     "submitter_name",
     "institute_name",
     "institute_ror_id",
@@ -68,6 +78,9 @@ PARQUET_COLUMNS = [
     "institute_lat",
     "institute_lon",
     "has_institute_coordinates",
+    "institute_inferred",
+    "institute_inferred_confidence",
+    "institute_inferred_evidence",
 ]
 
 # BioSample collection_country free-text -> (continent, ISO_A3 for basemap highlight).
@@ -293,6 +306,7 @@ COUNTRY_TO_REGION: dict[str, tuple[str, Optional[str]]] = {
     "Turkmenistan": ("Asia", "TKM"),
     "Turks and Caicos Islands": ("North America", "TCA"),
     "Türkiye": ("Asia", "TUR"),
+    "Turkiye": ("Asia", "TUR"),
     "USA": ("North America", "USA"),
     "USSR": ("Europe", "RUS"),
     "Uganda": ("Africa", "UGA"),
@@ -363,17 +377,155 @@ def load_country_polygons(
     return polygons
 
 
+# Labels with no polygon of their own in Natural Earth -> sovereign's ISO3.
+COUNTRY_SOVEREIGN = {"GUF": "FRA", "REU": "FRA", "GLP": "FRA", "MTQ": "FRA", "MYT": "FRA"}
+
+
+# Natural Earth polygons that BioSample labels treat as part of another country.
+SAME_COUNTRY = {"SOL": "SOM", "CYN": "CYP"}
+
+
+# Synthetic basin codes (also in build_country_centroids.py) -> display names.
+SEA_BASINS = {
+    "XPA": "Pacific Ocean",
+    "XIN": "Indian Ocean",
+    "XAT": "Atlantic Ocean",
+    "XME": "Mediterranean Sea",
+    "XNS": "North Sea",
+    "XBA": "Baltic Sea",
+    "XSO": "Southern Ocean",
+    "XAR": "Arctic Ocean",
+}
+
+
+def classify_sea_basin(lat: float, lon: float) -> Optional[str]:
+    """Rough basin code for a point already known to be in open water.
+
+    Rule-based (boxes and latitude bands, not IHO polygons), so boundaries are
+    approximate. Seas outside the basin set (e.g. the Black Sea) return None.
+    """
+    if lat < -60:
+        return "XSO"
+    if lat > 66.5:
+        return "XAR"
+    if 40.9 <= lat <= 46.8 and 27.5 <= lon <= 41.8:
+        return None  # Black Sea
+    if 30 <= lat <= 46 and -6 <= lon <= 36:
+        return "XME"
+    if 53.5 <= lat <= 66 and 9.5 <= lon <= 30.5:
+        return "XBA"
+    if 51 <= lat <= 61 and -4 <= lon <= 9:
+        return "XNS"
+    if -80 < lon <= 20 or (-100 <= lon <= -80 and lat >= 18):
+        return "XAT"
+    if 20 < lon < 100 and lat < 30:
+        return "XIN"
+    if 100 <= lon < 147 and lat < -10:
+        return "XIN"
+    return "XPA"
+
+
+def haversine_km(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
+    p1, p2 = math.radians(lat1), math.radians(lat2)
+    dphi = p2 - p1
+    dlmb = math.radians(lon2 - lon1)
+    h = math.sin(dphi / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dlmb / 2) ** 2
+    return 2 * 6371.0088 * math.asin(math.sqrt(h))
+
+
+def coords_status(lat: Optional[float], lon: Optional[float]) -> Optional[bool]:
+    """None = missing, False = malformed, True = usable.
+
+    Malformed: non-finite, outside [-90,90]/[-180,180], or exactly (0, 0).
+    """
+    if lat is None or lon is None:
+        return None
+    if not (math.isfinite(lat) and math.isfinite(lon)):
+        return False
+    if abs(lat) > 90 or abs(lon) > 180:
+        return False
+    if lat == 0 and lon == 0:
+        return False
+    return True
+
+
+def _km_to_geom(geom: Any, lat: float, lon: float) -> float:
+    near = nearest_points(geom, Point(lon, lat))[0]
+    return haversine_km(lat, lon, near.y, near.x)
+
+
+def _km_inside_or_to(geom: Any, lat: float, lon: float) -> float:
+    if geom.intersects(Point(lon, lat)):
+        return 0.0
+    return _km_to_geom(geom, lat, lon)
+
+
+def repair_coordinates(
+    lat: float, lon: float, geom: Any, max_km: float
+) -> Optional[tuple[float, float, float]]:
+    """Fix MALFORMED lat/lon so they land in (or within max_km of) the labelled country.
+
+    Tries decimal scaling (value / 10^k), lat/lon swap and sign flips. Candidates
+    inside the country beat offshore ones, then fewer edits win. Returns
+    (lat, lon, km) or None if nothing fits or the best choice is ambiguous.
+    """
+    if not (math.isfinite(lat) and math.isfinite(lon)):
+        return None
+    scaled = lambda v: [(v / 10**k, k) for k in range(0, 10)]  # noqa: E731
+    cands: dict[tuple[float, float], int] = {}
+    for a_val, b_val, swap in ((lat, lon, 0), (lon, lat, 1)):
+        for a, ca in scaled(a_val):
+            for b, cb in scaled(b_val):
+                for sa in (1, -1):
+                    for sb in (1, -1):
+                        la, lo = sa * a, sb * b
+                        cost = ca + cb + swap + (sa < 0) + (sb < 0)
+                        if cost == 0 or coords_status(la, lo) is not True:
+                            continue
+                        key = (round(la, 6), round(lo, 6))
+                        if key not in cands or cost < cands[key]:
+                            cands[key] = cost
+    scored = []
+    for (la, lo), cost in cands.items():
+        km = _km_inside_or_to(geom, la, lo)
+        if km <= max_km:
+            scored.append((km > 0, cost, km, la, lo))
+    if not scored:
+        return None
+    scored.sort()
+    best = scored[0]
+    for other in scored[1:]:
+        if (other[0], other[1]) != (best[0], best[1]):
+            break
+        if best[0] and abs(other[2] - best[2]) >= 1.0:
+            break
+        if abs(other[3] - best[3]) > 1e-3 or abs(other[4] - best[4]) > 1e-3:
+            return None  # ambiguous
+    return best[3], best[4], best[2]
+
+
 def fill_countries_from_coordinates(
     records: list[dict[str, Any]],
     geojson_path: Path,
+    nearest_max_km: float = 50.0,
+    conflict_km: float = 50.0,
+    offshore_km: float = 370.0,
+    repair_max_km: float = 200.0,
 ) -> list[dict[str, Any]]:
-    """Fill empty collection_country from lat/lon via point-in-polygon (NE 50m)."""
+    """Resolve the collection country from lat/lon (NE 50m polygons).
+
+    Valid coordinates are never edited: the country is the polygon they fall in (or
+    the nearest within nearest_max_km), and a disagreeing label is only flagged in
+    collection_label_conflict. In open water a real label is kept (flagged only
+    beyond offshore_km of that country). MALFORMED
+    coordinates are repaired when the fix lands in the labelled country (within
+    repair_max_km), else dropped so the map uses the country centroid. The original label is kept in collection_country_label.
+    """
     if not geojson_path.exists():
         raise FileNotFoundError(
             f"Countries GeoJSON required for reverse-geocoding not found: {geojson_path}"
         )
 
-    # Prefer BioSample-style labels already in COUNTRY_TO_REGION when ISO3 matches.
     preferred_by_iso3: dict[str, tuple[str, str]] = {}
     for name, (continent, iso3) in COUNTRY_TO_REGION.items():
         if not name or not iso3 or iso3.startswith("X"):
@@ -382,34 +534,124 @@ def fill_countries_from_coordinates(
             preferred_by_iso3[iso3] = (name, continent)
 
     polygons = load_country_polygons(geojson_path)
-    candidates = 0
-    filled = 0
+    geoms = [p[0].context for p in polygons]
+    tree = STRtree(geoms)
+    geom_by_iso3: dict[str, Any] = {}
+    for (_, _, iso3, _), geom in zip(polygons, geoms):
+        geom_by_iso3.setdefault(iso3, geom)
+    sov_by_iso3: dict[str, str] = {}
+    with geojson_path.open(encoding="utf-8") as fh:
+        for feat in json.load(fh).get("features") or []:
+            props = feat.get("properties") or {}
+            f_iso = _feature_iso3(props)
+            if f_iso:
+                sov_by_iso3[f_iso] = str(props.get("SOV_A3") or f_iso)
+
+    methods: Counter[str] = Counter()
+    conflicts = 0
 
     for record in records:
-        country = (record.get("collection_country") or "").strip()
+        label = (record.get("collection_country") or "").strip()
+        iso = record.get("collection_country_iso3")
+        real_label = bool(iso) and not str(iso).startswith("X")
+        sea_label = bool(iso) and str(iso).startswith("X") and iso != "XUN"
+        geom = geom_by_iso3.get(iso) if real_label else None
         lat = record.get("collection_lat")
         lon = record.get("collection_lon")
-        if country or lat is None or lon is None:
-            continue
-        candidates += 1
-        point = Point(float(lon), float(lat))
-        for prepared, name, iso3, continent in polygons:
-            if prepared.contains(point):
-                pref = preferred_by_iso3.get(iso3)
-                if pref is not None:
-                    record["collection_country"] = pref[0]
-                    record["collection_continent"] = pref[1]
-                else:
-                    record["collection_country"] = name
-                    record["collection_continent"] = continent
-                record["collection_country_iso3"] = iso3
-                filled += 1
-                break
+        valid = coords_status(lat, lon)
 
-    eprint(
-        f"Reverse-geocode empty countries: candidates={candidates}, "
-        f"filled={filled}, still_empty={candidates - filled}"
-    )
+        record["collection_country_label"] = label
+        record["collection_resolution_km"] = None
+        record["collection_label_conflict"] = False
+        record["collection_coords_valid"] = valid
+        record["collection_lat_raw"] = None
+        record["collection_lon_raw"] = None
+
+        def finish(method: str, km: Optional[float] = None) -> None:
+            record["collection_resolution_method"] = method
+            if km is not None:
+                record["collection_resolution_km"] = round(km, 1)
+            methods[method] += 1
+
+        # 1. No coordinates: the label (if any) is all we have.
+        if valid is None:
+            finish("label" if real_label else "no_coords")
+            continue
+
+        # 2. Malformed coordinates: repair against the label's country, else drop them.
+        repaired = False
+        if valid is False:
+            record["collection_lat_raw"], record["collection_lon_raw"] = lat, lon
+            fix = repair_coordinates(lat, lon, geom, repair_max_km) if geom else None
+            if fix is None:
+                record["collection_lat"], record["collection_lon"] = None, None
+                finish("label_bad_coords" if real_label else "invalid_coords")
+                continue
+            lat, lon = fix[0], fix[1]
+            record["collection_lat"], record["collection_lon"] = lat, lon
+            record["collection_coords_valid"] = True
+            repaired = True
+
+        # 3. Valid coordinates are trusted: the country comes from where they fall.
+        pt = Point(lon, lat)
+        hits = tree.query(pt, predicate="within")
+        idx = int(hits[0]) if len(hits) else None
+        km = 0.0
+        method = "polygon"
+        if idx is None:
+            near = int(tree.query_nearest(pt, all_matches=False)[0])
+            km = _km_to_geom(geoms[near], lat, lon)
+            if km <= nearest_max_km:
+                idx, method = near, "nearest"
+
+        label_km = _km_inside_or_to(geom, lat, lon) if geom is not None else None
+
+        def flag_conflict(limit: float = conflict_km) -> None:
+            nonlocal conflicts
+            if label_km is not None and label_km > limit:
+                record["collection_label_conflict"] = True
+                conflicts += 1
+
+        if idx is None:
+            # Open water: a real label is kept. Points within offshore_km of the labelled
+            # country (~200 nmi EEZ) are plausibly its waters, so only farther ones flag.
+            if real_label:
+                flag_conflict(offshore_km)
+                finish("repaired_offshore" if repaired else "label_offshore", label_km)
+            else:
+                # Sea labels keep their basin name; anything else becomes plain Unknown.
+                record["collection_continent"] = "Unknown"
+                basin = None if sea_label else classify_sea_basin(lat, lon)
+                if basin:
+                    record["collection_country"] = SEA_BASINS[basin]
+                    record["collection_country_iso3"] = basin
+                    finish("ocean_inferred", km)
+                else:
+                    if not sea_label:
+                        record["collection_country"] = ""
+                        record["collection_country_iso3"] = "XUN"
+                    finish("ocean" if sea_label else "unresolved", km)
+            continue
+
+        _, name, new_iso, continent = polygons[idx]
+        agrees = real_label and (
+            SAME_COUNTRY.get(new_iso, new_iso) == SAME_COUNTRY.get(iso, iso)
+            or sov_by_iso3.get(new_iso) == sov_by_iso3.get(iso, "")
+            or (geom is None and sov_by_iso3.get(new_iso) == sov_by_iso3.get(COUNTRY_SOVEREIGN.get(iso, ""), ""))
+            or (label_km is not None and label_km <= nearest_max_km)  # border slack
+        )
+        if agrees:
+            method = "polygon_label"
+        else:
+            flag_conflict()
+            pref = preferred_by_iso3.get(new_iso)
+            record["collection_country"] = pref[0] if pref else name
+            record["collection_continent"] = pref[1] if pref else continent
+            record["collection_country_iso3"] = new_iso
+        finish("label_repaired" if repaired else method, km)
+
+    eprint(f"Collection country resolution (nearest<={nearest_max_km} km): {dict(methods)}")
+    eprint(f"Label/coordinate conflicts flagged (>{conflict_km} km on land, >{offshore_km} km offshore): {conflicts}")
     return records
 
 
@@ -628,12 +870,27 @@ def select_latest_assemblies(
     return selected, dict(totals), first_dates, skipped_excluded, skipped_bad_acc
 
 
+def load_inferred_institutes(path: Optional[Path]) -> dict[str, dict[str, str]]:
+    """Load BioProject-inferred institutes keyed by assembly_accession (may be absent)."""
+    inferred: dict[str, dict[str, str]] = {}
+    if path is None or not path.exists():
+        return inferred
+    with path.open(encoding="utf-8", newline="") as fh:
+        for row in csv.DictReader(fh, delimiter="\t"):
+            acc = (row.get("assembly_accession") or "").strip()
+            if acc:
+                inferred[acc] = row
+    eprint(f"Loaded {len(inferred)} BioProject-inferred institutes from {path}")
+    return inferred
+
+
 def assemble_records(
     selected: dict[str, dict[str, str]],
     totals: dict[str, int],
     first_dates: dict[str, str],
     nodes: dict[str, dict[str, str]],
     institutes: dict[str, dict[str, str]],
+    inferred: Optional[dict[str, dict[str, str]]] = None,
 ) -> list[dict[str, Any]]:
     """Join lineage + institute geo into one output record per species."""
     rank_cache: dict[str, dict[str, tuple[str, str]]] = {}
@@ -651,6 +908,34 @@ def assemble_records(
             and parse_float(inst.get("lat")) is not None
             and parse_float(inst.get("lon")) is not None
         )
+
+        # A directly resolved submitter always wins; BioProject inference only fills gaps
+        # and is flagged so the app can say it is not certain.
+        is_inferred = False
+        inferred_confidence = None
+        inferred_evidence = None
+        if not has_inst_coords and inferred:
+            acc = (row.get("assembly_accession") or "").strip()
+            cand = inferred.get(acc)
+            if (
+                cand
+                and parse_float(cand.get("lat")) is not None
+                and parse_float(cand.get("lon")) is not None
+            ):
+                inst = {
+                    "institute_name_ror": cand.get("institute_name_ror"),
+                    "ror_id": cand.get("ror_id"),
+                    "country": cand.get("country"),
+                    "lat": cand.get("lat"),
+                    "lon": cand.get("lon"),
+                    "has_coordinates": "true",
+                }
+                has_inst_coords = True
+                is_inferred = True
+                inferred_confidence = (cand.get("confidence") or "").strip() or None
+                inferred_evidence = " · ".join(
+                    x for x in ((cand.get("bioproject") or "").strip(), (cand.get("evidence") or "").strip()) if x
+                ) or None
 
         collection_country = (row.get("biosample_collection_country") or "").strip()
         continent, country_iso3 = resolve_collection_region(collection_country)
@@ -683,6 +968,9 @@ def assemble_records(
             "institute_lat": None,
             "institute_lon": None,
             "has_institute_coordinates": has_inst_coords,
+            "institute_inferred": is_inferred,
+            "institute_inferred_confidence": inferred_confidence,
+            "institute_inferred_evidence": inferred_evidence,
         }
 
         for rank in TARGET_RANKS:
@@ -763,6 +1051,23 @@ def write_parquet(path: Path, records: list[dict[str, Any]]) -> None:
             "collection_country_iso3": pa.array(
                 arrays["collection_country_iso3"], type=pa.string()
             ),
+            "collection_country_label": pa.array(
+                arrays["collection_country_label"], type=pa.string()
+            ),
+            "collection_resolution_method": pa.array(
+                arrays["collection_resolution_method"], type=pa.string()
+            ),
+            "collection_resolution_km": pa.array(
+                arrays["collection_resolution_km"], type=pa.float64()
+            ),
+            "collection_label_conflict": pa.array(
+                arrays["collection_label_conflict"], type=pa.bool_()
+            ),
+            "collection_coords_valid": pa.array(
+                arrays["collection_coords_valid"], type=pa.bool_()
+            ),
+            "collection_lat_raw": pa.array(arrays["collection_lat_raw"], type=pa.float64()),
+            "collection_lon_raw": pa.array(arrays["collection_lon_raw"], type=pa.float64()),
             "submitter_name": pa.array(arrays["submitter_name"], type=pa.string()),
             "institute_name": pa.array(arrays["institute_name"], type=pa.string()),
             "institute_ror_id": pa.array(arrays["institute_ror_id"], type=pa.string()),
@@ -779,6 +1084,13 @@ def write_parquet(path: Path, records: list[dict[str, Any]]) -> None:
             "institute_lon": pa.array(arrays["institute_lon"], type=pa.float64()),
             "has_institute_coordinates": pa.array(
                 arrays["has_institute_coordinates"], type=pa.bool_()
+            ),
+            "institute_inferred": pa.array(arrays["institute_inferred"], type=pa.bool_()),
+            "institute_inferred_confidence": pa.array(
+                arrays["institute_inferred_confidence"], type=pa.string()
+            ),
+            "institute_inferred_evidence": pa.array(
+                arrays["institute_inferred_evidence"], type=pa.string()
             ),
         }
     )
@@ -867,6 +1179,12 @@ def parse_args(argv: Optional[list[str]] = None) -> argparse.Namespace:
         help="Submitter institutes TSV",
     )
     p.add_argument(
+        "--inferred-institutes-input",
+        type=Path,
+        default=repo_root / "data" / "bioproject_inferred_institutes.tsv",
+        help="BioProject-inferred institutes TSV (flagged institute_inferred; optional)",
+    )
+    p.add_argument(
         "--output",
         type=Path,
         default=repo_root / "assemblage" / "public" / "data" / "species_flows.parquet",
@@ -883,6 +1201,14 @@ def parse_args(argv: Optional[list[str]] = None) -> argparse.Namespace:
         default=repo_root / "data" / "ne_50m_admin_0_countries.geojson",
         help="Natural Earth countries GeoJSON for reverse-geocoding empty countries",
     )
+    p.add_argument("--nearest-max-km", type=float, default=50.0,
+                   help="Assign the nearest country to points outside every polygon if within this many km")
+    p.add_argument("--conflict-km", type=float, default=50.0,
+                   help="Flag rows whose coordinates lie farther than this from their labelled country")
+    p.add_argument("--offshore-km", type=float, default=370.0,
+                   help="Open-water points within this many km of the labelled country are not flagged as conflicts")
+    p.add_argument("--repair-max-km", type=float, default=200.0,
+                   help="A repaired malformed coordinate must land inside the labelled country or within this many km")
     return p.parse_args(argv)
 
 
@@ -913,9 +1239,21 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     eprint(f"Flattening ranks and joining institutes for {len(selected)} species...")
     records = assemble_records(
-        selected, totals, first_dates, nodes, institutes
+        selected,
+        totals,
+        first_dates,
+        nodes,
+        institutes,
+        load_inferred_institutes(args.inferred_institutes_input),
     )
-    records = fill_countries_from_coordinates(records, args.countries_geojson)
+    records = fill_countries_from_coordinates(
+        records,
+        args.countries_geojson,
+        args.nearest_max_km,
+        args.conflict_km,
+        args.offshore_km,
+        args.repair_max_km,
+    )
     write_parquet(args.output, records)
     print_summary(records, skipped_excluded, args.output)
     return 0

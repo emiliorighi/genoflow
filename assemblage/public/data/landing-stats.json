@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-20T15:27:50+00:00",
+  "generatedAt": "2026-11-20T18:59:06+00:00",
   "kpis": {
     "speciesWithAssemblies": 30758,
     "speciesWithCoordinates": 11967,
@@ -7,16 +7,16 @@
     "speciesWithGeography": 24472,
     "speciesWithGeographyPct": 79.6,
     "totalInstitutes": 5832,
-    "institutesWithCoordinates": 3703,
-    "institutesWithCoordinatesPct": 63.5,
+    "institutesWithCoordinates": 4253,
+    "institutesWithCoordinatesPct": 72.9,
     "speciesInAtlas": 24472,
-    "speciesWithInstituteArc": 18777,
-    "speciesWithInstituteArcPct": 76.7,
+    "speciesWithInstituteArc": 22730,
+    "speciesWithInstituteArcPct": 92.9,
     "topInstituteCount": 5,
-    "topInstituteSharePct": 36.6,
+    "topInstituteSharePct": 33.2,
     "topInstituteName": "Wellcome Sanger Institute",
-    "topInstituteSpeciesCount": 4902,
-    "topInstituteShareSinglePct": 26.1
+    "topInstituteSpeciesCount": 4915,
+    "topInstituteShareSinglePct": 21.6
   },
   "pipeline": [
     {
@@ -42,78 +42,78 @@
   ],
   "offshore": {
     "definitionNote": "Offshore = collection country ISO3 differs from submitter institute country ISO3, among species with both endpoints resolved.",
-    "comparableSpecies": 18684,
-    "offshoreSpecies": 7207,
-    "offshoreSpeciesPct": 38.6,
+    "comparableSpecies": 22729,
+    "offshoreSpecies": 8602,
+    "offshoreSpeciesPct": 37.8,
     "topCollectionCountries": [
       {
         "country": "USA",
-        "offshoreCount": 592,
-        "totalWithGeo": 2697,
-        "offshorePct": 22.0
+        "offshoreCount": 880,
+        "totalWithGeo": 4471,
+        "offshorePct": 19.7
       },
       {
         "country": "Finland",
-        "offshoreCount": 402,
-        "totalWithGeo": 414,
-        "offshorePct": 97.1
+        "offshoreCount": 408,
+        "totalWithGeo": 419,
+        "offshorePct": 97.4
       },
       {
         "country": "Brazil",
-        "offshoreCount": 278,
-        "totalWithGeo": 401,
-        "offshorePct": 69.3
+        "offshoreCount": 327,
+        "totalWithGeo": 484,
+        "offshorePct": 67.6
       },
       {
         "country": "Spain",
-        "offshoreCount": 270,
-        "totalWithGeo": 342,
-        "offshorePct": 78.9
+        "offshoreCount": 314,
+        "totalWithGeo": 387,
+        "offshorePct": 81.1
       },
       {
         "country": "Australia",
-        "offshoreCount": 220,
-        "totalWithGeo": 609,
-        "offshorePct": 36.1
+        "offshoreCount": 288,
+        "totalWithGeo": 965,
+        "offshorePct": 29.8
       }
     ],
     "topInstituteCountries": [
       {
         "country": "United States",
-        "offshoreCount": 2400,
-        "totalWithGeo": 4505,
-        "offshorePct": 53.3
+        "offshoreCount": 2911,
+        "totalWithGeo": 6502,
+        "offshorePct": 44.8
       },
       {
         "country": "United Kingdom",
-        "offshoreCount": 1741,
-        "totalWithGeo": 5296,
-        "offshorePct": 32.9
-      },
-      {
-        "country": "France",
-        "offshoreCount": 519,
-        "totalWithGeo": 624,
-        "offshorePct": 83.2
-      },
-      {
-        "country": "China",
-        "offshoreCount": 352,
-        "totalWithGeo": 3252,
-        "offshorePct": 10.8
+        "offshoreCount": 1878,
+        "totalWithGeo": 5438,
+        "offshorePct": 34.5
       },
       {
         "country": "Canada",
-        "offshoreCount": 315,
-        "totalWithGeo": 488,
-        "offshorePct": 64.5
+        "offshoreCount": 559,
+        "totalWithGeo": 772,
+        "offshorePct": 72.4
+      },
+      {
+        "country": "China",
+        "offshoreCount": 550,
+        "totalWithGeo": 3617,
+        "offshorePct": 15.2
+      },
+      {
+        "country": "France",
+        "offshoreCount": 549,
+        "totalWithGeo": 1026,
+        "offshorePct": 53.5
       }
     ]
   },
   "disclaimers": [
     {
       "id": "institute-concentration",
-      "text": "High counts for a few institutes — notably Wellcome Sanger Institute (4,902 species, ~26.1% of resolved arcs) — can reflect stricter control over sample and assembly metadata rather than exclusive sequencing capacity. Incomplete geo metadata elsewhere will under-count other labs."
+      "text": "High counts for a few institutes — notably Wellcome Sanger Institute (4,915 species, ~21.6% of resolved arcs) — can reflect stricter control over sample and assembly metadata rather than exclusive sequencing capacity. Incomplete geo metadata elsewhere will under-count other labs."
     },
     {
       "id": "missing-geography",
@@ -217,197 +217,187 @@
         {
           "source": "Europe",
           "target": "Europe",
-          "value": 6138
+          "value": 6807
+        },
+        {
+          "source": "North America",
+          "target": "North America",
+          "value": 4675
         },
         {
           "source": "Asia",
           "target": "Asia",
-          "value": 4130
-        },
-        {
-          "source": "North America",
-          "target": "North America",
-          "value": 2834
-        },
-        {
-          "source": "North America",
-          "target": "Unresolved",
-          "value": 2439
-        },
-        {
-          "source": "Asia",
-          "target": "Unresolved",
-          "value": 1157
-        },
-        {
-          "source": "Europe",
-          "target": "Unresolved",
-          "value": 804
-        },
-        {
-          "source": "Asia",
-          "target": "North America",
-          "value": 586
-        },
-        {
-          "source": "North America",
-          "target": "Europe",
-          "value": 549
-        },
-        {
-          "source": "South America",
-          "target": "North America",
-          "value": 532
-        },
-        {
-          "source": "Europe",
-          "target": "North America",
-          "value": 494
-        },
-        {
-          "source": "Oceania",
-          "target": "Unresolved",
-          "value": 490
+          "value": 4474
         },
         {
           "source": "Oceania",
           "target": "Oceania",
-          "value": 465
+          "value": 758
         },
         {
-          "source": "Unknown",
+          "source": "Asia",
+          "target": "North America",
+          "value": 698
+        },
+        {
+          "source": "North America",
           "target": "Europe",
-          "value": 434
+          "value": 658
+        },
+        {
+          "source": "South America",
+          "target": "North America",
+          "value": 614
+        },
+        {
+          "source": "Europe",
+          "target": "North America",
+          "value": 593
+        },
+        {
+          "source": "Asia",
+          "target": "Unresolved",
+          "value": 581
         },
         {
           "source": "Asia",
           "target": "Europe",
-          "value": 372
+          "value": 520
         },
         {
-          "source": "South America",
+          "source": "North America",
           "target": "Unresolved",
-          "value": 363
+          "value": 495
         },
         {
           "source": "Africa",
           "target": "North America",
-          "value": 353
+          "value": 439
         },
         {
-          "source": "Africa",
+          "source": "Europe",
           "target": "Unresolved",
-          "value": 265
+          "value": 328
         },
         {
           "source": "South America",
           "target": "Europe",
-          "value": 237
+          "value": 294
         },
         {
           "source": "Africa",
           "target": "Europe",
-          "value": 225
+          "value": 292
         },
         {
           "source": "Oceania",
           "target": "North America",
-          "value": 207
+          "value": 255
         },
         {
           "source": "South America",
           "target": "South America",
-          "value": 190
-        },
-        {
-          "source": "Unknown",
-          "target": "Unresolved",
-          "value": 148
-        },
-        {
-          "source": "North America",
-          "target": "Asia",
-          "value": 138
-        },
-        {
-          "source": "Europe",
-          "target": "Asia",
-          "value": 134
+          "value": 236
         },
         {
           "source": "Oceania",
           "target": "Europe",
-          "value": 128
+          "value": 199
+        },
+        {
+          "source": "North America",
+          "target": "Asia",
+          "value": 179
+        },
+        {
+          "source": "Europe",
+          "target": "Asia",
+          "value": 171
         },
         {
           "source": "Unknown",
-          "target": "North America",
-          "value": 95
+          "target": "Europe",
+          "value": 168
+        },
+        {
+          "source": "South America",
+          "target": "Unresolved",
+          "value": 149
         },
         {
           "source": "Africa",
           "target": "Asia",
-          "value": 71
+          "value": 95
+        },
+        {
+          "source": "South America",
+          "target": "Asia",
+          "value": 89
+        },
+        {
+          "source": "Africa",
+          "target": "Unresolved",
+          "value": 86
+        },
+        {
+          "source": "Oceania",
+          "target": "Unresolved",
+          "value": 82
+        },
+        {
+          "source": "Oceania",
+          "target": "Asia",
+          "value": 77
         },
         {
           "source": "Africa",
           "target": "Africa",
-          "value": 70
+          "value": 73
         },
         {
-          "source": "South America",
+          "source": "Unknown",
           "target": "Asia",
           "value": 66
         },
         {
           "source": "Unknown",
-          "target": "Asia",
-          "value": 50
-        },
-        {
-          "source": "Oceania",
-          "target": "Asia",
-          "value": 40
-        },
-        {
-          "source": "Antarctica",
-          "target": "Unresolved",
-          "value": 29
+          "target": "North America",
+          "value": 35
         },
         {
           "source": "Asia",
           "target": "Oceania",
-          "value": 25
+          "value": 31
         },
         {
           "source": "Antarctica",
           "target": "North America",
-          "value": 21
+          "value": 25
         },
         {
           "source": "Antarctica",
           "target": "Asia",
-          "value": 21
+          "value": 25
         },
         {
-          "source": "North America",
-          "target": "Africa",
-          "value": 19
-        },
-        {
-          "source": "Europe",
-          "target": "Africa",
-          "value": 18
+          "source": "Antarctica",
+          "target": "Europe",
+          "value": 24
         },
         {
           "source": "North America",
           "target": "South America",
-          "value": 17
+          "value": 18
         },
         {
           "source": "Asia",
           "target": "Africa",
           "value": 17
+        },
+        {
+          "source": "North America",
+          "target": "Africa",
+          "value": 16
         },
         {
           "source": "North America",
@@ -426,7 +416,27 @@
         },
         {
           "source": "Europe",
+          "target": "South America",
+          "value": 12
+        },
+        {
+          "source": "Europe",
           "target": "Oceania",
+          "value": 11
+        },
+        {
+          "source": "Unknown",
+          "target": "Unresolved",
+          "value": 11
+        },
+        {
+          "source": "Europe",
+          "target": "Africa",
+          "value": 11
+        },
+        {
+          "source": "Antarctica",
+          "target": "Unresolved",
           "value": 10
         },
         {
@@ -440,18 +450,13 @@
           "value": 10
         },
         {
-          "source": "Antarctica",
-          "target": "Europe",
-          "value": 9
-        },
-        {
-          "source": "Europe",
-          "target": "South America",
-          "value": 9
-        },
-        {
           "source": "Africa",
           "target": "Oceania",
+          "value": 3
+        },
+        {
+          "source": "Oceania",
+          "target": "South America",
           "value": 3
         },
         {
@@ -465,12 +470,12 @@
           "value": 2
         },
         {
-          "source": "Oceania",
-          "target": "South America",
-          "value": 2
+          "source": "Unknown",
+          "target": "Oceania",
+          "value": 1
         },
         {
-          "source": "Unknown",
+          "source": "Africa",
           "target": "South America",
           "value": 1
         }
@@ -483,78 +488,78 @@
           "taxid": "50557",
           "name": "Insecta",
           "species": 6132,
-          "fullFlow": 5443
+          "fullFlow": 5771
         },
         {
           "taxid": "3398",
           "name": "Magnoliopsida",
           "species": 3213,
-          "fullFlow": 2752
+          "fullFlow": 2959
         },
         {
           "taxid": "186623",
           "name": "Actinopteri",
           "species": 1562,
-          "fullFlow": 995
+          "fullFlow": 1449
         },
         {
           "taxid": "147550",
           "name": "Sordariomycetes",
           "species": 1548,
-          "fullFlow": 1173
+          "fullFlow": 1437
         },
         {
           "taxid": "8782",
           "name": "Aves",
           "species": 1208,
-          "fullFlow": 645
+          "fullFlow": 915
         },
         {
           "taxid": "155619",
           "name": "Agaricomycetes",
           "species": 972,
-          "fullFlow": 916
+          "fullFlow": 937
         },
         {
           "taxid": "40674",
           "name": "Mammalia",
           "species": 844,
-          "fullFlow": 594
+          "fullFlow": 761
         },
         {
           "taxid": "3239874",
           "name": "Pichiomycetes",
           "species": 701,
-          "fullFlow": 187
+          "fullFlow": 683
         },
         {
           "taxid": "147545",
           "name": "Eurotiomycetes",
           "species": 646,
-          "fullFlow": 502
+          "fullFlow": 605
         },
         {
           "taxid": "147541",
           "name": "Dothideomycetes",
           "species": 595,
-          "fullFlow": 496
+          "fullFlow": 558
         },
         {
           "taxid": "4891",
           "name": "Saccharomycetes",
           "species": 493,
-          "fullFlow": 235
+          "fullFlow": 482
         },
         {
           "taxid": "147547",
           "name": "Lecanoromycetes",
           "species": 402,
-          "fullFlow": 75
+          "fullFlow": 400
         }
       ],
       "other": {
         "species": 6156,
-        "fullFlow": 4764
+        "fullFlow": 5773
       }
     }
   }

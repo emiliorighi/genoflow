@@ -3,9 +3,12 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import DeckGL from '@deck.gl/react'
 import { ArcLayer, GeoJsonLayer, ScatterplotLayer } from '@deck.gl/layers'
+import type { GeoJsonLayerProps } from '@deck.gl/layers'
 import { MapView } from '@deck.gl/core'
 import type { PickingInfo } from '@deck.gl/core'
 import { CircleHelp, LoaderCircle, RotateCw } from 'lucide-react'
+import InferredChip from '../InferredChip'
+import ConflictChip from '../ConflictChip'
 import { Button } from '@/components/ui/button'
 import {
   Popover,
@@ -143,8 +146,8 @@ const INSTITUTE_LINE: [number, number, number, number] = [181, 212, 228, 255]
 const COLLECTION_HOT_STROKE: [number, number, number, number] = [255, 230, 200, 255]
 const CENTROID_HOT_STROKE: [number, number, number, number] = [210, 235, 215, 255]
 
-const NO_DEPTH = { depthTest: false } as const
-const BASEMAP_DEPTH = { depthTest: false, depthMask: false } as const
+const NO_DEPTH = { depthCompare: 'always', depthWriteEnabled: false } as const
+const BASEMAP_DEPTH = { depthCompare: 'always', depthWriteEnabled: false } as const
 /** Point-cluster selection: keep context faintly visible. */
 const PREVIEW_DIM_ALPHA = 10
 /** Dwell before region-card hover isolates map marks (polygon highlight stays immediate). */
@@ -260,6 +263,12 @@ function FlowTooltip({
       <span className="tooltip-kicker">
         {row.used_centroid ? 'Country-level flow' : 'Species flow'}
       </span>
+      {(row.collection_label_conflict || row.institute_inferred) && (
+        <div className="tooltip-chips">
+          <InferredChip row={row} />
+          <ConflictChip row={row} />
+        </div>
+      )}
       <h4>
         <i>{row.species_scientific_name}</i>
       </h4>
@@ -494,7 +503,7 @@ export default function ExploreMap({
       built.push(
         new GeoJsonLayer({
           id: 'world-outline',
-          data: world,
+          data: world as unknown as GeoJsonLayerProps['data'],
           stroked: true,
           filled: true,
           pickable: false,
@@ -515,7 +524,7 @@ export default function ExploreMap({
       built.push(
         new GeoJsonLayer({
           id: `highlight-area-${highlightKey}`,
-          data: highlightFeatures,
+          data: highlightFeatures as unknown as GeoJsonLayerProps['data'],
           stroked: true,
           filled: true,
           pickable: false,

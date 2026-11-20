@@ -1,0 +1,607 @@
+submitter_name	institute_name_ror	ror_id	country	lat	lon	note
+A.N. Bach Institute of Biochemistry	A N Bach Institute of Biochemistry	https://ror.org/0009wsb17	Russia	55.75222	37.61556	safe audit match (name equal after normalization), reviewed
+A.V. Zhirmunsky National Scientific Center of Marine Biology (NSCMB), FEB RAS	Far Eastern Branch of the Russian Academy of Sciences	https://ror.org/05t43vz03	Russia	43.10562	131.87353	risky audit match, reviewed individually
+AAFC/Pulse Cluster	Agriculture and Agri-Food Canada	https://ror.org/051dzs374	Canada	45.41117	-75.69812	risky audit match, reviewed individually
+Academia Sinica, Taiwan and Fisheries Research Institute, Taiwan	Academia Sinica	https://ror.org/05bxb3784	Taiwan	25.05306	121.52639	risky audit match, reviewed individually
+AGIS-CAAS	Chinese Academy of Agricultural Sciences	https://ror.org/0313jb750	China	39.9075	116.39723	risky audit match, reviewed individually
+AgResearch Ltd	AgResearch	https://ror.org/0124gwh94	New Zealand	-43.65	172.48333	risky audit match, reviewed individually
+AgResearch NZ Limited	AgResearch	https://ror.org/0124gwh94	New Zealand	-43.65	172.48333	risky audit match, reviewed individually
+AGRIBIO, CENTRE FOR AGRIBIOSCIENC	AgriBio	https://ror.org/042kgb568	Australia	-37.814	144.96332	unresolved by ROR API; matched via ROR dump audit, reviewed
+Agricultural research council - Vegetable and Ornamental Plants	Agricultural Research Council of South Africa	https://ror.org/04r1s2546	South Africa	-25.74486	28.18783	affiliation matched an Omani research council
+Air Force Research Laboratory	United States Air Force Research Laboratory	https://ror.org/02e2egq70	United States	39.81113	-84.05731	safe audit match (name equal after normalization), reviewed
+Alfred Wegener Institute Helmholtz Centre for Polar and Marine Research	Alfred-Wegener-Institut Helmholtz-Zentrum für Polar- und Meeresforschung	https://ror.org/032e6b942	Germany	53.53615	8.59298	unresolved by ROR API; matched via ROR dump audit, reviewed
+Alfred-Wegener-Institut Helmholtz-Zentrum for Polar- und Meeresforschung	Alfred-Wegener-Institut Helmholtz-Zentrum für Polar- und Meeresforschung	https://ror.org/032e6b942	Germany	53.53615	8.59298	risky audit match, reviewed individually
+Amazonian macromicets: knowing their diversity and evaluating their biotechnological potential in a sustainable way						affiliation match was a different institution; left unresolved
+Amity University Uttar Pradesh	Amity University	https://ror.org/02n9z0v62	India	28.58	77.33	safe audit match (name equal after normalization), reviewed
+Amity University Uttar Pradesh Lucknow Campus	Amity University	https://ror.org/02n9z0v62	India	28.58	77.33	risky audit match, reviewed individually
+Anhui Agticutural University	Anhui Agricultural University	https://ror.org/0327f3359	China	31.86389	117.28083	risky audit match, reviewed individually
+AnHui Normal University; Onemore Technology Co., Ltd.	Anhui Normal University	https://ror.org/05fsfvw79	China	31.35259	118.42947	risky audit match, reviewed individually
+ARC and SAMRC						matched Wisconsin Disability Association
+ARC Research Hub for Advanced Prawn Breeding						matched Wisconsin Disability Association
+ARC-Biotechnology Platform (ARC-BTP)						matched Wisconsin Disability Association
+ARO	Agricultural Research Organization	https://ror.org/05hbrxp80	Israel	31.97102	34.78939	acronym of a genomics/biodiversity institute (confirmed by user domain knowledge)
+ARS	Agricultural Research Service	https://ror.org/02d2m2044	United States	38.89511	-77.03637	risky audit match, reviewed individually
+BAYER CROPSCIENCE	Bayer CropScience K.K. (Japan)	https://ror.org/013xk4n31	Japan	35.6895	139.69171	safe audit match (name equal after normalization), reviewed
+BCL, KAUST	King Abdullah University of Science and Technology	https://ror.org/01q3tbs38	Saudi Arabia	21.49012	39.18624	risky audit match, reviewed individually
+Bee Research Laboratory, USDA-ARS, Beltsville, MD	United States Department of Agriculture	https://ror.org/01na82s61	United States	38.89511	-77.03637	risky audit match, reviewed individually
+BGI	BGI Group (China)	https://ror.org/045pn2j94	China	22.54554	114.0683	unresolved by ROR API; matched via ROR dump audit, reviewed
+bgi	BGI Group (China)	https://ror.org/045pn2j94	China	22.54554	114.0683	risky audit match, reviewed individually
+BGI, Shenzhen	BGI Group (China)	https://ror.org/045pn2j94	China	22.54554	114.0683	safe audit match (name equal after normalization), reviewed
+BGI-genomics	BGI Genomics	https://ror.org/0155ctq43	China	22.54554	114.0683	safe audit match (name equal after normalization), reviewed
+BGI-Qingdao	BGI Group (China)	https://ror.org/045pn2j94	China	22.54554	114.0683	unresolved by ROR API; matched via ROR dump audit, reviewed
+BGI-Shenzhen	BGI Group (China)	https://ror.org/045pn2j94	China	22.54554	114.0683	unresolved by ROR API; matched via ROR dump audit, reviewed
+BGI-shenzhen	BGI Group (China)	https://ror.org/045pn2j94	China	22.54554	114.0683	safe audit match (name equal after normalization), reviewed
+BGI-SZ	BGI Group (China)	https://ror.org/045pn2j94	China	22.54554	114.0683	unresolved by ROR API; matched via ROR dump audit, reviewed
+BIG	Beijing Institute of Genomics	https://ror.org/049gn7z52	China	39.9075	116.39723	acronym; only ROR homonym in the collection country (geography check)
+BILS	National Bioinformatics Infrastructure Sweden	https://ror.org/00enajs79	Sweden	59.85882	17.63889	BILS is Swedish; query matched Bronx Independent Living Services
+BIOLOGY CENTRE CAS, INSTITUTE OF HYDROBIOLOGY	Czech Academy of Sciences, Biology Centre	https://ror.org/05pq4yn02	Czechia	48.97447	14.47434	audit matched a Chinese institute
+Biology Centre, ASCR, v.v.i.	Czech Academy of Sciences, Biology Centre	https://ror.org/05pq4yn02	Czechia	48.97447	14.47434	Czech Biology Centre; audit matched a US office
+Biology Centre, CAS	Czech Academy of Sciences, Biology Centre	https://ror.org/05pq4yn02	Czechia	48.97447	14.47434	safe audit match (name equal after normalization), reviewed
+BOKU - University of Natural Resources and Life Sciences	BOKU University	https://ror.org/057ff4y42	Austria	48.20849	16.37208	risky audit match, reviewed individually
+BSC	Barcelona Supercomputing Center	https://ror.org/05sd8tv96	Spain	41.38879	2.15899	acronym of a genomics/biodiversity institute (confirmed by user domain knowledge)
+CAAS	Chinese Academy of Agricultural Sciences	https://ror.org/0313jb750	China	39.9075	116.39723	risky audit match, reviewed individually
+caas	Chinese Academy of Agricultural Sciences	https://ror.org/0313jb750	China	39.9075	116.39723	risky audit match, reviewed individually
+CAF	Chinese Academy of Forestry	https://ror.org/0360dkv71	China	39.9075	116.39723	acronym; only ROR homonym in the collection country (geography check)
+Cal Poly San Luis Obispo	California Polytechnic State University	https://ror.org/001gpfp45	United States	35.28275	-120.65962	safe audit match (name equal after normalization), reviewed
+Calico Labs	Calico Life Sciences	https://ror.org/00mrxhs61	United States	37.77493	-122.41942	safe audit match (name equal after normalization), reviewed
+California Academy of Sciences, Charles Darwin Foundation and University of Vienna	California Academy of Sciences	https://ror.org/02wb73912	United States	37.77493	-122.41942	risky audit match, reviewed individually
+CAM	University of Cambridge	https://ror.org/013meh722	United Kingdom	52.2	0.11667	ENA study PRJEB36595 centre name: University of Cambridge;UK;CAM
+Carnegie Institution of Washington	Carnegie Institution for Science	https://ror.org/04jr01610	United States	38.89511	-77.03637	safe audit match (name equal after normalization), reviewed
+CAS	Chinese Academy of Sciences	https://ror.org/034t30j35	China	39.9075	116.39723	risky audit match, reviewed individually
+CAU	China Agricultural University	https://ror.org/04v3ywz14	China	39.9075	116.39723	risky audit match, reviewed individually
+CCAMP, NCBS	National Centre for Biological Sciences	https://ror.org/03gf8rp76	India	12.97194	77.59369	risky audit match, reviewed individually
+CDC	Centers for Disease Control and Prevention	https://ror.org/042twtr12	United States	33.749	-84.38798	risky audit match, reviewed individually
+CEA	Commissariat à l'Énergie Atomique et aux Énergies Alternatives	https://ror.org/00jjx8s55	France	48.85341	2.3488	risky audit match, reviewed individually
+CEFE, CNRS, UMR5175	Centre d'Écologie Fonctionnelle et Évolutive	https://ror.org/008rywf59	France	43.61093	3.87635	risky audit match, reviewed individually
+CENICAFE - Purdue University effort for the genome sequencing of the coffee berry borer	Centro Nacional de Investigaciones de Café	https://ror.org/03q60bw50	Colombia	5.06889	-75.51738	risky audit match, reviewed individually
+Center for Genome Regulation	Centre for Genomic Regulation	https://ror.org/03wyzt892	Spain	41.38879	2.15899	risky audit match, reviewed individually
+Center for Marine Environmental Studies, Ehime University	Ehime University	https://ror.org/017hkng22	Japan	33.83916	132.76574	risky audit match, reviewed individually
+Center for Plant Systems Biology, VIB-Ugent	Ghent University	https://ror.org/00cv9y106	Belgium	51.05	3.71667	risky audit match, reviewed individually
+Center for the Biology of Nematode Parasitism, NCSU	North Carolina State University	https://ror.org/04tj63d06	United States	35.7721	-78.63861	risky audit match, reviewed individually
+Centers for Disease Control and Prevention	Centers for Disease Control and Prevention	https://ror.org/042twtr12	United States	33.749	-84.38798	unresolved by ROR API; matched via ROR dump audit, reviewed
+Centre for Agricultural Bioinformatics (CABin), ICAR-IASRI, New Delhi	Indian Council of Agricultural Research	https://ror.org/04fw54a43	India	28.62137	77.2148	risky audit match, reviewed individually
+CENTRE FOR RESEARCH IN AGRICULTURAL GENOMICS	Center for Research in Agricultural Genomics	https://ror.org/04tz2h245	Spain	41.38879	2.15899	safe audit match (name equal after normalization), reviewed
+Centre for research in biotechnology for agriculture (CEBAR), University of Malaya	University of Malaya	https://ror.org/00rzspn62	Malaysia	3.1412	101.68653	exact ROR name match (University of Malaya) via a segment of the submitter string; reviewed
+Centre National de Sequencage GENOSCOPE	Genoscope	https://ror.org/028pnqf58	France	48.63389	2.44417	risky audit match, reviewed individually
+Centre of Molecular and Environmental Biology, UM, Portugal	University of Minho	https://ror.org/037wpkx04	Portugal	41.5514	-8.42311	unresolved by ROR API; matched via ROR dump audit, reviewed
+Centro de Investigacion y de Estudios Avanzados del IPN (CINVESTAV)	Centro de Investigación y de Estudios Avanzados del Instituto Politécnico Nacional	https://ror.org/009eqmr18	Mexico	19.42847	-99.12766	risky audit match, reviewed individually
+Centro de Investigaciones Biologicas						affiliation match was a different institution; left unresolved
+Centro de Investigaciones del Banano						affiliation match was a different institution; left unresolved
+Centro de Investigaciones en Toxicologia Ambiental y Agrobiotecnologia del Comahue (CITAAC)						affiliation match was a different institution; left unresolved
+Centro de Investigaciones Tecnologicas, Biomedicas y Medioambientales						affiliation match was a different institution; left unresolved
+CERZOS-CONICET	Centro de Recursos Naturales Renovables de la Zona Semiárida	https://ror.org/02skrr217	Argentina	-38.7176	-62.26545	risky audit match, reviewed individually
+China Medical University	China Medical University	https://ror.org/032d4f246	China	41.79222	123.43278	safe audit match (name equal after normalization), reviewed
+China Three Gorges Corporation	China Three Gorges Corporation (China)	https://ror.org/02yqt2385	China	39.9075	116.39723	safe audit match (name equal after normalization), reviewed
+Chinese Academy of Agriculatural Sciences (IBFC, CAAS)	Chinese Academy of Agricultural Sciences	https://ror.org/0313jb750	China	39.9075	116.39723	risky audit match, reviewed individually
+ChineseAcademyof Agricultural Sciences	Chinese Academy of Agricultural Sciences	https://ror.org/0313jb750	China	39.9075	116.39723	safe audit match (name equal after normalization), reviewed
+Chr. Hansen A/S	Novonesis (Denmark)	https://ror.org/02vm0w635	Denmark	55.77044	12.50378	risky audit match, reviewed individually
+CHU Liege	Centre Hospitalier Universitaire de Liège	https://ror.org/044s61914	Belgium	50.63373	5.56749	unresolved by ROR API; matched via ROR dump audit, reviewed
+CIIMAR - Interdisciplinary Centre of Marine and Environmental Research	Centro Interdisciplinar de Investigação Marinha e Ambiental	https://ror.org/05p7z7s64	Portugal	41.14961	-8.61099	risky audit match, reviewed individually
+CINVESTAV - Langebio	Centro de Investigación y de Estudios Avanzados del Instituto Politécnico Nacional	https://ror.org/009eqmr18	Mexico	19.42847	-99.12766	risky audit match, reviewed individually
+CINVESTAV IPN	Centro de Investigación y de Estudios Avanzados del Instituto Politécnico Nacional	https://ror.org/009eqmr18	Mexico	19.42847	-99.12766	safe audit match (name equal after normalization), reviewed
+CIRI-Inserm-U1111	Centre International de Recherche en Infectiologie	https://ror.org/059sz6q14	France	45.74906	4.84789	risky audit match, reviewed individually
+CNR	National Research Council	https://ror.org/04zaypm56	Italy	41.89193	12.51133	risky audit match, reviewed individually
+CNRS	Centre National de la Recherche Scientifique	https://ror.org/02feahw73	France	48.85341	2.3488	unresolved by ROR API; matched via ROR dump audit, reviewed
+CNRS / Universite Paris Saclay	Centre National de la Recherche Scientifique	https://ror.org/02feahw73	France	48.85341	2.3488	risky audit match, reviewed individually
+CNRS / Universite Paris Sacley	Centre National de la Recherche Scientifique	https://ror.org/02feahw73	France	48.85341	2.3488	risky audit match, reviewed individually
+CNRS-AMU	Centre National de la Recherche Scientifique	https://ror.org/02feahw73	France	48.85341	2.3488	risky audit match, reviewed individually
+College of Fisheries, RLBCAU	Rani Lakshmi Bai Central Agricultural University, Jhansi	https://ror.org/00jxdjq56	India	25.35523	78.42523	risky audit match, reviewed individually
+College of Fisheries, RLBCAU, Datia	Rani Lakshmi Bai Central Agricultural University, Jhansi	https://ror.org/00jxdjq56	India	25.35523	78.42523	risky audit match, reviewed individually
+Complete Genomics	Complete Genomics (United States)	https://ror.org/0046r4y62	United States	37.38605	-122.08385	safe audit match (name equal after normalization), reviewed
+Concordia University	Concordia University	https://ror.org/0420zvk78	Canada	45.50884	-73.58781	safe audit match (name equal after normalization), reviewed
+concordia university	Concordia University	https://ror.org/0420zvk78	Canada	45.50884	-73.58781	safe audit match (name equal after normalization), reviewed
+Consortium Research Platform on Genmics, ICAR, India	Indian Council of Agricultural Research	https://ror.org/04fw54a43	India	28.62137	77.2148	risky audit match, reviewed individually
+Cook Lab - University of California at Davis	University of California, Davis	https://ror.org/05rrcem69	United States	38.54491	-121.74052	unresolved by ROR API; matched via ROR dump audit, reviewed
+CREA	Consiglio per la ricerca in agricoltura e l’analisi dell’economia agraria	https://ror.org/0327f2m07	Italy	41.89193	12.51133	risky audit match, reviewed individually
+CRG	Centre for Genomic Regulation	https://ror.org/03wyzt892	Spain	41.38879	2.15899	risky audit match, reviewed individually
+CSIC	Consejo Superior de Investigaciones Científicas	https://ror.org/02gfc7t72	Spain	40.4165	-3.70256	risky audit match, reviewed individually
+CSIR-IHBT PALAMPUR	Institute of Himalayan Bioresource Technology	https://ror.org/03xcn0p72	India	32.11453	76.55681	risky audit match, reviewed individually
+CSIR-NEERI	National Environmental Engineering Research Institute	https://ror.org/021r5ns39	India	21.14631	79.08491	risky audit match, reviewed individually
+CSIR-NIIST	National Institute for Interdisciplinary Science and Technology	https://ror.org/05bkc5375	India	8.4855	76.94924	risky audit match, reviewed individually
+CSIRO Applied Genomics Initiative	Commonwealth Scientific and Industrial Research Organisation	https://ror.org/03qn8fb07	Australia	-35.28346	149.12807	unresolved by ROR API; matched via ROR dump audit, reviewed
+Curtin University of Technology	Curtin University	https://ror.org/02n415q13	Australia	-31.95224	115.8614	unresolved by ROR API; matched via ROR dump audit, reviewed
+Da Li University	Dali University	https://ror.org/02y7rck89	China	25.58474	100.21229	safe audit match (name equal after normalization), reviewed
+Department of General and Molecular Botany, Ruhr-University Bochum	Ruhr University Bochum	https://ror.org/04tsk2644	Germany	51.48165	7.21648	risky audit match, reviewed individually
+Department of Life Sciences, Graduate School of Arts and Sciences, University of Tokyo	The University of Tokyo	https://ror.org/057zh3y96	Japan	35.6895	139.69171	risky audit match, reviewed individually
+Department of Parasitology, Zhongshan School of Medicine, Sun Yat-sen University	Sun Yat-sen University	https://ror.org/0064kty71	China	23.11667	113.25	risky audit match, reviewed individually
+DeRisi Lab - UCSF	University of California, San Francisco	https://ror.org/043mz5j54	United States	37.77493	-122.41942	risky audit match, reviewed individually
+Division of Foodborne, Waterborne, and Environmental Diseases, Centers for Disease Control and Prevention	Centers for Disease Control and Prevention	https://ror.org/042twtr12	United States	33.749	-84.38798	risky audit match, reviewed individually
+doe	United States Department of Energy	https://ror.org/01bj3aw27	United States	38.89511	-77.03637	risky audit match, reviewed individually
+Dovetail Genomics	Dovetail Genomics (United States)	https://ror.org/049wrg704	United States	36.97412	-122.0308	safe audit match (name equal after normalization), reviewed
+DSM, The Netherlands	DSM (Netherlands)	https://ror.org/00k01kt20	The Netherlands	50.88365	5.98154	safe audit match (name equal after normalization), reviewed
+DTU	Technical University of Denmark	https://ror.org/04qtj9h94	Denmark	55.77044	12.50378	risky audit match, reviewed individually
+DuPont	DuPont (United States)	https://ror.org/03g3m1w62	United States	39.74595	-75.54659	safe audit match (name equal after normalization), reviewed
+Eagle Genomics Ltd	Eagle Genomics (United Kingdom)	https://ror.org/030vc9997	United Kingdom	52.2	0.11667	risky audit match, reviewed individually
+EBI	European Bioinformatics Institute	https://ror.org/02catss52	United Kingdom	52.2	0.11667	acronym of a genomics/biodiversity institute (confirmed by user domain knowledge)
+Ecologie, Systematique et Evolution	Ecologie, Société, Evolution	https://ror.org/00kk89y84	France	48.69572	2.18727	unresolved by ROR API; matched via ROR dump audit, reviewed
+EDB						ambiguous acronym; matched Singapore Economic Development Board
+EGCE - CNRS Gif-sur-Yvette	Évolution, Génomes, Comportement, Écologie	https://ror.org/011abem59	France	48.85341	2.3488	risky audit match, reviewed individually
+EMBL-EBI, WELLCOME TRUST GENOME CAMPUS, CAMBRIDGE	European Bioinformatics Institute	https://ror.org/02catss52	United Kingdom	52.2	0.11667	matched Wellcome Trust instead of EMBL-EBI
+Embrapa	Embrapa	https://ror.org/0482b5b22	Brazil	-15.77972	-47.92972	risky audit match, reviewed individually
+Embrapa Agroenergia	Embrapa Agroenergia	https://ror.org/05gpwkk43	Brazil	-15.77972	-47.92972	exact ROR name match (Embrapa Agroenergia); reviewed
+Embrapa Amazonia Ocidental	Embrapa Amazônia Ocidental	https://ror.org/055gn3r50	Brazil	-3.10194	-60.025	exact ROR name match (Embrapa Amazônia Ocidental); reviewed
+Embrapa Genetic Resources and Biotechnology	Embrapa Recursos Genéticos e Biotecnologia	https://ror.org/047y8rp84	Brazil	-15.77972	-47.92972	exact ROR name match (Embrapa Genetic Resources and Biotechnology); reviewed
+EMG	European Bioinformatics Institute	https://ror.org/02catss52	United Kingdom	52.2	0.11667	EMG = EBI Metagenomics (MGnify); BioSample owner European Bioinformatics Institute
+ErasmusMC	Erasmus MC	https://ror.org/018906e22	The Netherlands	51.9225	4.47917	safe audit match (name equal after normalization), reviewed
+F. Hoffmann - La Roche AG	F. Hoffmann-La Roche AG	https://ror.org/00by1q217	Switzerland	47.55839	7.57327	risky audit match, reviewed individually
+F. Hoffmann-La Roche Ltd	F. Hoffmann-La Roche AG	https://ror.org/00by1q217	Switzerland	47.55839	7.57327	risky audit match, reviewed individually
+FDA	United States Food and Drug Administration	https://ror.org/034xvzb47	United States	38.99067	-77.02609	risky audit match, reviewed individually
+Federal University of Parana	Universidade Federal do Paraná	https://ror.org/05syd6y78	Brazil	-25.42778	-49.27306	safe audit match (name equal after normalization), reviewed
+FEDERAL UNIVERSITY OF PARANA	Universidade Federal do Paraná	https://ror.org/05syd6y78	Brazil	-25.42778	-49.27306	safe audit match (name equal after normalization), reviewed
+FEDERAL UNIVERSITY OF RIO DE JANEIRO	Universidade Federal do Rio de Janeiro	https://ror.org/03490as77	Brazil	-22.90642	-43.18223	safe audit match (name equal after normalization), reviewed
+Fera Science Ltd.	Fera Science (United Kingdom)	https://ror.org/05299tt38	United Kingdom	53.95763	-1.08271	risky audit match, reviewed individually
+Fiocruz Rondonia	Fiocruz Rondônia	https://ror.org/0120tkg95	Brazil	-8.76194	-63.90389	ROR record for the Rondônia unit of Fundação Oswaldo Cruz (Porto Velho); BioSample owner is the same name
+First Institute of Oceanography, Ministry of Natural Resources	First Institute of Oceanography	https://ror.org/01y34t753	China	36.06488	120.38042	risky audit match, reviewed individually
+Flanders Research Institute for Agriculture, Fisheries and Food	Instituut voor Landbouw en Visserijonderzoek	https://ror.org/05cjt1n05	Belgium	50.99447	3.74621	risky audit match, reviewed individually
+Forest Research Institute Malaysia (FRIM) & University of Zurich	Forest Research Institute Malaysia	https://ror.org/01mfdfm52	Malaysia	3.1412	101.68653	risky audit match, reviewed individually
+Forschungszentrum Juelich	Forschungszentrum Jülich	https://ror.org/02nv7yv05	Germany	50.92149	6.36267	risky audit match, reviewed individually
+Fred Hutchinson Cancer Research Center	Fred Hutch Cancer Center	https://ror.org/007ps6h72	United States	47.60621	-122.33207	affiliation matched a Spanish cancer center
+FREIE UNIVERSITAET BERLIN	Freie Universität Berlin	https://ror.org/046ak2485	Germany	52.52437	13.41053	risky audit match, reviewed individually
+french national research institute for sustainable development	Institut de Recherche pour le Développement	https://ror.org/05q3vnk25	France	43.29695	5.38107	IRD; matched a Vietnamese institute
+Freshwater Fisheries Research Center, Chinese Academy of Fisheries Sciences						affiliation match was a different institution; left unresolved
+Freshwater Fisheries Research Center, Chinese Academy of Fishery Science						affiliation match was a different institution; left unresolved
+Freshwater Fisheries Research Center, Chinese Academy of Fishery Sciences						affiliation match was a different institution; left unresolved
+Friedrich-Loeffler-Institute	Friedrich-Loeffler-Institut	https://ror.org/025fw7a54	Germany	54.08905	13.40244	risky audit match, reviewed individually
+Friedrich-Schiller Univerisitat Jena	Friedrich Schiller University Jena	https://ror.org/05qpz1x62	Germany	50.92878	11.5899	risky audit match, reviewed individually
+Friedrich-Schiller-University	Friedrich Schiller University Jena	https://ror.org/05qpz1x62	Germany	50.92878	11.5899	Friedrich Schiller University Jena
+Fujian Academy of Agriculture Sciences	Fujian Academy of Agricultural Sciences	https://ror.org/02aj8qz21	China	26.06139	119.30611	risky audit match, reviewed individually
+FUND. UNIVERSIDADE FEDERAL DE RONDONIA	Universidade Federal de Rondônia	https://ror.org/02842cb31	Brazil	-8.76194	-63.90389	risky audit match, reviewed individually
+GATC Biotech AG	GATC Biotech (Germany)	https://ror.org/04g8dha87	Germany	47.66033	9.17582	risky audit match, reviewed individually
+Geisel School of Medicine at Dartmouth	Dartmouth College	https://ror.org/049s0rh22	United States	43.70229	-72.28954	unresolved by ROR API; matched via ROR dump audit, reviewed
+Genentech Inc.,	Genentech	https://ror.org/04gndp242	United States	37.77493	-122.41942	risky audit match, reviewed individually
+Genetics and Genome Center, Washington University School of Medicine	Washington University in St. Louis	https://ror.org/01yc7t268	United States	38.62727	-90.19789	risky audit match, reviewed individually
+GenoFish	Institut National de Recherche pour l'Agriculture, l'Alimentation et l'Environnement	https://ror.org/003vg9w96	France	48.85341	2.3488	BioSample owner INRAE/INRA Fish Physiology and Genomics laboratory (Rennes); ROR coordinates are INRAE HQ
+Genome Center, Washington University School of Medicine, St Louis, MO	Washington University in St. Louis	https://ror.org/01yc7t268	United States	38.62727	-90.19789	risky audit match, reviewed individually
+Genome Sequencing Center (GSC) at Washington University (WashU) School of Medicine	Washington University in St. Louis	https://ror.org/01yc7t268	United States	38.62727	-90.19789	unresolved by ROR API; matched via ROR dump audit, reviewed
+Genome Sequencing Center, Washington University	Washington University in St. Louis	https://ror.org/01yc7t268	United States	38.62727	-90.19789	risky audit match, reviewed individually
+Genoscope - CEA	Genoscope	https://ror.org/028pnqf58	France	48.63389	2.44417	risky audit match, reviewed individually
+Genoscope - Centre National de Sequencage	Genoscope	https://ror.org/028pnqf58	France	48.63389	2.44417	risky audit match, reviewed individually
+Genoscope - Centre National de Séquençage	Genoscope	https://ror.org/028pnqf58	France	48.63389	2.44417	risky audit match, reviewed individually
+Genoscope - Institut de Genomique - CEA	Genoscope	https://ror.org/028pnqf58	France	48.63389	2.44417	risky audit match, reviewed individually
+Genoscope CEA	Genoscope	https://ror.org/028pnqf58	France	48.63389	2.44417	unresolved by ROR API; matched via ROR dump audit, reviewed
+Genoscope/IG/CEA	Genoscope	https://ror.org/028pnqf58	France	48.63389	2.44417	risky audit match, reviewed individually
+Georg-August-University of Goettingen	University of Göttingen	https://ror.org/01y9bpm73	Germany	51.53443	9.93228	risky audit match, reviewed individually
+GlaxoSmithKline	GlaxoSmithKline (United Kingdom)	https://ror.org/01xsqw823	United Kingdom	51.50853	-0.12574	safe audit match (name equal after normalization), reviewed
+Global Ant Genomics Alliance						consortium; matched Digital Research Alliance of Canada
+Grandomics	Grandomics (China)	https://ror.org/044snnt75	China	39.9075	116.39723	safe audit match (name equal after normalization), reviewed
+GrandOmics Biosciences	Grandomics (China)	https://ror.org/044snnt75	China	39.9075	116.39723	risky audit match, reviewed individually
+Guangxi Academy of Marine Sciences (Guangxi Mangrove Research Center)	Guangxi Mangrove Research Center	https://ror.org/03w5vx872	China	21.48349	109.11549	risky audit match, reviewed individually
+Guangxi Academy of Specialty Crops	Guangxi Academy of Special Crops	https://ror.org/00gygke76	China	25.28022	110.29639	risky audit match, reviewed individually
+Guangxi Botanical Garden of Medicinal Plants	Guangxi Medicinal Botanical Garden	https://ror.org/01tpvdp83	China	22.81667	108.31667	same garden under its Chinese-English name variant (Nanning)
+GWU	George Washington University	https://ror.org/00y4zzh67	United States	38.89511	-77.03637	risky audit match, reviewed individually
+Hale Lab at University of New Hampshire	University of New Hampshire	https://ror.org/01rmh9n78	United States	43.13397	-70.92645	risky audit match, reviewed individually
+He'nan University of Technology	Henan University of Technology	https://ror.org/05sbgwt55	China	34.75778	113.64861	safe audit match (name equal after normalization), reviewed
+Hebei Agriculture University	Hebei Agricultural University	https://ror.org/009fw8j44	China	38.87288	115.46246	risky audit match, reviewed individually
+Heinrich Heine Universitaet Duesseldorf	Heinrich Heine University Düsseldorf	https://ror.org/024z2rq82	Germany	51.22319	6.77927	risky audit match, reviewed individually
+Heinrich-Heine-University Dusseldorf	Heinrich Heine University Düsseldorf	https://ror.org/024z2rq82	Germany	51.22319	6.77927	safe audit match (name equal after normalization), reviewed
+Heinricht Heine Universitaet Duesseldorf	Heinrich Heine University Düsseldorf	https://ror.org/024z2rq82	Germany	51.22319	6.77927	risky audit match, reviewed individually
+Hellenic Center For Marine Research	Hellenic Centre for Marine Research	https://ror.org/038kffh84	Greece	37.73414	23.94389	safe audit match (name equal after normalization), reviewed
+hellenic centre for marine research - institute of marine biology, biotechnology & aquaculture	Hellenic Centre for Marine Research	https://ror.org/038kffh84	Greece	37.73414	23.94389	risky audit match, reviewed individually
+Helmholtz-Zentrum Muenchen, IBIS	Institute of Bioinformatics and Systems Biology	https://ror.org/0127fwn18	Germany	48.25	11.56667	risky audit match, reviewed individually
+Henan Agriculture University	Henan Agricultural University	https://ror.org/04eq83d71	China	34.75778	113.64861	risky audit match, reviewed individually
+Henan University of Science & Technology	Henan University of Science and Technology	https://ror.org/05d80kz58	China	34.68361	112.45361	safe audit match (name equal after normalization), reviewed
+HHMI/UCSF	University of California, San Francisco	https://ror.org/043mz5j54	United States	37.77493	-122.41942	risky audit match, reviewed individually
+HKUST	Hong Kong University of Science and Technology	https://ror.org/00q4vv597	Hong Kong	22.27832	114.17469	unresolved by ROR API; matched via ROR dump audit, reviewed
+HMGU-IBIS	Institute of Bioinformatics and Systems Biology	https://ror.org/0127fwn18	Germany	48.25	11.56667	risky audit match, reviewed individually
+Hongkong University	University of Hong Kong	https://ror.org/02zhqgq86	Hong Kong	22.26861	114.12924	safe audit match (name equal after normalization), reviewed
+Hospital for Sick Children (SickKids), Toronto, Canada	The Hospital for Sick Children	https://ror.org/057q4rt57	Canada	43.70643	-79.39864	risky audit match, reviewed individually
+Houston Methodist Hospital	Houston Methodist	https://ror.org/027zt9171	United States	29.76328	-95.36327	risky audit match, reviewed individually
+Huazhong Agriculture University	Huazhong Agricultural University	https://ror.org/023b72294	China	30.58333	114.26667	unresolved by ROR API; matched via ROR dump audit, reviewed
+Huazhong agriculture university	Huazhong Agricultural University	https://ror.org/023b72294	China	30.58333	114.26667	risky audit match, reviewed individually
+huazhong agriculture university	Huazhong Agricultural University	https://ror.org/023b72294	China	30.58333	114.26667	risky audit match, reviewed individually
+IARI	Indian Agricultural Research Institute	https://ror.org/01bzgdw81	India	28.62137	77.2148	risky audit match, reviewed individually
+IAS-CSIC	Consejo Superior de Investigaciones Científicas	https://ror.org/02gfc7t72	Spain	40.4165	-3.70256	risky audit match, reviewed individually
+IBCAS	Institute of Botany	https://ror.org/05hr3ch11	China	39.9075	116.39723	safe audit match (name equal after normalization), reviewed
+ICAR National Research Centre on Pig	ICAR-National Research Centre on Pig	https://ror.org/03pczck54	India	26.1844	91.7458	safe audit match (name equal after normalization), reviewed
+ICAR-CAZRI, Jodhpur	Central Arid Zone Research Institute	https://ror.org/04298em06	India	26.26841	73.00594	risky audit match, reviewed individually
+ICAR-Central Agroforestry Research Institute						affiliation match was a different institution; left unresolved
+ICAR-Central Inland Fisheries Research Institute	Central Inland Fisheries Research Institute	https://ror.org/04gtdp803	India	22.76602	88.36336	risky audit match, reviewed individually
+ICAR-CITH	Central Institute of Temperate Horticulture	https://ror.org/032sxkb16	India	34.08565	74.80555	risky audit match, reviewed individually
+ICAR-CPCRI, Kasaragod	Central Plantation Crops Research Institute	https://ror.org/052afrt88	India	12.49838	74.98959	risky audit match, reviewed individually
+ICAR-IARI	Indian Agricultural Research Institute	https://ror.org/01bzgdw81	India	28.62137	77.2148	risky audit match, reviewed individually
+ICAR-IARI, New Delhi, INDIA	Indian Agricultural Research Institute	https://ror.org/01bzgdw81	India	28.62137	77.2148	risky audit match, reviewed individually
+ICAR-IISR	Indian Council of Agricultural Research	https://ror.org/04fw54a43	India	28.62137	77.2148	risky audit match, reviewed individually
+ICAR-NBAGR	National Bureau of Animal Genetic Resources	https://ror.org/03d3nyr92	India	30.73629	76.7884	risky audit match, reviewed individually
+ICAR-VPKAS, Almora	Vivekananda Parvatiya Krishi Anusandhan Sansthan	https://ror.org/043m3hn34	India	29.59713	79.65911	risky audit match, reviewed individually
+IGB Leibniz-Institute of Freshwater Ecology and Inland Fisheries	Leibniz Institute of Freshwater Ecology and Inland Fisheries	https://ror.org/01nftxb06	Germany	52.52437	13.41053	risky audit match, reviewed individually
+IGS	University of Maryland, Baltimore	https://ror.org/04rq5mt64	United States	39.29038	-76.61219	Institute for Genome Sciences is part of Univ. of Maryland School of Medicine (no own ROR record); IGS assemblies are Babesia/Zygomycete genomes
+IISER Bhopal	Indian Institute of Science Education and Research, Bhopal	https://ror.org/02rb21j89	India	23.25469	77.40289	safe audit match (name equal after normalization), reviewed
+IMBA - Institute for Molecular Biotechnology	Institute of Molecular Biotechnology	https://ror.org/01zqrxf85	Austria	48.20849	16.37208	risky audit match, reviewed individually
+IMPAM-UBA-CONICET	Consejo Nacional de Investigaciones Científicas y Técnicas	https://ror.org/03cqe8w59	Argentina	-34.61315	-58.37723	risky audit match, reviewed individually
+INAIL-DIT, Research Area	Istituto Nazionale per l'Assicurazione Contro gli Infortuni sul Lavoro	https://ror.org/01t264m74	Italy	41.89193	12.51133	risky audit match, reviewed individually
+Indian Biological Data Centre	Regional Centre for Biotechnology	https://ror.org/00nc5f834	India	28.41124	77.31316	unresolved by ROR API; matched via ROR dump audit, reviewed
+Indian Institute of Science Education and Research	Indian Institute of Science Education and Research Pune	https://ror.org/028qa3n13	India	18.51957	73.85535	risky audit match, reviewed individually
+Indian Institute of Science Education and Research Bhopal	Indian Institute of Science Education and Research, Bhopal	https://ror.org/02rb21j89	India	23.25469	77.40289	safe audit match (name equal after normalization), reviewed
+Indian Institute of Science Education and Research Tirupati	Indian Institute of Science Education and Research, Tirupati	https://ror.org/032d0e990	India	13.63551	79.41989	safe audit match (name equal after normalization), reviewed
+INDICASAT-AIP	Instituto de Investigaciones Científicas y Servicios de Alta Tecnología	https://ror.org/04ngphv84	Panama	8.9936	-79.51973	risky audit match, reviewed individually
+INIA-CSIC	Consejo Superior de Investigaciones Científicas	https://ror.org/02gfc7t72	Spain	40.4165	-3.70256	risky audit match, reviewed individually
+Inner Mongolia Agricultura University	Inner Mongolia Agricultural University	https://ror.org/015d0jq83	China	40.81056	111.65222	risky audit match, reviewed individually
+INPT	Institut National Polytechnique de Toulouse	https://ror.org/033p9g875	France	43.60426	1.44367	acronym of a genomics/biodiversity institute (confirmed by user domain knowledge)
+INRA	Institut National de Recherche pour l'Agriculture, l'Alimentation et l'Environnement	https://ror.org/003vg9w96	France	48.85341	2.3488	INRA (France) is INRAE; query matched Moroccan INRA
+INRA UMR 1319	Institut National de Recherche pour l'Agriculture, l'Alimentation et l'Environnement	https://ror.org/003vg9w96	France	48.85341	2.3488	INRAE unit; affiliation matched ISPED
+INRA, Unite de Recherche en Biotechnologie	Institut National de Recherche pour l'Agriculture, l'Alimentation et l'Environnement	https://ror.org/003vg9w96	France	48.85341	2.3488	INRAE; audit matched Moroccan INRA
+INRA-CBGP	Centre de Biologie pour la Gestion des Populations	https://ror.org/05h7ddb14	France	43.66806	3.85686	risky audit match, reviewed individually
+INRA-LIPM	Institut National de Recherche pour l'Agriculture, l'Alimentation et l'Environnement	https://ror.org/003vg9w96	France	48.85341	2.3488	Toulouse lab of INRAE; ROR acronym matched Moroccan INRA
+INRA-MICALIS	Microbiologie de l’alimentation au service de la santé	https://ror.org/0471cyx86	France	48.69572	2.18727	risky audit match, reviewed individually
+INRA/CNRS	Institut National de Recherche pour l'Agriculture, l'Alimentation et l'Environnement	https://ror.org/003vg9w96	France	48.85341	2.3488	INRAE; audit matched Moroccan INRA
+INRAE - GeT-PlaGe	Institut National de Recherche pour l'Agriculture, l'Alimentation et l'Environnement	https://ror.org/003vg9w96	France	48.85341	2.3488	unresolved by ROR API; matched via ROR dump audit, reviewed
+INRAE Grand Est-Colmar	Institut National de Recherche pour l'Agriculture, l'Alimentation et l'Environnement	https://ror.org/003vg9w96	France	48.85341	2.3488	INRAE site; audit matched a wrong unit
+INRAE/CNRS	Institut National de Recherche pour l'Agriculture, l'Alimentation et l'Environnement	https://ror.org/003vg9w96	France	48.85341	2.3488	risky audit match, reviewed individually
+INRS-Institut Armand-Frappier	Centre Armand-Frappier Santé Biotechnologie	https://ror.org/0562xaa66	Canada	45.56995	-73.692	exact ROR name match (INRS-Institut Armand-Frappier); reviewed
+INSTITUT DE BIOLOGIA EVOLUTIVA (CSIC-UPF)	Institut de Biologia Evolutiva	https://ror.org/044mj7r89	Spain	41.38879	2.15899	risky audit match, reviewed individually
+Institut de recherche pour le developpement	Institut de Recherche pour le Développement	https://ror.org/05q3vnk25	France	43.29695	5.38107	unresolved by ROR API; matched via ROR dump audit, reviewed
+Institut de Recherche pour le Developpement	Institut de Recherche pour le Développement	https://ror.org/05q3vnk25	France	43.29695	5.38107	safe audit match (name equal after normalization), reviewed
+INSTITUT DES SCIENCES DE L'EVOLUTION DE MONTPELLIER, UNIVERSITE DE MONTPELLIER, CNRS-EPHE-IRD-UM	Institut des Sciences de l'Evolution de Montpellier	https://ror.org/01cah1n37	France	43.61093	3.87635	risky audit match, reviewed individually
+Institut national de recherche pour l agriculture l alimentation et l environnement	Institut National de Recherche pour l'Agriculture, l'Alimentation et l'Environnement	https://ror.org/003vg9w96	France	48.85341	2.3488	safe audit match (name equal after normalization), reviewed
+Institute for Cell and Molecular Biosciences, Newcastle University	Newcastle University	https://ror.org/01kj2bm70	United Kingdom	54.97328	-1.61396	risky audit match, reviewed individually
+Institute for Genome Sciences	University of Maryland, Baltimore	https://ror.org/04rq5mt64	United States	39.29038	-76.61219	Institute for Genome Sciences is part of Univ. of Maryland School of Medicine (no own ROR record); IGS assemblies are Babesia/Zygomycete genomes
+Institute for Genome Sciences, University of Maryland School of Medicine	University of Maryland, Baltimore	https://ror.org/04rq5mt64	United States	39.29038	-76.61219	Institute for Genome Sciences is part of Univ. of Maryland School of Medicine (no own ROR record); IGS assemblies are Babesia/Zygomycete genomes
+INSTITUTE OF ANIMAL SCIENCES OF CAAS	Institute of Animal Sciences	https://ror.org/04tcthy91	China	39.9075	116.39723	unresolved by ROR API; matched via ROR dump audit, reviewed
+Institute of Biology Leiden						affiliation match was a different institution; left unresolved
+Institute of Botany, CAS	Czech Academy of Sciences, Institute of Botany	https://ror.org/03qqnc658	Czechia	49.99962	14.55017	safe audit match (name equal after normalization), reviewed
+Institute of Botany, the Chinese Academy of Science	Institute of Botany	https://ror.org/05hr3ch11	China	39.9075	116.39723	risky audit match, reviewed individually
+Institute of Crop Sciences of CAAS	Institute of Crop Sciences	https://ror.org/051abs833	China	39.9075	116.39723	risky audit match, reviewed individually
+Institute of Crop Sciences/National Key Facility for Crop Gene Resources and Genetic Improvement, Ch	Institute of Crop Sciences	https://ror.org/051abs833	China	39.9075	116.39723	risky audit match, reviewed individually
+Institute of Experimental Botany	Czech Academy of Sciences, Institute of Experimental Botany	https://ror.org/057br4398	Czechia	50.08804	14.42076	risky audit match, reviewed individually
+Institute of Food Science and Technology, CAAS	Institute of Food Science and Technology	https://ror.org/01s5dew76	China	39.9075	116.39723	risky audit match, reviewed individually
+Institute of Highland Forest Science, Chinese Academy of For						affiliation match was a different institution; left unresolved
+Institute of Highland Forest Science, Chinese Academy of Forestry						affiliation match was a different institution; left unresolved
+Institute of Hydrobiology	Institute of Hydrobiology	https://ror.org/00b4mx203	China	30.58333	114.26667	safe audit match (name equal after normalization), reviewed
+Institute of hydrobiology	Institute of Hydrobiology	https://ror.org/00b4mx203	China	30.58333	114.26667	safe audit match (name equal after normalization), reviewed
+Institute of Molecular and Cell Biology, A*star, Singapore	Agency for Science, Technology and Research	https://ror.org/036wvzt09	Singapore	1.28967	103.85007	risky audit match, reviewed individually
+Institute of Molecular and Cell Biology, A*STAR, Singapore	Agency for Science, Technology and Research	https://ror.org/036wvzt09	Singapore	1.28967	103.85007	risky audit match, reviewed individually
+Institute of Oceanology	Institute of Oceanology	https://ror.org/018yw5541	China	36.06488	120.38042	safe audit match (name equal after normalization), reviewed
+Institute of oceanology	Institute of Oceanology	https://ror.org/018yw5541	China	36.06488	120.38042	safe audit match (name equal after normalization), reviewed
+Institute of Oceanology, CAS	Institute of Oceanology	https://ror.org/018yw5541	China	36.06488	120.38042	risky audit match, reviewed individually
+Institute of oceanology, Chinese academic of sciences	Institute of Oceanology	https://ror.org/018yw5541	China	36.06488	120.38042	risky audit match, reviewed individually
+Institute of oceanology, Chinese academy of science	Institute of Oceanology	https://ror.org/018yw5541	China	36.06488	120.38042	risky audit match, reviewed individually
+Institute of Phytopathology Christian-Albrechts Universitaet Kiel	Christian-Albrechts-Universität zu Kiel	https://ror.org/04v76ef78	Germany	54.32133	10.13489	unresolved by ROR API; matched via ROR dump audit, reviewed
+Institute of Science and Environment, University of Saint Joseph	University of Saint Joseph	https://ror.org/01m6ap410	Macao	22.20056	113.54611	exact ROR name match (University of Saint Joseph) via a segment of the submitter string; reviewed
+Institute of Zoology, CAS	Institute of Zoology	https://ror.org/05skxkv18	China	39.9075	116.39723	risky audit match, reviewed individually
+Instituto Carlos Chagas - ICC/Fiocruz-PR	Instituto Carlos Chagas	https://ror.org/01y8gmz47	Brazil	-25.42778	-49.27306	exact ROR name match (Instituto Carlos Chagas) via a segment of the submitter string; reviewed
+INSTITUTO TECNOLOGICO Y DE ESTUDIOS SUPERIORES DE MONTERREY	Tecnológico de Monterrey	https://ror.org/03ayjn504	Mexico	25.68435	-100.31721	safe audit match (name equal after normalization), reviewed
+Interdisciplinary Centre of Marine and Environmental Research (CIIMAR) / University of Porto	Universidade do Porto	https://ror.org/043pwc612	Portugal	41.1485	-8.61097	risky audit match, reviewed individually
+International Crops Research Institute for the Semi-Arid Tropics (ICRISAT)	International Crops Research Institute for the Semi-Arid Tropics	https://ror.org/0541a3n79	India	17.53334	78.2645	ICRISAT headquarters, Patancheru (India record chosen; ROR has one record per country)
+IPATEC-CRUB-UNCO	Universidad Nacional del Comahue	https://ror.org/02zvkba47	Argentina	-38.95078	-68.0592	risky audit match, reviewed individually
+IPK Gatersleben	Leibniz-Institut für Pflanzengenetik und Kulturpflanzenforschung (IPK)	https://ror.org/02skbsp27	Germany	51.82215	11.28661	risky audit match, reviewed individually
+IPK GATERSLEBEN	Leibniz-Institut für Pflanzengenetik und Kulturpflanzenforschung (IPK)	https://ror.org/02skbsp27	Germany	51.82215	11.28661	risky audit match, reviewed individually
+IPK-Gatersleben	Leibniz-Institut für Pflanzengenetik und Kulturpflanzenforschung (IPK)	https://ror.org/02skbsp27	Germany	51.82215	11.28661	unresolved by ROR API; matched via ROR dump audit, reviewed
+IPS2 - INRAE	Institut des Sciences des Plantes de Paris Saclay	https://ror.org/00ajjta07	France	48.69572	2.18727	risky audit match, reviewed individually
+IPSP-CNR	Institute for Sustainable Plant Protection	https://ror.org/008fjbg42	Italy	45.07049	7.68682	risky audit match, reviewed individually
+IRD	Institut de Recherche pour le Développement	https://ror.org/05q3vnk25	France	43.29695	5.38107	risky audit match, reviewed individually
+Iriomote Station, Tropical Biosphere Research Center, the University of Ryukyus	University of the Ryukyus	https://ror.org/02z1n9q24	Japan	26.33583	127.80139	risky audit match, reviewed individually
+ISEM	Institut des Sciences de l'Evolution de Montpellier	https://ror.org/01cah1n37	France	43.61093	3.87635	risky audit match, reviewed individually
+J. Crag Venter Institute	J. Craig Venter Institute	https://ror.org/049r1ts75	United States	32.84727	-117.2742	risky audit match, reviewed individually
+JGI	Joint Genome Institute	https://ror.org/04xm1d337	United States	37.87159	-122.27275	unresolved by ROR API; matched via ROR dump audit, reviewed
+Jiangsu Academy of Agriculture Sciences	Jiangsu Academy of Agricultural Sciences	https://ror.org/001f9e125	China	32.06167	118.77778	risky audit match, reviewed individually
+Jiangsu Polytechnic College of Agriculture and Forestry	Jiangsu Vocational College of Agriculture and Forestry	https://ror.org/02bmztc34	China	31.94869	119.1655	exact ROR name match (Jiangsu Polytechnic College of Agriculture and For); reviewed
+Jilin Agriculture University	Jilin Agricultural University	https://ror.org/05dmhhd41	China	43.88	125.32278	risky audit match, reviewed individually
+Jill Banfield's Lab at Berkeley	University of California, Berkeley	https://ror.org/01an7q238	United States	37.87159	-122.27275	Banfield lab is at UC Berkeley
+Jinan University	Jinan University	https://ror.org/02xe5ns62	China	23.11667	113.25	safe audit match (name equal after normalization), reviewed
+Junagadh Agriculture University	Junagadh Agricultural University	https://ror.org/04mgf6n79	India	21.51966	70.45981	risky audit match, reviewed individually
+Justus Liebig University	Justus-Liebig-Universität Gießen	https://ror.org/033eqas34	Germany	50.58727	8.67554	exact ROR name match (Justus Liebig University); reviewed
+karl-franzens university graz	University of Graz	https://ror.org/01faaaf77	Austria	47.06733	15.44197	risky audit match, reviewed individually
+King Abdullah University Science and Technology	King Abdullah University of Science and Technology	https://ror.org/01q3tbs38	Saudi Arabia	21.49012	39.18624	risky audit match, reviewed individually
+Kobe University Research Center for Inland Seas	Kobe University	https://ror.org/03tgsfw79	Japan	34.6913	135.183	risky audit match, reviewed individually
+Korea University	Korea University	https://ror.org/047dqcg40	South Korea	37.566	126.9784	exact ROR name match (Korea University); reviewed
+LABORATOIRE DE GENIE CHIMIQUE	Laboratoire de Génie Chimique	https://ror.org/003jnac13	France	43.60426	1.44367	safe audit match (name equal after normalization), reviewed
+LABORATOIRE DE RECHERCHE EN SCIENCES VEGETALES, UMR 5546 UNIVERSITY OF TOULOUSE III-CNRS	Laboratoire de Recherche en Sciences Végétales	https://ror.org/047z5as19	France	43.5159	1.4986	risky audit match, reviewed individually
+Laboratoire des Symbioses Tropicales et Mediterraneennes (LSTM)	Laboratoire des Symbioses Tropicales et Méditerranéennes	https://ror.org/05q94pf14	France	43.61093	3.87635	risky audit match, reviewed individually
+Laboratory for Phyloinformatics, Center for Biosystems Dynamics Research, RIKEN	RIKEN	https://ror.org/01sjwvz98	Japan	35.78944	139.62333	risky audit match, reviewed individually
+Laboratory of Molecular and Cellular Regulation Institute for Integrative Neurobiology Faculty of Science and Engineering Department of Biology, Konan University	Konan University	https://ror.org/059b5pb30	Japan	34.6913	135.183	exact ROR name match (Konan University) via a segment of the submitter string; reviewed
+Langebio / CINVESTAV	Centro de Investigación y de Estudios Avanzados del Instituto Politécnico Nacional	https://ror.org/009eqmr18	Mexico	19.42847	-99.12766	risky audit match, reviewed individually
+Leibniz Insitute - DSMZ	Leibniz Institute DSMZ – German Collection of Microorganisms and Cell Cultures	https://ror.org/02tyer376	Germany	52.26594	10.52673	risky audit match, reviewed individually
+Leibniz-HKI	Leibniz-Institut für Naturstoff-Forschung und Infektionsbiologie e. V. - Hans-Knöll-Institut (HKI)	https://ror.org/055s37c97	Germany	50.92878	11.5899	unresolved by ROR API; matched via ROR dump audit, reviewed
+Leibniz-Institute of Freshwater Ecology and Inland Fisheries	Leibniz Institute of Freshwater Ecology and Inland Fisheries	https://ror.org/01nftxb06	Germany	52.52437	13.41053	safe audit match (name equal after normalization), reviewed
+Life Sciences, Graduate School of Arts and Sciences, University of Tokyo	The University of Tokyo	https://ror.org/057zh3y96	Japan	35.6895	139.69171	risky audit match, reviewed individually
+LMU	Ludwig-Maximilians-Universität München	https://ror.org/05591te55	Germany	48.13743	11.57549	risky audit match, reviewed individually
+LOEWE-TBG	LOEWE Centre for Translational Biodiversity Genomics	https://ror.org/0396gab88	Germany	50.11552	8.68417	safe audit match (name equal after normalization), reviewed
+LOEWE-TBG (Translational Biodiversity Genomics)	LOEWE Centre for Translational Biodiversity Genomics	https://ror.org/0396gab88	Germany	50.11552	8.68417	risky audit match, reviewed individually
+Los Angeles County Public Health Lab microbial pathogen submission group	Los Angeles County Department of Public Health	https://ror.org/017dm4063	United States	34.05223	-118.24368	affiliation matched Public Health Laboratory in Macao
+LSUAgcenter	Louisiana State University Agricultural Center	https://ror.org/01b8rza40	United States	30.44332	-91.18747	safe audit match (name equal after normalization), reviewed
+Ludwig Maximilians Universitaet Muenchen	Ludwig-Maximilians-Universität München	https://ror.org/05591te55	Germany	48.13743	11.57549	risky audit match, reviewed individually
+Macrogen	Macrogen (South Korea)	https://ror.org/03qan5r71	South Korea	37.566	126.9784	safe audit match (name equal after normalization), reviewed
+Macrogen, Korea	Macrogen (South Korea)	https://ror.org/03qan5r71	South Korea	37.566	126.9784	risky audit match, reviewed individually
+Marine Evolutionary Ecology, Faculty of Agriculture and Marine Science, Kochi University	Kōchi University	https://ror.org/01xxp6985	Japan	33.55	133.53333	exact ROR name match (Kōchi University) via a segment of the submitter string; reviewed
+Marine Fishery Institute of Zhejiang Province	Zhejiang Marine Fisheries Research Institute	https://ror.org/02wt5t905	China	29.98869	122.20488	safe audit match (name equal after normalization), reviewed
+Marine Genomics Unit, Okinawa Institute of Science and Technology	Okinawa Institute of Science and Technology Graduate University	https://ror.org/02qg15b79	Japan	26.47595	127.85278	risky audit match, reviewed individually
+Martin-Luther-University Halle-Wittenberg	Martin Luther University Halle-Wittenberg	https://ror.org/05gqaka33	Germany	51.48158	11.97947	safe audit match (name equal after normalization), reviewed
+Max Planck Institute for Ornithology	Max Planck Institute for Biological Intelligence	https://ror.org/03g267s60	Germany	48.10732	11.45196	safe audit match (name equal after normalization), reviewed
+Max Planck Institute for Ornithology-Seewiesen	Max Planck Institute for Biological Intelligence	https://ror.org/03g267s60	Germany	48.10732	11.45196	risky audit match, reviewed individually
+Max Rubner-Institut	Max Rubner Institut	https://ror.org/045gmmg53	Germany	49.00937	8.40444	safe audit match (name equal after normalization), reviewed
+Max-Planck-Institute for developmental biology	Max Planck Institute for Developmental Biology	https://ror.org/022jc0g24	Germany	48.52266	9.05222	safe audit match (name equal after normalization), reviewed
+Max-Planck-Institute for Plant Breeding Research	Max Planck Institute for Plant Breeding Research	https://ror.org/044g3zk14	Germany	50.93333	6.95	safe audit match (name equal after normalization), reviewed
+McDonnell Genome Institute - Washington University School of Medicine	Washington University in St. Louis	https://ror.org/01yc7t268	United States	38.62727	-90.19789	risky audit match, reviewed individually
+McDonnell Genome Institute at Washington University	Washington University in St. Louis	https://ror.org/01yc7t268	United States	38.62727	-90.19789	risky audit match, reviewed individually
+Medical Mycology Research Center	Medical Mycology Research Center, Chiba University	https://ror.org/05e0ztt40	Japan	35.6	140.11667	exact ROR name match (Medical Mycology Research Center); reviewed
+MEDICAL RESEARCH AND DEVELOPMENT ARGE BIYOTEKNOLOJI SANAYI VE TICARET LTD STI						affiliation match was a different institution; left unresolved
+Memorial University of NL	Memorial University of Newfoundland	https://ror.org/04haebc03	Canada	47.56494	-52.70931	risky audit match, reviewed individually
+Minderoo OceanOmics Centre at University of the Western Australia	The University of Western Australia	https://ror.org/047272k79	Australia	-31.95224	115.8614	unresolved by ROR API; matched via ROR dump audit, reviewed
+Minderoo OceanOmics Centre at UWA	The University of Western Australia	https://ror.org/047272k79	Australia	-31.95224	115.8614	same centre as the already-resolved long-form name; hosted at UWA
+MIPS/HMGU	Helmholtz Munich	https://ror.org/00cfam450	Germany	48.25	11.56667	risky audit match, reviewed individually
+MNCN-CSIC	Museo Nacional de Ciencias Naturales	https://ror.org/02v6zg374	Spain	40.4165	-3.70256	risky audit match, reviewed individually
+MNHN	Muséum national d'Histoire naturelle	https://ror.org/03wkt5x30	France	48.85341	2.3488	risky audit match, reviewed individually
+MPI FOR DEVELOPMENTAL BIOLOGY	Max Planck Institute for Developmental Biology	https://ror.org/022jc0g24	Germany	48.52266	9.05222	unresolved by ROR API; matched via ROR dump audit, reviewed
+MPI-PZ	Max Planck Institute for Plant Breeding Research	https://ror.org/044g3zk14	Germany	50.93333	6.95	safe audit match (name equal after normalization), reviewed
+NAAS	National Academy of Agricultural Science	https://ror.org/037rt4a55	South Korea	35.84509	127.14752	acronym of a genomics/biodiversity institute (confirmed by user domain knowledge)
+Nanjing Agriculture University	Nanjing Agricultural University	https://ror.org/05td3s095	China	32.06167	118.77778	risky audit match, reviewed individually
+nanjing agriculture university	Nanjing Agricultural University	https://ror.org/05td3s095	China	32.06167	118.77778	risky audit match, reviewed individually
+NARO	National Agriculture and Food Research Organization	https://ror.org/023v4bd62	Japan	36.08333	140.11667	risky audit match, reviewed individually
+NARO, Japan	National Agriculture and Food Research Organization	https://ror.org/023v4bd62	Japan	36.08333	140.11667	risky audit match, reviewed individually
+National Chung Hsing University (NCHU)	National Chung Hsing University	https://ror.org/05vn3ca78	Taiwan	24.1469	120.6839	risky audit match, reviewed individually
+National Institute of Health Sciences	National Institute of Health Sciences	https://ror.org/04s629c33	Japan	35.6895	139.69171	safe audit match (name equal after normalization), reviewed
+National Institute of Technology, Wakayama College	National Institute of Technology	https://ror.org/02xqkcw08	Japan	35.65583	139.32389	risky audit match, reviewed individually
+National Institutes Of Health	National Institutes of Health	https://ror.org/01cwqze88	United States	38.98067	-77.10026	safe audit match (name equal after normalization), reviewed
+National Institutes of Health	National Institutes of Health	https://ror.org/01cwqze88	United States	38.98067	-77.10026	safe audit match (name equal after normalization), reviewed
+National Museum of Natural History - Paris	Muséum national d'Histoire naturelle	https://ror.org/03wkt5x30	France	48.85341	2.3488	risky audit match, reviewed individually
+National University ofSingapore	National University of Singapore	https://ror.org/01tgyzw49	Singapore	1.28967	103.85007	safe audit match (name equal after normalization), reviewed
+National Yang-Ming University	National Yang Ming Chiao Tung University	https://ror.org/00se2k293	Taiwan	24.80361	120.96861	safe audit match (name equal after normalization), reviewed
+Natural History Museum, London	Natural History Museum	https://ror.org/039zvsn29	United Kingdom	51.50853	-0.12574	risky audit match, reviewed individually
+Naval Research Laboratory	United States Naval Research Laboratory	https://ror.org/04d23a975	United States	38.89511	-77.03637	exact ROR name match (Naval Research Laboratory); reviewed
+NBFGR, ICAR	National Bureau of Fish Genetic Resources	https://ror.org/009h1nj77	India	26.83928	80.92313	risky audit match, reviewed individually
+NCGR	National Center for Genome Resources	https://ror.org/01p4cne93	United States	35.68698	-105.9378	risky audit match, reviewed individually
+New England Biolabs	New England Biolabs (United States)	https://ror.org/04ywg3445	United States	42.67926	-70.84116	company in Ipswich, MA; ROR has separate US, UK and China records, US chosen (BioSample owner is the same name)
+New York University AbuDhabi, UAE	New York University Abu Dhabi	https://ror.org/00e5k0821	United Arab Emirates	24.45118	54.39696	audit matched NYU in New York
+New Zealand Forest Research Institute Ltd. - Scion	Scion	https://ror.org/048r72142	New Zealand	-38.13874	176.24516	risky audit match, reviewed individually
+NHGRI/Genome Technology Branch	National Human Genome Research Institute	https://ror.org/00baak391	United States	38.98067	-77.10026	risky audit match, reviewed individually
+NHGRI/NIH	National Human Genome Research Institute	https://ror.org/00baak391	United States	38.98067	-77.10026	unresolved by ROR API; matched via ROR dump audit, reviewed
+NIAB-East Malling Research	National Institute of Agricultural Botany	https://ror.org/010jx2260	United Kingdom	52.2	0.11667	unresolved by ROR API; matched via ROR dump audit, reviewed
+NICHD/NIH	Eunice Kennedy Shriver National Institute of Child Health and Human Development	https://ror.org/04byxyr05	United States	38.98067	-77.10026	risky audit match, reviewed individually
+NIDDK, NIH	National Institute of Diabetes and Digestive and Kidney Diseases	https://ror.org/00adh9b73	United States	38.98067	-77.10026	risky audit match, reviewed individually
+NIH	National Institutes of Health	https://ror.org/01cwqze88	United States	38.98067	-77.10026	risky audit match, reviewed individually
+NIH/NHGRI	National Human Genome Research Institute	https://ror.org/00baak391	United States	38.98067	-77.10026	risky audit match, reviewed individually
+NIH/NIAID	National Institute of Allergy and Infectious Diseases	https://ror.org/043z4tv69	United States	38.98067	-77.10026	risky audit match, reviewed individually
+North West University	North-West University	https://ror.org/010f1sq29	South Africa	-26.71667	27.1	safe audit match (name equal after normalization), reviewed
+Northwestern University	Northwestern University	https://ror.org/000e0be47	United States	42.04114	-87.69006	unresolved by ROR API; matched via ROR dump audit, reviewed
+NORTHWESTERN UNIVERSITY	Northwestern University	https://ror.org/000e0be47	United States	42.04114	-87.69006	safe audit match (name equal after normalization), reviewed
+Northwestern University Feinberg School of Medicine	Northwestern University	https://ror.org/000e0be47	United States	42.04114	-87.69006	unresolved by ROR API; matched via ROR dump audit, reviewed
+Novogene	Novogene Bioinformatics Institute	https://ror.org/0105k4695	China	39.9075	116.39723	risky audit match, reviewed individually
+NWISRL-ARS-USDA	United States Department of Agriculture	https://ror.org/01na82s61	United States	38.89511	-77.03637	risky audit match, reviewed individually
+OARSA, CFSAN	Center for Food Safety and Applied Nutrition	https://ror.org/05hzdft06	United States	38.98067	-76.93692	risky audit match, reviewed individually
+Ohio State University	The Ohio State University	https://ror.org/00rs6vg23	United States	39.96118	-82.99879	safe audit match (name equal after normalization), reviewed
+Oki marine biological station, Education and Research Center for Biological Resources, Faculty of Life and Environmental Science, Shimane University	Shimane University	https://ror.org/01jaaym28	Japan	35.48333	133.05	risky audit match, reviewed individually
+OMRF	Oklahoma Medical Research Foundation	https://ror.org/035z6xf33	United States	35.46756	-97.51643	risky audit match, reviewed individually
+Orion Genomics	Orion Genomics (United States)	https://ror.org/00b970z32	United States	38.62727	-90.19789	safe audit match (name equal after normalization), reviewed
+Pacific Biosciences	Pacific Biosciences (United States)	https://ror.org/00fcszb13	United States	37.45383	-122.18219	safe audit match (name equal after normalization), reviewed
+Pacific Northwest Research Institute	Pacific Northwest Research Institute	https://ror.org/03x0d4x24	United States	47.60621	-122.33207	exact ROR name match (Pacific Northwest Research Institute); reviewed
+PFIZER	Pfizer (United States)	https://ror.org/01xdqrp08	United States	40.71427	-74.00597	safe audit match (name equal after normalization), reviewed
+Pfizer, Inc.	Pfizer (United States)	https://ror.org/01xdqrp08	United States	40.71427	-74.00597	risky audit match, reviewed individually
+Ph.D. Program in Microbial Genomics, National Chung Hsing University and Academia Sinica, Taiwan.	National Chung Hsing University	https://ror.org/05vn3ca78	Taiwan	24.1469	120.6839	risky audit match, reviewed individually
+Phyloinformatics Unit, Division of Bio-Function Dynamics Imaging, Center for Life Science Technologies, RIKEN	RIKEN	https://ror.org/01sjwvz98	Japan	35.78944	139.62333	RIKEN unit; matched CLS Technology
+Policlinico Sant'Orsola-Malpighi	IRCCS Azienda Ospedliero-Universitaria di Bologna Policlinico di Sant'Orsola	https://ror.org/00t4vnv68	Italy	44.49381	11.33875	risky audit match, reviewed individually
+Post Graduate Institute of Medical Education and R						affiliation match was a different institution; left unresolved
+PROIMI - CONICET	Consejo Nacional de Investigaciones Científicas y Técnicas	https://ror.org/03cqe8w59	Argentina	-34.61315	-58.37723	risky audit match, reviewed individually
+PROIMI-CONICET	Consejo Nacional de Investigaciones Científicas y Técnicas	https://ror.org/03cqe8w59	Argentina	-34.61315	-58.37723	risky audit match, reviewed individually
+QUT	Queensland University of Technology	https://ror.org/03pnv4752	Australia	-27.46794	153.02809	risky audit match, reviewed individually
+Research Center for Integrative Evolutionary Science, SOKENDAI (The Graduate University for Advanced Studies)	The Graduate University for Advanced Studies, SOKENDAI	https://ror.org/0516ah480	Japan	35.27651	139.57733	exact ROR name match (SOKENDAI) via a segment of the submitter string; reviewed
+Research Institute for Genetics and Selection of Industrial Microorganisms(Genetika)	Genetika	https://ror.org/05hr7qe62	Russia	55.75222	37.61556	exact ROR name match (Genetika) via a segment of the submitter string; reviewed
+RIKEN Center for Life Science Technologies, Division of Genomic Technologies	RIKEN	https://ror.org/01sjwvz98	Japan	35.78944	139.62333	affiliation matched an unrelated company
+Royal Belgian Institute of Natural Sciences	Institute of Natural Sciences	https://ror.org/02y22ws83	Belgium	50.85045	4.34878	safe audit match (name equal after normalization), reviewed
+Royal Botanic Gardens Kew	Royal Botanic Gardens, Kew	https://ror.org/00ynnr806	United Kingdom	51.50853	-0.12574	unresolved by ROR API; matched via ROR dump audit, reviewed
+Ruhr-Universitaet Bochum	Ruhr University Bochum	https://ror.org/04tsk2644	Germany	51.48165	7.21648	risky audit match, reviewed individually
+Ruhr-University Bochum	Ruhr University Bochum	https://ror.org/04tsk2644	Germany	51.48165	7.21648	safe audit match (name equal after normalization), reviewed
+Rutgers, The State University	Rutgers, The State University of New Jersey	https://ror.org/05vt9qd57	United States	40.48622	-74.45182	risky audit match, reviewed individually
+SaurashtraUniversity	Saurashtra University	https://ror.org/0250jpt55	India	22.29161	70.79322	safe audit match (name equal after normalization), reviewed
+SC	Wellcome Sanger Institute	https://ror.org/05cy4wa09	United Kingdom	52.2	0.11667	ENA centre name SC = Sanger; BioSample owners Wellcome (Trust) Sanger Institute
+School of Life Science and Technology, Tokyo Institute of Technology	Institute of Science Tokyo	https://ror.org/05dqf9946	Japan	35.6895	139.69171	risky audit match, reviewed individually
+Sciensano	Sciensano (Belgium)	https://ror.org/04ejags36	Belgium	50.85045	4.34878	safe audit match (name equal after normalization), reviewed
+SDAU	Shandong Agricultural University	https://ror.org/02ke8fw32	China	36.18528	117.12	acronym; only ROR homonym in the collection country (geography check)
+Senckenberg	Senckenberg - Leibniz Institution for Biodiversity and Earth System Research	https://ror.org/00xmqmx64	Germany	50.11552	8.68417	unresolved by ROR API; matched via ROR dump audit, reviewed
+Senckenberg BiK-F, LOEWE-TBG	LOEWE Centre for Translational Biodiversity Genomics	https://ror.org/0396gab88	Germany	50.11552	8.68417	risky audit match, reviewed individually
+Senckenberg Research Institute and Natural History Museum	Senckenberg - Leibniz Institution for Biodiversity and Earth System Research	https://ror.org/00xmqmx64	Germany	50.11552	8.68417	Senckenberg; audit matched NHM London
+Shandong Agriculture University	Shandong Agricultural University	https://ror.org/02ke8fw32	China	36.18528	117.12	risky audit match, reviewed individually
+Shanghaijiaotong university	Shanghai Jiao Tong University	https://ror.org/0220qvk04	China	31.22222	121.45806	safe audit match (name equal after normalization), reviewed
+Shenyang Agriculture University	Shenyang Agricultural University	https://ror.org/01n7x9n08	China	41.79222	123.43278	risky audit match, reviewed individually
+Shenzhen Campus of Sun Yat-Sen University	Sun Yat-sen University	https://ror.org/0064kty71	China	23.11667	113.25	risky audit match, reviewed individually
+SIB	SIB Swiss Institute of Bioinformatics	https://ror.org/002n09z45	Switzerland	46.516	6.63282	risky audit match, reviewed individually
+Sichuan Agriculture University	Sichuan Agricultural University	https://ror.org/0388c3403	China	29.98521	102.999	risky audit match, reviewed individually
+Sir H.N. Reliance Foundation Hospital	Sir H.N. Reliance Foundation Hospital and Research Centre	https://ror.org/014ezkx63	India	19.07283	72.88261	unresolved by ROR API; matched via ROR dump audit, reviewed
+SLU	Swedish University of Agricultural Sciences	https://ror.org/02yy8x990	Sweden	59.85882	17.63889	risky audit match, reviewed individually
+Smithsonian Herndon Data Center	Smithsonian Institution	https://ror.org/01pp8nd67	United States	38.89511	-77.03637	risky audit match, reviewed individually
+Smithsonian Institution, National Museum of Natural History	Smithsonian Institution	https://ror.org/01pp8nd67	United States	38.89511	-77.03637	risky audit match, reviewed individually
+Smithsonian Institution, National Museum of Natural History (NMNH)	Smithsonian Institution	https://ror.org/01pp8nd67	United States	38.89511	-77.03637	risky audit match, reviewed individually
+SOKENDAI (The Graduate University for Advanced Studies)	The Graduate University for Advanced Studies, SOKENDAI	https://ror.org/0516ah480	Japan	35.27651	139.57733	exact ROR name match (SOKENDAI) via a segment of the submitter string; reviewed
+Soochow University	Soochow University	https://ror.org/05t8y2r12	China	31.30408	120.59538	safe audit match (name equal after normalization), reviewed
+Soochow university	Soochow University	https://ror.org/05t8y2r12	China	31.30408	120.59538	safe audit match (name equal after normalization), reviewed
+Spribille Lab	University of Alberta	https://ror.org/0160cpw27	Canada	53.55014	-113.46871	ENA study PRJEB77567 (Tagirdzhanova et al. 2024, Spribille lab, University of Alberta); lab affiliation from the publication, not stated in the record
+St. Petersburg University	St Petersburg University	https://ror.org/023znxa73	Russia	59.93863	30.31413	safe audit match (name equal after normalization), reviewed
+State Key Laboratory of Agriculture Microbiology	State Key Laboratory of Agricultural Microbiology	https://ror.org/003hwx626	China	30.58333	114.26667	risky audit match, reviewed individually
+State Key Laboratory of Pathogen and Biosecurity	Beijing Institute of Microbiology and Epidemiology	https://ror.org/03w50ns22	China	39.9075	116.39723	the State Key Laboratory of Pathogen and Biosecurity is hosted by BIME (Academy of Military Medical Sciences), Beijing
+STRI	Smithsonian Tropical Research Institute	https://ror.org/035jbxr46	Panama	8.9936	-79.51973	risky audit match, reviewed individually
+Sun-yat sen university	Sun Yat-sen University	https://ror.org/0064kty71	China	23.11667	113.25	safe audit match (name equal after normalization), reviewed
+Swiss Federal Institute of Technology Zurich	ETH Zurich	https://ror.org/05a28rw58	Switzerland	47.36667	8.55	risky audit match, reviewed individually
+Swiss Federal Research Institute WSL	Swiss Federal Institute for Forest, Snow and Landscape Research	https://ror.org/04bs5yc70	Switzerland	47.35515	8.44256	unresolved by ROR API; matched via ROR dump audit, reviewed
+SwissTPH	Swiss Tropical and Public Health Institute	https://ror.org/03adhka07	Switzerland	47.55074	7.53599	safe audit match (name equal after normalization), reviewed
+Synthetic Genomics	Synthetic Genomics (United States)	https://ror.org/03mz6dw96	United States	32.84727	-117.2742	safe audit match (name equal after normalization), reviewed
+TCI Co., Ltd.						affiliation match was a different institution; left unresolved
+Tel-Aviv University	Tel Aviv University	https://ror.org/04mhzgx49	Israel	32.08088	34.78057	safe audit match (name equal after normalization), reviewed
+TEL-AVIV UNIVERSITY	Tel Aviv University	https://ror.org/04mhzgx49	Israel	32.08088	34.78057	exact ROR name match (Tel Aviv University); reviewed
+Tel-Hai Academic College	Tel Hai Academic College	https://ror.org/009st3569	Israel	33.20733	35.57212	safe audit match (name equal after normalization), reviewed
+TGen-North	Translational Genomics Research Institute	https://ror.org/02hfpnk21	United States	33.44838	-112.07404	risky audit match, reviewed individually
+The Australian Museum	Australian Museum	https://ror.org/02zv4ka60	Australia	-33.86785	151.20732	safe audit match (name equal after normalization), reviewed
+The Coca-Cola Company	Coca Cola (United States)	https://ror.org/00yc8qw13	United States	33.749	-84.38798	risky audit match, reviewed individually
+The Cooperative Research Program for National Genome Project (Grant ID PJ01350501, Rural Development Administration)	Rural Development Administration	https://ror.org/03xs9yg50	South Korea	35.82194	127.14889	risky audit match, reviewed individually
+The First Affiliated Hospital Sun Yat sen University	The First Affiliated Hospital, Sun Yat-sen University	https://ror.org/037p24858	China	23.11667	113.25	safe audit match (name equal after normalization), reviewed
+The Genome Center, Washington University School of Medicine, St Louis, MO	Washington University in St. Louis	https://ror.org/01yc7t268	United States	38.62727	-90.19789	risky audit match, reviewed individually
+The Genome Institute - Washington University School of Medicine	Washington University in St. Louis	https://ror.org/01yc7t268	United States	38.62727	-90.19789	risky audit match, reviewed individually
+The Genome Institute at Washington University	Washington University in St. Louis	https://ror.org/01yc7t268	United States	38.62727	-90.19789	risky audit match, reviewed individually
+The Genome Institute at Washington University School of Medicine	Washington University in St. Louis	https://ror.org/01yc7t268	United States	38.62727	-90.19789	risky audit match, reviewed individually
+The Genome Institute at Washington University School of Medicine (WUGSC)	Washington University in St. Louis	https://ror.org/01yc7t268	United States	38.62727	-90.19789	risky audit match, reviewed individually
+The Genome Institute, Washington University at St. Louis	Washington University in St. Louis	https://ror.org/01yc7t268	United States	38.62727	-90.19789	risky audit match, reviewed individually
+The Genome Institute, Washington University School of Medicine	Washington University in St. Louis	https://ror.org/01yc7t268	United States	38.62727	-90.19789	risky audit match, reviewed individually
+The Hospital for Sick Children	The Hospital for Sick Children	https://ror.org/057q4rt57	Canada	43.70643	-79.39864	safe audit match (name equal after normalization), reviewed
+The Hospital for Sick Children (SickKids)	The Hospital for Sick Children	https://ror.org/057q4rt57	Canada	43.70643	-79.39864	risky audit match, reviewed individually
+The Hospital for Sick Children (SickKids), Toronto, Canada	The Hospital for Sick Children	https://ror.org/057q4rt57	Canada	43.70643	-79.39864	risky audit match, reviewed individually
+The Hospital for Sick Children, Toronto	The Hospital for Sick Children	https://ror.org/057q4rt57	Canada	43.70643	-79.39864	risky audit match, reviewed individually
+The institute of zoology, CAS, Beijing, China	Institute of Zoology	https://ror.org/05skxkv18	China	39.9075	116.39723	risky audit match, reviewed individually
+The Pennsylvania State University	Pennsylvania State University	https://ror.org/04p491231	United States	40.79339	-77.86	safe audit match (name equal after normalization), reviewed
+The Procter & Gamble Company	Procter & Gamble (United States)	https://ror.org/04dkns738	United States	39.12711	-84.51439	risky audit match, reviewed individually
+The Rockefeller University	Rockefeller University	https://ror.org/0420db125	United States	40.71427	-74.00597	safe audit match (name equal after normalization), reviewed
+The third affiliated hospital of Sun Yat-sen University	Third Affiliated Hospital of Sun Yat-sen University	https://ror.org/04tm3k558	China	23.11667	113.25	safe audit match (name equal after normalization), reviewed
+The University of Adelaide	Adelaide University	https://ror.org/028g18b61	Australia	-34.92866	138.59863	safe audit match (name equal after normalization), reviewed
+The University of Alabama	University of Alabama	https://ror.org/03xrrjk67	United States	33.20984	-87.56917	safe audit match (name equal after normalization), reviewed
+The University of Georgia	University of Georgia	https://ror.org/00te3t702	United States	33.96095	-83.37794	safe audit match (name equal after normalization), reviewed
+The University of Hong Kong	University of Hong Kong	https://ror.org/02zhqgq86	Hong Kong	22.26861	114.12924	unresolved by ROR API; matched via ROR dump audit, reviewed
+the University of Hong Kong	University of Hong Kong	https://ror.org/02zhqgq86	Hong Kong	22.26861	114.12924	safe audit match (name equal after normalization), reviewed
+Third Institute of Oceanography, Ministry of Natural Resources	Third Institute of Oceanography	https://ror.org/00w6b9958	China	24.70209	118.11566	risky audit match, reviewed individually
+Third Institute Of Oceanography, Ministry of Natural Resources	Third Institute of Oceanography	https://ror.org/00w6b9958	China	24.70209	118.11566	risky audit match, reviewed individually
+Third Institute of Oceanography, Ministry of Natural Resources, PRC	Third Institute of Oceanography	https://ror.org/00w6b9958	China	24.70209	118.11566	risky audit match, reviewed individually
+Tianjin University of Science&Technology	Tianjin University of Science and Technology	https://ror.org/018rbtf37	China	39.14222	117.17667	safe audit match (name equal after normalization), reviewed
+Tokyo Institute of Technology	Institute of Science Tokyo	https://ror.org/05dqf9946	Japan	35.6895	139.69171	unresolved by ROR API; matched via ROR dump audit, reviewed
+Tokyo Institute of Technology, Center for Biological Resources and Informatics	Institute of Science Tokyo	https://ror.org/05dqf9946	Japan	35.6895	139.69171	risky audit match, reviewed individually
+Translational Biodiversity Genomics (LOEWE-TBG)	LOEWE Centre for Translational Biodiversity Genomics	https://ror.org/0396gab88	Germany	50.11552	8.68417	risky audit match, reviewed individually
+UAMS	University of Arkansas for Medical Sciences	https://ror.org/00xcryt71	United States	34.74648	-92.28959	acronym of a genomics/biodiversity institute (confirmed by user domain knowledge)
+UBO	Université de Bretagne Occidentale	https://ror.org/0372th171	France	48.39029	-4.48628	acronym of a genomics/biodiversity institute (confirmed by user domain knowledge)
+UCB	University of California, Berkeley	https://ror.org/01an7q238	United States	37.87159	-122.27275	acronym of a genomics/biodiversity institute (confirmed by user domain knowledge)
+UCIBIO, NOVA-FCT	Unidade em Ciências Biomoleculares Aplicadas	https://ror.org/04c3k8v21	Portugal	38.71667	-9.13333	risky audit match, reviewed individually
+UCIBIO-REQUIMTE	Unidade em Ciências Biomoleculares Aplicadas	https://ror.org/04c3k8v21	Portugal	38.71667	-9.13333	risky audit match, reviewed individually
+UCIBIO/REQUIMTE	Unidade em Ciências Biomoleculares Aplicadas	https://ror.org/04c3k8v21	Portugal	38.71667	-9.13333	risky audit match, reviewed individually
+UCL	University College London	https://ror.org/02jx3x895	United Kingdom	51.50853	-0.12574	risky audit match, reviewed individually
+UCLA	University of California, Los Angeles	https://ror.org/046rm7j60	United States	34.05223	-118.24368	unresolved by ROR API; matched via ROR dump audit, reviewed
+UCSC	University of California, Santa Cruz	https://ror.org/03s65by71	United States	36.97412	-122.0308	acronym of a genomics/biodiversity institute (confirmed by user domain knowledge)
+UCSC Genomics Institute	University of California, Santa Cruz	https://ror.org/03s65by71	United States	36.97412	-122.0308	unresolved by ROR API; matched via ROR dump audit, reviewed
+UCSD	University of California San Diego	https://ror.org/0168r3w48	United States	32.71571	-117.16472	risky audit match, reviewed individually
+UCSF	University of California, San Francisco	https://ror.org/043mz5j54	United States	37.77493	-122.41942	risky audit match, reviewed individually
+UDEA	Universidad de Antioquia	https://ror.org/03bp5hc83	Colombia	6.25184	-75.56359	acronym; only ROR homonym in the collection country (geography check)
+UEA	University of East Anglia	https://ror.org/026k5mg93	United Kingdom	52.62783	1.29834	risky audit match, reviewed individually
+UES / AFRL	United States Air Force Research Laboratory	https://ror.org/02e2egq70	United States	39.81113	-84.05731	risky audit match, reviewed individually
+UIT	UiT The Arctic University of Norway	https://ror.org/00wge5k78	Norway	69.6489	18.95508	acronym of a genomics/biodiversity institute (confirmed by user domain knowledge)
+ULB	Université Libre de Bruxelles	https://ror.org/01r9htc13	Belgium	50.85045	4.34878	risky audit match, reviewed individually
+uliege	University of Liège	https://ror.org/00afp2z80	Belgium	50.63373	5.56749	safe audit match (name equal after normalization), reviewed
+Umm Al Qura University	Umm al-Qura University	https://ror.org/01xjqrm90	Saudi Arabia	21.42664	39.82563	safe audit match (name equal after normalization), reviewed
+UNAM	Universidad Nacional Autónoma de México	https://ror.org/01tmp8f25	Mexico	19.42847	-99.12766	risky audit match, reviewed individually
+UnB	Universidade de Brasília	https://ror.org/02xfp8v59	Brazil	-15.77972	-47.92972	risky audit match, reviewed individually
+UNC chapel Hill	University of North Carolina at Chapel Hill	https://ror.org/0130frc33	United States	35.9132	-79.05584	safe audit match (name equal after normalization), reviewed
+UNESP-FCAV	Universidade Estadual Paulista (Unesp)	https://ror.org/00987cb86	Brazil	-23.5475	-46.63611	risky audit match, reviewed individually
+Unidad de Genomica Avanzada, Cinvestav, Irapuato	Centro de Investigación y de Estudios Avanzados del Instituto Politécnico Nacional	https://ror.org/009eqmr18	Mexico	19.42847	-99.12766	risky audit match, reviewed individually
+Unit for Molecular Glycobiology, Department for Molecular Biomedical Research, VIB, UGent, Belgium	Ghent University	https://ror.org/00cv9y106	Belgium	51.05	3.71667	risky audit match, reviewed individually
+Unite Mixte de Recherche, TRANSVIHMI	Recherches Translationnelles sur le VIH et les Maladies Infectieuses	https://ror.org/014sj8802	France	43.61093	3.87635	risky audit match, reviewed individually
+United States Geological Survey	United States Geological Survey	https://ror.org/035a68863	United States	38.96872	-77.3411	matched a single regional USGS center
+UNIVERSIDAD AUTONOMA DE NUEVO LEON	Universidad Autónoma de Nuevo León	https://ror.org/01fh86n78	Mexico	25.74167	-100.30222	safe audit match (name equal after normalization), reviewed
+Universidad de Cordoba	University of Córdoba	https://ror.org/05yc77b46	Spain	37.89155	-4.77275	safe audit match (name equal after normalization), reviewed
+Universidad de los Andes	Universidad de Los Andes	https://ror.org/02mhbdp94	Colombia	4.60971	-74.08175	risky audit match, reviewed individually
+Universidad del Mar	Universidad del Mar	https://ror.org/00kyx8y88	Mexico	15.74587	-96.46601	safe audit match (name equal after normalization), reviewed
+UNIVERSIDAD NACIONAL TORIBIO RODRIGUEZ DE MENDOZA DE AMAZONAS	National University Toribio Rodríguez de Mendoza	https://ror.org/0323wfn23	Peru	-6.23169	-77.86903	safe audit match (name equal after normalization), reviewed
+UNIVERSIDAD POLITECNICA DE MADRID	Universidad Politécnica de Madrid	https://ror.org/03n6nwv02	Spain	40.4165	-3.70256	safe audit match (name equal after normalization), reviewed
+UNIVERSIDADE FEDERAL DO PARA	Universidade Federal do Pará	https://ror.org/03q9sr818	Brazil	-1.45583	-48.50444	safe audit match (name equal after normalization), reviewed
+Universidade Federal do Para	Universidade Federal do Pará	https://ror.org/03q9sr818	Brazil	-1.45583	-48.50444	safe audit match (name equal after normalization), reviewed
+Universidade Federal do Parana	Universidade Federal do Paraná	https://ror.org/05syd6y78	Brazil	-25.42778	-49.27306	safe audit match (name equal after normalization), reviewed
+Universitaet fuer Bodenkultur Wien	BOKU University	https://ror.org/057ff4y42	Austria	48.20849	16.37208	risky audit match, reviewed individually
+Universitaet Hohenheim	University of Hohenheim	https://ror.org/00b1c9541	Germany	48.78232	9.17702	risky audit match, reviewed individually
+Universitaet Konstanz	University of Konstanz	https://ror.org/0546hnb39	Germany	47.66033	9.17582	risky audit match, reviewed individually
+Universitaet Potsdam	University of Potsdam	https://ror.org/03bnmw459	Germany	52.39886	13.06566	risky audit match, reviewed individually
+UNIVERSITAT AUTONOMA DE BARCELONA	Universitat Autònoma de Barcelona	https://ror.org/052g8jq94	Spain	41.49109	2.14079	safe audit match (name equal after normalization), reviewed
+Universite Paris Saclay	Université Paris-Saclay	https://ror.org/03xjwb503	France	48.68333	2.13333	safe audit match (name equal after normalization), reviewed
+Universite Paris Saclay / CNRS	Université Paris-Saclay	https://ror.org/03xjwb503	France	48.68333	2.13333	risky audit match, reviewed individually
+Universite Paris Saclay-CNRS	Université Paris-Saclay	https://ror.org/03xjwb503	France	48.68333	2.13333	risky audit match, reviewed individually
+Universite Paris Sud	Université Paris-Saclay	https://ror.org/03xjwb503	France	48.68333	2.13333	safe audit match (name equal after normalization), reviewed
+Universite Toulouse III - Paul Sabatier	Université de Toulouse	https://ror.org/01ahyrz84	France	43.60426	1.44367	safe audit match (name equal after normalization), reviewed
+University at Buffalo	University at Buffalo, State University of New York	https://ror.org/01y64my43	United States	42.88645	-78.87837	exact ROR name match (University at Buffalo); reviewed
+University at Buffalo, SUNY	State University of New York	https://ror.org/01q1z8k08	United States	42.65258	-73.75623	risky audit match, reviewed individually
+University Duisburg-Essen	University of Duisburg-Essen	https://ror.org/04mz5ra38	Germany	51.45657	7.01228	risky audit match, reviewed individually
+University Hospital Basel	University Hospital of Basel	https://ror.org/04k51q396	Switzerland	47.55839	7.57327	risky audit match, reviewed individually
+University Malaya	University of Malaya	https://ror.org/00rzspn62	Malaysia	3.1412	101.68653	risky audit match, reviewed individually
+University od Kentucky	University of Kentucky	https://ror.org/02k3smh20	United States	37.98869	-84.47772	risky audit match, reviewed individually
+University of Arizona/ University of Chiago/ Cornell University						multi-institution submitter; matched only Cornell
+University of Arkansas	University of Arkansas at Fayetteville	https://ror.org/05jbt9m15	United States	36.06258	-94.15743	unresolved by ROR API; matched via ROR dump audit, reviewed
+University of British Columbia, Okanagan	University of British Columbia, Okanagan Campus	https://ror.org/04241wz75	Canada	49.88307	-119.48568	safe audit match (name equal after normalization), reviewed
+University of California	University of California System	https://ror.org/00pjdza24	United States	37.80437	-122.2708	unresolved by ROR API; matched via ROR dump audit, reviewed
+University of California - Berkeley	University of California, Berkeley	https://ror.org/01an7q238	United States	37.87159	-122.27275	safe audit match (name equal after normalization), reviewed
+UNIVERSITY OF CALIFORNIA - DAVIS	University of California, Davis	https://ror.org/05rrcem69	United States	38.54491	-121.74052	safe audit match (name equal after normalization), reviewed
+University of California - Davis	University of California, Davis	https://ror.org/05rrcem69	United States	38.54491	-121.74052	safe audit match (name equal after normalization), reviewed
+University of California - Irvine	University of California, Irvine	https://ror.org/04gyf1771	United States	33.66946	-117.82311	safe audit match (name equal after normalization), reviewed
+University of California at Davis	University of California, Davis	https://ror.org/05rrcem69	United States	38.54491	-121.74052	safe audit match (name equal after normalization), reviewed
+University of California-Irvine	University of California, Irvine	https://ror.org/04gyf1771	United States	33.66946	-117.82311	safe audit match (name equal after normalization), reviewed
+University of Campania L. Vanvitelli	"University of Campania ""Luigi Vanvitelli"""	https://ror.org/02kqnpp86	Italy	41.07262	14.33231	risky audit match, reviewed individually
+University of Colorado	University of Colorado System	https://ror.org/00jc20583	United States	40.01499	-105.27055	exact ROR name match (University of Colorado); reviewed
+University of Colorado - Boulder	University of Colorado Boulder	https://ror.org/02ttsq026	United States	40.01499	-105.27055	safe audit match (name equal after normalization), reviewed
+University of Colorado at Boulder	University of Colorado Boulder	https://ror.org/02ttsq026	United States	40.01499	-105.27055	safe audit match (name equal after normalization), reviewed
+University of Cordoba	University of Córdoba	https://ror.org/05yc77b46	Spain	37.89155	-4.77275	safe audit match (name equal after normalization), reviewed
+University of Georgia	University of Georgia	https://ror.org/00te3t702	United States	33.96095	-83.37794	unresolved by ROR API; matched via ROR dump audit, reviewed
+University Of Georgia	University of Georgia	https://ror.org/00te3t702	United States	33.96095	-83.37794	safe audit match (name equal after normalization), reviewed
+UNIVERSITY OF GEORGIA	University of Georgia	https://ror.org/00te3t702	United States	33.96095	-83.37794	safe audit match (name equal after normalization), reviewed
+University of Georgia and USDA-ARS	University of Georgia	https://ror.org/00te3t702	United States	33.96095	-83.37794	risky audit match, reviewed individually
+UNIVERSITY OF GEORGIA, ATHENS	University of Georgia	https://ror.org/00te3t702	United States	33.96095	-83.37794	risky audit match, reviewed individually
+University of Georgia, Athens	University of Georgia	https://ror.org/00te3t702	United States	33.96095	-83.37794	risky audit match, reviewed individually
+University of Goettingen	University of Göttingen	https://ror.org/01y9bpm73	Germany	51.53443	9.93228	exact ROR name match (University of Goettingen); reviewed
+University of Illinois Urbana-Champaign, Carver Biotechnology Center	University of Illinois Urbana-Champaign	https://ror.org/047426m28	United States	40.11059	-88.20727	risky audit match, reviewed individually
+University of Maryland	University of Maryland, College Park	https://ror.org/047s2c258	United States	38.98067	-76.93692	unresolved by ROR API; matched via ROR dump audit, reviewed
+University of Nebraska	University of Nebraska System	https://ror.org/0238rvs44	United States	40.8	-96.66696	exact ROR name match (University of Nebraska); reviewed
+University of Nebraska - Lincoln	University of Nebraska–Lincoln	https://ror.org/043mer456	United States	40.8	-96.66696	safe audit match (name equal after normalization), reviewed
+University of Oregon, Institute of Ecology and Evolution	University of Oregon	https://ror.org/0293rh119	United States	44.05207	-123.08675	risky audit match, reviewed individually
+University of Puerto Rico - Mayaguez Campus	University of Puerto Rico-Mayaguez	https://ror.org/00wek6x04	Puerto Rico	18.20107	-67.13962	risky audit match, reviewed individually
+University of Puerto Rico at Mayaguez	University of Puerto Rico-Mayaguez	https://ror.org/00wek6x04	Puerto Rico	18.20107	-67.13962	safe audit match (name equal after normalization), reviewed
+University of Santiago of Chile	Universidad de Santiago de Chile	https://ror.org/02ma57s91	Chile	-33.45694	-70.64827	risky audit match, reviewed individually
+University of St. Andrews	University of St Andrews	https://ror.org/02wn5qz54	United Kingdom	56.33871	-2.79902	safe audit match (name equal after normalization), reviewed
+University of Texas at Arlington	The University of Texas at Arlington	https://ror.org/019kgqr73	United States	32.73569	-97.10807	safe audit match (name equal after normalization), reviewed
+University of Texas at Austin	The University of Texas at Austin	https://ror.org/00hj54h04	United States	30.26715	-97.74306	safe audit match (name equal after normalization), reviewed
+University of Texas at El paso	The University of Texas at El Paso	https://ror.org/04d5vba33	United States	31.75872	-106.48693	safe audit match (name equal after normalization), reviewed
+University of Texas at Tyler	The University of Texas at Tyler	https://ror.org/01azfw069	United States	32.35126	-95.30106	safe audit match (name equal after normalization), reviewed
+University of Texas Health Science Center-Houston	The University of Texas Health Science Center at Houston	https://ror.org/03gds6c39	United States	29.76328	-95.36327	safe audit match (name equal after normalization), reviewed
+University of the Balearic Islands	Universitat de les Illes Balears	https://ror.org/03e10x626	Spain	39.56939	2.65024	safe audit match (name equal after normalization), reviewed
+University of the Balearic Islands (UIB)	Universitat de les Illes Balears	https://ror.org/03e10x626	Spain	39.56939	2.65024	risky audit match, reviewed individually
+university of tokyo	The University of Tokyo	https://ror.org/057zh3y96	Japan	35.6895	139.69171	safe audit match (name equal after normalization), reviewed
+University of Tokyo	The University of Tokyo	https://ror.org/057zh3y96	Japan	35.6895	139.69171	safe audit match (name equal after normalization), reviewed
+University of Wisconsin - Madison	University of Wisconsin–Madison	https://ror.org/01y2jtd41	United States	43.07305	-89.40123	safe audit match (name equal after normalization), reviewed
+University Paris-Sud	Université Paris-Saclay	https://ror.org/03xjwb503	France	48.68333	2.13333	unresolved by ROR API; matched via ROR dump audit, reviewed
+University Technology Malaysia	University of Technology Malaysia	https://ror.org/026w31v75	Malaysia	1.4655	103.7578	risky audit match, reviewed individually
+UNR - CONICET	Consejo Nacional de Investigaciones Científicas y Técnicas	https://ror.org/03cqe8w59	Argentina	-34.61315	-58.37723	risky audit match, reviewed individually
+UNRC	Universidad Nacional de Río Cuarto	https://ror.org/0002pcv65	Argentina	-33.13044	-64.35272	acronym; only ROR homonym in the collection country (geography check)
+Uppsala  University	Uppsala University	https://ror.org/048a87296	Sweden	59.85882	17.63889	exact ROR name match (Uppsala University); reviewed
+UPPSALA UNIVERISTY	Uppsala University	https://ror.org/048a87296	Sweden	59.85882	17.63889	unresolved by ROR API; matched via ROR dump audit, reviewed
+UPSC	Umeå Plant Science Centre	https://ror.org/02ehp0f77	Sweden	63.82842	20.25972	risky audit match, reviewed individually
+URCA	Université de Reims Champagne-Ardenne	https://ror.org/03hypw319	France	49.26526	4.02853	acronym; only ROR homonym in the collection country (geography check)
+URMITE	Risques Infectieux Tropicaux Microorganismes EmergentS	https://ror.org/03anav932	France	43.29695	5.38107	risky audit match, reviewed individually
+US Department of Agriculture, Agriculture Research Service	Agricultural Research Service	https://ror.org/02d2m2044	United States	38.89511	-77.03637	unresolved by ROR API; matched via ROR dump audit, reviewed
+US EPA	Environmental Protection Agency	https://ror.org/03tns0030	United States	38.89511	-77.03637	safe audit match (name equal after normalization), reviewed
+US FDA	United States Food and Drug Administration	https://ror.org/034xvzb47	United States	38.99067	-77.02609	safe audit match (name equal after normalization), reviewed
+US Food and Drug Administration	United States Food and Drug Administration	https://ror.org/034xvzb47	United States	38.99067	-77.02609	safe audit match (name equal after normalization), reviewed
+USDA ARS	Agricultural Research Service	https://ror.org/02d2m2044	United States	38.89511	-77.03637	unresolved by ROR API; matched via ROR dump audit, reviewed
+USDA ARS, NIAB	Agricultural Research Service	https://ror.org/02d2m2044	United States	38.89511	-77.03637	safe audit match (name equal after normalization), reviewed
+USDA, ARS, NCAUR	National Center for Agricultural Utilization Research	https://ror.org/02gbdhj19	United States	40.69365	-89.58899	risky audit match, reviewed individually
+USDA, ARS, Tifton	Agricultural Research Service	https://ror.org/02d2m2044	United States	38.89511	-77.03637	USDA Agricultural Research Service
+USDA, ARS, USMARC	Roman L. Hruska U.S. Meat Animal Research Center	https://ror.org/03hya7h57	United States	40.52168	-98.05533	risky audit match, reviewed individually
+USDA-ARS	Agricultural Research Service	https://ror.org/02d2m2044	United States	38.89511	-77.03637	unresolved by ROR API; matched via ROR dump audit, reviewed
+USDA-ARS Ag100Pest	Agricultural Research Service	https://ror.org/02d2m2044	United States	38.89511	-77.03637	unresolved by ROR API; matched via ROR dump audit, reviewed
+USDA-ARS Animal Parasitic Diseases Lab	Agricultural Research Service	https://ror.org/02d2m2044	United States	38.89511	-77.03637	safe audit match (name equal after normalization), reviewed
+USDA-ARS Bee Research Laboratory	Agricultural Research Service	https://ror.org/02d2m2044	United States	38.89511	-77.03637	safe audit match (name equal after normalization), reviewed
+USDA-ARS PGEC	Agricultural Research Service	https://ror.org/02d2m2044	United States	38.89511	-77.03637	safe audit match (name equal after normalization), reviewed
+USDA-ARS, Stillwater, Oklahoma	United States Department of Agriculture	https://ror.org/01na82s61	United States	38.89511	-77.03637	risky audit match, reviewed individually
+USDA-ARS, UNICAMP (Brazil), Penn State, UNC	United States Department of Agriculture	https://ror.org/01na82s61	United States	38.89511	-77.03637	risky audit match, reviewed individually
+USDA-ARS-Beltsville Mycology and Nematology Genetic Diversity and Biology Laboratory	Agricultural Research Service	https://ror.org/02d2m2044	United States	38.89511	-77.03637	safe audit match (name equal after normalization), reviewed
+USDA-ARS-ETSARC	Edward T. Schafer Agricultural Research Center	https://ror.org/04x68p008	United States	46.87719	-96.7898	risky audit match, reviewed individually
+USDA-ARS-NCAUR	National Center for Agricultural Utilization Research	https://ror.org/02gbdhj19	United States	40.69365	-89.58899	unresolved by ROR API; matched via ROR dump audit, reviewed
+USDA-ARS-SRRC	Southern Regional Research Center	https://ror.org/01cghcn81	United States	29.95465	-90.07507	risky audit match, reviewed individually
+USDA-ARS-WRRC	United States Department of Agriculture	https://ror.org/01na82s61	United States	38.89511	-77.03637	risky audit match, reviewed individually
+USDA/ARS	Agricultural Research Service	https://ror.org/02d2m2044	United States	38.89511	-77.03637	safe audit match (name equal after normalization), reviewed
+USDA/ARS/ERRC/Sustainable Biofuels and Co-products Research	Eastern Regional Research Center	https://ror.org/052v5pn20	United States	40.08122	-75.18934	risky audit match, reviewed individually
+USP	Universidade de São Paulo	https://ror.org/036rp1748	Brazil	-23.5475	-46.63611	risky audit match, reviewed individually
+UW-Madison	University of Wisconsin–Madison	https://ror.org/01y2jtd41	United States	43.07305	-89.40123	unresolved by ROR API; matched via ROR dump audit, reviewed
+VIB	Vlaams Instituut voor Biotechnologie	https://ror.org/03xrhmk39	Belgium	51.05	3.71667	risky audit match, reviewed individually
+VIB - UGent	Ghent University	https://ror.org/00cv9y106	Belgium	51.05	3.71667	risky audit match, reviewed individually
+VIB/KULeuven	Vlaams Instituut voor Biotechnologie	https://ror.org/03xrhmk39	Belgium	51.05	3.71667	unresolved by ROR API; matched via ROR dump audit, reviewed
+Virgina Tech	Virginia Tech	https://ror.org/02smfhw86	United States	37.22957	-80.41394	typo of Virginia Tech; matched a company
+VNU-Institute of Microbiology and Biotechnology	Viện Vi sinh vật và Công nghệ sinh học	https://ror.org/00er2qq93	Vietnam	21.0245	105.84117	risky audit match, reviewed individually
+Wageningen University	Wageningen University & Research	https://ror.org/04qw24q55	The Netherlands	51.97	5.66667	unresolved by ROR API; matched via ROR dump audit, reviewed
+WAGENINGEN UNIVERSITY	Wageningen University & Research	https://ror.org/04qw24q55	The Netherlands	51.97	5.66667	unresolved by ROR API; matched via ROR dump audit, reviewed
+wageningen university	Wageningen University & Research	https://ror.org/04qw24q55	The Netherlands	51.97	5.66667	safe audit match (name equal after normalization), reviewed
+WAGENINGEN UNIVERSITY, LABORATORY OF MICROBIOLOGY	Wageningen University & Research	https://ror.org/04qw24q55	The Netherlands	51.97	5.66667	exact ROR name match (Wageningen University) via a segment of the submitter string; reviewed
+Wageningen UR (University & Research centre)	Wageningen University & Research	https://ror.org/04qw24q55	The Netherlands	51.97	5.66667	risky audit match, reviewed individually
+Washington University (WashU)	Washington University in St. Louis	https://ror.org/01yc7t268	United States	38.62727	-90.19789	risky audit match, reviewed individually
+Washington University Genome Center (WUGC)	Washington University in St. Louis	https://ror.org/01yc7t268	United States	38.62727	-90.19789	risky audit match, reviewed individually
+Washington University Genome Sequencing Center	Washington University in St. Louis	https://ror.org/01yc7t268	United States	38.62727	-90.19789	risky audit match, reviewed individually
+Washington University School of Medicine	Washington University in St. Louis	https://ror.org/01yc7t268	United States	38.62727	-90.19789	risky audit match, reviewed individually
+Washington University School of Medicine (WashU)	Washington University in St. Louis	https://ror.org/01yc7t268	United States	38.62727	-90.19789	risky audit match, reviewed individually
+Washington University School of Medicine, Genome Sequencing Center	Washington University in St. Louis	https://ror.org/01yc7t268	United States	38.62727	-90.19789	risky audit match, reviewed individually
+Western University	Western University	https://ror.org/02grkyz14	Canada	42.98339	-81.23304	safe audit match (name equal after normalization), reviewed
+WESTERN UNIVERSITY	Western University	https://ror.org/02grkyz14	Canada	42.98339	-81.23304	safe audit match (name equal after normalization), reviewed
+WormBase group, EBI	European Bioinformatics Institute	https://ror.org/02catss52	United Kingdom	52.2	0.11667	EBI; matched a Taiwanese company
+Yamasa Corporation	Yamasa Corporation (Japan)	https://ror.org/04t4e0r52	Japan	35.6	140.11667	safe audit match (name equal after normalization), reviewed
+yeast genomics lab@nova, unl, portugal	Universidade Nova de Lisboa	https://ror.org/02xankh89	Portugal	38.72509	-9.1498	unresolved by ROR API; matched via ROR dump audit, reviewed
+Yun nan agricultural university	Yunnan Agricultural University	https://ror.org/04dpa3g90	China	25.03889	102.71833	safe audit match (name equal after normalization), reviewed
+ZF-screens B.V.	ZF Screens (Netherlands)	https://ror.org/05qpyc807	The Netherlands	52.15833	4.49306	risky audit match, reviewed individually
+ZF-SCREENS B.V.	ZF Screens (Netherlands)	https://ror.org/05qpyc807	The Netherlands	52.15833	4.49306	risky audit match, reviewed individually
+Zhejing Wanli University	Zhejiang Wanli University	https://ror.org/00rjdhd62	China	29.87819	121.54945	risky audit match, reviewed individually
+zstu	Zhejiang Sci-Tech University	https://ror.org/03893we55	China	30.29365	120.16142	acronym; only ROR homonym in the collection country (geography check)
+Zun Yi Medical University	Zunyi Medical University	https://ror.org/00g5b0g93	China	27.68667	106.90722	safe audit match (name equal after normalization), reviewed
+﻿RIKEN Center for Life Science Technologies, Division of Genomic Technologies	RIKEN	https://ror.org/01sjwvz98	Japan	35.78944	139.62333	affiliation matched an unrelated company (name had a BOM)

@@ -184,6 +184,9 @@ export default function PullIndexRankings({
           <span className="pull-rank-legend-item">
             <span className="pull-rank-swatch is-kept" /> Kept
           </span>
+          <span className="pull-rank-legend-item">
+            <span className="pull-rank-swatch is-unknown" /> Unknown
+          </span>
         </span>
         <span className="pull-rank-legend-group">
           <span className="pull-rank-legend-side">Sequenced</span>

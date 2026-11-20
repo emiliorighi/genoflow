@@ -30,8 +30,16 @@ export type SpeciesFlow = {
   collection_country: string
   collection_continent: string
   collection_country_iso3: string | null
+  /** Country text as submitted in the BioSample (may disagree with the coordinates). */
+  collection_country_label?: string | null
+  /** True when the coordinates fall far from the submitted country label. */
+  collection_label_conflict?: boolean
   submitter_name: string | null
   institute_name: string | null
+  /** True when the institute was inferred from the BioProject (consortium), not the submitter. */
+  institute_inferred?: boolean
+  institute_inferred_confidence?: string | null
+  institute_inferred_evidence?: string | null
   institute_ror_id: string | null
   institute_country: string | null
   institute_continent: string | null
@@ -278,8 +286,14 @@ function mapFlowRow(row: Record<string, unknown>): {
       collection_country: String(row.collection_country ?? '').trim(),
       collection_continent: String(row.collection_continent ?? 'Unknown').trim() || 'Unknown',
       collection_country_iso3: optionalString(row.collection_country_iso3),
+      collection_country_label: optionalString(row.collection_country_label),
+      collection_label_conflict:
+        row.collection_label_conflict === true || row.collection_label_conflict === 'true',
       submitter_name: optionalString(row.submitter_name),
       institute_name: optionalString(row.institute_name),
+      institute_inferred: row.institute_inferred === true || row.institute_inferred === 'true',
+      institute_inferred_confidence: optionalString(row.institute_inferred_confidence),
+      institute_inferred_evidence: optionalString(row.institute_inferred_evidence),
       institute_ror_id: optionalString(row.institute_ror_id),
       institute_country: optionalString(row.institute_country),
       institute_continent: optionalString(row.institute_continent),
