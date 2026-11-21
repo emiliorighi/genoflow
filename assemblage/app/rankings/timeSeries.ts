@@ -91,3 +91,13 @@ export function pullValues(
       : null
   })
 }
+
+/** Exported / local per year (collected here, sequenced elsewhere over sequenced here); null where nothing is local yet. */
+export function exportRatioValues(
+  series: CardTimeSeries,
+  basis: TimeBasis,
+): (number | null)[] {
+  const local = modeValues(series, 'local', basis)
+  const exported = modeValues(series, 'exported', basis)
+  return local.map((l, i) => (l > 0 ? Math.round((100 * exported[i]) / l) / 100 : null))
+}

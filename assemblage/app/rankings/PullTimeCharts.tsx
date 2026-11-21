@@ -8,6 +8,7 @@ import MultiLineChart, { type LineSeries } from './MultiLineChart'
 import {
   TIME_MODES,
   buildCardTimeSeries,
+  exportRatioValues,
   modeValues,
   pullValues,
   type TimeBasis,
@@ -81,6 +82,17 @@ export default function PullTimeCharts({
           color: p.color,
           values: modeValues(p.series!, mode, basis),
         })),
+      })),
+    [visible, basis],
+  )
+
+  const ratioSeries = useMemo<LineSeries[]>(
+    () =>
+      visible.map((p) => ({
+        id: p.card.id,
+        label: p.card.name,
+        color: p.color,
+        values: exportRatioValues(p.series!, basis),
       })),
     [visible, basis],
   )
@@ -163,6 +175,15 @@ export default function PullTimeCharts({
             series={pullSeries}
             yMax={100}
             formatValue={(v) => `${Math.round(v * 10) / 10}%`}
+          />
+        </div>
+        <div className="time-chart-wide">
+          <MultiLineChart
+            title="Collected here, sequenced elsewhere ÷ Collected here, sequenced here"
+            years={years}
+            series={ratioSeries}
+            logScale={logScale}
+            formatValue={(v) => `${Math.round(v * 100) / 100}×`}
           />
         </div>
         {modeSeries.map(({ mode, lines }) => (

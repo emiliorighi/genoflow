@@ -1657,8 +1657,8 @@ a.taxon-bar-row:hover { color: var(--paper); background: #10171a; }
 .time-legend-item:hover { border-color: var(--muted); }
 .time-legend-item.is-off { color: var(--dim); }
 .time-legend-item.is-off i { opacity: .35; }
-.time-chart-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 3px; overflow: hidden; }
-.time-chart-grid > * { background: #0a0d10; }
+.time-chart-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.time-chart-grid > * { background: #0a0d10; border: 1px solid var(--line); border-radius: 3px; }
 .time-chart-wide { grid-column: 1 / -1; }
 .time-chart { position: relative; margin: 0; padding: 12px 14px 6px; }
 .time-chart figcaption { margin: 0 0 6px; color: var(--dim); font: 9px monospace; letter-spacing: .08em; text-transform: uppercase; }
