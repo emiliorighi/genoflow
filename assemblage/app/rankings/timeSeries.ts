@@ -101,3 +101,38 @@ export function exportRatioValues(
   const exported = modeValues(series, 'exported', basis)
   return local.map((l, i) => (l > 0 ? Math.round((100 * exported[i]) / l) / 100 : null))
 }
+
+/** log2 of exported / local: positive when more is sequenced abroad, negative when more at home. Null if either side is 0. */
+export function logRatioValues(
+  series: CardTimeSeries,
+  basis: TimeBasis,
+): (number | null)[] {
+  const local = modeValues(series, 'local', basis)
+  const exported = modeValues(series, 'exported', basis)
+  return local.map((l, i) =>
+    l > 0 && exported[i] > 0 ? Math.round(100 * Math.log2(exported[i] / l)) / 100 : null,
+  )
+}
+
+/** Categories that share the "all collected here" total; imported alone uses "all sequenced here". */
+const COLLECTED_HERE: TimeMode[] = ['local', 'exported', 'unknown']
+const SEQUENCED_HERE: TimeMode[] = ['local', 'imported']
+
+export function percentTotalLabel(mode: TimeMode): string {
+  return mode === 'imported' ? 'all sequenced here' : 'all collected here'
+}
+
+/** Share (%) of a category: of all collected here, or (imported) of all sequenced here. Null where the total is 0. */
+export function percentValues(
+  series: CardTimeSeries,
+  mode: TimeMode,
+  basis: TimeBasis,
+): (number | null)[] {
+  const modes = mode === 'imported' ? SEQUENCED_HERE : COLLECTED_HERE
+  const own = modeValues(series, mode, basis)
+  const parts = modes.map((m) => modeValues(series, m, basis))
+  return own.map((v, i) => {
+    const total = parts.reduce((sum, part) => sum + part[i], 0)
+    return total > 0 ? Math.round((1000 * v) / total) / 10 : null
+  })
+}

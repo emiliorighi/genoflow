@@ -9,9 +9,13 @@ import {
   TIME_MODES,
   buildCardTimeSeries,
   exportRatioValues,
+  logRatioValues,
   modeValues,
+  percentTotalLabel,
+  percentValues,
   pullValues,
   type TimeBasis,
+  type TimeMode,
 } from './timeSeries'
 
 /** Categorical palette, fixed order; color follows the place, never its rank. */
@@ -28,13 +32,80 @@ type PullTimeChartsProps = {
   firstDataYear: number
 }
 
+/** One labelled group of buttons, e.g. "Species: Cumulative | Per year". */
+function ToggleGroup<T extends string>({
+  label,
+  value,
+  options,
+  onChange,
+  disabled = false,
+}: {
+  label: string
+  value: T
+  options: { id: T; text: string }[]
+  onChange: (id: T) => void
+  disabled?: boolean
+}) {
+  return (
+    <div className="time-control-group" role="group" aria-label={label}>
+      <span className="time-control-label">{label}</span>
+      {options.map((o) => (
+        <button
+          key={o.id}
+          type="button"
+          disabled={disabled}
+          className={`explore-search-mode-btn ${value === o.id ? 'is-active' : ''}`}
+          aria-pressed={value === o.id}
+          onClick={() => onChange(o.id)}
+        >
+          {o.text}
+        </button>
+      ))}
+    </div>
+  )
+}
+
+function basisText(basis: TimeBasis): string {
+  return basis === 'cumulative'
+    ? 'Cumulative: each point counts every species released up to that year.'
+    : 'Per year: each point counts only the species released in that year.'
+}
+
+const MODE_HELP: Record<TimeMode, string> = {
+  local: 'species collected in the place and sequenced in the same place',
+  exported: 'species collected in the place and sequenced in another place',
+  unknown: 'species collected in the place whose sequencing place is unknown',
+  imported: 'species collected in another place and sequenced in the place',
+}
+
+const PERCENT_HELP: Record<TimeMode, string> = {
+  local:
+    'Percentage of all species collected here (sequenced here + sequenced elsewhere + sequencing place unknown) that were also sequenced here.',
+  exported:
+    'Percentage of all species collected here (sequenced here + sequenced elsewhere + sequencing place unknown) that were sequenced elsewhere.',
+  unknown:
+    'Percentage of all species collected here (sequenced here + sequenced elsewhere + sequencing place unknown) whose sequencing place is unknown.',
+  imported:
+    'Percentage of all species sequenced here (collected here + collected elsewhere) that were collected elsewhere. This is the same number as the pull index.',
+}
+
+const BASIS_OPTIONS: { id: TimeBasis; text: string }[] = [
+  { id: 'cumulative', text: 'Cumulative' },
+  { id: 'yearly', text: 'Per year' },
+]
+
 export default function PullTimeCharts({
   cards,
   flowIndex,
   lastYear,
   firstDataYear,
 }: PullTimeChartsProps) {
-  const [basis, setBasis] = useState<TimeBasis>('cumulative')
+  // Each section keeps its own controls.
+  const [pullBasis, setPullBasis] = useState<TimeBasis>('cumulative')
+  const [ratioBasis, setRatioBasis] = useState<TimeBasis>('cumulative')
+  const [ratioView, setRatioView] = useState<'ratio' | 'log2'>('ratio')
+  const [catBasis, setCatBasis] = useState<TimeBasis>('cumulative')
+  const [catView, setCatView] = useState<'count' | 'percent'>('count')
   const [logScale, setLogScale] = useState(false)
   const [hidden, setHidden] = useState<Set<string>>(() => new Set())
 
@@ -67,9 +138,23 @@ export default function PullTimeCharts({
         id: p.card.id,
         label: p.card.name,
         color: p.color,
-        values: pullValues(p.series!, basis),
+        values: pullValues(p.series!, pullBasis),
       })),
-    [visible, basis],
+    [visible, pullBasis],
+  )
+
+  const ratioSeries = useMemo<LineSeries[]>(
+    () =>
+      visible.map((p) => ({
+        id: p.card.id,
+        label: p.card.name,
+        color: p.color,
+        values:
+          ratioView === 'log2'
+            ? logRatioValues(p.series!, ratioBasis)
+            : exportRatioValues(p.series!, ratioBasis),
+      })),
+    [visible, ratioBasis, ratioView],
   )
 
   const modeSeries = useMemo(
@@ -80,21 +165,13 @@ export default function PullTimeCharts({
           id: p.card.id,
           label: p.card.name,
           color: p.color,
-          values: modeValues(p.series!, mode, basis),
+          values:
+            catView === 'percent'
+              ? percentValues(p.series!, mode, catBasis)
+              : modeValues(p.series!, mode, catBasis),
         })),
       })),
-    [visible, basis],
-  )
-
-  const ratioSeries = useMemo<LineSeries[]>(
-    () =>
-      visible.map((p) => ({
-        id: p.card.id,
-        label: p.card.name,
-        color: p.color,
-        values: exportRatioValues(p.series!, basis),
-      })),
-    [visible, basis],
+    [visible, catBasis, catView],
   )
 
   if (places.length === 0) return null
@@ -106,6 +183,8 @@ export default function PullTimeCharts({
       else next.add(id)
       return next
     })
+
+  const ratioTitle = 'Collected here, sequenced elsewhere ÷ Collected here, sequenced here'
 
   return (
     <section className="time-charts" aria-label="Pull index over time">
@@ -120,82 +199,129 @@ export default function PullTimeCharts({
       </div>
 
       <div className="time-toolbar">
-      <div className="time-legend">
-        {places.map((p) => (
-          <button
-            key={p.card.id}
-            type="button"
-            className={`time-legend-item ${hidden.has(p.card.id) ? 'is-off' : ''}`}
-            aria-pressed={!hidden.has(p.card.id)}
-            onClick={() => toggle(p.card.id)}
-          >
-            <i style={{ background: p.color }} />
-            {p.card.name}
-          </button>
-        ))}
+        <div className="time-legend">
+          {places.map((p) => (
+            <button
+              key={p.card.id}
+              type="button"
+              className={`time-legend-item ${hidden.has(p.card.id) ? 'is-off' : ''}`}
+              aria-pressed={!hidden.has(p.card.id)}
+              onClick={() => toggle(p.card.id)}
+            >
+              <i style={{ background: p.color }} />
+              {p.card.name}
+            </button>
+          ))}
+        </div>
       </div>
-        <div className="time-controls" role="toolbar" aria-label="Chart options">
-          <div className="time-control-group" role="group" aria-label="Time basis">
-            <span className="time-control-label">Species</span>
-            {(['cumulative', 'yearly'] as TimeBasis[]).map((id) => (
-              <button
-                key={id}
-                type="button"
-                className={`explore-search-mode-btn ${basis === id ? 'is-active' : ''}`}
-                aria-pressed={basis === id}
-                onClick={() => setBasis(id)}
-              >
-                {id === 'cumulative' ? 'Cumulative' : 'Per year'}
-              </button>
-            ))}
-          </div>
-          <span className="time-control-sep" aria-hidden="true" />
-          <div className="time-control-group" role="group" aria-label="Count scale">
-            <span className="time-control-label">Scale</span>
-            {([false, true] as const).map((isLog) => (
-              <button
-                key={String(isLog)}
-                type="button"
-                className={`explore-search-mode-btn ${logScale === isLog ? 'is-active' : ''}`}
-                aria-pressed={logScale === isLog}
-                onClick={() => setLogScale(isLog)}
-              >
-                {isLog ? 'log(1 + n)' : 'Raw'}
-              </button>
-            ))}
+
+      <div className="time-section">
+        <div className="time-controls" role="toolbar" aria-label="Pull index options">
+          <ToggleGroup label="Species" value={pullBasis} options={BASIS_OPTIONS} onChange={setPullBasis} />
+        </div>
+        <div className="time-chart-grid">
+          <div className="time-chart-wide">
+            <MultiLineChart
+              title="Pull index"
+              years={years}
+              series={pullSeries}
+              yMax={100}
+              formatValue={(v) => `${Math.round(v * 10) / 10}%`}
+              help={`Of the species sequenced in each place, the share that was collected elsewhere: "collected elsewhere → sequenced here" divided by ("collected here → sequenced here" + "collected elsewhere → sequenced here"). ${basisText(pullBasis)} A year with no sequenced species has no point.`}
+            />
           </div>
         </div>
       </div>
 
-      <div className="time-chart-grid">
-        <div className="time-chart-wide">
-          <MultiLineChart
-            title="Pull index"
-            years={years}
-            series={pullSeries}
-            yMax={100}
-            formatValue={(v) => `${Math.round(v * 10) / 10}%`}
+      <div className="time-section">
+        <div className="time-controls" role="toolbar" aria-label="Ratio options">
+          <ToggleGroup label="Species" value={ratioBasis} options={BASIS_OPTIONS} onChange={setRatioBasis} />
+          <span className="time-control-sep" aria-hidden="true" />
+          <ToggleGroup
+            label="Ratio"
+            value={ratioView}
+            options={[
+              { id: 'ratio', text: 'Ratio' },
+              { id: 'log2', text: 'log₂' },
+            ]}
+            onChange={setRatioView}
           />
         </div>
-        <div className="time-chart-wide">
-          <MultiLineChart
-            title="Collected here, sequenced elsewhere ÷ Collected here, sequenced here"
-            years={years}
-            series={ratioSeries}
-            logScale={logScale}
-            formatValue={(v) => `${Math.round(v * 100) / 100}×`}
+        <div className="time-chart-grid">
+          <div className="time-chart-wide">
+            <MultiLineChart
+              title={ratioView === 'log2' ? `log₂ of ${ratioTitle}` : ratioTitle}
+              years={years}
+              series={ratioSeries}
+              diverging={ratioView === 'log2'}
+              help={`${
+                ratioView === 'log2'
+                  ? 'Base-2 logarithm of the ratio below: 0 means equal numbers, +1 means twice as many sequenced elsewhere as here, −1 means twice as many sequenced here as elsewhere.'
+                  : 'For species collected in each place: how many are sequenced elsewhere for each one sequenced in the same place. 1× means equal, 3× means three sequenced elsewhere for each one sequenced here.'
+              } Ratio = "collected here → sequenced elsewhere" ÷ "collected here → sequenced here". ${basisText(ratioBasis)} A year where ${
+                ratioView === 'log2' ? 'either count is 0' : 'nothing is sequenced here'
+              } has no point.`}
+              formatValue={(v) =>
+                ratioView === 'log2'
+                  ? `${v > 0 ? '+' : ''}${Math.round(v * 100) / 100}`
+                  : `${Math.round(v * 100) / 100}×`
+              }
+            />
+          </div>
+        </div>
+      </div>
+
+      <div className="time-section">
+        <div className="time-controls" role="toolbar" aria-label="Collected and sequenced options">
+          <ToggleGroup label="Species" value={catBasis} options={BASIS_OPTIONS} onChange={setCatBasis} />
+          <span className="time-control-sep" aria-hidden="true" />
+          <ToggleGroup
+            label="Show"
+            value={catView}
+            options={[
+              { id: 'count', text: 'Count' },
+              { id: 'percent', text: '%' },
+            ]}
+            onChange={setCatView}
+          />
+          <span className="time-control-sep" aria-hidden="true" />
+          <ToggleGroup
+            label="Scale"
+            value={logScale ? 'log' : 'raw'}
+            options={[
+              { id: 'raw', text: 'Raw' },
+              { id: 'log', text: 'log(1 + n)' },
+            ]}
+            onChange={(id) => setLogScale(id === 'log')}
+            disabled={catView === 'percent'}
           />
         </div>
-        {modeSeries.map(({ mode, lines }) => (
-          <MultiLineChart
-            key={mode}
-            title={FLOW_SLICE_LABELS[mode]}
-            years={years}
-            series={lines}
-            logScale={logScale}
-            formatValue={(v) => Math.round(v).toLocaleString()}
-          />
-        ))}
+        <div className="time-chart-grid">
+          {modeSeries.map(({ mode, lines }) => (
+            <MultiLineChart
+              key={mode}
+              title={
+                catView === 'percent'
+                  ? `${FLOW_SLICE_LABELS[mode]} (% of ${percentTotalLabel(mode)})`
+                  : FLOW_SLICE_LABELS[mode]
+              }
+              years={years}
+              series={lines}
+              logScale={logScale && catView === 'count'}
+              yMax={catView === 'percent' ? 100 : undefined}
+              help={`${
+                catView === 'percent'
+                  ? `${PERCENT_HELP[mode]}`
+                  : `Number of ${MODE_HELP[mode]}.${logScale ? ' Vertical axis is log(1 + n), so zero still shows.' : ''}`
+              } ${basisText(catBasis)}`}
+              formatValue={(v) =>
+                catView === 'percent'
+                  ? `${Math.round(v * 10) / 10}%`
+                  : Math.round(v).toLocaleString()
+              }
+            />
+          ))}
+        </div>
       </div>
     </section>
   )

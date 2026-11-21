@@ -1649,6 +1649,9 @@ a.taxon-bar-row:hover { color: var(--paper); background: #10171a; }
 .time-control-group { display: flex; align-items: center; gap: 2px; }
 .time-control-label { margin-right: 6px; color: var(--dim); font: 9px monospace; letter-spacing: .1em; text-transform: uppercase; }
 .time-control-sep { align-self: stretch; width: 1px; margin: 4px 8px; background: var(--line); }
+.time-section { margin-top: 24px; }
+.time-section > .time-controls { display: inline-flex; margin-bottom: 10px; }
+.time-controls .explore-search-mode-btn:disabled { opacity: .4; cursor: not-allowed; }
 .time-charts-head h2 { margin: 0 0 4px; color: var(--paper); font: 400 20px Georgia, serif; letter-spacing: -.03em; }
 .time-charts-head p { max-width: 540px; margin: 0; color: var(--muted); font: 12px/1.5 Georgia, serif; }
 .time-legend { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 10px; }
@@ -1663,6 +1666,7 @@ a.taxon-bar-row:hover { color: var(--paper); background: #10171a; }
 .time-chart { position: relative; margin: 0; padding: 12px 14px 6px; }
 .time-chart figcaption { margin: 0 0 6px; color: var(--dim); font: 9px monospace; letter-spacing: .08em; text-transform: uppercase; }
 .time-chart-frame { position: relative; }
+.time-chart-help { margin: 8px 0 6px; color: var(--dim); font-size: 11px; line-height: 1.45; }
 .time-chart svg { display: block; width: 100%; height: auto; overflow: visible; touch-action: pan-y; }
 .time-chart-line { stroke-width: 1.75; stroke-linejoin: round; stroke-linecap: round; }
 .time-chart-cursor { stroke: var(--dim); stroke-width: 1; stroke-dasharray: 3 3; }
