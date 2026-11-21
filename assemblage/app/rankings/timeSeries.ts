@@ -92,25 +92,34 @@ export function pullValues(
   })
 }
 
-/** Exported / local per year (collected here, sequenced elsewhere over sequenced here); null where nothing is local yet. */
+/**
+ * Exported / local per year (collected here sequenced elsewhere over collected here sequenced here),
+ * or the other way round when `inverse`. Null where the denominator is 0.
+ */
 export function exportRatioValues(
   series: CardTimeSeries,
   basis: TimeBasis,
+  inverse = false,
 ): (number | null)[] {
   const local = modeValues(series, 'local', basis)
   const exported = modeValues(series, 'exported', basis)
-  return local.map((l, i) => (l > 0 ? Math.round((100 * exported[i]) / l) / 100 : null))
+  const num = inverse ? local : exported
+  const den = inverse ? exported : local
+  return den.map((d, i) => (d > 0 ? Math.round((100 * num[i]) / d) / 100 : null))
 }
 
-/** log2 of exported / local: positive when more is sequenced abroad, negative when more at home. Null if either side is 0. */
+/** log2 of the ratio above: positive when the numerator side is larger. Null if either side is 0. */
 export function logRatioValues(
   series: CardTimeSeries,
   basis: TimeBasis,
+  inverse = false,
 ): (number | null)[] {
   const local = modeValues(series, 'local', basis)
   const exported = modeValues(series, 'exported', basis)
-  return local.map((l, i) =>
-    l > 0 && exported[i] > 0 ? Math.round(100 * Math.log2(exported[i] / l)) / 100 : null,
+  const num = inverse ? local : exported
+  const den = inverse ? exported : local
+  return den.map((d, i) =>
+    d > 0 && num[i] > 0 ? Math.round(100 * Math.log2(num[i] / d)) / 100 : null,
   )
 }
 

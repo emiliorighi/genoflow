@@ -89,6 +89,63 @@ const PERCENT_HELP: Record<TimeMode, string> = {
     'Percentage of all species sequenced here (collected here + collected elsewhere) that were collected elsewhere. This is the same number as the pull index.',
 }
 
+const DEFAULT_START_YEAR = 2012
+
+type YearRange = { from: number; to: number }
+
+/** "From [year] to [year]" for one section. */
+function RangeSelect({
+  range,
+  firstYear,
+  lastYear,
+  onChange,
+}: {
+  range: YearRange
+  firstYear: number
+  lastYear: number
+  onChange: (range: YearRange) => void
+}) {
+  const years = Array.from({ length: lastYear - firstYear + 1 }, (_, i) => firstYear + i)
+  return (
+    <div className="time-control-group" role="group" aria-label="Years shown">
+      <span className="time-control-label">From</span>
+      <select
+        className="explore-search-mode-btn"
+        aria-label="First year shown"
+        value={range.from}
+        onChange={(e) => {
+          const from = Number(e.target.value)
+          onChange({ from, to: Math.max(from, range.to) })
+        }}
+      >
+        {years.map((y) => (
+          <option key={y} value={y}>
+            {y}
+          </option>
+        ))}
+      </select>
+      <span className="time-control-label">to</span>
+      <select
+        className="explore-search-mode-btn"
+        aria-label="Last year shown"
+        value={range.to}
+        onChange={(e) => {
+          const to = Number(e.target.value)
+          onChange({ from: Math.min(range.from, to), to })
+        }}
+      >
+        {years
+          .filter((y) => y >= range.from)
+          .map((y) => (
+            <option key={y} value={y}>
+              {y}
+            </option>
+          ))}
+      </select>
+    </div>
+  )
+}
+
 const BASIS_OPTIONS: { id: TimeBasis; text: string }[] = [
   { id: 'cumulative', text: 'Cumulative' },
   { id: 'yearly', text: 'Per year' },
@@ -101,6 +158,11 @@ export default function PullTimeCharts({
   firstDataYear,
 }: PullTimeChartsProps) {
   // Each section keeps its own controls.
+  const startYear = Math.min(Math.max(DEFAULT_START_YEAR, firstDataYear), lastYear)
+  const [pullRange, setPullRange] = useState<YearRange>({ from: startYear, to: lastYear })
+  const [ratioRange, setRatioRange] = useState<YearRange>({ from: startYear, to: lastYear })
+  const [catRange, setCatRange] = useState<YearRange>({ from: startYear, to: lastYear })
+  const [ratioDir, setRatioDir] = useState<'abroad' | 'home'>('abroad')
   const [pullBasis, setPullBasis] = useState<TimeBasis>('cumulative')
   const [ratioBasis, setRatioBasis] = useState<TimeBasis>('cumulative')
   const [ratioView, setRatioView] = useState<'ratio' | 'log2'>('ratio')
@@ -130,6 +192,11 @@ export default function PullTimeCharts({
     [cards, flowIndex, firstYear, lastYear],
   )
 
+  // Cumulative values always start from the first year of data; the range only crops what is drawn.
+  const windowYears = (r: YearRange) => years.slice(r.from - firstYear, r.to - firstYear + 1)
+  const windowSeries = (list: LineSeries[], r: YearRange) =>
+    list.map((s) => ({ ...s, values: s.values.slice(r.from - firstYear, r.to - firstYear + 1) }))
+
   const visible = useMemo(() => places.filter((p) => !hidden.has(p.card.id)), [places, hidden])
 
   const pullSeries = useMemo<LineSeries[]>(
@@ -151,10 +218,10 @@ export default function PullTimeCharts({
         color: p.color,
         values:
           ratioView === 'log2'
-            ? logRatioValues(p.series!, ratioBasis)
-            : exportRatioValues(p.series!, ratioBasis),
+            ? logRatioValues(p.series!, ratioBasis, ratioDir === 'home')
+            : exportRatioValues(p.series!, ratioBasis, ratioDir === 'home'),
       })),
-    [visible, ratioBasis, ratioView],
+    [visible, ratioBasis, ratioView, ratioDir],
   )
 
   const modeSeries = useMemo(
@@ -184,7 +251,13 @@ export default function PullTimeCharts({
       return next
     })
 
-  const ratioTitle = 'Collected here, sequenced elsewhere ÷ Collected here, sequenced here'
+  const inverse = ratioDir === 'home'
+  const ratioTitle = inverse
+    ? 'Collected here, sequenced here ÷ Collected here, sequenced elsewhere'
+    : 'Collected here, sequenced elsewhere ÷ Collected here, sequenced here'
+  const sideA = inverse ? 'here' : 'elsewhere'
+  const sideB = inverse ? 'elsewhere' : 'here'
+  const rangeProps = { firstYear, lastYear }
 
   return (
     <section className="time-charts" aria-label="Pull index over time">
@@ -218,13 +291,15 @@ export default function PullTimeCharts({
       <div className="time-section">
         <div className="time-controls" role="toolbar" aria-label="Pull index options">
           <ToggleGroup label="Species" value={pullBasis} options={BASIS_OPTIONS} onChange={setPullBasis} />
+          <span className="time-control-sep" aria-hidden="true" />
+          <RangeSelect range={pullRange} onChange={setPullRange} {...rangeProps} />
         </div>
         <div className="time-chart-grid">
           <div className="time-chart-wide">
             <MultiLineChart
               title="Pull index"
-              years={years}
-              series={pullSeries}
+              years={windowYears(pullRange)}
+              series={windowSeries(pullSeries, pullRange)}
               yMax={100}
               formatValue={(v) => `${Math.round(v * 10) / 10}%`}
               help={`Of the species sequenced in each place, the share that was collected elsewhere: "collected elsewhere → sequenced here" divided by ("collected here → sequenced here" + "collected elsewhere → sequenced here"). ${basisText(pullBasis)} A year with no sequenced species has no point.`}
@@ -236,6 +311,18 @@ export default function PullTimeCharts({
       <div className="time-section">
         <div className="time-controls" role="toolbar" aria-label="Ratio options">
           <ToggleGroup label="Species" value={ratioBasis} options={BASIS_OPTIONS} onChange={setRatioBasis} />
+          <span className="time-control-sep" aria-hidden="true" />
+          <RangeSelect range={ratioRange} onChange={setRatioRange} {...rangeProps} />
+          <span className="time-control-sep" aria-hidden="true" />
+          <ToggleGroup
+            label="Order"
+            value={ratioDir}
+            options={[
+              { id: 'abroad', text: 'Elsewhere ÷ here' },
+              { id: 'home', text: 'Here ÷ elsewhere' },
+            ]}
+            onChange={setRatioDir}
+          />
           <span className="time-control-sep" aria-hidden="true" />
           <ToggleGroup
             label="Ratio"
@@ -251,15 +338,16 @@ export default function PullTimeCharts({
           <div className="time-chart-wide">
             <MultiLineChart
               title={ratioView === 'log2' ? `log₂ of ${ratioTitle}` : ratioTitle}
-              years={years}
-              series={ratioSeries}
+              years={windowYears(ratioRange)}
+              series={windowSeries(ratioSeries, ratioRange)}
               diverging={ratioView === 'log2'}
+              yMax={ratioView === 'log2' ? 5 : undefined}
               help={`${
                 ratioView === 'log2'
-                  ? 'Base-2 logarithm of the ratio below: 0 means equal numbers, +1 means twice as many sequenced elsewhere as here, −1 means twice as many sequenced here as elsewhere.'
-                  : 'For species collected in each place: how many are sequenced elsewhere for each one sequenced in the same place. 1× means equal, 3× means three sequenced elsewhere for each one sequenced here.'
-              } Ratio = "collected here → sequenced elsewhere" ÷ "collected here → sequenced here". ${basisText(ratioBasis)} A year where ${
-                ratioView === 'log2' ? 'either count is 0' : 'nothing is sequenced here'
+                  ? `Base-2 logarithm of the ratio below: 0 means equal numbers, +1 means twice as many sequenced ${sideA} as ${sideB}, −1 means twice as many sequenced ${sideB} as ${sideA}. The vertical axis is fixed from −5 to +5; values beyond it are drawn at the edge.`
+                  : `For species collected in each place: how many are sequenced ${sideA} for each one sequenced ${sideB}. 1× means equal, 3× means three sequenced ${sideA} for each one sequenced ${sideB}.`
+              } Ratio = ${inverse ? '"collected here → sequenced here" ÷ "collected here → sequenced elsewhere"' : '"collected here → sequenced elsewhere" ÷ "collected here → sequenced here"'}. ${basisText(ratioBasis)} A year where ${
+                ratioView === 'log2' ? 'either count is 0' : `nothing is sequenced ${sideB}`
               } has no point.`}
               formatValue={(v) =>
                 ratioView === 'log2'
@@ -274,6 +362,8 @@ export default function PullTimeCharts({
       <div className="time-section">
         <div className="time-controls" role="toolbar" aria-label="Collected and sequenced options">
           <ToggleGroup label="Species" value={catBasis} options={BASIS_OPTIONS} onChange={setCatBasis} />
+          <span className="time-control-sep" aria-hidden="true" />
+          <RangeSelect range={catRange} onChange={setCatRange} {...rangeProps} />
           <span className="time-control-sep" aria-hidden="true" />
           <ToggleGroup
             label="Show"
@@ -305,8 +395,8 @@ export default function PullTimeCharts({
                   ? `${FLOW_SLICE_LABELS[mode]} (% of ${percentTotalLabel(mode)})`
                   : FLOW_SLICE_LABELS[mode]
               }
-              years={years}
-              series={lines}
+              years={windowYears(catRange)}
+              series={windowSeries(lines, catRange)}
               logScale={logScale && catView === 'count'}
               yMax={catView === 'percent' ? 100 : undefined}
               help={`${

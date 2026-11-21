@@ -66,8 +66,11 @@ function MultiLineChart({ title, years, series, yMax, formatValue, logScale = fa
   const n = years.length
   const x = (i: number) => (n > 1 ? (i / (n - 1)) * PLOT_W : 0)
   const tf = (v: number) => (logScale ? Math.log10(1 + v) : v)
+  // Signed values beyond the fixed axis are drawn at its edge (the tooltip keeps the true value).
   const y = (v: number) =>
-    diverging ? ((max - v) / (2 * max)) * PLOT_H : PLOT_H - (tf(v) / tf(max)) * PLOT_H
+    diverging
+      ? ((max - Math.max(-max, Math.min(max, v))) / (2 * max)) * PLOT_H
+      : PLOT_H - (tf(v) / tf(max)) * PLOT_H
 
   const paths = useMemo(
     () =>
@@ -90,7 +93,12 @@ function MultiLineChart({ title, years, series, yMax, formatValue, logScale = fa
   )
 
   const ticks = useMemo(() => {
-    if (diverging) return [-max, -max / 2, 0, max / 2, max]
+    if (diverging) {
+      if (Number.isInteger(max) && max <= 5) {
+        return Array.from({ length: 2 * max + 1 }, (_, i) => i - max)
+      }
+      return [-max, -max / 2, 0, max / 2, max]
+    }
     if (!logScale) return [0, 0.25, 0.5, 0.75, 1].map((f) => f * max)
     const t = [0]
     for (let v = 1; v < max; v *= 10) t.push(v)
