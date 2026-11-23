@@ -63,14 +63,27 @@ function MultiLineChart({ title, years, series, yMax, formatValue, logScale = fa
     return niceMax(m)
   }, [series, yMax, diverging])
 
+  // Signed charts fit the data: whole-number limits around the plotted min and max, always including 0.
+  const { lo, hi } = useMemo(() => {
+    if (!diverging) return { lo: 0, hi: max }
+    let min = 0
+    let top = 0
+    for (const s of series)
+      for (const v of s.values) {
+        if (v == null) continue
+        if (v < min) min = v
+        if (v > top) top = v
+      }
+    const l = Math.floor(min)
+    const h = Math.ceil(top)
+    return h === l ? { lo: l - 1, hi: h + 1 } : { lo: l, hi: h }
+  }, [diverging, series, max])
+
   const n = years.length
   const x = (i: number) => (n > 1 ? (i / (n - 1)) * PLOT_W : 0)
   const tf = (v: number) => (logScale ? Math.log10(1 + v) : v)
-  // Signed values beyond the fixed axis are drawn at its edge (the tooltip keeps the true value).
   const y = (v: number) =>
-    diverging
-      ? ((max - Math.max(-max, Math.min(max, v))) / (2 * max)) * PLOT_H
-      : PLOT_H - (tf(v) / tf(max)) * PLOT_H
+    diverging ? ((hi - v) / (hi - lo)) * PLOT_H : PLOT_H - (tf(v) / tf(max)) * PLOT_H
 
   const paths = useMemo(
     () =>
@@ -89,22 +102,22 @@ function MultiLineChart({ title, years, series, yMax, formatValue, logScale = fa
       }),
     // x/y close over n and max
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [series, n, max, PLOT_W, logScale, diverging],
+    [series, n, max, lo, hi, PLOT_W, logScale, diverging],
   )
 
   const ticks = useMemo(() => {
     if (diverging) {
-      if (Number.isInteger(max) && max <= 5) {
-        return Array.from({ length: 2 * max + 1 }, (_, i) => i - max)
-      }
-      return [-max, -max / 2, 0, max / 2, max]
+      const step = hi - lo <= 10 ? 1 : Math.ceil((hi - lo) / 8)
+      const t: number[] = []
+      for (let v = lo; v <= hi; v += step) t.push(v)
+      return t
     }
     if (!logScale) return [0, 0.25, 0.5, 0.75, 1].map((f) => f * max)
     const t = [0]
     for (let v = 1; v < max; v *= 10) t.push(v)
     t.push(max)
     return t
-  }, [logScale, max, diverging])
+  }, [logScale, max, diverging, lo, hi])
   const xTicks = years.filter(
     (yr, i) => i === 0 || i === n - 1 || (yr % 5 === 0 && n - 1 - i >= 3),
   )

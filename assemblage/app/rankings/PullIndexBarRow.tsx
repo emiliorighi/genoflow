@@ -4,9 +4,9 @@ import Link from 'next/link'
 import type { RegionCard } from '../map/explore/exploreData'
 import {
   collectedCount,
-  formatPullIndex,
+  formatRetentionIndex,
   mapHrefForCard,
-  pullIndex,
+  retentionIndex,
   sequencedCount,
 } from '../map/explore/pullIndex'
 
@@ -19,7 +19,7 @@ type PullIndexBarRowProps = {
 export default function PullIndexBarRow({ card, maxCount }: PullIndexBarRowProps) {
   const sequenced = sequencedCount(card)
   const collected = collectedCount(card)
-  const pullLabel = formatPullIndex(pullIndex(card))
+  const pullLabel = formatRetentionIndex(retentionIndex(card))
 
   const sequencedWidth =
     maxCount > 0 ? Math.min(100, (100 * sequenced) / maxCount) : 0
@@ -41,7 +41,7 @@ export default function PullIndexBarRow({ card, maxCount }: PullIndexBarRowProps
     <Link
       href={mapHrefForCard(card)}
       className="pull-rank-row"
-      title={`${card.name} · pull ${pullLabel}`}
+      title={`${card.name} · retention index ${pullLabel}`}
     >
       <div className="pull-rank-track is-collected">
         <span

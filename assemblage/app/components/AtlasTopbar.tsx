@@ -4,7 +4,7 @@ export type AtlasPage = 'map' | 'rankings'
 
 const LINKS: { id: AtlasPage; href: string; label: string }[] = [
   { id: 'map', href: '/map', label: 'Map' },
-  { id: 'rankings', href: '/rankings', label: 'Pull index' },
+  { id: 'rankings', href: '/rankings', label: 'Retention index' },
 ]
 
 /** Shared header for the app pages: wordmark, then the page links with the current one highlighted. */

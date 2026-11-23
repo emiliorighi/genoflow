@@ -8,7 +8,7 @@ import type { YearBounds } from '../map/explore/yearRange'
 import {
   collectedCount,
   sequencedCount,
-  sortCardsByPullIndex,
+  sortCardsByRetentionIndex,
 } from '../map/explore/pullIndex'
 import PullIndexBarRow from './PullIndexBarRow'
 import PullTimeCharts from './PullTimeCharts'
@@ -16,7 +16,7 @@ import PullTimeCharts from './PullTimeCharts'
 export type RankingsTab = 'regions' | 'continents' | 'countries'
 
 const PULL_TIP =
-  'Of species sequenced here, the fraction collected elsewhere.'
+  'log₂ of species collected here and sequenced here ÷ species collected here and sequenced elsewhere. Above 0: mostly sequenced at home. Below 0: mostly sent abroad.'
 
 /** Countries with fewer sequenced species than this are hidden by default (tiny samples). */
 const DEFAULT_MIN_SEQUENCED = 30
@@ -42,7 +42,7 @@ export default function PullIndexRankings({
   loading,
   error,
 }: PullIndexRankingsProps) {
-  const [tab, setTab] = useState<RankingsTab>('continents')
+  const [tab, setTab] = useState<RankingsTab>('regions')
   const [minSequenced, setMinSequenced] = useState(DEFAULT_MIN_SEQUENCED)
   const [customMin, setCustomMin] = useState(false)
 
@@ -73,7 +73,7 @@ export default function PullIndexRankings({
       tab === 'countries' && minSequenced > 0
         ? sourceCards.filter((card) => sequencedCount(card) >= minSequenced)
         : sourceCards
-    return sortCardsByPullIndex(kept)
+    return sortCardsByRetentionIndex(kept)
   }, [tab, sourceCards, minSequenced])
 
   const maxCount = useMemo(() => {
@@ -87,11 +87,13 @@ export default function PullIndexRankings({
   return (
     <div className="pull-rank-panel">
       <header className="pull-rank-header">
-        <h1>Pull index</h1>
+        <h1>Retention index</h1>
         <p>
-          Places sorted by pull index (high → low). Collected grows left of the
-          name; sequenced grows right. Within each bar: exported share of
-          collected, imported share of sequenced.
+          Places sorted by retention index (high → low): log₂ of species
+          collected here and sequenced here ÷ species collected here and
+          sequenced elsewhere. Collected grows left of the name; sequenced grows
+          right. Within each bar: exported share of collected, imported share of
+          sequenced.
         </p>
       </header>
 
@@ -116,7 +118,7 @@ export default function PullIndexRankings({
         </div>
         <p className="pull-rank-tip">
           <span className="pull-rank-tip-label">
-            Pull index
+            Retention index
             <span
               className="dest-help"
               title={PULL_TIP}
@@ -126,7 +128,7 @@ export default function PullIndexRankings({
               <CircleHelp size={12} aria-hidden="true" />
             </span>
           </span>
-          Of species sequenced here, the fraction collected elsewhere.
+          log₂ (collected here, sequenced here ÷ collected here, sequenced elsewhere). Above 0: mostly sequenced at home; below 0: mostly sent abroad.
         </p>
       </div>
 

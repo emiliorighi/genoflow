@@ -1,6 +1,7 @@
 'use client'
 
 import { CircleHelp } from 'lucide-react'
+import { formatRetentionIndex, retentionIndex } from './pullIndex'
 import {
   FLOW_SLICES,
   FLOW_SLICE_LABELS,
@@ -19,7 +20,7 @@ const SLICE_CHECK: Record<FlowSlice, 'amber' | 'blue'> = {
 }
 
 const PULL_INDEX_TIP =
-  'Of species sequenced here, the fraction collected elsewhere.'
+  'log₂ of species collected here and sequenced here ÷ species collected here and sequenced elsewhere. Above 0: mostly sequenced at home. Below 0: mostly sent abroad.'
 
 function PullIndexHelp() {
   return (
@@ -48,18 +49,14 @@ export default function MapViewToggles({
   onChange,
   activeCount,
 }: MapViewTogglesProps) {
-  const sequenced = counts.local + counts.imported
-  const pullIndexLabel =
-    sequenced > 0
-      ? `${Math.round((1000 * counts.imported) / sequenced) / 10}%`
-      : '—'
+  const pullIndexLabel = formatRetentionIndex(retentionIndex(counts))
 
   return (
     <div className="flow-slice-panel">
       <div className="flow-slice-head">
         <div className="section-label">Flows</div>
         <div className="region-card-quiet-metrics pull-index-metrics">
-          <span>Pull index</span>
+          <span>Retention index</span>
           <span className="pull-index-value">{pullIndexLabel}</span>
           <PullIndexHelp />
         </div>

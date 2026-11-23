@@ -77,21 +77,6 @@ export function modeValues(
   return out
 }
 
-/** Pull index (%) per year; null only where nothing was sequenced yet. */
-export function pullValues(
-  series: CardTimeSeries,
-  basis: TimeBasis,
-): (number | null)[] {
-  const local = modeValues(series, 'local', basis)
-  const imported = modeValues(series, 'imported', basis)
-  return local.map((l, i) => {
-    const sequenced = l + imported[i]
-    return sequenced > 0
-      ? Math.round((1000 * imported[i]) / sequenced) / 10
-      : null
-  })
-}
-
 /**
  * Exported / local per year (collected here sequenced elsewhere over collected here sequenced here),
  * or the other way round when `inverse`. Null where the denominator is 0.
@@ -105,7 +90,7 @@ export function exportRatioValues(
   const exported = modeValues(series, 'exported', basis)
   const num = inverse ? local : exported
   const den = inverse ? exported : local
-  return den.map((d, i) => (d > 0 ? Math.round((100 * num[i]) / d) / 100 : null))
+  return den.map((d, i) => (d > 0 ? num[i] / d : null))
 }
 
 /** log2 of the ratio above: positive when the numerator side is larger. Null if either side is 0. */
@@ -119,27 +104,41 @@ export function logRatioValues(
   const num = inverse ? local : exported
   const den = inverse ? exported : local
   return den.map((d, i) =>
-    d > 0 && num[i] > 0 ? Math.round(100 * Math.log2(num[i] / d)) / 100 : null,
+    d > 0 && num[i] > 0 ? Math.log2(num[i] / d) : null,
   )
 }
 
-/** Categories that share the "all collected here" total; imported alone uses "all sequenced here". */
-const COLLECTED_HERE: TimeMode[] = ['local', 'exported', 'unknown']
-const SEQUENCED_HERE: TimeMode[] = ['local', 'imported']
-
-export function percentTotalLabel(mode: TimeMode): string {
-  return mode === 'imported' ? 'all sequenced here' : 'all collected here'
+/**
+ * Totals for the category percentages. Local and exported are shares of the species whose
+ * sequencing place is known (so a peak of unknown places does not move them); unknown is a share
+ * of everything collected here; imported is a share of everything sequenced here.
+ */
+const PERCENT_TOTAL_MODES: Record<TimeMode, TimeMode[]> = {
+  local: ['local', 'exported'],
+  exported: ['local', 'exported'],
+  unknown: ['local', 'exported', 'unknown'],
+  imported: ['local', 'imported'],
 }
 
-/** Share (%) of a category: of all collected here, or (imported) of all sequenced here. Null where the total is 0. */
+const PERCENT_TOTAL_LABELS: Record<TimeMode, string> = {
+  local: 'species collected here with a known sequencing place',
+  exported: 'species collected here with a known sequencing place',
+  unknown: 'all species collected here',
+  imported: 'all species sequenced here',
+}
+
+export function percentTotalLabel(mode: TimeMode): string {
+  return PERCENT_TOTAL_LABELS[mode]
+}
+
+/** Share (%) of a category within its total (see above). Null where the total is 0. */
 export function percentValues(
   series: CardTimeSeries,
   mode: TimeMode,
   basis: TimeBasis,
 ): (number | null)[] {
-  const modes = mode === 'imported' ? SEQUENCED_HERE : COLLECTED_HERE
   const own = modeValues(series, mode, basis)
-  const parts = modes.map((m) => modeValues(series, m, basis))
+  const parts = PERCENT_TOTAL_MODES[mode].map((m) => modeValues(series, m, basis))
   return own.map((v, i) => {
     const total = parts.reduce((sum, part) => sum + part[i], 0)
     return total > 0 ? Math.round((1000 * v) / total) / 10 : null

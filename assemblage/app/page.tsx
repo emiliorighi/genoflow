@@ -96,7 +96,7 @@ export default async function Page() {
           <a href="#about">About</a>
           {stats?.charts && <a href="#data">Data</a>}
           <a href="#pipeline">Pipeline</a>
-          <Link href="/rankings">Pull index</Link>
+          <Link href="/rankings">Retention index</Link>
           <Link href="/map" className="nav-map-link">
             Open the map <ArrowUpRight size={14} aria-hidden="true" />
           </Link>

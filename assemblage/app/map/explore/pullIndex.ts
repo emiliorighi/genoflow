@@ -17,25 +17,26 @@ export function collectedCount(card: OutreachSliceCounts): number {
 }
 
 /**
- * Pull index: of species sequenced here, the fraction collected elsewhere.
- * Null when nothing is sequenced.
+ * Retention index: log2 of (collected here, sequenced here) / (collected here, sequenced elsewhere).
+ * Above 0 a place mostly sequences its own species; below 0 it mostly sends them abroad.
+ * Species with an unknown sequencing place are left out. Null when either side is 0.
  */
-export function pullIndex(card: OutreachSliceCounts): number | null {
-  const sequenced = sequencedCount(card)
-  if (sequenced <= 0) return null
-  return card.imported / sequenced
+export function retentionIndex(card: OutreachSliceCounts): number | null {
+  if (card.local <= 0 || card.exported <= 0) return null
+  return Math.log2(card.local / card.exported)
 }
 
-export function formatPullIndex(value: number | null): string {
+export function formatRetentionIndex(value: number | null): string {
   if (value == null) return '—'
-  return `${Math.round(1000 * value) / 10}%`
+  const rounded = Math.round(100 * value) / 100
+  return `${rounded > 0 ? '+' : ''}${rounded.toFixed(2)}`
 }
 
-/** Highest pull first; nulls last; tie-break by name. */
-export function sortCardsByPullIndex(cards: RegionCard[]): RegionCard[] {
+/** Highest retention first; nulls last; tie-break by name. */
+export function sortCardsByRetentionIndex(cards: RegionCard[]): RegionCard[] {
   return [...cards].sort((a, b) => {
-    const pa = pullIndex(a)
-    const pb = pullIndex(b)
+    const pa = retentionIndex(a)
+    const pb = retentionIndex(b)
     if (pa == null && pb == null) return a.name.localeCompare(b.name)
     if (pa == null) return 1
     if (pb == null) return -1
