@@ -15,6 +15,7 @@ import json
 import sys
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 from collections import defaultdict
@@ -23,6 +24,8 @@ from pathlib import Path
 from typing import Any, Iterator, Optional
 
 ENA_XML_URL = "https://www.ebi.ac.uk/ena/browser/api/xml"
+ENA_REST_TAXID_URL = "https://www.ebi.ac.uk/ena/taxonomy/rest/tax-id/"
+ENA_REST_NAME_URL = "https://www.ebi.ac.uk/ena/taxonomy/rest/scientific-name/"
 EUKARYOTA_TAXID = "2759"
 USER_AGENT = "genoflow-build-taxonomic-tree/1.0"
 MAX_BATCH_SIZE = 10000
@@ -244,6 +247,10 @@ def parse_ena_taxon_xml(
     return returned
 
 
+class EnaNotFound(RuntimeError):
+    """ENA answered 404: none of the requested taxids is served by this endpoint."""
+
+
 class EnaClient:
     def __init__(self, sleep_s: float, max_retries: int) -> None:
         self.sleep_s = sleep_s
@@ -297,6 +304,10 @@ class EnaClient:
                     eprint(f"HTTP {exc.code}; retry in {wait}s ({body_snip})")
                     time.sleep(wait)
                     continue
+                if exc.code == 404:
+                    raise EnaNotFound(
+                        f"ENA HTTP 404: {body_snip}"
+                    ) from exc
                 raise RuntimeError(
                     f"ENA HTTP {exc.code}: {body_snip}"
                 ) from exc
@@ -309,6 +320,141 @@ class EnaClient:
                     continue
                 raise
         raise RuntimeError(f"ENA request failed after retries: {last_err}")
+
+    def get_json(self, url: str) -> Any:
+        """GET a JSON document from the ENA taxonomy REST API.
+
+        Returns None on 404 (unknown taxon / name); retries 429 and 5xx.
+        """
+        headers = {"Accept": "application/json", "User-Agent": USER_AGENT}
+        last_err: Optional[Exception] = None
+        for attempt in range(1, self.max_retries + 1):
+            self._pace()
+            req = urllib.request.Request(url, headers=headers, method="GET")
+            try:
+                self._last_request = time.monotonic()
+                with urllib.request.urlopen(req, timeout=60) as resp:
+                    return json.loads(resp.read().decode("utf-8"))
+            except urllib.error.HTTPError as exc:
+                last_err = exc
+                if exc.code == 404:
+                    return None
+                if exc.code == 429 or (500 <= exc.code < 600):
+                    if attempt < self.max_retries:
+                        wait = 60 if exc.code == 429 else 2**attempt
+                        eprint(f"REST HTTP {exc.code}; retry in {wait}s")
+                        time.sleep(wait)
+                        continue
+                raise RuntimeError(f"ENA REST HTTP {exc.code}: {url}") from exc
+            except urllib.error.URLError as exc:
+                last_err = exc
+                if attempt < self.max_retries:
+                    time.sleep(2**attempt)
+                    continue
+                raise
+        raise RuntimeError(f"ENA REST request failed after retries: {last_err}")
+
+
+def _split_lineage(lineage: str) -> list[str]:
+    """'A; B; C; ' -> ['A', 'B', 'C'] (root first)."""
+    return [part.strip() for part in (lineage or "").split(";") if part.strip()]
+
+
+def _resolve_ancestor_taxid(
+    name: str,
+    expected_lineage: list[str],
+    name_index: dict[str, str],
+    client: EnaClient,
+) -> Optional[str]:
+    """Find the taxid of an ancestor from its scientific name.
+
+    Cached nodes are used first. Otherwise the REST scientific-name endpoint is
+    queried and the hit whose own lineage equals the expected prefix is taken,
+    which disambiguates homonyms.
+    """
+    if name in name_index:
+        return name_index[name]
+    hits = client.get_json(ENA_REST_NAME_URL + urllib.parse.quote(name, safe=""))
+    for hit in hits or []:
+        if _split_lineage(hit.get("lineage", "")) == expected_lineage and hit.get("taxId"):
+            return str(hit["taxId"])
+    return None
+
+
+def fetch_taxon_via_rest(
+    taxid: str,
+    nodes: dict[str, dict[str, str]],
+    cache_file: Path,
+    client: EnaClient,
+) -> bool:
+    """Fallback for taxids the XML endpoint rejects: use the REST taxonomy API.
+
+    The REST record lists ancestors by name only, so each ancestor is mapped to
+    a taxid (cache first, then name lookup) before the chain is cached.
+    Returns True when the taxon and its full lineage were cached.
+    """
+    doc = client.get_json(ENA_REST_TAXID_URL + urllib.parse.quote(taxid, safe=""))
+    if not isinstance(doc, dict) or str(doc.get("taxId") or "") != taxid:
+        return False
+    lineage = _split_lineage(doc.get("lineage", ""))
+    if "Eukaryota" not in lineage:
+        return False
+
+    name_index: dict[str, str] = {}
+    for tid, rec in nodes.items():
+        name = rec.get("scientific_name") or ""
+        if name and name not in name_index:
+            name_index[name] = tid
+
+    chain: list[tuple[str, str, str]] = []  # (taxid, rank, name), root first
+    for i, name in enumerate(lineage):
+        anc = _resolve_ancestor_taxid(name, lineage[:i], name_index, client)
+        if anc is None:
+            eprint(f"  REST fallback: cannot resolve ancestor '{name}' of {taxid}")
+            return False
+        rec = nodes.get(anc)
+        chain.append((anc, rec["rank"] if rec else "no rank", name))
+    chain.append(
+        (taxid, str(doc.get("rank") or "no rank"), str(doc.get("scientificName") or ""))
+    )
+
+    start = next(i for i, (_t, _r, n) in enumerate(chain) if n == "Eukaryota")
+    chain = chain[start:]
+    for i, (tid, rank, name) in enumerate(chain):
+        remember_node(nodes, cache_file, tid, chain[i - 1][0] if i else "", rank, name)
+    return True
+
+
+def fetch_batch_with_fallback(
+    client: EnaClient,
+    batch: list[str],
+    nodes: dict[str, dict[str, str]],
+    cache_file: Path,
+) -> set[str]:
+    """Fetch a batch from the XML endpoint; on 404 isolate the offending taxids.
+
+    A 404 means the batch contains a taxid the XML endpoint does not serve.
+    The batch is bisected until the culprit is alone, then resolved through
+    the REST taxonomy API. Taxids that still cannot be resolved are skipped
+    (they are reported as unresolved) instead of aborting the whole run.
+    """
+    try:
+        xml_text = client.fetch_xml(batch)
+    except EnaNotFound:
+        if len(batch) > 1:
+            mid = len(batch) // 2
+            eprint(f"  ENA 404 for batch of {len(batch)}; splitting")
+            return fetch_batch_with_fallback(
+                client, batch[:mid], nodes, cache_file
+            ) | fetch_batch_with_fallback(client, batch[mid:], nodes, cache_file)
+        taxid = batch[0]
+        eprint(f"  XML endpoint has no taxid {taxid}; trying REST fallback")
+        if fetch_taxon_via_rest(taxid, nodes, cache_file, client):
+            eprint(f"  REST fallback resolved {taxid}")
+            return {taxid}
+        eprint(f"  WARNING: taxid {taxid} could not be resolved; skipping")
+        return set()
+    return parse_ena_taxon_xml(xml_text, nodes, cache_file)
 
 
 def fetch_missing_lineages(
@@ -346,8 +492,7 @@ def fetch_missing_lineages(
     t0 = time.monotonic()
     for bi, batch in enumerate(batches, 1):
         eprint(f"  ENA batch {bi}/{len(batches)} ({len(batch)} taxids)...")
-        xml_text = client.fetch_xml(batch)
-        returned = parse_ena_taxon_xml(xml_text, nodes, cache_file)
+        returned = fetch_batch_with_fallback(client, batch, nodes, cache_file)
         returned_all.update(returned)
         eprint(
             f"  batch {bi} ok: returned {len(returned)}/{len(batch)}; "
