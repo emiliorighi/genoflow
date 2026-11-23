@@ -1,9 +1,9 @@
 taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_count	biosamples_with_coordinates_count	rank	scientific_name
-2759		72257	72257	5832	246	24026	domain	Eukaryota
-33154	2759	58771	58771	4489	242	20489	clade	Opisthokonta
-33208	33154	31915	31915	2597	218	12404	kingdom	Metazoa
-6072	33208	31667	31667	2591	218	12176	clade	Eumetazoa
-33213	6072	31102	31102	2548	217	11915	clade	Bilateria
+2759		72258	72258	5832	246	24026	domain	Eukaryota
+33154	2759	58772	58772	4489	242	20489	clade	Opisthokonta
+33208	33154	31916	31916	2597	218	12404	kingdom	Metazoa
+6072	33208	31668	31668	2591	218	12176	clade	Eumetazoa
+33213	6072	31103	31103	2548	217	11915	clade	Bilateria
 33511	33213	15993	15993	1501	179	3618	clade	Deuterostomia
 7711	33511	15777	15777	1465	179	3530	phylum	Chordata
 89593	7711	15630	15630	1448	179	3429	subphylum	Craniata
@@ -12802,20 +12802,20 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 1118796	10220	1	1	1	1	1	family	Spengelidae
 1118797	1118796	1	1	1	1	1	genus	Glandiceps
 1443217	1118797	1	1	1	1	1	species	Glandiceps talaboti
-33317	33213	15095	15095	1404	182	8289	clade	Protostomia
-1206794	33317	13564	13564	1191	174	7586	clade	Ecdysozoa
-88770	1206794	12761	12761	1059	171	7447	clade	Panarthropoda
-6656	88770	12751	12751	1055	171	7445	phylum	Arthropoda
-197563	6656	12245	12245	974	170	7264	clade	Mandibulata
-197562	197563	12160	12160	971	170	7236	clade	Pancrustacea
-3701028	197562	12156	12156	970	170	7235	clade	Altocrustacea
-3701030	3701028	11930	11930	910	165	7167	clade	Allotriocarida
-6960	3701030	11771	11771	879	163	7103	subphylum	Hexapoda
-50557	6960	11556	11556	870	163	7060	class	Insecta
-85512	50557	11555	11555	870	163	7060	clade	Dicondylia
-7496	85512	11550	11550	870	162	7056	subclass	Pterygota
-33340	7496	11452	11452	863	161	6992	infraclass	Neoptera
-3701061	33340	11160	11160	827	160	6898	clade	Eumetabola
+33317	33213	15096	15096	1404	182	8289	clade	Protostomia
+1206794	33317	13565	13565	1191	174	7586	clade	Ecdysozoa
+88770	1206794	12762	12762	1059	171	7447	clade	Panarthropoda
+6656	88770	12752	12752	1055	171	7445	phylum	Arthropoda
+197563	6656	12246	12246	974	170	7264	clade	Mandibulata
+197562	197563	12161	12161	971	170	7236	clade	Pancrustacea
+3701028	197562	12157	12157	970	170	7235	clade	Altocrustacea
+3701030	3701028	11931	11931	910	165	7167	clade	Allotriocarida
+6960	3701030	11772	11772	879	163	7103	subphylum	Hexapoda
+50557	6960	11557	11557	870	163	7060	class	Insecta
+85512	50557	11556	11556	870	163	7060	clade	Dicondylia
+7496	85512	11551	11551	870	162	7056	subclass	Pterygota
+33340	7496	11453	11453	863	161	6992	infraclass	Neoptera
+3701061	33340	11161	11161	827	160	6898	clade	Eumetabola
 33392	3701061	10569	10569	728	159	6635	cohort	Endopterygota
 3701062	33392	8921	8921	591	153	5753	clade	Aparaglossata
 3701063	3701062	7624	7624	457	147	4948	clade	Panorpida
@@ -23542,9 +23542,9 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 36763	222825	1	1	1	1	1	family	Siricidae
 222806	36763	1	1	1	1	1	genus	Urocerus
 1507180	222806	1	1	1	1	1	species	Urocerus augur
-33342	3701061	591	591	173	42	263	cohort	Paraneoptera
-7524	33342	544	544	153	40	253	order	Hemiptera
-33373	7524	265	265	89	26	84	suborder	Sternorrhyncha
+33342	3701061	592	592	173	42	263	cohort	Paraneoptera
+7524	33342	545	545	153	40	253	order	Hemiptera
+33373	7524	266	266	89	26	84	suborder	Sternorrhyncha
 33380	33373	190	190	60	16	67	infraorder	Aphidomorpha
 33385	33380	182	182	57	15	65	superfamily	Aphidoidea
 27482	33385	173	173	56	14	64	family	Aphididae
@@ -23723,7 +23723,7 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 33384	33382	1	1	1	1	1	family	Phylloxeridae
 58001	33384	1	1	1	1	1	genus	Daktulosphaira
 58002	58001	1	1	1	1	1	species	Daktulosphaira vitifoliae
-33381	33373	45	45	26	11	14	superfamily	Coccoidea
+33381	33373	46	46	26	11	14	superfamily	Coccoidea
 30190	33381	20	20	10	5	3	family	Pseudococcidae
 40929	30190	3	3	2	2	0	genus	Planococcus
 170843	40929	2	2	1	1	0	species	Planococcus citri
@@ -23793,6 +23793,9 @@ taxid	parent_taxid	assemblies_count	biosamples_count	institutes_count	countries_
 249435	33381	1	1	1	1	0	family	Ortheziidae
 1069711	249435	1	1	1	1	0	genus	Insignorthezia
 1069712	1069711	1	1	1	1	0	species	Insignorthezia insignis
+2008501	33381	1	1	1	1	0	no rank	Steingeliidae
+3686942	2008501	1	1	1	1	0	no rank	Stomacoccus
+3686943	3686942	1	1	1	1	0	species	Stomacoccus platani
 33377	33373	17	17	5	7	0	superfamily	Aleyrodoidea
 7036	33377	17	17	5	7	0	family	Aleyrodidae
 33379	7036	17	17	5	7	0	subfamily	Aleyrodinae

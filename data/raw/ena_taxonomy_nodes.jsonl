@@ -53633,3 +53633,6 @@
 {"taxid": "406626", "parent_taxid": "92103", "rank": "subfamily", "scientific_name": "Erythraeinae"}
 {"taxid": "92103", "parent_taxid": "83142", "rank": "family", "scientific_name": "Erythraeidae"}
 {"taxid": "83142", "parent_taxid": "83141", "rank": "superfamily", "scientific_name": "Erythraeoidea"}
+{"taxid": "2008501", "parent_taxid": "33381", "rank": "no rank", "scientific_name": "Steingeliidae"}
+{"taxid": "3686942", "parent_taxid": "2008501", "rank": "no rank", "scientific_name": "Stomacoccus"}
+{"taxid": "3686943", "parent_taxid": "3686942", "rank": "species", "scientific_name": "Stomacoccus platani"}

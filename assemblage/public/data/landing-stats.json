@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-20T18:59:06+00:00",
+  "generatedAt": "2026-11-23T14:55:25+00:00",
   "kpis": {
     "speciesWithAssemblies": 30758,
     "speciesWithCoordinates": 11967,
@@ -487,8 +487,8 @@
         {
           "taxid": "50557",
           "name": "Insecta",
-          "species": 6132,
-          "fullFlow": 5771
+          "species": 6133,
+          "fullFlow": 5772
         },
         {
           "taxid": "3398",
@@ -558,8 +558,8 @@
         }
       ],
       "other": {
-        "species": 6156,
-        "fullFlow": 5773
+        "species": 6155,
+        "fullFlow": 5772
       }
     }
   }
