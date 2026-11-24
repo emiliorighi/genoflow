@@ -169,26 +169,25 @@ type PlaceSeries = {
 
 /** One log-ratio section: the retention index (here ÷ elsewhere) or its opposite, the export index. */
 function IndexSection({
-  name,
-  inverse,
   places,
   years,
   firstYear,
   lastYear,
   startYear,
 }: {
-  name: string
-  /** true: local ÷ exported (retention). false: exported ÷ local (export). */
-  inverse: boolean
   places: PlaceSeries[]
   years: number[]
   firstYear: number
   lastYear: number
   startYear: number
 }) {
+  const [index, setIndex] = useState<'retention' | 'export'>('retention')
   const [basis, setBasis] = useState<TimeBasis>('cumulative')
   const [view, setView] = useState<'ratio' | 'log2'>('log2')
   const [range, setRange] = useState<YearRange>({ from: startYear, to: lastYear })
+  // Retention = local ÷ exported; export = exported ÷ local (the opposite).
+  const inverse = index === 'retention'
+  const name = inverse ? 'Retention index' : 'Export index'
 
   const series = useMemo<LineSeries[]>(
     () =>
@@ -216,7 +215,17 @@ function IndexSection({
 
   return (
     <div className="time-section">
-      <div className="time-controls" role="toolbar" aria-label={`${name} options`}>
+      <div className="time-controls" role="toolbar" aria-label="Index options">
+        <ToggleGroup
+          label="Index"
+          value={index}
+          options={[
+            { id: 'retention', text: 'Retention' },
+            { id: 'export', text: 'Export' },
+          ]}
+          onChange={setIndex}
+        />
+        <span className="time-control-sep" aria-hidden="true" />
         <ToggleGroup label="Species" value={basis} options={BASIS_OPTIONS} onChange={setBasis} />
         <span className="time-control-sep" aria-hidden="true" />
         <RangeSelect range={range} onChange={setRange} firstYear={firstYear} lastYear={lastYear} />
@@ -356,18 +365,6 @@ export default function PullTimeCharts({
       </div>
 
       <IndexSection
-        name="Retention index"
-        inverse
-        places={visible}
-        years={years}
-        firstYear={firstYear}
-        lastYear={lastYear}
-        startYear={startYear}
-      />
-
-      <IndexSection
-        name="Export index"
-        inverse={false}
         places={visible}
         years={years}
         firstYear={firstYear}
